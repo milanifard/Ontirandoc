@@ -10,3 +10,5 @@ Installation guide:
 5- set include_path in .htacess in pm folder
 6- use login.php page for login (default username: omid, password: omid3000)
 
+** This software has a persian user manual: OntirandocUserManual.docx
+
