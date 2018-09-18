@@ -1,0 +1,277 @@
+body {
+	min-width: 400px; 
+	color: #000;
+	/*background:#3b5f8a url(../rcssimgs/bluelines.png);*/
+	font-family: Tahoma;
+	font-size: 12 px;
+	}
+
+hr{
+color:#2A5FAA;
+width:400;
+}
+table {
+	font-size:12px;
+font-family:Tahoma;
+
+ /*    border-color:#465aa2;*/
+ 
+	}
+
+th{
+	font-family: Tahoma;
+
+	  	background-color:#465aa2;
+     Color:Ivory;
+	/*border:0;*/
+	/*margin: 0;
+	text-align:center;
+	/*vertical-align:top;*/
+	}
+td{
+	font-family: Tahoma;
+	color:#000000;
+	
+	/*border:0;*/
+	/*margin: 0;
+	text-align:center;
+	/*vertical-align:top;*/
+	}
+.style1{
+	font-family: Tahoma;
+	color:#000000;
+	background-color:#FFCCCC;
+	/*border:0;*/
+	/*margin: 0;
+	text-align:center;
+	/*vertical-align:top;*/
+	}
+a:link {
+	color:#011dc9;
+	background: transparent;
+	text-decoration:none;
+	}
+
+a:visited, a:active {
+	color:#011a9b;
+	background: transparent;
+	text-decoration:none;
+	}
+
+a:hover {
+	color:#001373;
+	background: transparent;
+	text-decoration:underline;
+	}
+
+p {
+	margin-top:1em;
+	margin-bottom:0;
+	padding:0;
+	}
+
+img {
+	border:none;
+	}
+
+form {
+	margin:0;
+	padding:0;
+	}
+
+ul, ol {
+	margin:1em;
+	padding:0 1em;
+	}
+
+li {
+	margin: 0 1em;
+	padding: 0.1em 0.25em;
+	}
+
+input, select, textarea {
+		font-family: Tahoma;
+		font-size: 9 pt;
+	}
+.menu {
+	height: 24;
+	background: #fff url('../rcssimgs/menu.gif') bottom;
+	text-align:center
+	}
+
+.menu p {
+	margin:0;
+	padding:0;
+	line-height:24px;
+	}
+
+.menu a, .menu a:visited {
+	display:block;
+	text-align:center;
+	background:transparent;
+	text-decoration:none;
+	color:#000;
+	}
+
+.menu a:hover {
+	text-decoration: underline;
+}
+
+a#buy {
+	width:10%;
+	}
+
+a#whyopera {
+	width:17%;
+	}
+
+a#home {
+	border:0px none;
+	width:9%
+	}
+
+.menu a.selected, .menu a:visited.selected {
+	color:#000;
+	font-weight:bold;
+	background: transparent;
+	}
+
+abbr, acronym {
+	border:none;
+	}
+
+
+b{
+font-family: Tahoma;
+	font-size: 12 px;
+
+}
+
+
+body#tutorial #content {
+	float:left;
+	width:100%;
+	margin:0;
+	padding:0;
+	line-height:1.4em;
+	color:#000;
+	background:#fff;
+	}
+
+body#tutorial #sidebar {
+	display:none;
+	}
+
+#content p.video {
+	background:url('../rcssimgs/video_sm.png') no-repeat top left;
+	padding-left:2.5em; padding-right:0; padding-top:0.1em; padding-bottom:1em
+	}
+
+#content li.video {
+	list-style-type: none; 
+	margin: 0 -0.9em; 
+	background: url('../rcssimgs/video_sm.png') no-repeat top left;; padding-left:2.15em; padding-right:0.25em; padding-top:0.15em; padding-bottom:0.3em 
+	}
+
+#content p.bigmargin {
+	margin:2em 0em 0.5em 0em;
+	}
+
+.tr1 {
+	background-color:#999999;
+}
+
+.tr2 {
+	background-color:#EEEEEE;
+}
+
+.tr3 {
+	background-color:#CCCCCC;
+}
+
+.small {
+	font-size : 95%; 
+	line-height : 125%; 
+	}
+
+.more {
+	margin-top : 0.5em; 
+	margin-bottom : 1.5em; 
+	}
+
+.more a:after {
+	content : "\00BB"; 
+	}
+
+.html {
+	color: #666;
+	background: transparent;
+	font-family: Tahoma;
+	}
+
+.url {/*
+	color: #666;
+	background: transparent;*/
+	font-family: Tahoma;
+	}
+
+div.takenote {
+	margin-top: 0.5em;
+	border: 1px dashed #40638e;
+	padding: 0 0.8em 0.65em 1em; 
+	}
+
+.yerwhatyerwhat {
+	color: #333333;
+	background: #ff3;
+	}
+
+.yerwhatyerwhat em {
+	font-weight: normal;
+	font-style: italic;
+	}
+
+.projection {
+	display: none; 
+	}
+
+.screen {
+	display: block; 
+	}
+
+.tabletitle {
+	background:#9d1e1e url('../rcssimgs/h2_scr.png') no-repeat top right; 
+	height:35;
+	padding-top: 0.6em;
+	padding-right: 3em;
+	color: #fff
+	}
+
+.require {
+	color: #e80005;
+	font-family: tahoma;
+	font-size: 10 pt;
+	}
+
+.trigger{
+	cursor: pointer;
+	cursor: hand;
+	text-align: right;
+}
+
+.branch{
+	display: none;
+	margin-left: 16px;
+	text-align: right;
+}
+
+.print{
+	text-align:justify; 
+	line-height:0.4in; 
+	font-family:'B Zar'; 
+	font-size:18px;
+}
+
+.PrintItem{
+	font-weight:bold;
+}

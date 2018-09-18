@@ -1,0 +1,41 @@
+
+body, INPUT, SELECT, TD, SPAN, textarea, A
+{
+	font-family: Tahoma;
+	font-size: 9 pt;
+}
+
+
+TD
+{
+	padding-right: 3px;
+	direction:rtl;
+}
+
+.bottomline
+{
+    border-bottom : 2px ridge #ffffff ;
+}
+.leftline
+{
+    border-left : 2px ridge #ffffff ;
+}
+
+.topline
+{
+    border-top: 2px ridge #ffffff ;
+}
+
+.panel
+{
+	border-style:ridge;
+	border-color:White;
+	border-width:2px;
+}
+
+.panel_ltr
+{
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#F0F0F0', endColorStr='#ffffff', gradientType='1');
+	border-left: 1px solid #cccccc;
+
+}

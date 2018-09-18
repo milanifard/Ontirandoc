@@ -1,0 +1,54 @@
+﻿.blog_title {
+	FONT-SIZE: 9pt; MARGIN: 0px; COLOR: white; LINE-HEIGHT: 150%; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #ff7a22
+}
+P {
+	FONT-SIZE: 9pt; MARGIN: 0px; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: tahoma
+}
+A.st_links {
+	COLOR: #000095; TEXT-DECORATION: none
+}
+A.st_links:hover {
+	COLOR: #ff3300
+}
+.st_textbox_en {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 10pt; BORDER-LEFT: #999999 1px solid; DIRECTION: ltr; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #f5f5f5
+}
+.st_textbox_fa {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 10pt; BORDER-LEFT: #999999 1px solid; DIRECTION: rtl; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #f5f5f5
+}
+.st_button {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 8pt; BORDER-BOTTOM-WIDTH: 1px; PADDING-BOTTOM: 1px; COLOR: white; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #ff7a22; BORDER-RIGHT-WIDTH: 1px
+}
+.st_option {
+	MARGIN-TOP: 3px; FONT-SIZE: 10pt; MARGIN-BOTTOM: 3px; WIDTH: 45px; DIRECTION: rtl; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #f5f5f5
+}
+.st_option_en {
+	MARGIN-TOP: 3px; FONT-SIZE: 10pt; MARGIN-BOTTOM: 3px; WIDTH: 45px; DIRECTION: ltr; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #f5f5f5
+}
+.st_news_title {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bolder; FONT-SIZE: 10pt; PADDING-BOTTOM: 3px; MARGIN: 0px; COLOR: black; DIRECTION: rtl; PADDING-TOP: 3px; FONT-FAMILY: tahoma
+}
+.st_news_story {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 10pt; PADDING-BOTTOM: 3px; MARGIN: 0px; COLOR: black; DIRECTION: rtl; PADDING-TOP: 3px; FONT-FAMILY: tahoma
+}
+.st_news_datetime {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 10pt; PADDING-BOTTOM: 3px; MARGIN: 0px; COLOR: green; DIRECTION: rtl; PADDING-TOP: 3px; FONT-FAMILY: tahoma
+}
+A.st_news_title_link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A.st_news_title_link:hover {
+	COLOR: #ff3300
+}
+A.st_news_links {
+	MARGIN: 0px; COLOR: blue; TEXT-DECORATION: none
+}
+A.st_news_links:hover {
+	MARGIN: 0px; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: underline
+}
+.st_headnews_title {
+	COLOR: black; TEXT-DECORATION: none
+}
+.st_headnews_title {
+	COLOR: #ff3300
+}
