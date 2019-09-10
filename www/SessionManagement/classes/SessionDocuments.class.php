@@ -61,11 +61,12 @@ class manage_SessionDocuments
 {
 	static function GetCount($UniversitySessionID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(SessionDocumentID) as TotalCount from sessionmanagement.SessionDocuments";
 			$query .= " where UniversitySessionID='".$UniversitySessionID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -73,10 +74,11 @@ class manage_SessionDocuments
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(SessionDocumentID) as MaxID from sessionmanagement.SessionDocuments";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

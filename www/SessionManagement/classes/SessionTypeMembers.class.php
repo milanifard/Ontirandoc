@@ -111,11 +111,12 @@ class manage_SessionTypeMembers
 {
 	static function GetCount($SessionTypeID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(SessionTypeMemberID) as TotalCount from sessionmanagement.SessionTypeMembers";
 			$query .= " where SessionTypeID='".$SessionTypeID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -123,10 +124,11 @@ class manage_SessionTypeMembers
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(SessionTypeMemberID) as MaxID from sessionmanagement.SessionTypeMembers";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

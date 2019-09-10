@@ -82,11 +82,12 @@ class manage_SessionPreCommands
 {
 	static function GetCount($UniversitySessionID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(SessionPreCommandID) as TotalCount from sessionmanagement.SessionPreCommands";
 			$query .= " where UniversitySessionID='".$UniversitySessionID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -94,10 +95,11 @@ class manage_SessionPreCommands
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(SessionPreCommandID) as MaxID from sessionmanagement.SessionPreCommands";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
