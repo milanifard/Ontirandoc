@@ -75,11 +75,12 @@ class manage_ProjectTaskHistory
 {
 	static function GetCount($ProjectTaskID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskHistoryID) as TotalCount from projectmanagement.ProjectTaskHistory";
 			$query .= " where ProjectTaskID='".$ProjectTaskID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -88,11 +89,12 @@ class manage_ProjectTaskHistory
 	
 	static function GetCountOfAllInProject($ProjectID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskHistoryID) as TotalCount from projectmanagement.ProjectTaskHistory JOIN projectmanagement.ProjectTasks using (ProjectTaskID) ";
 			$query .= " where ProjectID='".$ProjectID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -102,10 +104,11 @@ class manage_ProjectTaskHistory
 	
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskHistoryID) as MaxID from projectmanagement.ProjectTaskHistory";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

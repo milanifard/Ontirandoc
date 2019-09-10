@@ -49,11 +49,12 @@ class manage_ProjectTaskComments
 {
 	static function GetCount($ProjectTaskID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskCommentID) as TotalCount from projectmanagement.ProjectTaskComments";
 			$query .= " where ProjectTaskID='".$ProjectTaskID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -61,10 +62,11 @@ class manage_ProjectTaskComments
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskCommentID) as MaxID from projectmanagement.ProjectTaskComments";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

@@ -37,11 +37,12 @@ class manage_OntologyClassLabels
 {
 	static function GetCount($OntologyClassID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyClassLabelID) as TotalCount from projectmanagement.OntologyClassLabels";
 			$query .= " where OntologyClassID='".$OntologyClassID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -49,10 +50,11 @@ class manage_OntologyClassLabels
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyClassLabelID) as MaxID from projectmanagement.OntologyClassLabels";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

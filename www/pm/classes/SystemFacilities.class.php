@@ -45,14 +45,15 @@ class manage_SystemFacilities
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(FacilityID) as TotalCount from projectmanagement.SystemFacilities";
 		if($WhereCondition!="")
 		{
 			$query .= " where ".$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -60,10 +61,11 @@ class manage_SystemFacilities
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(FacilityID) as MaxID from projectmanagement.SystemFacilities";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

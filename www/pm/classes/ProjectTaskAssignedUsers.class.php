@@ -60,11 +60,12 @@ class manage_ProjectTaskAssignedUsers
 {
 	static function GetCount($ProjectTaskID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskAssignedUserID) as TotalCount from projectmanagement.ProjectTaskAssignedUsers";
 			$query .= " where ProjectTaskID='".$ProjectTaskID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -72,10 +73,11 @@ class manage_ProjectTaskAssignedUsers
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskAssignedUserID) as MaxID from projectmanagement.ProjectTaskAssignedUsers";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

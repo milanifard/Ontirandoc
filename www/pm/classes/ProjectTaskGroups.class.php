@@ -37,11 +37,12 @@ class manage_ProjectTaskGroups
 {
 	static function GetCount($ProjectID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskGroupID) as TotalCount from projectmanagement.ProjectTaskGroups";
 			$query .= " where ProjectID='".$ProjectID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -49,10 +50,11 @@ class manage_ProjectTaskGroups
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskGroupID) as MaxID from projectmanagement.ProjectTaskGroups";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

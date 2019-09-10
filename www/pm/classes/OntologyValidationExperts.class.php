@@ -50,11 +50,12 @@ class manage_OntologyValidationExperts
 {
 	static function GetCount($OntologyID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyValidationExpertID) as TotalCount from projectmanagement.OntologyValidationExperts";
 			$query .= " where OntologyID='".$OntologyID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -62,10 +63,11 @@ class manage_OntologyValidationExperts
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyValidationExpertID) as MaxID from projectmanagement.OntologyValidationExperts";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

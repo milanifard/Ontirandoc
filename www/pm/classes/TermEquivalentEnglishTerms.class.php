@@ -37,11 +37,12 @@ class manage_TermEquivalentEnglishTerms
 {
 	static function GetCount($TermID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(TermEquivalentEnglishTermID) as TotalCount from projectmanagement.TermEquivalentEnglishTerms";
 			$query .= " where TermID='".$TermID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -49,10 +50,11 @@ class manage_TermEquivalentEnglishTerms
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(TermEquivalentEnglishTermID) as MaxID from projectmanagement.TermEquivalentEnglishTerms";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

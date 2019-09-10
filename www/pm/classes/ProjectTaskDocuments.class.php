@@ -52,11 +52,12 @@ class manage_ProjectTaskDocuments
 {
 	static function GetCount($ProjectTaskID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskDocumentID) as TotalCount from projectmanagement.ProjectTaskDocuments";
 			$query .= " where ProjectTaskID='".$ProjectTaskID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -64,10 +65,11 @@ class manage_ProjectTaskDocuments
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskDocumentID) as MaxID from projectmanagement.ProjectTaskDocuments";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -104,11 +106,13 @@ class manage_ProjectTaskDocuments
 		
 		if($FileName!="") // در صورتیکه فایل ارسال شده باشد
  		{
-			$mysql = dbclass::getInstance();
+			$mysql = pdodb::getInstance();
 			$query = "update projectmanagement.ProjectTaskDocuments set ";
 			$query .= " FileContent='".$FileContent."' ";
 			$query .= " where ProjectTaskDocumentID='".$LastID."'";
-			$mysql->ExecuteBinary($query);
+			$mysql->Prepare($query);
+			$mysql->ExecuteStatement(array());
+			/** ExecuteBinary before  */
  		}
 		
 		require_once("ProjectTaskHistory.class.php");
@@ -147,11 +151,13 @@ class manage_ProjectTaskDocuments
 		$mysql->ExecuteStatement($ValueListArray);
 		if($FileName!="") // در صورتیکه فایل ارسال شده باشد
  		{
-			$mysql = dbclass::getInstance();
+			$mysql = pdodb::getInstance();
 			$query = "update projectmanagement.ProjectTaskDocuments set ";
 			$query .= " FileContent='".$FileContent."' ";
 			$query .= " where ProjectTaskDocumentID='".$UpdateRecordID."'";
-			$mysql->ExecuteBinary($query);
+			$mysql->Prepare($query);
+			$mysql->ExecuteStatement(array());
+			/* Executebinary before */
  		}
 		
 		//$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در اسناد کارها");

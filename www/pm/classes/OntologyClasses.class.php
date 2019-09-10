@@ -235,11 +235,12 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
     
 	static function GetCount($OntologyID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyClassID) as TotalCount from projectmanagement.OntologyClasses";
 			$query .= " where OntologyID='".$OntologyID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -247,10 +248,11 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyClassID) as MaxID from projectmanagement.OntologyClasses";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

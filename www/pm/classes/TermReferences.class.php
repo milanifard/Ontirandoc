@@ -39,14 +39,15 @@ class manage_TermReferences
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(TermReferenceID) as TotalCount from projectmanagement.TermReferences";
 		if($WhereCondition!="")
 		{
 			$query .= " where ".$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -54,10 +55,11 @@ class manage_TermReferences
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(TermReferenceID) as MaxID from projectmanagement.TermReferences";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

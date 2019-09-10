@@ -41,11 +41,12 @@ class manage_OntologyClassHirarchy
 {
 	static function GetCount($OntologyClassID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyClassHirarchyID) as TotalCount from projectmanagement.OntologyClassHirarchy";
 			$query .= " where OntologyClassID='".$OntologyClassID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -53,10 +54,11 @@ class manage_OntologyClassHirarchy
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyClassHirarchyID) as MaxID from projectmanagement.OntologyClassHirarchy";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

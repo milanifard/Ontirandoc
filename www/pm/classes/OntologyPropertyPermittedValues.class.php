@@ -37,11 +37,12 @@ class manage_OntologyPropertyPermittedValues
 {
 	static function GetCount($OntologyPropertyID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyPropertyPermittedValueID) as TotalCount from projectmanagement.OntologyPropertyPermittedValues";
 			$query .= " where OntologyPropertyID='".$OntologyPropertyID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -49,10 +50,11 @@ class manage_OntologyPropertyPermittedValues
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyPropertyPermittedValueID) as MaxID from projectmanagement.OntologyPropertyPermittedValues";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

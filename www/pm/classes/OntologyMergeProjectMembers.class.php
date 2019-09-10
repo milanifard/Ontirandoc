@@ -41,11 +41,12 @@ class manage_OntologyMergeProjectMembers
 {
 	static function GetCount($OntologyMergeProjectID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(OntologyMergeProjectMemberID) as TotalCount from projectmanagement.OntologyMergeProjectMembers";
 			$query .= " where OntologyMergeProjectID='".$OntologyMergeProjectID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -53,10 +54,11 @@ class manage_OntologyMergeProjectMembers
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(OntologyMergeProjectMemberID) as MaxID from projectmanagement.OntologyMergeProjectMembers";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+        $mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+        if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
