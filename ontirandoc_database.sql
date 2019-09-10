@@ -4349,7 +4349,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `persons` WRITE;
 /*!40000 ALTER TABLE `persons` DISABLE KEYS */;
-INSERT INTO `persons` VALUES (1,'امید','میلانی فرد','milanifard.o@gmail.com',NULL,1,'',''),(2,'مهدی','زاهدی','mehdizahedin@gmail.com',NULL,1,'',''),(3,'حسین','افخمی','afkhami@um.ac.ir',NULL,1,'',''),(4,'محسن','کاهانی','kahani@um.ac.ir',NULL,1,'',''),(5,'امیر','ملکزاده','ammalekzadeh@gmail.com',NULL,1,'',''),(6,'مرضیه','نوروززاده','',NULL,1,'',''),(7,'مریم ','باغیشنی','',NULL,1,'',''),(8,'مهدی','احتشام','mh_ehtesham@yahoo.com',NULL,1,'','09154753735'),(9,'سارا','نیکدل','',NULL,1,'',''),(10,'فاطمه','سنگین','',NULL,1,'','');
+INSERT INTO `persons` VALUES (1,'امید','میلانی فرد','milanifard.o@gmail.com',NULL,1,'','');
 /*!40000 ALTER TABLE `persons` ENABLE KEYS */;
 UNLOCK TABLES;
 
