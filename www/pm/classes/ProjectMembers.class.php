@@ -91,6 +91,7 @@ class manage_ProjectMembers
 	static function Add($ProjectID, $PersonID, $AccessType, $ParticipationPercent)
 	{
 		$k=0;
+		$ParticipationPercent = SharedClass::FixNumber($ParticipationPercent);
 		$mysql = pdodb::getInstance();
 
 		// چک میکند فرد قبلا اضافه نشده باشد

@@ -1073,11 +1073,12 @@ class manage_projects
 			/*$ret .= "<td width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectExternalMembers")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectExternalMembers.php?ProjectID=".$RecID."'>اعضای خارجی</a></td>";*/
+			$ret .= "><a href='ManageProjectExternalMembers.php?ProjectID=".$RecID."'>اعضای خارجی</a></td>";
 			$ret .= "<td width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectResponsibles")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectResponsibles.php?ProjectID=".$RecID."'>پاسخگویان</a></td>";
+			*/
 			$ret .= "<td width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectDocuments")
 	 			$ret .= " bgcolor=\"#cccccc\" ";

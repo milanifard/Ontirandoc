@@ -8,7 +8,6 @@ include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/projects.class.php");
 include("classes/projectsSecurity.class.php");
-include("classes/UserProjectScopes.class.php");
 include("classes/ProjectGroups.class.php");
 
 HTMLBegin();

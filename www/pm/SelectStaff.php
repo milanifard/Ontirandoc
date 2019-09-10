@@ -42,51 +42,20 @@
 <table width=80% align=center border=1 cellspacing=0 cellpadding=3>
 <tr class='HeaderOfTable'>
 	<td>نام و نام خانوادگی</td>
-	<td>نوع</td>
-	<td>واحد محل خدمت</td>   
-	<!--<td width=5% nowrap>نام کاربر</td>-->
 </tr>
 <?
 	$mysql = pdodb::getInstance();
-	//$mysql = dbclass::getInstance();
 	if(isset($_REQUEST["FName"]))
-	{//if($_SESSION["PersonID"]==401371457) echo $_REQUEST["LName"] . "<br />";
-		/*
-		$query = "select persons.PersonID, pfname, plname, staff.person_type, ptitle, WebUserID from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID) 
-								LEFT JOIN hrmstotal.org_units on (org_units.ouid=staff.UnitCode)
-								LEFT JOIN framework.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
-								where plname like '%".$_REQUEST["LName"]."%' and pfname like '%".$_REQUEST["FName"]."%' ";
-		*/
-		
-		$query = "select persons.PersonID, pfname, plname, staff.person_type, WebUserID, ptitle from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID, person_type) 
-								LEFT JOIN hrmstotal.org_new_units on (org_new_units.ouid=staff.UnitCode)
+	{
+		$query = "select persons.PersonID, pfname, plname, WebUserID from projectmanagement.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
 								where plname like ? and pfname like ? ";
 		
-		if(isset($_REQUEST["FilterType"]))
-		{
-			if($_REQUEST["FilterType"]=="6")
-				$query .= " and persons.person_type in (2, 3, 300) ";
-			else if($_REQUEST["FilterType"]=="7")
-				$query .= " and persons.person_type in (1, 200) ";
-			else if($_REQUEST["FilterType"]=="8")
-				$query .= " and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-			else if($_REQUEST["FilterType"]=="9")
-				$query .= " and persons.person_type in (2, 3, 200) and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-			else if($_REQUEST["FilterType"]=="10")
-				$query .= " and persons.person_type in (1, 200) and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-		}
 		$query .= " limit 0,200";
-		
+
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array("%".$_REQUEST["LName"]."%", "%".$_REQUEST["FName"]."%"));
-
-		
-		//$res = $mysql->Execute($query);
 		$i = 0;
-		//while($arr_res=$res->FetchRow())
 		while($arr_res=$res->fetch())
 		{
 			$i++;
@@ -98,29 +67,13 @@
 				echo "<tr class=EvenRow>";
 			echo "<td><a href='javascript: SelectPerson(\"".$arr_res["PersonID"]."\", \"".$arr_res["pfname"]." ".$arr_res["plname"]."\", \"".$arr_res["pfname"]."\", \"".$arr_res["plname"]."\"); '>".$arr_res["pfname"]." ".$arr_res["plname"]."</td>";
 
-			if($arr_res["person_type"]=="200")
-				echo "<td>حق التدریس</td>";
-			else if($arr_res["person_type"]=="1")
-				echo "<td>استاد رسمی</td>";
-			else if($arr_res["person_type"]=="2")
-				echo "<td>کارمند رسمی</td>";
-			else if($arr_res["person_type"]=="300")
-				echo "<td>سایر</td>";
-			else if($arr_res["person_type"]=="5" || $arr_res["person_type"]=="6")
-				echo "<td>کارمند قراردادی</td>";
-			else if($arr_res["person_type"]=="10")
-				echo "<td>بازنشسته</td>";
-			echo "<td>&nbsp;".$arr_res["ptitle"]."</td>";
-			/*echo "<td>&nbsp;".$arr_res["WebUserID"]."</td>";*/
 			echo "</tr>";
 		}
 		
 	}
 	else if(isset($_REQUEST["ProjectID"]) && $_REQUEST["ProjectID"]!="0")
 	{
-		$query = "select persons.PersonID, pfname, plname, staff.person_type, WebUserID, ptitle from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID, person_type) 
-								LEFT JOIN hrmstotal.org_new_units on (org_new_units.ouid=staff.UnitCode)
+		$query = "select persons.PersonID, pfname, plname, WebUserID from hrmstotal.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
 								where persons.PersonID in (select PersonID from projectmanagement.ProjectMembers where ProjectID=?)";
 		$mysql->Prepare($query);
@@ -137,20 +90,6 @@
 				echo "<tr class=EvenRow>";
 			echo "<td><a href='javascript: SelectPerson(\"".$arr_res["PersonID"]."\", \"".$arr_res["pfname"]." ".$arr_res["plname"]."\", \"".$arr_res["pfname"]."\", \"".$arr_res["plname"]."\"); '>".$arr_res["pfname"]." ".$arr_res["plname"]."</td>";
 
-			if($arr_res["person_type"]=="200")
-				echo "<td>حق التدریس</td>";
-			else if($arr_res["person_type"]=="1")
-				echo "<td>استاد رسمی</td>";
-			else if($arr_res["person_type"]=="2")
-				echo "<td>کارمند رسمی</td>";
-			else if($arr_res["person_type"]=="300")
-				echo "<td>سایر</td>";
-			else if($arr_res["person_type"]=="5" || $arr_res["person_type"]=="6" || $arr_res["person_type"]=="200")
-				echo "<td>کارمند قراردادی</td>";
-			else if($arr_res["person_type"]=="10")
-				echo "<td>بازنشسته</td>";
-			echo "<td>&nbsp;".$arr_res["ptitle"]."</td>";
-			/*echo "<td>&nbsp;".$arr_res["WebUserID"]."</td>";*/
 			echo "</tr>";
 		}
 		

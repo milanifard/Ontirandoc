@@ -64,7 +64,7 @@ if(isset($_REQUEST["Save"]))
 			$_size = $_FILES['Item_FileContent']['size'];
 			$_name = $_FILES['Item_FileContent']['tmp_name'];
 			$Item_FileContent = addslashes((fread(fopen($_name, 'r' ),$_size)));
-			$st = split ( '\.', $_FILES ['Item_FileContent'] ['name'] );
+			$st = preg_split ( '\.', $_FILES ['Item_FileContent'] ['name'] );
 			$extension = $st [count ( $st ) - 1];	
 			
 			$Item_FileName = $extension;

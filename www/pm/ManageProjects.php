@@ -201,7 +201,6 @@ if(isset($_REQUEST["SearchAction"]))
 	<td width=1% nowrap>
 	اعضا
 	</td>
-	<td width=1% nowrap>گزارش</td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -262,12 +261,13 @@ for($k=0; $k<count($res); $k++)
 	for($i=0; $i<count($members); $i++)
 		echo "<font color=green>پاسخگو</font>: ".$members[$i]->PersonID_FullName."<br>";
 	echo "&nbsp;</td>";
+	/*
 	echo "	<td nowrap>";
 	echo "	<a target=\"_blank\" href='ShowProjectOverview.php?ProjectID=".$res[$k]->ProjectID ."'>";
 	echo "	<img src='images/report1.jpg' border='0' title='گزارش'>";
 	echo "	</a>  ";
 	echo "	</td>";
-	
+	*/
 	echo "</tr>";
 }
 ?>

@@ -1,7 +1,24 @@
 <?php
 class SharedClass
 {
-	
+    static function FixNumber($var)
+    {
+        if (preg_match('/^\d+$/', $var))
+            return $var;
+        return 0;
+    }
+
+    static function IsDateFormat($st)
+    {
+        //echo "<br>".$st;
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$st)) {
+            //echo ":OK<br>";
+            return true;
+        } else {
+            //echo ":FALSE<br>";
+            return false;
+        }	}
+
 	/*
 	 * @param $ShamsiYear: سال شمسی
 	 * @param $ShamsiMonth: ماه شمسی

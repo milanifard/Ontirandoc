@@ -155,16 +155,8 @@ class manage_ProjectResponsibles
 			, concat(persons2.pfname, ' ', persons2.plname) as persons2_FullName  from projectmanagement.ProjectResponsibles 
 			LEFT JOIN projectmanagement.persons persons2 on (persons2.PersonID=ProjectResponsibles.PersonID) 
 			";
-			if($ouid!=''){
-			$query .="LEFT JOIN projectmanagement.ResponsibleUnit on (ProjectResponsibles.ProjectResponsibleID=ResponsibleUnit.ProjectResponsibleID)";	
-			$temp = " and ResponsibleUnit.ouid=? ";
-			$re = array($ProjectID,$ouid);
-			}
 
-		
 		$query .= " where ProjectID=? ".$temp;
-	/*	if($ouid!='')
-		echo $query;*/
 		$mysql->Prepare($query);
 		 
 		$res = $mysql->ExecuteStatement($re);
