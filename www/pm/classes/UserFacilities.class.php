@@ -57,11 +57,12 @@ class manage_UserFacilities
 	
 	static function GetCount($FacilityID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(FacilityPageID) as TotalCount from projectmanagement.UserFacilities";
 			$query .= " where FacilityID='".$FacilityID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -69,10 +70,11 @@ class manage_UserFacilities
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(FacilityPageID) as MaxID from projectmanagement.UserFacilities";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -177,7 +179,7 @@ class manage_UserFacilities
 	* @param $OtherConditions سایر مواردی که باید به انتهای شرایط اضافه شوند
 	* @return لیست داده های حاصل جستجو
 	*/
-	static function Search($FacilityID, $UserID, $FacilityID, $OtherConditions)
+	static function Search($FacilityID, $UserID, $FacilityID2, $OtherConditions)
 	{
 		$mysql = pdodb::getInstance();
 		$k=0;
@@ -228,7 +230,7 @@ class manage_UserFacilities
 	* @param $OtherConditions سایر مواردی که باید به انتهای شرایط اضافه شوند
 	* @return تعداد داده های حاصل جستجو
 	*/
-	static function SearchResultCount($FacilityID, $UserID, $FacilityID, $OtherConditions)
+	static function SearchResultCount($FacilityID, $UserID, $FacilityID2, $OtherConditions)
 	{
 		$mysql = pdodb::getInstance();
 		$k=0;
