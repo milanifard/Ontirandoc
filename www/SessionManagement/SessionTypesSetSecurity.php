@@ -67,7 +67,7 @@ else
 	$RecID = 0;
 
 $mysql = pdodb::getInstance();
-$query = "select concat(pfname, ' ', plname) as FullName from hrmstotal.persons where PersonID=?";
+$query = "select concat(pfname, ' ', plname) as FullName from projectmanagement.persons where PersonID=?";
 $mysql->Prepare($query);
 $res = $mysql->ExecuteStatement(array($SelectedPersonID));
 $PersonName = "";
