@@ -77,9 +77,10 @@ class SharedClass
 		if($OrderBy=="")
 			$OrderBy = $RelatedValueField;
 		$ret = "";
-		$mysql = dbclass::getInstance();
-		$res = $mysql->Execute("select * from ".$RelatedTable." order by ".$OrderBy);
-		while($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance();
+        $mysql->Prepare("select * from ".$RelatedTable." order by ".$OrderBy);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret .= "<option value='".$rec[$RelatedValueField]."'>";
 			$ret .= $rec[$RelatedDescriptionField];
