@@ -32,7 +32,6 @@
       $scriptName = $scriptURI;
     $start = strrpos($scriptName, '/');
     $FileName = $start ? substr($scriptName, $start) : $scriptName;
-    
     // ابتدا چک می کند آیا صفحه جزو صفحات خاص که نیاز به تعریف دسترسی ندارند می باشد یا خیر
     $res = $mysql->Execute("select * from SpecialPages where PageName='".$FileName."'");
     if(!($rec = $res->fetch()))

@@ -4525,4 +4525,32 @@ CREATE TABLE  `mis`.`MIS_RejectedFK` (
   KEY `idx` (`PKTableName`,`PKFieldName`,`FKTableName`,`FKFieldName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????????? ?? ??? ???? ??????? ?????';
 
+DROP TABLE IF EXISTS `mis`.`MIS_TableFieldsChangeLog`;
+CREATE TABLE  `mis`.`MIS_TableFieldsChangeLog` (
+  `MIS_TableFieldsChangeLogID` int(11) NOT NULL AUTO_INCREMENT,
+  `DBName` varchar(50) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '???????',
+  `TableName` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '????',
+  `FieldName` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '????',
+  `ChangeType` enum('ADD','REMOVE','UPDATE') COLLATE utf8_persian_ci DEFAULT NULL COMMENT '??? ?????',
+  `ChangeDate` datetime DEFAULT NULL COMMENT '???? ?????',
+  PRIMARY KEY (`MIS_TableFieldsChangeLogID`)
+) ENGINE=InnoDB AUTO_INCREMENT=23766 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????? ??????? ??????? ???? ?????';
 
+DROP TABLE IF EXISTS `mis`.`PageContent`;
+CREATE TABLE  `mis`.`PageContent` (
+  `PageID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_persian_ci DEFAULT '',
+  `server` enum('SADAF','POOYA','MPOOYA','MIS','FUMSERVICES','UNVPORTAL') CHARACTER SET utf8 DEFAULT NULL COMMENT '''MIS'', ''FUMSERVICES'', ''UNVPORTAL''\n',
+  `path` varchar(200) COLLATE utf8_persian_ci DEFAULT '',
+  `type` enum('php','inc') COLLATE utf8_persian_ci DEFAULT NULL,
+  `content` text COLLATE utf8_persian_ci,
+  `StaticContent` text COLLATE utf8_persian_ci,
+  `LastModifyDate` datetime DEFAULT NULL,
+  `ModifierUserID` varchar(30) COLLATE utf8_persian_ci DEFAULT NULL,
+  `LinesCount` int(11) DEFAULT '-1',
+  `ATS` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PageID`),
+  KEY `name_index` (`name`),
+  KEY `path_index` (`path`),
+  KEY `type_index` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;

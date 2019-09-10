@@ -1,11 +1,5 @@
 <?
-	//include("header.inc.php");
-	include_once 'sys_config.class.php';
-	include_once 'definitions.inc';
-	
-	require_once('session.inc.php');
-	include_once(config::$language.'_utf8.inc.php');
-
+	include("header.inc.php");
 	HTMLBegin();
 	
 	function CheckTableToInsert($DB, $TableName, $Comment)
@@ -131,16 +125,6 @@
 	
 	$mysql = pdodb::getInstance();
 	$Permitted = false;
-	$data = explode(".",$_SERVER['REMOTE_ADDR']);
-	if($data[0]=="172" && $data[1]=="21" && $data[2]=="10")
-	  $Permitted = true;
-	if($data[0]=="172" && $data[1]=="20" && $data[2]=="8")
-	  $Permitted = true;
-	if(!$Permitted)
-	{
-	  echo "Access denied: ".$_SERVER['REMOTE_ADDR'];
-	  die();
-	}
 	if(isset($_REQUEST["Confirm"]) || isset($_REQUEST["AllDBs"]))
 	{
 	  $ServerName = "educ";	

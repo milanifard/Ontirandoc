@@ -95,7 +95,7 @@
 	
 	if(isset($_REQUEST["ShowPagesThatQueryThisTable"]))
 	{
-	  $mysql->Prepare("select distinct page from data_analysis.SystemDBLog where query like ? limit 0,20");
+	  $mysql->Prepare("select distinct page from projectmanagement.SystemDBLog where query like ? limit 0,20");
 	  $res = $mysql->ExecuteStatement(array("% ".$_REQUEST["ShowPagesThatQueryThisTable"]." %"));
 	  if($res->rowCount()>0)
 	  {
@@ -121,7 +121,7 @@
 
 	if(isset($_REQUEST["ShowFileName"]))
 	{
-	  $mysql->Prepare("select content from monitoring.PageContent where path=? and name=?");
+	  $mysql->Prepare("select content from mis.PageContent where path=? and name=?");
 	  $res = $mysql->ExecuteStatement(array($_REQUEST["ShowFilePath"], $_REQUEST["ShowFileName"]));
 	  if($rec = $res->fetch())
 	  {
@@ -135,7 +135,7 @@
 	
 	if(isset($_REQUEST["ShowRelatedFile"]))
 	{
-	  $query = "select path, name from monitoring.PageContent 
+	  $query = "select path, name from mis.PageContent 
 			    where type='php' and 
 			    (StaticContent like ?)";
 	  
@@ -180,11 +180,11 @@
 				   pfname, plname,
 				   ActivityDescription,
 				   ChangedPages, ChangedTables,
-				   educ.g2j(ActivityDate) as gActivityDate
+				   projectmanagement.g2j(ActivityDate) as gActivityDate
 			    from projectmanagement.ProjectTaskActivities
 			    LEFT JOIN projectmanagement.ProjectTasks using (ProjectTaskID)
 			    LEFT JOIN projectmanagement.projects using (ProjectID)
-			    LEFT JOIN hrmstotal.persons on (persons.PersonID=ProjectTaskActivities.CreatorID)
+			    LEFT JOIN projectmanagement.persons on (persons.PersonID=ProjectTaskActivities.CreatorID)
 			    where ChangedTables like ? order by ActivityDate DESC");
 	  $res = $mysql->ExecuteStatement(array("%".$TableName."%"));
 	  echo "<table border=1 cellpadding=5 cellspacing=0 align=center width=90%>";
@@ -219,7 +219,7 @@
 	  echo "</table>";
 	  echo "<br>";
 	  
-	  $query = "select path, name from monitoring.PageContent 
+	  $query = "select path, name from mis.PageContent 
 			    where type='php' and 
 			    (StaticContent like ? or StaticContent like ? ";
 	  if(isset($_REQUEST["AliasName"]) && $_REQUEST["AliasName"]!="")
@@ -258,7 +258,7 @@
 	  }
 	  echo "</table>";
 	  echo "<br>";
-	  
+	  /*
 	  $mysql->Prepare("select PageName, SysSubDesc, description from framework.SystemPages
 				  JOIN framework.SystemFacilities using (FacilityID)
 				  JOIN framework.systems using (SysCode)
@@ -279,6 +279,7 @@
 	    echo "<td>".$rec["SysSubDesc"]."</td>";
 	    echo "</tr>";
 	  }
+	  */
 	  echo "</table>";
 	  
 	  die();
