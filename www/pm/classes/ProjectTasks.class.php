@@ -208,14 +208,15 @@ class manage_ProjectTasks
 
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskID) as TotalCount from projectmanagement.ProjectTasks";
 		if($WhereCondition!="")
 		{
 			$query .= " where ".$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -223,13 +224,14 @@ class manage_ProjectTasks
 	}
         static function GetCountTotal($WhereCondition="",$where="")
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(ProjectTaskID) as TotalCount from projectmanagement.ProjectTasks";
 		if($WhereCondition!="")
 		{
 			$query .= " where ProjectID=".$WhereCondition." and CreatorID=".$where." and DeleteFlag='NO' ";                            }
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -238,10 +240,11 @@ class manage_ProjectTasks
 
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(ProjectTaskID) as MaxID from projectmanagement.ProjectTasks";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -1202,9 +1205,10 @@ class manage_ProjectTasks
 			$OrderBy = $RelatedValueField;
 
 		$ret = "";
-		$mysql = dbclass::getInstance();
-		$res = $mysql->Execute("select * from $RelatedTable where $RelatedDescriptionField != '' $FilterStr order by $OrderBy");
-		while($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance();
+		$mysql->Prepare("select * from $RelatedTable where $RelatedDescriptionField != '' $FilterStr order by $OrderBy");
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret .= "<option value='".$rec[$RelatedValueField]."'>";
 			$ret .= $rec[$RelatedDescriptionField];
