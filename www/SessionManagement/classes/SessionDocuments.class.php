@@ -34,7 +34,7 @@ class be_SessionDocuments
 				WHEN 'INPUT' THEN 'ورودی' 
 				WHEN 'OUTPUT' THEN 'خروجی' 
 				END as InputOrOutput_Desc from sessionmanagement.SessionDocuments 
-			LEFT JOIN hrmstotal.persons persons2 on (persons2.PersonID=SessionDocuments.CreatorPersonID)  where  SessionDocuments.SessionDocumentID=? ";
+			LEFT JOIN projectmanagement.persons persons2 on (persons2.PersonID=SessionDocuments.CreatorPersonID)  where  SessionDocuments.SessionDocumentID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -193,7 +193,7 @@ class manage_SessionDocuments
 				WHEN 'INPUT' THEN 'ورودی' 
 				WHEN 'OUTPUT' THEN 'خروجی' 
 				END as InputOrOutput_Desc from sessionmanagement.SessionDocuments 
-			LEFT JOIN hrmstotal.persons persons2 on (persons2.PersonID=SessionDocuments.CreatorPersonID)  ";
+			LEFT JOIN projectmanagement.persons persons2 on (persons2.PersonID=SessionDocuments.CreatorPersonID)  ";
 		$query .= " where UniversitySessionID=? ";
 		$ppc = security_UniversitySessions::LoadUserPermissions($_SESSION["PersonID"], $UniversitySessionID);
 		if($ppc->GetPermission("View_SessionDocuments")=="PRIVATE")

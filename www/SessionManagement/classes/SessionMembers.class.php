@@ -72,7 +72,7 @@ class be_SessionMembers
 				WHEN 'PRESENT' THEN 'حاضر' 
 				WHEN 'ABSENT' THEN 'غایب' 
 				END as PresenceType_Desc from sessionmanagement.SessionMembers 
-			LEFT JOIN hrmstotal.persons persons3 on (persons3.PersonID=SessionMembers.MemberPersonID) 
+			LEFT JOIN projectmanagement.persons persons3 on (persons3.PersonID=SessionMembers.MemberPersonID) 
 			LEFT JOIN sessionmanagement.MemberRoles  s6 on (s6.MemberRoleID=SessionMembers.MemberRole)  where  SessionMembers.SessionMemberID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
@@ -360,7 +360,7 @@ class manage_SessionMembers
 				WHEN 'PRESENT' THEN 'حاضر' 
 				WHEN 'ABSENT' THEN 'غایب' 
 				END as PresenceType_Desc from sessionmanagement.SessionMembers 
-			LEFT JOIN hrmstotal.persons persons3 on (persons3.PersonID=SessionMembers.MemberPersonID) 
+			LEFT JOIN projectmanagement.persons persons3 on (persons3.PersonID=SessionMembers.MemberPersonID) 
 			LEFT JOIN sessionmanagement.MemberRoles  s6 on (s6.MemberRoleID=SessionMembers.MemberRole)  ";
 		$query .= " where UniversitySessionID=? ";
 		$ppc = security_UniversitySessions::LoadUserPermissions($_SESSION["PersonID"], $UniversitySessionID);

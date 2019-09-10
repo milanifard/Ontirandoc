@@ -44,8 +44,8 @@ class be_SessionPreCommands
 				END as priority_Desc, g2j(DeadLine) as DeadLine_Shamsi,SessionPreCommands.priority 
 			, concat(persons8.pfname, ' ', persons8.plname) as persons8_FullName,ActRegister.*
 			 from sessionmanagement.SessionPreCommands 
-			LEFT JOIN hrmstotal.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
-			LEFT JOIN hrmstotal.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID)
+			LEFT JOIN projectmanagement.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
+			LEFT JOIN projectmanagement.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID)
 			LEFT JOIN sessionmanagement.ActRegister on (SessionPreCommands.SessionPreCommandID=ActRegister.SessionPreCommandID) 
 		 where  SessionPreCommands.SessionPreCommandID=? order by RowID Desc limit 1";
 		$mysql = pdodb::getInstance();
@@ -244,8 +244,8 @@ echo $query;//die();
 				END as priority_Desc,g2j(DeadLine) as DeadLine_Shamsi,SessionPreCommands.priority  
 			, concat(persons8.pfname, ' ', persons8.plname) as persons8_FullName,d.ActReg,s.SessionTypeID
  from sessionmanagement.SessionPreCommands 
-			LEFT JOIN hrmstotal.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
-			LEFT JOIN hrmstotal.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID) 
+			LEFT JOIN projectmanagement.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
+			LEFT JOIN projectmanagement.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID) 
 LEFT JOIN
     sessionmanagement.UniversitySessions ON (UniversitySessions.UniversitySessionID = SessionPreCommands.UniversitySessionID)
 
@@ -362,8 +362,8 @@ echo $query;
                        
 			 from sessionmanagement.SessionPreCommands 
 
-			LEFT JOIN hrmstotal.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
-			LEFT JOIN hrmstotal.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID) 
+			LEFT JOIN projectmanagement.persons persons4 on (persons4.PersonID=SessionPreCommands.ResponsiblePersonID) 
+			LEFT JOIN projectmanagement.persons persons8 on (persons8.PersonID=SessionPreCommands.CreatorPersonID) 
 			LEFT JOIN sessionmanagement.UniversitySessions on (UniversitySessions.UniversitySessionID=SessionPreCommands.UniversitySessionID)
                         LEFT JOIN sessionmanagement.SessionDecisions ON (UniversitySessions.UniversitySessionID = SessionDecisions.UniversitySessionID
                         and SessionPreCommands.SessionPreCommandID=SessionDecisions.SessionPreCommandID)

@@ -60,8 +60,8 @@ class be_SessionDecisions
 			, SessionPreCommands.OrderNo as SessionPreCommandRow
 			from sessionmanagement.SessionDecisions
 			LEFT JOIN sessionmanagement.SessionPreCommands using (SessionPreCommandID)  
-			LEFT JOIN hrmstotal.persons persons4 on (persons4.PersonID=SessionDecisions.ResponsiblePersonID) 
-			LEFT JOIN hrmstotal.persons persons10 on (persons10.PersonID=SessionDecisions.CreatorPersonID)  where  SessionDecisions.SessionDecisionID=? ";
+			LEFT JOIN projectmanagement.persons persons4 on (persons4.PersonID=SessionDecisions.ResponsiblePersonID) 
+			LEFT JOIN projectmanagement.persons persons10 on (persons10.PersonID=SessionDecisions.CreatorPersonID)  where  SessionDecisions.SessionDecisionID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -277,8 +277,8 @@ class manage_SessionDecisions
 			, SessionPreCommands.OrderNo as SessionPreCommandRow
 			from sessionmanagement.SessionDecisions
 			LEFT JOIN sessionmanagement.SessionPreCommands using (SessionPreCommandID) 
-			LEFT JOIN hrmstotal.persons persons4 on (persons4.PersonID=SessionDecisions.ResponsiblePersonID) 
-			LEFT JOIN hrmstotal.persons persons10 on (persons10.PersonID=SessionDecisions.CreatorPersonID)  ";
+			LEFT JOIN projectmanagement.persons persons4 on (persons4.PersonID=SessionDecisions.ResponsiblePersonID) 
+			LEFT JOIN projectmanagement.persons persons10 on (persons10.PersonID=SessionDecisions.CreatorPersonID)  ";
 		$query .= " where SessionDecisions.UniversitySessionID=? ";
 		$ppc = security_UniversitySessions::LoadUserPermissions($_SESSION["PersonID"], $UniversitySessionID);
 		if($ppc->GetPermission("View_SessionDecisions")=="PRIVATE")

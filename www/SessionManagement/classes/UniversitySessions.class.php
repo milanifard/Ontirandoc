@@ -48,7 +48,7 @@ class be_UniversitySessions
 			, concat(pfname, ' ', plname) as CreatorFullName 
 			from sessionmanagement.UniversitySessions 
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?)
 			where  UniversitySessions.UniversitySessionID=? ";
 		$mysql = pdodb::getInstance();

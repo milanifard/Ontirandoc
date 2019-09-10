@@ -46,7 +46,7 @@ class be_SessionHistory
 				WHEN 'VIEW' THEN 'مشاهده' 
 				END as ActionType_Desc 
 			, concat(g2j(ActionTime), ' ', substr(ActionTime, 12,10)) as ActionTime_Shamsi from sessionmanagement.SessionHistory 
-			LEFT JOIN hrmstotal.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  where  SessionHistory.SessionHistoryID=? ";
+			LEFT JOIN projectmanagement.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  where  SessionHistory.SessionHistoryID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -215,7 +215,7 @@ class manage_SessionHistory
 				WHEN 'SIGN' THEN 'امضا'
 				END as ActionType_Desc 
 			, concat(g2j(ActionTime), ' ', substr(ActionTime, 12, 10)) as ActionTime_Shamsi from sessionmanagement.SessionHistory 
-			LEFT JOIN hrmstotal.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  ";
+			LEFT JOIN projectmanagement.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  ";
 		$query .= " where UniversitySessionID=? ";
 		$ppc = security_UniversitySessions::LoadUserPermissions($_SESSION["PersonID"], $UniversitySessionID);
 		if($ppc->GetPermission("View_SessionHistory")=="PRIVATE")
@@ -290,7 +290,7 @@ class manage_SessionHistory
 				WHEN 'SIGN' THEN 'امضا'
 				END as ActionType_Desc 
 			, concat(g2j(ActionTime), ' ', substr(ActionTime, 12, 10)) as ActionTime_Shamsi from sessionmanagement.SessionHistory 
-			LEFT JOIN hrmstotal.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  ";
+			LEFT JOIN projectmanagement.persons persons5 on (persons5.PersonID=SessionHistory.PersonID)  ";
 		$cond = "UniversitySessionID=? ";
 		if($ItemType!="0" && $ItemType!="") 
 		{

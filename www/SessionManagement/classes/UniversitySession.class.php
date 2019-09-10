@@ -48,7 +48,7 @@ class be_UniversitySessions
 			, concat(pfname, ' ', plname) as CreatorFullName 
 			from sessionmanagement.UniversitySessions 
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?)
 			where  UniversitySessions.UniversitySessionID=? ";
 		$mysql = pdodb::getInstance();
@@ -359,7 +359,7 @@ class manage_UniversitySessions
 				END as SessionStatus_Desc 
 			, concat(pfname, ' ', plname) as CreatorPerson_FullName
 			from sessionmanagement.UniversitySessions 
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?) 
 			";
@@ -478,7 +478,7 @@ class manage_UniversitySessions
 		$k=0;
 		$ret = array();
 		$query = "select count(*) as TotalCount from sessionmanagement.UniversitySessions 
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?) 
 			";
@@ -667,7 +667,7 @@ class manage_UniversitySessions
 				END as SessionStatus_Desc 
 			, concat(pfname, ' ', plname) as CreatorPerson_FullName
 			from sessionmanagement.UniversitySessions 
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?)
 			where
@@ -738,7 +738,7 @@ class manage_UniversitySessions
 				END as SessionStatus_Desc 
 			, concat(pfname, ' ', plname) as CreatorPerson_FullName
 			from sessionmanagement.UniversitySessions 
-			LEFT JOIN hrmstotal.persons on (CreatorPersonID=PersonID)
+			LEFT JOIN projectmanagement.persons on (CreatorPersonID=PersonID)
 			LEFT JOIN sessionmanagement.SessionTypes  s1 on (s1.SessionTypeID=UniversitySessions.SessionTypeID)  
 			LEFT JOIN sessionmanagement.PersonPermissionsOnFields on (PersonPermissionsOnFields.RecID=UniversitySessionID and PersonPermissionsOnFields.TableName='UniversitySessions' and PersonPermissionsOnFields.FieldName='RemoveSession' and PersonPermissionsOnFields.PersonID=?)
 			where (SessionDescisionsFileName<>'' or DescisionsListStatus='CONFIRMED') and 

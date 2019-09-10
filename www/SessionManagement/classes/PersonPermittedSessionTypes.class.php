@@ -21,7 +21,7 @@ class be_PersonPermittedSessionTypes
 	{
 		$query = "select PersonPermittedSessionTypes.* 
 			, concat(persons1.pfname, ' ', persons1.plname) as persons1_FullName from sessionmanagement.PersonPermittedSessionTypes 
-			LEFT JOIN hrmstotal.persons persons1 on (persons1.PersonID=PersonPermittedSessionTypes.PersonID)  where  PersonPermittedSessionTypes.PersonPermittedSessionTypeID=? ";
+			LEFT JOIN projectmanagement.persons persons1 on (persons1.PersonID=PersonPermittedSessionTypes.PersonID)  where  PersonPermittedSessionTypes.PersonPermittedSessionTypeID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -132,7 +132,7 @@ class manage_PersonPermittedSessionTypes
 		$ret = array();
 		$query = "select PersonPermittedSessionTypes.* 
 			, concat(persons1.pfname, ' ', persons1.plname) as persons1_FullName from sessionmanagement.PersonPermittedSessionTypes 
-			LEFT JOIN hrmstotal.persons persons1 on (persons1.PersonID=PersonPermittedSessionTypes.PersonID)  ";
+			LEFT JOIN projectmanagement.persons persons1 on (persons1.PersonID=PersonPermittedSessionTypes.PersonID)  ";
 		$query .= " where SessionTypeID=? ";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($SessionTypeID));

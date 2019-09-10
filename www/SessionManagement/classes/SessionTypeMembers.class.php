@@ -71,7 +71,7 @@ class be_SessionTypeMembers
 				WHEN 'READ' THEN 'خواندن' 
 				WHEN 'NONE' THEN 'عدم دسترسی' 
 				END as AccessRejectSign_Desc from sessionmanagement.SessionTypeMembers 
-			LEFT JOIN hrmstotal.persons persons3 on (persons3.PersonID=SessionTypeMembers.MemberPersonID) 
+			LEFT JOIN projectmanagement.persons persons3 on (persons3.PersonID=SessionTypeMembers.MemberPersonID) 
 			LEFT JOIN sessionmanagement.MemberRoles  s6 on (s6.MemberRoleID=SessionTypeMembers.MemberRoleID)  where  SessionTypeMembers.SessionTypeMemberID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
@@ -289,7 +289,7 @@ class manage_SessionTypeMembers
 				WHEN 'READ' THEN 'خواندن' 
 				WHEN 'NONE' THEN 'عدم دسترسی' 
 				END as AccessRejectSign_Desc from sessionmanagement.SessionTypeMembers 
-			LEFT JOIN hrmstotal.persons persons3 on (persons3.PersonID=SessionTypeMembers.MemberPersonID) 
+			LEFT JOIN projectmanagement.persons persons3 on (persons3.PersonID=SessionTypeMembers.MemberPersonID) 
 			LEFT JOIN sessionmanagement.MemberRoles  s6 on (s6.MemberRoleID=SessionTypeMembers.MemberRoleID)  ";
 		$query .= " where SessionTypeID=? order by MemberRow";
 		$mysql->Prepare($query);

@@ -22,7 +22,7 @@ class be_SessionOtherUsers
 	{
 		$query = "select SessionOtherUsers.* 
 			, concat(persons2.pfname, ' ', persons2.plname) as persons2_FullName from sessionmanagement.SessionOtherUsers 
-			LEFT JOIN hrmstotal.persons persons2 on (persons2.PersonID=SessionOtherUsers.PersonID)  where  SessionOtherUsers.SessionOtherUserID=? ";
+			LEFT JOIN projectmanagement.persons persons2 on (persons2.PersonID=SessionOtherUsers.PersonID)  where  SessionOtherUsers.SessionOtherUserID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -153,7 +153,7 @@ class manage_SessionOtherUsers
 		$ret = array();
 		$query = "select SessionOtherUsers.* 
 			, concat(persons2.pfname, ' ', persons2.plname) as persons2_FullName from sessionmanagement.SessionOtherUsers 
-			LEFT JOIN hrmstotal.persons persons2 on (persons2.PersonID=SessionOtherUsers.PersonID)  ";
+			LEFT JOIN projectmanagement.persons persons2 on (persons2.PersonID=SessionOtherUsers.PersonID)  ";
 		$query .= " where UniversitySessionID=? ";
 		$query .= " order by ".$OrderByFieldName." ".$OrderType." ";
 		$mysql->Prepare($query);
