@@ -87,6 +87,7 @@ class security_ProjectTasks
 	
 	static function LoadUserPermissions($PersonID, $ProjectTaskID)
 	{
+		//echo "p".$PersonID.":"."t".$ProjectTaskID."<br>";
 		require_once("ProjectTasks.class.php");
 		$ret = new PermissionsContainer();
 		if(!is_numeric($ProjectTaskID))

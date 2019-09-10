@@ -31,7 +31,7 @@ else
 		$query = "select persons.PersonID, pfname, plname, sum(ParticipationPercent) as TotalPercent, count(*) as TotalProjects 
 					from projectmanagement.ProjectMembers 
 					JOIN projectmanagement.projects using (ProjectID)
-					JOIN hrmstotal.persons on (ProjectMembers.PersonID=persons.PersonID)  
+					JOIN projectmanagement.persons on (ProjectMembers.PersonID=persons.PersonID)  
 					where projects.ouid in 
 					(select PermittedUnitID from projectmanagement.UserProjectScopes where UserID=? )
 					or ProjectID in (select ProjectID from projectmanagement.ProjectMembers where PersonID=? and AccessType='MANAGER') 

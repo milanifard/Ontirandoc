@@ -113,18 +113,16 @@ if(isset($_REQUEST["Save"]))
 				);
  $TaskDocID = $_REQUEST["UpdateID"];
 	}	
-/*-------------added by gholami 94/09/08------------------*/
+
 	$Item_FileContent = "";
 	if (isset ( $_FILES ['Item_FileContent'] ) && trim ( $_FILES ['Item_FileContent'] ['tmp_name'] ) != '') 
 	{
-		$st = split ( '\.', $_FILES ['Item_FileContent'] ['name'] );
-		$extension = $st [count ( $st ) - 1];	
-		$fp = fopen("/mystorage/PlanAndProjectDocuments/TaskDocuments/" .$TaskDocID . "." . $extension, "w");
+        $extension = substr($_FILES ['Item_FileContent'] ['name'], strrpos($_FILES ['Item_FileContent'] ['name'], '.')+1);
+		$fp = fopen("d:\\WebStorage\\TaskDocuments\\" .$TaskDocID . "." . $extension, "w");
 		fwrite ($fp, fread ( fopen ( $_FILES ['Item_FileContent'] ['tmp_name'], 'r' ), $_FILES ['Item_FileContent']['size']));
 		fclose ($fp);			
 		$Item_FileContent = $extension;
 	}	
-/*---------------------------------------------*/
 
 	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
 }

@@ -64,12 +64,6 @@ function Full() { window.location = window.location.pathname + "?Full=1"; }
 
 <?php
 
-// Set page's last visit time for the user ...
-$A = pdodb::getInstance();
-$query = "insert into UserPageLastVisits (UserID, PageID, LastVisit) values (?, 1, now()) on duplicate key update LastVisit = now();";
-$A->Prepare($query);
-$Rslt = $A->ExecuteStatement([$_SESSION["UserID"]]);
-
 /*
 if($_SESSION["User"]->PersonID == 401371457)
 {

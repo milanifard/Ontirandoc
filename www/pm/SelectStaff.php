@@ -73,7 +73,7 @@
 	}
 	else if(isset($_REQUEST["ProjectID"]) && $_REQUEST["ProjectID"]!="0")
 	{
-		$query = "select persons.PersonID, pfname, plname, WebUserID from hrmstotal.persons 
+		$query = "select persons.PersonID, pfname, plname, WebUserID from projectmanagement.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
 								where persons.PersonID in (select PersonID from projectmanagement.ProjectMembers where ProjectID=?)";
 		$mysql->Prepare($query);

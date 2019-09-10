@@ -9,23 +9,18 @@ include("../sharedClasses/SharedClass.class.php");
 include("classes/ProjectTaskAssignedUsers.class.php");
 include ("classes/ProjectTasks.class.php");
 include("classes/ProjectTasksSecurity.class.php");
-include('../sharedClasses/sendLetterModule.php');
-if ($_SESSION['UserID'] == 'gholami-a') {
-ini_set('display_errors','off');
-}
-ini_set('display_errors','off');
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند
 if(isset($_REQUEST["UpdateID"])) 
 {
 	$obj = new be_ProjectTaskAssignedUsers();
 	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]); 
-	$ppc = security_ProjectTasks::LoadUserPermissions($_SESSION["User"]->PersonID, $obj->ProjectTaskID);
+	$ppc = security_ProjectTasks::LoadUserPermissions($_SESSION["PersonID"], $obj->ProjectTaskID);
 	$ProjectTaskID = $obj->ProjectTaskID;
 }
 else
 {
-	$ppc = security_ProjectTasks::LoadUserPermissions($_SESSION["User"]->PersonID, $_REQUEST["ProjectTaskID"]);
+	$ppc = security_ProjectTasks::LoadUserPermissions($_SESSION["PersonID"], $_REQUEST["ProjectTaskID"]);
 	$ProjectTaskID = $_REQUEST["ProjectTaskID"];
 }
 $ProjectTaskObj = new be_ProjectTasks();

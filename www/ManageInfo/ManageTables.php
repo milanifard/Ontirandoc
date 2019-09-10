@@ -26,7 +26,8 @@
     $_SESSION["DB"] = $_POST["DB"];
     $_SESSION["sTableName"] = $_POST["sTableName"];
     $_SESSION["sdescription"] = $_POST["sdescription"];
-  }	
+  }
+
   if(isset($_REQUEST["UpdateTableID"]) && $_REQUEST["UpdateTableID"]!="0")
   {
       $query = "SELECT * from mis.TABLES_SCHEMA where TABLE_SCHEMA=? and TABLE_NAME=?";

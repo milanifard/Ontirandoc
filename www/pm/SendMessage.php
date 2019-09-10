@@ -93,48 +93,6 @@ if(isset($_REQUEST["Save"]))
 			
 	}
 	
-	//echo "<script>window.opener.document.location.reload(); window.close();</script>";
-	
-	if(isset($_REQUEST["smsch"]))
-	{
-	    require_once('lib/nusoap.php');
-	    $client = new nusoap_client('http://87.107.121.54/post/send.asmx?wsdl',true);
-    
-	    $err = $client->getError();
-    
-	    if ($err) 
-	    {
-	      echo 'Constructor error' . $err; 
-	    }
-            else
-            {
-		$parameters['username'] = "9151568479";
-		$parameters['password'] = "1473";
-		$parameters['from'] = "10007273815186";
- 	        $parameters['isflash'] =false;
-            
-		for($j=0; $j<count($Receivers); $j++)
-		{
-		  $MessageSubject = "A new message sent to you in falinoos PM";
-		  $mysql->Prepare("select * from projectmanagement.persons where PersonID=?");
-		  $res = $mysql->ExecuteStatement(array($Receivers[$j]));
-		  if($rec = $res->fetch())
-		  {
-		    if($rec["mobile"]!="")
-		    {
-		      $parameters['to'] = $rec["mobile"];
-		      $parameters['text'] = $MessageSubject;
-		      $result = $client->call('SendSimpleSMS2', $parameters);
-		      print_r($result);
-		      echo "<br>";
-		    }
-		  }
-				
-		}
-            
-	    }
-	}
-	
 	echo SharedClass::CreateMessageBox("پیام ارسال شد");
 	$mysql->Execute("delete from projectmanagement.TemporarySavedData where PersonID='".$_SESSION["PersonID"]."' and FieldName='MessageBody'");
 }
@@ -189,9 +147,6 @@ if($rec = $res->fetch())
 	<input type=hidden name="Item_ToPersonID" id="Item_ToPersonID" value="0">
 	<span id="Span_ToPersonID_FullName" name="Span_ToPersonID_FullName"></span> 	<a href='#' onclick='javascript: window.open("SelectMultiStaff.php?InputName=Item_ToPersonID&SpanName=Span_ToPersonID_FullName");'>[انتخاب]</a>
 	</td>
-</tr>
-<tr>
-  <td colspan=2><input type=checkbox name=smsch id=smsch> پیامکی هم ارسال شود</td>
 </tr>
 </table>
 </td>

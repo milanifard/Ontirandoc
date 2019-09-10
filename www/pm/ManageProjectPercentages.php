@@ -9,7 +9,6 @@ include("../sharedClasses/SharedClass.class.php");
 include("classes/ProjectMembers.class.php");
 include ("classes/projects.class.php");
 include ("classes/ProjectTasks.class.php");
-include("classes/UserProjectScopes.class.php");
 include("classes/projectsSecurity.class.php");
 HTMLBegin();
 if(isset($_REQUEST["PersonID"])) 

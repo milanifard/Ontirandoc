@@ -24,9 +24,9 @@ HTMLBegin();
 $mysql = pdodb::getInstance();
 $CurProjectID = 0;
 if(isset($_REQUEST["UpdateID"])) 
-	$pc = security_ProjectTasks::LoadUserPermissions($_SESSION["User"]->PersonID, $_REQUEST["UpdateID"]);
+	$pc = security_ProjectTasks::LoadUserPermissions($_SESSION["PersonID"], $_REQUEST["UpdateID"]);
 else
-	$pc = security_ProjectTasks::LoadUserPermissions($_SESSION["User"]->PersonID, 0);
+	$pc = security_ProjectTasks::LoadUserPermissions($_SESSION["PersonID"], 0);
 
 // Task Referring System: Processing User's Request ...
 

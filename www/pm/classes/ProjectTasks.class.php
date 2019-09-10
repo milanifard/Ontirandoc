@@ -392,7 +392,7 @@ class manage_ProjectTasks
 			$EstimatedRequitedTimeMin = "0";
 		if($EstimatedRequiredTimeHour=="")
 			$EstimatedRequiredTimeHour = "0";
-		
+
 		$k=0;
 		$mysql = pdodb::getInstance();
 		$query = "insert into projectmanagement.ProjectTasks (CreatorID, CreateDate ";
@@ -430,11 +430,13 @@ class manage_ProjectTasks
 		}
 		if($PC->GetPermission("EstimatedStartTime")=="WRITE")
 		{
-			$query .= ", EstimatedStartTime";
+			if(SharedClass::IsDateFormat($EstimatedStartTime))
+				$query .= ", EstimatedStartTime";
 		}
 		if($PC->GetPermission("RealStartTime")=="WRITE")
 		{
-			$query .= ", RealStartTime";
+			if(SharedClass::IsDateFormat($RealStartTime))
+				$query .= ", RealStartTime";
 		}
 		if($PC->GetPermission("EstimatedRequiredTimeDay")=="WRITE")
 		{
@@ -456,7 +458,8 @@ class manage_ProjectTasks
 		}
 		if($PC->GetPermission("ExpireTime")=="WRITE")
 		{
-			$query .= ", ExpireTime";
+			if(SharedClass::IsDateFormat($ExpireTime))
+				$query .= ", ExpireTime";
 		}
 		if($PC->GetPermission("TaskPeriority")=="WRITE")
 		{
@@ -478,11 +481,11 @@ class manage_ProjectTasks
 		{
 			$query .= ", TaskGroupID";
 		}
-                if($PC->GetPermission("StartTime")=="WRITE")
+		if($PC->GetPermission("StartTime")=="WRITE")
 		{
 			$query .= ", StartTime";
 		}
-                if($PC->GetPermission("EndTime")=="WRITE")
+		if($PC->GetPermission("EndTime")=="WRITE")
 		{
 			$query .= ", EndTime";
 		}
@@ -526,11 +529,13 @@ class manage_ProjectTasks
 		}
 		if($PC->GetPermission("EstimatedStartTime")=="WRITE")
 		{
-			$query .= ", ?";
+			if(SharedClass::IsDateFormat($EstimatedStartTime))
+				$query .= ", ?";
 		}
 		if($PC->GetPermission("RealStartTime")=="WRITE")
 		{
-			$query .= ", ?";
+			if(SharedClass::IsDateFormat($RealStartTime))
+				$query .= ", ?";
 		}
 		if($PC->GetPermission("EstimatedRequiredTimeDay")=="WRITE")
 		{
@@ -550,7 +555,8 @@ class manage_ProjectTasks
 		}
 		if($PC->GetPermission("ExpireTime")=="WRITE")
 		{
-			$query .= ", ?";
+			if(SharedClass::IsDateFormat($ExpireTime))
+				$query .= ", ?";
 		}
 		if($PC->GetPermission("TaskPeriority")=="WRITE")
 		{
@@ -576,13 +582,13 @@ class manage_ProjectTasks
 		{
 			$query .= ", ?";
 		}
-                if($PC->GetPermission("StartTime")=="WRITE")
+        if($PC->GetPermission("StartTime")=="WRITE")
 		{
-			$query .= ", ?";
+					$query .= ", ?";
 		}
-                if($PC->GetPermission("EndTime")=="WRITE")
+        if($PC->GetPermission("EndTime")=="WRITE")
 		{
-			$query .= ", ?";
+					$query .= ", ?";
 		}
 		if($PC->GetPermission("study")=="WRITE")
 		{
@@ -607,9 +613,9 @@ class manage_ProjectTasks
 			array_push($ValueListArray, $PeriodType); 
 		if($PC->GetPermission("CountOfDone")=="WRITE")
 			array_push($ValueListArray, $CountOfDone); 
-		if($PC->GetPermission("EstimatedStartTime")=="WRITE")
+		if($PC->GetPermission("EstimatedStartTime")=="WRITE" && SharedClass::IsDateFormat($EstimatedStartTime))
 			array_push($ValueListArray, $EstimatedStartTime); 
-		if($PC->GetPermission("RealStartTime")=="WRITE")
+		if($PC->GetPermission("RealStartTime")=="WRITE"  && SharedClass::IsDateFormat($RealStartTime))
 			array_push($ValueListArray, $RealStartTime); 
 		if($PC->GetPermission("EstimatedRequiredTimeDay")=="WRITE")
 			array_push($ValueListArray, $EstimatedRequiredTimeDay); 
@@ -619,7 +625,7 @@ class manage_ProjectTasks
 			array_push($ValueListArray, $EstimatedRequitedTimeMin); 
 		if($PC->GetPermission("HasExpireTime")=="WRITE")
 			array_push($ValueListArray, $HasExpireTime); 
-		if($PC->GetPermission("ExpireTime")=="WRITE")
+		if($PC->GetPermission("ExpireTime")=="WRITE"  && SharedClass::IsDateFormat($ExpireTime))
 			array_push($ValueListArray, $ExpireTime); 
 		if($PC->GetPermission("TaskPeriority")=="WRITE")
 			array_push($ValueListArray, $TaskPeriority); 
@@ -629,9 +635,9 @@ class manage_ProjectTasks
 			array_push($ValueListArray, $ParentID); 
 		if($PC->GetPermission("TaskGroupID")=="WRITE")
 			array_push($ValueListArray, $TaskGroupID); 
-                if($PC->GetPermission("StartTime")=="WRITE")
+		if($PC->GetPermission("StartTime")=="WRITE")
 			array_push($ValueListArray, $StartTime); 
-                if($PC->GetPermission("EndTime")=="WRITE")
+		if($PC->GetPermission("EndTime")=="WRITE")
 			array_push($ValueListArray, $EndTime);
 		if($PC->GetPermission("study")=="WRITE")
 			array_push($ValueListArray, $study);
@@ -745,14 +751,14 @@ class manage_ProjectTasks
 			$query .= "CountOfDone=? ";
 			$k++; 
 		}
-		if($PC->GetPermission("EstimatedStartTime")=="WRITE")
+		if($PC->GetPermission("EstimatedStartTime")=="WRITE" &&  SharedClass::IsDateFormat($EstimatedStartTime))
 		{
 			if($k>0) 
 				$query .= ", ";
 			$query .= "EstimatedStartTime=? ";
 			$k++; 
 		}
-		if($PC->GetPermission("RealStartTime")=="WRITE")
+		if($PC->GetPermission("RealStartTime")=="WRITE" &&  SharedClass::IsDateFormat($RealStartTime))
 		{
 			if($k>0) 
 				$query .= ", ";
@@ -787,7 +793,7 @@ class manage_ProjectTasks
 			$query .= "HasExpireTime=? ";
 			$k++; 
 		}
-		if($PC->GetPermission("ExpireTime")=="WRITE")
+		if($PC->GetPermission("ExpireTime")=="WRITE" &&  SharedClass::IsDateFormat($ExpireTime))
 		{
 			if($k>0) 
 				$query .= ", ";
@@ -884,11 +890,11 @@ class manage_ProjectTasks
 		{
 			array_push($ValueListArray, $CountOfDone); 
 		}
-		if($PC->GetPermission("EstimatedStartTime")=="WRITE")
+		if($PC->GetPermission("EstimatedStartTime")=="WRITE" &&  SharedClass::IsDateFormat($EstimatedStartTime))
 		{
 			array_push($ValueListArray, $EstimatedStartTime); 
 		}
-		if($PC->GetPermission("RealStartTime")=="WRITE")
+		if($PC->GetPermission("RealStartTime")=="WRITE" &&  SharedClass::IsDateFormat($RealStartTime))
 		{
 			array_push($ValueListArray, $RealStartTime); 
 		}
@@ -904,11 +910,11 @@ class manage_ProjectTasks
 		{
 			array_push($ValueListArray, $EstimatedRequitedTimeMin); 
 		}
-		if($PC->GetPermission("HasExpireTime")=="WRITE")
+		if($PC->GetPermission("HasExpireTime")=="WRITE" )
 		{
 			array_push($ValueListArray, $HasExpireTime); 
 		}
-		if($PC->GetPermission("ExpireTime")=="WRITE")
+		if($PC->GetPermission("ExpireTime")=="WRITE" &&  SharedClass::IsDateFormat($ExpireTime))
 		{
 			array_push($ValueListArray, $ExpireTime); 
 		}
@@ -1339,7 +1345,7 @@ class manage_ProjectTasks
 
 		$query .= "	where 
 						ProjectTasks.DeleteFlag='NO' and 
-						(" . ((in_array($CallerPersonID, security_ProjectTasks::$Exceptions))? "true" : "false") . " or (ProjectMembers.PersonID=? and ProjectMembers.AccessType<>'MEMBER') 
+						( (ProjectMembers.PersonID=? and ProjectMembers.AccessType<>'MEMBER') 
 							or ProjectTasks.CreatorID=? or ProjectTaskAssignedUsers.PersonID=? or ProjectTaskID in (select distinct TaskID from projectmanagement.ProjectTaskRefers where FromPerson = ? or ToPerson = ?)) ";
 		if($ProjectID!="0" && $ProjectID!="") 
 			$query .= " and ProjectTasks.ProjectID=? ";
@@ -1365,7 +1371,7 @@ class manage_ProjectTasks
 			$query .= " and DocumentDescription like ? "; 
 		if($ActivityDescription!="")
 			$query .= " and ActivityDescription like ? ";
-		$query .= $OtherConditions;
+		//$query .= $OtherConditions;
 
 		if($OrderByFieldName!="")
 			$query .= " order by ".$OrderByFieldName." ".$OrderType;
@@ -1516,7 +1522,7 @@ class manage_ProjectTasks
 			LEFT JOIN projectmanagement.ProjectTaskTypes  p2 on (p2.ProjectTaskTypeID=ProjectTasks.ProjectTaskTypeID) 
 			LEFT JOIN projectmanagement.persons persons5 on (persons5.PersonID=ProjectTasks.CreatorID) 
 			  ";
-		$cond = " ProjectTasks.DeleteFlag='NO' and (" . ((in_array($CallerPersonID, security_ProjectTasks::$Exceptions))? "true" : "false") . " or ";
+		$cond = " ProjectTasks.DeleteFlag='NO' and (";
 		// یا کاربر فراخواننده در پروژه ای که کار در آن تعریف شده به طور کلی سمت مدیر یا ناظر دارد 
 		$cond .= " (ProjectMembers.PersonID=? and ProjectMembers.AccessType<>'MEMBER') or ";
 		// یا کاربر فراخواننده ایجاد کننده کار است
@@ -2361,7 +2367,7 @@ echo $CallerPersonID;
 			LEFT JOIN projectmanagement.ProjectTaskAssignedUsers using (ProjectTaskID)
 			LEFT JOIN projectmanagement.ProjectTaskTypes  p2 on (p2.ProjectTaskTypeID=ProjectTasks.ProjectTaskTypeID)
 			LEFT JOIN projectmanagement.persons persons5 on (persons5.PersonID=ProjectTasks.CreatorID) 
- LEFT JOIN (SELECT ReferID, TaskID, ToPerson, DateTime as ReferTimeC,concat(g2j(DateTime), ' ', substr(DateTime, 12,10)) as ReferTime, WebUserID as ToPersonWUID FROM projectmanagement.ProjectTaskRefers LEFT JOIN framework.AccountSpecs on (ToPerson = PersonID)) TR on (ProjectTasks.ProjectTaskID = TR.TaskID)
+ LEFT JOIN (SELECT ReferID, TaskID, ToPerson, DateTime as ReferTimeC,concat(g2j(DateTime), ' ', substr(DateTime, 12,10)) as ReferTime, WebUserID as ToPersonWUID FROM projectmanagement.ProjectTaskRefers LEFT JOIN projectmanagement.AccountSpecs on (ToPerson = PersonID)) TR on (ProjectTasks.ProjectTaskID = TR.TaskID)
 LEFT JOIN projectmanagement.persons persons6 on (persons6.PersonID=TR.ToPerson) 
 			  where ReferID in (SELECT ptr1.ReferID FROM projectmanagement.ProjectTaskRefers ptr1 LEFT JOIN projectmanagement.ProjectTaskRefers ptr2
  ON (ptr1.TaskID = ptr2.TaskID AND ptr1.DateTime < ptr2.DateTime)
@@ -2614,16 +2620,18 @@ WHERE ptr2.DateTime IS NULL)";
 	{
 		$ret = "<table align=\"center\" width=\"98%\" border=\"1\" cellspacing=\"0\">";
 	        $ret .= "<tr>";
+	        /*
         	$ret .= "<td width=\"13%\" ";
         	if($CurrentPageName=="TasksMessages")
 			$ret .= "bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='TasksMessages.php'>پیام‌های سیستمی</a></td>";
+	        */
         	$ret .= "<td width=\"13%\" ";
 
         if($CurrentPageName=="TasksKartable")
             $ret .= "bgcolor=\"#cccccc\" ";
         $ret .= "><a href='TasksKartable.php'>کارهای جاری</a></td>";
-
+		/*
         $ret .= "<td width=\"13%\" ";
         if($CurrentPageName=="ReferredTasks")
              $ret .= " bgcolor=\"#cccccc\" ";
@@ -2632,7 +2640,7 @@ WHERE ptr2.DateTime IS NULL)";
 	$NotVisited = 0;
 
         $ret .= "><a href='ReferredTasks.php'>کارهای ارجاع شده " . $NewRefers . "</a></td>";
-
+		*/
         $ret .= "<td width=\"13%\" ";
         if($CurrentPageName=="LastCreatedTasks")
              $ret .= " bgcolor=\"#cccccc\" ";
@@ -2663,10 +2671,12 @@ WHERE ptr2.DateTime IS NULL)";
         if($CurrentPageName=="ShowAllPersonStatus")
              $ret .= " bgcolor=\"#cccccc\" ";
         $ret .= "><a href='ShowAllPersonStatus.php'>اعضای پروژه ها</a></td>";
+        /*
         $ret .= "<td width=\"13%\" ";
         if($CurrentPageName=="ShowLastChanges")
              $ret .= " bgcolor=\"#cccccc\" ";
         $ret .= "><a href='ShowLastChanges.php'>تغییرات کد/جداول</a></td>";
+        */
         $ret .= "</tr>";
         $ret .= "</table>";
         return $ret;

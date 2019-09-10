@@ -90,25 +90,10 @@
 <?
 	if(isset($_REQUEST["FName"]))
 	{
-		$query = "select persons.PersonID, pfname, plname, staff.person_type, WebUserID, ptitle from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID) 
-								LEFT JOIN hrmstotal.org_new_units on (org_new_units.ouid=staff.UnitCode)
+		$query = "select persons.PersonID, pfname, plname, WebUserID from projectmanagement.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
 								where plname like ? and pfname like ? ";
 		
-		if(isset($_REQUEST["FilterType"]))
-		{
-			if($_REQUEST["FilterType"]=="6")
-				$query .= " and persons.person_type in (2, 3, 300) ";
-			else if($_REQUEST["FilterType"]=="7")
-				$query .= " and persons.person_type in (1, 200) ";
-			else if($_REQUEST["FilterType"]=="8")
-				$query .= " and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-			else if($_REQUEST["FilterType"]=="9")
-				$query .= " and persons.person_type in (2, 3, 200) and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-			else if($_REQUEST["FilterType"]=="10")
-				$query .= " and persons.person_type in (1, 200) and staff.UnitCode='".$_SESSION["UserGroup"]."' ";
-		}
 		$query .= " limit 0,200";
 		
 		$mysql->Prepare($query);
@@ -136,15 +121,11 @@
 	else 
 	{
 		if(isset($_REQUEST["ProjectID"]) && $_REQUEST["ProjectID"]!="0")
-		  $query = "select persons.PersonID, pfname, plname, staff.person_type, WebUserID, ptitle from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID) 
-								LEFT JOIN hrmstotal.org_new_units on (org_new_units.ouid=staff.UnitCode)
+		  $query = "select persons.PersonID, pfname, plname, WebUserID from projectmanagement.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 
 								where persons.PersonID in (select PersonID from projectmanagement.ProjectMembers where ProjectID=?) order by plname";
 		else
-		  $query = "select persons.PersonID, pfname, plname, staff.person_type, WebUserID, ptitle from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID) 
-								LEFT JOIN hrmstotal.org_new_units on (org_new_units.ouid=staff.UnitCode)
+		  $query = "select persons.PersonID, pfname, plname,WebUserID from projectmanagement.persons 
 								LEFT JOIN projectmanagement.AccountSpecs on (AccountSpecs.PersonID=persons.PersonID) 	order by plname";
 		
 		$mysql->Prepare($query);

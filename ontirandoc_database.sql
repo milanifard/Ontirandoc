@@ -4448,3 +4448,81 @@ ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `EstimatedStartTime
 )
 ENGINE = InnoDB
 COMMENT = 'ارجاعات کارها';
+
+
+DROP TABLE IF EXISTS `mis`.`MIS_TableChangeLog`;
+CREATE TABLE  `mis`.`MIS_TableChangeLog` (
+  `MIS_TableChangeLogID` int(11) NOT NULL AUTO_INCREMENT,
+  `DBName` varchar(50) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '???????',
+  `TableName` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '????',
+  `ChangeType` enum('ADD','REMOVE','UPDATE') COLLATE utf8_persian_ci DEFAULT NULL COMMENT '??? ?????',
+  `ChangeDate` datetime DEFAULT NULL COMMENT '????',
+  PRIMARY KEY (`MIS_TableChangeLogID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2327 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????? ??????? ?????? ?????';
+
+DROP TABLE IF EXISTS `mis`.`MIS_SuggestedFK`;
+CREATE TABLE  `mis`.`MIS_SuggestedFK` (
+  `MIS_SuggestedFKID` int(11) NOT NULL AUTO_INCREMENT,
+  `PKTableName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '???? ???? ????',
+  `PKFieldName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `FKTableName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `FKFieldName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `status` enum('ACCEPT','REJECT','UNDECIDE') COLLATE utf8_persian_ci DEFAULT 'UNDECIDE',
+  `PKDBName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `FKDBName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  PRIMARY KEY (`MIS_SuggestedFKID`),
+  KEY `idx` (`PKTableName`,`PKFieldName`,`FKTableName`,`FKFieldName`)
+) ENGINE=InnoDB AUTO_INCREMENT=34747 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+DROP TABLE IF EXISTS `mis`.`MIS_CodingTables`;
+CREATE TABLE  `mis`.`MIS_CodingTables` (
+  `MIS_CodingTablesID` int(11) NOT NULL AUTO_INCREMENT,
+  `DBName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '?????? ????',
+  `TableName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '????',
+  `CodeFieldName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '??? ???? ???? ??',
+  `DescriptionFieldName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '??? ???? ???? ???',
+  PRIMARY KEY (`MIS_CodingTablesID`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????? ???? ???? ? ??? ????';
+
+DROP TABLE IF EXISTS `mis`.`EnumFieldDescription`;
+CREATE TABLE  `mis`.`EnumFieldDescription` (
+  `EnumFieldDescriptionID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `FieldName` varchar(200) COLLATE utf8_persian_ci NOT NULL COMMENT '??? ????',
+  `FieldValue` varchar(100) COLLATE utf8_persian_ci NOT NULL COMMENT '????? ????',
+  `FieldDescription` varchar(300) COLLATE utf8_persian_ci NOT NULL COMMENT '??? ????',
+  PRIMARY KEY (`EnumFieldDescriptionID`)
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='??? ?????? ??????? ??????';
+
+DROP TABLE IF EXISTS `mis`.`FieldsDataMapping`;
+CREATE TABLE  `mis`.`FieldsDataMapping` (
+  `FieldsDataMappingID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `DBName` varchar(50) COLLATE utf8_persian_ci NOT NULL COMMENT '??? ???????',
+  `TableName` varchar(100) COLLATE utf8_persian_ci NOT NULL COMMENT '??? ????',
+  `FieldName` varchar(100) COLLATE utf8_persian_ci NOT NULL COMMENT '??? ????',
+  `ActualValue` varchar(100) COLLATE utf8_persian_ci NOT NULL COMMENT '????? ????? ????? ??? ?? ????',
+  `ShowValue` varchar(255) COLLATE utf8_persian_ci NOT NULL COMMENT '?????? ?? ???? ?? ????? ????? ???? ???',
+  PRIMARY KEY (`FieldsDataMappingID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3625 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='???? ????????? ???? ??? ?? ????';
+
+DROP TABLE IF EXISTS `mis`.`DatabaseInfo`;
+CREATE TABLE  `mis`.`DatabaseInfo` (
+  `DBName` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `TableName` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `FieldName` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `FieldType` varchar(20) COLLATE utf8_persian_ci NOT NULL,
+  `SysFlag` smallint(5) unsigned NOT NULL,
+  PRIMARY KEY (`DBName`,`TableName`,`FieldName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='??????? ?????? ????????';
+
+DROP TABLE IF EXISTS `mis`.`MIS_RejectedFK`;
+CREATE TABLE  `mis`.`MIS_RejectedFK` (
+  `MIS_RejectedFKID` int(11) NOT NULL AUTO_INCREMENT,
+  `PKTableName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '???? ???? ????',
+  `PKFieldName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `FKTableName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  `FKFieldName` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
+  PRIMARY KEY (`MIS_RejectedFKID`),
+  KEY `idx` (`PKTableName`,`PKFieldName`,`FKTableName`,`FKFieldName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????????? ?? ??? ???? ??????? ?????';
+
+
