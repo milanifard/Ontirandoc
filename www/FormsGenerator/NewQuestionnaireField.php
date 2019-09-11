@@ -5,7 +5,7 @@ include("classes/FormsStruct.class.php");
 include("classes/FormUtils.class.php");
 include("classes/FormsSections.class.php");
 HTMLBegin();
-$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 $FormFieldID = 0;
 $Item_ListQuery = "";
 if(isset($_REQUEST["UpdateID"]))
@@ -47,14 +47,15 @@ if(isset($_REQUEST["Save"]))
 		$FieldName = "f".date("Y_m_d_H_i_s");
 			
 		$query = "ALTER TABLE `formsgenerator`.`".$ParentObj->RelatedTable."` ADD COLUMN `".$FieldName."` ".$DBFieldType." COMMENT '".$_REQUEST["Item_FieldTitle"]."'";
-		$mysql->Execute($query);
-		
+		$mysql->Prepare($query);
+        $mysql->ExecuteStatement(array());
 		// برای تصویر و فایل فیلد دیگری هم برای نگهداری نام فایل می سازد
 		if($_REQUEST["Item_FieldType"]=="5" || $_REQUEST["Item_FieldType"]=="6")
 		{
 			$FileNameField = $FieldName."_2";
 			$query = "ALTER TABLE `formsgenerator`.`".$ParentObj->RelatedTable."` ADD COLUMN `".$FileNameField."` varchar(250) COMMENT '".$_REQUEST["Item_FieldTitle"]."'";
-			$mysql->Execute($query);
+			$mysql->Prepare($query);
+            $mysql->ExecuteStatement(array());
 		}
 		else
 		{
@@ -94,14 +95,16 @@ if(isset($_REQUEST["Save"]))
 				, $_REQUEST["Item_HTMLEditor"]
 				);
 			$id = manage_FormFields::GetLastID();
-			$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-			$mysql->Execute("update FieldsItemList set FormFieldID='".$id."' where FormFieldID='0'");
-			$mysql->Execute("update FormFields 
+			$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+			$mysql->Prepare("update FieldsItemList set FormFieldID='".$id."' where FormFieldID='0'");
+            $mysql->ExecuteStatement(array());
+			$mysql->Prepare("update FormFields 
 							set FormsSectionID='".$_REQUEST["FormsSectionID"]."', 
 							ShowSlider='".$_REQUEST["Item_ShowSlider"]."', 
 							SliderLength='".$_REQUEST["Item_SliderLength"]."', 
 							SliderStartLabel='".$_REQUEST["Item_SliderStartLabel"]."', 
 							SliderEndLabel='".$_REQUEST["Item_SliderEndLabel"]."' where FormFieldID='".$id."'");
+            $mysql->ExecuteStatement(array());
 	}	
 	else 
 	{	
@@ -141,12 +144,13 @@ if(isset($_REQUEST["Save"]))
 				, $_REQUEST["Item_HTMLEditor"]
 				);
 
-				$mysql->Execute("update FormFields 
+				$mysql->Prepare("update FormFields 
 									set FormsSectionID='".$_REQUEST["FormsSectionID"]."', 
 									ShowSlider='".$_REQUEST["Item_ShowSlider"]."', 
 									SliderLength='".$_REQUEST["Item_SliderLength"]."', 
 									SliderStartLabel='".$_REQUEST["Item_SliderStartLabel"]."', 
 									SliderEndLabel='".$_REQUEST["Item_SliderEndLabel"]."' where FormFieldID='".$_REQUEST["UpdateID"]."'");
+                $mysql->ExecuteStatement(array());
 	}	
 	echo "<p align=center><font color=green>اطلاعات ذخیره شد</font></p>";
 	echo "<script>window.opener.document.location='ManageQuestionnaireFields.php?FormsStructID=".$_REQUEST["Item_FormsStructID"]."'</script>";
@@ -381,8 +385,9 @@ $ParentObj->LoadDataFromDatabase($_REQUEST["Item_FormsStructID"]);
 	<span style="vertical-align:middle;">
 	<select dir=ltr name=Item_ListRelatedDomainName id=Item_ListRelatedDomainName>
 		<?php
-			$res = $mysql->Execute("select distinct DomainName from domains order by DomainName");
-			while($rec=$res->FetchRow())
+			$mysql->Prepare("select distinct DomainName from baseinfo.domains order by DomainName");
+            $res = $mysql->ExecuteStatement(array());
+			while($rec=$res->fetch())
 			{
 				echo "<option value='".$rec["DomainName"]."'>".$rec["DomainName"]; 
 			}

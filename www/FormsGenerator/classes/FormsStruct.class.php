@@ -28,7 +28,7 @@ class be_FormsStruct
 	function LoadDataFromDatabase($RecID)
 	{
 		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$mysql->Prepare("select *, g2j(CreateDate) as GCreateDate from FormsStruct where FormsStructID='".$RecID."' ");
+		$mysql->Prepare("select *, projectmanagement.g2j(CreateDate) as GCreateDate from FormsStruct where FormsStructID='".$RecID."' ");
 		$res = $mysql->ExecuteStatement(array());
 		if($rec=$res->fetch())
 		{
@@ -467,10 +467,14 @@ class be_FormsStruct
 			$EditAccessType = SecurityManager::GetUserEditAccessTypeToThisDetailForm($MasterFormsStructID, $this->FormsStructID, $CurStepID);
 			$RemoveAccessType = SecurityManager::GetUserRemoveAccessTypeToThisDetailForm($MasterFormsStructID, $this->FormsStructID, $CurStepID);
 		}
+		if($this->RelatedDB=="")
+			return "";
 		// نام فیلد کلید خارجی در جدول جزییات
 		$RelationField = FormUtils::GetRelationField($MasterFormsStructID, $this->FormsStructID);
-	
+
 		$ret = "";
+		if($this->RelatedDB=="")
+			return "";
 		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 
 		$query = "select * from ".$this->RelatedDB.".".$this->RelatedTable;
@@ -909,7 +913,7 @@ class manage_FormsStruct
 		$ret = array();
 		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
-		$query .= "select *, g2j(CreateDate) as GCreateDate, 
+		$query .= "select *, projectmanagement.g2j(CreateDate) as GCreateDate, 
 					(select FormTitle from FormsStruct as DetailList
 					JOIN FormsDetailTables on (DetailList.FormsStructID=FormsDetailTables.FormStructID) 
 					where DetailFormStructID=FormsStruct.FormsStructID limit 0,1) as ParentTitle  
@@ -1129,15 +1133,7 @@ class manage_FormsStruct
 
 		// استخراج اطلاعات ایجاد کننده فرم از بانکهای اطلاعاتی برای جایگزینی در کلیدهای برچسبها
                
-		if($CreatorType=="PERSONEL")
-			$query = "SELECT * from hrmstotal.persons 
-								where persons.PersonID='".$CreatorID."'";
-		else 
-			$query = "SELECT *,persons.PLName as plname,persons.PFName as pfname from educ.persons
-						LEFT JOIN educ.StudentSpecs using (PersonID)
-						LEFT JOIN educ.StudyFields using (FldCode)
-						LEFT JOIN educ.EducationalSections using (EduSecCode)
-						where persons.PersonID='".$CreatorID."'";
+		$query = "SELECT * from projectmanagement.persons where persons.PersonID='".$CreatorID."'";
 
 
 		$mysql->Prepare($query);
@@ -1175,7 +1171,6 @@ class manage_FormsStruct
 			$rec = $res->fetch();
 		}
 		require_once("FormFields.class.php");
-		include_once("FormUtils.class.php");
 		require_once("FieldsItemList.class.php");
 		require_once("FormsFlowStepRelations.class.php");
 		require_once("FormsDetailTables.class.php");

@@ -2,7 +2,7 @@
 include("header.inc.php");
 include("classes/FieldsItemList.class.php");
 HTMLBegin();
-$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 $FormsStructID = $_REQUEST["FormsStructID"];
 $FormFieldID = "0";
 if(isset($_REQUEST["FormFieldID"]))
@@ -29,8 +29,9 @@ if(isset($_REQUEST["Save"]))
 }
 if(isset($_REQUEST["CopyFieldID"]))
 {
-	$res = $mysql->Execute("select * from FieldsItemList where FormFieldID='".$_REQUEST["CopyFieldID"]."'");
-	while($rec = $res->FetchRow())
+	$mysql->Prepare("select * from FieldsItemList where FormFieldID='".$_REQUEST["CopyFieldID"]."'");
+	$res = $mysql->ExecuteStatement(array());
+	while($rec = $res->fetch())
 	{
 		manage_FieldsItemList::Add($_REQUEST["Item_FormFieldID"],
 									$rec["ItemValue"],
@@ -121,8 +122,9 @@ echo "</table>";
 echo "</form>";
 echo "<br>";
 $CopyOption = "";
-$res = $mysql->Execute("select FormFieldID, substring(FieldTitle, 1, 80) as FieldTitle from FormFields where FieldType=3 and CreatingListType='STATIC_LIST' and FormsStructID=".$FormsStructID." and FormFieldID<>'".$FormFieldID."' order by FormFieldID DESC");
-while($rec = $res->FetchRow())
+$mysql->Prepare("select FormFieldID, substring(FieldTitle, 1, 80) as FieldTitle from FormFields where FieldType=3 and CreatingListType='STATIC_LIST' and FormsStructID=".$FormsStructID." and FormFieldID<>'".$FormFieldID."' order by FormFieldID DESC");
+$res = $mysql->ExecuteStatement(array());
+while($rec = $res->fetch())
 {
 	$CopyOption .= "<option value='".$rec["FormFieldID"]."'>".$rec["FieldTitle"];
 }

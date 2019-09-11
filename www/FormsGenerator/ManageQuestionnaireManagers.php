@@ -39,7 +39,7 @@ if(isset($_REQUEST["Save"]))
 
 	<input type=hidden name=Item_PersonID id=Item_PersonID>
 	<span id=MySpan name=MySpan></span>
-	<a href='../pm/SelectStaff.php?InputName=Item_PersonID&SpanName=MySpan' target=_blank>[انتخاب]</a>
+	<a href='#' onclick='javascript: window.open("SelectStaff.php?InputName=Item_PersonID&SpanName=MySpan")'>[انتخاب]</a>
 </td>
 </tr>
 <tr>

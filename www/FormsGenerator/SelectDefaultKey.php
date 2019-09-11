@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
 HTMLBegin();
-$mysql = dbclass::getInstance();
+$mysql = pdodb::getInstance();
 ?>
 <table width=80% align=center border=1 cellpadding=3 cellspacing=0>
 <tr class=HeaderOfTable>

@@ -46,11 +46,12 @@ class be_FormFields
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FormFields
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FormFields
 									LEFT JOIN FieldTypes on (FieldTypes.FieldTypeID=FormFields.FieldType) 
 									where FormFieldID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormFieldID=$rec["FormFieldID"];
 			$this->FormsStructID=$rec["FormsStructID"];
@@ -443,10 +444,11 @@ class manage_FormFields
 	// بزرگترین شماره ترتیب در ستون را بر می گرداند 
 	static function GetMaxColumnOrderNo($FormStructID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select Max(ColumnOrder) as MaxOrder from FormFields where FormsStructID='".$FormStructID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			if($rec["MaxOrder"]!="")
 				return $rec["MaxOrder"];
@@ -457,10 +459,11 @@ class manage_FormFields
 		// 	بزرگترین شماره ترتیب در فرم ورود داده را بر می گرداند 
 	static function GetMaxOrderInInputForm($FormStructID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select Max(OrderInInputForm) as MaxOrder from FormFields where FormsStructID='".$FormStructID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			if($rec["MaxOrder"]!="")
 				return $rec["MaxOrder"];
@@ -470,14 +473,15 @@ class manage_FormFields
 	
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FormFieldID) as TotalCount from FormFields';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -485,10 +489,11 @@ class manage_FormFields
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormFieldID) as MaxID from FormFields';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -496,7 +501,7 @@ class manage_FormFields
 	}
 	static function Add($FormsStructID, $RelatedFieldName, $FieldTitle, $FieldType, $MaxLength, $InputWidth, $InputRows, $MinNumber, $MaxNumber, $MaxFileSize, $CreatingListType, $AddAllItemsToList, $ListRelatedTable, $ListRelatedValueField, $ListRelatedDescriptionField, $ListRelatedDomainName, $ListQuery, $FieldInputType, $DefaultValue, $ValidFileExtensions, $ShowInList, $ColumnOrder, $ColumnWidth, $ListShowType, $LookUpPageAddress, $OrderInInputForm, $ImageWidth, $ImageHeight, $FieldHint, $RelatedFileNameField, $HTMLEditor)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormFields (FormsStructID
 				, RelatedFieldName
@@ -561,12 +566,13 @@ class manage_FormFields
 				, '".$RelatedFileNameField."'
 				, '".$HTMLEditor."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ایجاد فیلد [".manage_FormFields::GetLastID()."]");
 	}
 	static function Update($UpdateRecordID, $RelatedFieldName, $FieldTitle, $FieldType, $MaxLength, $InputWidth, $InputRows, $MinNumber, $MaxNumber, $MaxFileSize, $CreatingListType, $AddAllItemsToList, $ListRelatedTable, $ListRelatedValueField, $ListRelatedDescriptionField, $ListRelatedDomainName, $ListQuery, $FieldInputType, $DefaultValue, $ValidFileExtensions, $ShowInList, $ColumnOrder, $ColumnWidth, $ListShowType, $LookUpPageAddress, $OrderInInputForm, $ImageWidth, $ImageHeight, $FieldHint, $RelatedFileNameField, $HTMLEditor)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormFields set FieldType='".$FieldType."'
 				, RelatedFieldName = '".$RelatedFieldName."'
@@ -599,15 +605,18 @@ class manage_FormFields
 				, RelatedFileNameField='".$RelatedFileNameField."'
 				, HTMLEditor='".$HTMLEditor."'
 				where FormFieldID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروزرسانی فیلد [".$UpdateRecordID."]");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "delete from FormFields where FormFieldID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$mysql->audit("حذف فیلد [".$RemoveRecordID."]");
 	}
 	static function GetList($FormsStructID, $OrderBy="", $FormsSectionID = -1)
@@ -615,7 +624,7 @@ class manage_FormFields
 		  
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select FormFields.*, FieldTypes.*, SectionName from FormFields 
 					LEFT JOIN FieldTypes on (FieldTypes.FieldTypeID=FormFields.FieldType) 
@@ -626,9 +635,11 @@ class manage_FormFields
 		if($OrderBy!="") 
 			$query .= " order by ".$OrderBy;
 		//echo $query;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormFields();
 			$ret[$k]->FormFieldID=$rec["FormFieldID"];
@@ -679,9 +690,11 @@ class manage_FormFields
 	// نوع دسترسی به فیلد را در یک مرحله ثبت می کند
 	static function SetFieldAccessType($FormFieldID, $FormFlowStepID, $AccessType)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$mysql->Execute("delete from FieldsAccessType where FormFieldID='".$FormFieldID."' and FormFlowStepID='".$FormFlowStepID."'");
-		$mysql->Execute("insert into FieldsAccessType (FormFieldID, FormFlowStepID, AccessType) values ('".$FormFieldID."','".$FormFlowStepID."','".$AccessType."')");
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("delete from FieldsAccessType where FormFieldID='".$FormFieldID."' and FormFlowStepID='".$FormFlowStepID."'");
+		$mysql->ExecuteStatement(array());
+		$mysql->Prepare("insert into FieldsAccessType (FormFieldID, FormFlowStepID, AccessType) values ('".$FormFieldID."','".$FormFlowStepID."','".$AccessType."')");
+		$mysql->ExecuteStatement(array());
 	}
 	
 	// نوع دسترسی به فیلد در یک مرحله را بر می گرداند
@@ -690,10 +703,11 @@ class manage_FormFields
 		// کد مرحله منهای یک به معنی این است که فرم فاقد جریان کاری می باشد
 		if($FormFlowStepID==-1)
 			return "EDITABLE";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FieldsAccessType where FormFieldID='".$FormFieldID."' and FormFlowStepID='".$FormFlowStepID."'");
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FieldsAccessType where FormFieldID='".$FormFieldID."' and FormFlowStepID='".$FormFlowStepID."'");
+		$res = $mysql->ExecuteStatement(array());
 		// چنانچه دسترسی برای فیلد تعریف نشده باشد آن را خواندنی در نظر می گیرد
-		if($rec=$res->FetchRow())
+		if($rec=$res->fetch())
 		{
 			return $rec["AccessType"];
 		}
@@ -703,10 +717,11 @@ class manage_FormFields
 		// نوع دسترسی به فیلد در در یک نوع دسترسی تعریف شده برای یک فرم در یک پرونده الکترونیکی را بر می گرداند
 	static function GetFieldAccessTypeInFile($FormFieldID, $FileTypeUserPermittedFormID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FileTypeUserPermittedFormDetails where FormFieldID='".$FormFieldID."' and FileTypeUserPermittedFormID='".$FileTypeUserPermittedFormID."'");
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FileTypeUserPermittedFormDetails where FormFieldID='".$FormFieldID."' and FileTypeUserPermittedFormID='".$FileTypeUserPermittedFormID."'");
+		$res = $mysql->ExecuteStatement(array());
 		// چنانچه دسترسی برای فیلد تعریف نشده باشد آن را خواندنی در نظر می گیرد
-		if($rec=$res->FetchRow())
+		if($rec=$res->fetch())
 		{
 			return $rec["AccessType"];
 		}
@@ -716,10 +731,11 @@ class manage_FormFields
 		// نوع دسترسی به فیلد در در یک نوع دسترسی تعریف شده برای یک فرم در یک پرونده الکترونیکی امانتی را بر می گرداند
 	static function GetFieldAccessTypeInTempFile($FormFieldID, $FileTemporaryAccessListID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FileFormsTemporarayAccessList where FormFieldID='".$FormFieldID."' and FilesTemporarayAccessListID='".$FileTemporaryAccessListID."'");
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FileFormsTemporarayAccessList where FormFieldID='".$FormFieldID."' and FilesTemporarayAccessListID='".$FileTemporaryAccessListID."'");
+		$res = $mysql->ExecuteStatement(array());
 		// چنانچه دسترسی برای فیلد تعریف نشده باشد آن را خواندنی در نظر می گیرد
-		if($rec=$res->FetchRow())
+		if($rec=$res->fetch())
 		{
 			return $rec["AccessType"];
 		}

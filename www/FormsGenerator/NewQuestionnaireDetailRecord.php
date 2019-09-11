@@ -4,11 +4,10 @@ include("classes/FormsStruct.class.php");
 include("classes/FormFields.class.php");
 include("classes/FormsFlowSteps.class.php");
 include("classes/FieldsItemList.class.php");
-include("classes/FormUtils.class.php");
+require_once("classes/FormUtils.class.php");
 include("classes/SecurityManager.class.php");
 require_once('classes/FormsFlowStepRelations.class.php');
 include("classes/FormsDetailTables.class.php");
-require_once('../organization/classes/ChartServices.class.php');
 HTMLBegin();
 $mysql = pdodb::getInstance();
 ?>

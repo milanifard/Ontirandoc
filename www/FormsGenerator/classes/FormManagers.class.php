@@ -13,11 +13,12 @@ class be_FormManager
 	
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FormManagers
-								LEFT JOIN hrmstotal.persons using (PersonID) 
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FormManagers
+								LEFT JOIN projectmanagement.persons using (PersonID) 
 								where FormManagerID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormManagerID=$rec["FormManagerID"];
 			$this->FormsStructID=$rec["FormsStructID"];
@@ -31,10 +32,11 @@ class manage_FormManagers
 {
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormManagerID) as MaxID from FormManagers';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -42,7 +44,7 @@ class manage_FormManagers
 	}
 	static function Add($FormsStructID, $PersonID, $AccessType)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormManagers (FormsStructID
 				, PersonID
@@ -51,38 +53,42 @@ class manage_FormManagers
 				, '".$PersonID."'
 				, '".$AccessType."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ثبت داده جدید در مدیران فرم با کد ".manage_FormManagers::GetLastID());
 	}
 	static function Update($UpdateRecordID, $PersonID, $AccessType)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormManagers set PersonID='".$PersonID."', AccessType='".$AccessType."'
 				where FormManagerID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در مدیران فرم");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = '';
 		$query .= "delete from FormManagers where FormManagerID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از مدیران فرم");
 	}
 	static function GetList($WhereCondition)
 	{
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
-		$query .= "select * from FormManagers LEFT JOIN hrmstotal.persons using (PersonID) ";
+		$query .= "select * from FormManagers LEFT JOIN projectmanagement.persons using (PersonID) ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormManager();
 			$ret[$k]->FormManagerID=$rec["FormManagerID"];
@@ -96,14 +102,15 @@ class manage_FormManagers
 	}
 	static function GetRows($WhereCondition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
-		$query .= "select * from FormManagers LEFT JOIN hrmstotal.persons using (PersonID)";
+		$query .= "select * from FormManagers LEFT JOIN projectmanagement.persons using (PersonID)";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		return $res->GetRows();
+		return $res->fetchall();
 	}
 }
 ?>

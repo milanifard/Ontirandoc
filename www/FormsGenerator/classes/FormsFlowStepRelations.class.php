@@ -12,11 +12,12 @@ class be_FormsFlowStepRelations
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FormsFlowStepRelations 
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FormsFlowStepRelations 
 										LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) 
 										where FormFlowStepRelationID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormFlowStepRelationID=$rec["FormFlowStepRelationID"];
 			$this->FormFlowStepID=$rec["FormFlowStepID"];
@@ -44,14 +45,15 @@ class manage_FormsFlowStepRelations
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FormFlowStepRelationID) as TotalCount from FormsFlowStepRelations';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -59,10 +61,11 @@ class manage_FormsFlowStepRelations
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormFlowStepRelationID) as MaxID from FormsFlowStepRelations';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -70,45 +73,49 @@ class manage_FormsFlowStepRelations
 	}
 	static function Add($FormFlowStepID, $NextStepID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormsFlowStepRelations (FormFlowStepID
 				, NextStepID
 				) values ('".$FormFlowStepID."'
 				, '".$NextStepID."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ثبت داده جدید در ارتباط مراحل در گردش فرم با کد ".manage_FormsFlowStepRelations::GetLastID());
 	}
 	static function Update($UpdateRecordID, $NextStepID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormsFlowStepRelations set NextStepID='".$NextStepID."'
 				where FormFlowStepRelationID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در ارتباط مراحل در گردش فرم");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "delete from FormsFlowStepRelations where FormFlowStepRelationID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از ارتباط مراحل در گردش فرم");
 	}
 	static function GetList($WhereCondition)
 	{
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormsFlowStepRelations LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormsFlowStepRelations();
 			$ret[$k]->FormFlowStepRelationID=$rec["FormFlowStepRelationID"];
@@ -122,14 +129,15 @@ class manage_FormsFlowStepRelations
 	}
 	static function GetRows($WhereCondition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormsFlowStepRelations LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		return $res->GetRows();
+		return $res->fetchall();
 	}
 	
 	// برای یک مرحله شروع مراحل بعدی را بدست می آورد
@@ -139,16 +147,17 @@ class manage_FormsFlowStepRelations
 		require_once("FormsFlowSteps.class.php");
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		
 		//$CreatorID = $rec["CreatorID"];
 		$query = "select * from FormsFlowStepRelations LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) 
 					where FormsFlowStepRelations.FormFlowStepID='".$StepID."'";
 		
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
 		// در نظر گرفتن مراحل بعد از مرحله فعلی
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormsFlowSteps();
 			// بعدا بهینه سازی شود یعنی به جای بار شدن دوباره از دیتابیس در تک تک فیلدها قرار گیرد
@@ -207,11 +216,12 @@ class manage_FormsFlowStepRelations
 		$SenderID = 0;
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		
 		$query = "select * from FormsRecords where RelatedRecordID='".$RelatedRecordID."' and FormFlowStepID='".$StepID."'";
-		$res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 		{
 			$CreatorID = $rec["CreatorID"];
 			$SenderID = $rec["SenderID"];
@@ -221,10 +231,11 @@ class manage_FormsFlowStepRelations
 		
 		$query = "select * from FormsFlowStepRelations LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) 
 					where FormsFlowStepRelations.FormFlowStepID='".$StepID."'";
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
 		// در نظر گرفتن مراحل بعد از مرحله فعلی
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormsFlowSteps();
 			// بعدا بهینه سازی شود یعنی به جای بار شدن دوباره از دیتابیس در تک تک فیلدها قرار گیرد
@@ -287,9 +298,10 @@ class manage_FormsFlowStepRelations
 		}
 		$query = "select * from FormsFlowStepRelations LEFT JOIN FormsFlowSteps on (FormsFlowStepID=NextStepID) 
 					where FormsFlowStepRelations.NextStepID='".$StepID."'";
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		// در نظر گرفتن مراحل قبل از مرحله فعلی
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			if(FormUtils::IsStepInRecordPath($rec["FormFlowStepID"], $RelatedRecordID))
 			{

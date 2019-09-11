@@ -3,7 +3,7 @@ include("header.inc.php");
 include("classes/FormUtils.class.php");
 include("classes/SecurityManager.class.php");
 include("classes/FormsFlowSteps.class.php");
-$mysql = dbclass::getInstance();
+$mysql = pdodb::getInstance();
 $FormsStructID = $_REQUEST["FormsStructID"];
 $RecID = $_REQUEST["RecID"];
 $FieldName = $_REQUEST["FieldName"];
@@ -20,11 +20,13 @@ if($CurStepID>0 && !SecurityManager::HasUserAccessToThisRecord($_SESSION["Person
 	die();
 }
 
-$res = $mysql->Execute("select * from formsgenerator.FormsStruct where FormsStructID='".$FormsStructID."'");
-if($rec=$res->FetchRow())
+$mysql->Prepare("select * from formsgenerator.FormsStruct where FormsStructID='".$FormsStructID."'");
+$res = $mysql->ExecuteStatement(array());
+if($rec=$res->fetch())
 {
-	$res = $mysql->Execute("select ".$FieldName." from ".$rec["RelatedDB"].".".$rec["RelatedTable"]." where ".$rec["KeyFieldName"]."='".$RecID."'");
-	if($arr=$res->FetchRow())
+	$mysql->Prepare("select ".$FieldName." from ".$rec["RelatedDB"].".".$rec["RelatedTable"]." where ".$rec["KeyFieldName"]."='".$RecID."'");
+    $res = $mysql->ExecuteStatement(array());
+	if($arr=$res->fetch())
 	{
 		header('Content-disposition: filename="' . $DownloadFileName.'"');
 		header('Content-type: image/jpeg');

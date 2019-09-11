@@ -12,9 +12,10 @@ class be_FormLabels
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FormLabels where FormsLabelID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FormLabels where FormsLabelID='".$RecID."' ");
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormsLabelID=$rec["FormsLabelID"];
 			$this->LabelDescription=$rec["LabelDescription"];
@@ -53,14 +54,15 @@ class manage_FormLabels
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FormsLabelID) as TotalCount from FormLabels';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -68,10 +70,11 @@ class manage_FormLabels
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormsLabelID) as MaxID from FormLabels';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -79,7 +82,7 @@ class manage_FormLabels
 	}
 	static function Add($LabelDescription, $LocationType, $RelatedFieldID, $ShowType, $ShowHorizontalLine)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormLabels (LabelDescription
 				, LocationType
@@ -92,12 +95,13 @@ class manage_FormLabels
 				, '".$ShowType."'
 				, '".$ShowHorizontalLine."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ثبت داده جدید در برچسبهای یک فرم با کد ".manage_FormLabels::GetLastID());
 	}
 	static function Update($UpdateRecordID, $LabelDescription, $LocationType, $RelatedFieldID, $ShowType, $ShowHorizontalLine)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormLabels set LabelDescription='".$LabelDescription."'
 				, LocationType='".$LocationType."'
@@ -105,15 +109,17 @@ class manage_FormLabels
 				, ShowType='".$ShowType."'
 				, ShowHorizontalLine='".$ShowHorizontalLine."'
 				where FormsLabelID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در برچسبهای یک فرم");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "delete from FormLabels where FormsLabelID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از برچسبهای یک فرم");
 	}
 	
@@ -121,14 +127,15 @@ class manage_FormLabels
 	{
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormLabels ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormLabels();
 			$ret[$k]->FormsLabelID=$rec["FormsLabelID"];
@@ -143,14 +150,16 @@ class manage_FormLabels
 	}
 	static function GetRows($WhereCondition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormLabels ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		return $res->GetRows();
+		return $res->fetchall();
 	}
 }
 ?>

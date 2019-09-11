@@ -10,9 +10,10 @@ class be_FieldsItemList
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FieldsItemList where FieldItemListID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FieldsItemList where FieldItemListID='".$RecID."' ");
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FieldItemListID=$rec["FieldItemListID"];
 			$this->FormFieldID=$rec["FormFieldID"];
@@ -42,14 +43,15 @@ class manage_FieldsItemList
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FieldItemListID) as TotalCount from FieldsItemList';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -57,10 +59,11 @@ class manage_FieldsItemList
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FieldItemListID) as MaxID from FieldsItemList';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -68,7 +71,7 @@ class manage_FieldsItemList
 	}
 	static function Add($FormFieldID, $ItemValue, $ItemDescription)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FieldsItemList (FormFieldID
 				, ItemValue
@@ -77,17 +80,19 @@ class manage_FieldsItemList
 				, '".$ItemValue."'
 				, '".$ItemDescription."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ثبت داده جدید در آیتمهای لیست برای فیلدهای از نوع لیستی با کد ".manage_FieldsItemList::GetLastID());
 	}
 	static function Update($UpdateRecordID, $ItemValue, $ItemDescription)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FieldsItemList set ItemValue='".$ItemValue."'
 				, ItemDescription='".$ItemDescription."'
 				where FieldItemListID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در آیتمهای لیست برای فیلدهای از نوع لیستی");
 	}
 	static function Remove($RemoveRecordID)
@@ -95,22 +100,25 @@ class manage_FieldsItemList
 		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "delete from FieldsItemList where FieldItemListID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از آیتمهای لیست برای فیلدهای از نوع لیستی");
 	}
 	static function GetList($WhereCondition)
 	{
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FieldsItemList ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
 		$query .= " order by ItemValue";
-		$res = $mysql->Execute($query);
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FieldsItemList();
 			$ret[$k]->FieldItemListID=$rec["FieldItemListID"];
@@ -123,14 +131,15 @@ class manage_FieldsItemList
 	}
 	static function GetRows($WhereCondition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FieldsItemList ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		return $res->GetRows();
+		return $res->fetchall();
 	}
 
 	// لیست آیتمها را به صورت آپشنهای یک کمبو باکس بر می گرداند

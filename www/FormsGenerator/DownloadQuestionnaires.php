@@ -21,7 +21,8 @@ $mysql = pdodb::getInstance();
 							JOIN formsgenerator.TemporaryUsersAccessForms on (TemporaryUsersAccessForms.WebUserID=TemporaryUsers.WebUserID)
 							where QuestionnairesCreators.FormsStructID='".$ParentObj->FormsStructID."' 							
   							";
-	$res = $mysql->Execute($query);
+	$mysql->Prepare($query);
+	$res = $mysql->ExecuteStatement(array());
 	echo "<table>";
 	echo "<tr>";
 	for($i=0; $i<count($fields); $i++)

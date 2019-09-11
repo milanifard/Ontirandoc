@@ -13,11 +13,12 @@ class be_FormsDetailTables
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from FormsDetailTables
+		$mysql = pdob::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from FormsDetailTables
 									LEFT JOIN FormsStruct  on (DetailFormStructID=FormsStructID) 
 									where FormsDetailTableID='".$RecID."' ");
-		if($rec=$res->FetchRow())
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormsDetailTableID=$rec["FormsDetailTableID"];
 			$this->FormStructID=$rec["FormStructID"];
@@ -33,14 +34,15 @@ class manage_FormsDetailTables
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FormsDetailTableID) as TotalCount from FormsDetailTables';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -48,10 +50,11 @@ class manage_FormsDetailTables
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormsDetailTableID) as MaxID from FormsDetailTables';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -59,7 +62,7 @@ class manage_FormsDetailTables
 	}
 	static function Add($FormStructID, $DetailFormStructID, $RelatedField, $OrderNo)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormsDetailTables (FormStructID
 				, DetailFormStructID
@@ -70,40 +73,46 @@ class manage_FormsDetailTables
 				, '".$RelatedField."'
 				, '".$OrderNo."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("ایجاد جدول جزییات [".manage_FormsDetailTables::GetLastID()."]");
 	}
 	static function Update($UpdateRecordID, $DetailFormStructID, $RelatedField, $OrderNo)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormsDetailTables set DetailFormStructID='".$DetailFormStructID."'
 				, RelatedField='".$RelatedField."'
 				, OrderNo='".$OrderNo."'
 				where FormsDetailTableID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروزرسانی جدول جزییات [".$UpdateRecordID."]");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "delete from FormsDetailTables where FormsDetailTableID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف جدول جزییات [".$RemoveRecordID."]");
 	}
 	static function GetList($MasterFormStructID)
 	{
+		if($MasterFormStructID=="")
+			return array();
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormsDetailTables LEFT JOIN FormsStruct on (DetailFormStructID=FormsStructID) ";
 		$query .= " where FormsDetailTables.FormStructID=".$MasterFormStructID." order by OrderNo";
 		//echo $query;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormsDetailTables();
 			$ret[$k]->FormsDetailTableID=$rec["FormsDetailTableID"];
@@ -118,22 +127,25 @@ class manage_FormsDetailTables
 	}
 	static function GetRows($WhereCondition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select * from FormsDetailTables ";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i=0;
-		return $res->GetRows();
+		return $res->fetchall();
 	}
 	
 	// نوع دسترسی به جدول جزییات را در یک مرحله ثبت می کند
 	static function SetFieldAccessType($FormsDetailTableID, $FormFlowStepID, $EditAccessType, $AddAccessType, $RemoveAccessType)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$mysql->Execute("delete from DetailTablesAccessType where FormsDetailTableID='".$FormsDetailTableID."' and FormFlowStepID='".$FormFlowStepID."'");
-		$mysql->Execute("insert into DetailTablesAccessType (FormsDetailTableID, FormFlowStepID, EditAccessType, AddAccessType, RemoveAccessType) values ('".$FormsDetailTableID."','".$FormFlowStepID."','".$EditAccessType."','".$AddAccessType."','".$RemoveAccessType."')");
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("delete from DetailTablesAccessType where FormsDetailTableID='".$FormsDetailTableID."' and FormFlowStepID='".$FormFlowStepID."'");
+		$mysql->ExecuteStatement(array());
+		$mysql->Prepare("insert into DetailTablesAccessType (FormsDetailTableID, FormFlowStepID, EditAccessType, AddAccessType, RemoveAccessType) values ('".$FormsDetailTableID."','".$FormFlowStepID."','".$EditAccessType."','".$AddAccessType."','".$RemoveAccessType."')");
+		$mysql->ExecuteStatement(array());
 	}
 	
 	// نوع دسترسی به جدول جزییات در یک مرحله را بر می گرداند
@@ -145,10 +157,10 @@ class manage_FormsDetailTables
 		$ret["AddAccessType"] = "ACCESS";
 		$ret["EditAccessType"] = "ALL";
 		$ret["RemoveAccessType"] = "ALL";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select * from DetailTablesAccessType where FormsDetailTableID='".$FormsDetailTableID."' and FormFlowStepID='".$FormFlowStepID."'");
-		
-		if($rec=$res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select * from DetailTablesAccessType where FormsDetailTableID='".$FormsDetailTableID."' and FormFlowStepID='".$FormFlowStepID."'");
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$ret["AddAccessType"] = $rec["AddAccessType"];
 			$ret["EditAccessType"] = $rec["EditAccessType"];

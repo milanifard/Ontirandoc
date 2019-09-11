@@ -44,11 +44,12 @@ class manage_FormsSections
 {
 	static function GetCount($FormsStructID)
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select count(FormsSectionID) as TotalCount from formsgenerator.FormsSections";
 			$query .= " where FormsStructID='".$FormsStructID."'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -56,10 +57,12 @@ class manage_FormsSections
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance();
+		$mysql = pdodb::getInstance();
 		$query = "select max(FormsSectionID) as MaxID from formsgenerator.FormsSections";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+
+		$mysql->Prepare($query);
+        $res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}

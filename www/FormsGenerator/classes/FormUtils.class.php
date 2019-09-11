@@ -17,12 +17,13 @@ class FormUtils
 	
 	static function CreateFormTypesOptions($DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select * from FieldTypes order by FieldTypeID';
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["FieldTypeID"]."' ";
 			if($rec["FieldTypeID"]==$DefaultValue)
@@ -36,12 +37,13 @@ class FormUtils
 
 	static function CreateUserRolesOptions($DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select * from roles order by RoleName';
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["RoleID"]."' ";
 			if($rec["RoleID"]==$DefaultValue)
@@ -55,12 +57,13 @@ class FormUtils
 
 	static function CreateSystemsOptions($DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select * from systems order by description';
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["SysCode"]."' ";
 			if($rec["SysCode"]==$DefaultValue)
@@ -74,12 +77,13 @@ class FormUtils
 	
 	static function CreateUnitsOptions($DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select * from hrms_total.org_units order by ptitle';
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["ouid"]."' ";
 			if($rec["ouid"]==$DefaultValue)
@@ -93,12 +97,14 @@ class FormUtils
 
 	static function CreateSubUnitsOptions($UnitID, $DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from hrms_total.org_sub_units where ouid='".$UnitID."' order by ptitle";
-		$res = $mysql->Execute($query);
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["sub_ouid"]."' ";
 			if($rec["ouid"]==$DefaultValue)
@@ -112,12 +118,13 @@ class FormUtils
 	
 	static function CreateEduGrpsOptions($DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from EducationalGroups order by PEduName";
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["EduGrpCode"]."' ";
 			if($rec["EduGrpCode"]==$DefaultValue)
@@ -131,12 +138,14 @@ class FormUtils
 
 	static function CreateEduGrpsOptionsForFacility($FacCode, $DefaultValue)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from EducationalGroups where FacCode='".$FacCode."' order by PEduName";
-		$res = $mysql->Execute($query);
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$list = "";
 		
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$list .= "<option value='".$rec["EduGrpCode"]."' ";
 			if($rec["EduGrpCode"]==$DefaultValue)
@@ -152,10 +161,11 @@ class FormUtils
 	static function CreateItemsListFromATable($TableName, $ValueFieldName, $DescriptionFieldName, $DefaultValue)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select ".$ValueFieldName.", ".$DescriptionFieldName." from ".$TableName;
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret .= "<option value='".$rec[$ValueFieldName]."' ";
 			if($rec[$ValueFieldName]==$DefaultValue)
@@ -169,9 +179,10 @@ class FormUtils
 	static function CreateItemsListAccordingToQuery($query, $DefaultValue)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret .= "<option value='".$rec[0]."' ";
 			if($rec[0]==$DefaultValue)
@@ -185,10 +196,11 @@ class FormUtils
 	static function CreateItemsListAccordingToDomainName($DomainName, $DefaultValue)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from domains where DomainName='".$DomainName."' order by description";
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret .= "<option value='".$rec["DomainValue"]."' ";
 			if($rec["DomainValue"]==$DefaultValue)
@@ -202,10 +214,12 @@ class FormUtils
 	static function CreateItemDescriptionFromATable($TableName, $ValueFieldName, $DescriptionFieldName, $FieldValue)
 	{
 		$ret = "-";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select ".$ValueFieldName.", ".$DescriptionFieldName." from ".$TableName." where ".$ValueFieldName."='".$FieldValue."'";
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret = $rec[$DescriptionFieldName];
 		}
@@ -216,9 +230,11 @@ class FormUtils
 	static function CreateItemDescriptionAccordingToQuery($query, $FieldValue)
 	{
 		$ret = "-";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			if($FieldValue==$rec[0])
 				$ret = $rec[1];
@@ -230,10 +246,11 @@ class FormUtils
 	static function CreateItemDescriptionAccordingToDomainName($DomainName, $FieldValue)
 	{
 		$ret = "-";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$query = "select * from domains where DomainName='".$DomainName."' and DomainValue='".$FieldValue."'";
-		$res = $mysql->Execute($query);
-		while($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$query = "select * from baseinfo.domains where DomainName='".$DomainName."' and DomainValue='".$FieldValue."'";
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		while($rec = $res->fetch())
 		{
 			$ret = $rec["description"];
 		}
@@ -283,10 +300,11 @@ class FormUtils
 	// با گرفتن کد یک آیتم و کد ساختار مربوطه بررسی می کند آن رکورد در کدام مرحله قرار دارد
 	static function GetCurrentStepID($RelatedRecordID, $FormsStructID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select FormFlowStepID from FormsRecords where FormsStructID='".$FormsStructID."' and RelatedRecordID='".$RelatedRecordID."'";
-		$res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 		{
 			return $rec["FormFlowStepID"];
 		}
@@ -296,13 +314,14 @@ class FormUtils
 	// بررسی می کند آیا این مرحله در مسیر حرکت رکورد وجود داشته است یا خیر
 	static function IsStepInRecordPath($StepID, $RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$Step = new be_FormsFlowSteps();
 		$Step->LoadDataFromDatabase($StepID);
 		
 		$query = "select * from FormsFlowHistory where FormsStructID='".$Step->FormsStructID."' and RecID='".$RecID."'";
-		$res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 		{
 			return true;
 		}
@@ -315,7 +334,7 @@ class FormUtils
 		$ret .= "<tr class=HeaderOfTable>";
 		$ret .= "<td>ارسال کننده</td><td>تاریخ ارسال</td><td>مرحله ای که به آن ارسال شده</td>";
 		$ret .= "</tr>";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select StepTitle, SenderType, 
 						concat(p1.pfname, ' ', p1.plname) as PersonelName, 
 						concat(p2.pfname, ' ', p2.plname) as StudentName, 
@@ -325,9 +344,10 @@ class FormUtils
 						LEFT JOIN educ.persons p2 on (FromPersonID=p2.PersonID)  
 						LEFT JOIN FormsFlowSteps on (FormsFlowStepID=ToStepID)  
 						where FormsFlowHistory.FormsStructID='".$FormsStructID."' and RecID='".$RecID."' order by SendDate DESC";
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i = 0;
-		while($rec = $res->FetchRow())
+		while($rec = $res->fetch())
 		{
 			$i++;
 			if($i%2==0)
@@ -356,7 +376,7 @@ class FormUtils
 		$ret .= "<tr class=HeaderOfTable>";
 		$ret .= "<td width=30% nowrap>بروزرسانی کننده</td><td>شرح</td><td width=1% nowrap>تاریخ بروزرسانی</td>";
 		$ret .= "</tr>";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select description, PersonType, 
 						concat(p1.pfname, ' ', p1.plname) as PersonelName, 
 						concat(p2.pfname, ' ', p2.plname) as StudentName, 
@@ -365,9 +385,10 @@ class FormUtils
 						LEFT JOIN hrms_total.persons p1 on (FormsDataUpdateHistory.PersonID=p1.PersonID)
 						LEFT JOIN educ.persons p2 on (FormsDataUpdateHistory.PersonID=p2.PersonID)  
 						where FormsDataUpdateHistory.FormsStructID='".$FormsStructID."' and RecID='".$RecID."' order by UpdateTime DESC";
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i = 0;
-		while($rec = $res->FetchRow())
+		while($rec = $res->fetch())
 		{
 			$i++;
 			if($i%2==0)
@@ -404,27 +425,17 @@ class FormUtils
 			$PersonType = "STUDENT";
 		
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		
-		if($PersonType=="PERSONEL")
-			$query = "select * from hrms_total.persons 
-								JOIN hrms_total.staff using (PersonID, person_type)
-								JOIN PersonUsers using (PersonID)
-								LEFT JOIN hrms_total.writs on (staff.last_writ_id=writs.writ_id and staff.last_writ_ver=writs.writ_ver and staff.staff_id=writs.staff_id) 
+			$query = "select * from projectmanagement.persons 
 								where persons.PersonID='".$PersonID."'";
-		else
-			$query = "select StNo as UserID, EduGrpCode, StudentSpecs.FacCode, StudentSpecs.FacCode as UnitCode, EduGrpCode as SubUnitCode from educ.persons 
-								JOIN educ.StudentSpecs using (PersonID)
-								JOIN educ.StudyFields using (FldCode) 
-								where persons.PersonID='".$PersonID."'";
-		
-		$res = $mysql->Execute($query);
-		$rec = $res->FetchRow();
-		$UnitCode = $rec["UnitCode"];
-		$SubUnitCode = $rec["sub_ouid"];
-		$EduGrpCode = $rec["EduGrpCode"];
-		
-		$mysql->Execute("delete from ReceivedForms where PersonID='".$PersonID."'");
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		$rec = $res->fetch();
+
+		$mysql->Prepare("delete from ReceivedForms where PersonID='".$PersonID."'");
+		$mysql->ExecuteStatement(array());
 		//if($_SESSION["PersonID"]=="200852")
 		//	$mysql->audit("مرحله ۱");
 		$StepList = SecurityManager::GetUserPermittedSteps($PersonID, "");
@@ -436,34 +447,22 @@ class FormUtils
 			
 		}	
 
-		$query = "select FormsStruct.FormsStructID, FormFlowStepID, ReceivedForms.RecID, StepTitle, SendDate, CreatorType, SenderType, FormTitle, ptitle, 
+		$query = "select FormsStruct.FormsStructID, FormFlowStepID, ReceivedForms.RecID, StepTitle, SendDate, CreatorType, SenderType, FormTitle, 
 								concat(p1.pfname,' ',p1.plname) as SenderName,
-								concat(p11.pfname,' ',p11.plname) as SenderName2,
 								concat(p2.pfname,' ',p2.plname) as CreatorName,
-								concat(p22.pfname,' ',p22.plname) as CreatorName2   
 								from ReceivedForms
 								LEFT JOIN FormsFlowSteps on (ReceivedForms.FormFlowStepID=FormsFlowSteps.FormsFlowStepID)
 								LEFT JOIN FormsStruct on (FormsFlowSteps.FormsStructID=FormsStruct.FormsStructID) 
-								LEFT JOIN hrms_total.persons as p1 on (p1.PersonID=SenderID) 
-								LEFT JOIN hrms_total.persons as p2 on (p2.PersonID=CreatorID)
-								LEFT JOIN hrms_total.staff on (p2.PersonID=staff.PersonID and p2.person_type=staff.person_type) 
-								LEFT JOIN hrms_total.writs on (staff.last_writ_id=writs.writ_id and staff.last_writ_ver=writ_ver and staff.staff_id=writs.staff_id) 
-								
-								LEFT JOIN educ.persons as p11 on (p11.PersonID=SenderID) 
-								LEFT JOIN educ.persons as p22 on (p22.PersonID=CreatorID)
-								LEFT JOIN educ.StudentSpecs on (p22.PersonID=StudentSpecs.PersonID) 
-								LEFT JOIN educ.faculties on (StudentSpecs.FacCode=faculties.FacCode)
-								
-								LEFT JOIN hrms_total.org_units on (writs.ouid=org_units.ouid) 
+								LEFT JOIN prjectmanagement.persons as p1 on (p1.PersonID=SenderID) 
+								LEFT JOIN prjectmanagement.persons as p2 on (p2.PersonID=CreatorID)
 								where ReceivedForms.PersonID='".$PersonID."' order by SendDate DESC";
-				//if($_SESSION["PersonID"]=="200852")
-		//		$mysql->audit("مرحله 3 ");		
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		//if($_SESSION["PersonID"]=="200852")
 		//		$mysql->audit("مرحله 4 ");		
 		
 		$i = 0;
-		while($rec = $res->FetchRow())
+		while($rec = $res->fetch())
 		{
 			$i++;
 			if($i%2==0)
@@ -476,15 +475,9 @@ class FormUtils
 			echo "</a>";
 			echo "</td>";
 			echo "<td nowrap>".$rec["FormTitle"]."</td>";
-			if($rec["SenderType"]=="PERSONEL")
-				echo "<td nowrap>".$rec["CreatorName"]."<br>[".$rec["ptitle"]."]</td>";
-			else
-				echo "<td nowrap>".$rec["CreatorName2"]."<br>[".$rec["PFacName"]."]</td>";
+			echo "<td nowrap>".$rec["CreatorName"]."<br>[".$rec["ptitle"]."]</td>";
 			echo "<td nowrap>".$rec["StepTitle"]."</td>";
-			if($rec["SenderType"]=="PERSONEL")
-				echo "<td nowrap>".$rec["SenderName"]."</td>";
-			else
-				echo "<td nowrap>".$rec["SenderName2"]."</td>";
+			echo "<td nowrap>".$rec["SenderName"]."</td>";
 			echo "<td nowrap>".shdate($rec["SendDate"])."</td>";
 		}
 		return $ret;
@@ -493,9 +486,10 @@ class FormUtils
 	// با گرفتن کد ساختار فرم اصلی و ساختار فرم جزییات نام فیلد کلید خارجی در جدول جزییات را بر می گرداند
 	static function GetRelationField($MasterFormsStructID, $DetailFormsStructID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select RelatedField from FormsDetailTables where FormStructID='".$MasterFormsStructID."' and DetailFormStructID='".$DetailFormsStructID."'");
-		if($rec = $res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select RelatedField from FormsDetailTables where FormStructID='".$MasterFormsStructID."' and DetailFormStructID='".$DetailFormsStructID."'");
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 			return $rec[0];
 		return "";
 	}
@@ -503,13 +497,13 @@ class FormUtils
 	// تعداد فرمهای ارسال شده توسط شخص را بر می گرداند
 	static function GetSentFormsCount($PersonID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select count(*)
 					 from FormsFlowHistory
 					where FromPersonID='".$PersonID."' ";
-		$mysql->Execute($query);
-		$res = $mysql->Execute($query);
-		$rec = $res->FetchRow();
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		$rec = $res->fetch();
 		return $rec[0];
 	}
 	
@@ -522,35 +516,18 @@ class FormUtils
 		if($_SESSION["SystemCode"]=="10")
 			$PersonType = "STUDENT";
 		
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		/*
-		$query = "select FormsRecords.SenderType, RecID, FormTitle, s1.StepTitle as FromStep, s2.StepTitle as ToStep, s3.StepTitle as CurrentStep,
-					concat(g2j(FormsFlowHistory.SendDate), ' ', substr(FormsFlowHistory.SendDate, 12,10)) as gSendDate, 
-					concat(p1.pfname, ' ', p1.plname) as PersonelName, 
-					concat(p2.pfname, ' ', p2.plname) as StudentName 
-					 from FormsFlowHistory
-					JOIN FormsRecords on (FormsRecords.RelatedRecordID=FormsFlowHistory.RecID and FormsRecords.FormsStructID=FormsFlowHistory.FormsStructID)
-					LEFT JOIN hrms_total.persons p1 on (FormsRecords.CreatorID=p1.PersonID)
-					LEFT JOIN educ.persons p2 on (FormsRecords.CreatorID=p2.PersonID)
-					JOIN FormsStruct on (FormsFlowHistory.FormsStructID=FormsStruct.FormsStructID)
-					LEFT JOIN FormsFlowSteps s1 on (s1.FormsFlowStepID=FromStepID)
-					LEFT JOIN FormsFlowSteps s2 on (s2.FormsFlowStepID=ToStepID)
-					LEFT JOIN FormsFlowSteps s3 on (s3.FormsFlowStepID=FormsRecords.FormFlowStepID)
-					where FromPersonID='".$PersonID."' order by FormsFlowHistory.SendDate DESC limit ".$FromRec.",".$count;
-		*/
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select distinct FormsRecords.SenderType, FormsRecords.FormsStructID, RecID, FormTitle, s3.StepTitle as CurrentStep,
 					concat(p1.pfname, ' ', p1.plname) as PersonelName, 
-					concat(p2.pfname, ' ', p2.plname) as StudentName 
 					 from FormsFlowHistory
 					JOIN FormsRecords on (FormsRecords.RelatedRecordID=FormsFlowHistory.RecID and FormsRecords.FormsStructID=FormsFlowHistory.FormsStructID)
-					LEFT JOIN hrms_total.persons p1 on (FormsRecords.CreatorID=p1.PersonID)
-					LEFT JOIN educ.persons p2 on (FormsRecords.CreatorID=p2.PersonID)
+					LEFT JOIN projectmanagement.persons p1 on (FormsRecords.CreatorID=p1.PersonID)
 					JOIN FormsStruct on (FormsFlowHistory.FormsStructID=FormsStruct.FormsStructID)
 					LEFT JOIN FormsFlowSteps s3 on (s3.FormsFlowStepID=FormsRecords.FormFlowStepID)
 					where FromPersonID='".$PersonID."' order by FormsFlowHistory.SendDate DESC limit ".$FromRec.",".$count;
 		
-		$mysql->Execute($query);
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
 		$i = 0;
 		while($rec = $res->FetchRow())
 		{
@@ -574,10 +551,11 @@ class FormUtils
 	static function GetCreatorID($DetailFormsStructID, $RecID)
 	{
 		$query = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select CreatorID from DetailFormRecords where DetailFormsStructID='".$DetailFormsStructID."' and DetailRecordID='".$RecID."'";
-		$res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 			return $rec[0];
 		return 0;
 	}
