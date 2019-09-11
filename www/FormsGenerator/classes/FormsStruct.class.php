@@ -27,9 +27,10 @@ class be_FormsStruct
 
 	function LoadDataFromDatabase($RecID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
-		$res = $mysql->Execute("select *, g2j(CreateDate) as GCreateDate from FormsStruct where FormsStructID='".$RecID."' ");		
-		if($rec=$res->FetchRow())
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql->Prepare("select *, g2j(CreateDate) as GCreateDate from FormsStruct where FormsStructID='".$RecID."' ");
+		$res = $mysql->ExecuteStatement(array());
+		if($rec=$res->fetch())
 		{
 			$this->FormsStructID=$rec["FormsStructID"];
 			$this->RelatedDB=$rec["RelatedDB"];
@@ -173,10 +174,11 @@ class be_FormsStruct
 
 		$ret = "&nbsp;";
 		$k = 0;
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from ".$this->RelatedDB.".".$this->RelatedTable." where ".$this->KeyFieldName."='".$RecID."'";
-		$res = $mysql->Execute($query);
-		$CurRec = $res->FetchRow();
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		$CurRec = $res->fetch();
 		$FieldsList = $this->GetFieldsList();
 		for($i=0; $i<count($FieldsList); $i++)
 		{
@@ -352,9 +354,10 @@ class be_FormsStruct
 	//برای داده های جداول جزییات از این متد استفاده می شود
 	function RemoveData($RecID, $PersonID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "delete from ".$this->RelatedDB.".".$this->RelatedTable." where ".$this->KeyFieldName."='".$RecID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
 		$mysql->audit('حذف رکوردی با کد '.$RecID." از جدول ".$this->RelatedDB.".".$this->RelatedTable);
 	}
 	
@@ -372,17 +375,20 @@ class be_FormsStruct
 			$PersonType = "STUDENT";
 		
 		$RecID = 0;
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = $this->CreateInsertQuery($StepID, $PersonID, $FileTypeUserPermittedFormID, $FileTemporaryAccessListID);
-		$mysql->Execute($query);
-                $query = "select max(".$this->KeyFieldName.") as MaxID from ".$this->RelatedDB.".".$this->RelatedTable;
-		$res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+		$query = "select max(".$this->KeyFieldName.") as MaxID from ".$this->RelatedDB.".".$this->RelatedTable;
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+		if($rec = $res->fetch())
 		{
 			$RecID = $rec["MaxID"];
 			// در جدول تاریخچه بروزرسانی درج می کند
 			$query = "insert into FormsDataUpdateHistory (FormsStructID, RecID, PersonID, UpdateTime, description, PersonType) values ('".$this->FormsStructID."', '".$RecID."', '".$PersonID."', now(), 'ایجاد رکورد جدید', '".$PersonType."')";
-			$mysql->Execute($query);
+			$mysql->Prepare($query);
+			$mysql->ExecuteStatement(array());
 		}
 		return $RecID;
 	}
@@ -400,15 +406,18 @@ class be_FormsStruct
 			$PersonType = "STUDENT";
 		
 		$description = "بروز رسانی فیلد(های): ".$this->CreateUpdatedFieldsDescription($RecID, $StepID, $PersonID, $FileTypeUserPermittedFormID, $FileTemporaryAccessListID);
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = $this->CreateUpdateQuery($RecID, $StepID, $PersonID, $FileTypeUserPermittedFormID, $FileTemporaryAccessListID);
 		if($query!="")
 		{
-			$mysql->Execute($query);
+			$mysql->Prepare($query);
+			$mysql->ExecuteStatement(array());
 	
 			// در جدول تاریخچه بروزرسانی درج می کند
 			$query = "insert into FormsDataUpdateHistory (FormsStructID, RecID, PersonID, UpdateTime, description, PersonType) values ('".$this->FormsStructID."', '".$RecID."', '".$PersonID."', now(), '".$description."', '".$PersonType."')";
-			$mysql->Execute($query);
+			$mysql->Prepare($query);
+			$mysql->ExecuteStatement(array());
+
 		}
 	}
 	
@@ -419,12 +428,14 @@ class be_FormsStruct
 		$SenderType = "PERSONEL";
 		if($_SESSION["SystemCode"]=="10")
 			$SenderType = "STUDENT";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		// ابتدا در تاریخچه اضافه می شود
 
 		$query = "insert into FormsFlowHistory (FormsStructID, RecID, FromPersonID, FromStepID, ToStepID, SendDate, SenderType) ";
 		$query .= " values ('".$this->FormsStructID."', '".$RecID."', '".$SenderID."', '".$FromStepID."', '".$ToStepID."', now(), '".$SenderType."')";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		
 		if($FromStepID==0) // اگر داده جدیدا اضافه شده باشد باید ایجاد کننده آن هم در جدول نگهداری وضعیت داده بروز شود
 		{
@@ -432,8 +443,10 @@ class be_FormsStruct
 		}
 		else
 			$query = "update FormsRecords set FormFlowStepID='".$ToStepID."', SendDate=now(), SenderID='".$SenderID."', SenderType='".$SenderType."' where RelatedRecordID='".$RecID."' and FormFlowStepID='".$FromStepID."'";
-		
-                $mysql->Execute($query);
+
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 	}
 	
 	// لیست داده های مربوط به یک جدول جزییات را برای یک رکورد اصلی بر می گرداند
@@ -458,14 +471,16 @@ class be_FormsStruct
 		$RelationField = FormUtils::GetRelationField($MasterFormsStructID, $this->FormsStructID);
 	
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 
 		$query = "select * from ".$this->RelatedDB.".".$this->RelatedTable;
 		$query .= " where ".$RelationField."='".$MasterRecordID."' ";
 		if($this->SortByField!="")
 			$query .= " order by ".$this->SortByField." ".$this->SortType;
 		//$ret .= $query;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
 		// لیست داده ها در یک جدول برگردانده می شود که ستونهای آن بر اساس شماره ترتیب ذکر شده در تعریف فیلدها مرتب شده است
 		$FieldsList = manage_FormFields::GetList($this->FormsStructID, "ColumnOrder");
 		$i = 0;
@@ -485,7 +500,7 @@ class be_FormsStruct
 		if(!$PrintVersion && ($RemoveAccessType=="ALL"  || $RemoveAccessType=="ONLY_USER"))
 			$ret .= "<td width=1%>حذف</td>";
 		$ret .= "</tr>";
-		while($rec = $res->FetchRow())
+		while($rec = $res->fetch())
 		{
 			$i++;
 			if($i%2==0)
@@ -572,13 +587,15 @@ class be_FormsStruct
 	// تعداد آیتمهای ذخیره شده را با توجه به شرط داده شده بر می گرداند
 	function GetItemsCount($condition)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 
 		$query = "select count(*) from ".$this->RelatedDB.".".$this->RelatedTable;
 		if($condition!="")
 			$query .= " where ".$condition;
-		$res = $mysql->Execute($query);
-		$rec = $res->FetchRow();
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		$rec = $res->fetch();
 		return $rec[0];
 	}
 	
@@ -589,7 +606,7 @@ class be_FormsStruct
 	function CreateListOfData($EditOrRemovePageAddress, $condition, $FromRec, $ItemsPerPage)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 
 		$query = "select * from ".$this->RelatedDB.".".$this->RelatedTable;
 		if($condition!="")
@@ -599,7 +616,9 @@ class be_FormsStruct
 			$query .= " order by ".$this->SortByField." ".$this->SortType;
 		$query .= " limit $FromRec, $ItemsPerPage";
 			//$ret .= $query;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
 		// لیست داده ها در یک جدول برگردانده می شود که ستونهای آن بر اساس شماره ترتیب ذکر شده در تعریف فیلدها مرتب شده است
 		$FieldsList = manage_FormFields::GetList($this->FormsStructID, "ColumnOrder");
 		$i = 0;
@@ -618,7 +637,7 @@ class be_FormsStruct
 		$ret .= "<td width=1%>ویرایش</td>";
 		$ret .= "<td width=1%>حذف</td>";
 		$ret .= "</tr>";
-		while($rec = $res->FetchRow())
+		while($rec = $res->fetch())
 		{
 			$RecID = $rec[$this->KeyFieldName];
 			$i++;
@@ -710,10 +729,12 @@ class be_FormsStruct
 
 	function HasThisPersonAccessToManageStruct($PersonID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select * from FormManagers where FormsStructID='".$this->FormsStructID."' and PersonID='".$PersonID."' and AccessType in ('FULL', 'STRUCT')";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		if($rec=$res->fetch())
 		{
 			return true;
 		}
@@ -770,14 +791,16 @@ class manage_FormsStruct
 {
 	static function GetCount($WhereCondition="")
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select count(FormsStructID) as TotalCount from FormsStruct';
 		if($WhereCondition!="")
 		{
 			$query .= ' where '.$WhereCondition;
 		}
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		if($rec=$res->fetch())
 		{
 			return $rec["TotalCount"];
 		}
@@ -785,10 +808,12 @@ class manage_FormsStruct
 	}
 	static function GetLastID()
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = 'select max(FormsStructID) as MaxID from FormsStruct';
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		if($rec=$res->fetch())
 		{
 			return $rec["MaxID"];
 		}
@@ -796,7 +821,7 @@ class manage_FormsStruct
 	}
 	static function Add($RelatedDB, $RelatedTable, $FormTitle, $TopDescription, $ButtomDescription, $JavascriptCode, $PrintType, $PrintPageAddress, $ShowType, $ValidationExtraJavaScript)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "insert into FormsStruct (RelatedDB
 				, RelatedTable
@@ -825,7 +850,9 @@ class manage_FormsStruct
 				, '".$ShowType."'		
 				, '".$ValidationExtraJavaScript."'
 				)";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$FormID = manage_FormsStruct::GetLastID();
 		$mysql->audit("ایجاد ساختار فرم [".$FormID."]");
 		// به صورت پیش فرض دو مرحله ایجاد می کند
@@ -840,7 +867,7 @@ class manage_FormsStruct
 	}
 	static function Update($UpdateRecordID, $FormTitle, $TopDescription, $ButtomDescription, $JavascriptCode, $SortByField, $SortType, $KeyFieldName, $PrintType, $PrintPageAddress, $ShowType, $ValidationExtraJavaScript)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "update FormsStruct set FormTitle='".$FormTitle."'
 				, TopDescription='".$TopDescription."'
@@ -854,25 +881,33 @@ class manage_FormsStruct
 				, ShowType='".$ShowType."'
 				, ValidationExtraJavaScript='".$ValidationExtraJavaScript."' 
 				where FormsStructID='".$UpdateRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$mysql->audit("بروزرسانی ساختار فرم [".$UpdateRecordID."]");
 	}
 	static function Remove($RemoveRecordID)
 	{
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "delete from FormsStruct where FormsStructID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$query = "delete from FormFields where FormsStructID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$query = "delete from FormsFlowSteps where FormsStructID='".$RemoveRecordID."'";
-		$mysql->Execute($query);
+		$mysql->Prepare($query);
+		$mysql->ExecuteStatement(array());
+
 		$mysql->audit("حذف ساختار فرم [".$RemoveRecordID."]");
 	}
 	static function GetList($WhereCondition)
 	{
 		$k=0;
 		$ret = array();
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = '';
 		$query .= "select *, g2j(CreateDate) as GCreateDate, 
 					(select FormTitle from FormsStruct as DetailList
@@ -882,9 +917,11 @@ class manage_FormsStruct
 					";
 		if($WhereCondition!="") 
 			$query .= "where ".$WhereCondition;
-		$res = $mysql->Execute($query);
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
 		$i=0;
-		while($rec=$res->FetchRow())
+		while($rec=$res->fetch())
 		{
 			$ret[$k] = new be_FormsStruct();
 			$ret[$k]->FormsStructID=$rec["FormsStructID"];
@@ -915,10 +952,12 @@ class manage_FormsStruct
 	static function CreateFieldsOptions($DBName, $TableName)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "SELECT * from COLUMNS where TABLE_SCHEMA='".$DBName."' and TABLE_NAME='".$TableName."'";
-		$res = $mysql->Execute($query);
-		while($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		while($rec=$res->fetch())
 		{
 			$ret .= "<option value='".$rec["COLUMN_NAME"]."'>".$rec["COLUMN_NAME"]." (".$rec["COLUMN_COMMENT"].")";
 		}
@@ -929,10 +968,12 @@ class manage_FormsStruct
 	static function GetPrimaryKey($DBName, $TableName)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "SELECT * from COLUMNS where TABLE_SCHEMA='".$DBName."' and TABLE_NAME='".$TableName."' and COLUMN_KEY='PRI'";
-		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		if($rec=$res->fetch())
 		{
 			$ret = $rec["COLUMN_NAME"];
 		}
@@ -944,10 +985,12 @@ class manage_FormsStruct
 	static function CreateFormsStructOptions()
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "SELECT FormsStructID, FormTitle from FormsStruct order by FormTitle";
-		$res = $mysql->Execute($query);
-		while($rec=$res->FetchRow())
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		while($rec=$res->fetch())
 		{
 			$ret .= "<option value='".$rec["FormsStructID"]."'>".$rec["FormTitle"];
 		}
@@ -1007,7 +1050,7 @@ class manage_FormsStruct
 	// پارامتر پنجم مربوط به کد دسترسی امانتی به یک پرونده است و چنانچه غیر صفر باشد مرحله در نظر گرفته نمی شود و فیلدها بر اساس این پارامتر کنترل دسترسی می شوند
 	static function CreateUserInterface($FormsStructID, $StepID, $PersonID, $RelatedRecordID, $MasterFormsStructID = 0, $MasterRecordID = 0, $FileID = 0, $FileTypeUserPermittedFormID = 0, $FileTemporaryAccessListID = 0)
 	{
-                require_once("FormsFlowSteps.class.php");
+		require_once("FormsFlowSteps.class.php");
 		require_once("FormsSections.class.php");
 
 		$slist = manage_FormsSections::GetList($FormsStructID);
@@ -1020,7 +1063,7 @@ class manage_FormsStruct
 			$slist[0]->SectionName="فرم اصلی";
 			$slist[0]->ShowOrder=0;
 		}
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$CurForm = new be_FormsStruct();
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 
@@ -1073,10 +1116,10 @@ class manage_FormsStruct
 		// اگر فرم در مود ویرایش بود باید ایجاد کننده اصلی فرم مشخص شود
 		if($RelatedRecordID>0)
 		{
-			$query = "SELECT * from formsgenerator.FormsRecords where RelatedRecordID='".$RelatedRecordID."' and FormsStructID='".$CurForm->FormsStructID."'";			
-                        $res = $mysql->Execute($query);
-
-                        if($rec = $res->FetchRow())
+			$query = "SELECT * from formsgenerator.FormsRecords where RelatedRecordID='".$RelatedRecordID."' and FormsStructID='".$CurForm->FormsStructID."'";
+			$mysql->Prepare($query);
+			$res = $mysql->ExecuteStatement(array());
+            if($rec = $res->fetch())
 			{
 				$CreatorID = $rec["CreatorID"];
 				$CreatorType = $rec["CreatorType"];
@@ -1088,53 +1131,24 @@ class manage_FormsStruct
                
 		if($CreatorType=="PERSONEL")
 			$query = "SELECT * from hrmstotal.persons 
-								LEFT JOIN hrmstotal.staff using (PersonID, person_type)
-								LEFT JOIN hrmstotal.org_units on (UnitCode=org_units.ouid)
-								LEFT JOIN formsgenerator.EducationalGroups using (EduGrpCode)
-								LEFT JOIN formsgenerator.faculties on (staff.FacCode=faculties.FacCode)
-								LEFT JOIN hrmstotal.position using (post_id)  
 								where persons.PersonID='".$CreatorID."'";
 		else 
 			$query = "SELECT *,persons.PLName as plname,persons.PFName as pfname from educ.persons
 						LEFT JOIN educ.StudentSpecs using (PersonID)
-						LEFT JOIN hrmstotal.org_units on (FacCode=org_units.ouid)
 						LEFT JOIN educ.StudyFields using (FldCode)
 						LEFT JOIN educ.EducationalSections using (EduSecCode)
-						LEFT JOIN formsgenerator.EducationalGroups using (EduGrpCode)
-						LEFT JOIN formsgenerator.faculties on (StudentSpecs.FacCode=faculties.FacCode)
 						where persons.PersonID='".$CreatorID."'";
-						
-		
-                $res = $mysql->Execute($query);
-		if($rec = $res->FetchRow())
+
+
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array());
+
+		if($rec = $res->fetch())
 		{
-                        $CreatorLastName = $rec["plname"];
+            $CreatorLastName = $rec["plname"];
 			$CreatorFirstName = $rec["pfname"];
 			$CreatorPersonType = "";
 			$CreatorStNo = "";
-			if($CreatorType=="PERSONEL")
-			{
-				if($rec["person_type"]=="1")
-					$CreatorPersonType = "هیات علمی رسمی/پیمانی";
-				else if($rec["person_type"]=="2")
-					$CreatorPersonType = "کارمند رسمی/پیمانی"; 
-				else if($rec["person_type"]=="3")
-					$CreatorPersonType = "کارمند روزمزد"; 
-				else if($rec["person_type"]=="5" || $rec["person_type"]=="6")
-					$CreatorPersonType = "کارمند قراردادی"; 
-				else if($rec["person_type"]=="200")
-					$CreatorPersonType = "هیات علمی حق التدریس";
-				else if($rec["person_type"]=="300")
-					$CreatorPersonType = "کارمند پیمانکار";
-			}
-			else
-			{
-				$CreatorPersonType = "دانشجو";
-				$CreatorStNo = $rec["StNo"];
-			} 
-			$CreatorFacultyName = $rec["PFacName"];
-			$CreatorUnitName = $rec["ptitle"];
-			$CreatorEduGrpName = $rec["PEduName"];
 			$CreatorAddress = $rec["address1"];
 			$CreatorTel = $rec["home_phone1"];
 			$CreatorMobile = $rec["mobile_phone"];
@@ -1148,7 +1162,6 @@ class manage_FormsStruct
 			{
 				$CreatorNationalCode = $rec["NID"];
 				$CreatorPostname = "";
-				$CreatorSecName = $rec["PEduSecName"];
 			}
 		}
 		
@@ -1156,8 +1169,10 @@ class manage_FormsStruct
 		{
 			// در صورتیکه قرار بود اطلاعات رکوردی در فرم نمایش داده شود محتویات آن رکورد بارگذاری می شود
 			$query = "SELECT * from ".$CurForm->RelatedDB.".".$CurForm->RelatedTable." where ".$CurForm->KeyFieldName."='".$RelatedRecordID."'";
-			$res = $mysql->Execute($query);
-			$rec = $res->FetchRow();
+			$mysql->Prepare($query);
+			$res = $mysql->ExecuteStatement(array());
+
+			$rec = $res->fetch();
 		}
 		require_once("FormFields.class.php");
 		include_once("FormUtils.class.php");
@@ -1243,17 +1258,12 @@ class manage_FormsStruct
 					{
 						$labels[$j]->LabelDescription = str_replace("CreatorLastName", $CreatorLastName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorFirstName", $CreatorFirstName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorPersonType", $CreatorPersonType, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorFacultyName", $CreatorFacultyName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorUnitName", $CreatorUnitName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorEduGrpName", $CreatorEduGrpName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorAddress", $CreatorAddress, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorTel", $CreatorTel, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorMobile", $CreatorMobile, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorEmail", $CreatorEmail, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorPostName", $CreatorPostName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorNationalCode", $CreatorNationalCode, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorEduSecName", $CreatorSecName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("StudentNumber", $CreatorStNo, $labels[$j]->LabelDescription);
 					}
 					$ret .= $labels[$j]->LabelDescription;
@@ -1337,10 +1347,6 @@ class manage_FormsStruct
 					{
 						$labels[$j]->LabelDescription = str_replace("CreatorLastName", $CreatorLastName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorFirstName", $CreatorFirstName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorPersonType", $CreatorPersonType, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorFacultyName", $CreatorFacultyName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorUnitName", $CreatorUnitName, $labels[$j]->LabelDescription);
-						$labels[$j]->LabelDescription = str_replace("CreatorEduGrpName", $CreatorEduGrpName, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorAddress", $CreatorAddress, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorTel", $CreatorTel, $labels[$j]->LabelDescription);
 						$labels[$j]->LabelDescription = str_replace("CreatorMobile", $CreatorMobile, $labels[$j]->LabelDescription);
@@ -1558,7 +1564,7 @@ class manage_FormsStruct
 	static function CreatePrintableVersion($FormsStructID, $StepID, $PersonID, $RelatedRecordID, $MasterFormsStructID = 0, $MasterRecordID = 0, $FileTypeUserPermittedFormID = 0, $FileTemporaryAccessListID = 0)
 	{
 		$ret = "";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$CurForm = new be_FormsStruct();
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 
@@ -1591,8 +1597,10 @@ class manage_FormsStruct
 		if($RelatedRecordID>0)
 		{
 			$query = "SELECT * from formsgenerator.FormsRecords where RelatedRecordID='".$RelatedRecordID."' and FormsStructID='".$CurForm->FormsStructID."'";
-			$res = $mysql->Execute($query);
-			if($rec = $res->FetchRow())
+			$mysql->Prepare($query);
+			$res = $mysql->ExecuteStatement(array());
+
+			if($rec = $res->fetch())
 			{
 				$CreatorID = $rec["CreatorID"];
 				$CreatorType = $rec["CreatorType"];
@@ -1620,9 +1628,11 @@ class manage_FormsStruct
 							LEFT JOIN formsgenerator.EducationalGroups using (EduGrpCode)
 							LEFT JOIN formsgenerator.faculties on (StudentSpecs.FacCode=faculties.FacCode)
 							where persons.PersonID='".$CreatorID."'";
-							
-			$res = $mysql->Execute($query);
-			if($rec = $res->FetchRow())
+
+			$mysql->Prepare($query);
+			$res = $mysql->ExecuteStatement(array());
+
+			if($rec = $res->fetch())
 			{
 				if($CreatorType=="PERSONEL")
 				{
@@ -1680,8 +1690,10 @@ class manage_FormsStruct
 		{
 			// در صورتیکه قرار بود اطلاعات رکوردی در فرم نمایش داده شود محتویات آن رکورد بارگذاری می شود
 			$query = "SELECT * from ".$CurForm->RelatedDB.".".$CurForm->RelatedTable." where ".$CurForm->KeyFieldName."='".$RelatedRecordID."'";
-			$res = $mysql->Execute($query);
-			$rec = $res->FetchRow();
+			$mysql->Prepare($query);
+			$res = $mysql->ExecuteStatement(array());
+
+			$rec = $res->fetch();
 		}
 				
 		$FieldsList = manage_FormFields::GetList($FormsStructID, "OrderInInputForm");
@@ -1744,17 +1756,12 @@ class manage_FormsStruct
 				{
 					$labels[$j]->LabelDescription = str_replace("CreatorLastName", $CreatorLastName, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorFirstName", $CreatorFirstName, $labels[$j]->LabelDescription);
-					$labels[$j]->LabelDescription = str_replace("CreatorPersonType", $CreatorPersonType, $labels[$j]->LabelDescription);
-					$labels[$j]->LabelDescription = str_replace("CreatorFacultyName", $CreatorFacultyName, $labels[$j]->LabelDescription);
-					$labels[$j]->LabelDescription = str_replace("CreatorUnitName", $CreatorUnitName, $labels[$j]->LabelDescription);
-					$labels[$j]->LabelDescription = str_replace("CreatorEduGrpName", $CreatorEduGrpName, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorAddress", $CreatorAddress, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorTel", $CreatorTel, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorMobile", $CreatorMobile, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorEmail", $CreatorEmail, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorPostName", $CreatorPostName, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("CreatorNationalCode", $CreatorNationalCode, $labels[$j]->LabelDescription);
-					$labels[$j]->LabelDescription = str_replace("CreatorEduSecName", $CreatorSecName, $labels[$j]->LabelDescription);
 					$labels[$j]->LabelDescription = str_replace("StudentNumber", $CreatorStNo, $labels[$j]->LabelDescription);
 				}				
 				$ret .= $labels[$j]->LabelDescription;
@@ -1806,17 +1813,12 @@ class manage_FormsStruct
 					$ret .= "<i>";
 				$labels[$j]->LabelDescription = str_replace("CreatorLastName", $CreatorLastName, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorFirstName", $CreatorFirstName, $labels[$j]->LabelDescription);
-				$labels[$j]->LabelDescription = str_replace("CreatorPersonType", $CreatorPersonType, $labels[$j]->LabelDescription);
-				$labels[$j]->LabelDescription = str_replace("CreatorFacultyName", $CreatorFacultyName, $labels[$j]->LabelDescription);
-				$labels[$j]->LabelDescription = str_replace("CreatorUnitName", $CreatorUnitName, $labels[$j]->LabelDescription);
-				$labels[$j]->LabelDescription = str_replace("CreatorEduGrpName", $CreatorEduGrpName, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorAddress", $CreatorAddress, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorTel", $CreatorTel, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorMobile", $CreatorMobile, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorEmail", $CreatorEmail, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorPostName", $CreatorPostName, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("CreatorNationalCode", $CreatorNationalCode, $labels[$j]->LabelDescription);
-				$labels[$j]->LabelDescription = str_replace("CreatorEduSecName", $CreatorSecName, $labels[$j]->LabelDescription);
 				$labels[$j]->LabelDescription = str_replace("StudentNumber", $CreatorStNo, $labels[$j]->LabelDescription);
 										
 				$ret .= $labels[$j]->LabelDescription;
@@ -1841,8 +1843,10 @@ class manage_FormsStruct
 			$ret .= "امضا&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>";
 			if($CurStep->PrintPageSigniture=="WITH_NAME" && isset($_SESSION["PersonID"]))
 			{
-				$tmp = $mysql->Execute("select * from hrmstotal.persons where PersonID='".$_SESSION["PersonID"]."'");
-				$trec = $tmp->FetchRow();
+
+				$mysql->Prepare("select * from hrmstotal.persons where PersonID='".$_SESSION["PersonID"]."'");
+				$tmp = $mysql->ExecuteStatement(array());
+				$trec = $tmp->fetch();
 				$ret .= $trec["pfname"]." ".$trec["plname"];
 				$ret .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
@@ -1888,7 +1892,7 @@ class manage_FormsStruct
 		$ret = "<script>\r\n";
 		$ret .= "function CheckValidity()\r\n";
 		$ret .= "{\r\n";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$CurForm = new be_FormsStruct();
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 		$FieldsList = manage_FormFields::GetList($FormsStructID, "OrderInInputForm");
@@ -1914,7 +1918,7 @@ class manage_FormsStruct
 		$ret = "<script>\r\n";
 		$ret .= "function CheckValidity()\r\n";
 		$ret .= "{\r\n";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$CurForm = new be_FormsStruct();
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 		$FieldsList = manage_FormFields::GetList($FormsStructID, "OrderInInputForm");
@@ -1940,7 +1944,7 @@ class manage_FormsStruct
 		$ret = "<script>\r\n";
 		$ret .= "function CheckValidity()\r\n";
 		$ret .= "{\r\n";
-		$mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
+		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$CurForm = new be_FormsStruct();
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 		$FieldsList = manage_FormFields::GetList($FormsStructID, "OrderInInputForm");
@@ -1967,7 +1971,8 @@ class manage_FormsStruct
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 		if($CurForm->IsQuestionnaire=="NO")
 			return false;
-		$res = $mysql->Execute("select * from formsgenerator.TemporaryUsersAccessForms JOIN formsgenerator.TemporaryUsers using (WebUserID) where TemporaryUsersAccessForms.WebUserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."' and UserStatus='ENABLE'");
+		$mysql->Prepare("select * from formsgenerator.TemporaryUsersAccessForms JOIN formsgenerator.TemporaryUsers using (WebUserID) where TemporaryUsersAccessForms.WebUserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."' and UserStatus='ENABLE'");
+		$res = $mysql->ExecuteStatement(array());
 		if($rec = $res->fetch())
 		{
 			return true;
@@ -1982,7 +1987,8 @@ class manage_FormsStruct
 		$CurForm->LoadDataFromDatabase($FormsStructID);
 		if($CurForm->IsQuestionnaire=="NO")
 			return false;
-		$res = $mysql->Execute("select * from formsgenerator.QuestionnairesCreators where UserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."'");
+		$mysql->Prepare("select * from formsgenerator.QuestionnairesCreators where UserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."'");
+		$res = $mysql->ExecuteStatement(array());
 		if($rec = $res->fetch())
 		{
 			return true;
@@ -1998,7 +2004,8 @@ class manage_FormsStruct
 		if($CurForm->IsQuestionnaire=="NO")
 			return false;
 		//echo "select * from formsgenerator.QuestionnairesCreators where UserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."' and RelatedRecordID='".$RecID."'";
-		$res = $mysql->Execute("select * from formsgenerator.QuestionnairesCreators where UserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."' and RelatedRecordID='".$RecID."'");
+		$mysql->Prepare("select * from formsgenerator.QuestionnairesCreators where UserID='".$_SESSION["UserID"]."' and FormsStructID='".$CurForm->FormsStructID."' and RelatedRecordID='".$RecID."'");
+		$res = $mysql->ExecuteStatement(array());
 		if($rec = $res->fetch())
 		{
 			return true;
