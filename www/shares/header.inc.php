@@ -22,6 +22,7 @@
             "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n".
             "<script  src=\"https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js\" integrity=\"sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k\" crossorigin=\"anonymous\"></script>\n";
         }
+        echo "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">";
         echo "\n</head>\n";
         echo "<body ";
         if(UI_LANGUAGE=="FA")
