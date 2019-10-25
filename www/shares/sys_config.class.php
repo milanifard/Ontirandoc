@@ -1,5 +1,6 @@
 <?php
 require_once 'config.class.php';
+define("UI_LANGUAGE", "FA"); // EN or FA
 class sys_config{
 	 public static $db_server = array (
 	          "driver"   => "",
