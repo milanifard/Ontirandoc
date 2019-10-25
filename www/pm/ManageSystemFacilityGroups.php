@@ -45,39 +45,49 @@ if(isset($_REQUEST["UpdateID"]))
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 	}
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش </td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<tr>
-	<td width="1%" nowrap>
- نام 
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_GroupName" id="Item_GroupName" maxlength="145" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- شماره ترتیب
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_OrderNo" id="Item_OrderNo" maxlength="20" size="40">
-	</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="جدید">
-</td>
-</tr>
-</table>
+    <br>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <table class="table table-sm table-borderless">
+            <thead>
+                <tr class="table-info">
+                <td align="center">ایجاد/ویرایش </td>
+                </tr>
+            </thead>
+        <tr>
+        <td>
+        <table width="100%" border="0">
+        <tr>
+            <td width="1%" nowrap>
+         نام
+            </td>
+            <td nowrap>
+            <input type="text" name="Item_GroupName" id="Item_GroupName" maxlength="145" size="40">
+            </td>
+        </tr>
+        <tr>
+            <td width="1%" nowrap>
+         شماره ترتیب
+            </td>
+            <td nowrap>
+            <input type="text" name="Item_OrderNo" id="Item_OrderNo" maxlength="20" size="40">
+            </td>
+        </tr>
+        </table>
+        </td>
+        </tr>
+        <tr class="table-info">
+        <td align="center">
+        <input type="button" class="btn btn-success"  onclick="javascript: ValidateForm();" value="ذخیره">
+         <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="جدید">
+        </td>
+        </tr>
+        </table>
+    </div>
+    <div class="col-1"></div>
+</div>
+
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
 	<? echo $LoadDataJavascriptCode; ?>
@@ -101,26 +111,24 @@ if($SomeItemsRemoved)
 	$res = manage_SystemFacilityGroups::GetList(); 
 ?>
 <form id="ListForm" name="ListForm" method="post"> 
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="5">
-	
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>نام </td>
-	<td>شماره ترتیب</td>
-</tr>
+<br>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+    <table class="table table-bordered table-sm table-striped">
+        <thead class="table-info">
+            <tr>
+                <td width="1%"> </td>
+                <td width="1%">ردیف</td>
+                <td width="2%">ویرایش</td>
+                <td>نام </td>
+                <td>شماره ترتیب</td>
+            </tr>
+        </thead>
 <?
 for($k=0; $k<count($res); $k++)
 {
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
+	echo "<tr>";
 	echo "<td>";
 	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->GroupID."\">";
 	echo "</td>";
@@ -131,9 +139,9 @@ for($k=0; $k<count($res); $k++)
 	echo "</tr>";
 }
 ?>
-<tr class="FooterOfTable">
+<tr class="table-info">
 <td colspan="5" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+	<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="حذف">
 </td>
 </tr>
 </table>
