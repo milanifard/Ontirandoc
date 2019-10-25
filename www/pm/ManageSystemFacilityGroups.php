@@ -133,7 +133,7 @@ for($k=0; $k<count($res); $k++)
 	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->GroupID."\">";
 	echo "</td>";
 	echo "<td>".($k+1)."</td>";
-	echo "	<td><a href=\"ManageSystemFacilityGroups.php?UpdateID=".$res[$k]->GroupID."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+	echo "	<td><a href=\"ManageSystemFacilityGroups.php?UpdateID=".$res[$k]->GroupID."\"><i class='fas fa-edit'></i></a></td>";
 	echo "	<td>".htmlentities($res[$k]->GroupName, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	<td>".htmlentities($res[$k]->OrderNo, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "</tr>";
