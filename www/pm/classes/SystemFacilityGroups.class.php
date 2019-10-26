@@ -13,6 +13,7 @@ class be_SystemFacilityGroups
 	public $GroupID;		//
 	public $GroupName;		//
 	public $OrderNo;		//
+    public $EGroupName;
 
 	function be_SystemFacilityGroups() {}
 
@@ -26,6 +27,7 @@ class be_SystemFacilityGroups
 		{
 			$this->GroupID=$rec["GroupID"];
 			$this->GroupName=$rec["GroupName"];
+            $this->EGroupName=$rec["EGroupName"];
 			$this->OrderNo=$rec["OrderNo"];
 		}
 	}
@@ -67,18 +69,20 @@ class manage_SystemFacilityGroups
 	* @param $GroupName: نام 
 	* @param $OrderNo: شماره ترتیب
 	* @return کد داده اضافه شده	*/
-	static function Add($GroupName, $OrderNo)
+	static function Add($GroupName, $EGroupName, $OrderNo)
 	{
 		$k=0;
 		$mysql = pdodb::getInstance();
 		$query = "insert into projectmanagement.SystemFacilityGroups (";
 		$query .= " GroupName";
+        $query .= " EGroupName";
 		$query .= ", OrderNo";
 		$query .= ") values (";
-		$query .= "? , ? ";
+		$query .= "? , ? , ?";
 		$query .= ")";
 		$ValueListArray = array();
-		array_push($ValueListArray, $GroupName); 
+		array_push($ValueListArray, $GroupName);
+        array_push($ValueListArray, $EGroupName);
 		array_push($ValueListArray, $OrderNo); 
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
@@ -91,17 +95,19 @@ class manage_SystemFacilityGroups
 	* @param $GroupName: نام 
 	* @param $OrderNo: شماره ترتیب
 	* @return 	*/
-	static function Update($UpdateRecordID, $GroupName, $OrderNo)
+	static function Update($UpdateRecordID, $GroupName, $EGroupName,  $OrderNo)
 	{
 		$k=0;
 		$LogDesc = manage_SystemFacilityGroups::ComparePassedDataWithDB($UpdateRecordID, $GroupName, $OrderNo);
 		$mysql = pdodb::getInstance();
 		$query = "update projectmanagement.SystemFacilityGroups set ";
 			$query .= " GroupName=? ";
+            $query .= " EGroupName=? ";
 			$query .= ", OrderNo=? ";
 		$query .= " where GroupID=?";
 		$ValueListArray = array();
-		array_push($ValueListArray, $GroupName); 
+		array_push($ValueListArray, $GroupName);
+        array_push($ValueListArray, $EGroupName);
 		array_push($ValueListArray, $OrderNo); 
 		array_push($ValueListArray, $UpdateRecordID); 
 		$mysql->Prepare($query);
@@ -126,6 +132,7 @@ class manage_SystemFacilityGroups
 		$ret = array();
 		$query = "select SystemFacilityGroups.GroupID
 				,SystemFacilityGroups.GroupName
+				,SystemFacilityGroups.EGroupName
 				,SystemFacilityGroups.OrderNo from projectmanagement.SystemFacilityGroups order by OrderNo ";
 		$res = $mysql->Execute($query);
 		$i=0;
@@ -134,6 +141,7 @@ class manage_SystemFacilityGroups
 			$ret[$k] = new be_SystemFacilityGroups();
 			$ret[$k]->GroupID=$rec["GroupID"];
 			$ret[$k]->GroupName=$rec["GroupName"];
+            $ret[$k]->EGroupName=$rec["EGroupName"];
 			$ret[$k]->OrderNo=$rec["OrderNo"];
 			$k++;
 		}

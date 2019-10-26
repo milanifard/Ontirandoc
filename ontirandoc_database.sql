@@ -3233,6 +3233,7 @@ DROP TABLE IF EXISTS `SystemFacilities`;
 CREATE TABLE `SystemFacilities` (
   `FacilityID` int(11) NOT NULL AUTO_INCREMENT,
   `FacilityName` varchar(245) COLLATE utf8_persian_ci DEFAULT NULL,
+  `EFacilityName` varchar(245) COLLATE utf8_persian_ci DEFAULT NULL,
   `GroupID` int(11) DEFAULT NULL,
   `OrderNo` int(11) DEFAULT NULL,
   `PageAddress` varchar(345) COLLATE utf8_persian_ci DEFAULT NULL,
@@ -3250,6 +3251,7 @@ DROP TABLE IF EXISTS `SystemFacilityGroups`;
 CREATE TABLE `SystemFacilityGroups` (
   `GroupID` int(11) NOT NULL AUTO_INCREMENT,
   `GroupName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL,
+  `EGroupName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL,
   `OrderNo` int(11) DEFAULT NULL,
   PRIMARY KEY (`GroupID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
@@ -4421,7 +4423,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `SystemFacilityGroups` WRITE;
 /*!40000 ALTER TABLE `SystemFacilityGroups` DISABLE KEYS */;
-INSERT INTO `SystemFacilityGroups` VALUES (1,'مدیریت',1),(2,'مدیریت پروژه',2),(3,'هستان نگار',5),(4,'مکاتبات',4),(5,'گزارشات',10),(6,'مدیریت جلسات',6),(7,'پرسشنامه الکترونیکی',7);
+INSERT INTO `SystemFacilityGroups` VALUES (1,'مدیریت','Administration',1),(2,'مدیریت پروژه','Project Management', 2),(3,'هستان نگار','Ontology',5),(4,'مکاتبات','Communication',4),(5,'گزارشات','Report',10),(6,'مدیریت جلسات','Session Management',6),(7,'پرسشنامه الکترونیکی','e-questionnaire',7);
 /*!40000 ALTER TABLE `SystemFacilityGroups` ENABLE KEYS */;
 UNLOCK TABLES;
 

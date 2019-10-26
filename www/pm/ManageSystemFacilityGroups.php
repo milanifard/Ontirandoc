@@ -14,9 +14,11 @@ if(isset($_REQUEST["Save"]))
 		$Item_GroupName=$_REQUEST["Item_GroupName"];
 	if(isset($_REQUEST["Item_OrderNo"]))
 		$Item_OrderNo=$_REQUEST["Item_OrderNo"];
-	if(!isset($_REQUEST["UpdateID"])) 
+    if(isset($_REQUEST["Item_EGroupName"]))
+        $Item_OrderNo=$_REQUEST["Item_EGroupName"];
+	if(!isset($_REQUEST["UpdateID"]))
 	{	
-		manage_SystemFacilityGroups::Add($Item_GroupName
+		manage_SystemFacilityGroups::Add($Item_GroupName, $Item_EGroupName
 				, $Item_OrderNo
 				);
 	}	
@@ -24,17 +26,19 @@ if(isset($_REQUEST["Save"]))
 	{	
 		manage_SystemFacilityGroups::Update($_REQUEST["UpdateID"] 
 				, $Item_GroupName
+            , $Item_EGroupName
 				, $Item_OrderNo
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 if(isset($_REQUEST["UpdateID"])) 
 {	
 	$obj = new be_SystemFacilityGroups();
 	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]); 
-	$LoadDataJavascriptCode .= "document.f1.Item_GroupName.value='".htmlentities($obj->GroupName, ENT_QUOTES, 'UTF-8')."'; \r\n "; 
+	$LoadDataJavascriptCode .= "document.f1.Item_GroupName.value='".htmlentities($obj->GroupName, ENT_QUOTES, 'UTF-8')."'; \r\n ";
+    $LoadDataJavascriptCode .= "document.f1.Item_EGroupName.value='".htmlentities($obj->EGroupName, ENT_QUOTES, 'UTF-8')."'; \r\n ";
 	$LoadDataJavascriptCode .= "document.f1.Item_OrderNo.value='".htmlentities($obj->OrderNo, ENT_QUOTES, 'UTF-8')."'; \r\n "; 
 }	
 ?>
@@ -52,7 +56,7 @@ if(isset($_REQUEST["UpdateID"]))
         <table class="table table-sm table-borderless">
             <thead>
                 <tr class="table-info">
-                <td align="center">ایجاد/ویرایش </td>
+                <td align="center"><? echo C_CREATE."/".C_EDIT ?></td>
                 </tr>
             </thead>
         <tr>
@@ -60,7 +64,7 @@ if(isset($_REQUEST["UpdateID"]))
         <table width="100%" border="0">
         <tr>
             <td width="1%" nowrap>
-         نام
+                <? echo C_NAME." (".C_PERSIAN.")";; ?>
             </td>
             <td nowrap>
             <input type="text" name="Item_GroupName" id="Item_GroupName" maxlength="145" size="40">
@@ -68,7 +72,15 @@ if(isset($_REQUEST["UpdateID"]))
         </tr>
         <tr>
             <td width="1%" nowrap>
-         شماره ترتیب
+                <? echo C_NAME." (".C_ENGLISH.")";; ?>
+            </td>
+            <td nowrap>
+                <input type="text" name="Item_EGroupName" id="Item_EGroupName" maxlength="145" size="40">
+            </td>
+        </tr>
+        <tr>
+            <td width="1%" nowrap>
+                <? echo C_ORDER; ?>
             </td>
             <td nowrap>
             <input type="text" name="Item_OrderNo" id="Item_OrderNo" maxlength="20" size="40">
@@ -79,8 +91,8 @@ if(isset($_REQUEST["UpdateID"]))
         </tr>
         <tr class="table-info">
         <td align="center">
-        <input type="button" class="btn btn-success"  onclick="javascript: ValidateForm();" value="ذخیره">
-         <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="جدید">
+        <input type="button" class="btn btn-success"  onclick="javascript: ValidateForm();" value="<? echo C_SAVE; ?>">
+         <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
         </td>
         </tr>
         </table>
@@ -119,10 +131,11 @@ if($SomeItemsRemoved)
         <thead class="table-info">
             <tr>
                 <td width="1%"> </td>
-                <td width="1%">ردیف</td>
-                <td width="2%">ویرایش</td>
-                <td>نام </td>
-                <td>شماره ترتیب</td>
+                <td width="1%"><? echo C_ROW; ?></td>
+                <td width="2%"><? echo C_EDIT; ?></td>
+                <td><? echo C_NAME." (".C_ENGLISH.")"; ?></td>
+                <td><? echo C_NAME." (".C_PERSIAN.")"; ?></td>
+                <td><? echo C_ORDER; ?></td>
             </tr>
         </thead>
 <?
@@ -134,14 +147,15 @@ for($k=0; $k<count($res); $k++)
 	echo "</td>";
 	echo "<td>".($k+1)."</td>";
 	echo "	<td><a href=\"ManageSystemFacilityGroups.php?UpdateID=".$res[$k]->GroupID."\"><i class='fas fa-edit'></i></a></td>";
-	echo "	<td>".htmlentities($res[$k]->GroupName, ENT_QUOTES, 'UTF-8')."</td>";
+    echo "	<td>".htmlentities($res[$k]->EGroupName, ENT_QUOTES, 'UTF-8')."</td>";
+    echo "	<td>".htmlentities($res[$k]->GroupName, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	<td>".htmlentities($res[$k]->OrderNo, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "</tr>";
 }
 ?>
 <tr class="table-info">
-<td colspan="5" align="center">
-	<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="حذف">
+<td colspan="6" align="center">
+	<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE; ?>">
 </td>
 </tr>
 </table>
@@ -151,7 +165,7 @@ for($k=0; $k<count($res); $k++)
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 }
 </script>
 </html>

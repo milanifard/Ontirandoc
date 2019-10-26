@@ -1,6 +1,5 @@
 <? 
 include "header.inc.php";
-include "FormsGeneratorDB.class.php";  
 $mysql = pdodb::getInstance();
 
 $now = date("Ymd"); 

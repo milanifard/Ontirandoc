@@ -4,11 +4,13 @@
 	include "DateUtils.inc";
 	include "SharedClass.class.php";
 
-	function HTMLBegin($bgcolor = '#C8DEF0')
+	function HTMLBegin($bgcolor = '#C8DEF0', $AddDocType=TRUE)
     {
-        echo "<!DOCTYPE html>\n<html>\n<head>\n" .
-
-        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n".
+        if($AddDocType==TRUE)
+            echo "<!DOCTYPE html>\n<html>\n<head>\n" ;
+        else
+            echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">";
+        echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n".
         "<link rel=\"stylesheet\"  href=\"css/login.css\" type=\"text/css\">\n";
         if (UI_LANGUAGE == "EN") {
             echo "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n".

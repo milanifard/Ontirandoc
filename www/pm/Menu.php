@@ -17,7 +17,7 @@
 </style>
 <link rel="stylesheet"  href="css/right.css" type="text/css">
 </head>
-<body  dir=rtl link="#0000FF" alink="#0000FF" vlink="#0000FF">
+<body  <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> link="#0000FF" alink="#0000FF" vlink="#0000FF">
 <table cellspacing=0 cellpadding=3 >
 <tr>
 <td>
@@ -40,7 +40,7 @@
 </td>
 </tr>
 </table>
-<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" dir="rtl" height="15">
+<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> height="15">
 <tr>
 	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="HomePage.php"'>صفحه اول</a></td>
 </tr>
@@ -69,9 +69,9 @@
 	<table width=100% border=0 cellpadding=0 cellspacing=0 class="navbar_main" height="25">	
 	<tr>
 		<td  width='25'>&nbsp;</td>
-		<td align='right'>
+		<td <? if(UI_LANGUAGE=="FA") echo "align=right"; ?>>
 		<a href='#' onclick='javascript: ExpandOrColapse("tr_<?php echo $grec["GroupID"] ?>")'>
-		<b><?php echo $grec["GroupName"]; ?></b>
+		<b><?php if(UI_LANGUAGE=="FA") echo $grec["GroupName"]; else echo $grec["EGroupName"]; ?></b>
 		</a>
 		</td>
 	</tr>
@@ -80,7 +80,7 @@
 </tr>
 <tr id=tr_<?php echo $grec["GroupID"] ?> style="display: none">
 <td>
-	<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" dir="rtl" height="15">
+	<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> height="15">
 		<?php 
 			$res = $mysql->Execute("select * from SystemFacilities JOIN UserFacilities using (FacilityID) where UserID='".$_SESSION["UserID"]."' and GroupID=".$grec["GroupID"]." order by OrderNo");
 			
