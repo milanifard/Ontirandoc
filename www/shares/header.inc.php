@@ -1,5 +1,6 @@
 <?php
 	include "sys_config.class.php";
+    include "definitions.php";
 	include "DateUtils.inc";
 	include "SharedClass.class.php";
 
