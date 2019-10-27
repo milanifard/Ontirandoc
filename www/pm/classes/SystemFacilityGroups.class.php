@@ -75,7 +75,7 @@ class manage_SystemFacilityGroups
 		$mysql = pdodb::getInstance();
 		$query = "insert into projectmanagement.SystemFacilityGroups (";
 		$query .= " GroupName";
-        $query .= " EGroupName";
+        $query .= ", EGroupName";
 		$query .= ", OrderNo";
 		$query .= ") values (";
 		$query .= "? , ? , ?";

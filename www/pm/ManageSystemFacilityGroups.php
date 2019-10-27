@@ -49,19 +49,19 @@ if(isset($_REQUEST["UpdateID"]))
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 	}
 ?>
-    <br>
+<br>
 <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
         <table class="table table-sm table-borderless">
             <thead>
                 <tr class="table-info">
-                <td align="center"><? echo C_CREATE."/".C_EDIT ?></td>
+                <td class="text-center"><? echo C_CREATE."/".C_EDIT ?></td>
                 </tr>
             </thead>
         <tr>
         <td>
-        <table width="100%" border="0">
+        <table>
         <tr>
             <td width="1%" nowrap>
                 <? echo C_NAME." (".C_PERSIAN.")";; ?>
@@ -91,7 +91,7 @@ if(isset($_REQUEST["UpdateID"]))
         </tr>
         <tr class="table-info">
         <td align="center">
-        <input type="button" class="btn btn-success"  onclick="javascript: ValidateForm();" value="<? echo C_SAVE; ?>">
+        <input type="submit" class="btn btn-success"  value="<? echo C_SAVE; ?>">
          <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
         </td>
         </tr>
@@ -103,10 +103,6 @@ if(isset($_REQUEST["UpdateID"]))
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
 	<? echo $LoadDataJavascriptCode; ?>
-	function ValidateForm()
-	{
-		document.f1.submit();
-	}
 </script>
 <?php 
 $res = manage_SystemFacilityGroups::GetList(); 
