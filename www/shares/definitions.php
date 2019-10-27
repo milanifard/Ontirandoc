@@ -12,9 +12,15 @@ if(UI_LANGUAGE=="EN") {
     define("C_EDIT", "Edit");
     define("C_PERSIAN", "Persian");
     define("C_ENGLISH", "English");
+    define("C_EXIT", "Exit");
 
     define("C_DATA_SAVE_SUCCESS", "Data saved successfully");
     define("C_ARE_YOU_SURE", "Are you sure?");
+    define("C_ACTIVE_USER", "Active User: ");
+    define("C_MAIN_MENU", "Main Menu");
+    define("C_FIRST_PAGE", "Home");
+    define("C_CHANGE_PASSWORD", "Change Password");
+    define("C_MY_ACTIONS", "My Actions");
 }
 else
 {
@@ -31,6 +37,12 @@ else
 
     define("C_DATA_SAVE_SUCCESS", "اطلاعات با موفقیت ذخیره شد");
     define("C_ARE_YOU_SURE", "مطمئن هستید؟");
+    define("C_ACTIVE_USER", "کاربر فعال: ");
+    define("C_MAIN_MENU", "منوی اصلی");
+    define("C_FIRST_PAGE", "صفحه اول");
+    define("C_CHANGE_PASSWORD", "تغییر رمز عبور");
+    define("C_MY_ACTIONS", "اقدامات من");
+    define("C_EXIT", "خروج");
 }
 
 ?>

@@ -21,10 +21,16 @@
 <table cellspacing=0 cellpadding=3 >
 <tr>
 <td>
-<?php echo PASUtils::FarsiDayName(date("l"))." ".$CurYear."/".$mm."/".$dd."<br>" ?>
+<?php
+if(UI_LANGUAGE=="FA")
+    echo PASUtils::FarsiDayName(date("l"))." ".$CurYear."/".$mm."/".$dd;
+else
+    echo date("F j, Y, g:i a");
+?>
+    <br>
 </td>
 </tr>
-<tr><td>کاربر فعال: <b><?php  echo $_SESSION["UserName"] ?></b></td></tr>
+<tr><td><? echo C_ACTIVE_USER; ?><b><?php  echo $_SESSION["UserName"] ?></b></td></tr>
 </table>
 <table style='cursor:pointer' border=0 cellpadding=0 cellspacing=0 width=185>
 <tr>
@@ -32,7 +38,7 @@
 	<table width=100% border=0 cellpadding=0 cellspacing=0 class="navbar_main" height="25">	
 	<tr>
 		<td width='85%' align='center'>
-		<font color="#FFFFFF"><b>منوهای اصلی</b></font>
+		<font color="#FFFFFF"><b><? echo C_MAIN_MENU ?></b></font>
 		</td>
 		<td  width='20%'>&nbsp;</td>
 	</tr>
@@ -42,16 +48,16 @@
 </table>
 <table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> height="15">
 <tr>
-	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="HomePage.php"'>صفحه اول</a></td>
+	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="HomePage.php"'><? echo C_FIRST_PAGE ?></a></td>
 </tr>
 <tr>
-	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="ChangePassword.php"'>تغییر رمز عبور</a></td>
+	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="ChangePassword.php"'><? echo C_CHANGE_PASSWORD ?></a></td>
 </tr>
 <tr>
-	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="MyActions.php"'>کارهایی که انجام دادم</a></td>
+	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="MyActions.php"'><? echo C_MY_ACTIONS ?></a></td>
 </tr>
 <tr>
-	<td width='83%' height='18'><a href='javascript: parent.document.location="SignOut.php?logout=1"'>خروج</a></td>
+	<td width='83%' height='18'><a href='javascript: parent.document.location="SignOut.php?logout=1"'><? echo C_EXIT ?></a></td>
 </tr>
 </table>
 <?php 
@@ -93,7 +99,11 @@
 				else
 				  echo "<a href='#' onclick='javascript: parent.document.getElementById(\"MainContent\").src=\"".$rec["PageAddress"]."\"'>";
 				echo "&nbsp;";
-				echo $rec["FacilityName"]."</a></td>";
+                if(UI_LANGUAGE=="FA")
+                    echo $rec["FacilityName"];
+                else
+                    echo $rec["EFacilityName"];
+                echo "</a></td>";
 				echo "</tr>";
 			}
 		?>

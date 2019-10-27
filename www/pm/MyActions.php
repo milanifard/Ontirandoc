@@ -3,7 +3,7 @@ include("header.inc.php");
 include("PAS_shared_utils.php");
 
 HTMLBegin();
-$mysql = dbclass::getInstance();
+$mysql = pdodb::getInstance();
 $FromRec = 0;
 if(isset($_REQUEST["FromRec"]))
 	$FromRec = $_REQUEST["FromRec"];
@@ -11,13 +11,13 @@ $ItemsCount = 15;
 $query = "select count(ATS) from projectmanagement.SysAudit where UserID='".$_SESSION["UserID"]."' ";
 $res = $mysql->Execute($query);
 $TotalCount = 0;
-if($rec = $res->FetchRow())
+if($rec = $res->fetch())
 	$TotalCount = $rec[0];
 $query = "select *, concat(g2j(ATS), ' ', substr(ATS, 12,5)) as gATS from projectmanagement.SysAudit where UserID='".$_SESSION["UserID"]."' order by ATS DESC limit $FromRec, $ItemsCount";
 $list = "";
 $res = $mysql->Execute($query);
 $i = 0;
-while($rec = $res->FetchRow())
+while($rec = $res->fetch())
 {
 	$i++;
 	if($i%2==0)
