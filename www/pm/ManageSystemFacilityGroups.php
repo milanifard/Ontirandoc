@@ -64,23 +64,29 @@ if(isset($_REQUEST["UpdateID"]))
         <table>
         <tr>
             <td width="1%" nowrap>
+                <label for="Item_GroupName">
                 <? echo C_NAME." (".C_PERSIAN.")";; ?>
+                </label>
             </td>
             <td nowrap>
-            <input type="text" name="Item_GroupName" id="Item_GroupName" maxlength="145" size="40">
+            <input type="text" name="Item_GroupName" id="Item_GroupName" maxlength="145" size="40" required>
             </td>
         </tr>
         <tr>
             <td width="1%" nowrap>
+                <label for="Item_EGroupName">
                 <? echo C_NAME." (".C_ENGLISH.")";; ?>
+                </label>
             </td>
             <td nowrap>
-                <input type="text" name="Item_EGroupName" id="Item_EGroupName" maxlength="145" size="40">
+                <input type="text" name="Item_EGroupName" id="Item_EGroupName" maxlength="145" size="40" required>
             </td>
         </tr>
         <tr>
             <td width="1%" nowrap>
+                <label for="Item_OrderNo">
                 <? echo C_ORDER; ?>
+                </label>
             </td>
             <td nowrap>
             <input type="text" name="Item_OrderNo" id="Item_OrderNo" maxlength="20" size="40">
@@ -92,7 +98,7 @@ if(isset($_REQUEST["UpdateID"]))
         <tr class="table-info">
         <td align="center">
         <input type="submit" class="btn btn-success"  value="<? echo C_SAVE; ?>">
-         <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
+         <input type="button" class="btn btn-info" onclick="document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
         </td>
         </tr>
         </table>
@@ -151,7 +157,7 @@ for($k=0; $k<count($res); $k++)
 ?>
 <tr class="table-info">
 <td colspan="6" align="center">
-	<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE; ?>">
+	<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="<? echo C_REMOVE; ?>">
 </td>
 </tr>
 </table>
