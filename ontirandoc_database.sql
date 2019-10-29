@@ -4443,7 +4443,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `SpecialPages` WRITE;
 /*!40000 ALTER TABLE `SpecialPages` DISABLE KEYS */;
-INSERT INTO `SpecialPages` VALUES (1,'/main.php'),(2,'/ManagerDesktop.php'),(3,'/HomePage.php'),(4,'/ChangePassword.php'),(5,'/Menu.php'),(6,'/MyActions.phpp'),(7,'/MyActions.php'),(8,'/DownloadFile.php'),(9,'/FillQuestionnaire.php'),(10,'/ViewQuestionnaire.php'),(11,'/ShowQuestionnaireDetailTable.php'),(12,'/PrintQuestionnaireData.php'),(13,'/ShowPersonPhoto.php');
+INSERT INTO `SpecialPages` VALUES (1,'/main.php'),(2,'/ManagerDesktop.php'),(3,'/HomePage.php'),(4,'/ChangePassword.php'),(5,'/Menu.php'),(6,'/MyActions.phpp'),(7,'/MyActions.php'),(8,'/DownloadFile.php'),(9,'/FillQuestionnaire.php'),(10,'/ViewQuestionnaire.php'),(11,'/ShowQuestionnaireDetailTable.php'),(12,'/PrintQuestionnaireData.php'),(13,'/ShowPersonPhoto.php'),(14,'/TestApp.php');
 /*!40000 ALTER TABLE `SpecialPages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
