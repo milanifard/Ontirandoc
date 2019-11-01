@@ -2,7 +2,7 @@
 A web-based ontology development tools
 
 Installation guide:
-0- extract ontirandoc_database.rar, wordnet.rar, ferdowsnet.rar
+0- extract ontirandoc_database.rar, wordnet.rar, ferdowsnet.rar<br>
 1- create database (using ontirandoc_database.sql)
 2- populate wordnet and ferdowsnet databases (using wordnet.sql and ferdowsnet.sql)
 3- copy web files in wwwroot
