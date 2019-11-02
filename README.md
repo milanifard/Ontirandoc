@@ -1,4 +1,5 @@
 # Ontirandoc
+![ontorandoc architechture](https://github.com/milanifard/Ontirandoc/blob/master/Ontirandoc.png)
 A web-based ontology development tools
 
 ## Installation guide:
