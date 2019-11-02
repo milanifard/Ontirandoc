@@ -1,4 +1,7 @@
-# Ontirandoc
+# Ontirandoc, an Integrated Methodology for Ontology Construction
+we designed a tentative model of an integrated system, called Ontirandoc, which can be used for ontology construction from three types of knowledge sources. Ontirandoc is not only a tool for creating and editing ontology files, but also a methodology that contains detailed process guideline, methods, algorithms, and an integrated modular software to support the process.
+#
+
 ![ontorandoc architechture](https://github.com/milanifard/Ontirandoc/blob/master/Ontirandoc.png)
 A web-based ontology development tools
 
