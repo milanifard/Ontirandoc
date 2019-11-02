@@ -103,5 +103,5 @@ In addition to checking validity of ontology by applying above approaches, we de
 
 8- use login.php page for login (default username: omid, password: omid3000)
 
-** This software has a persian user manual: OntirandocUserManual.docx
+** This software has a persian user manual: [OntirandocUserManual.docx](https://github.com/milanifard/Ontirandoc/blob/master/OntirandocUserManual.docx)
 
