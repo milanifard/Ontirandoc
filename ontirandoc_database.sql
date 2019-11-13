@@ -10,6 +10,8 @@ create database ferdowsnet char set utf8 collate utf8_persian_ci;
 
 create database formsgenerator char set utf8 collate utf8_persian_ci;
 
+create database mis char set utf8 collate utf8_persian_ci;
+
 use formsgenerator;
 
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
@@ -4180,140 +4182,6 @@ UNLOCK TABLES;
 
 use projectmanagement;
 
---
--- Dumping routines for database 'projectmanagement'
---
-/*!50003 DROP FUNCTION IF EXISTS `g2j` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-CREATE FUNCTION `g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
-    DETERMINISTIC
-BEGIN
-declare gy,gm,gd    int ;
-declare  g_day_no   int ;
-declare  i  int;
-
-declare j_day_no ,  j_np ,  jy , jm , jd  int ;
-set gy  = year(_edate)-1600;
-set gm = month(_edate)-1;
-set gd  = day(_edate)-1;
-
-if  (year(_edate) < 1900  or year(_edate) > 2100  )  or (month(_edate) <1  or month(_edate)  > 12 )   or  (day(_edate) < 1 or day(_edate) > 31 )  then
-return 'date-error';
-end if;
-
-set g_day_no = 365 * gy + floor((gy+3) /  4) - floor((gy+99) / 100) + floor((gy+399)/ 400);
-
-set i=0;
-while i < gm do
-  set g_day_no=g_day_no+(select  emon from EMonArray  where _id=i+1);
-  set i = i + 1;
-end while;
-if  gm >1  and ((gy % 4 =0 and gy % 100 !=0)  or  (gy%400=0))   then
-  set g_day_no = g_day_no + 1 ;
-end if;
-set  g_day_no = g_day_no + gd;
-set  j_day_no =  g_day_no-79;
-set  j_np = floor(j_day_no /  12053);
-set  j_day_no = j_day_no % 12053;
-set  jy = 979+33 *  j_np + 4  *  floor(j_day_no /  1461);
-set j_day_no = j_day_no % 1461;
-
-if   j_day_no >= 366  then
-  set jy = jy + floor((j_day_no-1) /  365);
-  set j_day_no = (j_day_no-1) % 365;
-end if;
-
-set  i=0;
-while  i < 11  and j_day_no >=  ( select fmon from FMonArray  where _id= i + 1)  do
-  set j_day_no = j_day_no - ( select fmon from FMonArray  where _id = i + 1);
-  set  i = i + 1;
-end while;
-
-set jm = i+1;
-set jd = j_day_no+1;
-
-return  concat_ws('/',jy,if(jm < 10 , concat('0',jm) , jm)    ,if(jd < 10 , concat('0',jd) , jd ));
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP FUNCTION IF EXISTS `j2g` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-CREATE FUNCTION `j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
-    DETERMINISTIC
-BEGIN
-
-declare  jy,jm,jd  int ;
-declare  j_day_no , g_day_no   , gy,gm,gd  int ;
-declare  i int ;
-declare  leap  bool;
-
-if  (j_y < 1300  or  j_y > 1450  )  or (j_m <1  or j_m  > 12 )   or  (j_d < 1 or j_d > 31 )  then
-return 'date-error';
-end if;
-
-
-set  jy = j_y-979;
-set  jm = j_m-1;
-set  jd = j_d-1;
-
-set j_day_no = 365 * jy + floor(jy/33) * 8 + floor(((jy%33)+3) /  4);
-set i  = 0;
-while  i < jm  do
-  set j_day_no = j_day_no + (select fmon from FMonArray  where  _id=i+1);
-  set i = i+1;
-end while;
-set  j_day_no = j_day_no + jd;
-set  g_day_no = j_day_no+79;
-set  gy = 1600 + 400 *  floor(g_day_no /  146097);
-set  g_day_no = g_day_no % 146097;
-set  leap = true;
-if  g_day_no >= 36525  then   
-  set g_day_no = g_day_no - 1;
-  set gy = gy + 100 * floor(g_day_no /  36524);
-  set g_day_no = g_day_no % 36524;
-  if  g_day_no >= 365  then
-    set g_day_no  =  g_day_no + 1;
-  else
-    set leap = false;
-  end if;
-end if;
-set gy = gy + 4 *  floor(g_day_no / 1461);
-set g_day_no = g_day_no % 1461;
-if  g_day_no >= 366  then
-  set leap = false;
-  set g_day_no = g_day_no - 1 ;
-  set gy = gy + floor(g_day_no /  365);
-  set g_day_no = g_day_no % 365;
-end if;
-set  i = 0;
-while  g_day_no >= ( select  emon from EMonArray  where _id = i + 1 ) + ( select if(i = 1 and  leap = true , 1 , 0) )   do
-  set g_day_no = g_day_no - (( select  emon from EMonArray  where _id = i + 1)  + ( select if ( i = 1 and  leap= true ,1,0)));
-  set i = i + 1;
-end while;
-set gm = i+1;
-set gd = g_day_no+1;
-return  concat_ws('-',gy , gm , gd );
-END ;;
-DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -4458,6 +4326,143 @@ UNLOCK TABLES;
 
 -- Dump completed on 2018-09-02 17:17:35
 
+--
+-- Dumping routines for database 'projectmanagement'
+--
+/*!50003 DROP FUNCTION IF EXISTS `g2j` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE FUNCTION `g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
+    DETERMINISTIC
+BEGIN
+declare gy,gm,gd    int ;
+declare  g_day_no   int ;
+declare  i  int;
+
+declare j_day_no ,  j_np ,  jy , jm , jd  int ;
+set gy  = year(_edate)-1600;
+set gm = month(_edate)-1;
+set gd  = day(_edate)-1;
+
+if  (year(_edate) < 1900  or year(_edate) > 2100  )  or (month(_edate) <1  or month(_edate)  > 12 )   or  (day(_edate) < 1 or day(_edate) > 31 )  then
+return 'date-error';
+end if;
+
+set g_day_no = 365 * gy + floor((gy+3) /  4) - floor((gy+99) / 100) + floor((gy+399)/ 400);
+
+set i=0;
+while i < gm do
+  set g_day_no=g_day_no+(select  emon from EMonArray  where _id=i+1);
+  set i = i + 1;
+end while;
+if  gm >1  and ((gy % 4 =0 and gy % 100 !=0)  or  (gy%400=0))   then
+  set g_day_no = g_day_no + 1 ;
+end if;
+set  g_day_no = g_day_no + gd;
+set  j_day_no =  g_day_no-79;
+set  j_np = floor(j_day_no /  12053);
+set  j_day_no = j_day_no % 12053;
+set  jy = 979+33 *  j_np + 4  *  floor(j_day_no /  1461);
+set j_day_no = j_day_no % 1461;
+
+if   j_day_no >= 366  then
+  set jy = jy + floor((j_day_no-1) /  365);
+  set j_day_no = (j_day_no-1) % 365;
+end if;
+
+set  i=0;
+while  i < 11  and j_day_no >=  ( select fmon from FMonArray  where _id= i + 1)  do
+  set j_day_no = j_day_no - ( select fmon from FMonArray  where _id = i + 1);
+  set  i = i + 1;
+end while;
+
+set jm = i+1;
+set jd = j_day_no+1;
+
+return  concat_ws('/',jy,if(jm < 10 , concat('0',jm) , jm)    ,if(jd < 10 , concat('0',jd) , jd ));
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `j2g` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE FUNCTION `j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
+    DETERMINISTIC
+BEGIN
+
+declare  jy,jm,jd  int ;
+declare  j_day_no , g_day_no   , gy,gm,gd  int ;
+declare  i int ;
+declare  leap  bool;
+
+if  (j_y < 1300  or  j_y > 1450  )  or (j_m <1  or j_m  > 12 )   or  (j_d < 1 or j_d > 31 )  then
+return 'date-error';
+end if;
+
+
+set  jy = j_y-979;
+set  jm = j_m-1;
+set  jd = j_d-1;
+
+set j_day_no = 365 * jy + floor(jy/33) * 8 + floor(((jy%33)+3) /  4);
+set i  = 0;
+while  i < jm  do
+  set j_day_no = j_day_no + (select fmon from FMonArray  where  _id=i+1);
+  set i = i+1;
+end while;
+set  j_day_no = j_day_no + jd;
+set  g_day_no = j_day_no+79;
+set  gy = 1600 + 400 *  floor(g_day_no /  146097);
+set  g_day_no = g_day_no % 146097;
+set  leap = true;
+if  g_day_no >= 36525  then
+  set g_day_no = g_day_no - 1;
+  set gy = gy + 100 * floor(g_day_no /  36524);
+  set g_day_no = g_day_no % 36524;
+  if  g_day_no >= 365  then
+    set g_day_no  =  g_day_no + 1;
+  else
+    set leap = false;
+  end if;
+end if;
+set gy = gy + 4 *  floor(g_day_no / 1461);
+set g_day_no = g_day_no % 1461;
+if  g_day_no >= 366  then
+  set leap = false;
+  set g_day_no = g_day_no - 1 ;
+  set gy = gy + floor(g_day_no /  365);
+  set g_day_no = g_day_no % 365;
+end if;
+set  i = 0;
+while  g_day_no >= ( select  emon from EMonArray  where _id = i + 1 ) + ( select if(i = 1 and  leap = true , 1 , 0) )   do
+  set g_day_no = g_day_no - (( select  emon from EMonArray  where _id = i + 1)  + ( select if ( i = 1 and  leap= true ,1,0)));
+  set i = i + 1;
+end while;
+set gm = i+1;
+set gd = g_day_no+1;
+return  concat_ws('-',gy , gm , gd );
+END ;;
+DELIMITER ;
+
+
+
 CREATE TABLE `projectmanagement`.`org_units` (
   `ouid` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   `ptitle` VARCHAR(45) NOT NULL,
@@ -4502,7 +4507,6 @@ ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `EstimatedStartTime
 )
 ENGINE = InnoDB
 COMMENT = 'ارجاعات کارها';
-
 
 DROP TABLE IF EXISTS `mis`.`MIS_TableChangeLog`;
 CREATE TABLE  `mis`.`MIS_TableChangeLog` (
