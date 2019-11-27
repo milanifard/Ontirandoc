@@ -102,7 +102,7 @@ class manage_SystemFacilityGroups
 		$mysql = pdodb::getInstance();
 		$query = "update projectmanagement.SystemFacilityGroups set ";
 			$query .= " GroupName=? ";
-            $query .= " EGroupName=? ";
+            $query .= ", EGroupName=? ";
 			$query .= ", OrderNo=? ";
 		$query .= " where GroupID=?";
 		$ValueListArray = array();
