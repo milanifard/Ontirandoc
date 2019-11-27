@@ -118,9 +118,11 @@ class dbclass {
 		return $this->adodb->qstr($_str);
 	}
 	function audit($task) {
-		
+		$Ipaddr = $_SESSION['LIPAddress'];
+		if($Ipaddr=="")
+			$Ipaddr = 0;
 		$this->adodb->Execute("insert into SysAudit (UserID, ActionDesc, IPAddress) " .
-		"                  values('{$_SESSION['UserID']}', '$task', '{$_SESSION['LIPAddress']}') ");
+		"                  values('{$_SESSION['UserID']}', '$task', '".$Ipaddr."') ");
 		/*		$this->adodb->Execute("insert into SysAudit (UserID, ActionDesc) " .
 		"                  values('{$_SESSION['UserID']}', '$task') ");
 		*/
