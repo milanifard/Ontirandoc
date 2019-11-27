@@ -3,6 +3,7 @@
 	session_start();
 	function getRealIpAddr()
 	{
+	    $ip = 0;
 	    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
 	    {
 	      $ip=$_SERVER['HTTP_CLIENT_IP'];
@@ -33,7 +34,8 @@
 			$_SESSION["PersonID"] = $trec["PersonID"];
 			$_SESSION["UserName"] = $trec["pfname"]." ".$trec["plname"];
 			$_SESSION["LIPAddress"] = ip2long(getRealIpAddr());
-
+            if($_SESSION["LIPAddress"]=="")
+                $_SESSION["LIPAddress"] = "0";
 			if(isset($_REQUEST["Referer"]))
 			  echo "<script>document.location='".$_REQUEST["Referer"]."';</script>";
 			else
