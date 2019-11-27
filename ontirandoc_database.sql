@@ -1,3 +1,11 @@
+drop database if exists projectmanagement;
+drop database if exists sessionmanagement;
+drop database if exists baseinfo;
+drop database if exists wordnet;
+drop database if exists ferdowsnet;
+drop database if exists formsgenerator;
+drop database if exists mis;
+
 create database projectmanagement char set utf8 collate utf8_persian_ci;
 
 create database sessionmanagement char set utf8 collate utf8_persian_ci;
@@ -9,6 +17,8 @@ create database wordnet char set utf8 collate utf8_persian_ci;
 create database ferdowsnet char set utf8 collate utf8_persian_ci;
 
 create database formsgenerator char set utf8 collate utf8_persian_ci;
+
+create database mis char set utf8 collate utf8_persian_ci;
 
 use formsgenerator;
 
@@ -138,19 +148,6 @@ CREATE TABLE `DetailTablesAccessType` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='نحوه دسترسی به جداول جزییات در مراحل مختلف گردش قرم';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Temporary table structure for view `EMonArray`
---
-
-DROP TABLE IF EXISTS `EMonArray`;
-/*!50001 DROP VIEW IF EXISTS `EMonArray`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `EMonArray` (
-  `_id` tinyint NOT NULL,
-  `emon` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `EducationalGroups`
@@ -168,20 +165,6 @@ CREATE TABLE `EducationalGroups` (
   PRIMARY KEY (`EduGrpCode`,`FacCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='گروه های آموزشی';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Temporary table structure for view `FMonArray`
---
-
-DROP TABLE IF EXISTS `FMonArray`;
-/*!50001 DROP VIEW IF EXISTS `FMonArray`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `FMonArray` (
-  `_id` tinyint NOT NULL,
-  `fmon` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `FieldTypes`
@@ -883,81 +866,6 @@ CREATE TABLE `TemporaryUsersAccessForms` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='فرمهایی که کاربران موقت امکان پر کردن آنها را دارند';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Temporary table structure for view `domains`
---
-
-DROP TABLE IF EXISTS `domains`;
-/*!50001 DROP VIEW IF EXISTS `domains`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `domains` (
-  `DomainName` tinyint NOT NULL,
-  `description` tinyint NOT NULL,
-  `eDescription` tinyint NOT NULL,
-  `DomainValue` tinyint NOT NULL,
-  `unc_code` tinyint NOT NULL,
-  `ActiveDomain` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
-
---
--- Final view structure for view `EMonArray`
---
-
-/*!50001 DROP TABLE IF EXISTS `EMonArray`*/;
-/*!50001 DROP VIEW IF EXISTS `EMonArray`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`172.21.10.11` SQL SECURITY DEFINER */
-/*!50001 VIEW `EMonArray` AS select `projectmanagement`.`EMonArray`.`_id` AS `_id`,`projectmanagement`.`EMonArray`.`emon` AS `emon` from `projectmanagement`.`EMonArray` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `FMonArray`
---
-
-/*!50001 DROP TABLE IF EXISTS `FMonArray`*/;
-/*!50001 DROP VIEW IF EXISTS `FMonArray`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`172.21.10.11` SQL SECURITY DEFINER */
-/*!50001 VIEW `FMonArray` AS select `projectmanagement`.`FMonArray`.`_id` AS `_id`,`projectmanagement`.`FMonArray`.`fmon` AS `fmon` from `projectmanagement`.`FMonArray` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `domains`
---
-
-/*!50001 DROP TABLE IF EXISTS `domains`*/;
-/*!50001 DROP VIEW IF EXISTS `domains`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`172.21.10.11` SQL SECURITY DEFINER */
-/*!50001 VIEW `domains` AS select `projectmanagement`.`domains`.`DomainName` AS `DomainName`,`projectmanagement`.`domains`.`description` AS `description`,`projectmanagement`.`domains`.`eDescription` AS `eDescription`,`projectmanagement`.`domains`.`DomainValue` AS `DomainValue`,`projectmanagement`.`domains`.`unc_code` AS `unc_code`,`projectmanagement`.`domains`.`ActiveDomain` AS `ActiveDomain` from `projectmanagement`.`domains` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -2048,34 +1956,6 @@ CREATE TABLE `AccountSpecs` (
   `WebUserID` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL,
   PRIMARY KEY (`AccountSpecID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `EMonArray`
---
-
-DROP TABLE IF EXISTS `EMonArray`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `EMonArray` (
-  `_id` int(11) NOT NULL,
-  `emon` int(11) DEFAULT NULL,
-  PRIMARY KEY (`_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `FMonArray`
---
-
-DROP TABLE IF EXISTS `FMonArray`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `FMonArray` (
-  `_id` int(11) NOT NULL,
-  `fmon` int(11) DEFAULT NULL,
-  PRIMARY KEY (`_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3499,24 +3379,6 @@ CREATE TABLE `UserProjectScopes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `domains`
---
-
-DROP TABLE IF EXISTS `domains`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domains` (
-  `DomainName` varchar(30) COLLATE utf8_persian_ci NOT NULL DEFAULT '',
-  `description` varchar(150) COLLATE utf8_persian_ci DEFAULT NULL,
-  `eDescription` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL,
-  `DomainValue` int(11) unsigned NOT NULL DEFAULT '0',
-  `unc_code` int(10) unsigned NOT NULL COMMENT 'کد موسسه',
-  `ActiveDomain` enum('YES','NO') COLLATE utf8_persian_ci NOT NULL COMMENT 'آیا دامنه فعال است ؟',
-  PRIMARY KEY (`DomainName`,`DomainValue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `messages`
 --
 
@@ -4180,140 +4042,6 @@ UNLOCK TABLES;
 
 use projectmanagement;
 
---
--- Dumping routines for database 'projectmanagement'
---
-/*!50003 DROP FUNCTION IF EXISTS `g2j` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-CREATE FUNCTION `g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
-    DETERMINISTIC
-BEGIN
-declare gy,gm,gd    int ;
-declare  g_day_no   int ;
-declare  i  int;
-
-declare j_day_no ,  j_np ,  jy , jm , jd  int ;
-set gy  = year(_edate)-1600;
-set gm = month(_edate)-1;
-set gd  = day(_edate)-1;
-
-if  (year(_edate) < 1900  or year(_edate) > 2100  )  or (month(_edate) <1  or month(_edate)  > 12 )   or  (day(_edate) < 1 or day(_edate) > 31 )  then
-return 'date-error';
-end if;
-
-set g_day_no = 365 * gy + floor((gy+3) /  4) - floor((gy+99) / 100) + floor((gy+399)/ 400);
-
-set i=0;
-while i < gm do
-  set g_day_no=g_day_no+(select  emon from EMonArray  where _id=i+1);
-  set i = i + 1;
-end while;
-if  gm >1  and ((gy % 4 =0 and gy % 100 !=0)  or  (gy%400=0))   then
-  set g_day_no = g_day_no + 1 ;
-end if;
-set  g_day_no = g_day_no + gd;
-set  j_day_no =  g_day_no-79;
-set  j_np = floor(j_day_no /  12053);
-set  j_day_no = j_day_no % 12053;
-set  jy = 979+33 *  j_np + 4  *  floor(j_day_no /  1461);
-set j_day_no = j_day_no % 1461;
-
-if   j_day_no >= 366  then
-  set jy = jy + floor((j_day_no-1) /  365);
-  set j_day_no = (j_day_no-1) % 365;
-end if;
-
-set  i=0;
-while  i < 11  and j_day_no >=  ( select fmon from FMonArray  where _id= i + 1)  do
-  set j_day_no = j_day_no - ( select fmon from FMonArray  where _id = i + 1);
-  set  i = i + 1;
-end while;
-
-set jm = i+1;
-set jd = j_day_no+1;
-
-return  concat_ws('/',jy,if(jm < 10 , concat('0',jm) , jm)    ,if(jd < 10 , concat('0',jd) , jd ));
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP FUNCTION IF EXISTS `j2g` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-CREATE FUNCTION `j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
-    DETERMINISTIC
-BEGIN
-
-declare  jy,jm,jd  int ;
-declare  j_day_no , g_day_no   , gy,gm,gd  int ;
-declare  i int ;
-declare  leap  bool;
-
-if  (j_y < 1300  or  j_y > 1450  )  or (j_m <1  or j_m  > 12 )   or  (j_d < 1 or j_d > 31 )  then
-return 'date-error';
-end if;
-
-
-set  jy = j_y-979;
-set  jm = j_m-1;
-set  jd = j_d-1;
-
-set j_day_no = 365 * jy + floor(jy/33) * 8 + floor(((jy%33)+3) /  4);
-set i  = 0;
-while  i < jm  do
-  set j_day_no = j_day_no + (select fmon from FMonArray  where  _id=i+1);
-  set i = i+1;
-end while;
-set  j_day_no = j_day_no + jd;
-set  g_day_no = j_day_no+79;
-set  gy = 1600 + 400 *  floor(g_day_no /  146097);
-set  g_day_no = g_day_no % 146097;
-set  leap = true;
-if  g_day_no >= 36525  then   
-  set g_day_no = g_day_no - 1;
-  set gy = gy + 100 * floor(g_day_no /  36524);
-  set g_day_no = g_day_no % 36524;
-  if  g_day_no >= 365  then
-    set g_day_no  =  g_day_no + 1;
-  else
-    set leap = false;
-  end if;
-end if;
-set gy = gy + 4 *  floor(g_day_no / 1461);
-set g_day_no = g_day_no % 1461;
-if  g_day_no >= 366  then
-  set leap = false;
-  set g_day_no = g_day_no - 1 ;
-  set gy = gy + floor(g_day_no /  365);
-  set g_day_no = g_day_no % 365;
-end if;
-set  i = 0;
-while  g_day_no >= ( select  emon from EMonArray  where _id = i + 1 ) + ( select if(i = 1 and  leap = true , 1 , 0) )   do
-  set g_day_no = g_day_no - (( select  emon from EMonArray  where _id = i + 1)  + ( select if ( i = 1 and  leap= true ,1,0)));
-  set i = i + 1;
-end while;
-set gm = i+1;
-set gd = g_day_no+1;
-return  concat_ws('-',gy , gm , gd );
-END ;;
-DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -4362,21 +4090,6 @@ UNLOCK TABLES;
 -- Dumping data for table `domains`
 --
 
-LOCK TABLES `domains` WRITE;
-/*!40000 ALTER TABLE `domains` DISABLE KEYS */;
-/*!40000 ALTER TABLE `domains` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `EMonArray`
---
-
-LOCK TABLES `EMonArray` WRITE;
-/*!40000 ALTER TABLE `EMonArray` DISABLE KEYS */;
-INSERT INTO `EMonArray` VALUES (1,31),(2,28),(3,31),(4,30),(5,31),(6,30),(7,31),(8,31),(9,30),(10,31),(11,30),(12,31);
-/*!40000 ALTER TABLE `EMonArray` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Dumping data for table `FacilityPages`
 --
@@ -4385,16 +4098,6 @@ LOCK TABLES `FacilityPages` WRITE;
 /*!40000 ALTER TABLE `FacilityPages` DISABLE KEYS */;
 INSERT INTO `FacilityPages` VALUES (1,1,'/ManageSystemFacilityGroups.php'),(2,2,'/ManageSystemFacilities.php'),(3,3,'/Managepersons.php'),(4,4,'/ManageAccountSpecs.php'),(5,3,'/ManagePersonAgreements.php'),(6,3,'/ManagePayments.php'),(7,4,'/ManageUserPermissions.php'),(8,2,'/ManageUserFacilities.php'),(9,2,'/ManageFacilityPages.php'),(10,5,'/Manageontologies.php'),(11,5,'/ManageOntologyMergeProject.php'),(12,5,'/ManageOntologyClasses.php'),(13,5,'/ManageOntologyClassHirarchy.php'),(14,5,'/ShowOntologyClassTree.php'),(15,5,'/ManageOntologyClassLabels.php'),(16,5,'/ManageOntologyProperties.php'),(17,5,'/ManageOntologyPropertyLabels.php'),(18,5,'/PrintOntologyDetails.php'),(19,5,'/PrintOntologyDetails2.php'),(20,5,'/ManageOntologyMergeProjectMembers.php'),(21,6,'/ManageTermReferences.php'),(22,6,'/ManageTermReferenceContent.php'),(23,6,'/ManageTermReferenceMapping.php'),(24,7,'/Manageterms.php'),(25,7,'/ShowTermReferenceMapping.php'),(26,7,'/TermFrequency.ph'),(27,7,'/TermOntologyPage.php'),(28,8,'/TermFrequency.php'),(29,8,'/ShowTermReferenceMapping.php'),(31,9,'/ManageProjects.php'),(32,9,'/Newprojects.php'),(33,9,'/GetProjectGroupsList.php'),(34,9,'/ManageProjectMembers.php'),(35,9,'/ManageProjectResponsibles.php'),(36,9,'/ManageProjectDocuments.php'),(37,9,'/ManageProjectMilestones.php'),(38,9,'/ManageProjectDocumentTypes.php'),(39,9,'/ManageProjectTaskActivityTypes.php'),(40,9,'/ManageProjectTaskTypes.php'),(41,9,'/ManageProjectTaskGroups.php'),(42,9,'/ManageProjectHistory.php'),(43,9,'/ShowProjectActivities.php'),(44,9,'/ShowProjectOverview.php'),(45,10,'/TasksKartable.php'),(46,10,'/TasksMessages.php'),(47,10,'/ViewerTasks.php'),(48,10,'/TasksForControl.php'),(49,10,'/LastCreatedTasks.php'),(50,10,'/LastDoneTasks.php'),(51,10,'/ShowAllPersonStatus.php'),(52,10,'/ShowLastChanges.php'),(53,10,'/NewProjectTasks.php'),(54,10,'/GetTaskTypesList.php'),(55,10,' /GetTaskGroupsList.php'),(56,10,'/GetTaskGroupsList.php'),(57,10,'/ManageProjectTaskAssignedUsers.php'),(58,10,'/ManageProjectTaskActivities.php'),(59,10,'/ManageProjectTaskComments.php'),(60,10,'/ManageProjectTaskDocuments.php'),(61,10,'/ManageProjectTaskRequisites.php'),(62,10,'/ManageProjectTaskHistory.php'),(63,10,'/NewProjectTaskActivities.php'),(64,10,'/SearchTasks.php'),(65,11,'/ManageProjectTasks.php'),(66,10,'/SelectStaff.php'),(69,14,'/Managemessages.php'),(70,15,'/SendMessage.php'),(71,15,'/SelectMultiStaff.php'),(72,16,'/MailBox.php'),(73,16,'/ShowMessage.php'),(74,16,'/SelectStaff.php'),(75,17,'/SentBox.php'),(76,18,'/SearchMessage.php'),(77,19,'/TimeReport.php'),(78,20,'/MyTimeReport.php'),(79,21,'/ManageUniversitySessions.php'),(80,22,'/ManageSessionTypes.php'),(82,22,'/NewSessionTypes.php'),(83,22,'/ManageSessionTypeMembers.php'),(84,22,'/ManagePersonPermittedSessionTypes.php'),(85,22,'/SessionTypesSetSecurity.php'),(86,21,'/NewUniversitySessions.php'),(87,21,'/UpdateUniversitySessions.php'),(88,21,'/ManageSessionPreCommands.php'),(89,21,'/ManageMembersPAList.php'),(90,21,'/ManageSessionDecisions.php'),(91,21,'/ManageSessionDocuments.php'),(92,21,'/ManageSessionMembers.php'),(93,21,'/ManageSessionOtherUsers.php'),(94,21,'/UniversitySessionsSetSecurity.php'),(95,21,'/ManageSessionHistory.php'),(96,21,'/NewSessionPreCommands.php'),(97,21,'/HistorySession.php'),(98,21,'/PrintSession.php'),(99,5,'/loader.php'),(100,21,'/NewSessionDecisions.php'),(101,21,'/NewSessionDocuments.php'),(102,21,'/NewSessionMembers.php'),(103,23,'/RequestedSessions.php'),(104,24,'/ReadyForSignSessions.php'),(105,24,'/PrintSessionNew.php'),(106,25,'/NewQuestionnaire.php'),(107,25,'/ManageQuestionnaireFields.php'),(108,25,'/NewQuestionnaireField.php'),(109,25,'/SelectDefaultKey.php'),(110,25,'/CreateSelectOptionsForQuestionnaire.php'),(111,25,'/LookUpPageHelp.php'),(112,25,'/NewQuestionnaireLabel.php'),(113,25,'/ManageQuestionnaires.php'),(114,25,'/ManageFormsSections.php'),(115,25,'/ManageQuestionnaireDetailTables.php'),(116,25,'/ManageQuestionnaireManagers.php'),(117,25,'/ManageQuestionnaireUsers.php'),(118,26,'/NewQuestionnaire.php'),(119,26,'/ManageQuestionnaireFields.php'),(120,26,'/NewQuestionnaireField.php'),(121,26,'/SelectDefaultKey.php'),(122,26,'/CreateSelectOptionsForQuestionnaire.php'),(123,26,'/LookUpPageHelp.php'),(124,26,'/NewQuestionnaireLabel.php'),(125,26,'/ManageQuestionnaires.php'),(126,26,'/ManageFormsSections.php'),(127,26,'/ManageQuestionnaireDetailTables.php'),(128,26,'/ManageQuestionnaireManagers.php'),(129,26,'/ManageQuestionnaireUsers.php'),(133,26,'/ManageQuestionnaires.php'),(134,8,'/CoOccuranceAnalysis.php'),(135,10,'/ManageProjectPercentages.php'),(136,9,'/projectsSetSecurity.php'),(137,21,'/SelectFromSessionPreCommands.php'),(138,10,'/ShowMessagePhoto.php'),(139,5,'/AnalyzeOntologies.php'),(140,5,'/ManageOntologyValidationExperts.php'),(141,8,'/ManageOntologyPropertyPermittedValues.php'),(142,5,'/ManageOntologyClassProperties.php'),(143,27,'/ShowTermsManipulationHistory.php'),(144,28,'/ShowTermReferHistory.php'),(145,5,'/ManageOntologyClassParents.php'),(146,5,'/ManageOntologyClassChilds.php'),(147,5,'/ShowExpertsResult.php'),(149,5,'/ShowGraph.php'),(212,41,'/ShowTableInfo.php'),(213,41,'/ManageFieldsDataSematics.php'),(214,41,'/SearchTables.php'),(215,5,'/CompareOntologies.php'),(216,5,'/MetaData2Onto.php'),(217,5,'/ShowOntologyClassNProps.php'),(218,43,'/CompareAllOntos.php'),(219,5,'/EditOntologyLabels.php'),(220,5,'/ShowSimilarClassRelations.php'),(221,5,'/ShowSimilarClassProperties.php'),(222,5,'/GetOwl.php'),(223,5,'/GetER.php'),(224,5,'/PrintOntologyDetails3.php'),(225,5,'/PrintOntologyDetails4.php'),(226,5,'/OntologyMergeProperties.php'),(227,5,'/OntologyMergeClasses.php'),(228,41,'/ManageTables.php'),(229,41,'/EditTableInfo.php'),(230,41,'/ShowTopRecords.php'),(231,41,'/SetForignKey.php'),(232,5,'/ShowClassesAnalysis.php'),(233,46,'/TransferTables.php'),(234,26,'/ManageSystemFacilityGroups.php');
 /*!40000 ALTER TABLE `FacilityPages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `FMonArray`
---
-
-LOCK TABLES `FMonArray` WRITE;
-/*!40000 ALTER TABLE `FMonArray` DISABLE KEYS */;
-INSERT INTO `FMonArray` VALUES (1,31),(2,31),(3,31),(4,31),(5,31),(6,31),(7,30),(8,30),(9,30),(10,30),(11,30),(12,29);
-/*!40000 ALTER TABLE `FMonArray` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -4458,6 +4161,143 @@ UNLOCK TABLES;
 
 -- Dump completed on 2018-09-02 17:17:35
 
+--
+-- Dumping routines for database 'projectmanagement'
+--
+/*!50003 DROP FUNCTION IF EXISTS `g2j` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+
+DELIMITER ;;
+CREATE FUNCTION `g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
+    DETERMINISTIC
+BEGIN
+declare gy,gm,gd    int ;
+declare  g_day_no   int ;
+declare  i  int;
+
+declare j_day_no ,  j_np ,  jy , jm , jd  int ;
+set gy  = year(_edate)-1600;
+set gm = month(_edate)-1;
+set gd  = day(_edate)-1;
+
+if  (year(_edate) < 1900  or year(_edate) > 2100  )  or (month(_edate) <1  or month(_edate)  > 12 )   or  (day(_edate) < 1 or day(_edate) > 31 )  then
+return 'date-error';
+end if;
+
+set g_day_no = 365 * gy + floor((gy+3) /  4) - floor((gy+99) / 100) + floor((gy+399)/ 400);
+
+set i=0;
+while i < gm do
+  set g_day_no=g_day_no+(select  emon from EMonArray  where _id=i+1);
+  set i = i + 1;
+end while;
+if  gm >1  and ((gy % 4 =0 and gy % 100 !=0)  or  (gy%400=0))   then
+  set g_day_no = g_day_no + 1 ;
+end if;
+set  g_day_no = g_day_no + gd;
+set  j_day_no =  g_day_no-79;
+set  j_np = floor(j_day_no /  12053);
+set  j_day_no = j_day_no % 12053;
+set  jy = 979+33 *  j_np + 4  *  floor(j_day_no /  1461);
+set j_day_no = j_day_no % 1461;
+
+if   j_day_no >= 366  then
+  set jy = jy + floor((j_day_no-1) /  365);
+  set j_day_no = (j_day_no-1) % 365;
+end if;
+
+set  i=0;
+while  i < 11  and j_day_no >=  ( select fmon from FMonArray  where _id= i + 1)  do
+  set j_day_no = j_day_no - ( select fmon from FMonArray  where _id = i + 1);
+  set  i = i + 1;
+end while;
+
+set jm = i+1;
+set jd = j_day_no+1;
+
+return  concat_ws('/',jy,if(jm < 10 , concat('0',jm) , jm)    ,if(jd < 10 , concat('0',jd) , jd ));
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `j2g` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+
+DELIMITER ;;
+CREATE FUNCTION `j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
+    DETERMINISTIC
+BEGIN
+
+declare  jy,jm,jd  int ;
+declare  j_day_no , g_day_no   , gy,gm,gd  int ;
+declare  i int ;
+declare  leap  bool;
+
+if  (j_y < 1300  or  j_y > 1450  )  or (j_m <1  or j_m  > 12 )   or  (j_d < 1 or j_d > 31 )  then
+return 'date-error';
+end if;
+
+
+set  jy = j_y-979;
+set  jm = j_m-1;
+set  jd = j_d-1;
+
+set j_day_no = 365 * jy + floor(jy/33) * 8 + floor(((jy%33)+3) /  4);
+set i  = 0;
+while  i < jm  do
+  set j_day_no = j_day_no + (select fmon from FMonArray  where  _id=i+1);
+  set i = i+1;
+end while;
+set  j_day_no = j_day_no + jd;
+set  g_day_no = j_day_no+79;
+set  gy = 1600 + 400 *  floor(g_day_no /  146097);
+set  g_day_no = g_day_no % 146097;
+set  leap = true;
+if  g_day_no >= 36525  then
+  set g_day_no = g_day_no - 1;
+  set gy = gy + 100 * floor(g_day_no /  36524);
+  set g_day_no = g_day_no % 36524;
+  if  g_day_no >= 365  then
+    set g_day_no  =  g_day_no + 1;
+  else
+    set leap = false;
+  end if;
+end if;
+set gy = gy + 4 *  floor(g_day_no / 1461);
+set g_day_no = g_day_no % 1461;
+if  g_day_no >= 366  then
+  set leap = false;
+  set g_day_no = g_day_no - 1 ;
+  set gy = gy + floor(g_day_no /  365);
+  set g_day_no = g_day_no % 365;
+end if;
+set  i = 0;
+while  g_day_no >= ( select  emon from EMonArray  where _id = i + 1 ) + ( select if(i = 1 and  leap = true , 1 , 0) )   do
+  set g_day_no = g_day_no - (( select  emon from EMonArray  where _id = i + 1)  + ( select if ( i = 1 and  leap= true ,1,0)));
+  set i = i + 1;
+end while;
+set gm = i+1;
+set gd = g_day_no+1;
+return  concat_ws('-',gy , gm , gd );
+END ;;
+DELIMITER ;
+
+
+
 CREATE TABLE `projectmanagement`.`org_units` (
   `ouid` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   `ptitle` VARCHAR(45) NOT NULL,
@@ -4502,7 +4342,6 @@ ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `EstimatedStartTime
 )
 ENGINE = InnoDB
 COMMENT = 'ارجاعات کارها';
-
 
 DROP TABLE IF EXISTS `mis`.`MIS_TableChangeLog`;
 CREATE TABLE  `mis`.`MIS_TableChangeLog` (
@@ -4608,3 +4447,18 @@ CREATE TABLE  `mis`.`PageContent` (
   KEY `path_index` (`path`),
   KEY `type_index` (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+use projectmanagement;
+drop view if exists FMonArray;
+create view FMonArray as select * from sessionmanagement.FMonArray;
+drop view if exists EMonArray;
+create view EMonArray as select * from sessionmanagement.EMonArray;
+drop view if exists domains;
+create view domains as select * from baseinfo.domains;
+
+use formsgenerator;
+drop view if exists FMonArray;
+create view FMonArray as select * from sessionmanagement.FMonArray;
+drop view if exists EMonArray;
+create view EMonArray as select * from sessionmanagement.EMonArray;
+
