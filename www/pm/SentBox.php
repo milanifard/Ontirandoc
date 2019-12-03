@@ -7,6 +7,21 @@
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', "on");
 
+
+//
+//
+//
+//
+//
+//THIS FILE IS TAKEN BY MOHAMAD_ALI_SAIDI PLEASE BE CAREFUL  !
+//
+//
+//
+//
+//
+//
+
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/PrivateMessageFollows.class.php");

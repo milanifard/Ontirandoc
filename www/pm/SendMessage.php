@@ -4,6 +4,28 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-2-21
 */
+
+
+//
+//
+//
+//
+//
+//THIS FILE IS TAKEN BY MOHAMAD_ALI_SAIDI PLEASE BE CAREFUL  !
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
 error_reporting(E_ERROR | E_PARSE );
 //error_reporting(E_ALL);
 ini_set("display_errors", 1);
