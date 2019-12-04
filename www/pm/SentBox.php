@@ -63,9 +63,11 @@ if($SomeItemsRemoved)
 	$res = manage_PrivateMessageFollows::GetList("SentBox", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
 
 ?>
-<form id="ListForm" name="ListForm" method="post"> 
-<? if(isset($_REQUEST["PageNumber"]))
+<form id="ListForm" name="ListForm" method="post">
+
+<?php if(isset($_REQUEST["PageNumber"]))
 	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
+
 <br><table width="90%" align="center" border="1" cellspacing="0">
 <tr bgcolor="#cccccc">
 	<td colspan="6">
@@ -75,7 +77,8 @@ if($SomeItemsRemoved)
 <tr class="HeaderOfTable">
 	<td width="1%"> </td>
 	<td width="1%">ردیف</td>
-<?
+
+<?php
   $OrderType1 = $OrderType2 = "ASC";
   if(isset($_REQUEST["OrderByFieldName"]))
   {
@@ -85,12 +88,14 @@ if($SomeItemsRemoved)
       $OrderType2 = "DESC";
   }
 ?>
+
 	<td>عنوان</td>
 	<td width=1%><a href="javascript: Sort('ToPersonID', '<? echo $OrderType1 ?>');">دریافت کننده</a></td>	
 	<td width=1% nowrap><a href="javascript: Sort('ReferTime', '<? echo $OrderType2 ?>');">زمان ارسال</a></td>	
 	<td>شرح ارجاع</td>
 </tr>
-<?
+
+<?php
 for($k=0; $k<count($res); $k++)
 {
 	if($k%2==0)
@@ -115,13 +120,15 @@ for($k=0; $k<count($res); $k++)
 	echo "</tr>";
 }
 ?>
+
 <tr class="FooterOfTable">
 <td colspan="6" align="center">
 	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
 </td>
 </tr>
 <tr bgcolor="#cccccc"><td colspan="6" align="right">
-<?
+
+<?php
 for($k=0; $k<manage_PrivateMessageFollows::GetCount("SentBox")/$NumberOfRec; $k++)
 {
 	if($PageNumber!=$k)
@@ -132,16 +139,19 @@ for($k=0; $k<manage_PrivateMessageFollows::GetCount("SentBox")/$NumberOfRec; $k+
 	echo " ";
 }
 ?>
+
 </td></tr>
 </table>
 </form>
 <form target="_blank" method="post" action="NewPrivateMessageFollows.php" id="NewRecordForm" name="NewRecordForm">
 </form>
+
 <form method="post" name="f2" id="f2">
 <input type="hidden" name="PageNumber" id="PageNumber" value="0">
 <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
 <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
 </form>
+
 <script>
 function ConfirmDelete()
 {
@@ -159,4 +169,3 @@ function Sort(OrderByFieldName, OrderType)
 	f2.submit();
 }
 </script>
-</html>

@@ -126,6 +126,7 @@ if($rec = $res->fetch())
 }
 
 ?>
+
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
 <br><table width="90%" border="1" cellspacing="0" align="center">
 <tr class="HeaderOfTable">
@@ -180,7 +181,9 @@ if($rec = $res->fetch())
 </tr>
 </table>
 <input type="hidden" name="Save" id="Save" value="1">
-</form><script>
+</form>
+
+<script>
 	<? echo $LoadDataJavascriptCode; ?>
 	function ValidateForm()
 	{
@@ -224,4 +227,3 @@ if($rec = $res->fetch())
 	setTimeout("AutoSave()",60000);
 	
 </script>
-</html>

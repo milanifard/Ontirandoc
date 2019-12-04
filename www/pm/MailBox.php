@@ -72,9 +72,15 @@ if($SomeItemsRemoved)
 	$res = manage_PrivateMessageFollows::GetList("InBox", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
 
 ?>
-<form id="ListForm" name="ListForm" method="post"> 
-<? if(isset($_REQUEST["PageNumber"]))
+
+
+
+
+<form id="ListForm" name="ListForm" method="post">
+
+<?php if(isset($_REQUEST["PageNumber"]))
 	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
+
 <br><table width="90%" align="center" border="1" cellspacing="0">
 <tr bgcolor="#cccccc">
 	<td colspan="6">
@@ -84,7 +90,7 @@ if($SomeItemsRemoved)
 <tr class="HeaderOfTable">
 	<td width="1%"> </td>
 	<td width="1%">ردیف</td>
-<?
+<?php
   $OrderType1 = $OrderType2 = "ASC";
   if(isset($_REQUEST["OrderByFieldName"]))
   {
@@ -94,12 +100,13 @@ if($SomeItemsRemoved)
       $OrderType2 = "DESC";
   }
 ?>
+
 	<td width=1%><a href="javascript: Sort('FromPersonID', '<? echo $OrderType1 ?>');">فرستنده</a></td>
 	<td width=1% nowrap><a href="javascript: Sort('ReferTime', '<? echo $OrderType2 ?>');">زمان ارسال</a></td>
 	<td>عنوان</td>
 	<td>شرح ارجاع</td>
 </tr>
-<?
+<?php
 for($k=0; $k<count($res); $k++)
 {
 	if($k%2==0)
@@ -123,13 +130,15 @@ for($k=0; $k<count($res); $k++)
 	echo "</tr>";
 }
 ?>
+
 <tr class="FooterOfTable">
 <td colspan="6" align="center">
 	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
 </td>
 </tr>
 <tr bgcolor="#cccccc"><td colspan="6" align="right">
-<?
+
+<?php
 for($k=0; $k<manage_PrivateMessageFollows::GetCount("InBox")/$NumberOfRec; $k++)
 {
 	if($PageNumber!=$k)
@@ -140,6 +149,7 @@ for($k=0; $k<manage_PrivateMessageFollows::GetCount("InBox")/$NumberOfRec; $k++)
 	echo " ";
 }
 ?>
+
 </td></tr>
 </table>
 </form>
@@ -150,6 +160,7 @@ for($k=0; $k<manage_PrivateMessageFollows::GetCount("InBox")/$NumberOfRec; $k++)
 <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
 <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
 </form>
+
 <script>
 function ConfirmDelete()
 {
@@ -167,4 +178,3 @@ function Sort(OrderByFieldName, OrderType)
 	f2.submit();
 }
 </script>
-</html>
