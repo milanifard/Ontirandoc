@@ -99,7 +99,9 @@ if($SomeItemsRemoved)
                     <p class="col-12 bg-info text-dark text-center  ">
 
 
-                        نامه های رسیده
+                        <?php
+                        echo C_MESSAGES_RECEIVED;
+                        ?>
 
                     </p>
 
@@ -115,7 +117,9 @@ if($SomeItemsRemoved)
                                 <thead class="text-center thead-dark">
                                 <tr>
                                     <th scope="col">  </th>
-                                    <th scope="col">ردیف </th>
+                                    <th scope="col"><?php
+                                        echo C_ROW;
+                                        ?> </th>
 
                                     <?php
                                     $OrderType1 = $OrderType2 = "ASC";
@@ -129,10 +133,10 @@ if($SomeItemsRemoved)
                                     ?>
 
 
-                                    <th scope="col"><a href="javascript: Sort('FromPersonID', '<?php echo $OrderType1 ?>');">فرستنده </a></th>
-                                    <th scope="col"><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');">زمان ارسال </a></th>
-                                    <th scope="col">عنوان</th>
-                                    <th scope="col">شرح ارجاع</th>
+                                    <th scope="col"><a href="javascript: Sort('FromPersonID', '<?php echo $OrderType1 ?>');"><?php echo C_SENDER_NAME; ?> </a></th>
+                                    <th scope="col"><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?> </a></th>
+                                    <th scope="col"><?php echo C_TITLE; ?></th>
+                                    <th scope="col"><?php echo C_REPLY_DES; ?></th>
                                 </tr>
                                 </thead>
 
@@ -195,7 +199,7 @@ if($SomeItemsRemoved)
 
                         <div class="btn">
 
-                            <input type="button" class="btn btn-success" onclick="javascript: ConfirmDelete();" value="حذف">
+                            <input type="button" class="btn btn-success" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE; ?>>
 
                         </div>
 
@@ -252,7 +256,7 @@ if($SomeItemsRemoved)
 <script>
     function ConfirmDelete()
     {
-        if(confirm('آیا مطمین هستید؟'))
+        if(confirm('<?php echo C_ARE_YOU_SURE; ?>'))
             document.ListForm.submit();
     }
     function ShowPage(PageNumber)

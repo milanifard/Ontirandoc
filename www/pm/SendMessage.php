@@ -65,7 +65,7 @@ if(isset($_REQUEST["Save"]))
     {
         if ($_FILES['Item_FileContent']['error'] != 0)
         {
-            echo ' خطا در ارسال فایل' . $_FILES['Item_FileContent']['error'];
+            echo C_SENDING_FILE_ERROR . $_FILES['Item_FileContent']['error'];
         }
         else
         {
@@ -112,7 +112,7 @@ if(isset($_REQUEST["Save"]))
 
     }
 
-    echo SharedClass::CreateMessageBox("پیام ارسال شد");
+    echo SharedClass::CreateMessageBox(C_MESSAGE_SENT);
     $mysql->Execute("delete from projectmanagement.TemporarySavedData where PersonID='".$_SESSION["PersonID"]."' and FieldName='MessageBody'");
 }
 $OldMessageBody = "";
@@ -133,12 +133,15 @@ if($rec = $res->fetch())
         <div class="row border border-dark">
 
             <div class="col-12">
+
                 <div class="row">
 
                     <p class="col-12 bg-info text-dark text-center  ">
 
 
-                        ارسال پیام
+                        <?php
+                        echo C_SEND_MESSAGE;
+                        ?>
 
                     </p>
 
@@ -153,7 +156,11 @@ if($rec = $res->fetch())
                         <span class="text-danger text-center ">
                             * </span>
                         <span class="text-red text-center ">
-                            عنوان </span>
+
+                            <?php
+                                echo C_TITLE;
+                            ?> </span>
+
                     </div>
 
                     <div class="col-9">
@@ -173,8 +180,10 @@ if($rec = $res->fetch())
                     <div class="col-2">
 
                         <span class="text-center">
-                              متن
-                        </span>
+                                <?php
+                                echo C_TEXT;
+                                ?> </span>
+
 
                     </div>
 
@@ -197,8 +206,10 @@ if($rec = $res->fetch())
                     <div class="col-2">
 
                         <span class="text-center text-nowrap">
-                              محتوای فایل
-                        </span>
+                                <?php
+                                echo C_FILE;
+                                ?> </span>
+
 
                     </div>
 
@@ -221,7 +232,10 @@ if($rec = $res->fetch())
                        <span class="text-danger text-center  text-nowrap ">
                             *</span>
                         <span class=" text-center text-nowrap " id="tr_ToPersonID" name="tr_ToPersonID" style='display:' >
-                            به کاربر </span>
+                              <?php
+                              echo C_TO_USER;
+                              ?> </span>
+
 
                     </div>
 
@@ -229,7 +243,9 @@ if($rec = $res->fetch())
 
                         <div class="form-group">
                             <input type=hidden  name="Item_ToPersonID" id="Item_ToPersonID" value="0">
-                            <span id="Span_ToPersonID_FullName" name="Span_ToPersonID_FullName"></span> 	<a href='#'  onclick='javascript: window.open("SelectMultiStaff.php?InputName=Item_ToPersonID&SpanName=Span_ToPersonID_FullName");'>[انتخاب]</a>
+                            <span id="Span_ToPersonID_FullName" name="Span_ToPersonID_FullName"></span> 	<a href='#'  onclick='javascript: window.open("SelectMultiStaff.php?InputName=Item_ToPersonID&SpanName=Span_ToPersonID_FullName");'>[<?php
+                                echo C_SELECT;
+                                ?>]</a>
                         </div>
 
                     </div>
@@ -244,7 +260,9 @@ if($rec = $res->fetch())
                     <div class="col-12 bg-info text-dark text-center ">
 
                         <div class="btn">
-                            <input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value="ارسال">
+                            <input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value=<?php
+                            echo C_SEND;
+                            ?> >
 
                         </div>
 
@@ -272,13 +290,17 @@ if($rec = $res->fetch())
     {
         if(document.getElementById('Item_MessageTitle').value=="")
         {
-            alert('عنوان را وارد کنید');
+            alert( '<?php
+                echo C_TITLE_EMPTY;
+                ?>');
             return;
         }
 
         if(document.getElementById('Item_ToPersonID').value=="0")
         {
-            alert('گیرنده را مشخص کنید');
+            alert('<?php
+                echo C_RECEIVER_EMPTY;
+                ?>');
             return;
         }
         document.f1.submit();
@@ -286,7 +308,9 @@ if($rec = $res->fetch())
 
     function AutoSave()
     {
-        document.getElementById('AutoSaveSpan').innerHTML='ذخیره سازی خودکار..';
+        document.getElementById('AutoSaveSpan').innerHTML='<?php
+            echo C_AUTO_SAVE;
+            ?>';
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
