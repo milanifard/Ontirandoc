@@ -38,14 +38,17 @@ if(UI_LANGUAGE=="EN") {
     //----------------------------------
 
     //MailBox.php needed definitions MOHAMAD_ALI_SAIDI
-
-    define("C_MESSAGES_RECEIVED","Received Messages");
+    define("C_MESSAGES_RECEIVED","Inbox");
     define("C_SENDER_NAME","Sender Name");
     define("C_TIME_SENT","Time Sent");
     define("C_REPLY_DES","Reply Description");
     define("C_DELETE","Delete");
+    //----------------------------------
 
 
+    //SentBox.php needed definitions MOHAMAD_ALI_SAIDI
+    define("C_MESSAGES_SENT","OutBox");
+    define("C_RECEIVER_NAME","Receiver Name");
     //----------------------------------
 
 
@@ -94,6 +97,11 @@ else
     define("C_REPLY_DES","شرح ارجاع");
     define("C_DELETE","حذف");
 
+    //----------------------------------
+
+    //SentBox.php needed definitions MOHAMAD_ALI_SAIDI
+    define("C_MESSAGES_SENT","نامه های ارسالی");
+    define("C_RECEIVER_NAME","دریافت کننده");
     //----------------------------------
 }
 

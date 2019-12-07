@@ -68,80 +68,211 @@ if($SomeItemsRemoved)
 <?php if(isset($_REQUEST["PageNumber"]))
 	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
 
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="6">
-	 نامه های ارسالی
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
+<br>
 
-<?php
-  $OrderType1 = $OrderType2 = "ASC";
-  if(isset($_REQUEST["OrderByFieldName"]))
-  {
-    if($_REQUEST["OrderByFieldName"]=="ToPersonID" && $_REQUEST["OrderType"]=="ASC")
-      $OrderType1 = "DESC";
-    if($_REQUEST["OrderByFieldName"]=="ReferTime" && $_REQUEST["OrderType"]=="ASC")
-      $OrderType2 = "DESC";
-  }
-?>
 
-	<td>عنوان</td>
-	<td width=1%><a href="javascript: Sort('ToPersonID', '<? echo $OrderType1 ?>');">دریافت کننده</a></td>	
-	<td width=1% nowrap><a href="javascript: Sort('ReferTime', '<? echo $OrderType2 ?>');">زمان ارسال</a></td>	
-	<td>شرح ارجاع</td>
-</tr>
+    <div class="container ">
 
-<?php
-for($k=0; $k<count($res); $k++)
-{
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	if($res[$k]->ReferStatus=="NOT_READ")
-	  $NewMail = "<b>";
-	else 
-	  $NewMail = "";
-	echo "<td>";
-	if($NewMail=="<b>")
-	  echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->PrivateMessageFollowID."\">";
-	echo "</td>";
-	echo "<td>".$NewMail;
-	echo "<a href=\"ShowMessage.php?BackPage=SentBox.php&MessageFollowID=".$res[$k]->PrivateMessageFollowID."\">";
-	echo ($k+$FromRec+1)."</td>";
-	echo "	<td>".$NewMail.htmlentities($res[$k]->MessageTitle, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ToPersonID_FullName, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ReferTime_Shamsi, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "</tr>";
-}
-?>
+        <div class="row border border-dark">
 
-<tr class="FooterOfTable">
-<td colspan="6" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-</td>
-</tr>
-<tr bgcolor="#cccccc"><td colspan="6" align="right">
+            <div class="col-12">
 
-<?php
-for($k=0; $k<manage_PrivateMessageFollows::GetCount("SentBox")/$NumberOfRec; $k++)
-{
-	if($PageNumber!=$k)
-		echo "<a href='javascript: ShowPage(".($k).")'>";
-	echo ($k+1);
-	if($PageNumber!=$k)
-		echo "</a>";
-	echo " ";
-}
-?>
+                <div class="row">
 
-</td></tr>
-</table>
+                    <p class="col-12 bg-info text-dark text-center  ">
+
+                        <?php
+                        echo C_MESSAGES_SENT;
+                        ?>
+
+                    </p>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-hover">
+
+
+                                <thead class="text-center thead-dark">
+
+                                <tr>
+                                    <th scope="col">  </th>
+                                    <th scope="col"><?php
+                                        echo C_ROW;
+                                        ?></th>
+
+
+                                    <?php
+                                    $OrderType1 = $OrderType2 = "ASC";
+                                    if(isset($_REQUEST["OrderByFieldName"]))
+                                    {
+                                        if($_REQUEST["OrderByFieldName"]=="ToPersonID" && $_REQUEST["OrderType"]=="ASC")
+                                            $OrderType1 = "DESC";
+                                        if($_REQUEST["OrderByFieldName"]=="ReferTime" && $_REQUEST["OrderType"]=="ASC")
+                                            $OrderType2 = "DESC";
+                                    }
+                                    ?>
+                                    <th scope="col"> <?php echo C_TITLE; ?> </th>
+                                    <th scope="col"><a href="javascript: Sort('ToPersonID', '<?php echo $OrderType1 ?>');"><?php echo C_RECEIVER_NAME; ?></a></th>
+                                    <th scope="col"><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?></a></th>
+                                    <th scope="col"> <?php echo C_REPLY_DES; ?> </th>
+
+                                </tr>
+                                <tbody>
+                                <?php
+                                for($k=0; $k<count($res); $k++)
+                                {
+                                    if($k%2==0)
+                                        echo "<tr class=\"OddRow text-center \">";
+                                    else
+                                        echo "<tr class=\"EvenRow text-center \">";
+                                    if($res[$k]->ReferStatus=="NOT_READ")
+                                        $NewMail = "<b>";
+                                    else
+                                        $NewMail = "";
+                                    echo "<td>";
+                                    //if($NewMail=="<b>")
+                                    echo "<input type=\"checkbox\" class \"form-check-input \" name=\"ch_".$res[$k]->PrivateMessageFollowID."\">";
+                                    echo "</td>";
+                                    echo "<td>".$NewMail;
+                                    echo "<a href=\"ShowMessage.php?BackPage=SentBox.php&MessageFollowID=".$res[$k]->PrivateMessageFollowID."\">";
+                                    echo ($k+$FromRec+1)."</td>";
+                                    echo "	<td>".$NewMail.htmlentities($res[$k]->MessageTitle, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ToPersonID_FullName, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ReferTime_Shamsi, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+
+                                </tbody>
+
+
+
+
+
+
+
+                                </thead>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </table>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-12 bg-info text-dark text-center ">
+
+                        <div class="btn">
+
+                            <input type="button" class="btn btn-success" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE; ?>>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-12 bg-secondary  text-right ">
+
+                        <?php
+                        for($k=0; $k<manage_PrivateMessageFollows::GetCount("SentBox")/$NumberOfRec; $k++)
+                        {
+                            if($PageNumber!=$k)
+                                echo "<a href='javascript: ShowPage(".($k).")'>";
+                            echo ($k+1);
+                            if($PageNumber!=$k)
+                                echo "</a>";
+                            echo " ";
+                        }
+                        ?>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
 </form>
 <form target="_blank" method="post" action="NewPrivateMessageFollows.php" id="NewRecordForm" name="NewRecordForm">
 </form>
@@ -155,7 +286,7 @@ for($k=0; $k<manage_PrivateMessageFollows::GetCount("SentBox")/$NumberOfRec; $k+
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<?php echo C_ARE_YOU_SURE; ?>')) document.ListForm.submit();
 }
 function ShowPage(PageNumber)
 {
