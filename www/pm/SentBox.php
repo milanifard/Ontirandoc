@@ -95,9 +95,9 @@ if($SomeItemsRemoved)
                     <div class="col-12">
 
 
-                        <div class="table-responsive">
+                        <div class="table-responsive ">
 
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover table-striped ">
 
 
                                 <thead class="text-center thead-dark">
@@ -119,10 +119,10 @@ if($SomeItemsRemoved)
                                             $OrderType2 = "DESC";
                                     }
                                     ?>
-                                    <th scope="col"> <?php echo C_TITLE; ?> </th>
-                                    <th scope="col"><a href="javascript: Sort('ToPersonID', '<?php echo $OrderType1 ?>');"><?php echo C_RECEIVER_NAME; ?></a></th>
-                                    <th scope="col"><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?></a></th>
-                                    <th scope="col"> <?php echo C_REPLY_DES; ?> </th>
+                                    <th scope="col" class="text-nowrap"> <?php echo C_TITLE; ?> </th>
+                                    <th scope="col" class="text-nowrap"><a href="javascript: Sort('ToPersonID', '<?php echo $OrderType1 ?>') ;"><?php echo C_RECEIVER_NAME; ?></a></th>
+                                    <th scope="col" class="text-nowrap"><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?></a></th>
+                                    <th scope="col" class="text-nowrap"> <?php echo C_REPLY_DES; ?> </th>
 
                                 </tr>
                                 <tbody>
@@ -130,24 +130,24 @@ if($SomeItemsRemoved)
                                 for($k=0; $k<count($res); $k++)
                                 {
                                     if($k%2==0)
-                                        echo "<tr class=\"OddRow text-center \">";
+                                        echo "<tr class=\"text-center \">";
                                     else
-                                        echo "<tr class=\"EvenRow text-center \">";
+                                        echo "<tr class=\"text-center \">";
                                     if($res[$k]->ReferStatus=="NOT_READ")
                                         $NewMail = "<b>";
                                     else
                                         $NewMail = "";
-                                    echo "<td>";
+                                    echo "<td class=\"align-middle\">";
                                     //if($NewMail=="<b>")
                                     echo "<input type=\"checkbox\" class \"form-check-input \" name=\"ch_".$res[$k]->PrivateMessageFollowID."\">";
                                     echo "</td>";
-                                    echo "<td>".$NewMail;
-                                    echo "<a href=\"ShowMessage.php?BackPage=SentBox.php&MessageFollowID=".$res[$k]->PrivateMessageFollowID."\">";
+                                    echo "<td class=\"align-middle\">".$NewMail;
+                                    echo "<a class=\"btn btn-outline-primary\" role=\"button\" href=\"ShowMessage.php?BackPage=SentBox.php&MessageFollowID=".$res[$k]->PrivateMessageFollowID."\">";
                                     echo ($k+$FromRec+1)."</td>";
-                                    echo "	<td>".$NewMail.htmlentities($res[$k]->MessageTitle, ENT_QUOTES, 'UTF-8')."</td>";
-                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ToPersonID_FullName, ENT_QUOTES, 'UTF-8')."</td>";
-                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->ReferTime_Shamsi, ENT_QUOTES, 'UTF-8')."</td>";
-                                    echo "	<td nowrap>".$NewMail.htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td class=\"align-middle\">".$NewMail.htmlentities($res[$k]->MessageTitle, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td  class=\"align-middle text-nowrap\">".$NewMail.htmlentities($res[$k]->ToPersonID_FullName, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td  class=\"align-middle text-nowrap\">".$NewMail.htmlentities($res[$k]->ReferTime_Shamsi, ENT_QUOTES, 'UTF-8')."</td>";
+                                    echo "	<td  class=\"align-middle\">".$NewMail.htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8')."</td>";
                                     echo "</tr>";
                                 }
                                 ?>
