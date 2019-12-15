@@ -1,54 +1,22 @@
-.bgmain{background-color:#F5B290;font-size: 10px}
-.bgfooter{background-color:#F7732F;font-size: 8pt; color:#FFFFFF}
-.bgselect{background-color:#FAD8C7;font-size: 10px}
-.bglogin{background-color:#F4AD8A;font-size: 10px}
-.bgover{background-color:#F4AD8A;color:#FFFFFF}
-.buttonset{background: #FFC891;border-bottom: 1px solid #104A7B;border-right: 1px solid #104A7B;border-left: 1px solid #AFC4D5;border-top:1px solid #AFC4D5;color:#000066;height:25px;text-decoration:none;cursor: hand}
-.botdselect{border: 1px solid #ec9a72;}
-.botd{border: 1px solid #a2745d;}
-.HeaderOfTable
-{
-		background-color: #2aa2a2; 
-}
-.FooterOfTable
-{
-		background-color: #2aa2a2; 
-}
-.EvenRow
-{
-		background-color: #b3d9ff;  
-}
-.OddRow
-{
-		background-color: #ffffff; 
-}
-td
-{
-	font-family: tahoma;
-	font-size: 12px;
-}
-
-.FormTable
-{
-	border: 1px solid #40638e;
-	padding: 0 0.8em 0.65em 1em; 
-	width: 95%;
-	align=center;
-	cellpadding: 5;
-	cellspacing: 0;
-}
-
-.ListTable
-{
-	border: 1px solid #40638e;
-	padding: 0 0.8em 0.65em 1em; 
-	width: 95%;
-	align=center;
-	cellpadding: 5;
-	cellspacing: 0;
-}
-.Heading{
-  color: #2846AC;
-}
-a{color:#13263a;text-decoration:none}
-a:hover{color:#336699;text-decoration: underline}
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #17a2b8;
+	height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+	margin-top: 75px;
+	max-width: 600px;
+	border: 1px solid #9C9C9C;
+	background-color: #EAEAEA;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+	margin-top: -85px;
+  }
+  
+  #login-header {
+	  margin-top: 25px;
+  }

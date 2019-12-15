@@ -4,7 +4,7 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 89-3-15
 */
-include("header.inc.php");
+include("../shares/header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/projects.class.php");
 include("classes/projectsSecurity.class.php");
