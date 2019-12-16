@@ -144,10 +144,9 @@ if($SomeItemsRemoved)
                                 <?php
                                 for($k=0; $k<count($res); $k++)
                                 {
-                                    if($k%2==0)
-                                        echo "<tr class=\"text-center \">";
-                                    else
-                                        echo "<tr class=\"text-center\">";
+
+
+                                    echo "<tr class=\"text-center\">";
                                     if($res[$k]->ReferStatus=="NOT_READ")
                                         $NewMail = "<b>";
                                     else
