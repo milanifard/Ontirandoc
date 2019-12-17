@@ -9,16 +9,16 @@ class config{
     'host'   => 'localhost',
     'driver' => 'mysql',
                 
-    "lab_user" => 'user1',
-    "lab_pass" => 'user1',
+    "lab_user" => 'root',
+    "lab_pass" => '',
     "lab_db"   => 'projectmanagement',
 
-    "dataanalysis_user" => 'user1',
-    "dataanalysis_pass" => 'user1',
+    "dataanalysis_user" => 'root',
+    "dataanalysis_pass" => '',
     "dataanalysis_db"   => 'projectmanagement',
 
-    "formsgenerator_user" => 'user1',
-    "formsgenerator_pass" => 'user1',
+    "formsgenerator_user" => 'root',
+    "formsgenerator_pass" => '',
     "formsgenerator_db"   => 'formsgenerator') 
   );
   public static $display_error = true;

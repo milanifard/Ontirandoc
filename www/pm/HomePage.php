@@ -21,7 +21,7 @@ if(count($res)>0)
 	  پیامها
 	  </td>
   </tr>
-<?
+<?php
   for($k=0; $k<count($res); $k++)
   {
 	  if($k%2==0)
@@ -49,5 +49,4 @@ if(count($res)>0)
 </tr>
 </table>
 <br>
-
 </html>
