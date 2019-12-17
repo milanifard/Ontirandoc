@@ -52,6 +52,46 @@ if(UI_LANGUAGE=="EN") {
     //----------------------------------
 
 
+    //SearchMessage.php needed definitions Alireza Imani
+    define("C_SEARCH_MESSAGE","Search Message");
+    define("C_PART_OF_TEXT","Part of text");
+    define("C_CHOOSE","Choose");
+    define("C_FROM_DATE","From date");
+    define("C_TO_DATE","To date");
+    define("C_SEARCH","Search");
+
+    //MetaData2Onto.php needed definitions Alireza Imani
+    define("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","Choose conditions for reverse engineering");
+    define("C_INTENDED_SCOPES","Intended Scopes");
+    define("C_EDUCATIONAL","Educational");
+    define("C_RESEARCH","Research");
+    define("C_STUDENT_SERVICES","Student Services");
+    define("C_WELFARE","Welfare");
+    define("C_FINANCIAL","Financial");
+    define("C_SUPPORT","Support");
+    define("C_ADMINISTRATIVE","Administrative");
+    define("C_RELATED_TO_SYSTEM_OPERATIONS","Related to system operations");
+    define("C_TARGET_ONTOLOGY","Target Ontology");
+    define("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","Remove previous merge suggestions");
+    define("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","Remove existing elements of Ontology");
+    define("C_PERFORM_REVERSE_ENGINEERING","Perform Reverse Engineering");
+    define("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","Review properties merging suggestions");
+    define("C_REVIEW_INTEGRATION_SUGGESTIONS","Review integration suggestions");
+    define("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","Hierarchical relationships between classes");
+    define("C_CONVERSION_DONE","Conversion done");
+
+    //ShowTermsManipulationHistory.php needed definitions Alireza Imani
+    define("C_COMPLETED_TASK","Completed Task");
+    define("C_DESCRIPTION","Description");
+    define("C_SUBJECT","Subject");
+    define("C_TIME","Time");
+    define("C_EXTRACT_NEW_WORD","Extract new word");
+    define("C_REMOVE_WORD","Remove word");
+    define("C_MERGE_TWO_WORDS","Merge two words");
+    define("C_CHANGE_WORD","Change word");
+    define("C_REPLACE_WORD","Replace word");
+    define("C_TO","to");
+    define("C_BY","by");
 }
 else
 {
@@ -103,6 +143,49 @@ else
     define("C_MESSAGES_SENT","نامه های ارسالی");
     define("C_RECEIVER_NAME","دریافت کننده");
     //----------------------------------
+
+
+    //SearchMessage.php needed definitions Alireza Imani
+    define("C_SEARCH_MESSAGE","جستجوی نامه");
+    define("C_PART_OF_TEXT","بخشی از متن");
+    define("C_CHOOSE","انتخاب");
+    define("C_FROM_DATE","از تاریخ");
+    define("C_TO_DATE","تا تاریخ");
+    define("C_SEARCH","جستجو");
+
+    //MetaData2Onto.php needed definitions Alireza Imani
+    define("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","انتخاب شرایط برای مهندسی معکوس");
+    define("C_INTENDED_SCOPES","حوزه‌های مورد نظر");
+    define("C_EDUCATIONAL","آموزشی");
+    define("C_RESEARCH","پژوهشی");
+    define("C_STUDENT_SERVICES","خدمات دانشجویی");
+    define("C_WELFARE","رفاهی");
+    define("C_FINANCIAL","مالی");
+    define("C_SUPPORT","پشتیبانی");
+    define("C_ADMINISTRATIVE","اداری");
+    define("C_RELATED_TO_SYSTEM_OPERATIONS","مرتبط با عملیات سیستمی");
+    define("C_TARGET_ONTOLOGY","هستان نگار مقصد");
+    define("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","حذف پیشنهادهای ادغام قبلی");
+    define("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","حذف عناصر موجود در هستان نگار");
+    define("C_PERFORM_REVERSE_ENGINEERING","انجام مهندسی معکوس");
+    define("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","بررسی پیشنهاد ادغام خصوصیت ها");
+    define("C_REVIEW_INTEGRATION_SUGGESTIONS","بررسی پیشنهادهای تجمیع");
+    define("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","روابط سلسله مراتبی بین کلاس ها");
+    define("C_CONVERSION_DONE","تبدیل انجام شد");
+
+    //ShowTermsManipulationHistory.php needed definitions Alireza Imani
+    define("C_COMPLETED_TASK","عمل انجام شده");
+    define("C_DESCRIPTION","شرح");
+    define("C_SUBJECT","عمل کننده");
+    define("C_TIME","زمان");
+    define("C_EXTRACT_NEW_WORD","استخراج واژه‌ی جدید");
+    define("C_REMOVE_WORD","حذف واژه");
+    define("C_MERGE_TWO_WORDS","ادغام دو واژه");
+    define("C_CHANGE_WORD","تغییر واژه");
+    define("C_REPLACE_WORD","جایگزینی واژه");
+    define("C_TO","به");
+    define("C_BY","با");
+
 }
 
 ?>
