@@ -101,7 +101,9 @@ if (isset($_REQUEST["Search"])) {
         $SearchResult .= "</td>";
         $SearchResult .= "<td class='text-center'>";
         if ($rec["ReferStatus"] == "ARCHIVE")
-            $SearchResult .= "<img src='images/DeleteMessage.gif'>";
+            $SearchResult .= " <i class=\"input-group-text
+                                    fa fa-trash\"
+                                       id=\"to_date\"></i>";
         $SearchResult .= $rec["MessageTitle"] . "</td>";
         $SearchResult .= "<td class='text-center' nowrap>" . $rec["FromPerson"] . "</td>";
         $SearchResult .= "<td class='text-center' nowrap>" . $rec["ToPerson"] . "</td>";
@@ -134,8 +136,7 @@ if (isset($_REQUEST["Search"])) {
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet"
       href="../node_modules/md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.style.css"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+<link rel="stylesheet" href="css/fontawesome.min.css">
 
 <form method="post" id="f1" name="f1" enctype="multipart/form-data">
     <div class="container">
@@ -147,6 +148,7 @@ if (isset($_REQUEST["Search"])) {
                         echo C_SEARCH_MESSAGE;
                         ?>
                     </p>
+
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -218,8 +220,9 @@ if (isset($_REQUEST["Search"])) {
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <i class="input-group-text material-icons md-dark"
-                                       style="cursor: pointer;" id="from_date">calendar_today</i>
+                                    <i class="input-group-text
+                                    fa fa-calendar-day"
+                                       id="from_date" style="cursor: pointer; font-size: 1.3em !important;"></i>
                                 </div>
                                 <input type="text" id="from_date_input" name="from_date_input"
                                        class="form-control " placeholder='<?php echo C_FROM_DATE; ?>'>
@@ -230,8 +233,9 @@ if (isset($_REQUEST["Search"])) {
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <i class="input-group-text material-icons md-dark"
-                                       style="cursor: pointer;" id="to_date">calendar_today</i>
+                                    <i class="input-group-text
+                                    fa fa-calendar-day"
+                                       id="to_date" style="cursor: pointer; font-size: 1.3em !important;"></i>
                                 </div>
                                 <input type="text" id="to_date_input" name="to_date_input"
                                        class="form-control " placeholder='<?php echo C_TO_DATE; ?>'
