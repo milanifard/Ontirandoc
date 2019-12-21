@@ -501,17 +501,13 @@ HTMLBegin();
 
 if (!isset($_REQUEST["TargetOnto"])) {
     ?>
-    <!--    <head>-->
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script>
-        //alert(typeof jQuery === 'undefined');
         $(document).ready(function () {
             $('a.dropdown-item').on('click', function () {
                 $('#TargetOnto').text($(this).text());
             });
         });
     </script>
-    <!--        </head>-->
     <form method="post">
         <div class="container">
             <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
@@ -547,8 +543,6 @@ if (!isset($_REQUEST["TargetOnto"])) {
                     <hr>
                     <div class="row" style="margin-bottom:4%;">
                         <div class="col-6">
-                            <!--                            --><?php //echo C_TARGET_ONTOLOGY; ?><!--:-->
-                            <!--                            <br>-->
                             <div class="dropdown">
                                 <button type="button" class="btn btn-light dropdown-toggle" id="TargetOnto" name="TargetOnto"
                                         data-toggle="dropdown">
