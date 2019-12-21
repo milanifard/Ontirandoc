@@ -498,9 +498,21 @@ function RemovePreviousMergeSuggestions($TargetOnto)
 
 $mysql = pdodb::getInstance();
 HTMLBegin();
+
 if (!isset($_REQUEST["TargetOnto"])) {
     ?>
-    <form method=post>
+    <!--    <head>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script>
+        //alert(typeof jQuery === 'undefined');
+        $(document).ready(function () {
+            $('a.dropdown-item').on('click', function () {
+                $('#TargetOnto').text($(this).text());
+            });
+        });
+    </script>
+    <!--        </head>-->
+    <form method="post">
         <div class="container">
             <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
                 <div class="col-12">
@@ -535,17 +547,23 @@ if (!isset($_REQUEST["TargetOnto"])) {
                     <hr>
                     <div class="row" style="margin-bottom:4%;">
                         <div class="col-6">
-                            <?php echo C_TARGET_ONTOLOGY; ?>:
-                            <br>
-                            <select id=TargetOnto name=TargetOnto class="custom-select" style="margin-top:3%;">
-                                <?
-                                $res = $mysql->Execute("select OntologyID, OntologyTitle, comment from projectmanagement.ontologies order by OntologyID DESC");
-                                while ($rec = $res->fetch()) {
-                                    echo "<option value='" . $rec["OntologyID"] . "'>";
-                                    echo $rec["OntologyTitle"] . " (" . substr($rec["comment"], 0, 80) . ")";
-                                }
-                                ?>
-                            </select>
+                            <!--                            --><?php //echo C_TARGET_ONTOLOGY; ?><!--:-->
+                            <!--                            <br>-->
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-light dropdown-toggle" id="TargetOnto" name="TargetOnto"
+                                        data-toggle="dropdown">
+                                    <?php echo C_TARGET_ONTOLOGY; ?>
+                                </button>
+                                <div class="dropdown-menu" id="drop_down_list">
+                                    <?
+                                    $res = $mysql->Execute("select OntologyID, OntologyTitle, comment from projectmanagement.ontologies order by OntologyID DESC");
+                                    while ($rec = $res->fetch()) {
+                                        echo "<a class=\"dropdown-item\" href=\"#\">";
+                                        echo $rec["OntologyTitle"] . " (" . substr($rec["comment"], 0, 80) . ")</a>";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
                             <div style="margin-top:2%;">
                                 <br>
                                 <input type="checkbox" name="ch_RemovePMS" id="ch_RemovePMS" class="custom-checkbox"
@@ -573,7 +591,7 @@ if (!isset($_REQUEST["TargetOnto"])) {
                             <input class="btn btn-dark"
                                    type="button"
                                    style="margin:1% 5px;"
-                                   value='<?php echo C_REVIEW_INTEGRATION_SUGGESTIONS.'/'.C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES; ?>'
+                                   value='<?php echo C_REVIEW_INTEGRATION_SUGGESTIONS . '/' . C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES; ?>'
                                    onclick='window.open("OntologyMergeClasses.php?TargetOnto="+document.getElementById("TargetOnto").value);'>
 
                         </div>
@@ -581,6 +599,7 @@ if (!isset($_REQUEST["TargetOnto"])) {
                 </div>
             </div>
         </div>
+
     </form>
     <? die();
 }
@@ -604,6 +623,7 @@ GenerateMergePropertySuggestions($TargetOnto);
     // برای کلاسهای شیء ساخته شده باید رابطه بین حوزه و برد را مجاز ثبت کند
     ApplyObjectPropertyRestrictions($TargetOnto);
 }
-echo "<span class='text-success'>".C_CONVERSION_DONE.". </span>";
+echo "<span class='text-success'>" . C_CONVERSION_DONE . ". </span>";
 ?>
+
 </body></html>
