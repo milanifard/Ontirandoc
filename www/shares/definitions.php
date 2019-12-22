@@ -51,6 +51,27 @@ if(UI_LANGUAGE=="EN") {
     define("C_RECEIVER_NAME","Receiver Name");
     //----------------------------------
 
+    //NewQuestionnare.php ALI NOORI
+    define("C_CREATING_EDITTING_QUESTIONNARE","Creating/EdittingQuestionnare");
+    define("C_FORM_NAME","Form Name");
+    define("C_FORM_EXPLANATION_UP","Form Explanation Above");
+    define("C_FORM_EXPLANATION_DOWN","Form Explanation Below");
+    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","Type of entry data layout");
+    define("C_ONE_COLUMN","One Column");
+    define("C_TWO_COLUMN","Two Column");
+    define("C_WIDTH_QUESTION_COLUMN","Width of question column");
+    define("C_MARGIN_SECOND_ROWS","margin for second rows");
+    define("C_MARGIN_SECOND_ROWS_YES","YES");
+    define("C_MARGIN_SECOND_ROWS_NO","NO");
+    define("C_RETURN","Return");
+    define("C_TABLE_INFORMATION","Table Of Information");
+    define("C_BANK_INFORMATION","Bank Of Information");
+    define("C_FORMATION_USER","Formation User");
+    define("C_CREATE_TIME","Create Time");
+    define("C_MANAGE_OPTIONS","Manage Options");
+    define("C_MANAGE_DETAILS_TABLES","Manage details tables");
+    //-----------------------------
+
 
 }
 else
@@ -103,6 +124,28 @@ else
     define("C_MESSAGES_SENT","نامه های ارسالی");
     define("C_RECEIVER_NAME","دریافت کننده");
     //----------------------------------
+
+    //NewQuestionnare.php ALI NOORI
+    define("C_CREATING_EDITTING_QUESTIONNARE","ایجاد/ویرایش پرسشنامه");
+    define("C_FORM_NAME","عنوان فرم");
+    define("C_FORM_EXPLANATION_UP","توضیحات بالای فرم");
+    define("C_FORM_EXPLANATION_DOWN","توضیحات پایین فرم");
+    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","نوع نمایش صفحه ورود داده");
+    define("C_ONE_COLUMN","یک ستونی");
+    define("C_TWO_COLUMN","دو ستونی");
+    define("C_WIDTH_QUESTION_COLUMN","عرض ستون سوالات");
+    define("C_MARGIN_SECOND_ROWS","حاشیه برای ردیفهای فرم");
+    define("C_MARGIN_SECOND_ROWS_YES","قرار داده شود");
+    define("C_MARGIN_SECOND_ROWS_NO","قرار داده نشود");
+    define("C_RETURN","بازگشت");
+    define("C_TABLE_INFORMATION","جدول اطلاعاتی مربوطه");
+    define("C_BANK_INFORMATION","بانک اطلاعاتی مربوطه");
+    define("C_FORMATION USER","کاربرسازنده");
+    define("C_CREATE_TIME","تاریخ ایجاد");
+    define("C_MANAGE_OPTIONS","مدریت گزینه ها");
+    define("C_MANAGE_DETAILS_TABLES","مدیریت جداول جزییات");
+    //-----------------------------
+
 }
 
 ?>
