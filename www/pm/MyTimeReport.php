@@ -121,7 +121,7 @@ if (isset($_REQUEST["SelectedYear"])) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row HeaderOfTable mt-2">
+                                    <div class="row bg-info mt-2">
                                         <div class="col-12 text-center">
                                             <input type="submit" class="btn btn-success m-2"
                                                    value=<?php echo C_SHOW_REPORT_ACTIONS ?>>
@@ -173,7 +173,7 @@ if (isset($_REQUEST["SelectedYear"])) {
     <div class="container">
         <div class="row">
             <div class="col-10 text-center" style="border: 2px solid black">
-                <div class="row HeaderOfTable">
+                <div class="row bg-info" >
                     <div class="col-12 text-center">
                         <p class="text-center">
                             <?php
@@ -235,14 +235,30 @@ if (isset($_REQUEST["SelectedYear"])) {
                 $total = 0;
                 while ($rec = $res->fetch()) {
                     $total += $rec["tl"];
-                    echo "</tr>";
-                    echo "<td nowrap>" . $rec["gDate"] . "</td>";
-                    echo "<td>" . $rec["title"] . "</td>";
+//                    echo "</tr>"; //active
+//                    echo "<td nowrap>" . $rec["gDate"] . "</td>"; //active
+//                    echo "<td>" . $rec["title"] . "</td>";    //active
                     //echo "<td>".$rec["title"]."</td>";
-
                     //echo "<td>&nbsp;".$rec["ActivityDescription"]."</td>";
-                    echo "<td>" . ShowTimeInHourAndMinuteOrEmpty($rec["tl"]) . "</td>";
-                    echo "</tr>";
+//                    echo "<td>" . ShowTimeInHourAndMinuteOrEmpty($rec["tl"]) . "</td>";  //active
+//                    echo "</tr>";     //active
+                    echo "<div class='row'>
+                            <div class='col-4'>"
+                            .
+                                $rec["gDate"]
+                            .
+                            "</div>
+                            <div class='col-4'>"
+                            .
+                                $rec["title"]
+                            .
+                            "</div>
+                            <div class='col-4'>"
+                            .
+                                ShowTimeInHourAndMinuteOrEmpty($rec["tl"])
+                            .
+                            "</div>
+                          </div>";
                 }
                 $payment = round(($total * $HourlyPrice) / 60, 0);
                 //            echo "<tr bgcolor=#cccccc>
