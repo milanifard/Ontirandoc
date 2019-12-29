@@ -92,6 +92,46 @@ if(UI_LANGUAGE=="EN") {
     define("C_REPLACE_WORD","Replace word");
     define("C_TO","to");
     define("C_BY","by");
+
+    //NewQuestionnare.php ALI NOORI
+    define("C_CREATING_EDITTING_QUESTIONNARE","Creating/EdittingQuestionnare");
+    define("C_FORM_NAME","Form Name");
+    define("C_FORM_EXPLANATION_UP","Form Explanation Above");
+    define("C_FORM_EXPLANATION_DOWN","Form Explanation Below");
+    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","Type of entry data layout");
+    define("C_ONE_COLUMN","One Column");
+    define("C_TWO_COLUMN","Two Column");
+    define("C_WIDTH_QUESTION_COLUMN","Width of question column");
+    define("C_MARGIN_SECOND_ROWS","margin for second rows");
+    define("C_MARGIN_SECOND_ROWS_YES","YES");
+    define("C_MARGIN_SECOND_ROWS_NO","NO");
+    define("C_RETURN","Return");
+    define("C_TABLE_INFORMATION","Table Of Information");
+    define("C_BANK_INFORMATION","Bank Of Information");
+    define("C_FORMATION_USER","Formation User");
+    define("C_CREATE_TIME","Create Time");
+    define("C_MANAGE_OPTIONS","Manage Options");
+    define("C_MANAGE_DETAILS_TABLES","Manage details tables");
+    //-----------------------------
+    //MyTimeReport.php ALI NOORI
+    define("C_YEAR","Year");
+    define("C_MONTH","Month");
+    define("C_SHOW_REPORT_ACTIONS","Show Report Actions");
+    define("C_USAGE_TIME_REPORT","Usage Time Report");
+    define("C_DATE","Date");
+    define("C_ACTIVITY","Activity");
+    define("C_TIME","Time");
+    define("C_TOTAL","Total");
+    define("C_RIAL","Rial");
+    //-------------------------
+    //CompareAllOntos.php ALI NOORI
+    define("C_COMPARE_COVER_HASTAN_NEGAR","Compare Cover Of HastanNegar");
+    define("C_WITH_OTHER_HASTAN_NEGAR","With Other HastanNegar");
+    define("C_NAME_HASTAN_NEGAR","Name Of HastanNegar");
+    define("C_PERCENTAGE_MAPPING_CLASS","Class Mapping Percentage");
+    define("C_PROPERTIES_MAPPING_PERCENTAGE","Properties mapping percentage");
+    //--------------------------
+
 }
 else
 {
@@ -185,6 +225,45 @@ else
     define("C_REPLACE_WORD","جایگزینی واژه");
     define("C_TO","به");
     define("C_BY","با");
+
+    //NewQuestionnare.php ALI NOORI
+    define("C_CREATING_EDITTING_QUESTIONNARE","ایجاد/ویرایش پرسشنامه");
+    define("C_FORM_NAME","عنوان فرم");
+    define("C_FORM_EXPLANATION_UP","توضیحات بالای فرم");
+    define("C_FORM_EXPLANATION_DOWN","توضیحات پایین فرم");
+    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","نوع نمایش صفحه ورود داده");
+    define("C_ONE_COLUMN","یک ستونی");
+    define("C_TWO_COLUMN","دو ستونی");
+    define("C_WIDTH_QUESTION_COLUMN","عرض ستون سوالات");
+    define("C_MARGIN_SECOND_ROWS","حاشیه برای ردیفهای فرم");
+    define("C_MARGIN_SECOND_ROWS_YES","قرار داده شود");
+    define("C_MARGIN_SECOND_ROWS_NO","قرار داده نشود");
+    define("C_RETURN","بازگشت");
+    define("C_TABLE_INFORMATION","جدول اطلاعاتی مربوطه");
+    define("C_BANK_INFORMATION","بانک اطلاعاتی مربوطه");
+    define("C_FORMATION USER","کاربرسازنده");
+    define("C_CREATE_TIME","تاریخ ایجاد");
+    define("C_MANAGE_OPTIONS","مدریت گزینه ها");
+    define("C_MANAGE_DETAILS_TABLES","مدیریت جداول جزییات");
+    //-----------------------------
+    //MyTimeReport.php ALI NOORI
+    define("C_YEAR","سال :");
+    define("C_MONTH","ماه :");
+    define("C_SHOW_REPORT_ACTIONS","نمایش گزارش اقدامات کاری");
+    define("C_USAGE_TIME_REPORT","گزارش زمان مصرفی");
+    define("C_DATE","تاریخ");
+    define("C_ACTIVITY","فعالیت");
+    define("C_TIME","زمان");
+    define("C_TOTAL","مجموع");
+    define("C_RIAL","ریال");
+    //-------------------------
+    //CompareAllOntos.php ALI NOORI
+    define("C_COMPARE_COVER_HASTAN_NEGAR","مقایسه همپوشانی هستان نگار");
+    define("C_WITH_OTHER_HASTAN_NEGAR"," با سایر هستان نگاره");
+    define("C_NAME_HASTAN_NEGAR","نام هستان نگار");
+    define("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
+    define("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
+    //--------------------------
 
 }
 
