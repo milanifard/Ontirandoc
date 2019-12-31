@@ -132,6 +132,17 @@ if(UI_LANGUAGE=="EN") {
     define("C_PROPERTIES_MAPPING_PERCENTAGE","Properties mapping percentage");
     //--------------------------
 
+    //ShowTermReferHistory.php Hossein Lotfi
+    define("C_SOURCE_NAME","Source Name");
+    define("C_PAGE","Page");
+    define("C_PARAGRAPH","Paragraph");
+    define("C_SUBMIT_NEW_REFERENCE", "Submit New Reference");
+    define("C_REMOVE_REFERENCE", "Remove Reference");
+    define("C_CHANGE_REFERENCE", "Change Reference");
+    define("C_REPLACE_REFERENCE_WITH", "Replace Reference With");
+    define("C_WITH_REFERENCE_TO", "With Reference To");
+    define("C_S", "P");
+    define("C_P", "p");
 }
 else
 {
@@ -264,7 +275,18 @@ else
     define("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
     define("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
     //--------------------------
-
+    
+    //ShowTermReferHistory.php Hossein Lotfi
+    define("C_SOURCE_NAME","نام منبع");
+    define("C_PAGE","صفحه");
+    define("C_PARAGRAPH","پاراگراف");
+    define("C_SUBMIT_NEW_REFERENCE", "ثبت ارجاع جدید");
+    define("C_REMOVE_REFERENCE", "حذف ارجاع");
+    define("C_CHANGE_REFERENCE", "تغییر ارجاع");
+    define("C_REPLACE_REFERENCE_WITH", "جایگزینی ارجاع به");
+    define("C_WITH_REFERENCE_TO", "با ارجاع به");
+    define("C_S", "ص");
+    define("C_P", "پ");
 }
 
 ?>
