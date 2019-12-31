@@ -15,7 +15,7 @@ HTMLBegin();
         <div class=\"row\">
         <div class=\"col-1\"></div>
         <div class=\"col-10\">
-        <table class=\"table table-bordered table-sm \">";
+        <table class=\"table table-bordered table-sm text-center\">";
   echo "<thead class=\"table-info text-nowrap\">";
   echo  "<td width=\"1%\">".C_ROW."</td>
          <td >".C_COMPLETED_TASK."</td>
