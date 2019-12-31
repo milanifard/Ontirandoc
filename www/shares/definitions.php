@@ -148,6 +148,18 @@ if(UI_LANGUAGE=="EN") {
     define("C_LAST_NAME","Last Name");
     define("C_REMOVE_PREVIOUS_CHOICE","Remove Previous Choice");
     define("C_FULL_NAME","Full Name");
+
+    //ManageTermReferences.php Hossein Lotfi
+    define("C_CONTENT","Content");
+    define("C_TERM", "Term");
+    define("C_FREQUENCY","Frequency");
+    define("C_INFORMATION_SAVED","Information Saved");
+    define("C_CREATE_EDIT_TERMS_REFERENCES","Create/Edit Terms References");
+    define("C_FILE2","File");
+    define("C_GET_FILE", "Get File");
+    define("C_TERMS_REFERENCES","Terms References");
+    define("C_TERMS","Terms");
+    define("C_STATISTICAL_ANALYSIS","Statistical Analysis");
 }
 else
 {
@@ -297,6 +309,18 @@ else
     define("C_LAST_NAME","نام خانوادگی");
     define("C_REMOVE_PREVIOUS_CHOICE","حذف انتخاب قبلی");
     define("C_FULL_NAME","نام و نام خانوادگی");
+
+    //ManageTermReferences.php Hossein Lotfi
+    define("C_CONTENT","محتوا");
+    define("C_TERM", "اصطلاح");
+    define("C_FREQUENCY","فراوانی");
+    define("C_INFORMATION_SAVED","اطلاعات ذخیره شد");
+    define("C_CREATE_EDIT_TERMS_REFERENCES","ایجاد/ویرایش منابع اصطلاحات");
+    define("C_FILE2","فایل");
+    define("C_GET_FILE", "دریافت فایل");
+    define("C_TERMS_REFERENCES","منابع اصطلاحات");
+    define("C_TERMS","اصطلاحات");
+    define("C_STATISTICAL_ANALYSIS","تحلیل آماری");
 }
 
 ?>
