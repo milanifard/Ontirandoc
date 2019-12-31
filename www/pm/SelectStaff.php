@@ -23,26 +23,28 @@
 		echo "<input type=hidden name=LInput id=LInput value='".$_REQUEST["LInput"]."'>"; 
 ?>
 <input type=hidden name='InputName' value='<?= $_REQUEST["InputName"] ?>'>
-<table width=80% align=center border=1 cellspacing=0 cellpadding=3>
+<div class="row">
+<div class="col-1"></div>
+<div class="col-10">
+<table class="table table-bordered table-sm">
 <tr>
-	<td><? echo C_NAME.": "; ?></td><td><input type=text name=FName "></td>
+	<td><? echo C_NAME.": "; ?></td><td><input type=text name=FName class="form-control col-lg-3""></td>
 </tr>
 <tr>
-	<td><? echo C_LAST_NAME.": "; ?></td><td><input type=text name=LName "></td>
+	<td><? echo C_LAST_NAME.": "; ?></td><td><input type=text name=LName class="form-control col-lg-3""></td>
 </tr>
-<tr class='FooterOfTable'>
-	<td colspan=2 align=center>
-	<input type=submit value="<? echo C_SEARCH; ?>">
-	&nbsp;
-	<input type=button value="<? echo C_REMOVE_PREVIOUS_CHOICE; ?>" onclick='javascript: ClearLastSelected();'>
+<tfoot class='table-info'>
+	<td class="text-center" colspan=2>
+	<input type=submit class="btn btn-light" value="<? echo C_SEARCH; ?>">
+	<input type=button class="btn btn-danger" value="<? echo C_REMOVE_PREVIOUS_CHOICE; ?>" onclick='javascript: ClearLastSelected();'>
 	</td>
-</tr>
+</tfoot>
 </table>
 <br>
-<table width=80% align=center border=1 cellspacing=0 cellpadding=3>
-<tr class='HeaderOfTable'>
+<table class="table table-bordered table-sm table-striped">
+<thead class='table-info'>
 	<td><? echo C_FULL_NAME; ?></td>
-</tr>
+</thead>
 <?
 	$mysql = pdodb::getInstance();
 	if(isset($_REQUEST["FName"]))
@@ -61,12 +63,8 @@
 			$i++;
 			if($i>200)
 				break;
-			if($i%2==0)
-				echo "<tr class=OddRow>";
-			else
-				echo "<tr class=EvenRow>";
+			echo "<tr>";
 			echo "<td><a href='javascript: SelectPerson(\"".$arr_res["PersonID"]."\", \"".$arr_res["pfname"]." ".$arr_res["plname"]."\", \"".$arr_res["pfname"]."\", \"".$arr_res["plname"]."\"); '>".$arr_res["pfname"]." ".$arr_res["plname"]."</td>";
-
 			echo "</tr>";
 		}
 		
@@ -84,18 +82,17 @@
 			$i++;
 			if($i>200)
 				break;
-			if($i%2==0)
-				echo "<tr class=OddRow>";
-			else
-				echo "<tr class=EvenRow>";
+			echo "<tr>";
 			echo "<td><a href='javascript: SelectPerson(\"".$arr_res["PersonID"]."\", \"".$arr_res["pfname"]." ".$arr_res["plname"]."\", \"".$arr_res["pfname"]."\", \"".$arr_res["plname"]."\"); '>".$arr_res["pfname"]." ".$arr_res["plname"]."</td>";
-
 			echo "</tr>";
 		}
 		
 	}
 ?>
 </table>
+</div>
+<div class="col-1"></div>
+</div>
 
 <script>
 	function SelectPerson(PersonID, PersonName, FName, LName)
