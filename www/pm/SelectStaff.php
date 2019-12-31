@@ -25,23 +25,23 @@
 <input type=hidden name='InputName' value='<?= $_REQUEST["InputName"] ?>'>
 <table width=80% align=center border=1 cellspacing=0 cellpadding=3>
 <tr>
-	<td>نام: </td><td><input type=text name=FName "></td>
+	<td><? echo C_NAME.": "; ?></td><td><input type=text name=FName "></td>
 </tr>
 <tr>
-	<td>نام خانوادگی: </td><td><input type=text name=LName "></td>
+	<td><? echo C_LAST_NAME.": "; ?></td><td><input type=text name=LName "></td>
 </tr>
 <tr class='FooterOfTable'>
 	<td colspan=2 align=center>
-	<input type=submit value='جستجو'>
+	<input type=submit value="<? echo C_SEARCH; ?>">
 	&nbsp;
-	<input type=button value='حذف انتخاب قبلی' onclick='javascript: ClearLastSelected();'>
+	<input type=button value="<? echo C_REMOVE_PREVIOUS_CHOICE; ?>" onclick='javascript: ClearLastSelected();'>
 	</td>
 </tr>
 </table>
 <br>
 <table width=80% align=center border=1 cellspacing=0 cellpadding=3>
 <tr class='HeaderOfTable'>
-	<td>نام و نام خانوادگی</td>
+	<td><? echo C_FULL_NAME; ?></td>
 </tr>
 <?
 	$mysql = pdodb::getInstance();

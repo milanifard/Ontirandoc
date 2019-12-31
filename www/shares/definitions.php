@@ -143,6 +143,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_WITH_REFERENCE_TO", "With Reference To");
     define("C_S", "P");
     define("C_P", "p");
+
+    //SelectStaff.php Hossein Lotfi
+    define("C_LAST_NAME","Last Name");
+    define("C_REMOVE_PREVIOUS_CHOICE","Remove Previous Choice");
+    define("C_FULL_NAME","Full Name");
 }
 else
 {
@@ -287,6 +292,11 @@ else
     define("C_WITH_REFERENCE_TO", "با ارجاع به");
     define("C_S", "ص");
     define("C_P", "پ");
+
+    //SelectStaff.php Hossein Lotfi
+    define("C_LAST_NAME","نام خانوادگی");
+    define("C_REMOVE_PREVIOUS_CHOICE","حذف انتخاب قبلی");
+    define("C_FULL_NAME","نام و نام خانوادگی");
 }
 
 ?>
