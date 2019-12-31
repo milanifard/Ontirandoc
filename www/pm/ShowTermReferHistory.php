@@ -11,10 +11,20 @@ HTMLBegin();
   $res = $mysql->Execute("select *, g2j(ATS) as ActionDate from projectmanagement.TermsReferHistory
 		    JOIN projectmanagement.persons using (PersonID) order by ATS DESC");
   $i=0;
-  echo "<table width=98% align=center border=1 cellspacing=0 cellpadding=5>";
-  echo "<tr class=HeaderOfTable>";
-  echo "<td width=1% nowrap>".C_ROW."</td><td>".C_COMPLETED_TASK."</td><td>".C_DESCRIPTION."</td><td>".C_SOURCE_NAME."</td><td>".C_PAGE." / ".C_PARAGRAPH."</td><td>".C_SUBJECT."</td><td>".C_TIME."</td>";
-  echo "</tr>";
+  echo "<br>
+        <div class=\"row\">
+        <div class=\"col-1\"></div>
+        <div class=\"col-10\">
+        <table class=\"table table-bordered table-sm \">";
+  echo "<thead class=\"table-info text-nowrap\">";
+  echo  "<td width=\"1%\">".C_ROW."</td>
+         <td >".C_COMPLETED_TASK."</td>
+         <td >".C_DESCRIPTION."</td>
+         <td >".C_SOURCE_NAME."</td>
+         <td >".C_PAGE." / ".C_PARAGRAPH."</td>
+         <td >".C_SUBJECT."</td>
+         <td >".C_TIME."</td>";
+  echo "</thead>";
   while($rec = $res->fetch())
   {
     $i++;
@@ -47,5 +57,7 @@ HTMLBegin();
     echo "</tr>";
   }
   echo "</table>";
+  echo "</div>";
+  echo "<div class=\"col-1\"></div>";
 ?>
 </html>
