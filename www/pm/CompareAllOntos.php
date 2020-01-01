@@ -59,15 +59,34 @@ function ShowCompareTable($BenchmarkOntoID, $BenchmarkLabel, $OntologyList)
 
 	while($rec = $res->fetch())
 	{
-		echo "<tr>";
-		echo "<td>";
-		echo "<a href='CompareOntologies.php?OntologyID1=".$BenchmarkOntoID."&OntologyID2=".$rec["OntologyID"]."&ActionType=Show'>";
-		echo $rec["OntologyTitle"];
-		echo "</a>";
-		echo "</td>";
-		echo "<td>".CalculateClassCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])."</td>";
-		echo "<td>".CalculatePropertyCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])."</td>";
-		echo "</tr>";
+//		echo "<tr>";
+//		echo "<td>";
+//		echo "<a href='CompareOntologies.php?OntologyID1=".$BenchmarkOntoID."&OntologyID2=".$rec["OntologyID"]."&ActionType=Show'>";
+//		echo $rec["OntologyTitle"];
+//		echo "</a>";
+//		echo "</td>";
+//		echo "<td>".CalculateClassCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])."</td>";
+//		echo "<td>".CalculatePropertyCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])."</td>";
+//		echo "</tr>";
+		echo "<div class='row'>
+				<div class='col-4'>
+					<a href='CompareOntologies.php?OntologyID1=".$BenchmarkOntoID."&OntologyID2=".$rec["OntologyID"]."&ActionType=Show'>"
+					.
+					$rec["OntologyTitle"]
+					.
+					"</a>
+				</div>
+				<div class='col-4'>"
+				.
+				CalculateClassCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])
+				.
+				"</div>
+				<div class='col-4'>"
+				.
+				CalculatePropertyCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])
+				.
+				"</div>
+				</div>";
 	}
 //	echo "</table>";
 		echo "</div>
