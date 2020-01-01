@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 مقایسه دو هستان نگار
 */
@@ -15,19 +15,48 @@ function GetOntologyTitle($OntologyID)
 
 function ShowCompareTable($BenchmarkOntoID, $BenchmarkLabel, $OntologyList)
 {
-	
+
 	$ret = "";
 	$mysql = pdodb::getInstance();
 	$res = $mysql->Execute("select OntologyID, OntologyTitle, comment from projectmanagement.ontologies where OntologyID in (".$OntologyList.")");
-	echo "<table dir=ltr width=70% align=center border=1 cellspacing=0>";
-	echo "<tr dir=rtl bgcolor=#cccccc><td colspan=3>";
-	echo "مقایسه همپوشانی هستان نگار ".$BenchmarkLabel." با سایر هستان نگارها";
-	echo "</td></tr>";
-	echo "<tr class=HeaderOfTable>";
-	echo "<td>نام هستان نگار</td>";
-	echo "<td>درصد نگاشت کلاسها</td>";
-	echo "<td>درصد نگاشت خصوصیات</td>";		
-	echo "</tr>";
+//	echo "<table dir=ltr width=70% align=center border=1 cellspacing=0>";
+//	echo "<tr dir=rtl bgcolor=#cccccc><td colspan=3>";
+//	echo "مقایسه همپوشانی هستان نگار ".$BenchmarkLabel." با سایر هستان نگارها";
+//	echo "</td></tr>";
+//	echo "<tr class=HeaderOfTable>";
+//	echo "<td>نام هستان نگار</td>";
+//	echo "<td>درصد نگاشت کلاسها</td>";
+//	echo "<td>درصد نگاشت خصوصیات</td>";
+//	echo "</tr>";
+
+	echo "<div class='container'>
+			<div class='row'>
+				<div class='col-9 text-dark text-center' dir='ltr'>
+					<div class='row'>
+						<div class='col-12 bg-info border border-dark' dir='ltr' >"
+							.
+							C_COMPARE_COVER_HASTAN_NEGAR.$BenchmarkLabel.C_WITH_OTHER_HASTAN_NEGAR
+							.
+						"</div>
+					</div>
+					<div class='row HeaderOfTable'>
+						<div class='col-4 border border-dark'>"
+						.
+						C_NAME_HASTAN_NEGAR
+						.
+						"</div>
+						<div class='col-4 border border-dark'>"
+						.
+						C_PERCENTAGE_MAPPING_CLASS
+						.
+						"</div>
+						<div class='col-4 border border-dark'>"
+						.
+						C_PROPERTIES_MAPPING_PERCENTAGE
+						.
+						"</div>
+					</div>";
+
 	while($rec = $res->fetch())
 	{
 		echo "<tr>";
@@ -40,14 +69,18 @@ function ShowCompareTable($BenchmarkOntoID, $BenchmarkLabel, $OntologyList)
 		echo "<td>".CalculatePropertyCoveragePercentage($BenchmarkOntoID, $rec["OntologyID"])."</td>";
 		echo "</tr>";
 	}
-	echo "</table>";
+//	echo "</table>";
+		echo "</div>
+			</div>
+		</div>";
+
 	return $ret;
 }
 
 
 function CalculateClassCoveragePercentage($OntologyID1, $OntologyID2)
 {
-$mysql = pdodb::getInstance();
+	$mysql = pdodb::getInstance();
 	$query = "select count(*) as tcount from projectmanagement.OntologyClasses where OntologyID=? and
 		 OntologyClassID in (
 		 select OntologyClassID from projectmanagement.OntologyClassMapping where
@@ -66,7 +99,7 @@ $mysql = pdodb::getInstance();
 
 function CalculatePropertyCoveragePercentage($OntologyID1, $OntologyID2)
 {
-$mysql = pdodb::getInstance();
+	$mysql = pdodb::getInstance();
 	$query = "select count(*) as tcount from projectmanagement.OntologyProperties where OntologyID=? and
 		 OntologyPropertyID in (
 		 select OntologyPropertyID from projectmanagement.OntologyPropertyMapping where
