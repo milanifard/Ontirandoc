@@ -176,6 +176,13 @@ if(UI_LANGUAGE=="EN") {
     define("C_TASKS_IN_NEED_OF_CONTROL", "Tasks in need of control");
     define("C_DONE_TASKS", "Done Tasks");
     define("C_CREATED_TASKS", "Created Tasks");
+
+    //ShowAllPersonStatus.php By Ehsan Amini
+    define("C_PROJECTS_COUNT", "Projects Count");
+    define("C_TIME_PERCENTAGE_ALLOCATED", "Percentage time allocated");
+    define("C_LAST_NAME_AND_FIRST_NAME", "Last Name and First Name");
+    define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "This list shows members of the projects that you are managing or subordinate to the organizational unit under your management");
+    define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","For adjusting percentages you can click on percentage number in each row");
     
 }
 else
@@ -354,6 +361,13 @@ else
     define("C_TASKS_IN_NEED_OF_CONTROL", "کارهای نیازمند کنترل");
     define("C_DONE_TASKS", "کارهای انجام شده");
     define("C_CREATED_TASKS", "کارهای ایجاد شده");
+
+    //ShowAllPersonStatus.php By Ehsan Amini
+    define("C_PROJECTS_COUNT", "تعداد پروژه ها");
+    define("C_TIME_PERCENTAGE_ALLOCATED", "درصد تخصیصی زمان");
+    define("C_LAST_NAME_AND_FIRST_NAME", "نام خانوادگی و نام");
+    define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "در این لیست اعضای پروژه هایی که شما مدیر آنها هستید و یا در زیرمجموعه واحد سازمانی تحت مدیریت شماست نمایش داده میشوند");
+    define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","برای تنظیم درصدها میتوانید روی عدددرصد در هر ردیف کلیک نمایید");
 }
 
 ?>
