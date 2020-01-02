@@ -169,6 +169,13 @@ if(UI_LANGUAGE=="EN") {
     define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[If request is about changing access to database data click here]");
     define("C_UNKNOWN_SYSTEM_CODE", "Unknown system code");
     define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "No response has been determined for this project");
+
+    //CreateKartableHeader function in ProjectTasks.class.php By Ehsan Amini
+    define("C_CURRENT_TASKS", "Current Tasks");
+    define("C_PROJECTS_MEMBERS", "Projects Members");
+    define("C_TASKS_IN_NEED_OF_CONTROL", "Tasks in need of control");
+    define("C_DONE_TASKS", "Done Tasks");
+    define("C_CREATED_TASKS", "Created Tasks");
     
 }
 else
@@ -340,6 +347,13 @@ else
     define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[در صورتیکه درخواست به منظور ایجاد تغییرات دستی بر روی داده های بانک اطلاعاتی است اینجا را کلیک کنید]");
     define("C_UNKNOWN_SYSTEM_CODE", "کد سیستم نامشخص است");
     define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "برای این پروژه پاسخگویی تعیین نشده است");
+
+    //CreateKartableHeader function in ProjectTasks.class.php By Ehsan Amini
+    define("C_CURRENT_TASKS", "کارهای جاری");
+    define("C_PROJECTS_MEMBERS", "اعضای پروژه ها");
+    define("C_TASKS_IN_NEED_OF_CONTROL", "کارهای نیازمند کنترل");
+    define("C_DONE_TASKS", "کارهای انجام شده");
+    define("C_CREATED_TASKS", "کارهای ایجاد شده");
 }
 
 ?>
