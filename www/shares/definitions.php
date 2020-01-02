@@ -163,6 +163,13 @@ if(UI_LANGUAGE=="EN") {
 
     //SelectMultiStaff.php By Ehsan Amini
     define("C_USER_NAME", "User Name");
+
+    //NewRequest.php By Ehsan Amini
+    define("C_TASK_REQUEST", "Task Request");
+    define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[If request is about changing access to database data click here]");
+    define("C_UNKNOWN_SYSTEM_CODE", "Unknown system code");
+    define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "No response has been determined for this project");
+    
 }
 else
 {
@@ -327,6 +334,12 @@ else
 
     //SelectMultiStaff.php By Ehsan Amini
     define("C_USER_NAME", "نام کاربر");
+
+    //NewRequest.php By Ehsan Amini
+    define("C_TASK_REQUEST", "درخواست انجام کار");
+    define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[در صورتیکه درخواست به منظور ایجاد تغییرات دستی بر روی داده های بانک اطلاعاتی است اینجا را کلیک کنید]");
+    define("C_UNKNOWN_SYSTEM_CODE", "کد سیستم نامشخص است");
+    define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "برای این پروژه پاسخگویی تعیین نشده است");
 }
 
 ?>
