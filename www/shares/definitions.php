@@ -160,6 +160,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_TERMS_REFERENCES","Terms References");
     define("C_TERMS","Terms");
     define("C_STATISTICAL_ANALYSIS","Statistical Analysis");
+
+    //SelectMultiStaff.php By Ehsan Amini
+    define("C_USER_NAME", "User Name");
 }
 else
 {
@@ -321,6 +324,9 @@ else
     define("C_TERMS_REFERENCES","منابع اصطلاحات");
     define("C_TERMS","اصطلاحات");
     define("C_STATISTICAL_ANALYSIS","تحلیل آماری");
+
+    //SelectMultiStaff.php By Ehsan Amini
+    define("C_USER_NAME", "نام کاربر");
 }
 
 ?>
