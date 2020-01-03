@@ -187,7 +187,7 @@ else
 
 ?>
 
-<? 
+<?php 
 if(isset($_REQUEST["SYear"])) 
 { 
 	$SelectedYear = $_REQUEST["SYear"];
@@ -294,7 +294,7 @@ if(isset($_REQUEST["SYear"]))
 </td>
 </tr>
 </table>
-<? 
+<?php
 if(isset($_REQUEST["SelectedYear"])) 
 { 
 

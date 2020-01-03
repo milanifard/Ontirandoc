@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  صفحه  نمایش لیست و مدیریت داده ها مربوط به : اصطلاحات
 	برنامه نویس: امید میلانی فرد
@@ -7,44 +7,52 @@
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 HTMLBegin();
-  $mysql = pdodb::getInstance();
-  $res = $mysql->Execute("select *, g2j(ATS) as ActionDate from projectmanagement.TermsManipulationHistory
+$mysql = pdodb::getInstance();
+$res = $mysql->Execute("select *, g2j(ATS) as ActionDate from projectmanagement.TermsManipulationHistory
 		    JOIN projectmanagement.persons using (PersonID) order by ATS DESC");
-  $i=0;
-  echo "<table width=80% align=center border=1 cellspacing=0 cellpadding=5>";
-  echo "<tr class=HeaderOfTable>";
-  echo "<td width=1% nowrap>ردیف</td><td>عمل انجام شده</td><td>شرح</td><td>عمل کننده</td><td>زمان</td>";
-  echo "</tr>";
-  while($rec = $res->fetch())
-  {
+$i=0;
+echo "<br><br><div class=\"row\">
+        <div class=\"col-1\"></div>
+        <div class=\"col-10\">";
+echo "<table class=\"table table-bordered table-sm table-striped\">";
+echo "<thead class=\"table-info\">";
+echo "<td width='1%' nowrap=''>".C_ROW."</td>
+        <td class='text-center'>".C_COMPLETED_TASK."</td>
+        <td class='text-center'>".C_DESCRIPTION."</td>
+        <td class='text-center'>".C_SUBJECT."</td>
+        <td class='text-center'>".C_TIME."</td>";
+echo "</thead>";
+while($rec = $res->fetch())
+{
     $i++;
     echo "<tr>";
-    echo "<td>";
+    echo "<td class='text-center'>";
     echo $i;
     echo "</td>";
-    echo "<td>";
+    echo "<td class='text-center'>";
     if($rec["ActionType"]=="INSERT")
-      echo "استخراج واژه جدید";
+        echo C_EXTRACT_NEW_WORD;
     else if($rec["ActionType"]=="REMOVE")
-      echo "حذف واژه";
+        echo C_REMOVE_WORD;
     else if($rec["ActionType"]=="REPLACE")
-      echo "ادغام دو واژه";
+        echo C_MERGE_TWO_WORDS;
     else if($rec["ActionType"]=="UPDATE")
-      echo "تغییر واژه";
+        echo C_CHANGE_WORD;
     echo "</td>";
-    echo "<td>";
+    echo "<td class='text-center'>";
     if($rec["ActionType"]=="INSERT" || $rec["ActionType"]=="REMOVE")
-      echo $rec["PreTermTitle"];
+        echo $rec["PreTermTitle"];
     else if($rec["ActionType"]=="UPDATE")
-      echo "تغییر واژه <b>".$rec["PreTermTitle"]."</b> به <b>".$rec["NewTermTitle"]."</b>";
+        echo C_CHANGE_WORD." <b>".$rec["PreTermTitle"]."</b> ".C_TO_USER." <b>".$rec["NewTermTitle"]."</b>";
     else if($rec["ActionType"]=="REPLACE")
-      echo "جایگزینی واژه <b>".$rec["PreTermTitle"]."</b> با ".$rec["NewTermTitle"];
-      
+        echo C_REPLACE_WORD." <b>".$rec["PreTermTitle"]."</b> ".C_BY." ".$rec["NewTermTitle"]."</b>";
+
     echo "</td>";
-    echo "<td>".$rec["pfname"]." ".$rec["plname"]."</td>";
-    echo "<td>".$rec["ActionDate"]."</td>";
+    echo "<td class='text-center'>".$rec["pfname"]." ".$rec["plname"]."</td>";
+    echo "<td class='text-center'>".$rec["ActionDate"]."</td>";
     echo "</tr>";
-  }
-  echo "</table>";
+}
+echo "</table>";
+echo "</div><div class='col-1'></div>";
 ?>
 </html>

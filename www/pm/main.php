@@ -1,5 +1,5 @@
 <?php
-include('header.inc.php');
+include('../shares/header.inc.php');
 ?>
 <html dir="rtl">
 <head>
@@ -9,11 +9,11 @@ include('header.inc.php');
     <? if(UI_LANGUAGE=="FA") { ?>
    <frameset cols="85%,15%">
    <frame id=MainContent name=MainContent src="<? if($_SESSION["PersonID"]!="1" && $_SESSION["PersonID"]!="3") echo "HomePage.php"; else echo "ManagerDesktop.php"; ?>">
-   <frame id=Menu name=Menu src="Menu.php">   
+   <frame id=Menu name=Menu src="./Menu.php">   
    </frameset>
 <? } else { ?>
         <frameset cols="15%,85%">
-            <frame id=Menu name=Menu src="Menu.php">
+            <frame id=Menu name=Menu src="./Menu.php">
             <frame id=MainContent name=MainContent src="<? if($_SESSION["PersonID"]!="1" && $_SESSION["PersonID"]!="3") echo "HomePage.php"; else echo "ManagerDesktop.php"; ?>">
         </frameset>
 <? } ?>

@@ -2618,7 +2618,7 @@ WHERE ptr2.DateTime IS NULL)";
 	
 	static function CreateKartableHeader($CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"98%\" border=\"1\" cellspacing=\"0\">";
+		$ret = "<table class=\"text-center table table-bordered table-sm\">";
 	        $ret .= "<tr>";
 	        /*
         	$ret .= "<td width=\"13%\" ";
@@ -2626,11 +2626,11 @@ WHERE ptr2.DateTime IS NULL)";
 			$ret .= "bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='TasksMessages.php'>پیام‌های سیستمی</a></td>";
 	        */
-        	$ret .= "<td width=\"13%\" ";
+        	$ret .= "<td ";
 
         if($CurrentPageName=="TasksKartable")
-            $ret .= "bgcolor=\"#cccccc\" ";
-        $ret .= "><a href='TasksKartable.php'>کارهای جاری</a></td>";
+            $ret .= "class=\"bg-dark\" ";
+        $ret .= "><a href='TasksKartable.php'>".C_CURRENT_TASKS."</a></td>";
 		/*
         $ret .= "<td width=\"13%\" ";
         if($CurrentPageName=="ReferredTasks")
@@ -2641,21 +2641,21 @@ WHERE ptr2.DateTime IS NULL)";
 
         $ret .= "><a href='ReferredTasks.php'>کارهای ارجاع شده " . $NewRefers . "</a></td>";
 		*/
-        $ret .= "<td width=\"13%\" ";
+        $ret .= "<td ";
         if($CurrentPageName=="LastCreatedTasks")
-             $ret .= " bgcolor=\"#cccccc\" ";
-        $ret .= "><a href='LastCreatedTasks.php'>کارهای ایجاد شده</a></td>";
+			$ret .= "class=\"bg-dark\" ";
+        $ret .= "><a href='LastCreatedTasks.php'>".C_CREATED_TASKS."</a></td>";
 
-        $ret .= "<td width=\"13%\" ";
+        $ret .= "<td ";
         if($CurrentPageName=="LastDoneTasks")
-             $ret .= " bgcolor=\"#cccccc\" ";
-        $ret .= "><a href='LastDoneTasks.php'>کارهای انجام شده</a></td>";
+        	$ret .= "class=\"bg-dark\" ";
+        $ret .= "><a href='LastDoneTasks.php'>".C_DONE_TASKS."</a></td>";
 
-        $ret .= "<td width=\"13%\" ";
+        $ret .= "<td ";
         if($CurrentPageName=="TasksForControl")
-            $ret .= "bgcolor=\"#cccccc\" ";
+			$ret .= "class=\"bg-dark\" ";
         $ret .= "><a href='TasksForControl.php'> ";
-        $ret .= "کارهای نیازمند کنترل";
+        $ret .= C_TASKS_IN_NEED_OF_CONTROL;
         $TasksForControlCount = manage_ProjectTasks::GetTasksCountForControl(0);
         if($TasksForControlCount>0)
             $ret .= " (".$TasksForControlCount.")";
@@ -2667,10 +2667,10 @@ WHERE ptr2.DateTime IS NULL)";
              $ret .= " bgcolor=\"#cccccc\" ";
         $ret .= "><a href='ProjectsKartable.php'>پروژه ها</a></td>";
         */
-        $ret .= "<td width=\"13%\" ";
+        $ret .= "<td ";
         if($CurrentPageName=="ShowAllPersonStatus")
-             $ret .= " bgcolor=\"#cccccc\" ";
-        $ret .= "><a href='ShowAllPersonStatus.php'>اعضای پروژه ها</a></td>";
+             $ret .= " class=\"bg-dark\" ";
+        $ret .= "><a href='ShowAllPersonStatus.php'>".C_PROJECTS_MEMBERS."</a></td>";
         /*
         $ret .= "<td width=\"13%\" ";
         if($CurrentPageName=="ShowLastChanges")

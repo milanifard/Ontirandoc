@@ -1,6 +1,6 @@
 <?php
 	define('MYSQL_NAME', 'localhost');
-	define('MYSQL_USERNAME', 'user1');
-	define('MYSQL_PASSWORD', 'user1');
+	define('MYSQL_USERNAME', 'root');
+	define('MYSQL_PASSWORD', '');
 	define('MYSQL_DATABASE', 'projectmanagement');
 ?>
