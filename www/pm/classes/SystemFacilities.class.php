@@ -214,26 +214,20 @@ class manage_SystemFacilities
 	}
 	function ShowSummary($RecID)
 	{
-		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
-		$obj = new be_SystemFacilities();
-		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr>";
-		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>عنوان: </b>";
-		$ret .= "</td>";
-		$ret .= "<td>";
-		$ret .= htmlentities($obj->FacilityName, ENT_QUOTES, 'UTF-8');
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
-		return $ret;
+        $ret = "<br>";
+        $ret .= "<table class=\"table table-bordered\">";
+        $obj = new be_SystemFacilities();
+        $obj->LoadDataFromDatabase($RecID);
+        $ret .= "<thead>";
+        $ret .= "<tr class=\"d-flex\">";
+        $ret .= "<th class=\"col-1\">عنوان </th>";
+        $ret .= "<th class=\"col-11\">";
+        $ret .= htmlentities($obj->FacilityName, ENT_QUOTES, 'UTF-8');
+        $ret .= "</th>";
+        $ret .= "</tr>";
+        $ret .= "</thead>";
+        $ret .= "</table>";
+        return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
