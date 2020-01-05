@@ -1,4 +1,0 @@
-php_value upload_max_filesize  "20M"
-php_value post_max_size      "20M"
-php_value max_execution_time "1200"
-php_value include_path ".;D:\wamp64\www\Ontirandoc\www\adodb;D:\wamp64\www\Ontirandoc\www\shares;D:\wamp64\www\Ontirandoc\www\sharedClasses"
