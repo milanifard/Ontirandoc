@@ -55,7 +55,7 @@ if(isset($_REQUEST["UpdateID"]))
             <table class="table table-bordered">
                 <thead class="text-center">
                 <tr class="bg-info">
-                    <td>ایجاد/ویرایش کاربران مجاز الگوهای جلسات</td>
+                    <td> <b> ایجاد/ویرایش کاربران مجاز الگوهای جلسات </b> </td>
                 </tr>
                 </thead>
                 <tbody>
@@ -124,7 +124,9 @@ if($SomeItemsRemoved)
                 <thead class="text-center bg-info">
                 <tr>
                     <td colspan="5">
-                        کاربران مجاز الگوهای جلسات
+                        <b>
+                            کاربران مجاز الگوهای جلسات
+                        </b>
                     </td>
                 </tr>
                 <tr class="bg-secondary">
