@@ -55,7 +55,7 @@ if(isset($_REQUEST["UpdateID"]))
 	$LoadDataJavascriptCode .= "document.f1.SessionTypeStartTime_MIN.value='".($obj->SessionTypeStartTime%60)."'; \r\n "; 
 	$LoadDataJavascriptCode .= "document.f1.SessionTypeDurationTime_HOUR.value='".floor($obj->SessionTypeDurationTime/60)."'; \r\n "; 
 	$LoadDataJavascriptCode .= "document.f1.SessionTypeDurationTime_MIN.value='".($obj->SessionTypeDurationTime%60)."'; \r\n "; 
-}	
+}
 ?>
 <form method="post" id="f1" name="f1" >
 <?
@@ -66,57 +66,70 @@ if(isset($_REQUEST["UpdateID"]))
 		echo manage_SessionTypes::ShowTabs($_REQUEST["UpdateID"], "NewSessionTypes");
 	}
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش الگوهای جلسه</td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<tr>
-	<td width="1%" nowrap>
-	<font color=red>*</font> عنوان
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_SessionTypeTitle" id="Item_SessionTypeTitle" maxlength="500" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
-	<font color=red>*</font> محل تشکیل
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_SessionTypeLocation" id="Item_SessionTypeLocation" maxlength="200" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- زمان شروع
-	</td>
-	<td nowrap>
-	<input maxlength="2" id="SessionTypeStartTime_MIN"  name="SessionTypeStartTime_MIN" type="text" size="2">:
-	<input maxlength="2" id="SessionTypeStartTime_HOUR"  name="SessionTypeStartTime_HOUR" type="text" size="2" >
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- مدت زمان
-	</td>
-	<td nowrap>
-	<input maxlength="2" id="SessionTypeDurationTime_MIN"  name="SessionTypeDurationTime_MIN" type="text" size="2">:
-	<input maxlength="2" id="SessionTypeDurationTime_HOUR"  name="SessionTypeDurationTime_HOUR" type="text" size="2" >
-	</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: window.close();" value="بستن">
-</td>
-</tr>
-</table>
+<br>
+    <div class="table-responsive container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <table class="table table-bordered col-sm-8">
+                <thead class="bg-info">
+                    <tr>
+                        <th class="text-center">ایجاد/ویرایش الگوهای جلسه</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <table class="table table-bordered tab">
+                            <tr>
+                                <td width="1%" nowrap>
+                                    <font color=red>*</font> عنوان
+                                </td>
+                                <td style="padding-left: 70%">
+                                    <input class="form-control" type="text" name="Item_SessionTypeTitle" id="Item_SessionTypeTitle" maxlength="500">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="1%" nowrap>
+                                    <font color=red>*</font> محل تشکیل
+                                </td>
+                                <td style="padding-left: 70%">
+                                    <input class="form-control" type="text" name="Item_SessionTypeLocation" id="Item_SessionTypeLocation" maxlength="200">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="1%" nowrap>
+                                    زمان شروع
+                                </td>
+                                <td nowrap>
+                                    <input maxlength="2" id="SessionTypeStartTime_MIN"  name="SessionTypeStartTime_MIN" type="text" size="2">:
+                                    <input maxlength="2" id="SessionTypeStartTime_HOUR"  name="SessionTypeStartTime_HOUR" type="text" size="2" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="1%" nowrap>
+                                    مدت زمان
+                                </td>
+                                <td nowrap>
+                                    <input maxlength="2" id="SessionTypeDurationTime_MIN"  name="SessionTypeDurationTime_MIN" type="text" size="2">:
+                                    <input maxlength="2" id="SessionTypeDurationTime_HOUR"  name="SessionTypeDurationTime_HOUR" type="text" size="2" >
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+                <thead class="text-center bg-info">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"> ذخیره</button>
+                        <button type="button" class="btn btn-danger" onclick="javascript: window.close();"> بستن</button>
+                    </td>
+                </tr>
+                </thead>
+            </table>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
 	<? echo $LoadDataJavascriptCode; ?>
