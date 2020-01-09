@@ -253,53 +253,64 @@ class manage_SessionTypes
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret .= "<div class='container-fluid'>";
+        $ret .= "<div class='row'>";
+        $ret .= "<div class='col-md-2'></div>";
+		$ret .= "<div class='alert alert-dark col-md-4 '>";
+		$obj = new be_SessionTypes();
+		$obj->LoadDataFromDatabase($RecID);
 		$ret .= "<tr>";
 		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
-		$obj = new be_SessionTypes();
-		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr>";
-		$ret .= "<td width=\"1%\" nowrap>";
 		$ret .= "<b>عنوان: </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->SessionTypeTitle, ENT_QUOTES, 'UTF-8');
 		$ret .= "</td>";
 		$ret .= "</tr>";
-		$ret .= "<tr>";
-		$ret .= "<td width=\"1%\" nowrap>";
+		$ret .= "</div>";
+        $ret .= "<div class='alert alert-dark col-md-4 '>";
+        $ret .= "<tr>";
+		$ret .= "<td>";
 		$ret .= "<b>محل تشکیل: </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->SessionTypeLocation, ENT_QUOTES, 'UTF-8');
 		$ret .= "</td>";
 		$ret .= "</tr>";
-		$ret .= "</table>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
+		$ret .= "</div>";
+        $ret .= "<div class='col-md-2'></div>";
+        $ret .= "</div>";
+        $ret .= "</div>";
 		return $ret;
 	}
 	
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr>";
-		$ret .= "<td width=\"33%\" ";
+	    $ret = "<div class='container-fluid'>";
+        $ret .= "<div class='row'>";
+        $ret .= "<div class='col-md-2'></div>";
+        $ret .= "<div class='table-responsive col-md-8'>";
+        $ret .= "<table class='table text-center'>";
+ 		$ret .= "<tr class='row table-bordered'>";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="NewSessionTypes")
-			$ret .= "bgcolor=\"#cccccc\" ";
+			$ret .= "bgcolor=\"#dee2e6\" ";
 		$ret .= "><a href='NewSessionTypes.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManagePersonPermittedSessionTypes")
- 			$ret .= " bgcolor=\"#cccccc\" ";
+ 			$ret .= " bgcolor=\"#dee2e6\" ";
 		$ret .= "><a href='ManagePersonPermittedSessionTypes.php?SessionTypeID=".$RecID."'>کاربران مجاز</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageSessionTypeMembers")
- 			$ret .= " bgcolor=\"#cccccc\" ";
+ 			$ret .= " bgcolor=\"#dee2e6\" ";
 		$ret .= "><a href='ManageSessionTypeMembers.php?SessionTypeID=".$RecID."'>اعضا</a></td>";
 		$ret .= "</table>";
-		return $ret;
+		$ret .= "</div>";
+		$ret .= "<div class='col-md-2'></div>";
+		$ret .= "</div>";
+        $ret .= "</div>";
+
+        return $ret;
 	}
 	
 	
