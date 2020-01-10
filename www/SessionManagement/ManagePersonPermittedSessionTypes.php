@@ -67,7 +67,7 @@ if(isset($_REQUEST["UpdateID"]))
                                             <span>فرد مجاز:</span>
                                             <input type=hidden name="Item_PersonID" id="Item_PersonID">
                                             <span id="Span_PersonID_FullName" name="Span_PersonID_FullName"></span>
-                                            <button type="button" class="btn btn-info" onclick='javascript: window.open("SelectStaff.php?InputName=Item_PersonID&SpanName=Span_PersonID_FullName");'>جست و جو</button>
+                                            <button type="button" class="btn btn-info" onclick='javascript: window.open("SelectStaff.php?InputName=Item_PersonID&SpanName=Span_PersonID_FullName");'><?php echo C_SEARCH ?></button>
                                         </td>
                                 </tr>
                                 <?
@@ -82,8 +82,8 @@ if(isset($_REQUEST["UpdateID"]))
                 <thead class="bg-info">
                     <tr >
                         <td align="center">
-                            <button class="btn btn-success" type="button" onclick="javascript: ValidateForm();">ذخیره</button>
-                            <button class="btn btn-danger" type="button" onclick="javascript: document.location='ManagePersonPermittedSessionTypes.php?SessionTypeID=<?php echo $_REQUEST["SessionTypeID"]; ?>'">جدید</button>
+                            <button class="btn btn-success" type="button" onclick="javascript: ValidateForm();"><?php echo C_SAVE ?></button>
+                            <button class="btn btn-danger" type="button" onclick="javascript: document.location='ManagePersonPermittedSessionTypes.php?SessionTypeID=<?php echo $_REQUEST["SessionTypeID"]; ?>'"><?php echo C_NEW ?></button>
                         </td>
                     </tr>
                 </thead>
@@ -159,7 +159,7 @@ if($SomeItemsRemoved)
                 <thead>
                     <tr class="bg-info">
                         <td colspan="5" align="center">
-                            <button class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" >حذف</button>
+                            <button class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" ><?php echo C_DELETE ?></button>
                         </td>
                     </tr>
                 </thead>
