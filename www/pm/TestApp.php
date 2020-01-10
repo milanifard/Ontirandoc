@@ -1,6 +1,7 @@
 <?php 
 include("header.inc.php");
 include("classes/SystemFacilityGroups.class.php");
+include("classes/messages.class.php");
 HTMLBegin();
 class Test
 {
@@ -53,6 +54,9 @@ Test::add(
   ,"b_SystemFacilityGroups->LoadDataFromDatabase()", "Administration"
 );
 
+
+
+
 Test::add(
     function()
     {
@@ -70,6 +74,201 @@ Test::add(
     ,"manage_SystemFacilityGroups::GetCount()", "Administration"
 );
 
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !
+Test::add(
+    function()
+    {
+        $obj = new be_messages();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_messages.class->LoadDataFromDatabase()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetCount();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetCount()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetLastID()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Add("test","","","","","2000/01/01","2000/01/01");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetLastID()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Update("1","test","","","","","2000/01/01","2000/01/01");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Update()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Remove("1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Remove()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetList("1","","MessageID","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetList()", "Message"
+);
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetList("1","","MessageID","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetList()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetActiveMessages();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetActiveMessages()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Search("","","","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Search()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->SearchResultCount("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->SearchResultCount()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->ComparePassedDataWithDB("","","","","","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->ComparePassedDataWithDB()", "Message"
+);
+
+
+
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful ! ***
 
 $res = Test::run();
 echo "<br>";
