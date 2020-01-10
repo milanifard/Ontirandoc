@@ -189,7 +189,12 @@ if(UI_LANGUAGE=="EN") {
     define("C_SESSION_INFO","Session Info");
     define("C_SESSION_PERMITTED_PERSON","Permitted Users");
     define("C_SESSION_MEMBERS","Members");
-    
+    //NewSessionTypes.php By Arman Ghoreshi
+    define("C_SESSION_CREATE_EDIT","Create or Edit Session Patterns");
+    define("C_START_TIME","Start Time");
+    define("C_END_TIME","End Time");
+
+
 }
 else
 {
@@ -380,6 +385,10 @@ else
     define("C_SESSION_INFO","مشخصات اصلی");
     define("C_SESSION_PERMITTED_PERSON","کاربران مجاز");
     define("C_SESSION_MEMBERS","اعضا");
+    //NewSessionTypes.php By Arman Ghoreshi
+    define("C_SESSION_CREATE_EDIT","ایجاد/ویرایش الگوهای جلسه");
+    define("C_START_TIME","زمان شروع");
+    define("C_END_TIME","زمان پایان");
 
 
 }

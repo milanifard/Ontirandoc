@@ -73,7 +73,11 @@ if(isset($_REQUEST["UpdateID"]))
             <table class="table table-bordered col-sm-8">
                 <thead class="bg-info">
                     <tr>
-                        <th class="text-center">ایجاد/ویرایش الگوهای جلسه</th>
+                        <th class="text-center">
+                            <?php
+                            echo C_SESSION_CREATE_EDIT
+                            ?>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,7 +86,10 @@ if(isset($_REQUEST["UpdateID"]))
                         <table class="table table-bordered tab">
                             <tr>
                                 <td width="1%" nowrap>
-                                    <font color=red>*</font> عنوان
+                                    <font color=red>*</font>
+                                    <?php
+                                    echo C_TITLE
+                                    ?>
                                 </td>
                                 <td style="">
                                     <input class="form-control" type="text" name="Item_SessionTypeTitle" id="Item_SessionTypeTitle" maxlength="500">
@@ -90,7 +97,10 @@ if(isset($_REQUEST["UpdateID"]))
                             </tr>
                             <tr>
                                 <td width="1%" nowrap>
-                                    <font color=red>*</font> محل تشکیل
+                                    <font color=red>*</font>
+                                    <?php
+                                    echo C_SESSION_LOCATION
+                                    ?>
                                 </td>
                                 <td style="">
                                     <input class="form-control" type="text" name="Item_SessionTypeLocation" id="Item_SessionTypeLocation" maxlength="200">
@@ -98,7 +108,9 @@ if(isset($_REQUEST["UpdateID"]))
                             </tr>
                             <tr>
                                 <td width="1%" nowrap>
-                                    زمان شروع
+                                    <?php
+                                    echo C_START_TIME
+                                    ?>
                                 </td>
                                 <td nowrap>
                                     <input maxlength="2" id="SessionTypeStartTime_MIN"  name="SessionTypeStartTime_MIN" type="text" size="2">:
@@ -107,7 +119,9 @@ if(isset($_REQUEST["UpdateID"]))
                             </tr>
                             <tr>
                                 <td width="1%" nowrap>
-                                    مدت زمان
+                                    <?php
+                                    echo C_END_TIME
+                                    ?>
                                 </td>
                                 <td nowrap>
                                     <input maxlength="2" id="SessionTypeDurationTime_MIN"  name="SessionTypeDurationTime_MIN" type="text" size="2">:
@@ -121,8 +135,8 @@ if(isset($_REQUEST["UpdateID"]))
                 <thead class="text-center bg-info">
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"> ذخیره</button>
-                        <button type="button" class="btn btn-danger" onclick="javascript: window.close();"> بستن</button>
+                        <button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"> <?php echo C_SAVE ?></button>
+                        <button type="button" class="btn btn-danger" onclick="javascript: window.close();"> <?php echo C_EXIT ?></button>
                     </td>
                 </tr>
                 </thead>
