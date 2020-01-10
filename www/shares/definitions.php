@@ -186,6 +186,9 @@ if(UI_LANGUAGE=="EN") {
 
     //SessionTypes.class.php By Arman Ghoreshi
     define("C_SESSION_LOCATION","Location");
+    define("C_SESSION_INFO","Session Info");
+    define("C_SESSION_PERMITTED_PERSON","Permitted Users");
+    define("C_SESSION_MEMBERS","Members");
     
 }
 else
@@ -374,6 +377,10 @@ else
 
     //SessionTypes.class.php By Arman Ghoreshi
     define("C_SESSION_LOCATION","محل تشکیل");
+    define("C_SESSION_INFO","مشخصات اصلی");
+    define("C_SESSION_PERMITTED_PERSON","کاربران مجاز");
+    define("C_SESSION_MEMBERS","اعضا");
+
 
 }
 

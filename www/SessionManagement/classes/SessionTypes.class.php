@@ -295,15 +295,15 @@ class manage_SessionTypes
 		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="NewSessionTypes")
 			$ret .= "bgcolor=\"#dee2e6\" ";
-		$ret .= "><a href='NewSessionTypes.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+		$ret .= "><a href='NewSessionTypes.php?UpdateID=".$RecID."'>".C_SESSION_INFO." </a></td>";
 		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManagePersonPermittedSessionTypes")
  			$ret .= " bgcolor=\"#dee2e6\" ";
-		$ret .= "><a href='ManagePersonPermittedSessionTypes.php?SessionTypeID=".$RecID."'>کاربران مجاز</a></td>";
+		$ret .= "><a href='ManagePersonPermittedSessionTypes.php?SessionTypeID=".$RecID."'>".C_SESSION_PERMITTED_PERSON." </a></td>";
 		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageSessionTypeMembers")
  			$ret .= " bgcolor=\"#dee2e6\" ";
-		$ret .= "><a href='ManageSessionTypeMembers.php?SessionTypeID=".$RecID."'>اعضا</a></td>";
+		$ret .= "><a href='ManageSessionTypeMembers.php?SessionTypeID=".$RecID."'>".C_SESSION_MEMBERS."</a></td>";
 		$ret .= "</table>";
 		$ret .= "</div>";
 		$ret .= "<div class='col-md-2'></div>";
