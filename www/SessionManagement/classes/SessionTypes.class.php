@@ -261,7 +261,7 @@ class manage_SessionTypes
 		$obj->LoadDataFromDatabase($RecID);
 		$ret .= "<tr>";
 		$ret .= "<td>";
-		$ret .= "<b>عنوان: </b>";
+		$ret .= "<b>". C_TITLE .": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->SessionTypeTitle, ENT_QUOTES, 'UTF-8');
@@ -271,7 +271,7 @@ class manage_SessionTypes
         $ret .= "<div class='alert alert-dark col-md-4 '>";
         $ret .= "<tr>";
 		$ret .= "<td>";
-		$ret .= "<b>محل تشکیل: </b>";
+		$ret .= "<b> ". C_SESSION_LOCATION.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->SessionTypeLocation, ENT_QUOTES, 'UTF-8');
