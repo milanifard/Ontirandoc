@@ -30,7 +30,7 @@ if(isset($_REQUEST["Save"]))
     {
         manage_FacilityPages::Update($_REQUEST["UpdateID"], $Item_PageName);
     }
-    echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+    echo SharedClass::CreateMessageBox(C_SAVED_INFO);
 }
 $LoadDataJavascriptCode = '';
 if(isset($_REQUEST["UpdateID"]))
@@ -55,14 +55,22 @@ if(isset($_REQUEST["UpdateID"]))
         <table class="table table-bordered " >
             <thead >
             <tr>
-                <th class="text-center table-active" >ایجاد/ویرایش صفحه مرتبط با امکان</th>
+                <th class="text-center table-active" >
+                    <?php
+                    echo C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE
+                    ?>
+                </th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
                     <div class="form-group row">
-                        <label for="Item_PageName" class="col-sm-1 col-form-label">صفحه</label>
+                        <label for="Item_PageName" class="col-sm-1 col-form-label">
+                            <?php
+                            echo C_TITLE_PAGE
+                            ?>
+                        </label>
                         <div class="col-sm-11">
                             <?php if(!isset($_REQUEST["UpdateID"])) { ?>
                                 <input type="hidden" name="FacilityID" id="FacilityID" value='<? if(isset($_REQUEST["FacilityID"])) echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>'>
@@ -76,9 +84,9 @@ if(isset($_REQUEST["UpdateID"]))
 
             <tr >
                 <td class="text-center">
-                    <input type="button" class="btn   btn-outline-success" onclick="javascript: ValidateForm();" value="ذخیره">
-                    <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value="جدید">
-                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value="بستن">
+                    <input type="button" class="btn   btn-outline-success" onclick="javascript: ValidateForm();" value=<?php echo C_SAVE?> >
+                    <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value=<?php echo C_NEW?>>
+                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value=<?php echo C_CLOSE?>>
                 </td>
             </tr>
             </tbody>
@@ -119,13 +127,13 @@ if(isset($_REQUEST["UpdateID"]))
         <table class="table table-bordered table-striped"  >
             <thead >
             <tr  >
-                <th class="text-center table-active" colspan="4">صفحات مرتبط با این امکان </th>
+                <th class="text-center table-active" colspan="4"><?php echo C_RELATED_PAGES_TO_THIS_FEATURE?> </th>
             </tr>
             <tr >
                 <th > </th>
-                <th >ردیف</th>
-                <th ">ویرایش</td>
-                <th >صفحه</th>
+                <th ><?php echo C_ROW?></th>
+                <th "><?php echo C_EDIT?></td>
+                <th ><?php echo C_PAGE?></th>
 
             </tr>
             </thead>
@@ -148,7 +156,7 @@ if(isset($_REQUEST["UpdateID"]))
 
             <tr >
                 <td class="text-center" colspan="4">
-                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript: ConfirmDelete();" value="حذف">
+                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE?>>
                 </td>
             </tr>
             </tbody>
@@ -158,7 +166,7 @@ if(isset($_REQUEST["UpdateID"]))
 
 <form target="_blank" method="post" action="NewFacilityPages.php" id="NewRecordForm" name="NewRecordForm">
     <div class="form-group">
-    <input type="hidden" id="FacilityID" name="FacilityID" class="form-control" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
+        <input type="hidden" id="FacilityID" name="FacilityID" class="form-control" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
     </div>
 </form>
 </div>
@@ -167,7 +175,7 @@ if(isset($_REQUEST["UpdateID"]))
 <script>
     function ConfirmDelete()
     {
-        if(confirm('آیا مطمئن هستید؟')) document.ListForm.submit();
+        if(confirm(<?php echo C_CONFIRM_TO_DELETE?>)) document.ListForm.submit();
     }
 </script>
 </html>

@@ -212,28 +212,23 @@ class manage_SystemFacilities
 		}
 		return $ret;
 	}
-    //----------------------------------------------------
-    //	I have changed this function (Naghme Mohammadifar)
-    function ShowSummary($RecID)
-    {
+	function ShowSummary($RecID)
+	{
         $ret = "<br>";
-        $ret .= "<table class=\"table  table-bordered table-dark\">";
+        $ret .= "<table class=\"table table-bordered\">";
         $obj = new be_SystemFacilities();
         $obj->LoadDataFromDatabase($RecID);
         $ret .= "<thead>";
-        $ret .= "<tr>";
-        // I know we should not use inline styles but without width it wouldn't be nice looking
-       // $ret .= "<th width='30px'>عنوان: </th>";
-        $ret .= "<th > <strong>";
+        $ret .= "<tr class=\"d-flex\">";
+        $ret .= "<th class=\"col-1\">عنوان </th>";
+        $ret .= "<th class=\"col-11\">";
         $ret .= htmlentities($obj->FacilityName, ENT_QUOTES, 'UTF-8');
-        $ret .= "</strong></th>";
+        $ret .= "</th>";
         $ret .= "</tr>";
         $ret .= "</thead>";
         $ret .= "</table>";
         return $ret;
-    }
-
-    //-----------------------------------------------------
+	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
