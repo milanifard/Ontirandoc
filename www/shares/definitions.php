@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA"); // EN or FA
+define("UI_LANGUAGE", "EN"); // EN or FA
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -183,6 +183,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_LAST_NAME_AND_FIRST_NAME", "Last Name and First Name");
     define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "This list shows members of the projects that you are managing or subordinate to the organizational unit under your management");
     define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","For adjusting percentages you can click on percentage number in each row");
+
+    //SessionTypes.class.php By Arman Ghoreshi
+    define("C_SESSION_LOCATION","Location");
     
 }
 else
@@ -368,6 +371,10 @@ else
     define("C_LAST_NAME_AND_FIRST_NAME", "نام خانوادگی و نام");
     define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "در این لیست اعضای پروژه هایی که شما مدیر آنها هستید و یا در زیرمجموعه واحد سازمانی تحت مدیریت شماست نمایش داده میشوند");
     define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","برای تنظیم درصدها میتوانید روی عدددرصد در هر ردیف کلیک نمایید");
+
+    //SessionTypes.class.php By Arman Ghoreshi
+    define("C_SESSION_LOCATION","محل تشکیل");
+
 }
 
 ?>
