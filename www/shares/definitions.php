@@ -195,6 +195,14 @@ if(UI_LANGUAGE=="EN") {
     define("C_END_TIME","End Time");
 
 
+    //ManageFacilityPages.php By Naghme Mohammadifar
+    define("C_SAVED_INFO","New information saved!");
+    define("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE", "Create/edit a page related to the part");
+    define("C_TITLE_PAGE","Page");
+    define("C_CLOSE", "Close");
+    define("C_RELATED_PAGES_TO_THIS_FEATURE","Related pages to the part");
+    define("C_CONFIRM_TO_DELETE","Are you sure to delete?");
+
 }
 else
 {
@@ -390,7 +398,13 @@ else
     define("C_START_TIME","زمان شروع");
     define("C_END_TIME","زمان پایان");
 
-
+    //ManageFacilityPages.php By Naghme Mohammadifar
+    define("C_SAVED_INFO","اطلاعات ذخیره شد!");
+    define("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE","ایجاد/ویرایش صفحه مرتبط با امکان");
+    define("C_TITLE_PAGE","صفحه");
+    define("C_CLOSE", "بستن");
+    define("C_CONFIRM_TO_DELETE","آیا مطمئن هستید؟");
+    define("C_RELATED_PAGES_TO_THIS_FEATURE","صفحات مرتبط با این امکان");
 }
 
 ?>
