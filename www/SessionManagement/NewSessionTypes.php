@@ -84,7 +84,7 @@ if(isset($_REQUEST["UpdateID"]))
                                 <td width="1%" nowrap>
                                     <font color=red>*</font> عنوان
                                 </td>
-                                <td style="padding-left: 50%">
+                                <td style="">
                                     <input class="form-control" type="text" name="Item_SessionTypeTitle" id="Item_SessionTypeTitle" maxlength="500">
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@ if(isset($_REQUEST["UpdateID"]))
                                 <td width="1%" nowrap>
                                     <font color=red>*</font> محل تشکیل
                                 </td>
-                                <td style="padding-left: 50%">
+                                <td style="">
                                     <input class="form-control" type="text" name="Item_SessionTypeLocation" id="Item_SessionTypeLocation" maxlength="200">
                                 </td>
                             </tr>
