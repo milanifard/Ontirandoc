@@ -43,7 +43,8 @@ if(isset($_REQUEST["UpdateID"]))
 
 <div class="container">
     <form method="post" id="f1" name="f1" >
-        <?
+
+        <?php
         if(isset($_REQUEST["UpdateID"]))
         {
             echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
@@ -51,33 +52,33 @@ if(isset($_REQUEST["UpdateID"]))
         echo manage_SystemFacilities::ShowSummary($_REQUEST["FacilityID"]);
         ?>
         <br>
-        <table class="table table-bordered" >
+        <table class="table table-bordered " >
             <thead >
             <tr>
-                <th class="text-center" >ایجاد/ویرایش صفحه مرتبط با امکان</th>
+                <th class="text-center table-active" >ایجاد/ویرایش صفحه مرتبط با امکان</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <?
-                    if(!isset($_REQUEST["UpdateID"])) {
-                        ?>
-                        <input type="hidden" name="FacilityID" id="FacilityID" value='<? if(isset($_REQUEST["FacilityID"])) echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>'>
-                        <?
-                    }
-                    ?>
-                    صفحه
-                    <input type="text" name="Item_PageName" id="Item_PageName" maxlength="145" size="40">
+                    <div class="form-group row">
+                        <label for="Item_PageName" class="col-sm-1 col-form-label">صفحه</label>
+                        <div class="col-sm-11">
+                            <?php if(!isset($_REQUEST["UpdateID"])) { ?>
+                                <input type="hidden" name="FacilityID" id="FacilityID" value='<? if(isset($_REQUEST["FacilityID"])) echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>'>
+                            <?php } ?>
+                            <input type="text" class="form-control" name="Item_PageName" id="Item_PageName" maxlength="145" size="40">
+                        </div>
+                    </div>
                 </td>
 
             </tr>
 
             <tr >
                 <td class="text-center">
-                    <input type="button" class="btn btn-light btn-sm" onclick="javascript: ValidateForm();" value="ذخیره">
-                    <input type="button" class="btn btn-light btn-sm" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value="جدید">
-                    <input type="button" class="btn btn-light btn-sm" onclick="javascript: window.close();" value="بستن">
+                    <input type="button" class="btn   btn-outline-success" onclick="javascript: ValidateForm();" value="ذخیره">
+                    <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value="جدید">
+                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value="بستن">
                 </td>
             </tr>
             </tbody>
@@ -115,46 +116,50 @@ if(isset($_REQUEST["UpdateID"]))
     <form id="ListForm" name="ListForm" method="post">
         <input type="hidden" id="Item_FacilityID" name="Item_FacilityID" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
         <br>
-        <table class="table table-bordered table-hover table-striped"  >
-            <thead>
-            <tr bgcolor="#cccccc" >
-                <th class="text-center" >صفحات مرتبط با این امکان </th>
+        <table class="table table-bordered table-striped"  >
+            <thead >
+            <tr  >
+                <th class="text-center table-active" colspan="4">صفحات مرتبط با این امکان </th>
+            </tr>
+            <tr >
+                <th > </th>
+                <th >ردیف</th>
+                <th ">ویرایش</td>
+                <th >صفحه</th>
+
             </tr>
             </thead>
             <tbody>
-            <tr class="d-flex">
-                <td class="col-1">&nbsp;</td>
-                <td class="col-2">ردیف</td>
-                <td class="col-2">ویرایش</td>
-                <td class="col-7">صفحه</td>
-            </tr>
 
             <?
             for($k=0; $k<count($res); $k++)
             {
-                echo "<tr class=\"d-flex\">";
-                echo "<td class=\"col-1\">";
+                echo "<tr>";
+                echo "<td width=\"20px\">";
                 echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FacilityPageID."\">";
-                echo "</td>";
-                echo "<td class=\"col-2\">".($k+1)."</td>";
-                echo "	<td class=\"col-2\"><a href=\"ManageFacilityPages.php?UpdateID=".$res[$k]->FacilityPageID."&FacilityID=".$_REQUEST["FacilityID"]."\">
-	<img src='images/edit.gif' class=\"rounded-circle\" title='ویرایش'></a></td>";
-                echo "	<td class=\"col-7\">".htmlentities($res[$k]->PageName, ENT_QUOTES, 'UTF-8')."</td>";
+                echo "</td >";
+                echo "<td width=\"30px\" >".($k+1)."</td>";
+                echo "	<td ><a class=\"btn btn-outline-success\"href=\"ManageFacilityPages.php?UpdateID=".$res[$k]->FacilityPageID."&FacilityID=".$_REQUEST["FacilityID"]."\">
+	                    <i class=\"fa fa-edit\"></a></td>";
+                echo "	<td >".htmlentities($res[$k]->PageName, ENT_QUOTES, 'UTF-8')."</td>";
                 echo "</tr>";
             }
             ?>
 
             <tr >
-                <td class="text-center">
-                    <input type="button" class="btn btn-light btn-sm" onclick="javascript: ConfirmDelete();" value="حذف">
+                <td class="text-center" colspan="4">
+                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript: ConfirmDelete();" value="حذف">
                 </td>
             </tr>
             </tbody>
         </table>
     </form>
 </div>
+
 <form target="_blank" method="post" action="NewFacilityPages.php" id="NewRecordForm" name="NewRecordForm">
-    <input type="hidden" id="FacilityID" name="FacilityID" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
+    <div class="form-group">
+    <input type="hidden" id="FacilityID" name="FacilityID" class="form-control" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
+    </div>
 </form>
 </div>
 
