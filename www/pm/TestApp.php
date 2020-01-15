@@ -3,6 +3,7 @@ include("header.inc.php");
 include("classes/SystemFacilityGroups.class.php");
 include("classes/messages.class.php");
 include("classes/terms.class.php");
+include("classes/ProjectHistory.class.php");
 HTMLBegin();
 class Test
 {
@@ -469,6 +470,107 @@ Test::add(
 
 //End of terms.class.php Unit Tests By Ehsan Amini
 
+//ProjectHistory.class.php - Hossein lotfi - Start
+
+
+Test::add(
+    function()
+    {
+        $obj = new be_ProjectHistory();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_ProjectHistory->LoadDataFromDatabase()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetCount(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetCount()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetLastID()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->Add("", "", "", "", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->Add()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetList("", "", "", "ProjectID", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetList()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->Search("", "", "", "", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->Search()", "ProjectHistory"
+);
+
+
+//ProjectHistory.class.php - Hossein Lotfi - Finish
 
 $res = Test::run();
 echo "<br>";
