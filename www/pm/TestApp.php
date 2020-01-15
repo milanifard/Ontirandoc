@@ -2,6 +2,7 @@
 include("header.inc.php");
 include("classes/SystemFacilityGroups.class.php");
 include("classes/messages.class.php");
+include("classes/terms.class.php");
 HTMLBegin();
 class Test
 {
@@ -269,6 +270,205 @@ Test::add(
 
 
 //Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful ! ***
+
+
+//terms.class.php Unit Tests By Ehsan Amini
+
+Test::add(
+    function()
+    {
+        $obj = new be_terms();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_terms->LoadDataFromDatabase()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetCount();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetCount()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetLastID()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Add("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Add()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Update("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Update()", "Terms"
+);
+
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Remove("");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Remove()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetList("","","TermTitle","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetList()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Search("","","","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Search()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->SearchResultCount("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->SearchResultCount()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ComparePassedDataWithDB("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ComparePassedDataWithDB()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ShowSummary("");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ShowSummary()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ShowTabs("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ShowTabs()", "Terms"
+);
+
+//End of terms.class.php Unit Tests By Ehsan Amini
+
 
 $res = Test::run();
 echo "<br>";
