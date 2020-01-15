@@ -203,6 +203,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_RELATED_PAGES_TO_THIS_FEATURE","Related pages to the part");
     define("C_CONFIRM_TO_DELETE","Are you sure to delete?");
 
+    //NewResearchProjectComments.php Alireza Forghani Toosi
+    define("C_SEASON", "Season");
+    define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
 }
 else
 {
@@ -405,6 +408,10 @@ else
     define("C_CLOSE", "بستن");
     define("C_CONFIRM_TO_DELETE","آیا مطمئن هستید؟");
     define("C_RELATED_PAGES_TO_THIS_FEATURE","صفحات مرتبط با این امکان");
+
+    //NewResearchProjectComments.php Alireza Forghani Toosi
+    define("C_SEASON", "فصل");
+    define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
 }
 
 ?>

@@ -6,8 +6,8 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-include("classes/ResearchProjectComments.class.php");
-include ("classes/ResearchProject.class.php");
+//include("ResearchProjectComments.class.php");
+include ("ResearchProject.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {
@@ -50,18 +50,18 @@ if(isset($_REQUEST["UpdateID"]))
 	{
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 	}
-echo manage_ResearchProject::ShowSummary($_REQUEST["ResearchProjectID"]);
+//echo manage_ResearchProject::ShowSummary($_REQUEST["ResearchProjectID"]);
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش یادداشت کار پژوهشی</td>
+<br><table class="col-lg-11 table-sm table-borderless" style="border-radius: 5px;float: none;margin: auto">
+<tr class="HeaderOfTable table-info">
+<td align="center"><? echo C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT ?></td>
 </tr>
 <tr>
 <td>
-<table width="100%" border="0">
+<table class="col-lg-12 table-borderless table" style="border-radius: 5px;float: none;margin: auto">
 <tr>
 	<td width="1%" nowrap>
- متن
+ <? echo C_TEXT ?>
 	</td>
 	<td nowrap>
 	<textarea name="Item_CommentBody" id="Item_CommentBody" cols="80" rows="15"><? echo $CommentBody; ?></textarea>
@@ -69,12 +69,12 @@ echo manage_ResearchProject::ShowSummary($_REQUEST["ResearchProjectID"]);
 </tr>
 <tr>
 	<td width="1%" nowrap>
- فصل
+ <? echo C_SEASON ?>
 	</td>
 	<td nowrap>
-	<select name="Item_ResearchProjectSessionID" id="Item_ResearchProjectSessionID">
+	<select name="Item_ResearchProjectSessionID" id="Item_ResearchProjectSessionID" class="form-control">
 	<option value=0>-
-	<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ResearchProjectSessions", "ResearchProjectSessionID", "SessionTitle", "SessionTitle"); ?>	</select>
+	<? //echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ResearchProjectSessions", "ResearchProjectSessionID", "SessionTitle", "SessionTitle"); ?>	</select>
 	</td>
 </tr>
 <? 
@@ -86,11 +86,11 @@ if(!isset($_REQUEST["UpdateID"]))
 </table>
 </td>
 </tr>
-<tr class="FooterOfTable">
+<tr class="FooterOfTable table-info">
 <td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='NewResearchProjectComments.php?ResearchProjectID=<?php echo $_REQUEST["ResearchProjectID"]; ?>'" value="جدید">
- <input type="button" onclick="javascript: window.close();" value="بستن">
+<input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value=<? echo C_SAVE ?>>
+ <input type="button" class="btn btn-warning" onclick="javascript: document.location='NewResearchProjectComments.php?ResearchProjectID=<?php echo $_REQUEST["ResearchProjectID"]; ?>'" value=<? echo C_NEW ?>>
+ <input type="button" class="btn btn-danger" onclick="javascript: window.close();" value=<? echo C_CLOSE ?>>
 </td>
 </tr>
 </table>
@@ -111,7 +111,7 @@ if(!isset($_REQUEST["UpdateID"]))
     <td colspan=2>سابقه ی تغییرات روی این یادداشت</td>
   </tr>
   <tr>
-    <td width=5%>تاریخ</td><td>متن</td>
+    <td width=5%>تاریخ</td><td><? echo C_TEXT ?></td>
   </tr>
   <?
     $res = manage_ResearchProjectComments::GetHistory($_REQUEST["UpdateID"]);
