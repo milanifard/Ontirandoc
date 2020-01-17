@@ -206,6 +206,61 @@ if(UI_LANGUAGE=="EN") {
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "Season");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
+
+    //Managemessages.php By kouroshAtaei
+
+    define("CREATE_EDIT","create / edit ");
+    define("C_MESSAGE" , "Message");
+    define("AT_FILE" ,"attached file");
+    define("REC_FILE" , "receive file");
+    define("PIC" ,"picture");
+    define("START_TIME" ,"begin");
+    define("END_TIME", "end" );
+    define("SAVE_M" , "save");
+    define("NEW_M" ,"new");
+    define("SEARCH_M" ,"search");
+    define("MESSAGES_M" , "messages");
+    define("CREATOR_M" , "creator");
+    define("CREATE_TIM_M" , "creat time");
+    define("ROW_M" , "row");
+    define("EDIT_M" , "edit");
+    define("DELETE_M" ,"delete");
+    define("ARE_YOU_SURE" , "Are you sure ?");
+    define("ERROR_SEND" ,"Error submitting file");
+    define("INFO_SAVED" , "Information saved");
+
+    //newResearchProjectRefrences.php By kouroshAtaei
+
+    define("CREAT_AND_EDIT_RES_RESEARCH" , "Create / edit a research work source");
+    define("SEARCH_ENG" , "Search Engine");
+    define("TAGS_WORDS" ,"Search Keywords");
+    define("LANG_N" ,"Language");
+    define("EN_LAN_N", "English");
+    define("FA_LAN_N", "Persian");
+    define("TITLE_N" ,"title");
+    define("WRITERS_N", "writers");
+    define("YEARS_N", "year");
+    define("SUM_N", "Abstract");
+    define("STATE_OF_STUDY", "Study status");
+    define("ALREADY_STUDY", "studied");
+    define("ALREADY_NOT_STUDY", "not studied");
+    define("STUDING", "Studying");
+    define("IMPORTNT", "Importance");
+    define("CAT_N", "Category");
+    define("ALL_COM", "Overview");
+    define("FILE_N" , "file");
+    define("NOTES_N", "notes");
+    define("CLOSE_N" , "close");
+    //manageFieldsDataMapping.php By kouroshAtaei
+    define("SELECTION_M" , "Select the appropriate table and field to determine the value equation table");
+    define("TABLE_M" , "table") ;
+    define("DEF_TABLE", "Define the equation table");
+    define("VAL_FIELD_M","Equalized values for the corresponding field");
+    define("REAL_VAL" ,"Original value");
+    define("M_VAL_EQ" , "Equivalent value");
+    define("DATABASE" , "database");
+    define("FIELD_M" ,"field");
+
 }
 else
 {
@@ -412,6 +467,62 @@ else
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "فصل");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
+
+    //Managemessages.php By kouroshAtaei
+
+    define("CREATE_EDIT","ایجاد/ویرایش پیام");
+    define("C_MESSAGE" , "متن پیام");
+    define("AT_FILE" ,"فایل پیوست");
+    define("REC_FILE" , "دریاف فایل");
+    define("PIC" ,"تصویر");
+    define("START_TIME" ,"زمان شروع");
+    define("END_TIME", "زمان پایان" );
+    define("SAVE_M" , "ذخیره");
+    define("NEW_M" ,"جدید");
+    define("SEARCH_M" ,"جستجو");
+    define("MESSAGES_M" , "پیام ها");
+    define("CREATOR_M" , "ایجاد کننده ");
+    define("CREATE_TIM_M" , "زمان ایجاد");
+    define("ROW_M" , "ردیف");
+    define("EDIT_M" , "ویرایش");
+    define("DELETE_M" ,"حذف");
+    define("ARE_YOU_SURE" , "آیا مطمئن هستید ؟");
+    define("ERROR_SEND" ,"خطا در ارسال فایل");
+    define("INFO_SAVED" , "اطلاعات ذخیره شد");
+    //newResearchProjectRefrences.php By kouroshAtaei
+    define("CREAT_AND_EDIT_RES_RESEARCH" , "ایجاد/ویرایش منبع کار پژوهشی");
+    define("SEARCH_ENG" , "موتور جستجو");
+    define("TAGS_WORDS" ,"کلمات کلیدی جستجو");
+    define("LANG_N" ,"زبان");
+    define("EN_LAN_N", "انگلیسی");
+    define("FA_LAN_N", "فارسی");
+    define("TITLE_N" ,"عنوان");
+    define("WRITERS_N", "نویسندگان");
+    define("YEARS_N", "سال");
+    define("SUM_N", "چکیده");
+    define("STATE_OF_STUDY", "وضیعت مطالعه");
+    define("ALREADY_STUDY", "مطالعه شده");
+    define("ALREADY_NOT_STUDY", "مطالعه نشده");
+    define("STUDING", "در حال مطالعه");
+    define("IMPORTNT", "اهمیت");
+    define("CAT_N", "دسته");
+    define("ALL_COM", "نظر کلی");
+    define("FILE_N" , "فایل");
+    define("NOTES_N", "یادداشتها");
+    define("CLOSE_N" , "بستن");
+
+    //manageFieldsDataMapping.php By kouroshAtaei
+    define("SELECTION_M" , "انتخاب جدول و فیلد مربوطه برای تعیین جدول معادلسازی مقادیر");
+    define("TABLE_M" , "جدول") ;
+    define("DEF_TABLE", "تعریف جدول معادلسازی");
+    define("VAL_FIELD_M","مقادیر معادلسازی شده برای فیلد مربوطه");
+    define("REAL_VAL" ,"مقدار اصلی");
+    define("M_VAL_EQ" , "مقدار معادل");
+    define("DATABASE" , "بانک اطلاعاتی");
+    define("FIELD_M" ,"فیلد");
+
+
+
 }
 
 ?>
