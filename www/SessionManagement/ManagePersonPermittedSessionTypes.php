@@ -55,7 +55,7 @@ if(isset($_REQUEST["UpdateID"]))
             <table class="table table-bordered">
                 <thead class="text-center">
                 <tr class="bg-info">
-                    <td> <b> ایجاد/ویرایش کاربران مجاز الگوهای جلسات </b> </td>
+                    <td> <b> <?php echo C_SESSION_PERMITTED_CREATE_EDIT?> </b> </td>
                 </tr>
                 </thead>
                 <tbody>
