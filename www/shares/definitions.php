@@ -291,6 +291,9 @@ if(UI_LANGUAGE=="EN") {
     define("DATABASE" , "database");
     define("FIELD_M" ,"field");
 
+    //ManageSessionTypes.php By diba aminshahidi
+    define();
+
 }
 else
 {
