@@ -55,7 +55,7 @@ if(isset($_REQUEST["UpdateID"]))
             <table class="table table-bordered">
                 <thead class="text-center">
                 <tr class="bg-info">
-                    <td> <b> ایجاد/ویرایش کاربران مجاز الگوهای جلسات </b> </td>
+                    <td> <b> <?php echo C_SESSION_PERMITTED_CREATE_EDIT?> </b> </td>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@ if(isset($_REQUEST["UpdateID"]))
                             <table class="table">
                                 <tr class="container-fluid">
                                         <td class="col-md-6">
-                                            <span>فرد مجاز:</span>
+                                            <span><?php echo C_SESSION_PERMITTED_PERSON?>:</span>
                                             <input type=hidden name="Item_PersonID" id="Item_PersonID">
                                             <span id="Span_PersonID_FullName" name="Span_PersonID_FullName"></span>
                                             <button type="button" class="btn btn-info" onclick='javascript: window.open("SelectStaff.php?InputName=Item_PersonID&SpanName=Span_PersonID_FullName");'><?php echo C_SEARCH ?></button>
@@ -124,17 +124,15 @@ if($SomeItemsRemoved)
                 <thead class="text-center bg-info">
                 <tr>
                     <td colspan="5">
-                        <b>
-                            کاربران مجاز الگوهای جلسات
-                        </b>
+                        <b><?php echo C_SESSION_PERMITTED_LIST ?></b>
                     </td>
                 </tr>
                 <tr class="bg-secondary">
                     <td width="1%"> </td>
-                    <td width="1%">ردیف</td>
-                    <td width="2%">ویرایش</td>
-                    <td>فرد مجاز</td>
-                    <td width=1%>دسترسیها</td>
+                    <td width="1%"><?php echo C_ROW?></td>
+                    <td width="2%"><?php echo C_EDIT ?></td>
+                    <td><?php echo C_SESSION_PERMITTED_PERSON ?></td>
+                    <td width=1%><?php echo C_PERMISSIONS ?></td>
                 </tr>
                 </thead>
                 <?
