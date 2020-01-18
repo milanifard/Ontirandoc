@@ -59,7 +59,7 @@ if($SomeItemsRemoved)
     <input type="hidden" name="SearchAction" id="SearchAction" value="1">
     <br><table width="90%" align="center" border="1" cellspacing="0">
         <tr class="HeaderOfTable">
-            <td><img src='images/search.gif'><b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'>جستجو</a></td>
+            <td><img src='images/search.gif'><b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'><? echo C_SEARCH ?></a></td>
         </tr>
         <tr id='SearchTr' style='display: none'>
             <td>
@@ -75,7 +75,7 @@ if($SomeItemsRemoved)
 
                     <tr>
                         <td width="1%" nowrap>
-                            <font color=red>*</font> محل تشکیل
+                            <font color=red>*</font>  <? echo C_SESSION_LOCATION ?>
                         </td>
                         <td nowrap>
                             <input type="text" name="Item_SessionTypeLocation" id="Item_SessionTypeLocation" maxlength="200" size="40">
@@ -112,12 +112,12 @@ if(isset($_REQUEST["SearchAction"]))
         </tr>
         <tr class="HeaderOfTable">
             <td width="1%"> </td>
-            <td width="1%">ردیف</td>
-            <td width="2%">ویرایش</td>
-            <td><a href="javascript: Sort('SessionTypeTitle', 'ASC');">عنوان</a></td>
-            <td><a href="javascript: Sort('SessionTypeLocation', 'ASC');">محل تشکیل</a></td>
-            <td width=1% nowrap>اعضا</td>
-            <td width=1% nowrap>کاربران مجاز</td>
+            <td width="1%"><? echo C_ROW ?></td>
+            <td width="2%"><? echo C_EDIT ?></td>
+            <td><a href="javascript: Sort('SessionTypeTitle', 'ASC');"><? echo C_TITLE ?></a></td>
+            <td><a href="javascript: Sort('SessionTypeLocation', 'ASC');"><? echo C_SESSION_LOCATION ?> </a></td>
+            <td width=1% nowrap><? echo C_SESSION_MEMBERS?></td>
+            <td width=1% nowrap> <? echo C_SESSION_PERMITTED_PERSON ?></td>
         </tr>
         <?
         for($k=0; $k<count($res); $k++)
@@ -143,8 +143,8 @@ if(isset($_REQUEST["SearchAction"]))
         ?>
         <tr class="FooterOfTable">
             <td colspan="7" align="center">
-                <input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-                <input type="button" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+                <button class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();"> <?php echo C_DELETE ?> </button>
+                <button class="btn btn-success" type="button" onclick="javascript: NewRecordForm.submit();"><?php echo C_SAVE ?></button>
             </td>
         </tr>
         <tr bgcolor="#cccccc"><td colspan="7" align="right">
