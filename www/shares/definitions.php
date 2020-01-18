@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN"); // EN or FA
+define("UI_LANGUAGE", "FA"); // EN or FA
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
