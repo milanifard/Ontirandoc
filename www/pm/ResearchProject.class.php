@@ -246,36 +246,36 @@ class manage_ResearchProject
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
+		$ret = "<table  cellspacing=\"0\" class=\"table-sm col-lg-11 table-bordered\" style=\"border-radius: 5px; float: none; margin: auto;\">";
  		$ret .= "<tr>";
 		$ret .= "<td width=\"12\" ";
 		if($CurrentPageName=="NewResearchProject")
-			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='NewResearchProject.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='NewResearchProject.php?UpdateID=".$RecID."'>".C_MAIN_PROPERTIES."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageResearchProjectSessions")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageResearchProjectSessions.php?ResearchProjectID=".$RecID."'>فصول</a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageResearchProjectSessions.php?ResearchProjectID=".$RecID."'>".C_SEASONS."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageRefrenceTypes")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageRefrenceTypes.php?ResearchProjectID=".$RecID."'>انواع منابع</a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageRefrenceTypes.php?ResearchProjectID=".$RecID."'>".C_REFERENCE_TYPES."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageResearchProjectRefrences")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageResearchProjectRefrences.php?ResearchProjectID=".$RecID."'>منابع</a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageResearchProjectRefrences.php?ResearchProjectID=".$RecID."'>".C_REFERENCES."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageResearchProjectComments")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageResearchProjectComments.php?ResearchProjectID=".$RecID."'>یادداشتها </a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageResearchProjectComments.php?ResearchProjectID=".$RecID."'>".C_NOTES."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageResearchProjectResults")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageResearchProjectResults.php?ResearchProjectID=".$RecID."'>خروجی ها </a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageResearchProjectResults.php?ResearchProjectID=".$RecID."'>".C_OUTPUTS."</a></td>";
 		$ret .= "<td width=\"12%\" ";
 		if($CurrentPageName=="ManageResearchProjectAccessList")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageResearchProjectAccessList.php?ResearchProjectID=".$RecID."'>دسترسی ها </a></td>";
+ 			$ret .= "class=\"table-active\" ";
+		$ret .= "><a href='ManageResearchProjectAccessList.php?ResearchProjectID=".$RecID."'>".C_PRIVILEGES."</a></td>";
 		$ret .= "</table>";
 		return $ret;
 		

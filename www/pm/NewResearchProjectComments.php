@@ -6,7 +6,7 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-//include("ResearchProjectComments.class.php");
+include("ResearchProjectComments.class.php");
 include ("ResearchProject.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
@@ -39,7 +39,7 @@ $CommentBody = $LoadDataJavascriptCode = '';
 if(isset($_REQUEST["UpdateID"])) 
 {	
 	$obj = new be_ResearchProjectComments();
-	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]); 
+	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]);
 	$CommentBody = htmlentities($obj->CommentBody, ENT_QUOTES, 'UTF-8');
 	$LoadDataJavascriptCode .= "document.f1.Item_ResearchProjectSessionID.value='".htmlentities($obj->ResearchProjectSessionID, ENT_QUOTES, 'UTF-8')."'; \r\n "; 
 }	
@@ -50,7 +50,7 @@ if(isset($_REQUEST["UpdateID"]))
 	{
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 	}
-//echo manage_ResearchProject::ShowSummary($_REQUEST["ResearchProjectID"]);
+echo manage_ResearchProject::ShowSummary($_REQUEST["ResearchProjectID"]);
 ?>
 <br><table class="col-lg-11 table-sm table-borderless" style="border-radius: 5px;float: none;margin: auto">
 <tr class="HeaderOfTable table-info">
@@ -64,7 +64,7 @@ if(isset($_REQUEST["UpdateID"]))
  <? echo C_TEXT ?>
 	</td>
 	<td nowrap>
-	<textarea name="Item_CommentBody" id="Item_CommentBody" cols="80" rows="15"><? echo $CommentBody; ?></textarea>
+	<textarea name="Item_CommentBody" id="Item_CommentBody" cols="80" rows="15" class="form-control"><? echo $CommentBody; ?></textarea>
 	</td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ if(isset($_REQUEST["UpdateID"]))
 	<td nowrap>
 	<select name="Item_ResearchProjectSessionID" id="Item_ResearchProjectSessionID" class="form-control">
 	<option value=0>-
-	<? //echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ResearchProjectSessions", "ResearchProjectSessionID", "SessionTitle", "SessionTitle"); ?>	</select>
+	<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ResearchProjectSessions", "ResearchProjectSessionID", "SessionTitle", "SessionTitle"); ?>	</select>
 	</td>
 </tr>
 <? 
@@ -106,12 +106,12 @@ if(!isset($_REQUEST["UpdateID"]))
 {	
 ?>
 <br>
-<table width=90% align=center border=1 cellspacing=0>
-  <tr class=HeaderOfTable>
-    <td colspan=2>سابقه ی تغییرات روی این یادداشت</td>
+<table width=90% align=center cellspacing=0 class="table-sm table-bordered col-lg-11">
+  <tr class="HeaderOfTable table-info table-">
+    <td colspan=2><? echo C_COMMENT_CHANGE_HISTORY ?></td>
   </tr>
   <tr>
-    <td width=5%>تاریخ</td><td><? echo C_TEXT ?></td>
+    <td width=5%><? echo C_DATE?></td><td><? echo C_TEXT ?></td>
   </tr>
   <?
     $res = manage_ResearchProjectComments::GetHistory($_REQUEST["UpdateID"]);

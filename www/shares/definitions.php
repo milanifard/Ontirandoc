@@ -84,7 +84,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_COMPLETED_TASK","Completed Task");
     define("C_DESCRIPTION","Description");
     define("C_SUBJECT","Subject");
-    define("C_TIME","Time");
+    //define("C_TIME","Time");
     define("C_EXTRACT_NEW_WORD","Extract new word");
     define("C_REMOVE_WORD","Remove word");
     define("C_MERGE_TWO_WORDS","Merge two words");
@@ -206,6 +206,19 @@ if(UI_LANGUAGE=="EN") {
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "Season");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
+    define("C_COMMENT_CHANGE_HISTORY", "Change history of this comment");
+
+    //ResearchProject.class.php Alireza Forghani Toosi
+    define("C_SEASONS", "Seasons");
+    define("C_REFERENCE_TYPES", "Reference types");
+    define("C_REFERENCES", "References");
+    define("C_NOTES", "Notes");
+    define("C_OUTPUTS", "Outputs");
+    define("C_PRIVILEGES", "Privileges");
+    define("C_MAIN_PROPERTIES", "Main properties");
+
+    //NewProjectComments.php Alireza Forghani Toosi
+    define("C_DATA_SAVED", "Information saved");
 
     //Managemessages.php By kouroshAtaei
 
@@ -467,6 +480,16 @@ else
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "فصل");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
+    define("C_COMMENT_CHANGE_HISTORY", "سابقه ی تغییرات روی این یادداشت");
+
+    //ResearchProject.class.php Alireza Forghani Toosi
+    define("C_SEASONS", "فصول");
+    define("C_REFERENCE_TYPES", "انواع منابع");
+    define("C_REFERENCES", "منابع");
+    define("C_NOTES", "یادداشتها");
+    define("C_OUTPUTS", "خروجی ها");
+    define("C_PRIVILEGES", "دسترسی ها");
+    define("C_MAIN_PROPERTIES", "مشخصات اصلی");
 
     //Managemessages.php By kouroshAtaei
 
