@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA"); // EN or FA
+define("UI_LANGUAGE", "EN"); // EN or FA
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -15,7 +15,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_EXIT", "Exit");
 
     define("C_DATA_SAVE_SUCCESS", "Data saved successfully");
-    define("C_ARE_YOU_SURE", "Are you sure?");
+//    define("C_ARE_YOU_SURE", "Are you sure?");
     define("C_ACTIVE_USER", "Active User: ");
     define("C_MAIN_MENU", "Main Menu");
     define("C_FIRST_PAGE", "Home");
@@ -120,7 +120,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_USAGE_TIME_REPORT","Usage Time Report");
     define("C_DATE","Date");
     define("C_ACTIVITY","Activity");
-    define("C_TIME","Time");
+//    define("C_TIME","Time");
     define("C_TOTAL","Total");
     define("C_RIAL","Rial");
     //-------------------------
@@ -237,6 +237,11 @@ if(UI_LANGUAGE=="EN") {
     //NewProjectComments.php Alireza Forghani Toosi
     define("C_DATA_SAVED", "Information saved");
 
+    //DesktopManager.php Alireza Forghani Toosi
+    define("C_MESSAGES", "Messages");
+    define("C_RECEIVED_LETTERS", "Received letters");
+    define("C_ATTACHMENTS", "Attachments");
+
     //Managemessages.php By kouroshAtaei
 
     define("CREATE_EDIT","create / edit ");
@@ -309,7 +314,7 @@ else
     define("C_ENGLISH", "انگلیسی");
 
     define("C_DATA_SAVE_SUCCESS", "اطلاعات با موفقیت ذخیره شد");
-    define("C_ARE_YOU_SURE", "مطمئن هستید؟");
+//    define("C_ARE_YOU_SURE", "مطمئن هستید؟");
     define("C_ACTIVE_USER", "کاربر فعال: ");
     define("C_MAIN_MENU", "منوی اصلی");
     define("C_FIRST_PAGE", "صفحه اول");
@@ -415,7 +420,7 @@ else
     define("C_USAGE_TIME_REPORT","گزارش زمان مصرفی");
     define("C_DATE","تاریخ");
     define("C_ACTIVITY","فعالیت");
-    define("C_TIME","زمان");
+//    define("C_TIME","زمان");
     define("C_TOTAL","مجموع");
     define("C_RIAL","ریال");
     //-------------------------
@@ -583,7 +588,10 @@ else
     define("DATABASE" , "بانک اطلاعاتی");
     define("FIELD_M" ,"فیلد");
 
-
+    //ManagerDesktop.php Alireza Forghani Toosi
+    define("C_MESSAGES", "پیام ها");
+    define("C_RECEIVED_LETTERS", "نامه های رسیده");
+    define("C_ATTACHMENTS", "ضمیمه");
 
 }
 

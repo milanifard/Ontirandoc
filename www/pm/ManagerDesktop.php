@@ -12,26 +12,23 @@ include("classes/PrivateMessageFollows.class.php");
 HTMLBegin();
 $res = manage_messages::GetActiveMessages(); 
 $LettersCount = manage_PrivateMessageFollows::GetNewMessagesCount();
-if(count($res)>0) 
+if(count($res)>0)
 {
 ?>
-  <table width="90%" align="center" border="1" cellspacing="0">
-  <tr bgcolor="#cccccc">
+  <table align="center" cellspacing="0" class="table-sm col-lg-11 table-stripped">
+  <tr class="table-active">
 	  <td colspan="8">
-	  پیامها
+	  <? echo C_MESSAGES ?>
 	  </td>
   </tr>
 <?php
   for($k=0; $k<count($res); $k++)
   {
-	  if($k%2==0)
-		  echo "<tr class=\"OddRow\">";
-	  else
-		  echo "<tr class=\"EvenRow\">";
-	  echo "	<td><a target=_blank href='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."'><img src='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."' width=50></a></td>";		
+	  echo "<tr>";
+	  echo "	<td><a target=_blank href='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."'><img src='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."' width=50></a></td>";
 	  echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->MessageBody, ENT_QUOTES, 'UTF-8'));
 	  if($res[$k]->RelatedFileName!="")
-	    echo "	<br><a href='DownloadFile.php?FileType=messages&RecID=".$res[$k]->MessageID."'>ضمیمه</a>";
+	    echo "	<br><a href='DownloadFile.php?FileType=messages&RecID=".$res[$k]->MessageID."'>".C_ATTACHMENTS."</a>";
 	  echo "</td>";
 	  
 	  
@@ -39,13 +36,14 @@ if(count($res)>0)
 	  echo "	<td nowrap>".$res[$k]->CreateDate_Shamsi."</td>";
 	  echo "</tr>";
   }
-  echo "</table>";
+
 }
 ?>
+  </table>
 <br>
-<table width="90%" align="center" border="1" cellspacing="0">
+<table align="center" cellspacing="0" class="table-responsive-lg table-bordered col-lg-11 table-success">
 <tr>
-  <td>نامه های رسیده: <a href='MailBox.php'><b><? echo $LettersCount ?></b></a></td>
+  <td><? echo C_RECEIVED_LETTERS.": " ?><a href='MailBox.php'><b><? echo $LettersCount ?></b></a></td>
 </tr>
 </table>
 <br>
