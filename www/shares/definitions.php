@@ -195,6 +195,8 @@ if(UI_LANGUAGE=="EN") {
     define("C_END_TIME","End Time");
     //managePersonPermittedSessionType.php By Arman Ghoreshi
     define("C_SESSION_PERMITTED_CREATE_EDIT","Create/Edit Permitted Person");
+    define("C_SESSION_PERMITTED_LIST","Permitted Users for Sessions");
+    define("C_PERMISSIONS","Permissions");
 
     //ManageFacilityPages.php By Naghme Mohammadifar
     define("C_SAVED_INFO","New information saved!");
@@ -458,6 +460,8 @@ else
     define("C_END_TIME","زمان پایان");
     //managePersonPermittedSessionType.php By Arman Ghoreshi
     define("C_SESSION_PERMITTED_CREATE_EDIT","ایجاد/ویرایش کاربران مجاز الگوهای جلسه");
+    define("C_SESSION_PERMITTED_LIST","کاربران مجاز الگوهای جلسات");
+    define("C_PERMISSIONS","دسترسی ها");
 
 
     //ManageFacilityPages.php By Naghme Mohammadifar
