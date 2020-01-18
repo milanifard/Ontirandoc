@@ -200,6 +200,17 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define("C_ROLE","Role");
     define("C_SESSIOM_MEMBERS","Session Members");
+    define("C_ARE_YOU_SURE","Are You Sure?");
+    define("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
+    define("C_PERSONEL","Employees");
+    define("C_OTHER","Others");
+    define("C_MEMBERSHIP_TYPE","Membership Type");
+    define("C_MEMBER_PERSONAL_ID","Members Personal ID");
+    define("C_SESSION_APPROVAL","The meeting is subject to the approval of this user");
+    define("C_SIGN_MINUTES","PERMISSION TO SIGN MINUTES");
+    define("C_ELECTRONIC_SIGN","An electronic signature is required to confirm the minutes");
+    define("C_YES","Yes");
+    define("C_NO","No");
 
     //ManageFacilityPages.php By Naghme Mohammadifar
     define("C_SAVED_INFO","New information saved!");
@@ -468,7 +479,17 @@ else
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define("C_ROLE","نقش");
     define("C_SESSIOM_MEMBERS","اعضای الگوهای جلسه");
-
+    define("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+    define("C_SESSION_MEMBERS_CREATE_EDIT","ایجاد/ویرایش اعضای الگوهای جلسه");
+    define("C_PERSONEL","پرسنل");
+    define("C_OTHER","سایر");
+    define("C_MEMBERSHIP_TYPE","نوع عضو");
+    define("C_MEMBER_PERSONAL_ID","کد شخصی عضو");
+    define("C_SESSION_APPROVAL","برگزاری جلسه منوط به تایید این کاربر است");
+    define("C_SIGN_MINUTES","اجازه امضای صورتجلسه");
+    define("C_ELECTRONIC_SIGN","برای قطعی شدن صورتجلسه نیاز به امضای الکترونیکی فرد می باشد");
+    define("C_YES","بلی");
+    define("C_NO","خیر");
 
 
     //ManageFacilityPages.php By Naghme Mohammadifar

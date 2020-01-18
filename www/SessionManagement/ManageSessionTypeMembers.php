@@ -114,7 +114,7 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                 <table class="table table-bordered">
                     <thead class="bg-info">
                     <tr>
-                        <td align="center"><b>ایجاد/ویرایش اعضای الگوهای جلسه</b></td>
+                        <td align="center"><b><? echo C_SESSION_MEMBERS_CREATE_EDIT ?></b></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -123,7 +123,7 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                             <table class="table-bordered table">
                                 <tr>
                                     <td width="1%" nowrap>
-                                        ردیف
+                                        <? echo C_ROW ?>
                                     </td>
                                     <td nowrap>
                                         <input class="form-control" type="text" name="Item_MemberRow" id="Item_MemberRow" maxlength="2" size="2" value='<?php echo $MaxMemberRow ?>'>
@@ -137,28 +137,28 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                                 <? } ?>
                                 <tr>
                                     <td width="1%" nowrap>
-                                        نوع عضو
+                                        <? echo C_MEMBERSHIP_TYPE ?>
                                     </td>
                                     <td nowrap>
                                         <select class="form-control" name="Item_MemberPersonType" id="Item_MemberPersonType"  onchange="javascript: Select_MemberPersonType(this.value);" >
-                                            <option value='PERSONEL'>پرسنل</option>
-                                            <option value='OTHER'>سایر</option>
+                                            <option value='PERSONEL'><? echo C_PERSONEL ?></option>
+                                            <option value='OTHER'><? echo C_OTHER ?></option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr id="tr_MemberPersonID" name="tr_MemberPersonID" style='display:'>
                                     <td width="1%" nowrap>
-                                        کد شخصی عضو
+                                        <? echo C_MEMBER_PERSONAL_ID ?>
                                     </td>
                                     <td nowrap>
                                         <input type=hidden name="Item_MemberPersonID" id="Item_MemberPersonID">
                                         <span id="Span_MemberPersonID_FullName" name="Span_MemberPersonID_FullName"></span>
-                                        <button type="button" class="btn btn-info" onclick='javascript: window.open("SelectStaff.php?InputName=Item_MemberPersonID&SpanName=Span_MemberPersonID_FullName&LInput=Item_LastName&FInput=Item_FirstName");'>جست و جو</button>
+                                        <button type="button" class="btn btn-info" onclick='javascript: window.open("SelectStaff.php?InputName=Item_MemberPersonID&SpanName=Span_MemberPersonID_FullName&LInput=Item_LastName&FInput=Item_FirstName");'><? echo C_SEARCH ?></button>
                                     </td>
                                 </tr>
                                 <tr id="tr_FirstName" name="tr_FirstName" style='display: none'>
                                     <td width="1%" nowrap>
-                                        نام
+                                        <? echo C_NAME ?>
                                     </td>
                                     <td nowrap>
                                         <input type="text" name="Item_FirstName" id="Item_FirstName" maxlength="100" size="40">
@@ -166,7 +166,7 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                                 </tr>
                                 <tr id="tr_LastName" name="tr_LastName" style='display: none'>
                                     <td width="1%" nowrap>
-                                        نام خانوادگی
+                                        <? echo C_LAST_NAME ?>
                                     </td>
                                     <td nowrap>
                                         <input type="text" name="Item_LastName" id="Item_LastName" maxlength="100" size="40">
@@ -174,7 +174,7 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                                 </tr>
                                 <tr>
                                     <td width="1%" nowrap>
-                                        نقش
+                                        <? echo C_ROLE ?>
                                     </td>
                                     <td nowrap>
                                         <select class="form-control" name="Item_MemberRoleID" id="Item_MemberRoleID">
@@ -183,34 +183,34 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                                 </tr>
                                 <tr>
                                     <td width="1%" nowrap>
-                                        برگزاری جلسه منوط به تایید این کاربر است
+                                        <? echo C_SESSION_APPROVAL ?>
                                     </td>
                                     <td nowrap>
                                         <select class="form-control" name="Item_NeedToConfirm" id="Item_NeedToConfirm" >
-                                            <option value='NO'>خیر </option>
-                                            <option value='YES'>بلی</option>
+                                            <option value='NO'><? echo C_NO ?> </option>
+                                            <option value='YES'><? echo C_YES ?></option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="1%" nowrap>
-                                        اجازه امضای صورتجلسه
+                                        <? echo C_SIGN_MINUTES ?>
                                     </td>
                                     <td nowrap>
                                         <select class="form-control" name="Item_AccessSign" id="Item_AccessSign" >
-                                            <option value='NO'>خیر</option>
-                                            <option value='YES'>بلی</option>
+                                            <option value='NO'><? echo C_NO ?></option>
+                                            <option value='YES'><? echo C_YES ?></option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="1%" nowrap>
-                                        برای قطعی شدن صورتجلسه نیاز به امضای الکترونیکی فرد می باشد
+                                        <? echo C_ELECTRONIC_SIGN ?>
                                     </td>
                                     <td nowrap>
                                         <select class="form-control" name="Item_NeedToSignSessionDecisions" id="Item_NeedToSignSessionDecisions" >
-                                            <option value='NO'>خیر</option>
-                                            <option value='YES'>بلی</option>
+                                            <option value='NO'><? echo C_NO ?></option>
+                                            <option value='YES'><? echo C_YES ?></option>
                                         </select>
                                     </td>
                                 </tr>
@@ -259,8 +259,8 @@ $MaxMemberRow = manage_SessionTypeMembers::GetLastMemberRow($_REQUEST["SessionTy
                     <thead class="bg-info">
                     <tr>
                         <td align="center">
-                            <button class="btn btn-success" type="button" onclick="javascript: ValidateForm();">ذخیره</button>
-                            <button class="btn btn-danger" type="button" onclick="javascript: document.location='ManageSessionTypeMembers.php?SessionTypeID=<?php echo $_REQUEST["SessionTypeID"]; ?>'">جدید</button>
+                            <button class="btn btn-success" type="button" onclick="javascript: ValidateForm();"><? echo C_SAVE ?></button>
+                            <button class="btn btn-danger" type="button" onclick="javascript: document.location='ManageSessionTypeMembers.php?SessionTypeID=<?php echo $_REQUEST["SessionTypeID"]; ?>'"><? echo C_DELETE ?></button>
                         </td>
                     </tr>
                     </thead>
@@ -343,7 +343,9 @@ if($SomeItemsRemoved)
                         echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->SessionTypeMemberID."\">";
                         echo "</td>";
                         echo "<td>".($k+1)."</td>";
-                        echo "	<td><a href=\"ManageSessionTypeMembers.php?UpdateID=".$res[$k]->SessionTypeMemberID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+                        echo "	<td><a href=\"ManageSessionTypeMembers.php?UpdateID=".$res[$k]->SessionTypeMemberID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><img src='images/edit.gif' title='";
+                        echo C_EDIT;
+                        echo "'></a></td>";
                         echo "	<td>".$res[$k]->MemberRow."</td>";
                         echo "	<td>".htmlentities($res[$k]->FirstName, ENT_QUOTES, 'UTF-8')."</td>";
                         echo "	<td>".htmlentities($res[$k]->LastName, ENT_QUOTES, 'UTF-8')."</td>";
@@ -360,7 +362,7 @@ if($SomeItemsRemoved)
                     <thead>
                         <tr class="bg-info">
                             <td colspan="8" align="center">
-                                <button class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();"> حذف </button>
+                                <button class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();"> <?php echo C_DELETE ?> </button>
                             </td>
                         </tr>
                     </thead>
