@@ -318,20 +318,18 @@ if($SomeItemsRemoved)
                     <thead>
                     <tr class="bg-info text-center">
                         <td colspan="8">
-                            <b>
-                                اعضای الگوهای جلسه
-                            </b>
+                            <b><?php echo C_SESSION_MEMBERS?></b>
                         </td>
                     </tr>
                     <tr class="bg-secondary">
                         <td width="1%"> </td>
-                        <td width="1%">ردیف</td>
-                        <td width="2%">ویرایش</td>
+                        <td width="1%"><?php echo C_ROW ?></td>
+                        <td width="2%"><?php echo C_EDIT?></td>
                         <td width="2%">شماره</td>
-                        <td>نام</td>
-                        <td>نام خانوادگی</td>
-                        <td>نقش</td>
-                        <td width=1%>دسترسی</td>
+                        <td><?php echo C_NAME ?></td>
+                        <td><?php echo C_LAST_NAME ?> </td>
+                        <td><?php echo C_ROLE ?></td>
+                        <td width=1%><?php echo C_PERMISSIONS ?></td>
                     </tr>
                     </thead>
                     <?

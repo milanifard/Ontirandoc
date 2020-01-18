@@ -197,6 +197,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_SESSION_PERMITTED_CREATE_EDIT","Create/Edit Permitted Person");
     define("C_SESSION_PERMITTED_LIST","Permitted Users for Sessions");
     define("C_PERMISSIONS","Permissions");
+    //ManageSessionTypeMembers.php By Arman Ghoreshi
+    define("C_ROLE","Role");
+    define("C_SESSIOM_MEMBERS","Session Members");
 
     //ManageFacilityPages.php By Naghme Mohammadifar
     define("C_SAVED_INFO","New information saved!");
@@ -462,6 +465,10 @@ else
     define("C_SESSION_PERMITTED_CREATE_EDIT","ایجاد/ویرایش کاربران مجاز الگوهای جلسه");
     define("C_SESSION_PERMITTED_LIST","کاربران مجاز الگوهای جلسات");
     define("C_PERMISSIONS","دسترسی ها");
+    //ManageSessionTypeMembers.php By Arman Ghoreshi
+    define("C_ROLE","نقش");
+    define("C_SESSIOM_MEMBERS","اعضای الگوهای جلسه");
+
 
 
     //ManageFacilityPages.php By Naghme Mohammadifar
