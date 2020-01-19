@@ -323,6 +323,16 @@ if(UI_LANGUAGE=="EN") {
     define("C_DELETE", "Delete");
     define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
 
+    //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "Create/Edit users assgined to activity");
+    define("C_ASSIGNEE_DESCRIPTION", "Assignee description");
+    define("C_PARTICIPATION_PERCENTAGE", "Participation percentage");
+    define("C_ECECUTOR", "Executor");
+    define("C_VIEWER", "Viewer");
+    define("C_SEND_LETTER_FROM_ADVERTISER", "Send letter from advvertisor to selected person");
+    define("C_DONT_HAVE_VALUE", "A person don't have any value");
+    define("C_USERS_ASSIGNED_TO_ACTIVITY", "Users assigned to activity");
+
 
 
 }
@@ -642,6 +652,15 @@ else
     define("C_DELETE", "حذف");
     define("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
 
+    //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "ایجاد/ویرایش کاربران منتسب به کار");
+    define("C_ASSIGNEE_DESCRIPTION", "شرح انتساب");
+    define("C_PARTICIPATION_PERCENTAGE", "درصد مشارکت");
+    define("C_ECECUTOR", "مجری");
+    define("C_VIEWER", "ناظر");
+    define("C_SEND_LETTER_FROM_ADVERTISER", " ارسال نامه آگاهی دهنده برای فرد انتخاب شده");
+    define("C_DONT_HAVE_VALUE", "مقداری در شخص مربوطه وارد نشده است");
+    define("C_USERS_ASSIGNED_TO_ACTIVITY", "کاربران منتسب به کار");
 
 }
 
