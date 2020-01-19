@@ -4,6 +4,9 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-2-29
 */
+/*
+ * Changed By Naghme Mohammadifar
+ */
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', "on");
 
@@ -137,6 +140,7 @@ $thereshold = 80; // درصد مشابهت حد آستانه
 $mysql = pdodb::getInstance();
 $OntoCount = 0;
 
+//ارزیابی آماری
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 {
   $SelectedOnto = "0";
@@ -163,15 +167,20 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   $res = $mysql->Execute($query);
  */  
  
-  echo "<table dir=ltr align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
-  echo "<tr><td colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology classes</td></tr>";
-  echo "<tr bgcolor=#cccccc dir=ltr>";
-  echo "<td>Ontology Title</td>";
+  echo "<div class='container'><br><table class='table table-bordered table-striped'>";
+  echo "    <thead>
+                <tr class='table-info text-center'>
+                <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology classes</th>
+                </tr>
+             </thead> 
+             <tbody>";
+  echo "<tr>";
+  echo "<td >Ontology Title</td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
     echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
   }
-  echo "<td><b>Average</b></td>";
+  echo "<td ><b>Average</b></td>";
   echo "</tr>";
   $Averages = array();
   for($i=0; $i<count($OntoArray); $i++)
@@ -186,22 +195,18 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
       else
       {
 	$p = HowMuchCover("Class", $OntoArray[$i]->OntologyID, $OntoArray[$j]->OntologyID);
-	if($p>50)
-	  echo "<td bgcolor=#33FF33>".$p."</td>";
-	else 
 	  echo "<td>".$p."</td>";
 	$TotalP += $p;
       }
     }
-    echo "<td bgcolor=#cccccc>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    echo "<td >".round($TotalP/(count($OntoArray)-1), 2)."</td>";
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
     $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     echo "</tr>";
   }
-  echo "</table>";
+  echo "</tbody></table>";
   echo "<br>";
-  
   for($i=0; $i<count($Averages); $i++)
     for($j=$i+1; $j<count($Averages); $j++)
       if($Averages[$i]["average"]<$Averages[$j]["average"])
@@ -217,8 +222,16 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 	$Averages[$j]["OntologyTitle"] = $a3;
       }
 
-  echo "<table dir=ltr border=1 cellspacing=0 cellpadding=5>";
-  echo "<tr><td>Ontology Title</td><td>Class Count</td><td>Property Count</td><td>Average of coverage other ontologies (classes)</td></tr>";
+  echo "<table class='table table-bordered table-striped'>";
+  echo "    <thead>
+                <tr class='table-info'>
+                    <th>Ontology Title</th>
+                    <th>Class Count</th>
+                    <th>Property Count</th>
+                    <th>(Average of coverage other ontologies (classes</th>
+                </tr>
+              </thead>
+              <tbody>";
   $TotalClasses = $TotalProperties = 0;
   for($i=0; $i<count($Averages); $i++)
   {
@@ -227,39 +240,44 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
     $TotalClasses += $ClassesCount;
     $TotalProperties += $PropertiesCount;
     echo "<tr>";
-    echo "<td>".$Averages[$i]["OntologyTitle"]."</td>";
-    echo "<td>".$ClassesCount."</td>";
-    echo "<td>".$PropertiesCount."</td>";
-    echo "<td>".$Averages[$i]["average"]."</td>";
-    echo "</tr>";
+      echo "<td>".$Averages[$i]["OntologyTitle"]."</td>";
+      echo "<td>".$ClassesCount."</td>";
+      echo "<td>".$PropertiesCount."</td>";
+      echo "<td>".$Averages[$i]["average"]."</td>";
+      echo "</tr>";
   }
   
-  echo "<tr bgcolor=#cccccc>";
+  echo "<tr>";
   echo "<td><b>Total</b></td>";
   echo "<td>".$TotalClasses."</td>";
   echo "<td>".$TotalProperties."</td>";
   echo "<td>100</td>";
   echo "</tr>";
   
-  echo "<tr bgcolor=#cccccc>";
+  echo "<tr>";
   echo "<td><b>Repository</b></td>";
   echo "<td>".GetRepositoryClassesCount($SelectedOnto)."</td>";
   echo "<td>".GetRepositoryPropertiesCount($SelectedOnto)."</td>";
   echo "<td>100</td>";
   echo "</tr>";
   
-  echo "</table>";
+  echo "</tbody></table>";
   
   echo "<br>";
   
   $Averages = array();
-  echo "<table dir=ltr align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
-  echo "<tr><td colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology properties</td></tr>";
-  echo "<tr bgcolor=#cccccc dir=ltr>";
+  echo "<table class='table  table-striped table-bordered '>";
+  echo "    <thead>
+                <tr class='table-info text-center'>
+                    <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology properties</th>
+                </tr>
+             </thead> <tbody>";
+  echo "<tr>";
   echo "<td>Ontology Title</td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
-    echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
+       echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
+
   }
   echo "<td><b>Average</b></td>";
   echo "</tr>";
@@ -271,45 +289,51 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
     for($j=0; $j<count($OntoArray); $j++)
     {
       if($i==$j)
-	echo "<td>&nbsp;</td>";
-      else
-      {
-	$p = HowMuchCover("Property", $OntoArray[$i]->OntologyID, $OntoArray[$j]->OntologyID);
-	if($p>50)
-	  echo "<td bgcolor=#33FF33>".$p."</td>";
-	else 
-	  echo "<td>".$p."</td>";
-	$TotalP += $p;
+	    echo "<td>&nbsp;</td>";
+      else {
+	    $p = HowMuchCover("Property", $OntoArray[$i]->OntologyID, $OntoArray[$j]->OntologyID);
+	    if($p>50)
+	        echo "<td>".$p."</td>";
+	    else
+	         echo "<td>".$p."</td>";
+	    $TotalP += $p;
       }
     }
-    echo "<td bgcolor=#cccccc>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    echo "<td>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
     $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     
     echo "</tr>";
   }
-  echo "</table>";
-
-  echo "<br>";
+  echo "</tbody>
+        </table> <br>";
   
   for($i=0; $i<count($Averages); $i++)
     for($j=$i+1; $j<count($Averages); $j++)
       if($Averages[$i]["average"]<$Averages[$j]["average"])
       {
-	$a1 = $Averages[$i]["average"];
-	$a2 = $Averages[$i]["OntologyID"];
-	$a3 = $Averages[$i]["OntologyTitle"];
-	$Averages[$i]["average"] = $Averages[$j]["average"];
-	$Averages[$i]["OntologyID"] = $Averages[$j]["OntologyID"];
-	$Averages[$i]["OntologyTitle"] = $Averages[$j]["OntologyTitle"];
-	$Averages[$j]["average"] = $a1;
-	$Averages[$j]["OntologyID"] = $a2;
-	$Averages[$j]["OntologyTitle"] = $a3;
+        $a1 = $Averages[$i]["average"];
+        $a2 = $Averages[$i]["OntologyID"];
+        $a3 = $Averages[$i]["OntologyTitle"];
+        $Averages[$i]["average"] = $Averages[$j]["average"];
+        $Averages[$i]["OntologyID"] = $Averages[$j]["OntologyID"];
+        $Averages[$i]["OntologyTitle"] = $Averages[$j]["OntologyTitle"];
+        $Averages[$j]["average"] = $a1;
+        $Averages[$j]["OntologyID"] = $a2;
+        $Averages[$j]["OntologyTitle"] = $a3;
       }
 
-  echo "<table dir=ltr border=1 cellspacing=0 cellpadding=5>";
-  echo "<tr><td>Ontology Title</td><td>Class Count</td><td>Property Count</td><td>Average of coverage other ontologies (properties)</td></tr>";
+  echo "<table class='table  table-striped table-bordered '>";
+  echo "    <thead>
+                <tr class='table-info'>
+                    <th>Ontology Title</th>
+                    <th>Class Count</th>
+                    <th>Property Count</th>
+                    <th>Average of coverage other ontologies (properties)</th>
+                    </tr>
+             </thead>
+             <tbody>";
   for($i=0; $i<count($Averages); $i++)
   {
     echo "<tr>";
@@ -319,7 +343,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
     echo "<td>".$Averages[$i]["average"]."</td>";
     echo "</tr>";
   }
-  echo "</table>";
+  echo "</tbody></table>";
 
   $res = $mysql->Execute("select count(distinct TermTitle) as tcount from TermReferenceMapping JOIN terms using (TermID)");
   $rec = $res->fetch();
@@ -350,9 +374,13 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
       }
   
   
-  echo "<table dir=ltr align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
-  echo "<tr><td colspan=3>Percentage of each ontology coverage document terms (".$TotalTerms.")</td></tr>";
-  echo "<tr bgcolor=#cccccc dir=ltr>";
+  echo "<br><table class='table  table-striped table-bordered '>";
+  echo "    <thead>
+                <tr class='table-info text-center'>
+                    <th colspan=3 >(Percentage of each ontology coverage document terms (".$TotalTerms."</th>
+                </tr>
+             </thead>";
+  echo "<tr>";
   echo "<td>Ontology Title</td>";
   echo "<td>Total Elements</td>";
   echo "<td><b>Coverage Percentage</b></td>";
@@ -363,7 +391,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
     echo "<td>".$Averages[$i]["OntologyTitle"]."</td>";
     echo "<td>".(GetClassCount($Averages[$i]["OntologyID"])+GetPropertyCount($Averages[$i]["OntologyID"]))."</td>";
     $p = $Averages[$i]["average"];
-    echo "<td bgcolor=#cccccc>".round($p, 2)."</td>";
+    echo "<td>".round($p, 2)."</td>";
     echo "</tr>";
   }
 
@@ -371,10 +399,10 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<td><b>Repository</b></td>";
   echo "<td>".(GetRepositoryClassesCount($SelectedOnto)+GetRepositoryPropertiesCount($SelectedOnto))."</td>";
   $p = HowMuchAllCoverDocument($SelectedOnto);
-  echo "<td bgcolor=#cccccc>".round($p, 2)."</td>";
+  echo "<td >".round($p, 2)."</td>";
   echo "</tr>";
   
-  echo "</table>";
+  echo "</table></div>";
   /*
   echo "<br>";
   echo "<table align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
@@ -431,6 +459,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   die();
 }
 
+//analyzed with wordnet
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
 {
   $SelectedOnto = "0";
@@ -442,15 +471,40 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
 	  if(isset($_REQUEST["ch_".$res[$k]->OntologyID])) 
 	  {
 	      $OntoCount++;
-	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+//	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+          $OntoList.= $res[$k]->OntologyTitle." ";
 	      $SelectedOnto .= ", ".$res[$k]->OntologyID;
 	  }
   }
-  echo "<table width=800 align=center><tr><td align=center>فهرست هستان نگارها</td></tr>";
-  echo "<tr><td dir=ltr align=left>".$OntoList."</td></tr></table>";
+  echo "<br><div class='container'>
+            <table class='table table-bordered table-striped'>
+                <thead>
+                    <tr class='table-info'>
+                        <th class='text-center' colspan='2'>فهرست هستان نگارها  </th> 
+                    </tr>
+                </thead>";
+  echo "        <tbody>
+                    <tr>";
+                        $splited = preg_split('/\s+/', $OntoList);
+                        $counter = 0;
+                        for($i=0; $i<count($splited)-1; $i++) {
+                            $counter++;
+                            echo "<tr >
+                                       <td width='1%'>".$counter."</td>
+                                       <td > ".$splited[$i]."</td >
+                                       </tr >";
+                              }
+          echo " </tbody>
+           </table>";
   $items = manage_ontologies::LoadClassesAndWordnetSimilars($SelectedOnto);
-  echo "<table align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
-  echo "<tr bgcolor=#cccccc><td>عنوان کلاس</td><td>کلاسها با نام مشابه (بر اساس WordNet)</td></tr>";
+  echo "<br><table class='table table-bordered table-striped'>";
+  echo "    <thead>
+                <tr class='table-info'>
+                    <th width='15%'>عنوان کلاس</th>
+                    <th>کلاسها با نام مشابه (بر اساس WordNet)</th>
+                </tr>
+              </thead> 
+              <tbody>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["WordnetSimilars"]!="")
@@ -460,11 +514,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
       echo $items[$i]["ClassTitle"]."</a> (".$items[$i]["label"].") </td><td>".$items[$i]["WordnetSimilars"]."</td></tr>";
     }
   }
-  echo "</table>";  
+  echo "</tbody></table>";
 
   $items = manage_ontologies::LoadPropertiesAndWordnetSimilars($SelectedOnto);
-  echo "<table align=center border=1 cellspacing=1 cellpadding=5 width=70%>";
-  echo "<tr bgcolor=#cccccc><td>عنوان خصوصیت</td><td>خصوصیتها با نام مشابه (بر اساس WordNet)</td></tr>";
+  echo "<br><table class='table table-striped table-bordered'>";
+  echo "    <thead>
+                <tr class='table-info'>
+                    <th width='15%'>عنوان خصوصیت</th>
+                    <th>خصوصیتها با نام مشابه (بر اساس WordNet)</th>
+                </tr>
+               </thead>
+               <tbody>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["WordnetSimilars"]!="")
@@ -474,11 +534,12 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
       echo $items[$i]["PropertyTitle"]."</a> (".$items[$i]["label"].") </td><td>".$items[$i]["WordnetSimilars"]."</td></tr>";
     }
   }
-  echo "</table>";  
+  echo "</table> </tbody></div>";
   
   die();
 }
 
+//analyzed with distance
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
 {
   $SelectedOnto = "0";
@@ -492,23 +553,45 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
 	      $OntoCount++;
 	      //if($OntoCount>1)
 		//$OntoList.= ", ";
-	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+//	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+          $OntoList.= $res[$k]->OntologyTitle." ";
 	      $SelectedOnto .= ", ".$res[$k]->OntologyID;
 	  }
   }
-  echo "<table width=800 align=center><tr><td align=center>فهرست هستان نگارها</td></tr>";
-  echo "<tr><td dir=ltr align=left>".$OntoList."</td></tr></table>";
+  echo "<div class='container'> <br><table class='table table-bordered table-striped'>
+                <thead>
+                    <tr class='text-center table-info'>
+                        <th colspan='2'>فهرست هستان نگارها</th>
+                    </tr></thead>";
+  echo "        <tbody>";
+  $splited = preg_split('/\s+/', $OntoList);
+  $counter = 0;
+  for($i=0; $i<count($splited)-1; $i++) {
+      $counter++;
+      echo "<tr >
+                   <td width='1%'>".$counter."</td>
+                   <td > ".$splited[$i]."</td >
+                   </tr > ";
+      }
+          echo "      </tbody>
+           </table>";
 
   $items = manage_ontologies::LoadClassesAndSimilarities($SelectedOnto, $thereshold);
   
-  echo "<table border=1>";
-  echo "<tr bgcolor=#3333FF><td colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+  echo "<br><table class='table table-bordered table-striped'";
+  echo "<thead>
+            <tr class='table-info text-center'>
+              <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند
+              </th>
+            </tr>
+        </thead>
+        <tbody>";
+
   for($i=0; $i<count($items); $i++)
   {
-    
     if($items[$i]["similars"]!="")
     {
-      echo "<tr><td>";
+      echo "<tr><td width='20%'>";
       echo "<a target=_blank href='ManageOntologyClassLabels.php?UpdateID=".$items[$i]["LabelID"]."&OntologyClassID=".$items[$i]["ClassID"]."'>";
       echo $items[$i]["ClassTitle"]."</a> (".$items[$i]["label"].")";
       echo "</td><td>".$items[$i]["similars"]."</td></tr>";
@@ -516,28 +599,35 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
     
   }
   
-  echo "<tr><td colspan=2 bgcolor=#3333FF>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+  echo "<tr class='table-info text-center'>
+            <td><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td>
+        </tr>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["similar_labels"]!="")
     {
-      echo "<tr bgcolor=#cccccc><td>";
+      echo "<tr><td>";
       echo "<a target=_blank href='ManageOntologyClassLabels.php?UpdateID=".$items[$i]["LabelID"]."&OntologyClassID=".$items[$i]["ClassID"]."'>";
       echo $items[$i]["label"]."</a> (".$items[$i]["ClassTitle"].")</td><td>".$items[$i]["similar_labels"]."</td></tr>";
     }
   }
-  echo "</table>";
+  echo "</tbody></table>";
   
   $items = manage_ontologies::LoadPropertiesAndSimilarities($SelectedOnto, $thereshold);
   echo "<br><br>";
-  echo "<table border=1>";
-  echo "<tr bgcolor=#3333FF><td colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+  echo "<table  class='table table-bordered table-striped'>";
+  echo "    <thead>
+                  <tr class='table-info text-center'>
+                    <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</th>
+                  </tr>
+            </thead>
+            <tbody>";
   for($i=0; $i<count($items); $i++)
   {
     
     if($items[$i]["similars"]!="")
     {
-      echo "<tr><td>";
+      echo "<tr><td width='25%'>";
       echo "<a target=_blank href='ManageOntologyPropertyLabels.php?UpdateID=".$items[$i]["LabelID"]."&OntologyPropertyID=".$items[$i]["PropertyID"]."'>";
       echo $items[$i]["PropertyTitle"]."</a> (".$items[$i]["label"].")";
       echo "</td><td>".$items[$i]["similars"]."</td></tr>";
@@ -545,21 +635,23 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
     
   }
   
-  echo "<tr><td colspan=2 bgcolor=#3333FF>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+  echo "<tr class='text-center table-info'>
+        <td colspan=2 ><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["similar_labels"]!="")
     {
-      echo "<tr bgcolor=#cccccc><td>";
+      echo "<tr><td>";
       echo "<a target=_blank href='ManageOntologyPropertyLabels.php?UpdateID=".$items[$i]["LabelID"]."&OntologyPropertyID=".$items[$i]["PropertyID"]."'>";
       echo $items[$i]["label"]."</a> (".$items[$i]["PropertyTitle"].")</td><td>".$items[$i]["similar_labels"]."</td></tr>";
     }
   }
-  echo "</table>";
+  echo "</tbody></table> </div>";
   
   die();
 }
 
+// Dictionary
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
 {
   $SelectedOnto = "0";
@@ -575,7 +667,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
 		$OntoCount++;
 		//if($OntoCount>1)
 		  //$OntoList.= ", ";
-		$OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+//		$OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+        $OntoList.= $res[$k]->OntologyTitle." ";
 		$SelectedOnto .= ", ".$res[$k]->OntologyID;
 	    }
     }
@@ -585,17 +678,42 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
       $SelectedOnto = $_REQUEST["SelectedOnto"];
   }
   
-  echo "<table width=800 align=center><tr><td align=center>فهرست هستان نگارها</td></tr>";
-  echo "<tr><td dir=ltr align=left>".$OntoList."</td></tr>";
+  echo "<div class='container'>
+            <br><table class='table table-bordered table-striped'>
+                    <thead>
+                        <tr>
+                            <th class='table-info text-center' colspan='2'>فهرست هستان نگارها</th>
+                        </tr>
+                    </thead> <tbody>";
+                    echo "<tr>";
+                        $splited = preg_split('/\s+/', $OntoList);
+                        $counter = 0;
+                        for($i=0; $i<count($splited)-1; $i++) {
+                            $counter++;
+                            echo "<tr >
+                                       <td width='1%'>".$counter."</td>
+                                       <td > ".$splited[$i]."</td >
+                                       </tr >" ;
+                              }
   //echo "<tr><td dir=ltr align=center>اطلاعات در چند بخش شکسته شده است برای ذخیره دکمه ی همان بخش را استفاده کنید</td></tr>";
-  echo "</table>";
+  echo "            </tbody>
+                 </table>";
 
   echo "<form method=\"post\" id=\"f1\" name=\"f1\" >";
-  echo "<input type=hidden name='ActionType' id='ActionType' value='Dic'>";
-  echo "<input type=hidden name='OntoList' id='OntoList' value='".$OntoList."'>";
-  echo "<input type=hidden name='SelectedOnto' id='SelectedOnto' value='".$SelectedOnto."'>";
-  echo "<input type=hidden name='Update' id='Update' value='1'>";
-  echo "<table dir=ltr width=800 border=1 cellspacing=0 align=center>";
+  echo "<div class='form-group'>";
+  echo "    <input type=hidden name='ActionType' id='ActionType' value='Dic'>";
+  echo "    <input type=hidden name='OntoList' id='OntoList' value='".$OntoList."'>";
+  echo "    <input type=hidden name='SelectedOnto' id='SelectedOnto' value='".$SelectedOnto."'>";
+  echo "    <input type=hidden name='Update' id='Update' value='1'> </div>";
+  echo "    <br><table class='table table-bordered table-striped' >";
+  echo "        <thead>
+                    <tr class='table-info'>
+                        <th> </th>
+                        <th> موضوع هستان نگار</th>
+                        <th>نوع هستان نگار</th>
+                        <th> </th>
+                    </tr>
+                </thead> <tbody>";
   $ClassLabelQuery = "
   select * from
   (
@@ -748,8 +866,7 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
 		    JOIN projectmanagement.ontologies using (OntologyID) 
 		    where OntologyID in (".$SelectedOnto.")
    ) as allitems
-   order by ItemTitle
-		    ";
+   order by ItemTitle ";
   //echo $ClassLabelQuery;
   //die();
   $res = $mysql->Execute($ClassLabelQuery);
@@ -762,9 +879,10 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
 	//echo "Class: ".$_REQUEST["cl_".$rec["ItemID"]].":".$rec["label"]."<br>";
 	if($_REQUEST["cl_".$rec["ItemID"]]!=$rec["label"])
 	{
-	  echo $UpdateQuery = "update projectmanagement.OntologyClassLabels set label='".$_REQUEST["cl_".$rec["ItemID"]]."' where OntologyClassLabelID=".$rec["ItemID"];
-	  echo "<br>";
-	  $mysql->Execute($UpdateQuery);
+	  //  echo $UpdateQuery = "update projectmanagement.OntologyClassLabels set label='".$_REQUEST["cl_".$rec["ItemID"]]."' where OntologyClassLabelID=".$rec["ItemID"];
+	    $UpdateQuery = "update projectmanagement.OntologyClassLabels set label='".$_REQUEST["cl_".$rec["ItemID"]]."' where OntologyClassLabelID=".$rec["ItemID"];
+//	    echo "<br>";
+	    $mysql->Execute($UpdateQuery);
 	}
       }
       else if($rec["ItemType"]=="property" && isset($_REQUEST["pr_".$rec["ItemID"]]))
@@ -772,8 +890,9 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
 	//echo "Prop: ".$rec["label"].":".$_REQUEST["pr_".$rec["ItemID"]]."<br>";
 	if($_REQUEST["pr_".$rec["ItemID"]]!=$rec["label"])
 	{
-	  echo $UpdateQuery = "update projectmanagement.OntologyPropertyLabels set label='".$_REQUEST["pr_".$rec["ItemID"]]."' where OntologyPropertyLabelID=".$rec["ItemID"];
-	  echo "<br>";
+//	  echo $UpdateQuery = "update projectmanagement.OntologyPropertyLabels set label='".$_REQUEST["pr_".$rec["ItemID"]]."' where OntologyPropertyLabelID=".$rec["ItemID"];
+        $UpdateQuery = "update projectmanagement.OntologyPropertyLabels set label='".$_REQUEST["pr_".$rec["ItemID"]]."' where OntologyPropertyLabelID=".$rec["ItemID"];
+//        echo "<br>";
 	  $mysql->Execute($UpdateQuery);
 	}
 	
@@ -788,23 +907,19 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
     $item = $rec["ItemTitle"];
     if($rec["ItemType"]=="class")
       $id = "cl_".$rec["ItemID"];
-    else 
-      $id = "pr_".$rec["ItemID"];    
+    else
+      $id = "pr_".$rec["ItemID"];
     $value = $rec["label"];
     $i++;
     //if($i==997)
     //  continue;
-    if($i%2==0)
-      echo "<tr bgcolor=#cccccc>";
-    else
-      echo "<tr>";
-    
+    echo "<tr> <div class='form-group'>";
     echo "<td width=1%>".($i)."</td>";
     //echo "<td width=1%><font color=green>".$rec["ItemID"]."</font></td>";
-    echo "<td align=left>";
-    echo $rec["OntologyTitle"];
-    echo "</td><td align=left>".$rec["ItemType"]."</td>";
-    echo "<td align=right><input dir=rtl type=text name='".$id."' id='".$id."' value='".$value."'>";
+    echo "<td >";
+    echo $rec["OntologyTitle"]."</td>";
+    echo "<td>".$rec["ItemType"]."</td>";
+    echo "<td ><input type=text name='".$id."' id='".$id."' value='".$value."' >";
     //if(isset($_REQUEST["Update"]))
     //  echo "<font color=red>".$_REQUEST[$id]."</font> ";
     if($rec["ItemType"]=="property")
@@ -814,12 +929,15 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
     echo $item;
     echo "</a>";
     echo "</td>";
-    echo "</tr>";
+    echo "</tr> </div>";
   }
-  echo "<tr class=HeaderOfTable><td align=center colspan=4><input type=submit value='ذخیره'> ";
-  echo "<input type=button value='بازگشت' onclick='document.location=\"Manageontologies.php\"'>";
+  echo "<tr >
+              <td class='text-center' colspan='4'>
+                <input type='submit' class='btn   btn-success' value='ذخیره'> ";
+  echo "        <input type='button'  class='btn   btn-danger' value='بازگشت' onclick='document.location=\"Manageontologies.php\"'>";
   echo "</td></tr>";
-  echo "</form>";
+  echo "</form> 
+        </tbody></div>";
   
   die();
   /*
@@ -897,6 +1015,7 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
   */
 }
 
+//تحلیل فراوانی
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
 {
   $SelectedOnto = "0";
@@ -910,88 +1029,115 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
 	      $OntoCount++;
 	      //if($OntoCount>1)
 		//$OntoList.= ", ";
-	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+//	      $OntoList.= $OntoCount."- ".$res[$k]->OntologyTitle." ";
+          $OntoList.=$res[$k]->OntologyTitle." ";
 	      $SelectedOnto .= ", ".$res[$k]->OntologyID;
 	  }
   }
-  echo "<table width=800 align=center><tr><td align=center>فهرست هستان نگارها</td></tr>";
-  echo "<tr><td dir=ltr align=left>".$OntoList."</td></tr></table>";
+  echo "<div class='container'><br>";
+  echo "    <table class='table table-bordered table-striped '> 
+                <thead>
+                    <tr class='table-info text-center'>
+                        <th  colspan='2'>فهرست هستان نگارها</th>
+                    </tr>
+</thead>
+                <tbody>";
+                    $splited = preg_split('/\s+/', $OntoList);
+                    $counter = 0;
+                    for($i=0; $i<count($splited)-1; $i++) {
+                        $counter++;
+                        echo "<tr >
+                                   <td width='1%'>".$counter."</td>
+                                   <td > ".$splited[$i]."</td >
+                                   </tr >" ;
+                        }
+  echo "        </tbody> 
+
+             </table>";
     
     $total = 0;
     $query = "select ClassTitle, label, count(*) as tcount from projectmanagement.OntologyClassLabels
     JOIN projectmanagement.OntologyClasses on (OntologyClassLabels.OntologyClassID=projectmanagement.OntologyClasses.OntologyClassID)
     where OntologyID in (".$SelectedOnto.")
-    group by label
+    group by ClassTitle,label
     having count(*)>1
     order by count(*) desc";
     $res = $mysql->Execute($query);
     
-    echo "<table align=center width=800 dir=\"rtl\">";
-    echo "<tr bgcolor=#cccccc>";
-    echo "<td colspan=4 align=center>کلاسها از نظر میزان ارجاع - بیش از دو ارجاع</td>";
-    echo "</tr>";
-    echo "<tr>";
-    $i=0;
-    while($rec = $res->fetch())
-    {
-      if(($i%4==0) && $i>0)
-      {
-	echo "</tr>";
-	echo "<tr>";
-      }
-      $i++;  
-      $total++;
-      echo "<td align=right>";
-      if($ShowLink)
-	echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Class'>";
-      echo $i."- ".$rec["label"];
-      if($ShowLink)
-	echo "</a>";
-      echo " (".$rec["tcount"].") ";
-      echo "</td>";
+    echo "<br><table class='table table-bordered table-striped '>";
+    echo "        <thead>
+                        <tr class='table-info text-center'>";
+    echo "                    <th colspan=4>کلاسها از نظر میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "              </tr>
+                  </thead>
+                  <tbody>";
+    echo "            <tr>";
+                            $i=0;
+                            while($rec = $res->fetch())
+                            {
+                              if(($i%4==0) && $i>0)
+                              {
+                                echo "</tr>";
+                                echo "<tr>";
+                              }
+                              $i++;
+                              $total++;
+                              echo "<td>";
+                              if($ShowLink)
+                                echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Class'>";
+                              echo $i."- ".$rec["label"];
+                              if($ShowLink)
+                                 echo "</a>";
+                              echo " (".$rec["tcount"].") ";
+                              echo "</td>";
     }
-    echo "</table>";
-    
-    echo "<table align=center width=800 dir=\"rtl\">";
-    echo "<tr bgcolor=#cccccc>";
-    echo "<td colspan=4 align=center>خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع</td>";
-    echo "</tr>";
-    echo "<tr>";
+    echo "        </tbody>
+            </table>";
 
+    echo "<br><table class='table table-bordered table-striped '>";
+    echo "        <thead>
+                        <tr class='table-info text-center'>";
+    echo "                    <th colspan=4>خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "              </tr>
+                  </thead>
+                  <tbody>";
+    echo "            <tr>";
     $query = "select PropertyTitle, label, count(*) as tcount from projectmanagement.OntologyPropertyLabels
     JOIN projectmanagement.OntologyProperties on (OntologyPropertyLabels.OntologyPropertyID=projectmanagement.OntologyProperties.OntologyPropertyID)
     where OntologyID in (".$SelectedOnto.")
-    group by label
+    group by PropertyTitle,label
     having count(*)>2
     order by count(*) desc";
     $res = $mysql->Execute($query);
     $i=0;
     while($rec = $res->fetch())
     {
-      if(($i%4==0) && $i>0)
-      {
-	echo "</tr>";
-	echo "<tr>";
-      }
-      $i++;
-      $total++;
-      echo "<td align=right>";
-      if($ShowLink)
-	echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Property'>";
-      echo $i."- ".$rec["label"];
-      if($ShowLink)
-	echo "</a>";
-
-      echo " (".$rec["tcount"].") ";
+          if(($i%4==0) && $i>0)
+          {
+            echo "</tr>";
+            echo "<tr>";
+          }
+          $i++;
+          $total++;
+          echo "<td align=right>";
+          if($ShowLink)
+              echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Property'>";
+          echo $i."- ".$rec["label"];
+          if($ShowLink)
+              echo "</a>";
+          echo " (".$rec["tcount"].") ";
     }
     echo "</tr>";
-    echo "</table>";
-    
-    echo "<table align=center width=800 dir=\"rtl\">";
-    echo "<tr bgcolor=#cccccc>";
-    echo "<td colspan=4 align=center>موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند</td>";
-    echo "</tr>";
+    echo "</tbody>
+    </table>";
 
+    echo "<br><table class='table table-bordered table-striped '>";
+    echo "        <thead>
+                        <tr class='table-info text-center'>";
+    echo "                    <th colspan=4>موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند</th>";
+    echo "              </tr>
+                  </thead>
+                  <tbody>";
     $query = "
 select label from 
 (select label from projectmanagement.OntologyClassLabels 
@@ -1033,29 +1179,32 @@ using (label)
     $i=0;
     while($rec = $res->fetch())
     {
-      if(($i%4==0) && $i>0)
-      {
-	echo "</tr>";
-	echo "<tr>";
-      }
-      $i++;
-      $total++;
-      echo "<td align=right>";
-     if($ShowLink)
-	echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."'>";
-      echo $i."- ".$rec["label"];
-      if($ShowLink)
-	echo "</a>";
-
-      echo "</td>";
+          if(($i%4==0) && $i>0)
+          {
+              echo "</tr>";
+              echo "<tr>";
+          }
+          $i++;
+          $total++;
+          echo "<td >";
+         if($ShowLink)
+             echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."'>";
+         echo $i."- ".$rec["label"];
+         if($ShowLink)
+             echo "</a>";
+         echo "</td>";
     }
     echo "</tr>";
-    echo "</table>";
-    
-    echo "<table align=center width=800 dir=\"rtl\">";
-    echo "<tr bgcolor=#cccccc>";
-    echo "<td colspan=1 align=center>کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)</td>";
-    echo "</tr>";
+    echo "</tbody></table>";
+
+    echo "<br><table class='table table-bordered table-striped '>";
+    echo "        <thead>
+                        <tr class='table-info text-center'>";
+    echo "                    <th colspan=1>کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)</th>";
+    echo "              </tr>
+                  </thead>
+                  <tbody>";
+
 
     $query = "select ClassTitle, label, count(*) as tcount from projectmanagement.OntologyClassLabels
     JOIN projectmanagement.OntologyClasses on (OntologyClassLabels.OntologyClassID=projectmanagement.OntologyClasses.OntologyClassID)
@@ -1066,7 +1215,7 @@ using (label)
       JOIN projectmanagement.OntologyProperties using (OntologyPropertyID)
       where OntologyID in (".$SelectedOnto.") 
     )
-    group by label
+    group by ClassTitle,label
     having count(*)=1
     order by label";
     $res = $mysql->Execute($query);
@@ -1075,29 +1224,31 @@ using (label)
     $i=0;
     while($rec = $res->fetch())
     {
-      //if(($i%4==0) && $i>0)
-      {
-	echo "</tr>";
-	echo "<tr>";
-      }
-      $i++;
-      $total++;
-      echo "<td align=right>";
-     if($ShowLink)
-	echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Class'>";
-      echo $i."- ".$rec["label"];
-      if($ShowLink)
-	echo "</a>";
-
-      echo "</td>";
+          if(($i%4==0) && $i>0)
+          {
+            echo "</tr>";
+            echo "<tr>";
+          }
+          $i++;
+          $total++;
+          echo "<td >";
+          if($ShowLink)
+                echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Class'>";
+          echo $i."- ".$rec["label"];
+          if($ShowLink)
+                echo "</a>";
+          echo "</td>";
     }
     echo "</tr>";
-    echo "</table>";
+    echo "</tbody> </table>";
 
-    echo "<table align=center width=800 dir=\"rtl\">";
-    echo "<tr bgcolor=#cccccc>";
-    echo "<td colspan=1 align=center>خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)</td>";
-    echo "</tr>";
+    echo "<br><table class='table table-bordered table-striped '>";
+    echo "        <thead>
+                        <tr class='table-info text-center'>";
+    echo "                    <th colspan=1>خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)</th>";
+    echo "              </tr>
+                  </thead>
+                  <tbody>";
     $i=0;
     $query = "select PropertyTitle, label, count(*) as tcount from projectmanagement.OntologyPropertyLabels
     JOIN projectmanagement.OntologyProperties on (OntologyPropertyLabels.OntologyPropertyID=projectmanagement.OntologyProperties.OntologyPropertyID)
@@ -1108,29 +1259,29 @@ using (label)
       JOIN projectmanagement.OntologyClasses using (OntologyClassID)
       where OntologyID in (".$SelectedOnto.") 
     )
-    group by label
+    group by PropertyTitle,label
     having count(*)=1
     order by label";
     $res = $mysql->Execute($query);
     while($rec = $res->fetch())
     {
-      //if(($i%4==0) && $i>0)
-      {
-	echo "</tr>";
-	echo "<tr>";
-      }
-      $i++;
-      $total++;
-      echo "<td align=right>";
-      if($ShowLink)
-	echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Prop'>";
-      echo $i."- ".$rec["label"];
-      if($ShowLink)
-	echo "</a>";
-      echo "</td>";
+          if(($i%4==0) && $i>0)
+          {
+            echo "</tr>";
+            echo "<tr>";
+          }
+          $i++;
+          $total++;
+          echo "<td>";
+          if($ShowLink)
+                echo " <a target=_blank href='AnalyzeOntologies.php?label=".$rec["label"]."&EntityType=Prop'>";
+          echo $i."- ".$rec["label"];
+          if($ShowLink)
+                echo "</a>";
+          echo "</td>";
     }
     echo "</tr>";
-    echo "</table>";
+    echo "</tbody></table> </div>";
   die();
 }
 
@@ -1192,96 +1343,107 @@ if(isset($_REQUEST["UpdateID"]))
 	$comment = htmlentities($obj->comment, ENT_QUOTES, 'UTF-8'); 
 }	
 ?>
+
+
+
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
+    <div class="form-group">
 <?
 	if(isset($_REQUEST["UpdateID"])) 
 	{
-		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
+		echo "<input class=\"form-control\" type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 		echo manage_ontologies::ShowSummary($_REQUEST["UpdateID"]);
 		echo manage_ontologies::ShowTabs($_REQUEST["UpdateID"], "Newontologies");
 	}
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش هستان نگار</td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<tr>
-	<td width="1%" nowrap>
- عنوان
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_OntologyTitle" id="Item_OntologyTitle" maxlength="100" size="40">
-<? if(isset($_REQUEST["UpdateID"])) { ?>
-<a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
-<a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
- <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
- <br>
- <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> / 
- <a target=_blank href='GetOwl.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
- /
- <a target=_blank href='GetER.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
- /
- <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
-<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- مسیر اینترنتی
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_OntologyURI" id="Item_OntologyURI" maxlength="200" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
-	فایل
-	</td>
-	<td nowrap>
-	<input type="file" name="Item_FileContent" id="Item_FileContent">
-	<? if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-	<a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
-	&nbsp;
-	<a href='#' onclick='javascript: ExtractData();'>انتقال عناصر از فایل به پایگاه داده</a>
-	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
-شرح
-	</td>
-	<td nowrap>
-	<textarea name="Item_comment" id="Item_comment" cols="80" rows="5" ><? echo $comment; ?></textarea>
-	</td>
-</tr>
-<? if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-<tr>
-  <td colspan=2>
-  <textarea cols=100 rows=10 dir=ltr style="font-family: tahoma; font-size:10px"><? echo $obj->FileContent ?></textarea>
-  </td>
-</tr>
-<? } ?>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='Manageontologies.php';" value="جدید">
-</td>
-</tr>
-</table>
+    </div>
+<br>
+<div class="container">
+    <table class="table table-bordered table-sm" ">
+        <thead >
+        <tr>
+            <th class="text-center table-info " colspan="1" >ایجاد/ویرایش هستان نگار</th>
+        </tr>
+        </thead>
+        <tboady>
+            <tr>
+                <td>
+                <div class="form-group row">
+                    <label for="Item_OntologyTitle" class="col-sm-1 col-form-label">عنوان</label>
+                    <div class="col-sm-11">
+                    <input class="form-control" type="text" name="Item_OntologyTitle" id="Item_OntologyTitle" >
+                    <?php if(isset($_REQUEST["UpdateID"])) { ?>
+                                <a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
+                                <a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
+                                <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
+                                <br>
+                                <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> /
+                                <a target=_blank href='GetOwl.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
+                                <a target=_blank href='GetER.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
+                                <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
+                            <? } ?>
+                    </div>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label for="Item_OntologyURI" class="col-sm-1 col-form-label">مسیر اینترنتی</label>
+                        <div class="col-sm-11">
+                            <input class="form-control" type="text" name="Item_OntologyURI" id="Item_OntologyURI" >
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label for="Item_FileContent" class="col-sm-1 col-form-label"> فایل</label>
+                        <div class="col-sm-11">
+                            <input  type="file" class="form-control" name="Item_FileContent" id="Item_FileContent" data-filesize="3000" data-filesize-error="Max 3000B"
+                                    accept="image/* , application/pdf"  />
+                            <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
+                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
+                                &nbsp;
+                                <a href='#' onclick='javascript: ExtractData();'>انتقال عناصر از فایل به پایگاه داده</a>
+                            <? } ?>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <div class="form-group row">
+                    <label for="Item_comment" class="col-sm-1 col-form-label"> شرح</label>
+                    <div class="col-sm-11">
+                        <textarea class="form-control" name="Item_comment" id="Item_comment" rows="2" ><?php echo $comment; ?></textarea>
+                    </div>
+                </div>
+            </td>
+            </tr>
+                <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
+                        <tr>
+                            <td colspan=2>
+                                <textarea ><? echo $obj->FileContent ?></textarea>
+                            </td>
+                        </tr>
+                    <? } ?>
+            <tr>
+                <td class="text-center">
+                    <input type="submit" class="btn btn-success  " " value="ذخیره">
+                    <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value="جدید">
+                </td>
+            </tr>
+        </tboady>
+    </table>
+</div>
+
+
 <input type="hidden" name="Save" id="Save" value="1">
-</form><script>
-	<? echo $LoadDataJavascriptCode; ?>
-	function ValidateForm()
-	{
-		document.f1.submit();
-	}
-</script>
+</form>
+
+
 <?php 
 $res = manage_ontologies::GetList(); 
 $SomeItemsRemoved = false;
@@ -1299,82 +1461,92 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Remove")
 if($SomeItemsRemoved)
 	$res = manage_ontologies::GetList(); 
 ?>
-<form id="ListForm" name="ListForm" method="post"> 
-<input type="hidden" id="ActionType" name="ActionType" value="Analyze">
-<br><table width="98%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="14">
-	هستان نگار
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"><input type=CheckBox name=CheckAll id=CheckAll onchange='javascript: DoCheckAll(this.checked);'></td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>عنوان</td>
-	<td>مسیر اینترنتی</td>
-	<td>فایل</td>
-	<td>شرح</td>
-	<td width=1% nowrap>کلاسها</td>
-	<td width=1% nowrap>خصوصیات</td>
-	<td width=1% nowrap>خبرگان ارزیاب</td>
-	<td width=1% nowrap>چاپ</td>
-	<td width=1% >چاپ - با منابع ادغام</td>
-	<td width=1% >چاپ - با منابع استخراج واژگان</td>
-	<td width=1% >چاپ - با منابع پایگاه داده</td>
-</tr>
-<?
-$CheckAllCode = "";
-for($k=0; $k<count($res); $k++)
-{
-  $ccount = manage_ontologies::GetClassCount($res[$k]->OntologyID);
-  $pcount = manage_ontologies::GetPropertyCount($res[$k]->OntologyID);
-  $CheckAllCode .= "document.getElementById('ch_".$res[$k]->OntologyID."').checked = CheckValue; \r\n";
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyID."\" id=\"ch_".$res[$k]->OntologyID."\">";
-	echo "</td>";
-	echo "<td>".($k+1)."</td>";
-	echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-	echo "	<td>".htmlentities($res[$k]->OntologyTitle, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".htmlentities($res[$k]->OntologyURI, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td><a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><img src='images/Download.gif'></a></td>";
-	echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
-	echo "<td width=1% nowrap><a  target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><img src='images/level1.gif'>";
-	if($ccount>0)
-	  echo "(".$ccount.")";
-	echo "</a></td>";
-	echo "<td width=1% nowrap><a  target=\"_blank\" href='ManageOntologyProperties.php?OntologyID=".$res[$k]->OntologyID ."'><img src='images/level2.gif'>";
-	if($pcount>0)
-	  echo "(".$pcount.")";
-	echo "</a></td>";
-	echo "<td><a target=_blank href='ManageOntologyValidationExperts.php?OntologyID=".$res[$k]->OntologyID."'><img src='images/experts.gif'></a></td>";
-	echo "<td><a target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><img src='images/list-accept.gif'></a></td>";
-	echo "<td><a target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><img src='images/history.gif'></a></td>";
-	echo "<td><a target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><img src='images/history.gif'></a></td>";	
-	echo "<td><a target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><img src='images/history.gif'></a></td>";	
-	echo "</tr>";
-}
-?>
-<tr class="FooterOfTable">
-<td colspan="14" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	<input type="button" onclick="javascript: ConfirmAnalyze(); " value="تحلیل فراوانی">
-	<input type="button" onclick="javascript: ConfirmAnalyze2(); " value="تحلیل فاصله levenshtein">
-	<input type="button" onclick="javascript: ConfirmAnalyze3(); " value="تحلیل با wordnet">
-	<input type="button" onclick="javascript: ConfirmDic(); " value="دیکشنری">
-	<input type="button" onclick="javascript: ConfirmStatistical(); " value="ارزیابی آماری">
-<input type="button" onclick="javascript: document.location='CompareOntologies.php' " value="مقایسه محتوایی">
-	<input type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value="پروژه های ادغام">
-		<input type="button" onclick="javascript: document.location='MetaData2Onto.php' " value="مهندسی معکوس RDB">
+<div class="container">
+<form id="ListForm" name="ListForm" method="post">
+    <div class="form-group">
+        <input class="form-control" type="hidden" id="ActionType" name="ActionType" value="Analyze">
+    </div>
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+	          <th class="table-info text-center"  colspan="14">هستان نگار</th>
+            </tr>
+            <tr>
+<!--                <th ><input type=CheckBox name=CheckAll id=CheckAll onchange='javascript: DoCheckAll(this.checked);'></th>-->
+                <th> </th>
+                <th >ردیف</th>
+                <th >ویرایش</th>
+                <th>عنوان</th>
+                <th>مسیر اینترنتی</th>
+                <th>فایل</th>
+                <th>شرح</th>
+                <th >کلاسها</th>
+                <th  >خصوصیات</th>
+                <th >خبرگان ارزیاب</th>
+                <th >چاپ</th>
+                <th  >چاپ - با منابع ادغام</th>
+                <th  >چاپ - با منابع استخراج واژگان</th>
+                <th >چاپ - با منابع پایگاه داده</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $CheckAllCode = "";
+            for($k=0; $k<count($res); $k++)
+            {
+              $ccount = manage_ontologies::GetClassCount($res[$k]->OntologyID);
+              $pcount = manage_ontologies::GetPropertyCount($res[$k]->OntologyID);
+              $CheckAllCode .= "document.getElementById('ch_".$res[$k]->OntologyID."').checked = CheckValue; \r\n";
+              echo "<tr >";
+              echo "<td>";
+              echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyID."\" id=\"ch_".$res[$k]->OntologyID."\">";
+              echo "</td>";
+              echo "<td>".($k+1)."</td>";
+              echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"> <i class=\"fa fa-edit\"></a></td>";
+              echo "	<td>".htmlentities($res[$k]->OntologyTitle, ENT_QUOTES, 'UTF-8')."</td>";
+              echo "	<td>".htmlentities($res[$k]->OntologyURI, ENT_QUOTES, 'UTF-8')."</td>";
+              echo "	<td><a class='btn btn-sm btn-outline-dark' href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><i class=\"fa fa-file-download\"></a></td>";
+              echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
+              echo "<td ><a  class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard\">";
+              if($ccount>0)
+                  echo "(".$ccount.")";
+                echo "</a></td>";
+                echo "<td ><a class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyProperties.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard-list\">";
+                if($pcount>0)
+                  echo "(".$pcount.")";
+                echo "</a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='ManageOntologyValidationExperts.php?OntologyID=".$res[$k]->OntologyID."'> <i class=\"fa fa-balance-scale\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-print\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
+                echo "</tr>";
+            }
+            ?>
+            <tr>
+                <td colspan="14" class="text-center table-light">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value="دیکشنری">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value="تحلیل فراوانی">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value="تحلیل فاصله levenshtein">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value="ارزیابی آماری">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="14" class="text-center table-light">
+                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value="مهندسی معکوس RDB">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value="تحلیل با wordnet">
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value="مقایسه محتوایی">
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value="پروژه های ادغام">
+                </td>
+            <tr>
 
-</td>
 </tr>
+        </tbody>
 </table>
 </form>
+</div>
 <form target="_blank" method="post" action="Newontologies.php" id="NewRecordForm" name="NewRecordForm">
 </form>
 <script>
@@ -1384,7 +1556,7 @@ function DoCheckAll(CheckValue)
 }
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) 
+	if(confirm('آیا مطمئن هستید؟'))
 	{
 	  document.getElementById('ActionType').value="Remove";
 	  document.ListForm.submit();

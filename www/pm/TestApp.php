@@ -1,6 +1,10 @@
 <?php 
 include("header.inc.php");
 include("classes/SystemFacilityGroups.class.php");
+include("classes/messages.class.php");
+include("classes/terms.class.php");
+include("classes/ProjectHistory.class.php");
+include("classes/AccountSpecs.class.php");
 HTMLBegin();
 class Test
 {
@@ -53,6 +57,9 @@ Test::add(
   ,"b_SystemFacilityGroups->LoadDataFromDatabase()", "Administration"
 );
 
+
+
+
 Test::add(
     function()
     {
@@ -70,6 +77,653 @@ Test::add(
     ,"manage_SystemFacilityGroups::GetCount()", "Administration"
 );
 
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !
+Test::add(
+    function()
+    {
+        $obj = new be_messages();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_messages.class->LoadDataFromDatabase()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetCount();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetCount()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetLastID()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Add("test","","","","","2000/01/01","2000/01/01");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetLastID()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Update("1","test","","","","","2000/01/01","2000/01/01");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Update()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Remove("1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Remove()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetList("1","","MessageID","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetList()", "Message"
+);
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetList("1","","MessageID","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetList()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->GetActiveMessages();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->GetActiveMessages()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->Search("","","","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->Search()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->SearchResultCount("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->SearchResultCount()", "Message"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_messages();
+        try {
+            $obj->ComparePassedDataWithDB("","","","","","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_messages.class->ComparePassedDataWithDB()", "Message"
+);
+
+
+
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful ! ***
+
+
+//terms.class.php Unit Tests By Ehsan Amini
+
+Test::add(
+    function()
+    {
+        $obj = new be_terms();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_terms->LoadDataFromDatabase()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetCount();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetCount()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetLastID()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Add("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Add()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Update("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Update()", "Terms"
+);
+
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Remove("");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Remove()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->GetList("","","TermTitle","asc");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->GetList()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->Search("","","","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->Search()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->SearchResultCount("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->SearchResultCount()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ComparePassedDataWithDB("","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ComparePassedDataWithDB()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ShowSummary("");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ShowSummary()", "Terms"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_terms();
+        try {
+            $obj->ShowTabs("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_terms->ShowTabs()", "Terms"
+);
+
+//End of terms.class.php Unit Tests By Ehsan Amini
+
+//ProjectHistory.class.php - Hossein lotfi - Start
+
+
+Test::add(
+    function()
+    {
+        $obj = new be_ProjectHistory();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_ProjectHistory->LoadDataFromDatabase()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetCount(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetCount()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetLastID()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->Add("", "", "", "", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->Add()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->GetList("", "", "", "ProjectID", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->GetList()", "ProjectHistory"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new manage_ProjectHistory();
+        try {
+            $obj->Search("", "", "", "", "");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectHistory->Search()", "ProjectHistory"
+);
+
+
+//ProjectHistory.class.php - Hossein Lotfi - Finish
+
+//AccountSpecs.class.php -Ali Noori - Start
+Test::add(                  #1
+        function ()
+        {
+            $obj=new be_AccountSpecs();
+            try{
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"be_AccountSpecs.class->LoadDataFromDatabase()", "AccountSpecs"
+);
+Test::add(                  #2
+        function ()
+        {
+            try
+            {
+                if(manage_AccountSpecs::GetCount()==0) {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_AccountSpecs->GetCount()", "AccountSpecs"
+);
+Test::add(                  #3
+        function ()
+        {
+            try
+            {
+                if(manage_AccountSpecs::GetLastID()==-1) {
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_AccountSpecs->GetLastID()", "AccountSpecs"
+);
+Test::add(                  #4
+        function()
+        {
+            try
+            {
+                if(manage_AccountSpecs::Add("ali","123","alavi")>-1){//return lastID we assume that lastID is always greater than zero
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_AccountSpecs->Add()", "AccountSpecs"
+);
+Test::add(                  #5
+        function ()
+        {
+            try
+            {
+                manage_AccountSpecs::Update("1","ali","123","alavi");//it does not return anything
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_AccountSpecs->Update()", "AccountSpecs"
+);
+Test::add(                  #6
+        function ()
+        {
+            try
+            {
+                manage_AccountSpecs::Remove("1");
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_AccountSpecs->Remove()", "AccountSpecs"
+);
+Test::add(                  #7
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_AccountSpecs::GetList())){//if return type is array
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_AccountSpecs->GatList()", "AccountSpecs"
+);
+Test::add(                  #8
+    function ()
+    {
+        try
+        {
+            if(manage_AccountSpecs::GetComboBoxOptions()!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_AccountSpecs->GetComboBoxOptions()", "AccountSpecs"
+);
+Test::add(                      #9
+    function ()
+    {
+        try
+        {
+            if(manage_AccountSpecs::ComparePassedDataWithDB("1","ali","123","alavi")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_AccountSpecs->ComparePassedDataWithDB()", "AccountSpecs"
+);
+
+//AccountSpecs.class.php -Ali Noori - Finish
 
 $res = Test::run();
 echo "<br>";

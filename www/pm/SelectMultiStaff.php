@@ -58,21 +58,26 @@
 		echo "<input type=hidden name=LInput id=LInput value='".$_REQUEST["LInput"]."'>"; 
 ?>
 <input type=hidden name='InputName' value='<?= $_REQUEST["InputName"] ?>'>
-<table width=50% align=center border=1 cellspacing=0 cellpadding=3>
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6">
+<table class="table table-bordered table-sm">
 <tr>
-	<td>نام: </td><td><input type=text name=FName "></td>
+	<td><? echo C_NAME.":"; ?></td><td><input type=text name=FName "></td>
 </tr>
 <tr>
-	<td>نام خانوادگی: </td><td><input type=text name=LName "></td>
+	<td><? echo C_LAST_NAME.":"; ?></td><td><input type=text name=LName "></td>
 </tr>
-<tr class='FooterOfTable'>
-	<td colspan=2 align=center>
-	<input type=submit value='جستجو'>
-	&nbsp;
-	<input type=button value='حذف انتخاب قبلی' onclick='javascript: ClearLastSelected();'>
+<tr class='table-info'>
+	<td colspan=2 class="text-center">
+	<input class="btn btn-light" type=submit value='<? echo C_SEARCH; ?>'>
+	<input class="btn btn-danger" type=button value='<? echo C_REMOVE_PREVIOUS_CHOICE; ?>' onclick='javascript: ClearLastSelected();'>
 	</td>
 </tr>
 </table>
+</div>
+<div class="col-3"></div>
+</div>
 </form>
 <form method=post>
 <? if(isset($_REQUEST["SpanName"])) { ?>
@@ -81,12 +86,17 @@
 <? } ?>
 <input type=hidden name=Selected id=Selected value=1>
 <br>
-<table width=50% align=center border=1 cellspacing=0 cellpadding=3>
-<tr class='HeaderOfTable'>
-	<td width=1%>&nbsp;</td>
-	<td>نام و نام خانوادگی</td>
-	<td width=5% nowrap>نام کاربر</td>
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6">
+<table class="table table-bordered table-sm table-striped">
+<thead class="table-info">
+<tr>
+	<td width=1%></td>
+	<td><? echo C_FULL_NAME; ?></td>
+	<td class="text-nowrap"><? echo C_USER_NAME; ?></td>
 </tr>
+</thead>
 <?
 	if(isset($_REQUEST["FName"]))
 	{
@@ -105,10 +115,7 @@
 			$i++;
 			if($i>200)
 				break;
-			if($i%2==0)
-				echo "<tr class=OddRow>";
-			else
-				echo "<tr class=EvenRow>";
+			echo "<tr>";
 			echo "<td><input type=checkbox name='ch_".$arr_res["PersonID"]."'></td>";
 			
 			echo "<td>".$arr_res["plname"]." ".$arr_res["pfname"]."</td>";
@@ -140,10 +147,7 @@
 			$i++;
 			if($i>200)
 				break;
-			if($i%2==0)
-				echo "<tr class=OddRow>";
-			else
-				echo "<tr class=EvenRow>";
+			echo "<tr>";
 			echo "<td><input type=checkbox name='ch_".$arr_res["PersonID"]."'></td>";
 			echo "<td>".$arr_res["plname"]." ".$arr_res["pfname"]."</td>";
 
@@ -153,12 +157,15 @@
 		
 	}
 ?>
-<tr class='FooterOfTable'>
-	<td colspan=3 align=center>
-	<input type=submit value='انتخاب'>
+<tr class='table-info'>
+	<td colspan=3 class="text-center">
+	<input type=submit class="btn btn-light" value='<? echo C_SELECT; ?>'>
 	</td>
 </tr>
 </table>
+</div>
+<div class="col-3"></div>
+</div>
 </form>
 
 <script>
