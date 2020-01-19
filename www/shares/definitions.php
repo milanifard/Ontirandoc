@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN"); // EN or FA
+define("UI_LANGUAGE", "EN");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -299,6 +299,17 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypes.php By diba aminshahidi
     // define();
 
+
+    //ManageProjectMilestones.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
+    define("C_DATE", "Date");
+    define("C_DESCRIPTION", "Description");
+    define("C_SAVE", "Save");
+    define("C_NEW", "New");
+    define("C_ROW", "Row");
+    define("C_EDIT", "Edit");
+    define("C_IMPORTANT_DATES", "Important dates");
+
 }
 else
 {
@@ -592,6 +603,16 @@ else
     define("C_MESSAGES", "پیام ها");
     define("C_RECEIVED_LETTERS", "نامه های رسیده");
     define("C_ATTACHMENTS", "ضمیمه");
+
+    //ManageProjectMilestones.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_IMPORTANT_DATE", "ایجاد/ویرایش تاریخهای مهم");
+    define("C_DATE", "تاریخ");
+    define("C_DESCRIPTION", "شرح");
+    define("C_SAVE", "ذخیره");
+    define("C_NEW", "جدید");
+    define("C_ROW", "ردیف");
+    define("C_EDIT", "ویرایش");
+    define("C_IMPORTANT_DATES", "تاریخ های مهم");
 
 }
 
