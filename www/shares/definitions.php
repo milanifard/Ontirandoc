@@ -312,6 +312,8 @@ if(UI_LANGUAGE=="EN") {
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
     define("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
+    define("C_LABEL" , "Label");
+    define("C_LABELS" , "Labels");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
@@ -631,6 +633,8 @@ else
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
     define("C_CREATE_EDIT_LABELS" , "ایجاد/ویرایش برچسبهای خصوصیات");
+    define("C_LABEL" , "برچسب");
+    define("C_LABELS" , "برچسبها");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");

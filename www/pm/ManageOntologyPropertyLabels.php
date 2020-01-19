@@ -27,7 +27,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_label
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $comment = "";
@@ -49,7 +49,7 @@ echo manage_OntologyProperties::ShowTabs($_REQUEST["OntologyPropertyID"], "Manag
 ?>
 <br><table width="90%" border="1" cellspacing="0" align="center">
 <tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش برچسبهای خصوصیات</td>
+<td align="center"><?echo C_CREATE_EDIT_LABELS?></td>
 </tr>
 <tr>
 <td>
@@ -62,7 +62,7 @@ if(!isset($_REQUEST["UpdateID"]))
 <? } ?>
 <tr>
 	<td width="1%" nowrap>
- برچسب
+ <? echo C_LABEL ?>
 	</td>
 	<td nowrap>
 	<textarea name="Item_label" id="Item_label" cols="80" rows="5"><? echo $comment ?></textarea>
@@ -73,9 +73,9 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 <tr class="FooterOfTable">
 <td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='ManageOntologyPropertyLabels.php?OntologyPropertyID=<?php echo $_REQUEST["OntologyPropertyID"]; ?>'" value="جدید">
- <input type="button" onclick="javascript: window.close();" value="بستن">
+<input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
+ <input type="button" onclick="javascript: document.location='ManageOntologyPropertyLabels.php?OntologyPropertyID=<?php echo $_REQUEST["OntologyPropertyID"]; ?>'" value="<? echo C_NEW ?>">
+ <input type="button" onclick="javascript: window.close();" value="<? echo C_CLOSE ?>">
 </td>
 </tr>
 </table>
@@ -106,14 +106,14 @@ if($SomeItemsRemoved)
 <br><table width="90%" align="center" border="1" cellspacing="0">
 <tr bgcolor="#cccccc">
 	<td colspan="4">
-	برچسبها
+	<? echo C_LABELS ?>
 	</td>
 </tr>
 <tr class="HeaderOfTable">
 	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>برچسب</td>
+	<td width="1%"><? echo C_ROW ?></td>
+	<td width="2%"><? echo C_EDIT ?></td>
+	<td><? echo C_LABEL ?></td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -126,14 +126,14 @@ for($k=0; $k<count($res); $k++)
 	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyPropertyLabelID."\">";
 	echo "</td>";
 	echo "<td>".($k+1)."</td>";
-	echo "	<td><a href=\"ManageOntologyPropertyLabels.php?UpdateID=".$res[$k]->OntologyPropertyLabelID."&OntologyPropertyID=".$_REQUEST["OntologyPropertyID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+	echo "	<td><a href=\"ManageOntologyPropertyLabels.php?UpdateID=".$res[$k]->OntologyPropertyLabelID."&OntologyPropertyID=".$_REQUEST["OntologyPropertyID"]."\"><img src='images/edit.gif' title='<? echo C_EDIT ?>'></a></td>";
 	echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->label, ENT_QUOTES, 'UTF-8'))."</td>";
 	echo "</tr>";
 }
 ?>
 <tr class="FooterOfTable">
 <td colspan="4" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+	<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE ?>">
 </td>
 </tr>
 </table>
@@ -144,7 +144,7 @@ for($k=0; $k<count($res); $k++)
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 }
 </script>
 </html>
