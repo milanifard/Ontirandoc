@@ -310,6 +310,18 @@ if(UI_LANGUAGE=="EN") {
     define("C_EDIT", "Edit");
     define("C_IMPORTANT_DATES", "Important dates");
 
+    //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
+    define("C_TITLE", "Title");
+    define("C_SAVE", "Save");
+    define("C_NEW", "New");
+    define("C_ACTIONS_TYPES", "Action types");
+    define("C_ACTIONS_COUNT", "Action count");
+    define("C_DELETE", "Delete");
+    define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
+
+
+
 }
 else
 {
@@ -613,6 +625,17 @@ else
     define("C_ROW", "ردیف");
     define("C_EDIT", "ویرایش");
     define("C_IMPORTANT_DATES", "تاریخ های مهم");
+
+    //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
+    define("C_TITLE", "عنوان");
+    define("C_SAVE", "ذخیره");
+    define("C_NEW", "جدید");
+    define("C_ACTIONS_TYPES", "انواع اقدامات");
+    define("C_ACTIONS_COUNT", "تعداد اقدامات");
+    define("C_DELETE", "حذف");
+    define("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
+
 
 }
 
