@@ -310,6 +310,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_EDIT", "Edit");
     define("C_IMPORTANT_DATES", "Important dates");
 
+    //ManageOntologyPropertyLabels.php By Javad Mahdavian
+    define("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
+
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
     define("C_TITLE", "Title");
@@ -625,6 +628,9 @@ else
     define("C_ROW", "ردیف");
     define("C_EDIT", "ویرایش");
     define("C_IMPORTANT_DATES", "تاریخ های مهم");
+
+    //ManageOntologyPropertyLabels.php By Javad Mahdavian
+    define("C_CREATE_EDIT_LABELS" , "ایجاد/ویرایش برچسبهای خصوصیات");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
