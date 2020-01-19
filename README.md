@@ -97,11 +97,9 @@ In addition to checking validity of ontology by applying above approaches, we de
 
 5- set database username and password in shares/config.class.php and Mysql.config.php
 
-6- set include_path in .htacess in "pm" and "ManageInfo" folders
+6- you can change "UI_LANGUAGE" constant in shares/definitions.php to select Persian or English user interface 
 
-7- you can change "UI_LANGUAGE" constant in shares/definitions.php to select Persian or English user interface 
-
-8- use login.php page for login (default username: omid, password: omid3000)
+7- use login.php page for login (default username: omid, password: omid3000)
 
 ** This software has a persian user manual: [OntirandocUserManual.docx](https://github.com/milanifard/Ontirandoc/blob/master/OntirandocUserManual.docx?raw=true)
 
