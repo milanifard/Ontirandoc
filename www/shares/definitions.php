@@ -297,7 +297,7 @@ if(UI_LANGUAGE=="EN") {
     define("FIELD_M" ,"field");
 
     //ManageSessionTypes.php By diba aminshahidi
-    define();
+    // define();
 
 }
 else

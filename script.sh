@@ -28,8 +28,9 @@ sed -i "s/MYSQL_USERNAME.*$/MYSQL_USERNAME', '${DB_USERNAME}');/" "${DEPLOY_PATH
 sed -i "s/MYSQL_PASSWORD.*$/MYSQL_PASSWORD', '${DB_PASSWORD}');/" "${DEPLOY_PATH}shares/MySql.config.php"
 
 #Change .htaccess file based on your environment
-sed -i "s%include_path.*$%include_path \".:${DEPLOY_PATH}adodb:${DEPLOY_PATH}shares:${DEPLOY_PATH}sharedClasses\"%" "${DEPLOY_PATH}pm/.htaccess"
-sed -i "s%include_path.*$%include_path \".:${DEPLOY_PATH}adodb:${DEPLOY_PATH}shares:${DEPLOY_PATH}sharedClasses\"%" "${DEPLOY_PATH}ManageInfo/.htaccess"
+# mghayour: i added relative path. it does not need anymore
+# sed -i "s%include_path.*$%include_path \".:${DEPLOY_PATH}adodb:${DEPLOY_PATH}shares:${DEPLOY_PATH}sharedClasses\"%" "${DEPLOY_PATH}pm/.htaccess"
+# sed -i "s%include_path.*$%include_path \".:${DEPLOY_PATH}adodb:${DEPLOY_PATH}shares:${DEPLOY_PATH}sharedClasses\"%" "${DEPLOY_PATH}ManageInfo/.htaccess"
 
 #Change definitions.php file based on your environment
 sed -i "s:define(\"UI_LANGUAGE.*$:define(\"UI_LANGUAGE\", \"$LANG\");:" "${DEPLOY_PATH}shares/definitions.php"
