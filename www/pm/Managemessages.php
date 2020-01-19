@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <html>
 <body class="bg-transparent">
+
 <?php
 /*
  صفحه  نمایش لیست و مدیریت داده ها مربوط به : پیامها
@@ -166,9 +167,9 @@ if(isset($_REQUEST["UpdateID"]))
                             <?php echo START_TIME?>
                         </td>
                         <td nowrap>
-                            <input type="date"  id="StartDate" name="StartDate" size="2">
-                           <!-- <input maxlength="2" id="StartDate_MONTH" name="StartDate_MONTH" type="text" size="2" >/-->
-                          <!--  <input maxlength="2" id="StartDate_YEAR" name="StartDate_YEAR" type="text" size="2" >-->
+                            <input maxlength="2" id="StartDate_DAY" name="StartDate_DAY" type="text" size="2">/
+                            <input maxlength="2" id="StartDate_MONTH" name="StartDate_MONTH" type="text" size="2" >/
+                            <input maxlength="2" id="StartDate_YEAR" name="StartDate_YEAR" type="text" size="2" >
                         </td>
                     </tr>
                     <tr>
@@ -176,9 +177,9 @@ if(isset($_REQUEST["UpdateID"]))
                             <?php echo END_TIME?>
                         </td>
                         <td nowrap>
-                            <input type="date"  id="EndDate" name="EndDate">
-                            <!--<input maxlength="2" id="EndDate_MONTH" name="EndDate_MONTH" type="text" size="2" >/-->
-                            <!--<input maxlength="2" id="EndDate_YEAR" name="EndDate_YEAR" type="text" size="2" >-->
+                            <input maxlength="2" id="EndDate_DAY" name="EndDate_DAY" type="text" size="2">/
+                            <input maxlength="2" id="EndDate_MONTH" name="EndDate_MONTH" type="text" size="2" >/
+                            <input maxlength="2" id="EndDate_YEAR" name="EndDate_YEAR" type="text" size="2" >
                         </td>
                     </tr>
                 </table>
@@ -257,9 +258,10 @@ if($SomeItemsRemoved)
     <input type="hidden" name="SearchAction" id="SearchAction" value="1">
     <br><table width="90%" align="center" class="table table-borderless" cellspacing="0">
         <tr class="HeaderOfTable">
-            <td><img src='images/search.gif'><b><a href="#"  onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'>
+            <td><i class="fa fa-search"></i><b><a href="#"  onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'>
 
                         جستجو </a></td>
+
         </tr>
         <tr id='SearchTr' style='display: none'>
             <td>
@@ -328,9 +330,9 @@ if(isset($_REQUEST["SearchAction"]))
             echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->MessageID."\">";
             echo "</td scope=\"col\">";
             echo "<td scope=\"col\">".($k+$FromRec+1)."</td>";
-            echo "	<td scope=\"col\"><a href=\"Managemessages.php?UpdateID=".$res[$k]->MessageID."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+            echo "	<td scope=\"col\"><a href=\"Managemessages.php?UpdateID=".$res[$k]->MessageID."\"><i class=\"fa fa-pencil-square\" ></i></a></td>";
             echo "	<td scope=\"col\">".str_replace("\r", "<br>", htmlentities($res[$k]->MessageBody, ENT_QUOTES, 'UTF-8'))."</td>";
-            echo "	<td scope=\"col\"><a href='DownloadFile.php?FileType=messages&RecID=".$res[$k]->MessageID."'><img src='images/Download.gif'></a></td>";
+            echo "	<td scope=\"col\"><a href='DownloadFile.php?FileType=messages&RecID=".$res[$k]->MessageID."'><i class=\"fa fa-download\"></i></a></td>";
             echo "	<td scope=\"col\"><a  target=_blank href='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."'><img src='ShowMessagePhoto.php?MessageID=".$res[$k]->MessageID."' width=50></a></td>";
             echo "	<td scope=\"col\">".$res[$k]->CreatorID_FullName."</td>";
             echo "	<td scope=\"col\">".$res[$k]->CreateDate_Shamsi."</td>";
