@@ -15,7 +15,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_EXIT", "Exit");
 
     define("C_DATA_SAVE_SUCCESS", "Data saved successfully");
-    define("C_ARE_YOU_SURE", "Are you sure?");
+//    define("C_ARE_YOU_SURE", "Are you sure?");
     define("C_ACTIVE_USER", "Active User: ");
     define("C_MAIN_MENU", "Main Menu");
     define("C_FIRST_PAGE", "Home");
@@ -84,7 +84,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_COMPLETED_TASK","Completed Task");
     define("C_DESCRIPTION","Description");
     define("C_SUBJECT","Subject");
-    define("C_TIME","Time");
+    //define("C_TIME","Time");
     define("C_EXTRACT_NEW_WORD","Extract new word");
     define("C_REMOVE_WORD","Remove word");
     define("C_MERGE_TWO_WORDS","Merge two words");
@@ -120,7 +120,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_USAGE_TIME_REPORT","Usage Time Report");
     define("C_DATE","Date");
     define("C_ACTIVITY","Activity");
-    define("C_TIME","Time");
+//    define("C_TIME","Time");
     define("C_TOTAL","Total");
     define("C_RIAL","Rial");
     //-------------------------
@@ -190,10 +190,27 @@ if(UI_LANGUAGE=="EN") {
     define("C_SESSION_PERMITTED_PERSON","Permitted Users");
     define("C_SESSION_MEMBERS","Members");
     //NewSessionTypes.php By Arman Ghoreshi
-    define("C_SESSION_CREATE_EDIT","Create or Edit Session Patterns");
+    define("C_SESSION_CREATE_EDIT","Create/Edit Session Patterns");
     define("C_START_TIME","Start Time");
     define("C_END_TIME","End Time");
-
+    //managePersonPermittedSessionType.php By Arman Ghoreshi
+    define("C_SESSION_PERMITTED_CREATE_EDIT","Create/Edit Permitted Person");
+    define("C_SESSION_PERMITTED_LIST","Permitted Users for Sessions");
+    define("C_PERMISSIONS","Permissions");
+    //ManageSessionTypeMembers.php By Arman Ghoreshi
+    define("C_ROLE","Role");
+    define("C_SESSIOM_MEMBERS","Session Members");
+    define("C_ARE_YOU_SURE","Are You Sure?");
+    define("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
+    define("C_PERSONEL","Employees");
+    define("C_OTHER","Others");
+    define("C_MEMBERSHIP_TYPE","Membership Type");
+    define("C_MEMBER_PERSONAL_ID","Members Personal ID");
+    define("C_SESSION_APPROVAL","The meeting is subject to the approval of this user");
+    define("C_SIGN_MINUTES","PERMISSION TO SIGN MINUTES");
+    define("C_ELECTRONIC_SIGN","An electronic signature is required to confirm the minutes");
+    define("C_YES","Yes");
+    define("C_NO","No");
 
     //ManageFacilityPages.php By Naghme Mohammadifar
     define("C_SAVED_INFO","New information saved!");
@@ -206,6 +223,24 @@ if(UI_LANGUAGE=="EN") {
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "Season");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
+    define("C_COMMENT_CHANGE_HISTORY", "Change history of this comment");
+
+    //ResearchProject.class.php Alireza Forghani Toosi
+    define("C_SEASONS", "Seasons");
+    define("C_REFERENCE_TYPES", "Reference types");
+    define("C_REFERENCES", "References");
+    define("C_NOTES", "Notes");
+    define("C_OUTPUTS", "Outputs");
+    define("C_PRIVILEGES", "Privileges");
+    define("C_MAIN_PROPERTIES", "Main properties");
+
+    //NewProjectComments.php Alireza Forghani Toosi
+    define("C_DATA_SAVED", "Information saved");
+
+    //DesktopManager.php Alireza Forghani Toosi
+    define("C_MESSAGES", "Messages");
+    define("C_RECEIVED_LETTERS", "Received letters");
+    define("C_ATTACHMENTS", "Attachments");
 
     //Managemessages.php By kouroshAtaei
 
@@ -261,6 +296,9 @@ if(UI_LANGUAGE=="EN") {
     define("DATABASE" , "database");
     define("FIELD_M" ,"field");
 
+    //ManageSessionTypes.php By diba aminshahidi
+    define();
+
 }
 else
 {
@@ -276,7 +314,7 @@ else
     define("C_ENGLISH", "انگلیسی");
 
     define("C_DATA_SAVE_SUCCESS", "اطلاعات با موفقیت ذخیره شد");
-    define("C_ARE_YOU_SURE", "مطمئن هستید؟");
+//    define("C_ARE_YOU_SURE", "مطمئن هستید؟");
     define("C_ACTIVE_USER", "کاربر فعال: ");
     define("C_MAIN_MENU", "منوی اصلی");
     define("C_FIRST_PAGE", "صفحه اول");
@@ -382,7 +420,7 @@ else
     define("C_USAGE_TIME_REPORT","گزارش زمان مصرفی");
     define("C_DATE","تاریخ");
     define("C_ACTIVITY","فعالیت");
-    define("C_TIME","زمان");
+//    define("C_TIME","زمان");
     define("C_TOTAL","مجموع");
     define("C_RIAL","ریال");
     //-------------------------
@@ -455,6 +493,25 @@ else
     define("C_SESSION_CREATE_EDIT","ایجاد/ویرایش الگوهای جلسه");
     define("C_START_TIME","زمان شروع");
     define("C_END_TIME","زمان پایان");
+    //managePersonPermittedSessionType.php By Arman Ghoreshi
+    define("C_SESSION_PERMITTED_CREATE_EDIT","ایجاد/ویرایش کاربران مجاز الگوهای جلسه");
+    define("C_SESSION_PERMITTED_LIST","کاربران مجاز الگوهای جلسات");
+    define("C_PERMISSIONS","دسترسی ها");
+    //ManageSessionTypeMembers.php By Arman Ghoreshi
+    define("C_ROLE","نقش");
+    define("C_SESSIOM_MEMBERS","اعضای الگوهای جلسه");
+    define("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+    define("C_SESSION_MEMBERS_CREATE_EDIT","ایجاد/ویرایش اعضای الگوهای جلسه");
+    define("C_PERSONEL","پرسنل");
+    define("C_OTHER","سایر");
+    define("C_MEMBERSHIP_TYPE","نوع عضو");
+    define("C_MEMBER_PERSONAL_ID","کد شخصی عضو");
+    define("C_SESSION_APPROVAL","برگزاری جلسه منوط به تایید این کاربر است");
+    define("C_SIGN_MINUTES","اجازه امضای صورتجلسه");
+    define("C_ELECTRONIC_SIGN","برای قطعی شدن صورتجلسه نیاز به امضای الکترونیکی فرد می باشد");
+    define("C_YES","بلی");
+    define("C_NO","خیر");
+
 
     //ManageFacilityPages.php By Naghme Mohammadifar
     define("C_SAVED_INFO","اطلاعات ذخیره شد!");
@@ -467,6 +524,16 @@ else
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define("C_SEASON", "فصل");
     define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
+    define("C_COMMENT_CHANGE_HISTORY", "سابقه ی تغییرات روی این یادداشت");
+
+    //ResearchProject.class.php Alireza Forghani Toosi
+    define("C_SEASONS", "فصول");
+    define("C_REFERENCE_TYPES", "انواع منابع");
+    define("C_REFERENCES", "منابع");
+    define("C_NOTES", "یادداشتها");
+    define("C_OUTPUTS", "خروجی ها");
+    define("C_PRIVILEGES", "دسترسی ها");
+    define("C_MAIN_PROPERTIES", "مشخصات اصلی");
 
     //Managemessages.php By kouroshAtaei
 
@@ -521,7 +588,10 @@ else
     define("DATABASE" , "بانک اطلاعاتی");
     define("FIELD_M" ,"فیلد");
 
-
+    //ManagerDesktop.php Alireza Forghani Toosi
+    define("C_MESSAGES", "پیام ها");
+    define("C_RECEIVED_LETTERS", "نامه های رسیده");
+    define("C_ATTACHMENTS", "ضمیمه");
 
 }
 

@@ -55,7 +55,7 @@ if(isset($_REQUEST["UpdateID"]))
         <table class="table table-bordered " >
             <thead >
             <tr>
-                <th class="text-center table-active" >
+                <th class="text-center table-info" >
                     <?php
                     echo C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE
                     ?>
@@ -75,7 +75,7 @@ if(isset($_REQUEST["UpdateID"]))
                             <?php if(!isset($_REQUEST["UpdateID"])) { ?>
                                 <input type="hidden" name="FacilityID" id="FacilityID" value='<? if(isset($_REQUEST["FacilityID"])) echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>'>
                             <?php } ?>
-                            <input type="text" class="form-control" name="Item_PageName" id="Item_PageName" maxlength="145" size="40">
+                            <input  type="text" class="form-control" name="Item_PageName" id="Item_PageName" required placeholder=<?php echo C_PAGE_PLACE_HOLDER?> />
                         </div>
                     </div>
                 </td>
@@ -84,7 +84,7 @@ if(isset($_REQUEST["UpdateID"]))
 
             <tr >
                 <td class="text-center">
-                    <input type="button" class="btn   btn-outline-success" onclick="javascript: ValidateForm();" value=<?php echo C_SAVE?> >
+                    <input type="submit" class="btn   btn-outline-success" value=<?php echo C_SAVE?> >
                     <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value=<?php echo C_NEW?>>
                     <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value=<?php echo C_CLOSE?>>
                 </td>
@@ -95,14 +95,6 @@ if(isset($_REQUEST["UpdateID"]))
         <input type="hidden" name="Save" id="Save" value="1">
     </form>
 
-
-    <script>
-        <? echo $LoadDataJavascriptCode; ?>
-        function ValidateForm()
-        {
-            document.f1.submit();
-        }
-    </script>
 
 
 
@@ -127,7 +119,7 @@ if(isset($_REQUEST["UpdateID"]))
         <table class="table table-bordered table-striped"  >
             <thead >
             <tr  >
-                <th class="text-center table-active" colspan="4"><?php echo C_RELATED_PAGES_TO_THIS_FEATURE?> </th>
+                <th class="text-center table-info" colspan="4"><?php echo C_RELATED_PAGES_TO_THIS_FEATURE?> </th>
             </tr>
             <tr >
                 <th > </th>
@@ -143,11 +135,11 @@ if(isset($_REQUEST["UpdateID"]))
             for($k=0; $k<count($res); $k++)
             {
                 echo "<tr>";
-                echo "<td width=\"20px\">";
+                echo "<td width=\"10px\">";
                 echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FacilityPageID."\">";
                 echo "</td >";
-                echo "<td width=\"30px\" >".($k+1)."</td>";
-                echo "	<td ><a class=\"btn btn-outline-success\"href=\"ManageFacilityPages.php?UpdateID=".$res[$k]->FacilityPageID."&FacilityID=".$_REQUEST["FacilityID"]."\">
+                echo "<td width=\"20px\" >".($k+1)."</td>";
+                echo "	<td width=\"20px\" ><a class=\"btn btn-sm btn-outline-primary\"href=\"ManageFacilityPages.php?UpdateID=".$res[$k]->FacilityPageID."&FacilityID=".$_REQUEST["FacilityID"]."\">
 	                    <i class=\"fa fa-edit\"></a></td>";
                 echo "	<td >".htmlentities($res[$k]->PageName, ENT_QUOTES, 'UTF-8')."</td>";
                 echo "</tr>";
@@ -156,7 +148,7 @@ if(isset($_REQUEST["UpdateID"]))
 
             <tr >
                 <td class="text-center" colspan="4">
-                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE?>>
+                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript:ConfirmDelete();" value=<?php echo C_DELETE?>>
                 </td>
             </tr>
             </tbody>
@@ -175,7 +167,10 @@ if(isset($_REQUEST["UpdateID"]))
 <script>
     function ConfirmDelete()
     {
-        if(confirm(<?php echo C_CONFIRM_TO_DELETE?>)) document.ListForm.submit();
+        if(confirm( <?php
+                        echo '"';
+                        echo C_CONFIRM_TO_DELETE;
+                        echo '"'; ?> )) document.ListForm.submit();
     }
 </script>
 </html>
