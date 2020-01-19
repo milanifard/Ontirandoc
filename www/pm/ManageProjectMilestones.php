@@ -34,7 +34,7 @@ if (isset($_REQUEST["UpdateID"])) {
     $HasViewAccess = true;
 }
 if (!$HasViewAccess) {
-    echo "مجوز مشاهده این رکورد را ندارید";
+    echo C_DONT_HAVE_PERMISSION;
     die();
 }
 if (isset($_REQUEST["Save"])) {
@@ -60,7 +60,7 @@ if (isset($_REQUEST["Save"])) {
                 , $Item_description
             );
     }
-    echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+    echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 if (isset($_REQUEST["UpdateID"])) {
@@ -149,13 +149,13 @@ if (isset($_REQUEST["UpdateID"])) {
                     </td>
                 </tr>
                 </tbody>
-                <tr class="FooterOfTable">
+                <tr class="table-info">
                     <td align="center">
                         <? if (($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || (!isset($_REQUEST["UpdateID"]) && $HasAddAccess)) {
                             ?>
-                            <input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE; ?>">
+                            <input class="btn btn-info" type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE; ?>">
                         <? } ?>
-                        <input type="button"
+                        <input type="button" class="btn btn-info"
                                onclick="javascript: document.location='ManageProjectMilestones.php?ProjectID=<?php echo $_REQUEST["ProjectID"]; ?>'"
                                value="<? echo C_NEW; ?>">
                     </td>
@@ -237,7 +237,7 @@ if ($SomeItemsRemoved)
                 <tr class="FooterOfTable">
                     <td colspan="5" align="center">
                         <? if ($RemoveType != "NONE") { ?>
-                            <input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+                            <input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE; ?>">
                         <? } ?>
                     </td>
                 </tr>
@@ -252,7 +252,7 @@ if ($SomeItemsRemoved)
 </form>
 <script>
     function ConfirmDelete() {
-        if (confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+        if (confirm('<? echo C_ARE_YOU_SURE; ?>')) document.ListForm.submit();
     }
 </script>
 </html>
