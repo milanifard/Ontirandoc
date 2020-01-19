@@ -1348,8 +1348,8 @@ if(isset($_REQUEST["UpdateID"]))
 
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
     <div class="form-group">
-<?
-	if(isset($_REQUEST["UpdateID"])) 
+<?php
+	if(isset($_REQUEST["UpdateID"]))
 	{
 		echo "<input class=\"form-control\" type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 		echo manage_ontologies::ShowSummary($_REQUEST["UpdateID"]);
@@ -1373,15 +1373,15 @@ if(isset($_REQUEST["UpdateID"]))
                     <div class="col-sm-11">
                     <input class="form-control" type="text" name="Item_OntologyTitle" id="Item_OntologyTitle" >
                     <?php if(isset($_REQUEST["UpdateID"])) { ?>
-                                <a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
+                                <a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
+                                <a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
+                                <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
                                 <br>
-                                <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> /
-                                <a target=_blank href='GetOwl.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
-                                <a target=_blank href='GetER.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
-                                <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
-                            <? } ?>
+                                <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> /
+                                <a target=_blank href='GetOwl.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
+                                <a target=_blank href='GetER.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
+                                <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
+                            <?php } ?>
                     </div>
                 </div>
                 </td>
@@ -1404,10 +1404,10 @@ if(isset($_REQUEST["UpdateID"]))
                             <input  type="file" class="form-control" name="Item_FileContent" id="Item_FileContent" data-filesize="3000" data-filesize-error="Max 3000B"
                                     accept="image/* , application/pdf"  />
                             <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
+                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
                                 &nbsp;
                                 <a href='#' onclick='javascript: ExtractData();'>انتقال عناصر از فایل به پایگاه داده</a>
-                            <? } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </td>
@@ -1425,7 +1425,7 @@ if(isset($_REQUEST["UpdateID"]))
                 <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
                         <tr>
                             <td colspan=2>
-                                <textarea ><? echo $obj->FileContent ?></textarea>
+                                <textarea ><?php echo $obj->FileContent ?></textarea>
                             </td>
                         </tr>
                     <? } ?>
@@ -1444,22 +1444,22 @@ if(isset($_REQUEST["UpdateID"]))
 </form>
 
 
-<?php 
-$res = manage_ontologies::GetList(); 
+<?php
+$res = manage_ontologies::GetList();
 $SomeItemsRemoved = false;
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Remove")
 {
   for($k=0; $k<count($res); $k++)
   {
-	  if(isset($_REQUEST["ch_".$res[$k]->OntologyID])) 
+	  if(isset($_REQUEST["ch_".$res[$k]->OntologyID]))
 	  {
-		  manage_ontologies::Remove($res[$k]->OntologyID); 
+		  manage_ontologies::Remove($res[$k]->OntologyID);
 		  $SomeItemsRemoved = true;
 	  }
   }
 }
 if($SomeItemsRemoved)
-	$res = manage_ontologies::GetList(); 
+	$res = manage_ontologies::GetList();
 ?>
 <div class="container">
 <form id="ListForm" name="ListForm" method="post">
@@ -1503,12 +1503,12 @@ if($SomeItemsRemoved)
               echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyID."\" id=\"ch_".$res[$k]->OntologyID."\">";
               echo "</td>";
               echo "<td>".($k+1)."</td>";
-              echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"> <i class=\"fa fa-edit\"></a></td>";
+              echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"> <i class=\"fa fa-edit\"></i></a></td>";
               echo "	<td>".htmlentities($res[$k]->OntologyTitle, ENT_QUOTES, 'UTF-8')."</td>";
               echo "	<td>".htmlentities($res[$k]->OntologyURI, ENT_QUOTES, 'UTF-8')."</td>";
-              echo "	<td><a class='btn btn-sm btn-outline-dark' href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><i class=\"fa fa-file-download\"></a></td>";
+              echo "	<td><a class='btn btn-sm btn-outline-dark' href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><i class=\"fa fa-file-download\"></i></a></td>";
               echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
-              echo "<td ><a  class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard\">";
+              echo "<td ><a  class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard\"> </i>";
               if($ccount>0)
                   echo "(".$ccount.")";
                 echo "</a></td>";
@@ -1517,10 +1517,10 @@ if($SomeItemsRemoved)
                   echo "(".$pcount.")";
                 echo "</a></td>";
                 echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='ManageOntologyValidationExperts.php?OntologyID=".$res[$k]->OntologyID."'> <i class=\"fa fa-balance-scale\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-print\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-print\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
                 echo "</tr>";
             }
             ?>
@@ -1552,7 +1552,7 @@ if($SomeItemsRemoved)
 <script>
 function DoCheckAll(CheckValue)
 {
-  <? echo $CheckAllCode; ?>
+  <?php echo $CheckAllCode; ?>
 }
 function ConfirmDelete()
 {
@@ -1591,7 +1591,7 @@ function ConfirmStatistical()
 
 function ExtractData()
 {
-	if(confirm('با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟')) document.location='loader.php?OntologyID=<? if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
+	if(confirm('با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟')) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
 }
 </script>
 </html>
