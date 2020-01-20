@@ -298,8 +298,8 @@ if(UI_LANGUAGE=="EN") {
 
     // ------------------------ ManageSessionTypes.php By diba aminshahidi -------------------------
     define("C_PATTERN","Session Pattern");
-    define("C_MEETING_TYPE","Meeting Type");
-
+    define("C_MEETING_TYPE","Session Type");
+    define("C_SESSIONS","Sessions");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
@@ -732,6 +732,7 @@ else
     // ------------------------------  ManageSessionType.php By Diba Aminshahidi ----------------------------
     define("C_PATTERN","الگو های جلسه");
     define("C_MEETING_TYPE","نوع جلسه");
+    define("C_SESSIONS","جلسات");
 
 }
 

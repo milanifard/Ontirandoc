@@ -114,10 +114,12 @@ if($SomeItemsRemoved)
                 <table class="table table-bordered table-striped">
                     <thead class="bg-secondary">
                     <td class="text-center" colspan="7">
+                        <b>
                         <?php echo C_PATTERN ?>
+                        </b>
                     </td>
                     </thead>
-                    <thead class="bg-info">
+                    <thead class="bg-info font-weight-bold">
                     <td width="1%"> </td>
                     <td width="1%"><? echo C_ROW ?></td>
                     <td width="2%"><? echo C_EDIT ?></td>
