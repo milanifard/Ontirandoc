@@ -64,13 +64,13 @@ if($SomeItemsRemoved)
                 <input type="hidden" name="SearchAction" id="SearchAction" value="1">
                 <br>
                 <table class="table table-bordered">
-                    <thead class="bg-info">
+                    <thead class="bg-info text-center h4">
                         <td><img src='images/search.gif'><b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'><? echo C_SEARCH ?></a></td>
                     </thead>
                     <tr id='SearchTr' style='display: none'>
                         <td>
                             <table class="table table-bordered">
-                                <tr>
+                                <tr class="h4">
                                     <td width="1%" nowrap>
                                         <font color=red>*</font> <? echo C_TITLE ?>
                                     </td>
