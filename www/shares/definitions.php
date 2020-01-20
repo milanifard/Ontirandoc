@@ -200,7 +200,7 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define("C_ROLE","Role");
     define("C_SESSIOM_MEMBERS","Session Members");
-    define("C_ARE_YOU_SURE","Are You Sure?");
+   // define("C_ARE_YOU_SURE","Are You Sure?");
     define("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
     define("C_PERSONEL","Employees");
     define("C_OTHER","Others");
@@ -296,8 +296,9 @@ if(UI_LANGUAGE=="EN") {
     define("DATABASE" , "database");
     define("FIELD_M" ,"field");
 
-    //ManageSessionTypes.php By diba aminshahidi
-    define("C_PATTERN","session");
+    // ------------------------ ManageSessionTypes.php By diba aminshahidi -------------------------
+    define("C_PATTERN","Session Pattern");
+    define("C_MEETING_TYPE","Meeting Type");
 
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
@@ -728,8 +729,9 @@ else
     define("","");
     define("","");
 
-    //ManageSessionType.php By Diba Aminshahidi
+    // ------------------------------  ManageSessionType.php By Diba Aminshahidi ----------------------------
     define("C_PATTERN","الگو های جلسه");
+    define("C_MEETING_TYPE","نوع جلسه");
 
 }
 
