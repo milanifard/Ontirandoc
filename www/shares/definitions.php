@@ -300,6 +300,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_PATTERN","Session Pattern");
     define("C_MEETING_TYPE","Session Type");
     define("C_SESSIONS","Sessions");
+    define("C_SESSION_NUMBER","Session Number");
+    define("C_SESSION_TITLE","Session Title");
+    define("C_DURATION","Duration");
+    define("C_SESSION_STATUS","Session Status");
+    define("C_CREATE","Create");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
@@ -733,7 +738,11 @@ else
     define("C_PATTERN","الگو های جلسه");
     define("C_MEETING_TYPE","نوع جلسه");
     define("C_SESSIONS","جلسات");
-
+    define("C_SESSION_NUMBER","شماره جلسه");
+    define("C_SESSION_TITLE","عنوان جلسه");
+    define("C_DURATION","مدت جلسه");
+    define("C_SESSION_STATUS","وضعیت جلسه");
+    define("C_CREATE","ایجاد");
 }
 
 ?>
