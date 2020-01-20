@@ -297,7 +297,7 @@ if(UI_LANGUAGE=="EN") {
     define("FIELD_M" ,"field");
 
     //ManageSessionTypes.php By diba aminshahidi
-    // define();
+    define("C_SESSION_PATTERNS","Session Pattern");
 
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
@@ -727,6 +727,10 @@ else
     define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
     define("","");
     define("","");
+
+    //ManageSessionType.php By Diba Aminshahidi
+    define("C_SESSION_PATTERNS","الگو های جلسه");
+
 }
 
 ?>

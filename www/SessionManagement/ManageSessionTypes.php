@@ -114,7 +114,7 @@ if($SomeItemsRemoved)
                 <table class="table table-bordered table-striped">
                     <thead class="bg-secondary">
                     <td colspan="7">
-                        الگوهای جلسه
+                        <?php echo C_SESSION_PATTERNS ?>
                     </td>
                     </thead>
                     <thead class="bg-info">
