@@ -170,17 +170,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<div class='container'><br><table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology classes</th>
+                <th colspan=".(count($OntoArray)+2).">".PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES."</th>
                 </tr>
              </thead> 
              <tbody>";
   echo "<tr>";
-  echo "<td >Ontology Title</td>";
+  echo "<td ><b>".C_ONTOLOGY_TITLE."</b></td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
     echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
   }
-  echo "<td ><b>Average</b></td>";
+  echo "<td ><b>".C_AVERAGE."</b></td>";
   echo "</tr>";
   $Averages = array();
   for($i=0; $i<count($OntoArray); $i++)
@@ -225,10 +225,10 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th>Ontology Title</th>
-                    <th>Class Count</th>
-                    <th>Property Count</th>
-                    <th>(Average of coverage other ontologies (classes</th>
+                    <th>".C_ONTOLOGY_TITLE."</th>
+                    <th>".C_CLASS_COUNT."</th>
+                    <th>".C_PROPERTY_COUNT."</th>
+                    <th>".C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES."</th>
                 </tr>
               </thead>
               <tbody>";
@@ -248,14 +248,14 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   }
   
   echo "<tr>";
-  echo "<td><b>Total</b></td>";
+  echo "<td><b>".C_TOTAL."</b></td>";
   echo "<td>".$TotalClasses."</td>";
   echo "<td>".$TotalProperties."</td>";
   echo "<td>100</td>";
   echo "</tr>";
   
   echo "<tr>";
-  echo "<td><b>Repository</b></td>";
+  echo "<td><b>".C_REPOSITORY."</b></td>";
   echo "<td>".GetRepositoryClassesCount($SelectedOnto)."</td>";
   echo "<td>".GetRepositoryPropertiesCount($SelectedOnto)."</td>";
   echo "<td>100</td>";
@@ -269,17 +269,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                    <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology properties</th>
+                    <th colspan=".(count($OntoArray)+2).">".C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES."</th>
                 </tr>
              </thead> <tbody>";
   echo "<tr>";
-  echo "<td>Ontology Title</td>";
+  echo "<td><b>".C_ONTOLOGY_TITLE."</b></td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
        echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
 
   }
-  echo "<td><b>Average</b></td>";
+  echo "<td><b>".C_AVERAGE."</b></td>";
   echo "</tr>";
   for($i=0; $i<count($OntoArray); $i++)
   {
@@ -327,10 +327,10 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th>Ontology Title</th>
-                    <th>Class Count</th>
-                    <th>Property Count</th>
-                    <th>Average of coverage other ontologies (properties)</th>
+                    <th>".C_ONTOLOGY_TITLE."</th>
+                    <th>".C_CLASS_COUNT."</th>
+                    <th>".C_PROPERTY_COUNT."</th>
+                    <th>".C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES."</th>
                     </tr>
              </thead>
              <tbody>";
@@ -377,13 +377,13 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<br><table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                    <th colspan=3 >(Percentage of each ontology coverage document terms (".$TotalTerms."</th>
+                    <th colspan=3 >".C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS.$TotalTerms."</th>
                 </tr>
              </thead>";
   echo "<tr>";
-  echo "<td>Ontology Title</td>";
-  echo "<td>Total Elements</td>";
-  echo "<td><b>Coverage Percentage</b></td>";
+  echo "<td><b>".C_ONTOLOGY_TITLE." </b></td>";
+  echo "<td><b>".C_TOTAL_ELEMENTS."</b></td>";
+  echo "<td><b>".C_COVERAGE_PERCENTAGE."</b></td>";
   echo "</tr>";
   for($i=0; $i<count($Averages); $i++)
   {
@@ -396,7 +396,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   }
 
   echo "<tr>";
-  echo "<td><b>Repository</b></td>";
+  echo "<td><b>".C_REPOSITORY."</b></td>";
   echo "<td>".(GetRepositoryClassesCount($SelectedOnto)+GetRepositoryPropertiesCount($SelectedOnto))."</td>";
   $p = HowMuchAllCoverDocument($SelectedOnto);
   echo "<td >".round($p, 2)."</td>";
@@ -480,7 +480,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
             <table class='table table-bordered table-striped'>
                 <thead>
                     <tr class='table-info'>
-                        <th class='text-center' colspan='2'>فهرست هستان نگارها  </th> 
+                        <th class='text-center' colspan='2'>".C_ONTOLOGY_TITLE." </th> 
                     </tr>
                 </thead>";
   echo "        <tbody>
@@ -500,8 +500,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   echo "<br><table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th width='15%'>عنوان کلاس</th>
-                    <th>کلاسها با نام مشابه (بر اساس WordNet)</th>
+                    <th width='15%'>".C_CLASS_TITLE."</th>
+                    <th>".C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET."</th>
                 </tr>
               </thead> 
               <tbody>";
@@ -520,8 +520,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   echo "<br><table class='table table-striped table-bordered'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th width='15%'>عنوان خصوصیت</th>
-                    <th>خصوصیتها با نام مشابه (بر اساس WordNet)</th>
+                    <th width='15%'>".C_PROPERTY_TITLE."</th>
+                    <th>".C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET."</th>
                 </tr>
                </thead>
                <tbody>";
@@ -538,7 +538,6 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   
   die();
 }
-
 //analyzed with distance
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
 {
@@ -561,7 +560,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<div class='container'> <br><table class='table table-bordered table-striped'>
                 <thead>
                     <tr class='text-center table-info'>
-                        <th colspan='2'>فهرست هستان نگارها</th>
+                        <th colspan='2'>".C_ONTOLOGY_TITLE."</th>
                     </tr></thead>";
   echo "        <tbody>";
   $splited = preg_split('/\s+/', $OntoList);
@@ -581,7 +580,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<br><table class='table table-bordered table-striped'";
   echo "<thead>
             <tr class='table-info text-center'>
-              <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند
+              <th colspan=2> ".C_CHECK_TITLES_WITH_OVER.$thereshold.C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES." 
               </th>
             </tr>
         </thead>
@@ -600,7 +599,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   }
   
   echo "<tr class='table-info text-center'>
-            <td><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td>
+            <td><b>". C_CHECK_TAGS_WITH_OVER.$thereshold .C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL."</b></td>
         </tr>";
   for($i=0; $i<count($items); $i++)
   {
@@ -618,7 +617,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<table  class='table table-bordered table-striped'>";
   echo "    <thead>
                   <tr class='table-info text-center'>
-                    <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</th>
+                    <th colspan=2>".C_CHECK_TITLES_WITH_OVER. $thereshold .PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS."</th>
                   </tr>
             </thead>
             <tbody>";
@@ -636,7 +635,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   }
   
   echo "<tr class='text-center table-info'>
-        <td colspan=2 ><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+        <td colspan=2 ><b>".C_CHECK_TITLES_WITH_OVER. $thereshold.C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT." </b></td></tr>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["similar_labels"]!="")
@@ -650,7 +649,6 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   
   die();
 }
-
 // Dictionary
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
 {
@@ -682,7 +680,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
             <br><table class='table table-bordered table-striped'>
                     <thead>
                         <tr>
-                            <th class='table-info text-center' colspan='2'>فهرست هستان نگارها</th>
+                            <th class='table-info text-center' colspan='2'>".C_ONTOLOGIES_LIST."</th>
                         </tr>
                     </thead> <tbody>";
                     echo "<tr>";
@@ -709,8 +707,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
   echo "        <thead>
                     <tr class='table-info'>
                         <th> </th>
-                        <th> موضوع هستان نگار</th>
-                        <th>نوع هستان نگار</th>
+                        <th>".C_ONTOLOGY_TITLE."</th>
+                        <th>".C_ONTOLOGY_TYPE."</th>
                         <th> </th>
                     </tr>
                 </thead> <tbody>";
@@ -933,8 +931,8 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
   }
   echo "<tr >
               <td class='text-center' colspan='4'>
-                <input type='submit' class='btn   btn-success' value='ذخیره'> ";
-  echo "        <input type='button'  class='btn   btn-danger' value='بازگشت' onclick='document.location=\"Manageontologies.php\"'>";
+                <input type='submit' class='btn   btn-success' value=".C_SAVE ."> ";
+  echo "        <input type='button'  class='btn   btn-danger' value=".C_RETURN." onclick='document.location=\"Manageontologies.php\"'>";
   echo "</td></tr>";
   echo "</form> 
         </tbody></div>";
@@ -1038,7 +1036,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
   echo "    <table class='table table-bordered table-striped '> 
                 <thead>
                     <tr class='table-info text-center'>
-                        <th  colspan='2'>فهرست هستان نگارها</th>
+                        <th  colspan='2'>". C_ONTOLOGIES_LIST."</th>
                     </tr>
 </thead>
                 <tbody>";
@@ -1067,7 +1065,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>کلاسها از نظر میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "                    <th colspan=4>".C_CLASSES_IN_TERMS_OF_REFERRAL_RATES."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1097,7 +1095,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "                    <th colspan=4>".C_PROPERTIES_IN_ORDER_OF_REFERENCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1134,7 +1132,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند</th>";
+    echo "                    <th colspan=4>".C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1200,7 +1198,7 @@ using (label)
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=1>کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)</th>";
+    echo "                    <th colspan=1>".C_CLASSES_REFERRED_TO_ONLY_ONCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1245,7 +1243,7 @@ using (label)
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=1>خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)</th>";
+    echo "                    <th colspan=1>".C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1299,7 +1297,7 @@ if(isset($_REQUEST["Save"]))
 	{
 		if ($_FILES['Item_FileContent']['error'] != 0)
 		{
-			echo ' خطا در ارسال فایل' . $_FILES['Item_FileContent']['error'];
+			echo C_SENDING_FILE_ERROR . $_FILES['Item_FileContent']['error'];
 		}
 		else
 		{
@@ -1330,7 +1328,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_comment
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $comment = "";
@@ -1344,7 +1342,7 @@ if(isset($_REQUEST["UpdateID"]))
 }	
 ?>
 
-<!------------------------------------------below this line all the things are bilingual--------------------------------------------------->
+
 <div class="container">
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
     <div class="form-group">
@@ -1558,7 +1556,7 @@ function DoCheckAll(CheckValue)
 }
 function ConfirmDelete()
 {
-	if(confirm(<?php echo C_CONFIRM_TO_DELETE?>))
+	if(confirm(<?php echo "'".C_CONFIRM_TO_DELETE. "'" ?>))
 	{
 	  document.getElementById('ActionType').value="Remove";
 	  document.ListForm.submit();
@@ -1593,7 +1591,7 @@ function ConfirmStatistical()
 
 function ExtractData()
 {
-	if(confirm(<?php echo C_ALERT_TO_CLOSE ?>)) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
+	if(confirm(<?php echo "'".C_ALERT_TO_CLOSE."'" ?>)) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
 }
 </script>
 </html>

@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN");
+define("UI_LANGUAGE", "FA");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -370,6 +370,38 @@ if(UI_LANGUAGE=="EN") {
     define("C_ANALYSIS_WITH_WORDNET","AnalysisWithWordnet");
     define("C_CONTENT_COMPARISON","ContentComparison");
     define("C_MERGED_PROJECTS","MergedProjects");
+    define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
+    define("C_ONTOLOGIES_LIST","Ontologies lists");
+    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","Classes in terms of referral rates - more that 2 refers");
+    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","Properties in order of reference - more than two references");
+    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","Entities that were once referred to as a class and once as a property");
+    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","Classes referred to only once (not referred to as attributes)");
+    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","Properties that are only mentioned once (not referred to as class)");
+    define("C_ONTOLOGY_TITLE","Ontology title");
+    define("C_ONTOLOGY_TYPE","Ontology type");
+    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES"," percentage of similarity between class titles that do not have the same Persian tag and are related to different masters");
+    define("C_CHECK_TITLES_WITH_OVER","Check titles with over ");
+    define("C_CHECK_TAGS_WITH_OVER","Check tags with over ");
+    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," percentage of similarity between Persian labels for classes that are not identical in title and for different typographers");
+    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS"," percentage of similarity between different titles of attributes that do not match the same Persian tag and are related to different typographers");
+    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," percentage of Similarity among Farsi Labels for Properties That Do Not Have the Same Title and Are Different");
+    define("C_CLASS_TITLE","Class title");
+    define("C_PROPERTY_TITLE","Property title");
+    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Classes with same name acording to wordnet");
+    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Properties with same name acording to wordnet");
+    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","Percentage of each ontology coverage other ontology classes");
+    define("C_AVERAGE","Average");
+    define("C_CLASS_COUNT","Class count");
+    define("C_PROPERTY_COUNT","Property count");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","Average of coverage other ontologies (classes)");
+    define("C_REPOSITORY","Repository");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Percentage of each ontology coverage other ontology properties");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Average of coverage other ontologies (properties)");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","Percentage of each ontology coverage document terms ");
+    define("C_TOTAL_ELEMENTS","Total elements");
+    define("C_COVERAGE_PERCENTAGE","Coverage Percentage");
+
+
 }
 else
 {
@@ -730,10 +762,35 @@ else
     define("C_CONTENT_COMPARISON","مقایسه محتوایی");
     define("C_MERGED_PROJECTS","پروژه های ادغام");
     define("C_ALERT_TO_CLOSE","با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟");
-    define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
-    define("","");
-    define("","");
-
+    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)");
+    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)");
+    define("C_ONTOLOGIES_LIST","فهرست هستان‌نگار‌ها");
+    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","کلاسها از نظر میزان ارجاع - بیش از دو ارجاع");
+    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع");
+    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند");
+    define("C_ONTOLOGY_TITLE","عنوان هستان نگار");
+    define("C_ONTOLOGY_TYPE","نوع هستان نگار");
+    define("C_CHECK_TITLES_WITH_OVER","بررسی عناوین با بیش از ");
+    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES","درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_CHECK_TAGS_WITH_OVER","بررسی برچسبها با بیش از ");
+    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS","درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_CLASS_TITLE","عنوان کلاس");
+    define("C_PROPERTY_TITLE","عنوان خصوصیت");
+    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","کلاس‌‌ها با نام مشابه براساس Wordnet");
+    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","خصوصیات با نام مشابه براساس Wordnet");
+    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","درصدی از هر هستان‌نگار که سایر کلاس‌های هستان‌نگار را پوشش می دهد");
+    define("C_AVERAGE","میانگین");
+    define("C_CLASS_COUNT","تعداد کلاس");
+    define("C_PROPERTY_COUNT","تعداد خصوصیت");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","میانگین پوشش سایر هستان‌نگارها (کلاس‌ها)");
+    define("C_REPOSITORY","مخزن");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","درصدی از هر هستان‌نگار که دیگر خصوصیات هستان‌نگار را پوشش می دهد");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","میانگین پوشش سایر هستان‌نگارها (خصوصیات)");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","درصد پوشش واژگان متن هر هستان‌نگار ");
+    define("C_TOTAL_ELEMENTS","عناصر کل");
+    define("C_COVERAGE_PERCENTAGE","درصد پوشش");
     // ------------------------------  ManageSessionType.php By Diba Aminshahidi ----------------------------
     define("C_PATTERN","الگو های جلسه");
     define("C_MEETING_TYPE","نوع جلسه");
