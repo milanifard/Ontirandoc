@@ -297,7 +297,7 @@ if(UI_LANGUAGE=="EN") {
     define("FIELD_M" ,"field");
 
     //ManageSessionTypes.php By diba aminshahidi
-    define("C_SESSION_PATTERNS","Session Pattern");
+    define("C_PATTERN","session");
 
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
@@ -729,7 +729,7 @@ else
     define("","");
 
     //ManageSessionType.php By Diba Aminshahidi
-    define("C_SESSION_PATTERNS","الگو های جلسه");
+    define("C_PATTERN","الگو های جلسه");
 
 }
 

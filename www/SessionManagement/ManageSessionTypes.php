@@ -65,7 +65,7 @@ if($SomeItemsRemoved)
                 <br>
                 <table class="table table-bordered">
                     <thead class="bg-info text-center h4">
-                    <td><img src='images/search.gif'><b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'><? echo C_SEARCH ?></a></td>
+                    <td><i class="fa fa-search fa-1x"></i> <b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'><? echo C_SEARCH ?></a></td>
                     </thead>
                     <tr id='SearchTr' style='display: none'>
                         <td>
@@ -113,8 +113,8 @@ if($SomeItemsRemoved)
                 <br>
                 <table class="table table-bordered table-striped">
                     <thead class="bg-secondary">
-                    <td colspan="7">
-                        <?php echo C_SESSION_PATTERNS ?>
+                    <td class="text-center" colspan="7">
+                        <?php echo C_PATTERN ?>
                     </td>
                     </thead>
                     <thead class="bg-info">
@@ -136,12 +136,12 @@ if($SomeItemsRemoved)
                         echo "<td>".($k+$FromRec+1)."</td>";
                         echo "	<td>";
                         echo "<a target=\"_blank\" href=\"NewSessionTypes.php?UpdateID=".$res[$k]->SessionTypeID."\">";
-                        echo "<img src='images/edit.gif' title='ویرایش'>";
+                        echo "<i class='fa fa-edit fa-3x'></i> ";
                         echo "</a></td>";
                         echo "	<td>".htmlentities($res[$k]->SessionTypeTitle, ENT_QUOTES, 'UTF-8')."</td>";
                         echo "	<td>".htmlentities($res[$k]->SessionTypeLocation, ENT_QUOTES, 'UTF-8')."</td>";
-                        echo "<td width=1% nowrap align=center><a  target=\"_blank\" href='ManageSessionTypeMembers.php?SessionTypeID=".$res[$k]->SessionTypeID ."'><img src='images/members.gif' title='اعضا'></a></td>";
-                        echo "<td width=1% nowrap align=center><a  target=\"_blank\" href='ManagePersonPermittedSessionTypes.php?SessionTypeID=".$res[$k]->SessionTypeID ."'><img src='images/people.gif' title='کاربران مجاز'></a></td>";
+                        echo "<td width=1% nowrap align=center><a  target=\"_blank\" href='ManageSessionTypeMembers.php?SessionTypeID=".$res[$k]->SessionTypeID ."'><i class='fa fa-id-card fa-3x'></i> </a></td>";
+                        echo "<td width=1% nowrap align=center><a  target=\"_blank\" href='ManagePersonPermittedSessionTypes.php?SessionTypeID=".$res[$k]->SessionTypeID ."'><i class='fa fa-users fa-3x' </a></td>";
                         echo "</tr>";
                     }
                     ?>
