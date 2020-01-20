@@ -1344,8 +1344,8 @@ if(isset($_REQUEST["UpdateID"]))
 }	
 ?>
 
-
-
+<!------------------------------------------below this line all the things are bilingual--------------------------------------------------->
+<div class="container">
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
     <div class="form-group">
 <?php
@@ -1358,30 +1358,34 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
     </div>
 <br>
-<div class="container">
+
     <table class="table table-bordered table-sm" ">
         <thead >
         <tr>
-            <th class="text-center table-info " colspan="1" >ایجاد/ویرایش هستان نگار</th>
+            <th class="text-center table-info " colspan="1" ><?php echo C_CREATE_EDIT_ONTOLOGY?></th>
         </tr>
         </thead>
         <tboady>
             <tr>
                 <td>
                 <div class="form-group row">
-                    <label for="Item_OntologyTitle" class="col-sm-1 col-form-label">عنوان</label>
-                    <div class="col-sm-11">
+                    <label for="Item_OntologyTitle" class="col-sm-2 col-form-label"><?php echo C_TITLE?></label>
+                    <div class="col-sm-10">
                     <input class="form-control" type="text" name="Item_OntologyTitle" id="Item_OntologyTitle" >
                     <?php if(isset($_REQUEST["UpdateID"])) { ?>
-                                <a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
-                                <br>
-                                <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> /
-                                <a target=_blank href='GetOwl.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
-                                <a target=_blank href='GetER.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
-                                <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
-                            <?php } ?>
+                            <div class="row text-center">
+
+                                <a class="text-black-50 btn" target=_blank href='GetOwl.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GET_OWL_CODE_FROM_STRUCTURE?></a>
+                                <a class="text-black-50 btn" target=_blank href='ShowClassesAnalysis.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_CLASS_STATISTICAL_ANALYSIS?></a>
+                                <a class="text-black-50 btn" target=_blank href='ShowOntologyClassTree.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'><?php echo C_TREE_STRUCTURE ?></a>
+                            </div>
+                             <div class="row text-center">
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_CLASSES?></a>
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_THING_FEATURES?></a>
+                                 <a class="text-black-50 btn" target=_blank href='GetER.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GET_ER_CODE ?></a>
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_DATA_FEATURES?></a>
+                                </div>
+                    <?php } ?>
                     </div>
                 </div>
                 </td>
@@ -1389,8 +1393,8 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
                 <td>
                     <div class="form-group row">
-                        <label for="Item_OntologyURI" class="col-sm-1 col-form-label">مسیر اینترنتی</label>
-                        <div class="col-sm-11">
+                        <label for="Item_OntologyURI" class="col-sm-2 col-form-label"><?php echo C_INTERNET_PATH ?></label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="Item_OntologyURI" id="Item_OntologyURI" >
                         </div>
                     </div>
@@ -1399,14 +1403,14 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
                 <td>
                     <div class="form-group row">
-                        <label for="Item_FileContent" class="col-sm-1 col-form-label"> فایل</label>
-                        <div class="col-sm-11">
+                        <label for="Item_FileContent" class="col-sm-2 col-form-label"> <?php echo C_FILE?></label>
+                        <div class="col-sm-10">
                             <input  type="file" class="form-control" name="Item_FileContent" id="Item_FileContent" data-filesize="3000" data-filesize-error="Max 3000B"
                                     accept="image/* , application/pdf"  />
                             <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<?php echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
+                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GETTING_FILE ?>[<?php echo $obj->FileName; ?>]</a>
                                 &nbsp;
-                                <a href='#' onclick='javascript: ExtractData();'>انتقال عناصر از فایل به پایگاه داده</a>
+                                <a href='#' onclick='javascript: ExtractData();'><?php echo C_TRANSMIT_FILE_TO_DB?> </a>
                             <?php } ?>
                         </div>
                     </div>
@@ -1415,8 +1419,8 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
             <td>
                 <div class="form-group row">
-                    <label for="Item_comment" class="col-sm-1 col-form-label"> شرح</label>
-                    <div class="col-sm-11">
+                    <label for="Item_comment" class="col-sm-2 col-form-label"> <?php echo C_DESCRIPTION?></label>
+                    <div class="col-sm-10">
                         <textarea class="form-control" name="Item_comment" id="Item_comment" rows="2" ><?php echo $comment; ?></textarea>
                     </div>
                 </div>
@@ -1431,18 +1435,16 @@ if(isset($_REQUEST["UpdateID"]))
                     <? } ?>
             <tr>
                 <td class="text-center">
-                    <input type="submit" class="btn btn-success  " " value="ذخیره">
-                    <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value="جدید">
+                    <input type="submit" class="btn btn-success  " " value=<?php echo C_SAVE ?>>
+                    <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value=<?php echo C_NEW?>>
                 </td>
             </tr>
         </tboady>
     </table>
-</div>
-
 
 <input type="hidden" name="Save" id="Save" value="1">
 </form>
-
+</div>
 
 <?php
 $res = manage_ontologies::GetList();
@@ -1470,24 +1472,24 @@ if($SomeItemsRemoved)
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-	          <th class="table-info text-center"  colspan="14">هستان نگار</th>
+	          <th class="table-info text-center"  colspan="14"><?php echo C_ONTOLOGY?></th>
             </tr>
             <tr>
 <!--                <th ><input type=CheckBox name=CheckAll id=CheckAll onchange='javascript: DoCheckAll(this.checked);'></th>-->
                 <th> </th>
-                <th >ردیف</th>
-                <th >ویرایش</th>
-                <th>عنوان</th>
-                <th>مسیر اینترنتی</th>
-                <th>فایل</th>
-                <th>شرح</th>
-                <th >کلاسها</th>
-                <th  >خصوصیات</th>
-                <th >خبرگان ارزیاب</th>
-                <th >چاپ</th>
-                <th  >چاپ - با منابع ادغام</th>
-                <th  >چاپ - با منابع استخراج واژگان</th>
-                <th >چاپ - با منابع پایگاه داده</th>
+                <th ><?php echo C_ROW?></th>
+                <th ><?php echo C_EDIT?></th>
+                <th><?php echo C_TITLE?></th>
+                <th><?php echo C_INTERNET_PATH?></th>
+                <th><?php echo C_FILE?></th>
+                <th><?php echo C_DESCRIPTION?></th>
+                <th ><?php echo C_CLASSES?></th>
+                <th  ><?php echo C_FEATURES?></th>
+                <th ><?php echo C_EXPERT_JUDGES?></th>
+                <th ><?php echo C_PRINT?></th>
+                <th  ><?php echo C_PRINT_WITH_MERGE_SOURCES?></th>
+                <th  ><?php echo C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES?></th>
+                <th ><?php echo C_PRINT_WITH_DATABASE_SOURCES?></th>
             </tr>
         </thead>
         <tbody>
@@ -1526,19 +1528,19 @@ if($SomeItemsRemoved)
             ?>
             <tr>
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value="دیکشنری">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value="تحلیل فراوانی">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value="تحلیل فاصله levenshtein">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value="ارزیابی آماری">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value=<?php echo C_DICTIONARY ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value=<?php echo C_FREQUENCY_ANALYSIS?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value=<?php echo C_DISTANCE_ANALYSIS?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value=<?php echo C_STATISTICAL_ANALYSIS?>>
                 </td>
             </tr>
             <tr>
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value="مهندسی معکوس RDB">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value="تحلیل با wordnet">
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value="مقایسه محتوایی">
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value="پروژه های ادغام">
+                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value=<?php echo C_REVERSE_ENGINEERING?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value= <?php echo C_ANALYSIS_WITH_WORDNET?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value=<?php echo C_CONTENT_COMPARISON ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value=<?php echo C_MERGED_PROJECTS?>>
                 </td>
             <tr>
 
@@ -1556,7 +1558,7 @@ function DoCheckAll(CheckValue)
 }
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمئن هستید؟'))
+	if(confirm(<?php echo C_CONFIRM_TO_DELETE?>))
 	{
 	  document.getElementById('ActionType').value="Remove";
 	  document.ListForm.submit();
@@ -1591,7 +1593,7 @@ function ConfirmStatistical()
 
 function ExtractData()
 {
-	if(confirm('با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟')) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
+	if(confirm(<?php echo C_ALERT_TO_CLOSE ?>)) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
 }
 </script>
 </html>

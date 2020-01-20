@@ -335,8 +335,35 @@ if(UI_LANGUAGE=="EN") {
     define("C_DONT_HAVE_VALUE", "A person don't have any value");
     define("C_USERS_ASSIGNED_TO_ACTIVITY", "Users assigned to activity");
 
-
-
+    //Manageontologies.php by Naghme Mohammadifar
+    define("C_ONTOLOGY_FEATURES" , "Ontology features");
+    define("C_ONTOLOGY_CLASSES" , "Ontology classes");
+    define("C_DATA_FEATURES","Data features");
+    define("C_THING_FEATURES","Things features");
+    define("C_CREATE_EDIT_ONTOLOGY" , "Create/Edit ontology");
+    define("C_CLASSES","Classes");
+    define("C_TREE_STRUCTURE","Tree structure");
+    define("C_GET_OWL_CODE_FROM_STRUCTURE","Get owl code from structure");
+    define("C_GET_ER_CODE","Get ER code ");
+    define("C_CLASS_STATISTICAL_ANALYSIS","Classes statistical analysis");
+    define("C_INTERNET_PATH","Internet path");
+    define("C_GETTING_FILE","Receive file");
+    define("C_TRANSMIT_FILE_TO_DB","Transmit file to database");
+    define("C_ONTOLOGY","Ontology");
+    define("C_FEATURES","Features");
+    define("C_EXPERT_JUDGES","Expert judges");
+    define("C_PRINT","Print");
+    define("C_PRINT_WITH_MERGE_SOURCES","Print- with merge sources");
+    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","Print- with vocab extraction sources");
+    define("C_PRINT_WITH_DATABASE_SOURCES","Print- with database sources");
+    define("C_DICTIONARY","Dictionary");
+    define("C_FREQUENCY_ANALYSIS","FrequencyAnalysis");
+    define("C_DISTANCE_ANALYSIS","DistanceAnalysis_levenshtein");
+    define("C_STATISTICAL_EVALUATION","Statistical_Evaluation");
+    define("C_REVERSE_ENGINEERING","ReverseEngineering_RDB");
+    define("C_ANALYSIS_WITH_WORDNET","AnalysisWithWordnet");
+    define("C_CONTENT_COMPARISON","ContentComparison");
+    define("C_MERGED_PROJECTS","MergedProjects");
 }
 else
 {
@@ -666,6 +693,40 @@ else
     define("C_DONT_HAVE_VALUE", "مقداری در شخص مربوطه وارد نشده است");
     define("C_USERS_ASSIGNED_TO_ACTIVITY", "کاربران منتسب به کار");
 
+
+    //Manageontologies.php by Naghme Mohammadifar
+    define("C_ONTOLOGY_CLASSES" , "کلاس‌های هستان‌نگار");
+    define("C_ONTOLOGY_FEATURES" , "خصوصیات هستان‌نگار");
+    define("C_CREATE_EDIT_ONTOLOGY" , "ایجاد/ویرایش هستان نگار");
+    define("C_CLASSES","کلاس‌ها");
+    define("C_THING_FEATURES","خصوصیت شی");
+    define("C_DATA_FEATURES","خصوصیت داده");
+    define("C_TREE_STRUCTURE","ساختار درختی");
+    define("C_GET_OWL_CODE_FROM_STRUCTURE","دریافت کد OWL از روی ساختار");
+    define("C_GET_ER_CODE","دریافت کد ER");
+    define("C_CLASS_STATISTICAL_ANALYSIS","تحلیل آماری کلاس‌ها");
+    define("C_INTERNET_PATH","مسیر اینترنتی");
+    define("C_GETTING_FILE","دریافت فایل");
+    define("C_TRANSMIT_FILE_TO_DB","انتقال عناصر از فایل به پایگاه داده");
+    define("C_ONTOLOGY","هستان نگار");
+    define("C_FEATURES","خصوصیات");
+    define("C_EXPERT_JUDGES","خبرگان ارزیاب");
+    define("C_PRINT","چاپ");
+    define("C_PRINT_WITH_MERGE_SOURCES","چاپ - با منابع ادغام");
+    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","چاپ - با منابع استخراج واژگان");
+    define("C_PRINT_WITH_DATABASE_SOURCES","چاپ - با منابع پایگاه داده");
+    define("C_DICTIONARY","دیکشنری");
+    define("C_FREQUENCY_ANALYSIS","تحیلی فراوانی");
+    define("C_DISTANCE_ANALYSIS","تحلیل فاصله levenshtein");
+    define("C_STATISTICAL_EVALUATION","ارزیابی آماری");
+    define("C_REVERSE_ENGINEERING","مهندسی معکوس RDB");
+    define("C_ANALYSIS_WITH_WORDNET","تحلیل با wordnet");
+    define("C_CONTENT_COMPARISON","مقایسه محتوایی");
+    define("C_MERGED_PROJECTS","پروژه های ادغام");
+    define("C_ALERT_TO_CLOSE","با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟");
+    define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
+    define("","");
+    define("","");
 }
 
 ?>
