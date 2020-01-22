@@ -46,51 +46,49 @@ if(isset($_POST["title"]))
 		}
 		else
 		{
-			echo "<p align=center><font color=red>برای این پروژه پاسخگویی تعیین نشده است</font></p>";
+			echo "<p class=\" text-center text-danger \">".C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT."</p>";
 		}
 	}
 	else
 	{
-		echo "<p align=center><font color=red>کد سیستم نامشخص است</font></p>";			
+		echo "<p class=\"text-center text-danger\">".C_UNKNOWN_SYSTEM_CODE."</p>";			
 	}
 }
 ?>
 <script src="../stuoffice/Scripts/General.js"></script>
 <form method=post name=f1 id=f1  enctype='multipart/form-data'>
-<table class=ListTable>
-	<tr class=HeaderOfTable><td colspan=2 align=center>درخواست انجام كار</td></tr>
+<div class="row">
+<div class="col-1"></div>
+<div class="col-10">
+<table class="table table-sm">
+	<thead class="table-info">
+		<tr>
+			<td colspan=2 class="text-center"><? echo C_TASK_REQUEST; ?></td>
+		</tr>
+	</thead>
 	<tr>
-		<td><font color=red>*</font>&nbsp;عنوان</td><td>
-		<input type=text name=title size=80 value=''>
+		<td><span class="text-danger">*</span>&nbsp;<? echo C_TITLE; ?></td><td>
+		<input class="form-control col-md-6" type=text name=title  value='' required>
 		</td>
 	</tr>
 	<tr>
-		<td>شرح</td>
+		<td><? echo C_DESCRIPTION; ?></td>
 		<td>
-			<textarea cols=80 rows=5 name=description></textarea>
+			<textarea class="form-control col-md-6" cols=80 rows=5 name=description></textarea>
 		</td>
 	</tr>
-	<tr class=FooterOfTable>
-	<td colspan=2 align=center>
-		<input type=button onclick='javascript: CheckValidity();' value='ذخيره'>
+	<tr class="table-info">
+	<td colspan=2 class="text-center">
+		<input class="btn btn-success" type="submit" value='<? echo C_SAVE; ?>'>
 	</td>
 	</tr>
 </table>
+</div>
+<div class="col-1"></div>
+</div>
 <br>
-<a href='NewDataChangeRequest.php'><b>[در صورتیکه درخواست به منظور ایجاد تغییرات دستی بر روی داده های بانک اطلاعاتی است اینجا را کلیک کنید]
+<a href='NewDataChangeRequest.php'><b><? echo C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE; ?>
 </b></a>
 </form>
 </body>
-<script>
-	function CheckValidity()
-	{
-		if(f1.title.value=='')
-		{
-			alert("لطفا عنواني وارد نمائيد.");
-		}
-		else
-			f1.submit();
-	}
-</script>
-
 </html>

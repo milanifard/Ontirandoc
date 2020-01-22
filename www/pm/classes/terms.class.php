@@ -22,7 +22,7 @@ class be_terms
 	function LoadDataFromDatabase($RecID)
 	{
 		$query = "select terms.* 
-			, concat(g2j(CreateDate), ' ', substr(CreateDate, 12,10)) as CreateDate_Shamsi from projectmanagement.terms  where  terms.TermID=? ";
+			, concat((CreateDate), ' ', substr(CreateDate, 12,10)) as CreateDate_Shamsi from projectmanagement.terms  where  terms.TermID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
@@ -87,9 +87,9 @@ class manage_terms
 		$query .= "? , ? , ? , now() ";
 		$query .= ")";
 		$ValueListArray = array();
-		array_push($ValueListArray, $TermTitle); 
-		array_push($ValueListArray, $comment); 
-		array_push($ValueListArray, $_SESSION["UserID"]); 
+		array_push($ValueListArray, $TermTitle);
+		array_push($ValueListArray, $comment);
+		array_push($ValueListArray, $_SESSION["UserID"]);
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_terms::GetLastID();
@@ -98,7 +98,7 @@ class manage_terms
 			  values (?, ?, ?, ?, 'INSERT', '".$_SESSION["PersonID"]."', now()) ";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($LastID, $TermTitle, $LastID, $TermTitle));
-		
+
 		return $LastID;
 	}
 	/**
@@ -110,31 +110,31 @@ class manage_terms
 	{
 		$k=0;
 		//$LogDesc = manage_terms::ComparePassedDataWithDB($UpdateRecordID, $TermTitle, $comment);
-		
+
 		$mysql = pdodb::getInstance();
 		$query = "select TermTitle from projectmanagement.terms where TermID=?";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($UpdateRecordID));
 		$rec = $res->fetch();
 		$PreTermTitle = $rec["TermTitle"];
-		
-		
+
+
 		$query = "update projectmanagement.terms set ";
 		$query .= " TermTitle=?, comment=? ";
 		$query .= " where TermID=?";
 		$ValueListArray = array();
-		array_push($ValueListArray, $TermTitle); 
-		array_push($ValueListArray, $comment); 
-		array_push($ValueListArray, $UpdateRecordID); 
+		array_push($ValueListArray, $TermTitle);
+		array_push($ValueListArray, $comment);
+		array_push($ValueListArray, $UpdateRecordID);
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		//$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در اصطلاحات - موارد تغییر داده شده: ".$LogDesc);
-		
+
 		$query = "insert into projectmanagement.TermsManipulationHistory (PreTermID, PreTermTitle, NewTermID, NewTermTitle, ActionType, PersonID, ATS) 
 			  values (?, ?, ?, ?, 'UPDATE', '".$_SESSION["PersonID"]."', now()) ";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($UpdateRecordID, $PreTermTitle, $UpdateRecordID, $TermTitle));
-		
+
 	}
 	/**
 	* @param $RemoveRecordID: کد رکوردی که باید حذف شود
@@ -148,11 +148,11 @@ class manage_terms
 		$rec = $res->fetch();
 		$TermTitle = $rec["TermTitle"];
 
-		$query = "insert into projectmanagement.TermsManipulationHistory (PreTermID, PreTermTitle, ActionType, PersonID, ATS) 
-			  values (?, ?, 'REMOVE', '".$_SESSION["PersonID"]."', now()) ";
+		$query = "insert into projectmanagement.TermsManipulationHistory (PreTermID, PreTermTitle, ActionType, PersonID, ATS)
+			  values (?, ?, 'DELETE', '".$_SESSION["PersonID"]."', now()) ";
 		$mysql->Prepare($query);
-		$mysql->ExecuteStatement(array($RemoveRecordID, $TermTitle));
-		
+		$mysql->ExecuteStatement(array($RemoveRecordID, $TermTitle ));
+
 		$query = "delete from projectmanagement.terms where TermID=?";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($RemoveRecordID));
@@ -160,7 +160,7 @@ class manage_terms
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($RemoveRecordID));
 		//$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از اصطلاحات");
-		
+
 	}
 	static function GetList($FromRec, $NumberOfRec, $OrderByFieldName, $OrderType)
 	{
@@ -213,17 +213,17 @@ class manage_terms
 				,terms.comment
 				,terms.CreatorUserID
 				,terms.CreateDate
-			, concat(g2j(terms.CreateDate), ' ', substr(terms.CreateDate, 12, 10)) as CreateDate_Shamsi  
+			, concat((terms.CreateDate), ' ', substr(terms.CreateDate, 12, 10)) as CreateDate_Shamsi  
 			, (select count(*) from projectmanagement.TermReferenceMapping tm where tm.TermID=terms.TermID) as ReferCount
 			from projectmanagement.terms 
 			LEFT JOIN projectmanagement.TermReferenceMapping using (TermID) ";
 		$cond = "";
-		if($TermTitle!="") 
+		if($TermTitle!="")
 		{
 			if($cond!="") $cond .= " and ";
 				$cond .= "terms.TermTitle like ? ";
 		}
-		if($comment!="") 
+		if($comment!="")
 		{
 			if($cond!="") $cond .= " and ";
 				$cond .= "terms.comment like ? ";
@@ -236,10 +236,10 @@ class manage_terms
 		$query .= " limit ".$FromRec.", ".$NumberOfRec;
 		$mysql->Prepare($query);
 		$ValueListArray = array();
-		if($TermTitle!="") 
-			array_push($ValueListArray, "%".$TermTitle."%"); 
-		if($comment!="") 
-			array_push($ValueListArray, "%".$comment."%"); 
+		if($TermTitle!="")
+			array_push($ValueListArray, "%".$TermTitle."%");
+		if($comment!="")
+			array_push($ValueListArray, "%".$comment."%");
 		$res = $mysql->ExecuteStatement($ValueListArray);
 		$i=0;
 		while($rec=$res->fetch())
@@ -252,7 +252,7 @@ class manage_terms
 			$ret[$k]->CreateDate=$rec["CreateDate"];
 			$ret[$k]->CreateDate_Shamsi=$rec["CreateDate_Shamsi"];  // محاسبه معادل شمسی مربوطه
 			$ret[$k]->ReferCount=$rec["ReferCount"];
-			
+
 			$k++;
 		}
 		return $ret;
@@ -271,12 +271,12 @@ class manage_terms
 		$query = "select count(distinct TermID) as TotalCount from projectmanagement.terms	
 		LEFT JOIN projectmanagement.TermReferenceMapping using (TermID)";
  		$cond = "";
-		if($TermTitle!="") 
+		if($TermTitle!="")
 		{
 			if($cond!="") $cond .= " and ";
 				$cond .= "terms.TermTitle like ? ";
 		}
-		if($comment!="") 
+		if($comment!="")
 		{
 			if($cond!="") $cond .= " and ";
 				$cond .= "terms.comment like ? ";
@@ -286,10 +286,10 @@ class manage_terms
 		$query .= $cond.$OtherConditions;
 		$mysql->Prepare($query);
 		$ValueListArray = array();
-		if($TermTitle!="") 
-			array_push($ValueListArray, "%".$TermTitle."%"); 
-		if($comment!="") 
-			array_push($ValueListArray, "%".$comment."%"); 
+		if($TermTitle!="")
+			array_push($ValueListArray, "%".$TermTitle."%");
+		if($comment!="")
+			array_push($ValueListArray, "%".$comment."%");
 		$res = $mysql->ExecuteStatement($ValueListArray);
 		if($rec = $res->fetch()) return $rec["TotalCount"];  else return 0;
 	}
@@ -321,31 +321,31 @@ class manage_terms
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
+		$ret .= "<table class='table table-bordered '>";
+        $ret .= "<thead>";
+		$ret .= "<tr class='table-info text-center'>";
+		$ret .= "<th> خلاصه اطلاعات" ."</th></tr>";
+        $ret .= "</thead> <tbody>";
+        $ret .= "<tr class='text-center'> <th> سازنده</th>";
 		$obj = new be_terms();
-		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "</table>";
-		$ret .= "</td>";
+		$obj->LoadDataFromDatabase($RecID);
+		// I didnt know what kind of information you wanted to show (cause noting showed in primary code ) *Naghme Mohammadifar
+		$ret .="<tr class='text-center'> <td>".$obj->CreatorUserID."</td>";
 		$ret .= "</tr>";
+        $ret .= "</tbody>";
 		$ret .= "</table>";
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr>";
-		$ret .= "<td width=\"50%\" ";
-		if($CurrentPageName=="Newterms")
-			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='Newterms.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-		$ret .= "<td width=\"50%\" ";
-		if($CurrentPageName=="ManageTermOntologyElementMapping")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageTermOntologyElementMapping.php?TermID=".$RecID."'>نگاشت اصطلاحات و عناصر هستان نگار</a></td>";
-		$ret .= "</table>";
+        $ret = "<br>";
+		$ret = "<table class='table table-bordered'>";
+ 		$ret .= "<thead><tr class='table-info'>";
+		$ret .= "<th> ";
+		$ret .= "<a class= 'btn ' href='Newterms.php?UpdateID=".$RecID."'> مشخصات اصلی</a></th>";
+		$ret .= "<th> ";
+		$ret .= "<a class = 'btn' href='ManageTermOntologyElementMapping.php?TermID=".$RecID."'>نگاشت اصطلاحات و عناصر هستان نگار</a></th>";
+		$ret .= "</thead></table>";
 		return $ret;
 	}
 }

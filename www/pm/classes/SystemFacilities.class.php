@@ -16,7 +16,7 @@ class be_SystemFacilities
 	public $GroupID_Desc;		/* شرح مربوط به گروه */
 	public $OrderNo;		//
 	public $PageAddress;		//
-
+    public $EFacilityName; // added by naghme Mohammadifar
 	function be_SystemFacilities() {}
 
 	function LoadDataFromDatabase($RecID)
@@ -35,6 +35,7 @@ class be_SystemFacilities
 			$this->GroupID_Desc=$rec["l2_GroupName"]; // محاسبه از روی جدول وابسته
 			$this->OrderNo=$rec["OrderNo"];
 			$this->PageAddress=$rec["PageAddress"];
+			$this->EFacilityName=$rec["EFacilityName"]; // added by naghme mohammadifar
 		}
 	}
 }
@@ -212,29 +213,31 @@ class manage_SystemFacilities
 		}
 		return $ret;
 	}
+
+	// edited by naghme mohammadifar
 	function ShowSummary($RecID)
 	{
-		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
-		$obj = new be_SystemFacilities();
-		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr>";
-		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>عنوان: </b>";
-		$ret .= "</td>";
-		$ret .= "<td>";
-		$ret .= htmlentities($obj->FacilityName, ENT_QUOTES, 'UTF-8');
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
-		return $ret;
+        $ret = "<br>";
+        $ret .= "<table class=\"table table-bordered table-dark\">";
+        $obj = new be_SystemFacilities();
+        $obj->LoadDataFromDatabase($RecID);
+        $ret .= "<thead>";
+        $ret .= "<tr >";
+        $ret .= "<th class='text-lg-center'> <strong>";
+        if(UI_LANGUAGE == 'FA') {
+            $ret .= htmlentities($obj->FacilityName, ENT_QUOTES, 'UTF-8');
+        }
+        else {
+            $ret .= htmlentities($obj->EFacilityName, ENT_QUOTES, 'UTF-8');
+        }
+        $ret .= "</strong> </th>";
+        $ret .= "</tr>";
+        $ret .= "</thead>";
+        $ret .= "</table>";
+        return $ret;
 	}
+
+	//-------------------------------
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";

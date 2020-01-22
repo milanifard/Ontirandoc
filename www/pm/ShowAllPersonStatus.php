@@ -20,12 +20,17 @@ else
 <br>
 <?php echo manage_ProjectTasks::CreateKartableHeader("ShowAllPersonStatus"); ?>
 <br>
-	<table border=1 cellspacing=0 cellpadding=4 align=center>
-	<tr class=HeaderOfTable>
-		<td nowrap><a href='ShowAllPersonStatus.php?OrderBy=Name'>نام خانوادگی و نام</td>
-		<td nowrap><a href='ShowAllPersonStatus.php?OrderBy=Percent'>درصد تخصیصی زمان</td>
-		<td nowrap><a href='ShowAllPersonStatus.php?OrderBy=Projects'>تعداد پروژه ها</td>
-	</tr>
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+	<table class="table table-bordered table-sm table-striped">
+	<thead class="table-info">
+		<tr>
+			<td class="text-nowrap"><a href='ShowAllPersonStatus.php?OrderBy=Name'><? echo C_LAST_NAME_AND_FIRST_NAME; ?></td>
+			<td class="text-nowrap"><a href='ShowAllPersonStatus.php?OrderBy=Percent'><? echo C_TIME_PERCENTAGE_ALLOCATED; ?></td>
+			<td class="text-nowrap"><a href='ShowAllPersonStatus.php?OrderBy=Projects'><? echo C_PROJECTS_COUNT; ?></td>
+		</tr>
+	</thead>
 	<?php 
 		$mysql = pdodb::getInstance();
 		$query = "select persons.PersonID, pfname, plname, sum(ParticipationPercent) as TotalPercent, count(*) as TotalProjects 
@@ -49,23 +54,23 @@ else
 		while($rec= $res->fetch())
 		{
 			$i++;
-			if($i%2==0)
-				echo "<tr class=OddRow>";
-			else
-				echo "<tr class=EvenRow>";
-			echo "<td nowrap>".$rec["plname"]." ".$rec["pfname"]."</a></td>";
+			echo "<tr>";
+			echo "<td class=\"text-nowrap\">".$rec["plname"]." ".$rec["pfname"]."</a></td>";
 			echo "<td><a href='ManageProjectPercentages.php?PersonID=".$rec["PersonID"]."'>".$rec["TotalPercent"]."</td>";
 			echo "<td>".$rec["TotalProjects"]."</td>";
 			echo "</tr>";
 		}
 	?>
 	<tr>
-		<td colspan=3 bgcolor=#cccccc>
-		در این لیست اعضای پروژه هایی که شما مدیر آنها هستید و یا در زیرمجموعه واحد سازمانی تحت مدیریت شماست نمایش داده میشوند
+		<td colspan=3 class="bg-dark text-light">
+		<? echo C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT; ?>
 		<br>
-		برای تنظیم درصدها میتوانید روی عدددرصد در هر ردیف کلیک نمایید
+		<? echo C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW; ?>
 		</td>
 	</tr>
 	</table>
+</div>
+<div class="col-2"></div>
+</div>
 	
 </html>
