@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA");
+define("UI_LANGUAGE", "EN");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -305,6 +305,9 @@ if(UI_LANGUAGE=="EN") {
     define("C_DURATION","Duration");
     define("C_SESSION_STATUS","Session Status");
     define("C_CREATE","Create");
+    define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
+    define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
+
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
@@ -800,6 +803,9 @@ else
     define("C_DURATION","مدت جلسه");
     define("C_SESSION_STATUS","وضعیت جلسه");
     define("C_CREATE","ایجاد");
+    define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
+    define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
+
 }
 
 ?>

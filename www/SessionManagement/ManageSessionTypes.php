@@ -91,7 +91,7 @@ if($SomeItemsRemoved)
 
                                 <tr class="bg-info">
 
-                                <td colspan="2" align="center"><button class="btn btn-white" type="submit" onclick="javascript: ConfirmDelete();"> <?php echo C_SEARCH ?> </button></td>
+                                <td colspan="2" align="center"><button class="btn btn-white" type="submit"> <?php echo C_SEARCH ?> </button></td>
                                 </tr>
                             </table>
                         </td>
