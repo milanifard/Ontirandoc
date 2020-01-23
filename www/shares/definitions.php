@@ -417,6 +417,12 @@ if(UI_LANGUAGE=="EN") {
     define("C_T_USER" , "User");
     define("C_PRIVILEGED_USERS" , "Privileged Users");
     define("C_POSSIBILITY" , "Possibility");
+
+    //ManageUserPermissions.php -- by navidbeta
+    define("C_DATA_STORED" , "Information Stored Successfully");
+    define("C_USER_ACCESSES" , "User Accesses");
+    define("C_MENUS" , "Menus");
+    define("C_T_RETURN" , "Return");
 }
 else
 {
@@ -832,6 +838,11 @@ else
     define("C_PRIVILEGED_USERS" , "کاربران دارای دسترسی");
     define("C_POSSIBILITY" , "امکان");
 
-}
+    //ManageUserPermissions.php -- by navidbeta
+    define("C_DATA_STORED" , "اطلاعات ذخیره شد");
+    define("C_USER_ACCESSES" , "دسترسی های کاربر");
+    define("C_MENUS" , "منوها");
+    ‌define("C_T_RETURN" , "بازگشت");
+}   
 
 ?>
