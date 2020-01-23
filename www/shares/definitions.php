@@ -305,9 +305,6 @@ if(UI_LANGUAGE=="EN") {
     define("C_DURATION","Duration");
     define("C_SESSION_STATUS","Session Status");
     define("C_CREATE","Create");
-    define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
-    define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
-
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
@@ -404,6 +401,14 @@ if(UI_LANGUAGE=="EN") {
     define("C_TOTAL_ELEMENTS","Total elements");
     define("C_COVERAGE_PERCENTAGE","Coverage Percentage");
 
+
+    //TasksForControl.php -- by navidbeta
+    define("C_RELATED_PROJECT" , "Related Project");
+    define("C_PRIORITY" , "Priority");
+    define("C_T_TITLE" , "Title");
+    define("C_CREATOR" , "Creator");
+    define("C_CREATED_TIME" , "Created Time");
+    define("C_T_AREUSURE" , "Are You Sure?");
 
 }
 else
@@ -803,8 +808,15 @@ else
     define("C_DURATION","مدت جلسه");
     define("C_SESSION_STATUS","وضعیت جلسه");
     define("C_CREATE","ایجاد");
-    define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
-    define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
+
+
+    //TasksForControl.php -- by navidbeta
+    define("C_RELATED_PROJECT" , "پروژه مربوطه‌");
+    define("C_PRIORITY" , "اولویت");
+    define("C_T_TITLE" , "عنوان");
+    define("C_CREATOR" , "ایجاد کننده");
+    define("C_CREATED_TIME" , "زمان ایجاد");
+    define("C_T_AREUSURE" , "آیا مطمئن هستید؟");
 
 }
 
