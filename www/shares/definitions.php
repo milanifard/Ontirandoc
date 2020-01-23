@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN");
+define("UI_LANGUAGE", "FA");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -365,13 +365,13 @@ if(UI_LANGUAGE=="EN") {
     define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","Print- with vocab extraction sources");
     define("C_PRINT_WITH_DATABASE_SOURCES","Print- with database sources");
     define("C_DICTIONARY","Dictionary");
-    define("C_FREQUENCY_ANALYSIS","FrequencyAnalysis");
-    define("C_DISTANCE_ANALYSIS","DistanceAnalysis_levenshtein");
-    define("C_STATISTICAL_EVALUATION","Statistical_Evaluation");
-    define("C_REVERSE_ENGINEERING","ReverseEngineering_RDB");
-    define("C_ANALYSIS_WITH_WORDNET","AnalysisWithWordnet");
-    define("C_CONTENT_COMPARISON","ContentComparison");
-    define("C_MERGED_PROJECTS","MergedProjects");
+    define("C_FREQUENCY_ANALYSIS","Frequency analysis");
+    define("C_DISTANCE_ANALYSIS","Distance analysis levenshtein");
+    define("C_STATISTICAL_EVALUATION","Statistical evaluation");
+    define("C_REVERSE_ENGINEERING","Reverse engineering RDB");
+    define("C_ANALYSIS_WITH_WORDNET","Analysis with Wordnet");
+    define("C_CONTENT_COMPARISON","Content comparison");
+    define("C_MERGED_PROJECTS","Merged projects");
     define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
     define("C_ONTOLOGIES_LIST","Ontologies lists");
     define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","Classes in terms of referral rates - more that 2 refers");
@@ -842,7 +842,7 @@ else
     define("C_DATA_STORED" , "اطلاعات ذخیره شد");
     define("C_USER_ACCESSES" , "دسترسی های کاربر");
     define("C_MENUS" , "منوها");
-    ‌define("C_T_RETURN" , "بازگشت");
+    define("C_T_RETURN" , "بازگشت");
 }   
 
 ?>
