@@ -412,9 +412,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_CREATED_TIME" , "Created Time");
     define("C_T_AREUSURE" , "Are You Sure?");
 
-    //
+    //ManageUserFacilities.php -- by navidbeta
     define("C_ADD_USER_FACILITY" , "Add User Facility");
     define("C_T_USER" , "User");
+    define("C_PRIVILEGED_USERS" , "Privileged Users");
+    define("C_POSSIBILITY" , "Possibility");
 }
 else
 {
@@ -824,9 +826,11 @@ else
     define("C_CREATED_TIME" , "زمان ایجاد");
     define("C_T_AREUSURE" , "آیا مطمئن هستید؟");
 
-    // 
+    //ManageUserFacilities.php -- by navidbeta
     define("C_ADD_USER_FACILITY" , "اضافه کردن دسترسی کاربر");
     define("C_T_USER" , "کاربر");
+    define("C_PRIVILEGED_USERS" , "کاربران دارای دسترسی");
+    define("C_POSSIBILITY" , "امکان");
 
 }
 
