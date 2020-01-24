@@ -18,7 +18,7 @@ if(isset($_REQUEST["Save"]))
 			, $Item_DBName
 			, $Item_DBDescription
 			);
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $DBDescription = "";
@@ -42,7 +42,7 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
 <br><table width="90%" border="1" cellspacing="0" align="center">
 <tr class="HeaderOfTable">
-<td align="center">مستندسازی پایگا های داده</td>
+<td align="center"><? echo C_DATABASE_DOC ?></td>
 </tr>
 <tr>
 <td>
@@ -56,7 +56,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr>
 	<td width="1%" nowrap>
- نام
+ <? echo C_NAME ?>
 	</td>
 	<td nowrap>
 	<input type="hidden" name="Item_DBName" id="Item_DBName" maxlength="45" size="40">
@@ -65,7 +65,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr>
 	<td width="1%" nowrap>
- شرح
+ <? echo C_DESCRIPTION ?>
 	</td>
 	<td nowrap>
 	<textarea name="Item_DBDescription" id="Item_DBDescription" cols="80" rows="5"><? echo $DBDescription; ?></textarea>
@@ -76,7 +76,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr class="FooterOfTable">
 <td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
+<input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
 </td>
 </tr>
 </table>
@@ -94,16 +94,16 @@ if(isset($_REQUEST["UpdateID"]))
 <br><table width="90%" align="center" border="1" cellspacing="0">
 <tr bgcolor="#cccccc">
 	<td colspan="6">
-	پایگا های داده
+	<? echo C_DATABASES ?>
 	</td>
 </tr>
 <tr class="HeaderOfTable">
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>سرور</td>
-	<td>نام</td>
-	<td>شرح</td>
-	<td>جداول</td>
+	<td width="1%"><? echo C_ROW ?></td>
+	<td width="2%"><? echo C_EDIT ?></td>
+	<td><? echo C_SERVER ?></td>
+	<td><? echo C_NAME ?></td>
+	<td><? echo C_DESCRIPTION ?></td>
+	<td><? echo C_TABLES ?></td>
 </tr>
 <?
 $res = manage_DMDatabases::GetPermitted($_SESSION["PersonID"]); 
@@ -114,11 +114,11 @@ for($k=0; $k<count($res); $k++)
 	else
 		echo "<tr class=\"EvenRow\">";
 	echo "<td>".($k+1)."</td>";
-	echo "	<td><a href=\"ManagePermittedDatabases.php?UpdateID=".$res[$k]->DMDatabasesID."&DMServersID=".$_REQUEST["DMServersID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+	echo "	<td><a href=\"ManagePermittedDatabases.php?UpdateID=".$res[$k]->DMDatabasesID."&DMServersID=".$_REQUEST["DMServersID"]."\"><img src='images/edit.gif' title='".C_EDIT."'></a></td>";
 	echo "	<td>".htmlentities($res[$k]->ServerName, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	<td>".htmlentities($res[$k]->DBName, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->DBDescription, ENT_QUOTES, 'UTF-8'))."</td>";
-	echo "<td><a href='ManageDMTables.php?DMDatabasesID=".$res[$k]->DMDatabasesID."'>جداول</a></td>";
+	echo "<td><a href='ManageDMTables.php?DMDatabasesID=".$res[$k]->DMDatabasesID."'>".C_TABLES."</a></td>";
 	echo "</tr>";
 }
 ?>
