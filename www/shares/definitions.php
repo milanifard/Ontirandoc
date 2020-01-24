@@ -514,6 +514,13 @@ if(UI_LANGUAGE=="EN") {
     define2('C_STATUS_DONE', 'done');
     define2('C_STATUS_SUSPENDED', 'suspended');
     define2('C_STATUS_REPLYED', 'replyed');
+    
+    define2("C_FORMPART_NEWEDIT", "ایجاد/ویرایش بخش های فرم");
+    define2("C_FORMPART_NAME", "نام بخش");
+    define2("C_FORMPART_ORDER", "ترتیب نمایش");
+    define2("C_FORMPART_TOPTEXT", "متن بالای بخش");
+    define2("C_FORMPART_BOTTOMTEXT", "متن پایین بخش");
+    define2("C_FORMPART_TITLE", "بخشهای فرم");
     //// End of Mahdi Ghayour //////
 
 
@@ -1017,14 +1024,12 @@ else
     define2('C_STATUS_SUSPENDED', 'معلق');
     define2('C_STATUS_REPLYED', 'پاسخ داده شده');
 
-
     define2("C_FORMPART_NEWEDIT", "ایجاد/ویرایش بخش های فرم");
     define2("C_FORMPART_NAME", "نام بخش");
     define2("C_FORMPART_ORDER", "ترتیب نمایش");
     define2("C_FORMPART_TOPTEXT", "متن بالای بخش");
     define2("C_FORMPART_BOTTOMTEXT", "متن پایین بخش");
     define2("C_FORMPART_TITLE", "بخشهای فرم");
-    define2("C_FORMPART_TITLE", "وضعیت");
     //// End of Mahdi Ghayour //////
 
 }   
