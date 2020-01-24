@@ -69,6 +69,8 @@ else
 }
 if(isset($_REQUEST["SearchAction"])) 
 	$res = manage_ProjectTasks::Search($ProjectID, $ProjectTaskTypeID, $title, $description, $CreatorID, $TaskPeriority, $TaskStatus, $ExecutorID, $TaskComment, $DocumentDescription, $ActivityDescription, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
+else
+	$res = array();
 ?>
 
 
@@ -92,7 +94,7 @@ if(isset($_REQUEST["SearchAction"]))
 <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
 <input type="hidden" name="SearchAction" id="SearchAction" value="1"> 
 <br>
-<div id='SearchTr'>
+<div id='SearchTr' class="container">
 
 	<div class="row justify-content-center">
 		<div class="card">
@@ -256,66 +258,80 @@ else
 <?php 
 }
 ?>
+
+<div class="container">
 <form id="ListForm" name="ListForm" method="post"> 
-<? if(isset($_REQUEST["PageNumber"]))
-	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="9">
-	کار
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td>ردیف</td>
-	<td>کد</td>
-	<td><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
-	<td><a href="javascript: Sort('ProjectTaskTypeID', 'ASC');">نوع کار</a></td>
-	<td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
-	<td><a href="javascript: Sort('title', 'ASC');">وضعیت</a></td>
-	<td><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
-	<td nowrap width=1%>
-	انتخاب
-	</td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>".($k+$FromRec+1)."</td>";
-	echo "<td>";
-	echo $res[$k]->ProjectTaskID;
-	echo "</td>";
-	echo "	<td>".$res[$k]->ProjectID_Desc."</td>";
-	echo "	<td>".$res[$k]->ProjectTaskTypeID_Desc."</td>";
-	echo "	<td>".htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".$res[$k]->TaskStatus_Desc."</td>";
-	echo "	<td>".$res[$k]->CreatorID_FullName."</td>";
-	echo "<td nowrap>";
-	$FilteredTaskTitle = str_replace("\"", " ", str_replace("'", " ", $res[$k]->title));
-	echo "<a href=\"javascript: SelectTask(".$res[$k]->ProjectTaskID.", '".$res[$k]->ProjectTaskID.") ".$FilteredTaskTitle."')\">انتخاب</a>";
-	echo "</td>";
-	echo "</tr>";
-}
-?>
-<tr bgcolor="#cccccc"><td colspan="9" align="right">
-<?
-if(isset($_REQUEST["SearchAction"]))
-for($k=0; $k<manage_ProjectTasks::GetTasksCountInSearchResult($ProjectID, $ProjectTaskTypeID, $title, $description, $CreatorID, $TaskPeriority, $TaskStatus, $ExecutorID, $TaskComment, $DocumentDescription, $ActivityDescription, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType)/$NumberOfRec; $k++)
-{
-	if($PageNumber!=$k)
-		echo "<a href='javascript: ShowPage(".($k).")'>";
-	echo ($k+1);
-	if($PageNumber!=$k)
-		echo "</a>";
-	echo " ";
-}
-?>
-</td></tr>
-</table>
+	<? if(isset($_REQUEST["PageNumber"]))
+		echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
+	<br>
+
+	<div class="row justify-content-center">
+		<div class="card">
+			<div class="card-header">
+				کار
+			</div>
+			<div class="card-body">
+				<table class="table table-striped">
+					<thead>
+						<th>
+							<td>ردیف</td>
+							<td>کد</td>
+							<td><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
+							<td><a href="javascript: Sort('ProjectTaskTypeID', 'ASC');">نوع کار</a></td>
+							<td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
+							<td><a href="javascript: Sort('title', 'ASC');">وضعیت</a></td>
+							<td><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
+							<td nowrap width=1%>
+							انتخاب
+							</td>
+						</th>
+					</thead>
+					<tbody>
+					<?php
+						for($k=0; $k<count($res); $k++)
+						{
+							echo "<tr>";
+							echo "<td>".($k+$FromRec+1)."</td>";
+							echo "<td>";
+							echo $res[$k]->ProjectTaskID;
+							echo "</td>";
+							echo "	<td>".$res[$k]->ProjectID_Desc."</td>";
+							echo "	<td>".$res[$k]->ProjectTaskTypeID_Desc."</td>";
+							echo "	<td>".htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8')."</td>";
+							echo "	<td>".$res[$k]->TaskStatus_Desc."</td>";
+							echo "	<td>".$res[$k]->CreatorID_FullName."</td>";
+							echo "<td nowrap>";
+							$FilteredTaskTitle = str_replace("\"", " ", str_replace("'", " ", $res[$k]->title));
+							echo "<a href=\"javascript: SelectTask(".$res[$k]->ProjectTaskID.", '".$res[$k]->ProjectTaskID.") ".$FilteredTaskTitle."')\">انتخاب</a>";
+							echo "</td>";
+							echo "</tr>";
+						}
+					?>
+					</tbody>
+				</table>
+			</div>
+			<div class="card-footer">
+				<!-- page numbers -->
+				<?
+				if(isset($_REQUEST["SearchAction"]))
+					for($k=0; $k<manage_ProjectTasks::GetTasksCountInSearchResult($ProjectID, $ProjectTaskTypeID, $title, $description, $CreatorID, $TaskPeriority, $TaskStatus, $ExecutorID, $TaskComment, $DocumentDescription, $ActivityDescription, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType)/$NumberOfRec; $k++)
+					{
+						if($PageNumber!=$k)
+							echo "<a href='javascript: ShowPage(".($k).")'>";
+						echo ($k+1);
+						if($PageNumber!=$k)
+							echo "</a>";
+						echo " ";
+					}
+				?>
+			</div>
+		</div>
+	</div>
+
+
 </form>
+</div>
+
 <form target="_blank" method="post" action="NewProjectTasks.php" id="NewRecordForm" name="NewRecordForm">
 </form>
 <script>
@@ -345,4 +361,7 @@ function Sort(OrderByFieldName, OrderType)
 	SearchForm.submit();
 }
 </script>
+<br>
+<br>
+</body>
 </html>
