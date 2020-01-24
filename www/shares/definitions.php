@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA");
+define("UI_LANGUAGE", "EN");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -307,6 +307,8 @@ if(UI_LANGUAGE=="EN") {
     define("C_CREATE","Create");
     define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
     define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
+    define("C_APPROVE","Approve");
+    define("C_REJECTED","Rejected because");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
@@ -823,6 +825,8 @@ else
     define("C_CREATE","ایجاد");
     define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
     define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
+    define("C_APPROVE", "تایید");
+    define("C_REJECTED","رد به دلیل");
 
     //TasksForControl.php -- by navidbeta
     define("C_RELATED_PROJECT" , "پروژه مربوطه‌");

@@ -162,7 +162,7 @@ if(isset($_REQUEST["view"]) ){
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <form id="SearchForm" name="SearchForm" method=post >
+                <form class="form-group" id="SearchForm" name="SearchForm" method=post >
                     <input type="hidden" name="PageNumber" id="PageNumber" value="0">
                     <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
                     <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
