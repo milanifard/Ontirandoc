@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN");
+define("UI_LANGUAGE", "FA");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
 // remove this and multiple defined constant after develoment, on release version
@@ -229,7 +229,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_CLOSE", "Close");
     define2("C_RELATED_PAGES_TO_THIS_FEATURE","Related pages to the part");
     define2("C_CONFIRM_TO_DELETE","Are you sure to delete?");
-
+    define2("C_PAGE_PLACE_HOLDER","Your page name");
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define2("C_SEASON", "Season");
     define2("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
@@ -745,6 +745,7 @@ else
     define2("C_CLOSE", "بستن");
     define2("C_CONFIRM_TO_DELETE","آیا مطمئن هستید؟");
     define2("C_RELATED_PAGES_TO_THIS_FEATURE","صفحات مرتبط با این امکان");
+    define2("C_PAGE_PLACE_HOLDER","نام صفحه مورد نظر");
 
     //NewResearchProjectComments.php Alireza Forghani Toosi
     define2("C_SEASON", "فصل");
