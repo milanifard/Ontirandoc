@@ -127,7 +127,7 @@ if($SomeItemsRemoved)
                         <b><?php echo C_SESSION_PERMITTED_LIST ?></b>
                     </td>
                 </tr>
-                <tr class="bg-secondary font-weight-bold">
+                <tr class="bg-secondary">
                     <td width="1%"> </td>
                     <td width="1%"><?php echo C_ROW?></td>
                     <td width="2%"><?php echo C_EDIT ?></td>
@@ -146,10 +146,10 @@ if($SomeItemsRemoved)
                     echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->PersonPermittedSessionTypeID."\">";
                     echo "</td>";
                     echo "<td>".($k+1)."</td>";
-                    echo "	<td class='text-center'><a href=\"ManagePersonPermittedSessionTypes.php?UpdateID=".$res[$k]->PersonPermittedSessionTypeID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><i class='fa fa-edit fa-3x' title='ویرایش'></a></td>";
+                    echo "	<td><a href=\"ManagePersonPermittedSessionTypes.php?UpdateID=".$res[$k]->PersonPermittedSessionTypeID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
                     echo "	<td>".$res[$k]->PersonID_FullName."</td>";
-                    echo "	<td class='text-center'>";
-                    echo "<a target=_blank href='SessionTypesSetSecurity.php?RecID=".$_REQUEST["SessionTypeID"]."&SelectedPersonID=".$res[$k]->PersonID."'><i class='fa fa-unlock-alt fa-3x' title='تعریف دسترسی'></a>";
+                    echo "	<td>";
+                    echo "<a target=_blank href='SessionTypesSetSecurity.php?RecID=".$_REQUEST["SessionTypeID"]."&SelectedPersonID=".$res[$k]->PersonID."'><img src='images/security.gif' title='تعریف دسترسی'></a>";
                     echo "</td>";
                     echo "</tr>";
                 }
