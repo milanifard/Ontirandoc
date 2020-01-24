@@ -46,6 +46,7 @@ echo "<br>";
         </div>
         </form>
     </div>
+    <hr style="margin-top: 0;">
     <div class="row">
         <div class="col">
             <form class="card">
@@ -56,19 +57,20 @@ echo "<br>";
                         echo "<input type=hidden name=PageNumber value=" . $_REQUEST["PageNumber"] . ">";
                     if (isset($_REQUEST["FormTitle"]))
                         echo "<input type=hidden name=FormTitle value=" . $_REQUEST["FormTitle"] . ">";
-                    echo "<table width=98% align=center border=1 cellspacing=0 class='table table-bordered table-sm'>";
+                    echo "<table class='table table-bordered table-sm table-striped'>";
                     echo "<thead><tr style='background-color: #c3efef; font-size: 1.2em;'>";
-                    echo "<td width=1%>&nbsp;</td>";
-                    echo "	<td width=1%>کد</td>";
-                    echo "	<td width=30%>عنوان فرم</td>";
-                    echo "	<td width=30%>فرم اصلی</td>";
-                    echo "	<td width=30%>مدیران</td>";
-                    echo "	<td width=10% nowrap>تنظیمات</td>";
-                    echo "	<td width=5% nowrap>ایجاد کننده</td>";
-                    echo "	<td width=5% nowrap>تاریخ ایجاد</td>";
-                    echo "	<td width=5% nowrap>پر شده</td>";
-                    echo "	<td width=5% nowrap>تایید نهایی</td>";
+                    echo "<td scope='col' width=1%>&nbsp;</td>";
+                    echo "	<td scope='col' width=1%>کد</td>";
+                    echo "	<td scope='col' width=30%>عنوان فرم</td>";
+                    echo "	<td scope='col' width=30%>فرم اصلی</td>";
+                    echo "	<td scope='col' width=30%>مدیران</td>";
+                    echo "	<td scope='col' width=10% nowrap>تنظیمات</td>";
+                    echo "	<td scope='col' width=5% nowrap>ایجاد کننده</td>";
+                    echo "	<td scope='col' width=5% nowrap>تاریخ ایجاد</td>";
+                    echo "	<td scope='col' width=5% nowrap>پر شده</td>";
+                    echo "	<td scope='col' width=5% nowrap>تایید نهایی</td>";
                     echo "</tr></thead>";
+                    echo "<tbody>";
                     for ($k = 0; $k < count($res); $k++) {
                         if (isset($_REQUEST["ch_" . $res[$k]->FormsStructID])) {
                             manage_FormsStruct::Remove($res[$k]->FormsStructID);
@@ -78,12 +80,9 @@ echo "<br>";
                             //if($_SESSION["UserID"]==$res[$k]->CreatorUser || $_SESSION["UserID"]=="omid")
                             //if($_SESSION["UserID"]==$res[$k]->CreatorUser || $_SESSION["UserID"]=="omid")
                             {
-                                if ($k % 2 == 0)
-                                    echo "<tr class=OddRow>";
-                                else
-                                    echo "<tr class=EvenRow>";
+                                echo "<tr>";
                                 echo "<td style='vertical-align: middle;'><input type=checkbox name=ch_" . $res[$k]->FormsStructID . "></td>";
-                                echo "	<td style='vertical-align: middle;'>";
+                                echo "	<th scope='row' style='vertical-align: middle;'>";
                                 echo "	<a href='NewQuestionnaire.php?UpdateID=" . $res[$k]->FormsStructID . "'>";
                                 echo "	" . $res[$k]->FormsStructID . "</a></td>";
                                 echo "	<td style='vertical-align: middle;'>" . $res[$k]->FormTitle . "</td>";
@@ -98,12 +97,12 @@ echo "<br>";
                                 }
                                 echo "	</td>";
                                 echo "	<td style='vertical-align: middle;' nowrap>";
-                                echo "	<a href='ManageQuestionnaireFields.php?FormsStructID=" . $res[$k]->FormsStructID . "'><img title='مدیریت فیلدها' src='images/Fields.gif' border=0 width=35></a>";
-                                echo "	<a href='ManageFormsSections.php?FormsStructID=" . $res[$k]->FormsStructID . "'><img title='مدیریت بخشها' src='images/chart.jpg' border=0 width=35></a>";
-                                echo "	<a href='ManageQuestionnaireDetailTables.php?Item_FormStructID=" . $res[$k]->FormsStructID . "'><img title='مدیریت جداول جزییات' src='images/Tables.gif' border=0 width=35></a>";
-                                echo "	<a href='ManageQuestionnaireManagers.php?Item_FormStructID=" . $res[$k]->FormsStructID . "'><img title='تعریف مدیران این فرم' src='images/roles.gif' border=0 width=35></a>";
-                                echo "	<a href='ManageQuestionnaireUsers.php?Item_FormStructID=" . $res[$k]->FormsStructID . "'><img title='تعریف کاربران برای ثبت داده' src='images/users.gif' border=0 width=35></a>";
-                                echo "	<a href='DownloadQuestionnaires.php?Item_FormStructID=" . $res[$k]->FormsStructID . "'><img title='دریافت پرسشنامه های ثبت شده' src='images/SelectTable.gif' border=0 width=35></a>";
+                                echo "	<a href='ManageQuestionnaireFields.php?FormsStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='مدیریت فیلدها' class=\"fas fa-list\"></i></a>";
+                                echo "	<a href='ManageFormsSections.php?FormsStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='مدیریت بخشها' class=\"fas fa-tasks\"></i></a>";
+                                echo "	<a href='ManageQuestionnaireDetailTables.php?Item_FormStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='مدیریت جداول جزییات' class=\"fas fa-table\"></i></a>";
+                                echo "	<a href='ManageQuestionnaireManagers.php?Item_FormStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='تعریف مدیران این فرم' class=\"fas fa-users\"></i></a>";
+                                echo "	<a href='ManageQuestionnaireUsers.php?Item_FormStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='تعریف کاربران برای ثبت داده' class=\"fas fa-user-plus\"></i></a>";
+                                echo "	<a href='DownloadQuestionnaires.php?Item_FormStructID=" . $res[$k]->FormsStructID . "' style=\"font-size: 20px; color: #2aa2a2;\"><i title='دریافت پرسشنامه های ثبت شده' class=\"fas fa-file-export\"></i></a>";
 
                                 echo "	</td>";
                                 echo "	<td style='vertical-align: middle;' nowrap>" . $res[$k]->CreatorUser . "</td>";
@@ -127,7 +126,7 @@ echo "<br>";
                                 $rec2 = $res2->fetch();
                                 echo "<td style='vertical-align: middle;'>" . $rec2["TotalCount"] . "</td>";
 
-                                echo "</tr>";
+                                echo "</tr></tbody>";
                             }
                         }
                     }
@@ -143,8 +142,7 @@ echo "<br>";
                                 echo "</button>";
                             }
                         }
-                        echo `</div>
-                    </div>`;
+                        echo `</div></div>`;
                     }
                     //                    echo "</td></tr>";
                     echo "</table>";
