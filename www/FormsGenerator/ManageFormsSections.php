@@ -71,7 +71,7 @@ if(isset($_REQUEST["UpdateID"]))
 		<div class="card">
 			<div class="card-header">
 				<i class="fa fa-file-signature"></i>
-				C_FORMPART_NEWEDIT
+				<?php echo C_FORMPART_NEWEDIT; ?>
 			</div>
 			<div class="card-body">
 				<table class="table">
@@ -83,7 +83,7 @@ if(isset($_REQUEST["UpdateID"]))
 					<? } ?>
 					<tr>
 						<td width="1%" nowrap>
-							C_FORMPART_NAME
+							<?php echo C_FORMPART_NAME; ?>
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_SectionName" id="Item_SectionName" maxlength="250" size="40">
@@ -91,7 +91,7 @@ if(isset($_REQUEST["UpdateID"]))
 					</tr>
 					<tr>
 						<td width="1%" nowrap>
-							C_FORMPART_ORDER
+							<?php echo C_FORMPART_ORDER; ?>
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_ShowOrder" id="Item_ShowOrder" maxlength="2" size="2">
@@ -99,7 +99,7 @@ if(isset($_REQUEST["UpdateID"]))
 					</tr>
 					<tr>
 						<td width="1%" nowrap>
-							C_FORMPART_TOPTEXT
+							<?php echo C_FORMPART_TOPTEXT; ?>
 						</td>
 						<td nowrap>
 						<textarea name="Item_HeaderDesc" id="Item_HeaderDesc" cols="50" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->HeaderDesc; ?></textarea>
@@ -107,7 +107,7 @@ if(isset($_REQUEST["UpdateID"]))
 					</tr>
 					<tr>
 						<td width="1%" nowrap>
-							C_FORMPART_BOTTOMTEXT
+							<?php echo C_FORMPART_BOTTOMTEXT; ?>
 						</td>
 						<td nowrap>
 						<textarea name="Item_FooterDesc" id="Item_FooterDesc" cols="50" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->FooterDesc; ?></textarea>
@@ -116,8 +116,8 @@ if(isset($_REQUEST["UpdateID"]))
 
 				</table>
 
-				<input class="btn btn-primary" type="button" onclick="javascript: ValidateForm();" value="C_SAVE">
-				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageFormsSections.php?FormsStructID=<?php echo $_REQUEST["FormsStructID"]; ?>'" value="C_NEW">
+				<input class="btn btn-primary" type="button" onclick="javascript: ValidateForm();" value="<?php echo C_SAVE; ?>">
+				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageFormsSections.php?FormsStructID=<?php echo $_REQUEST["FormsStructID"]; ?>'" value="<?php echo C_NEW; ?>">
 			</div>
 		</div>
 	</div>
@@ -157,16 +157,16 @@ if($SomeItemsRemoved)
 		<div class="card">
 			<div class="card-header">
 				<i class="fa fa-file-alt"></i>
-				C_FORMPART_TITLE
+				<?php echo C_FORMPART_TITLE; ?>
 			</div>
 			<div class="card-body">
 				<table class="table table-striped">
 					<tr class="HeaderOfTable">
 						<td width="1%"> </td>
-						<td width="1%">C_ROW</td>
-						<td width="2%">C_EDIT</td>
-						<td>C_NAME</td>
-						<td>C_ORDER</td>
+						<td width="1%"><?php echo C_ROW; ?></td>
+						<td width="2%"><?php echo C_EDIT; ?></td>
+						<td><?php echo C_NAME; ?></td>
+						<td><?php echo C_ORDER; ?></td>
 					</tr>
 					<?
 					for($k=0; $k<count($res); $k++)
@@ -184,8 +184,8 @@ if($SomeItemsRemoved)
 					?>
 				</table>
 
-				<input class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" value="C_REMOVE">
-				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageQuestionnaires.php';" value="C_RETURN">
+				<input class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE; ?>">
+				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageQuestionnaires.php';" value="<?php echo C_RETURN; ?>">
 			</div>
 		</div>
 	</div>
