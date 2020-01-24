@@ -6,6 +6,7 @@ include("classes/terms.class.php");
 include("classes/ProjectHistory.class.php");
 include("classes/AccountSpecs.class.php");
 include("classes/RefrenceTypes.class.php");
+include("classes/FacilityPages.class.php");
 HTMLBegin();
 class Test
 {
