@@ -70,7 +70,7 @@ if(isset($_REQUEST["UpdateID"]))
 	<div class="row justify-content-center">
 		<div class="card">
 			<div class="card-header">
-				<i class="fa fa-search"></i>
+				<i class="fa fa-file-signature"></i>
 				ایجاد/ویرایش بخش های فرم
 			</div>
 			<div class="card-body">
@@ -156,7 +156,7 @@ if($SomeItemsRemoved)
 	<div class="row justify-content-center">
 		<div class="card">
 			<div class="card-header">
-				<i class="fa fa-search"></i>
+				<i class="fa fa-file-alt"></i>
 				بخشهای فرم
 			</div>
 			<div class="card-body">
@@ -176,7 +176,7 @@ if($SomeItemsRemoved)
 						echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FormsSectionID."\">";
 						echo "</td>";
 						echo "<td>".($k+1)."</td>";
-						echo "	<td><a href=\"ManageFormsSections.php?UpdateID=".$res[$k]->FormsSectionID."&FormsStructID=".$_REQUEST["FormsStructID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+						echo "	<td><a href=\"ManageFormsSections.php?UpdateID=".$res[$k]->FormsSectionID."&FormsStructID=".$_REQUEST["FormsStructID"]."\"><i class='fa fa-edit'></i></a></td>";
 						echo "	<td>".htmlentities($res[$k]->SectionName, ENT_QUOTES, 'UTF-8')."</td>";
 						echo "	<td>".htmlentities($res[$k]->ShowOrder, ENT_QUOTES, 'UTF-8')."</td>";
 						echo "</tr>";
