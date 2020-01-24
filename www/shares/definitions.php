@@ -515,12 +515,12 @@ if(UI_LANGUAGE=="EN") {
     define2('C_STATUS_SUSPENDED', 'suspended');
     define2('C_STATUS_REPLYED', 'replyed');
     
-    define2("C_FORMPART_NEWEDIT", "ایجاد/ویرایش بخش های فرم");
-    define2("C_FORMPART_NAME", "نام بخش");
-    define2("C_FORMPART_ORDER", "ترتیب نمایش");
-    define2("C_FORMPART_TOPTEXT", "متن بالای بخش");
-    define2("C_FORMPART_BOTTOMTEXT", "متن پایین بخش");
-    define2("C_FORMPART_TITLE", "بخشهای فرم");
+    define2("C_FORMPART_NEWEDIT", "Create/Edit form parts");
+    define2("C_FORMPART_NAME", "Name");
+    define2("C_FORMPART_ORDER", "Order");
+    define2("C_FORMPART_TOPTEXT", "Top text");
+    define2("C_FORMPART_BOTTOMTEXT", "Bottom text");
+    define2("C_FORMPART_TITLE", "Form parts");
     //// End of Mahdi Ghayour //////
 
 
