@@ -33,46 +33,47 @@ while ($rec = $res->fetch()) {
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="post" id=f1 name=f1>
-                <input type=hidden name=FromRec id=FromRec value='<?php echo $FromRec ?>'>
-                <table class="table" cellspacing="0" align=center>
-                    <tr>
-                        <td>
-                            <table border="1" cellspacing="0" align=center width=100%>
-                                <tr class=HeaderOfTable>
-                                    <td width=1%>ردیف</td>
-                                    <td>عمل انجام شده</td>
-                                    <td>زمان انجام</td>
-                                </tr>
-                                <?php echo $list ?>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            تعداد کل موارد یافت شده: <?php echo $TotalCount; ?>
-                            <br>
-                            صفحه:
-                            <?php
-                            for ($PageNumber = 1; $PageNumber <= ($TotalCount / $ItemsCount) + 1; $PageNumber++) {
-                                if (($PageNumber - 1) * $ItemsCount == $FromRec)
-                                    echo "<b>";
-                                else
-                                    echo "<a href='#' onclick='javascript: GoPage(" . ($PageNumber - 1) * $ItemsCount . ");'>";
-                                echo $PageNumber;
-                                if (($PageNumber - 1) * $ItemsCount == $FromRec)
-                                    echo "</b>";
-                                else
-                                    echo "</a>";
-                                echo "&nbsp; ";
-                                if ($PageNumber % 30 == 0)
-                                    echo "<br>";
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <div class="card">
+                <div class="card-header text-info text-center" style="font-size: 1.3em; font-weight: bold;">اقدامات انجام شده <i class="fas fa-list-alt"></i></div>
+                <div class="card-body text-center">
+                    <form method="post" id=f1 name=f1>
+                        <input type=hidden name=FromRec id=FromRec value='<?php echo $FromRec ?>'>
+                        <table class="table table-bordered table-hover" cellspacing="0" align=center width=100%>
+                            <thead class="table-info">
+                            <tr>
+                                <td scope="col" width=1%>ردیف</td>
+                                <td scope="col">عمل انجام شده</td>
+                                <td scope="col">زمان انجام</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php echo $list ?>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="card-footer text-right">
+                    : تعداد کل موارد یافت شده<?php echo $TotalCount; ?>
+                    <br>
+                    صفحه :
+                    <?php
+                    for ($PageNumber = 1; $PageNumber <= ($TotalCount / $ItemsCount) + 1; $PageNumber++) {
+                        if (($PageNumber - 1) * $ItemsCount == $FromRec)
+                            echo "<b>";
+                        else
+                            echo "<a href='#' onclick='javascript: GoPage(" . ($PageNumber - 1) * $ItemsCount . ");'>";
+                        echo $PageNumber;
+                        if (($PageNumber - 1) * $ItemsCount == $FromRec)
+                            echo "</b>";
+                        else
+                            echo "</a>";
+                        echo "&nbsp; ";
+                        if ($PageNumber % 30 == 0)
+                            echo "<br>";
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
