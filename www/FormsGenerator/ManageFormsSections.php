@@ -56,6 +56,7 @@ if(isset($_REQUEST["UpdateID"]))
 	//$LoadDataJavascriptCode .= "document.f1.Item_FooterDesc.value='".htmlentities($obj->FooterDesc, ENT_QUOTES, 'UTF-8')."'; \r\n ";
 }	
 ?>
+<div class="container">
 <form method="post" id="f1" name="f1" >
 	<?
 		if(isset($_REQUEST["UpdateID"])) 
@@ -101,7 +102,7 @@ if(isset($_REQUEST["UpdateID"]))
 						متن بالای بخش
 						</td>
 						<td nowrap>
-						<textarea name="Item_HeaderDesc" id="Item_HeaderDesc" cols="100" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->HeaderDesc; ?></textarea>
+						<textarea name="Item_HeaderDesc" id="Item_HeaderDesc" cols="50" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->HeaderDesc; ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -109,7 +110,7 @@ if(isset($_REQUEST["UpdateID"]))
 						متن پایین بخش
 						</td>
 						<td nowrap>
-						<textarea name="Item_FooterDesc" id="Item_FooterDesc" cols="100" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->FooterDesc; ?></textarea>
+						<textarea name="Item_FooterDesc" id="Item_FooterDesc" cols="50" rows="5"><?php  if(isset($_REQUEST["UpdateID"])) echo $obj->FooterDesc; ?></textarea>
 						</td>
 					</tr>
 
@@ -122,6 +123,7 @@ if(isset($_REQUEST["UpdateID"]))
 	</div>
 	<input type="hidden" name="Save" id="Save" value="1">
 </form>
+</div>
 <script>
 	<? echo $LoadDataJavascriptCode; ?>
 	function ValidateForm()
@@ -145,7 +147,7 @@ if($SomeItemsRemoved)
 ?>
 
 
-
+<div class="container">
 <form id="ListForm" name="ListForm" method="post"> 
 	<input type="hidden" id="Item_FormsStructID" name="Item_FormsStructID" value="<? echo htmlentities($_REQUEST["FormsStructID"], ENT_QUOTES, 'UTF-8'); ?>">
 <br>
@@ -190,6 +192,8 @@ if($SomeItemsRemoved)
 
 
 </form>
+</div>
+
 <form target="_blank" method="post" action="NewFormsSections.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="FormsStructID" name="FormsStructID" value="<? echo htmlentities($_REQUEST["FormsStructID"], ENT_QUOTES, 'UTF-8'); ?>">
 </form>
@@ -199,4 +203,7 @@ function ConfirmDelete()
 	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
 }
 </script>
+<br>
+<br>
+</body>
 </html>
