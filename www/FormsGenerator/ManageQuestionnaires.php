@@ -34,8 +34,8 @@ echo "<br>";
                 <!--                    </tr>-->
                 <!--                </table>-->
                 <div class="input-group mb-3">
-                    <input style="text-align: center;" type="text" class="form-control" placeholder="عنوان فیلتر" input
-                           type=text name='FormTitle'
+                    <input type="text" class="form-control" placeholder="<? echo C_MQ_FILTER ?>" input
+                           type=text name='FormTitle' <? echo(UI_LANGUAGE == "FA" ? "dir: rtl" : "") ?>
                            value='<?php echo $FormTitle ?>'>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-outline-info">
@@ -60,15 +60,15 @@ echo "<br>";
                     echo "<table class='table table-bordered table-sm table-striped'>";
                     echo "<thead><tr style='background-color: #c3efef; font-size: 1.2em;'>";
                     echo "<td scope='col' width=1%>&nbsp;</td>";
-                    echo "	<td scope='col' width=1%>کد</td>";
-                    echo "	<td scope='col' width=30%>عنوان فرم</td>";
-                    echo "	<td scope='col' width=30%>فرم اصلی</td>";
-                    echo "	<td scope='col' width=30%>مدیران</td>";
-                    echo "	<td scope='col' width=10% nowrap>تنظیمات</td>";
-                    echo "	<td scope='col' width=5% nowrap>ایجاد کننده</td>";
-                    echo "	<td scope='col' width=5% nowrap>تاریخ ایجاد</td>";
-                    echo "	<td scope='col' width=5% nowrap>پر شده</td>";
-                    echo "	<td scope='col' width=5% nowrap>تایید نهایی</td>";
+                    echo "	<td scope='col' width=1%>" . (C_MQ_CODE) . "</td>";
+                    echo "	<td scope='col' width=30%>" . (C_FORM_NAME) . "</td>";
+                    echo "	<td scope='col' width=30%>" . (C_MQ_MAIN_FORM) . "</td>";
+                    echo "	<td scope='col' width=30%>" . (C_MQ_MANAGERS) . "</td>";
+                    echo "	<td scope='col' width=10% nowrap>" . (C_MQ_SETTINGS) . "</td>";
+                    echo "	<td scope='col' width=5% nowrap>" . (C_MQ_CREATOR) . "</td>";
+                    echo "	<td scope='col' width=5% nowrap>" . (C_MQ_CREATE_DATE) . "</td>";
+                    echo "	<td scope='col' width=5% nowrap>" . (C_MQ_FILL) . "</td>";
+                    echo "	<td scope='col' width=5% nowrap>" . (C_MQ_LAST_ACCEPT) . "</td>";
                     echo "</tr></thead>";
                     echo "<tbody>";
                     for ($k = 0; $k < count($res); $k++) {
@@ -149,8 +149,8 @@ echo "<br>";
                     ?>
                 </div>
                 <div class="card-footer">
-                    <input class="btn btn-danger" type=submit value='حذف'>&nbsp;
-                    <input class="btn btn-success" type=button value='ایجاد'
+                    <input class="btn btn-danger" type=submit value='<? echo C_DELETE ?>'>&nbsp;
+                    <input class="btn btn-success" type=button value='<? echo C_MQ_MAKE ?>'
                            onclick='javascript: document.location="NewQuestionnaire.php";'>
                 </div>
             </form>

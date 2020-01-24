@@ -440,6 +440,18 @@ if(UI_LANGUAGE=="EN") {
     define("C_MP_PEOPLE_LIST", "User lists");
     define("C_MP_IMAGE", "Image");
     define("C_MP_PAYMENTS", "Payments");
+	
+	//ManageQuestionnaires.php Hoormazd Ranjbar
+    define("C_MQ_FILTER", "Filter Title");
+    define("C_MQ_CODE", "Code");
+    define("C_MQ_MAIN_FORM", "Main Form");
+    define("C_MQ_MANAGERS", "Managers");
+    define("C_MQ_SETTINGS", "Settings");
+    define("C_MQ_CREATOR", "Creator");
+    define("C_MQ_CREATE_DATE", "Create Date");
+    define("C_MQ_FILL", "Filled");
+    define("C_MQ_LAST_ACCEPT", "Last Accept");
+    define("C_MQ_MAKE", "Make");
 }
 else
 {
@@ -876,7 +888,19 @@ else
     define("C_MP_USERNAME", "حساب کاربری");
     define("C_MP_PEOPLE_LIST", "لیست افراد");
     define("C_MP_IMAGE", "تصویر");
-    define("C_MP_PAYMENTS", "پرداختها");	
+    define("C_MP_PAYMENTS", "پرداختها");
+
+	//ManageQuestionnaires.php Hoormazd Ranjbar
+    define("C_MQ_FILTER", "عنوان فیلتر");
+    define("C_MQ_CODE", "کد");
+    define("C_MQ_MAIN_FORM", "فرم اصلی");
+    define("C_MQ_MANAGERS", "مدیران");
+    define("C_MQ_SETTINGS", "تنظیمات");
+    define("C_MQ_CREATOR", "ایجاد کننده");
+    define("C_MQ_CREATE_DATE", "تاریخ ایجاد");
+    define("C_MQ_FILL", "پر شده");
+    define("C_MQ_LAST_ACCEPT", "تایید نهایی");
+    define("C_MQ_MAKE", "ایجاد");	
 }   
 
 ?>
