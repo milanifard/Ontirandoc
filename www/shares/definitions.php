@@ -1000,6 +1000,7 @@ else
 
 
     ///// Mahdi Ghayour /////
+    define2("C_TASK", "کار");
     define2("C_TASK_TYPE", "نوع کار");
     define2("C_DOCUMENT", "سند");
     define2("C_ACTION", "اقدام");

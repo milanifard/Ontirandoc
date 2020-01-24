@@ -270,21 +270,21 @@ else
 		<div class="card">
 			<div class="card-header">
 				<i class="fa fa-file-alt"></i>
-				کار
+				C_TASK
 			</div>
 			<div class="card-body">
 				<table class="table table-striped">
 					<thead>
 						<th>
-							<td>ردیف</td>
-							<td>کد</td>
-							<td><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
-							<td><a href="javascript: Sort('ProjectTaskTypeID', 'ASC');">نوع کار</a></td>
-							<td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
-							<td><a href="javascript: Sort('title', 'ASC');">وضعیت</a></td>
-							<td><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
+							<td>C_ROW</td>
+							<td>C_MQ_CODE</td>
+							<td><a href="javascript: Sort('ProjectID', 'ASC');">C_RELATED_PROJECT</a></td>
+							<td><a href="javascript: Sort('ProjectTaskTypeID', 'ASC');">C_TASK_TYPE</a></td>
+							<td><a href="javascript: Sort('title', 'ASC');">C_TITLE</a></td>
+							<td><a href="javascript: Sort('title', 'ASC');">C_STATUS</a></td>
+							<td><a href="javascript: Sort('CreatorID', 'ASC');">CREATOR_M</a></td>
 							<td nowrap width=1%>
-							انتخاب
+							C_SELECT
 							</td>
 						</th>
 					</thead>
@@ -304,7 +304,7 @@ else
 							echo "	<td>".$res[$k]->CreatorID_FullName."</td>";
 							echo "<td nowrap>";
 							$FilteredTaskTitle = str_replace("\"", " ", str_replace("'", " ", $res[$k]->title));
-							echo "<a href=\"javascript: SelectTask(".$res[$k]->ProjectTaskID.", '".$res[$k]->ProjectTaskID.") ".$FilteredTaskTitle."')\">انتخاب</a>";
+							echo "<a href=\"javascript: SelectTask(".$res[$k]->ProjectTaskID.", '".$res[$k]->ProjectTaskID.") ".$FilteredTaskTitle."')\">C_SELECT</a>";
 							echo "</td>";
 							echo "</tr>";
 						}
