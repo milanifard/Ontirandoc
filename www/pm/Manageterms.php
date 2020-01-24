@@ -70,7 +70,7 @@ function GetSimilarTerm($TermID, $TermTitle, $SimilarList, $thereshold)
       $SimilarList[$i]["TermID"] = $rec["TermID"];
       $SimilarList[$i]["TermTitle"] = $rec["TermTitle"];
       $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-      $SimilarList[$i]["reason"] = "شباهت ساختاری";
+      $SimilarList[$i]["reason"] = C_STRUCTURAL_SIMILARITY;
       $i++;
     }
   }
@@ -136,7 +136,7 @@ function GetSameSynSetTerms($SynSetIDs, $TermTitle, $SimilarList)
       $SimilarList[$i]["TermID"] = $rec["TermID"];
       $SimilarList[$i]["TermTitle"] = $rec["TermTitle"];
       $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-      $SimilarList[$i]["reason"] = "همرده در شبکه معنایی";
+      $SimilarList[$i]["reason"] = C_PEERS_IN_THE_SEMANTIC_NETWORK;
       $i++;
   }
   return $SimilarList;
@@ -156,7 +156,7 @@ function GetHyponymTerms($HypoSynSetIDs, $TermTitle, $SimilarList)
       $SimilarList[$i]["TermID"] = $rec["TermID"];
       $SimilarList[$i]["TermTitle"] = $rec["TermTitle"];
       $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-      $SimilarList[$i]["reason"] = "معنای خاص تر در شبکه معنایی";
+      $SimilarList[$i]["reason"] = C_MORE_SPECIFIC_MEANING_IN_THE_SEMANTIC_GRID;
       $i++;
   }
   return $SimilarList;
@@ -176,7 +176,7 @@ function GetHyperTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
       $SimilarList[$i]["TermID"] = $rec["TermID"];
       $SimilarList[$i]["TermTitle"] = $rec["TermTitle"];
       $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-      $SimilarList[$i]["reason"] = "شباهت ساختاری";
+      $SimilarList[$i]["reason"] = C_STRUCTURAL_SIMILARITY;
       $i++;
     }
   }
@@ -198,7 +198,7 @@ function GetHypernymTerms($HyperSynSetIDs, $TermTitle, $SimilarList)
       $SimilarList[$i]["TermID"] = $rec["TermID"];
       $SimilarList[$i]["TermTitle"] = $rec["TermTitle"];
       $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-      $SimilarList[$i]["reason"] = "معنای عام تر در شبکه معنایی";
+      $SimilarList[$i]["reason"] = C_MORE_GENERAL_MEANING_IN_THE_SEMANTIC_GRID;
       $i++;
   }
   return $SimilarList;
@@ -215,7 +215,7 @@ function GetHypoTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
     $SimilarList[$i]["TermID"]=$rec["TermID"];
     $SimilarList[$i]["TermTitle"]=$rec["TermTitle"];
     $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-    $SimilarList[$i]["reason"] = "شباهت ساختاری";
+    $SimilarList[$i]["reason"] = C_STRUCTURAL_SIMILARITY;
     $i++;
   }
   $res = $mysql->Execute("select TermID, TermTitle, CreatorUserID from projectmanagement.terms where TermID<>'".$TermID."' and TermTitle like '%".$TermTitle."' and TermTitle not like '".$TermTitle."%'  and TermID in (select TermID from projectmanagement.TermReferenceMapping )");
@@ -224,7 +224,7 @@ function GetHypoTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
     $SimilarList[$i]["TermID"]=$rec["TermID"];
     $SimilarList[$i]["TermTitle"]=$rec["TermTitle"];
     $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-    $SimilarList[$i]["reason"] = "شباهت ساختاری";
+    $SimilarList[$i]["reason"] = C_STRUCTURAL_SIMILARITY;
     $i++;
   }
   $res = $mysql->Execute("select TermID, TermTitle, CreatorUserID from projectmanagement.terms where TermID<>'".$TermID."' and TermTitle like '%".$TermTitle."%' and (TermTitle not like '".$TermTitle."%' and TermTitle not like '%".$TermTitle."')  and TermID in (select TermID from projectmanagement.TermReferenceMapping )");
@@ -233,7 +233,7 @@ function GetHypoTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
     $SimilarList[$i]["TermID"]=$rec["TermID"];
     $SimilarList[$i]["TermTitle"]=$rec["TermTitle"];
     $SimilarList[$i]["CreatorUserID"]=$rec["CreatorUserID"];
-    $SimilarList[$i]["reason"] = "شباهت ساختاری";
+    $SimilarList[$i]["reason"] = C_STRUCTURAL_SIMILARITY;
     $i++;
   }
 
@@ -259,7 +259,7 @@ function ShowTermMappings($TermID)
   $res = $mysql->ExecuteStatement(array($TermID));
   while($rec = $res->fetch())
   {
-    echo $rec["title"]." (تناوب: ".$rec["tcount"].")<br>";
+    echo $rec["title"].C_PERIODICITY.$rec["tcount"]."<br>";
   }
 }
 
@@ -294,9 +294,21 @@ if(isset($_REQUEST["ReplaceTermID"]))
   $mysql->Prepare($query);
   $mysql->ExecuteStatement(array($_REQUEST["TermID"], $PreTermTitle, $_REQUEST["ReplaceTermID"], $NewTermTitle));
   
-  echo "<p class='text-center'>عملیات جایگزینی انجام شد</p>";
-  
-  echo "<p class='text-center'><a href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></p>";
+  echo "<div class='container '>
+<br>
+            <div class='row align-items-center'>
+                 <div class='test-center'>.col-md-3 .offset-md-3</div>
+                 
+                 </div>
+  </div>";
+
+
+//    <div class= 'row  align-items-center justify-content-md-center'>
+//            <div class='text-center'>عملیات جایگزینی انجام شد</div>
+//          </div>
+//          <div class= 'row align-items-center justify-content-md-center'>
+//            <div class='text-center'><a class='btn btn-danger' href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></div>
+//          </div>
   die();
 }
 
@@ -349,22 +361,22 @@ if(isset($_REQUEST["Merge"]))
   }
   $SimilarList = $DistinctArray;
   echo "<div class='container'><br>";
-  echo "    <table class='table table-striped table-striped'> 
+  echo "    <table class='table table-bordered table-striped'> 
                 <thead>";
   echo "            <tr class='table-info text-center'>";
-  echo "                <th colspan=4>واژه  : ".$rec["TermTitle"]." </th>
-                        <th>ثبت کننده : ".$rec["CreatorUserID"]. "</th>
-                        <th>ارجاعات: ";ShowTermMappings($rec["TermID"]) ; echo "</th>";
+  echo "                <th colspan=3>".C_WORD.': '.$rec["TermTitle"]." </th>
+                        <th colspan='2'>".C_RECORDER.': '.$rec["CreatorUserID"]. "</th>
+                        <th>".C_REFERENCES_IN_WORDS;ShowTermMappings($rec["TermID"]) ; echo "</th>";
   echo "            </tr>
                 </thead>
                 <tbody>";
   echo "<tr>";
-  echo "    <td >کد</td>
-            <td>واژه</td>
-            <td>نوع شباهت</td>
-            <td>ثبت کننده</td>
-            <td>منابع و تعداد تکرار</td>
-            <td>جایگزینی</td>";
+  echo "    <td >".C_WORD_CODE."</td>
+            <td>".C_WORD."</td>
+            <td>".C_SIMILARITY_TYPE."</td>
+            <td>".C_RECORDER."</td>
+            <td>".C_RESOURCES_AND_THE_NUMBER_OF_REPETITIONS."</td>
+            <td>".C_REPLACEMENT."</td>";
   echo "</tr>";
   for($i=0; $i<count($SimilarList); $i++)
   {
@@ -376,12 +388,12 @@ if(isset($_REQUEST["Merge"]))
     echo "<td>";
     ShowTermMappings($SimilarList[$i]["TermID"]);
     echo "</td>";
-    echo "<td><a class='btn' href='Manageterms.php?TermID=".$rec["TermID"]."&ReplaceTermID=".$SimilarList[$i]["TermID"]."'>واژه انتخابی با واژه این ردیف جایگزین شود</a></td>";
+    echo "<td><a class='btn' href='Manageterms.php?TermID=".$rec["TermID"]."&ReplaceTermID=".$SimilarList[$i]["TermID"]."'>".C_REPLACE_THE_SELECTED_WORD_WITH_THE_WORD_IN_THIS_ROW."</a></td>";
     echo "</tr>";
   }
   echo "<tr>";
   echo "<td colspan=6 class='text-center'>
-            <input type=button class='btn btn-danger' value='بازگشت' onclick='javascript: history.back();'></td>";
+            <input type=button class='btn btn-danger' value=".'"'.C_RETURN.'"'."onclick='javascript: history.back();'></td>";
   echo "</tr> </tbody> </div>";
   die();
 }
@@ -409,7 +421,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_comment
 				);
 	}
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $Item_comment = "";
@@ -435,18 +447,17 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
 
 <div class='container'>
-<!--    **************************************************************************  -->
 <br><table class="table table-bordered ">
     <thead>
         <tr class="text-center table-info">
-            <th align="center">ایجاد/ویرایش اصطلاحات</th>
+            <th align="center"><?php echo C_CREATE_EDIT_TERMS?></th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
                 <div class="form-group row">
-                    <label for="Item_TermTitle" class="col-sm-2 col-form-label">عنوان</label>
+                    <label for="Item_TermTitle" class="col-sm-2 col-form-label"><?php echo C_TITLE?></label>
                     <div class="col-sm-10">
                         <input type="text" name="Item_TermTitle" id="Item_TermTitle" class="form-control" required>
                     </div>
@@ -455,7 +466,7 @@ if(isset($_REQUEST["UpdateID"]))
         <tr>
 	        <td>
                 <div class="form-group row">
-                    <label for="Item_comment" class="col-sm-2 col-form-label">یادداشت</label>
+                    <label for="Item_comment" class="col-sm-2 col-form-label"><?php echo C_NOTE?></label>
                     <div class="col-sm-10">
                         <textarea name="Item_comment" id="Item_comment" class="form-control"><?php echo $Item_comment ?></textarea>
                     </div>
@@ -470,10 +481,10 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
         <tr class="text-center">
             <td>
-                <input type="button" class="btn   btn-success" onclick="javascript: ValidateForm();" value="ذخیره">
-                <input type="button" class="btn   btn-danger" onclick="javascript: document.location='Manageterms.php';" value="جدید">
+                <input type="button" class="btn   btn-success" onclick="javascript: ValidateForm();" value=<?php echo C_SAVE?>>
+                <input type="button" class="btn   btn-danger" onclick="javascript: document.location='Manageterms.php';" value=<?php echo C_NEW?>>
                 <?php if(isset($_REQUEST["UpdateID"])) { ?>
-                <input type="button" class="btn   btn-info" onclick="javascript: MergeSuggestions('<?php echo $_REQUEST["UpdateID"]; ?>');" value="پیشنهادات ادغام">
+                <input type="button" class="btn   btn-info" onclick="javascript: MergeSuggestions('<?php echo $_REQUEST["UpdateID"]; ?>');" value=<?php echo '"'.C_MERGE_SUGGESTIONS.'"'?>>
                 <?php } ?>
             </td>
         </tr>
@@ -551,7 +562,7 @@ if($SomeItemsRemoved)
                 <th >
                     <b><a class='btn btn-sm ' href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display="";
                                                                             else document.getElementById("SearchTr").style.display="none";'>
-                        <i class="fa fa-search"></i>جستجو
+                        <i class="fa fa-search"></i><?php echo C_SEARCH?>
                     </a>
             </th>
             </tr>
@@ -560,7 +571,7 @@ if($SomeItemsRemoved)
             <tr >
                 <td >
                     <div class="form-group row">
-                        <label for="Item_TermTitle" class="col-sm-2 col-form-label">عنوان</label>
+                        <label for="Item_TermTitle" class="col-sm-2 col-form-label"><?php echo C_TITLE?></label>
                         <div class="col-sm-10">
                             <input type="text" name="Item_TermTitle" id="Item_TermTitle" class="form-control">
                         </div>
@@ -571,7 +582,7 @@ if($SomeItemsRemoved)
             <tr>
 	            <td>
                     <div class="form-group row">
-                        <label for="Item_comment" class="col-sm-2 col-form-label">یادداشت</label>
+                        <label for="Item_comment" class="col-sm-2 col-form-label"><?php echo C_NOTE?></label>
                         <div class="col-sm-10">
                             <input type="text" name="Item_comment" id="Item_comment" rows="2" class="form-control">
                         </div>
@@ -581,7 +592,7 @@ if($SomeItemsRemoved)
             </tr>
             <tr>
                 <td colspan="2" class="text-center">
-                    <input type="submit" class="btn btn-success" value="جستجو">
+                    <input type="submit" class="btn btn-success" value=<?php echo C_SEARCH?>>
                 </td>
             </tr>
     </table>
@@ -614,21 +625,21 @@ if(isset($_REQUEST["SearchAction"]))
         <thead>
             <tr class="text-center table-info">
                 <th colspan="9">
-                اصطلاحات
+                <?php echo C_TERMS?>
                 </th>
             </tr>
             <tr >
                 <th>
                     <input type=checkbox name=CAll onclick='javascript: if(this.checked) CheckAll(); else UnCheckAll();'>
                 </th>
-                <th >ردیف</th>
-                <th>ویرایش</th>
-                <th><a class='btn btn-sm' href="javascript: Sort('TermTitle', 'ASC');"><strong>عنوان</strong></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('comment', 'ASC');"><strong>یادداشت</strong></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('CreatorUserID', 'ASC');"><strong>ایجاد کننده</strong></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('CreateDate', 'ASC');"><strong>زمان ایجاد</strong></a></th>
-                <th ><a class='btn btn-sm' href="javascript: Sort('ReferCount', 'ASC');"><strong>ارجاعات</strong></a></th>
-                <th>عنصر هستان نگار</th>
+                <th ><?php echo C_ROW ?></th>
+                <th><?php echo C_EDIT ?></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('TermTitle', 'ASC');"><b><?php echo C_TITLE?></b></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('comment', 'ASC');"><b><?php echo C_NOTE?></b></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('CreatorUserID', 'ASC');"><b><?php echo C_CREATOR ?></b></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('CreateDate', 'ASC');"><b><?php echo C_CREATION_TIME ?></b></a></th>
+                <th ><a class='btn btn-sm' href="javascript: Sort('ReferCount', 'ASC');"><b><?php echo C_REFERENCES_IN_WORDS ?></b></a></th>
+                <th><?php echo C_ONTOLOGY_ELEMENT ?></th>
             </tr>
         </thead>
         <tbody>
@@ -661,7 +672,7 @@ for($k=0; $k<count($res); $k++)
 	echo "	  <td><a href='TermOntologyPage.php?TermID=".$res[$k]->TermID."' target=_blank>";
 	                $ElementName = GetRelatedOntologyElement($res[$k]->TermID);
                     if($ElementName=="")
-                      echo "ثبت";
+                      echo C_RECORD;
                     else
                       echo $ElementName;
 	echo "          </a>
@@ -671,8 +682,8 @@ for($k=0; $k<count($res); $k++)
 ?>
         <tr>
             <td colspan="9" class="text-center">
-	            <input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="حذف">
-	            <input type="button" class="btn btn-success" onclick="javascript: window.open('TermFrequency.php');" value="تحلیل آماری">
+	            <input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE?>>
+	            <input type="button" class="btn btn-success" onclick="javascript: window.open('TermFrequency.php');" value=<?php echo '"'.C_STATISTICAL_ANALYSIS.'"'?>>
             </td>
         </tr>
         <tr >
@@ -701,7 +712,7 @@ for($k=0; $k<count($res); $k++)
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمئن هستید؟')) document.ListForm.submit();
+	if(confirm(<?php echo "'".C_CONFIRM_TO_DELETE."'"?>)) document.ListForm.submit();
 }
 function ShowPage(PageNumber)
 {
@@ -729,7 +740,7 @@ function ShowDetails(TermID)
 
   http.onreadystatechange = function()
   {//Call a function when the state changes.
-    if(http.readyState == 4 && http.status == 200)
+    if(http.readyState === 4 && http.status === 200)
     {
          document.getElementById('DetailsSpan').innerHTML = http.responseText;
     }
@@ -754,4 +765,3 @@ function UnCheckAll()
 <?php
     if(isset($_REQUEST["UpdateID"])) { echo "ShowDetails(".$_REQUEST["UpdateID"].");"; } ?>
 </script>
-</html>
