@@ -124,7 +124,7 @@ if (isset($_REQUEST["UpdateID"])) {
                         </div>
                         <div class="custom-file">
                             <label class="custom-file-label text-center text-info" for="Item_FileContent">تصویر را انتخاب کنید</label>
-                            <input type="file" name="Item_FileContent" id="Item_FileContent" class="custom-file-input">
+                            <input type="file" name="Item_FileContent" id="Item_FileContent" class="custom-file-input" accept="image/*">
                         </div>
                     </div>
                     <div class="card-footer">
