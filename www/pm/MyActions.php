@@ -19,10 +19,7 @@ $res = $mysql->Execute($query);
 $i = 0;
 while ($rec = $res->fetch()) {
     $i++;
-    if ($i % 2 == 0)
-        $list .= "<tr class=OddRow>";
-    else
-        $list .= "<tr class=EvenRow>";
+    $list .= "<tr>";
     $list .= "<td>" . ($FromRec + $i) . "</td>";
     $list .= "<td>" . $rec["ActionDesc"] . "</td>";
     $list .= "<td nowrap>" . $rec["gATS"] . "</td>";
@@ -34,16 +31,16 @@ while ($rec = $res->fetch()) {
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header text-info text-center" style="font-size: 1.3em; font-weight: bold;">اقدامات انجام شده <i class="fas fa-list-alt"></i></div>
+                <div class="card-header text-info text-center" style="font-size: 1.3em; font-weight: bold;"><? echo C_MYACTIONS ?> <i class="fas fa-list-alt"></i></div>
                 <div class="card-body text-center">
                     <form method="post" id=f1 name=f1>
                         <input type=hidden name=FromRec id=FromRec value='<?php echo $FromRec ?>'>
-                        <table class="table table-bordered table-hover" cellspacing="0" align=center width=100%>
+                        <table class="table table-bordered table-hover table-striped" cellspacing="0" align=center width=100%>
                             <thead class="table-info">
                             <tr>
-                                <td scope="col" width=1%>ردیف</td>
-                                <td scope="col">عمل انجام شده</td>
-                                <td scope="col">زمان انجام</td>
+                                <td scope="col" width=1%><? echo C_ROW ?></td>
+                                <td scope="col"><? echo C_MA_ACTION ?></td>
+                                <td scope="col"><? echo C_MA_DONE_DATE ?></td>
                             </tr>
                             </thead>
                             <tbody>
@@ -52,10 +49,10 @@ while ($rec = $res->fetch()) {
                         </table>
                     </form>
                 </div>
-                <div class="card-footer text-right">
-                    : تعداد کل موارد یافت شده<?php echo $TotalCount; ?>
+                <div class="card-footer">
+                    <? echo C_MA_TOTAL_FIND ?> : <?php echo $TotalCount; ?>
                     <br>
-                    صفحه :
+                    <? echo C_PAGE ?> :
                     <?php
                     for ($PageNumber = 1; $PageNumber <= ($TotalCount / $ItemsCount) + 1; $PageNumber++) {
                         if (($PageNumber - 1) * $ItemsCount == $FromRec)

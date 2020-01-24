@@ -452,6 +452,13 @@ if(UI_LANGUAGE=="EN") {
     define("C_MQ_FILL", "Filled");
     define("C_MQ_LAST_ACCEPT", "Last Accept");
     define("C_MQ_MAKE", "Make");
+	
+	//MyActions.php Hoormazd Ranjbar
+    //EN
+    define("C_MYACTIONS", "My Actions");
+    define("C_MA_ACTION", "Action");
+    define("C_MA_DONE_DATE", "Date");
+    define("C_MA_TOTAL_FIND", "Total Found items");
 }
 else
 {
@@ -900,7 +907,13 @@ else
     define("C_MQ_CREATE_DATE", "تاریخ ایجاد");
     define("C_MQ_FILL", "پر شده");
     define("C_MQ_LAST_ACCEPT", "تایید نهایی");
-    define("C_MQ_MAKE", "ایجاد");	
+    define("C_MQ_MAKE", "ایجاد");
+
+	//MyActions.php Hoormazd Ranjbar
+    define("C_MYACTIONS", "اقدامات انجام شده");
+    define("C_MA_ACTION", "عمل انجام شده");
+    define("C_MA_DONE_DATE", "تاریخ انجام شده");
+    define("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");	
 }   
 
 ?>
