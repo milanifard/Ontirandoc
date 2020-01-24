@@ -427,10 +427,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_T_RETURN" , "Return");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
-    define('C_DATABASES', 'پایگاه های داده');
-    define("C_SERVER", "سرور");
-    define("C_TABLES" , "جداول");
+    define("C_DATABASE_DOC" , "Documentation of Databases");
+    define("C_DATABASES", "Databases");
+    define("C_SERVER", "Server");
+    define("C_TABLES" , "Tables");
+    define("C_DEADLINE" , "Deadline");
 	
 	//EN fo MangePersons.php
     define("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
@@ -883,10 +884,11 @@ else
     define("C_T_RETURN" , "بازگشت");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "Documentation of Databases");
-    define("C_DATABASES", "Databases");
-    define("C_SERVER", "Server");
-    define("C_TABLES" , "Tables");
+    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
+    define('C_DATABASES', 'پایگاه های داده');
+    define("C_SERVER", "سرور");
+    define("C_TABLES" , "جداول");
+    define("C_DEADLINE" , "مهلت انجام");
 	
 	//ManagePersons.php Hoormazd Ranjbar
     define("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
