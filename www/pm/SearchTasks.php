@@ -100,13 +100,13 @@ else
 		<div class="card">
 			<div class="card-header">
 				<i class="fa fa-search"></i>
-				Search
+				<?php echo C_SEARCH ?>
 			</div>
 			<div class="card-body">
 				<table class="table">
 					<tr>
 						<td nowrap>
-					پروژه مربوطه
+							C_RELATED_PROJECT
 						</td>
 						<td nowrap>
 						<select name="Item_ProjectID" id="Item_ProjectID">
@@ -117,7 +117,7 @@ else
 
 					<tr>
 						<td nowrap>
-					نوع کار
+							C_TASK_TYPE
 						</td>
 						<td nowrap>
 						<select name="Item_ProjectTaskTypeID" id="Item_ProjectTaskTypeID">
@@ -128,7 +128,7 @@ else
 
 					<tr>
 						<td nowrap>
-					عنوان
+							C_TITLE
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_title" id="Item_title" maxlength="1000" size="40">
@@ -137,7 +137,7 @@ else
 
 					<tr>
 						<td nowrap>
-					شرح
+							C_DESCRIPTION
 						</td>
 						<td nowrap>
 						<input type=text name="Item_description" id="Item_description" mexlength="1000" size="40">
@@ -146,7 +146,7 @@ else
 
 					<tr>
 						<td nowrap>
-					یادداشت
+							C_NOTE
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_TaskComment" id="Item_TaskComment" maxlength="1000" size="40">
@@ -154,7 +154,7 @@ else
 					</tr>
 					<tr>
 						<td nowrap>
-					سند
+							C_DOCUMENT
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_DocumentDescription" id="Item_DocumentDescription" maxlength="1000" size="40">
@@ -162,7 +162,7 @@ else
 					</tr>
 					<tr>
 						<td nowrap>
-					اقدام
+							C_ACTION
 						</td>
 						<td nowrap>
 						<input type="text" name="Item_ActivityDescription" id="Item_ActivityDescription" maxlength="1000" size="40">
@@ -172,21 +172,21 @@ else
 
 					<tr>
 						<td nowrap>
-					اولویت
+							C_PRIORITY
 						</td>
 						<td nowrap>
 						<select name="Item_TaskPeriority" id="Item_TaskPeriority" >
 							<option value=0>-
-							<option value='3'>عادی</option>
-							<option value='4'>پایین</option>
-							<option value='2'>بالا</option>
-							<option value='1'>بحرانی</option>
+							<option value='3'>C_PRIORITY_NORMAL</option>
+							<option value='4'>C_PRIORITY_LOW</option>
+							<option value='2'>C_PRIORITY_HIGH</option>
+							<option value='1'>C_PRIORITY_CRITICAL</option>
 						</select>
 						</td>
 					</tr>
 					<tr>
 						<td nowrap>
-					وضعیت
+							C_STATUS
 						</td>
 						<td nowrap>
 						<select name="Item_TaskStatus" id="Item_TaskStatus" >

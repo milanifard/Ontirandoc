@@ -494,6 +494,28 @@ if(UI_LANGUAGE=="EN") {
     define2("C_RECORD","Record");
     define2("C_SUMMARY_OF_INFORMATION","Summary of information");
     define2("C_MAPPING_OF_IDIOMS_AND_ELEMENTS_OF_HISTOGRAM","Mapping of idioms and elements of ontology");
+
+
+
+
+    ///// Mahdi Ghayour /////
+    define2("C_TASK_TYPE", "نوع کار");
+    define2("C_DOCUMENT", "سند");
+    define2("C_ACTION", "اقدام");
+    define2("C_PRIORITY_NORMAL", "عادی");
+    define2("C_PRIORITY_LOW", "پایین");
+    define2("C_PRIORITY_HIGH", "بالا");
+    define2("C_PRIORITY_CRITICAL", "بحرانی");
+
+    define2("C_STATUS", "وضعیت");
+    define2('C_STATUS_NOT_START', 'اقدام نشده');
+    define2('C_STATUS_PROGRESSING', 'در دست قدام');
+    define2('C_STATUS_DONE', 'اقدام شده');
+    define2('C_STATUS_SUSPENDED', 'معلق');
+    define2('C_STATUS_REPLYED', 'پاسخ داده شده');
+    //// End of Mahdi Ghayour //////
+
+
 }
 else
 {
@@ -977,6 +999,22 @@ else
     define2("C_MAPPING_OF_IDIOMS_AND_ELEMENTS_OF_HISTOGRAM","نگاشت اصطلاحات و عناصر هستان نگار");
 
 
+    ///// Mahdi Ghayour /////
+    define2("C_TASK_TYPE", "نوع کار");
+    define2("C_DOCUMENT", "سند");
+    define2("C_ACTION", "اقدام");
+    define2("C_PRIORITY_NORMAL", "عادی");
+    define2("C_PRIORITY_LOW", "پایین");
+    define2("C_PRIORITY_HIGH", "بالا");
+    define2("C_PRIORITY_CRITICAL", "بحرانی");
+
+    define2("C_STATUS", "وضعیت");
+    define2('C_STATUS_NOT_START', 'اقدام نشده');
+    define2('C_STATUS_PROGRESSING', 'در دست قدام');
+    define2('C_STATUS_DONE', 'اقدام شده');
+    define2('C_STATUS_SUSPENDED', 'معلق');
+    define2('C_STATUS_REPLYED', 'پاسخ داده شده');
+    //// End of Mahdi Ghayour //////
 
 }   
 
