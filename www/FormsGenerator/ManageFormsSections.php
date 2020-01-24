@@ -116,7 +116,7 @@ if(isset($_REQUEST["UpdateID"]))
 				</table>
 
 				<input class="btn btn-primary" type="button" onclick="javascript: ValidateForm();" value="ذخیره">
-				<input class="btn btn-light" type="button" onclick="javascript: document.location='ManageFormsSections.php?FormsStructID=<?php echo $_REQUEST["FormsStructID"]; ?>'" value="جدید">
+				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageFormsSections.php?FormsStructID=<?php echo $_REQUEST["FormsStructID"]; ?>'" value="جدید">
 			</div>
 		</div>
 	</div>
@@ -143,46 +143,52 @@ for($k=0; $k<count($res); $k++)
 if($SomeItemsRemoved)
 	$res = manage_FormsSections::GetList($_REQUEST["FormsStructID"]); 
 ?>
+
+
+
 <form id="ListForm" name="ListForm" method="post"> 
 	<input type="hidden" id="Item_FormsStructID" name="Item_FormsStructID" value="<? echo htmlentities($_REQUEST["FormsStructID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="5">
-	بخشهای فرم
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>نام بخش</td>
-	<td>ترتیب نمایش</td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FormsSectionID."\">";
-	echo "</td>";
-	echo "<td>".($k+1)."</td>";
-	echo "	<td><a href=\"ManageFormsSections.php?UpdateID=".$res[$k]->FormsSectionID."&FormsStructID=".$_REQUEST["FormsStructID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-	echo "	<td>".htmlentities($res[$k]->SectionName, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".htmlentities($res[$k]->ShowOrder, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "</tr>";
-}
-?>
-<tr class="FooterOfTable">
-<td colspan="5" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	&nbsp;
-	<input type="button" onclick="javascript: document.location='ManageQuestionnaires.php';" value="بازگشت">
-</td>
-</tr>
-</table>
+<br>
+
+	
+	<div class="row justify-content-center">
+		<div class="card">
+			<div class="card-header">
+				<i class="fa fa-search"></i>
+				بخشهای فرم
+			</div>
+			<div class="card-body">
+				<table class="table table-striped">
+					<tr class="HeaderOfTable">
+						<td width="1%"> </td>
+						<td width="1%">ردیف</td>
+						<td width="2%">ویرایش</td>
+						<td>نام بخش</td>
+						<td>ترتیب نمایش</td>
+					</tr>
+					<?
+					for($k=0; $k<count($res); $k++)
+					{
+						echo "<tr>";
+						echo "<td>";
+						echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FormsSectionID."\">";
+						echo "</td>";
+						echo "<td>".($k+1)."</td>";
+						echo "	<td><a href=\"ManageFormsSections.php?UpdateID=".$res[$k]->FormsSectionID."&FormsStructID=".$_REQUEST["FormsStructID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+						echo "	<td>".htmlentities($res[$k]->SectionName, ENT_QUOTES, 'UTF-8')."</td>";
+						echo "	<td>".htmlentities($res[$k]->ShowOrder, ENT_QUOTES, 'UTF-8')."</td>";
+						echo "</tr>";
+					}
+					?>
+				</table>
+
+				<input class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+				<input class="btn btn-light"   type="button" onclick="javascript: document.location='ManageQuestionnaires.php';" value="بازگشت">
+			</div>
+		</div>
+	</div>
+
+
 </form>
 <form target="_blank" method="post" action="NewFormsSections.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="FormsStructID" name="FormsStructID" value="<? echo htmlentities($_REQUEST["FormsStructID"], ENT_QUOTES, 'UTF-8'); ?>">
