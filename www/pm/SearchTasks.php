@@ -70,6 +70,11 @@ else
 if(isset($_REQUEST["SearchAction"])) 
 	$res = manage_ProjectTasks::Search($ProjectID, $ProjectTaskTypeID, $title, $description, $CreatorID, $TaskPeriority, $TaskStatus, $ExecutorID, $TaskComment, $DocumentDescription, $ActivityDescription, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
 ?>
+
+
+
+
+<!-- search form section -->
 <form id="SearchForm" name="SearchForm" method=post>
 <?php
 	$FormName = "f1";
@@ -86,12 +91,11 @@ if(isset($_REQUEST["SearchAction"]))
 <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
 <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
 <input type="hidden" name="SearchAction" id="SearchAction" value="1"> 
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr id='SearchTr'>
-<td>
-<table width="100%" align="center" border="0" cellspacing="0">
+<br>
+<div class="row justify-content-center" id='SearchTr'>
+<table class="table margin col-8 col-lg-4">
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  پروژه مربوطه
 	</td>
 	<td nowrap>
@@ -102,7 +106,7 @@ if(isset($_REQUEST["SearchAction"]))
 </tr>
 
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  نوع کار
 	</td>
 	<td nowrap>
@@ -113,7 +117,7 @@ if(isset($_REQUEST["SearchAction"]))
 </tr>
 
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  عنوان
 	</td>
 	<td nowrap>
@@ -122,7 +126,7 @@ if(isset($_REQUEST["SearchAction"]))
 </tr>
 
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  شرح
 	</td>
 	<td nowrap>
@@ -131,7 +135,7 @@ if(isset($_REQUEST["SearchAction"]))
 </tr>
 
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  یادداشت
 	</td>
 	<td nowrap>
@@ -139,7 +143,7 @@ if(isset($_REQUEST["SearchAction"]))
 	</td>
 </tr>
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  سند
 	</td>
 	<td nowrap>
@@ -147,7 +151,7 @@ if(isset($_REQUEST["SearchAction"]))
 	</td>
 </tr>
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  اقدام
 	</td>
 	<td nowrap>
@@ -157,7 +161,7 @@ if(isset($_REQUEST["SearchAction"]))
 
 
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  اولویت
 	</td>
 	<td nowrap>
@@ -171,7 +175,7 @@ if(isset($_REQUEST["SearchAction"]))
 	</td>
 </tr>
 <tr>
-	<td width="1%" nowrap>
+	<td nowrap>
  وضعیت
 	</td>
 	<td nowrap>
@@ -213,10 +217,10 @@ if(isset($_REQUEST["SearchAction"]))
 </td>
 </tr>
 </table>
-</td>
-</tr>
-</table>
+</div>
 </form>
+
+<!-- result section -->
 <? 
 if(isset($_REQUEST["SearchAction"])) 
 { 
@@ -257,8 +261,8 @@ else
 	</td>
 </tr>
 <tr class="HeaderOfTable">
-	<td width="1%">ردیف</td>
-	<td width="1%">کد</td>
+	<td>ردیف</td>
+	<td>کد</td>
 	<td><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
 	<td><a href="javascript: Sort('ProjectTaskTypeID', 'ASC');">نوع کار</a></td>
 	<td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
