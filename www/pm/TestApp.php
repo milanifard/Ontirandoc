@@ -748,7 +748,8 @@ Test::add(              #2
         {
             try
             {
-                if(manage_RefrenceTypes::GetCount()==0) {
+                manage_RefrenceTypes::Add("1", "RefExpTitle");
+                if(manage_RefrenceTypes::GetCount("1")>=0) {
                     return true;
                 }
                 return false;
@@ -765,11 +766,12 @@ Test::add(          #3
         {
             try
             {
+                manage_RefrenceTypes::Add("1", "RefExpTitle");
                 if(manage_RefrenceTypes::GetLastID()==-1)
                 {
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             }
             catch (Exception $e)
             {
@@ -832,7 +834,7 @@ Test::add(                  #7
 
         try
         {
-            if(is_array(manage_RefrenceTypes::GetList())){
+            if(is_array(manage_RefrenceTypes::GetList("1"))){
                 return true;
             }
             return false;
