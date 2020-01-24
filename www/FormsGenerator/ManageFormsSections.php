@@ -4,6 +4,10 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 90-5-9
 */
+
+// This file taken by MGhayour
+// local url: http://localhost:90/MyProject/Ontirandoc/www/FormsGenerator/ManageFormsSections.php
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/FormsSections.class.php");

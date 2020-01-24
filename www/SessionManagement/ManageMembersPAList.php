@@ -6,6 +6,10 @@
 
 تغییر: 31-2-89
 */
+
+// This file taken by MGhayour
+// local url: http://localhost:90/MyProject/Ontirandoc/www/SessionManagement/ManageMembersPAList.php
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/SessionMembers.class.php");
