@@ -92,131 +92,136 @@ if(isset($_REQUEST["SearchAction"]))
 <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
 <input type="hidden" name="SearchAction" id="SearchAction" value="1"> 
 <br>
-<div class="row justify-content-center" id='SearchTr'>
-<table class="table margin col-8 col-lg-4">
-<tr>
-	<td nowrap>
- پروژه مربوطه
-	</td>
-	<td nowrap>
-	<select name="Item_ProjectID" id="Item_ProjectID">
-	<option value=0>-
-	<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.projects", "ProjectID", "title", "title"); ?>	</select>
-	</td>
-</tr>
+<div id='SearchTr'>
 
-<tr>
-	<td nowrap>
- نوع کار
-	</td>
-	<td nowrap>
-	<select name="Item_ProjectTaskTypeID" id="Item_ProjectTaskTypeID">
-	<option value=0>-
-	<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ProjectTaskTypes", "ProjectTaskTypeID", "title", "title"); ?>	</select>
-	</td>
-</tr>
+	<div class="row justify-content-center">
+		<div class="card">
+			<div class="card-header">
+				Search
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<tr>
+						<td nowrap>
+					پروژه مربوطه
+						</td>
+						<td nowrap>
+						<select name="Item_ProjectID" id="Item_ProjectID">
+						<option value=0>-
+						<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.projects", "ProjectID", "title", "title"); ?>	</select>
+						</td>
+					</tr>
 
-<tr>
-	<td nowrap>
- عنوان
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_title" id="Item_title" maxlength="1000" size="40">
-	</td>
-</tr>
+					<tr>
+						<td nowrap>
+					نوع کار
+						</td>
+						<td nowrap>
+						<select name="Item_ProjectTaskTypeID" id="Item_ProjectTaskTypeID">
+						<option value=0>-
+						<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.ProjectTaskTypes", "ProjectTaskTypeID", "title", "title"); ?>	</select>
+						</td>
+					</tr>
 
-<tr>
-	<td nowrap>
- شرح
-	</td>
-	<td nowrap>
-	<input type=text name="Item_description" id="Item_description" mexlength="1000" size="40">
-	</td>
-</tr>
+					<tr>
+						<td nowrap>
+					عنوان
+						</td>
+						<td nowrap>
+						<input type="text" name="Item_title" id="Item_title" maxlength="1000" size="40">
+						</td>
+					</tr>
 
-<tr>
-	<td nowrap>
- یادداشت
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_TaskComment" id="Item_TaskComment" maxlength="1000" size="40">
-	</td>
-</tr>
-<tr>
-	<td nowrap>
- سند
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_DocumentDescription" id="Item_DocumentDescription" maxlength="1000" size="40">
-	</td>
-</tr>
-<tr>
-	<td nowrap>
- اقدام
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_ActivityDescription" id="Item_ActivityDescription" maxlength="1000" size="40">
-	</td>
-</tr>
+					<tr>
+						<td nowrap>
+					شرح
+						</td>
+						<td nowrap>
+						<input type=text name="Item_description" id="Item_description" mexlength="1000" size="40">
+						</td>
+					</tr>
+
+					<tr>
+						<td nowrap>
+					یادداشت
+						</td>
+						<td nowrap>
+						<input type="text" name="Item_TaskComment" id="Item_TaskComment" maxlength="1000" size="40">
+						</td>
+					</tr>
+					<tr>
+						<td nowrap>
+					سند
+						</td>
+						<td nowrap>
+						<input type="text" name="Item_DocumentDescription" id="Item_DocumentDescription" maxlength="1000" size="40">
+						</td>
+					</tr>
+					<tr>
+						<td nowrap>
+					اقدام
+						</td>
+						<td nowrap>
+						<input type="text" name="Item_ActivityDescription" id="Item_ActivityDescription" maxlength="1000" size="40">
+						</td>
+					</tr>
 
 
-<tr>
-	<td nowrap>
- اولویت
-	</td>
-	<td nowrap>
-	<select name="Item_TaskPeriority" id="Item_TaskPeriority" >
-		<option value=0>-
-		<option value='3'>عادی</option>
-		<option value='4'>پایین</option>
-		<option value='2'>بالا</option>
-		<option value='1'>بحرانی</option>
-	</select>
-	</td>
-</tr>
-<tr>
-	<td nowrap>
- وضعیت
-	</td>
-	<td nowrap>
-	<select name="Item_TaskStatus" id="Item_TaskStatus" >
-		<option value=0>-
-		<option value='NOT_START'>اقدام نشده</option>
-		<option value='PROGRESSING'>در دست قدام</option>
-		<option value='DONE'>اقدام شده</option>
-		<option value='SUSPENDED'>معلق</option>
-		<option value='REPLYED'>پاسخ داده شده</option>
-	</select>
-	</td>
-</tr>
-<tr>
-	<td>
-	ایجاد کننده: 
-	</td>
-	<td>
-	<input type=hidden name="Item_CreatorID" id="Item_CreatorID" value=0>
-	<span id="Span_PersonID_FullName" name="Span_PersonID_FullName"></span> 	
-	<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_CreatorID&SpanName=Span_PersonID_FullName");'>[انتخاب]</a>
-	</td>
-</tr>
-<tr>
-	<td>
-	مجری/ناظر: 
-	</td>
-	<td>
-	<input type=hidden name="Item_ExecutorID" id="Item_ExecutorID">
-	<span id="Span_Executor_FullName" name="Span_Executor_FullName"></span> 	
-	<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_ExecutorID&SpanName=Span_Executor_FullName");'>[انتخاب]</a>
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-<td colspan="2" align="center"><input type="submit" value="جستجو">
-	&nbsp;
-	<input type=button value='حذف انتخاب قبلی' onclick='javascript: ClearLastSelected();'>
-
-</td>
-</tr>
-</table>
+					<tr>
+						<td nowrap>
+					اولویت
+						</td>
+						<td nowrap>
+						<select name="Item_TaskPeriority" id="Item_TaskPeriority" >
+							<option value=0>-
+							<option value='3'>عادی</option>
+							<option value='4'>پایین</option>
+							<option value='2'>بالا</option>
+							<option value='1'>بحرانی</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td nowrap>
+					وضعیت
+						</td>
+						<td nowrap>
+						<select name="Item_TaskStatus" id="Item_TaskStatus" >
+							<option value=0>-
+							<option value='NOT_START'>اقدام نشده</option>
+							<option value='PROGRESSING'>در دست قدام</option>
+							<option value='DONE'>اقدام شده</option>
+							<option value='SUSPENDED'>معلق</option>
+							<option value='REPLYED'>پاسخ داده شده</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						ایجاد کننده: 
+						</td>
+						<td>
+						<input type=hidden name="Item_CreatorID" id="Item_CreatorID" value=0>
+						<span id="Span_PersonID_FullName" name="Span_PersonID_FullName"></span> 	
+						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_CreatorID&SpanName=Span_PersonID_FullName");'>[انتخاب]</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						مجری/ناظر: 
+						</td>
+						<td>
+						<input type=hidden name="Item_ExecutorID" id="Item_ExecutorID">
+						<span id="Span_Executor_FullName" name="Span_Executor_FullName"></span> 	
+						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_ExecutorID&SpanName=Span_Executor_FullName");'>[انتخاب]</a>
+						</td>
+					</tr>
+				</table>
+				<input class="btn btn-primary" type="submit" value="جستجو">
+				<input class="btn btn-light" type=button value='حذف انتخاب قبلی' onclick='javascript: ClearLastSelected();'>
+			</div>
+		</div>
+	</div>
 </div>
 </form>
 
