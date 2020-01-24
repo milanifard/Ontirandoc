@@ -99,6 +99,7 @@ else
 	<div class="row justify-content-center">
 		<div class="card">
 			<div class="card-header">
+				<i class="fa fa-search"></i>
 				Search
 			</div>
 			<div class="card-body">
@@ -268,6 +269,7 @@ else
 	<div class="row justify-content-center">
 		<div class="card">
 			<div class="card-header">
+				<i class="fa fa-file-alt"></i>
 				کار
 			</div>
 			<div class="card-body">
