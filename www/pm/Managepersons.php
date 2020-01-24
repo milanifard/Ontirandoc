@@ -72,12 +72,12 @@ if (isset($_REQUEST["UpdateID"])) {
                 }
                 ?>
                 <div class="card mt-4">
-                    <h5 class="card-title my-2 text-info" style="text-align: center;">ایجاد/ویرایش افراد</h5>
+                    <h5 class="card-title my-2 text-info" style="text-align: center;"><? echo C_CREATING_EDITTING_PERSONS ?></h5>
                     <div class="card-body">
-                        <div class="form-group form-row text-right">
+                        <div class="form-group form-row ">
                             <div class="col">
-                                <label for="Item_plname" class="text-right" style="display: block;">نام خانوادگی</label>
-                                <input type="text" class="form-control text-right" name="Item_plname" id="Item_plname" maxlength="45"
+                                <label for="Item_plname" style="display: block;"><?php echo C_LAST_NAME?></label>
+                                <input type="text" class="form-control" name="Item_plname" id="Item_plname" maxlength="45"
                                        size="40"
                                        placeholder="milanifard" required>
                                 <div class="invalid-feedback">
@@ -85,51 +85,54 @@ if (isset($_REQUEST["UpdateID"])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="Item_pfname" style="display: block; text-align: right;">نام</label>
+                                <label for="Item_pfname" style="display: block; "><? echo C_NAME ?></label>
                                 <input type="text" name="Item_pfname" id="Item_pfname" maxlength="45" size="40"
                                        class="form-control"
-                                placeholder="omid" style="text-align: right;" required>
+                                placeholder="omid" style="" required>
                                 <div class="invalid-feedback">
                                     نیاز به وارد کردن اسم خود دارید
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" style="display: block; text-align: right;">
-                            <label for="Item_CardNumber" >ایمیل</label>
-                            <input type="email" class="form-control text-right" name="Item_CardNumber" id="Item_CardNumber"
+                        <div class="form-group">
+                            <label for="Item_CardNumber" style="display: block; "><?php echo C_MP_EMAIL ?></label>
+                            <input type="email" class="form-control" name="Item_CardNumber" id="Item_CardNumber"
                                    maxlength="45"
-                                   size="40" dir=ltr
+                                   size="40"
                                    placeholder="omid@milanifard.com" required>
                             <div class="invalid-feedback">
                                 نیاز به وارد کردن ایمیل خود دارید
                             </div>
                         </div>
-                        <div class="form-group" style="display: block; text-align: right;">
-                            <label for="mobile" >موبایل</label>
+                        <div class="form-group" style="display: block; ">
+                            <label for="mobile" ><?php echo C_MP_MOBILE ?></label>
                             <!-- TODO: add '-' into the input format of mobile number -->
-                            <input type="text" class="form-control text-right" name="mobile" id="mobile" maxlength="45" size="40"
-                                   dir=ltr placeholder="09100000020" required>
+                            <input type="text" class="form-control " name="mobile" id="mobile" maxlength="45" size="40"
+                                   placeholder="09100000020" required>
                             <div class="invalid-feedback" >
                                 نیاز به وارد کردن شماره موبایل خود دارید
                             </div>
                         </div>
-                        <div class="form-group" style="display: block; text-align: right;">
-                            <label for="Item_AccountInfo">حساب کاربری</label>
-                            <input type="text" class="form-control text-right" type="text" name="Item_AccountInfo"
+                        <div class="form-group" style="display: block; ">
+                            <label for="Item_AccountInfo"><?php echo C_MP_USERNAME?></label>
+                            <input type="text" class="form-control " type="text" name="Item_AccountInfo"
                                    id="Item_AccountInfo" maxlength="500"
-                                   size="40" dir=rtl required>
+                                   size="40" required>
                             <div class="invalid-feedback">
                                 نیاز به وارد کردن حساب کاربری خود دارید
                             </div>
                         </div>
                         <div class="custom-file">
-                            <label class="custom-file-label" for="Item_FileContent">تصویر</label>
+                            <label class="custom-file-label text-center text-info" for="Item_FileContent">تصویر را انتخاب کنید</label>
                             <input type="file" name="Item_FileContent" id="Item_FileContent" class="custom-file-input">
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success col-3" type="submit">ذخیره</button>
-                        <a href="#" class="btn btn-primary col-3" style="float: right;" onclick="javascript: document.location='Managepersons.php';">جدید</a>
+                        <div class="row justify-content-between mx-2">
+                            <button class="col col-3 btn btn-success" type="submit"><?php echo C_SAVE ?></button>
+                            <a href="#" class="col col-3 btn btn-primary"
+                               onclick="javascript: document.location='Managepersons.php';"><? echo C_NEW?></a>
+                        </div>
                     </div>
                 </div>
 
@@ -273,20 +276,20 @@ if (isset($_REQUEST["UpdateID"])) {
                         <table width="90%" align="center" class="table table-bordered table-sm text-center">
                             <tr bgcolor="#FAFAFA">
                                 <td colspan="10" class="text-center text-info">
-                                    لیست افراد
+                                    <? echo C_MP_PEOPLE_LIST ?>
                                 </td>
                             </tr>
                             <thead style="background-color: #FAFAFA">
                             <tr>
                                 <td class="text-info" scope="col">&nbsp;</td>
-                                <td class="text-info" scope="col">ردیف</td>
-                                <td class="text-info" scope="col">ویرایش</td>
-                                <td class="text-info" scope="col">تصویر</td>
-                                <td class="text-info" scope="col"><a href="javascript: Sort('pfname', 'ASC');">نام</a></td>
-                                <td class="text-info"><a href="javascript: Sort('plname', 'ASC');">نام خانوادگی</a></td>
-                                <td class="text-info" scope="col">ایمیل</td>
-                                <td class="text-info" scope="col">موبایل</td>
-                                <td class="text-info" scope="col">پرداختها</td>
+                                <td class="text-info" scope="col"><? echo C_ROW?></td>
+                                <td class="text-info" scope="col"><? echo C_EDIT ?></td>
+                                <td class="text-info" scope="col"><? echo C_MP_IMAGE ?></td>
+                                <td class="text-info" scope="col"><a href="javascript: Sort('pfname', 'ASC');"><? echo C_NAME ?></a></td>
+                                <td class="text-info"><a href="javascript: Sort('plname', 'ASC');"><? echo C_LAST_NAME ?></a></td>
+                                <td class="text-info" scope="col"><? echo C_MP_EMAIL?></td>
+                                <td class="text-info" scope="col"><? echo C_MP_MOBILE?></td>
+                                <td class="text-info" scope="col"><? echo C_MP_PAYMENTS ?></td>
                             </tr>
                             </thead>
                             <tbody>

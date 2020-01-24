@@ -431,6 +431,15 @@ if(UI_LANGUAGE=="EN") {
     define('C_DATABASES', 'پایگاه های داده');
     define("C_SERVER", "سرور");
     define("C_TABLES" , "جداول");
+	
+	//EN fo MangePersons.php
+    define("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
+    define("C_MP_EMAIL", "Email");
+    define("C_MP_MOBILE", "Mobile");
+    define("C_MP_USERNAME", "Username");
+    define("C_MP_PEOPLE_LIST", "User lists");
+    define("C_MP_IMAGE", "Image");
+    define("C_MP_PAYMENTS", "Payments");
 }
 else
 {
@@ -859,6 +868,15 @@ else
     define("C_DATABASES", "Databases");
     define("C_SERVER", "Server");
     define("C_TABLES" , "Tables");
+	
+	//ManagePersons.php Hoormazd Ranjbar
+    define("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
+    define("C_MP_EMAIL", "ایمیل");
+    define("C_MP_MOBILE", "موبایل");
+    define("C_MP_USERNAME", "حساب کاربری");
+    define("C_MP_PEOPLE_LIST", "لیست افراد");
+    define("C_MP_IMAGE", "تصویر");
+    define("C_MP_PAYMENTS", "پرداختها");	
 }   
 
 ?>
