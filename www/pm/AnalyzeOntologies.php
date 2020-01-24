@@ -11,6 +11,7 @@ include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/ontologies.class.php");
 HTMLBegin();
+echo "<div class=\"container\">";
 $mysql = pdodb::getInstance();
 
 if(isset($_REQUEST["label"]))
@@ -23,14 +24,14 @@ if(isset($_REQUEST["label"]))
   where label=?";
   $mysql->Prepare($query);
   $res = $mysql->ExecuteStatement(array($_REQUEST["label"]));
-  echo "<table border=1 cellspacing=0 cellpadding=1 align=center>";
+  echo "<div class='table-responsive text-center'> <table class=\"table table-striped\">";
   while($rec = $res->fetch())
   {
     echo "<tr>";
-    echo "<td>".$rec["OntologyTitle"]."</td>";
+    echo "<td><br>".$rec["OntologyTitle"]."</td>";
     $EntityName = $rec["ClassTitle"];
-    echo "<td>Class</td>";
-    echo "<td><A target=_blank href='ManageOntologyClassLabels.php?UpdateID=".$rec["OntologyClassLabelID"]."&OntologyClassID=".$rec["OntologyClassID"]."'>".$rec["ClassTitle"]."</a></td>";
+    echo "<td>".C_Class."</td>";
+    echo "<td><a target=_blank href='ManageOntologyClassLabels.php?UpdateID=".$rec["OntologyClassLabelID"]."&OntologyClassID=".$rec["OntologyClassID"]."'>".$rec["ClassTitle"]."</a></td>";
     echo "<td>".$rec["label"]."</td>";
     echo "</tr>";
   }
@@ -47,7 +48,7 @@ if(isset($_REQUEST["label"]))
     echo "<tr>";
     echo "<td>".$rec["OntologyTitle"]."</td>";
     $EntityName = $rec["PropertyTitle"];
-    echo "<td>Property</td>";
+    echo "<td>".C_Property."</td>";
     echo "<td><A target=_blank href='ManageOntologyPropertyLabels.php?UpdateID=".$rec["OntologyPropertyLabelID"]."&OntologyPropertyID=".$rec["OntologyPropertyID"]."'>".$rec["PropertyTitle"]."</a></td>";
     echo "<td>".$rec["label"]."</td>";
     echo "</tr>";
@@ -61,27 +62,35 @@ if(isset($_REQUEST["label"]))
   {
     $LabelName = $_REQUEST["LabelName"];
   }
-  
-  echo "<tr class=FooterOfTable><td colspan=4 align=center><input type=button value='بستن' onclick='window.close()'></td></tr>";
-  echo "</table>";
+  echo "<tr><td colspan =4 class='text-center'><input type=button class =' btn btn-danger' value='".CLOSE_N."' onclick='window.close()'></td></tr>";
+  echo "</table></div>";
 } 
 ?>
-<form method=post name=f1 id=f1>
-<input type=hidden name="label" id="label" value="<? echo $_REQUEST["label"] ?>">
-<input type=text name='EntityName' id='EntityName' value='<? echo $EntityName ?>' size=100>
-<input type=submit value='جستجو در نام کلاسها و خصوصیات'>
+<form class="form-horizontal" method=post name=f1 id=f1>
+    <div class="container">
+        <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
+            <div class="col-12">
+                <div class="row">
+<input type=hidden class="form-control " name="label" id="label" value="<? echo $_REQUEST["label"] ?>"></div>
+                <div class="row">
+<input type=text class="form-control text-center" name='EntityName' id='EntityName' value='<? echo $EntityName ?>' size=100>
+                </div> <div class="row">
+<? echo"<input type=submit class='form-control' value='".C_SinCnnP."'>"; ?>
+                </div> </div>
+        </div>
+    </div>
 </form>
 <?
   if(isset($_REQUEST["EntityName"]))
   {
-    echo "<table>";
+    echo "<div class=\"table-responsive\"> <table class=\"table table-striped\">";
     $res = $mysql->Execute("select * from projectmanagement.OntologyClassLabels 
     JOIN projectmanagement.OntologyClasses using (OntologyClassID) 
     JOIN projectmanagement.ontologies using (OntologyID) 
     where ClassTitle like '%".$_REQUEST["EntityName"]."%'");
     while($rec = $res->fetch())
     {
-      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>Class</td><td>".$rec["ClassTitle"]."</td><td>";
+      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>".C_Class."</td><td>".$rec["ClassTitle"]."</td><td>";
       echo "<A target=_blank href='ManageOntologyClassLabels.php?UpdateID=".$rec["OntologyClassLabelID"]."&OntologyClassID=".$rec["OntologyClassID"]."'>";
       echo $rec["label"]."</a></td></tr>";
     }
@@ -91,30 +100,32 @@ if(isset($_REQUEST["label"]))
     where PropertyTitle like '%".$_REQUEST["EntityName"]."%'");
     while($rec = $res->fetch())
     {
-      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>Property</td><td>".$rec["PropertyTitle"]."</td><td>";
+      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>".C_Property."</td><td>".$rec["PropertyTitle"]."</td><td>";
       echo "<A target=_blank href='ManageOntologyPropertyLabels.php?UpdateID=".$rec["OntologyPropertyLabelID"]."&OntologyPropertyID=".$rec["OntologyPropertyID"]."'>";
       echo $rec["label"]."</a></td></tr>";
     }
-    echo "</table>";
+    echo "</table></div>";
   }
 ?>
 
 <form method=post name=f1 id=f1>
+    <div class="form-group">
 <input type=hidden name="label" id="label" value="<? echo $_REQUEST["label"] ?>">
-<input type=text name='LabelName' id='LabelName' value='<? echo $LabelName ?>' size=100>
-<input type=submit value='جستجو در برچسبها'>
+<input type=text class="form-control text-center" name='LabelName' id='LabelName' value='<? echo $LabelName ?>' size=100>
+<? echo"<input type=submit class='form-control text-center' value='".C_SinLabels."'>" ?>
+    </div>
 </form>
 <?
   if(isset($_REQUEST["LabelName"]))
   {
-    echo "<table>";
+    echo "<div class=\"table-responsive\"> <table class=\"table table-striped\">";
     $res = $mysql->Execute("select * from projectmanagement.OntologyClassLabels 
     JOIN projectmanagement.OntologyClasses using (OntologyClassID) 
     JOIN projectmanagement.ontologies using (OntologyID) 
     where label like '%".$_REQUEST["LabelName"]."%'");
     while($rec = $res->fetch())
     {
-      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>Class</td><td>".$rec["ClassTitle"]."</td><td>".$rec["label"]."</td></tr>";
+      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>".C_Class."</td><td>".$rec["ClassTitle"]."</td><td>".$rec["label"]."</td></tr>";
     }
     $res = $mysql->Execute("select * from projectmanagement.OntologyPropertyLabels 
     JOIN projectmanagement.OntologyProperties using (OntologyPropertyID) 
@@ -122,10 +133,11 @@ if(isset($_REQUEST["label"]))
     where label like '%".$_REQUEST["LabelName"]."%'");
     while($rec = $res->fetch())
     {
-      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>Property</td><td>".$rec["PropertyTitle"]."</td><td>".$rec["label"]."</td></tr>";
+      echo "<tr><td>".$rec["OntologyTitle"]."</td><td>".C_Property."</td><td>".$rec["PropertyTitle"]."</td><td>".$rec["label"]."</td></tr>";
     }
-    echo "</table>";
+    echo "</table></div>";
   }
+  echo "</div>";
 ?>
 
 </html>

@@ -304,7 +304,6 @@ if(UI_LANGUAGE=="EN") {
     define("C_SESSION_TITLE","Session Title");
     define("C_DURATION","Duration");
     define("C_SESSION_STATUS","Session Status");
-    define("C_CREATE","Create");
     define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
     define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
     define("C_APPROVE","Approve");
@@ -312,12 +311,7 @@ if(UI_LANGUAGE=="EN") {
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
-    define("C_DATE", "Date");
-    define("C_DESCRIPTION", "Description");
-    define("C_SAVE", "Save");
-    define("C_NEW", "New");
-    define("C_ROW", "Row");
-    define("C_EDIT", "Edit");
+
     define("C_IMPORTANT_DATES", "Important dates");
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
@@ -327,12 +321,8 @@ if(UI_LANGUAGE=="EN") {
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
-    define("C_TITLE", "Title");
-    define("C_SAVE", "Save");
-    define("C_NEW", "New");
     define("C_ACTIONS_TYPES", "Action types");
     define("C_ACTIONS_COUNT", "Action count");
-    define("C_DELETE", "Delete");
     define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
@@ -460,6 +450,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_MA_ACTION", "Action");
     define("C_MA_DONE_DATE", "Date");
     define("C_MA_TOTAL_FIND", "Total Found items");
+    //Analyze Ontology By Amir Karami
+    define("C_Class", "Class");
+    define("C_Property", "Property");
+    define("C_SinCnnP","Search In Classes Name and Properties");
+    define("C_SinLabels","Search In Labels");
 }
 else
 {
@@ -756,12 +751,6 @@ else
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "ایجاد/ویرایش تاریخهای مهم");
-    define("C_DATE", "تاریخ");
-    define("C_DESCRIPTION", "شرح");
-    define("C_SAVE", "ذخیره");
-    define("C_NEW", "جدید");
-    define("C_ROW", "ردیف");
-    define("C_EDIT", "ویرایش");
     define("C_IMPORTANT_DATES", "تاریخ های مهم");
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
@@ -771,12 +760,8 @@ else
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
-    define("C_TITLE", "عنوان");
-    define("C_SAVE", "ذخیره");
-    define("C_NEW", "جدید");
     define("C_ACTIONS_TYPES", "انواع اقدامات");
     define("C_ACTIONS_COUNT", "تعداد اقدامات");
-    define("C_DELETE", "حذف");
     define("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
@@ -857,7 +842,6 @@ else
     define("C_SESSION_TITLE","عنوان جلسه");
     define("C_DURATION","مدت جلسه");
     define("C_SESSION_STATUS","وضعیت جلسه");
-    define("C_CREATE","ایجاد");
     define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
     define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
     define("C_APPROVE", "تایید");
@@ -910,12 +894,17 @@ else
     define("C_MQ_FILL", "پر شده");
     define("C_MQ_LAST_ACCEPT", "تایید نهایی");
     define("C_MQ_MAKE", "ایجاد");
-
+    define("C_Time", "ss");
 	//MyActions.php Hoormazd Ranjbar
     define("C_MYACTIONS", "اقدامات انجام شده");
     define("C_MA_ACTION", "عمل انجام شده");
     define("C_MA_DONE_DATE", "تاریخ انجام شده");
-    define("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");	
-}   
+    define("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");
+    //Analyze Ontology By Amir Karami:
+    define("C_Class", "کلاس");
+    define("C_Property", "ویژگی");
+    define("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
+    define("C_SinLabels","جستجو در برچسبها");
+}
 
 ?>
