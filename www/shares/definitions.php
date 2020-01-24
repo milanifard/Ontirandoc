@@ -499,21 +499,21 @@ if(UI_LANGUAGE=="EN") {
 
 
     ///// Mahdi Ghayour /////
-    define2("C_TASK", "کار");
-    define2("C_TASK_TYPE", "نوع کار");
-    define2("C_DOCUMENT", "سند");
-    define2("C_ACTION", "اقدام");
-    define2("C_PRIORITY_NORMAL", "عادی");
-    define2("C_PRIORITY_LOW", "پایین");
-    define2("C_PRIORITY_HIGH", "بالا");
-    define2("C_PRIORITY_CRITICAL", "بحرانی");
+    define2("C_TASK", "Task");
+    define2("C_TASK_TYPE", "Task type");
+    define2("C_DOCUMENT", "Document");
+    define2("C_ACTION", "Action");
+    define2("C_PRIORITY_NORMAL", "Normal");
+    define2("C_PRIORITY_LOW", "Low");
+    define2("C_PRIORITY_HIGH", "High");
+    define2("C_PRIORITY_CRITICAL", "Critical");
 
-    define2("C_STATUS", "وضعیت");
-    define2('C_STATUS_NOT_START', 'اقدام نشده');
-    define2('C_STATUS_PROGRESSING', 'در دست قدام');
-    define2('C_STATUS_DONE', 'اقدام شده');
-    define2('C_STATUS_SUSPENDED', 'معلق');
-    define2('C_STATUS_REPLYED', 'پاسخ داده شده');
+    define2("C_STATUS", "Status");
+    define2('C_STATUS_NOT_START', 'not started');
+    define2('C_STATUS_PROGRESSING', 'progressing');
+    define2('C_STATUS_DONE', 'done');
+    define2('C_STATUS_SUSPENDED', 'suspended');
+    define2('C_STATUS_REPLYED', 'replyed');
     //// End of Mahdi Ghayour //////
 
 
