@@ -5,6 +5,7 @@ include("classes/messages.class.php");
 include("classes/terms.class.php");
 include("classes/ProjectHistory.class.php");
 include("classes/AccountSpecs.class.php");
+include("classes/RefrenceTypes.class.php");
 HTMLBegin();
 class Test
 {
@@ -724,6 +725,144 @@ Test::add(                      #9
 );
 
 //AccountSpecs.class.php -Ali Noori - Finish
+
+//RefrenceTypes.class.php -Hoormazd Ranjbar - Start
+Test::add(              #1
+        function ()
+        {
+            $obj = new be_RefrenceTypes();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    , "be_RefrenceTypes.class->LoadDataFromDatabase", "RefrenceTypes"
+);
+Test::add(              #2
+        function ()
+        {
+            try
+            {
+                if(manage_RefrenceTypes::GetCount()==0) {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_RefrenceTypes->GetCount()", "RefrenceTypes"
+);
+Test::add(          #3
+        function ()
+        {
+            try
+            {
+                if(manage_RefrenceTypes::GetLastID()==-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_RefrenceTypes->GetLastID()", "RefrenceTypes"
+);
+Test::add(          #4
+        function()
+        {
+            try
+            {
+                if(manage_RefrenceTypes::Add("1","RefExpTitle")>-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_RefrenceTypes->Add()", "RefrenceTypes"
+);
+Test::add(          #5
+    function ()
+    {
+        try
+        {
+            manage_RefrenceTypes::Update("1","RefExpTitle");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->Update()", "RefrenceTypes"
+);
+Test::add(                  #6
+    function ()
+    {
+        try
+        {
+            manage_RefrenceTypes::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->Remove()", "RefrenceTypes"
+);
+Test::add(                  #7
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_RefrenceTypes::GetList())){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->GatList()", "RefrenceTypes"
+);
+Test::add(                      #8
+    function ()
+    {
+        try
+        {
+            if(manage_RefrenceTypes::ComparePassedDataWithDB("1","RefExpTitle")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->ComparePassedDataWithDB()", "RefrenceTypes"
+);
+//RefrenceTypes.class.php -Hoormazd Ranjbar - Finish
+
 
 $res = Test::run();
 echo "<br>";
