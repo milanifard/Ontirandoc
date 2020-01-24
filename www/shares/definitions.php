@@ -431,7 +431,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_DATABASES", "Databases");
     define("C_SERVER", "Server");
     define("C_TABLES" , "Tables");
-    define("C_DOING_TIME" , "Deadline");
+    define("C_DEADLINE" , "Deadline");
 }
 else
 {
@@ -860,7 +860,7 @@ else
     define('C_DATABASES', 'پایگاه های داده');
     define("C_SERVER", "سرور");
     define("C_TABLES" , "جداول");
-    define("C_DOING_TIME" , "مهلت انجام");
+    define("C_DEADLINE" , "مهلت انجام");
 }   
 
 ?>
