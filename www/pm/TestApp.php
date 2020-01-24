@@ -866,6 +866,146 @@ Test::add(                      #8
 //RefrenceTypes.class.php -Hoormazd Ranjbar - Finish
 
 
+//-------------------------------------------------------------------------------------------
+//--------------------FacilityPages.class.php  by Naghme Mohammadifar------------------------
+//-------------------------------------Start-------------------------------------------------
+
+Test::add(
+    function()
+    {
+        $obj = new be_FacilityPages();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_FacilityPages.class->LoadDataFromDatabase()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::GetCount(1)==0) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages.class->GetCount()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::GetLastID()==-1) {
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->GetLastID()", "Message"
+);
+
+Test::add(
+        function()
+        {
+            try
+            {
+                if(manage_FacilityPages::Add("1","pageName")>-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+}
+    ,"manage_FacilityPages->Add()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_FacilityPages::Update("1","pageName");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->Update()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_FacilityPages::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->Remove()", "Message"
+);
+Test::add(
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_FacilityPages::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->GetList()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::ComparePassedDataWithDB("1","PageName")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->ComparePassedDataWithDB()", "Message"
+);
+//---------------------------END OF FacilityPages.class.php -----------------------------------------------------
+
+
 $res = Test::run();
 echo "<br>";
 echo "<div class='container'>";
