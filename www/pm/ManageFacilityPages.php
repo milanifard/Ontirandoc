@@ -140,7 +140,7 @@ if(isset($_REQUEST["UpdateID"]))
                 echo "</td >";
                 echo "<td width=\"20px\" >".($k+1)."</td>";
                 echo "	<td width=\"20px\" ><a class=\"btn btn-sm btn-outline-primary\"href=\"ManageFacilityPages.php?UpdateID=".$res[$k]->FacilityPageID."&FacilityID=".$_REQUEST["FacilityID"]."\">
-	                    <i class=\"fa fa-edit\"></a></td>";
+	                    <i class=\"fa fa-edit\"></i></a></td>";
                 echo "	<td >".htmlentities($res[$k]->PageName, ENT_QUOTES, 'UTF-8')."</td>";
                 echo "</tr>";
             }

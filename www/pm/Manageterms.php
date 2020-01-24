@@ -63,7 +63,8 @@ function GetSimilarTerm($TermID, $TermTitle, $SimilarList, $thereshold)
   while($rec = $res->fetch())
   {
     $distance = levenshtein($TermTitle, $rec["TermTitle"]);
-    $p = (1-($distance/max(strlen($TermTitle), strlen($rec["TermTitle"]))) )*100;
+    if(max(strlen($TermTitle), strlen($rec["TermTitle"])) == 0) $p =0;
+    else $p = (1-($distance/max(strlen($TermTitle), strlen($rec["TermTitle"]))) )*100;
     if($p>$thereshold)
     {
       $SimilarList[$i]["TermID"] = $rec["TermID"];
@@ -85,7 +86,7 @@ function GetHyponymSynSets($SynSetIDs)
 			    synSetID1 in (".$SynSetIDs.") 
 			    and relationType='hyponym'
 			   union select synSetID1 as ID  from ferdowsnet.relationsynset where 
-			    synSetID2 in (".$SynSetIDs.") 
+			    synSetID2 in (".$SynSetIDs.")
 			    and relationType='hypernym'
 			    ");
   $i = 0;
@@ -107,7 +108,7 @@ function GetHypernymSynSets($SynSetIDs)
 			    synSetID1 in (".$SynSetIDs.") 
 			    and relationType='hypernym'
 			   union select synSetID1 as ID  from ferdowsnet.relationsynset where 
-			    synSetID2 in (".$SynSetIDs.") 
+			    synSetID2 in (".$SynSetIDs.")
 			    and relationType='hyponym'
 			    ");
   $i = 0;
@@ -167,7 +168,7 @@ function GetHyperTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
   $mysql = pdodb::getInstance();
   $i = count($SimilarList);
   $res = $mysql->Execute("select TermID, TermTitle,CreatorUserID  from projectmanagement.terms where TermID<>'".$TermID."'  and TermID in (select TermID from projectmanagement.TermReferenceMapping )");
-			    
+
   while($rec = $res->fetch())
   {
     if($TermTitle!="" && $rec["TermTitle"]!="" && strpos($TermTitle, $rec["TermTitle"])>-1)
@@ -237,14 +238,14 @@ function GetHypoTermsByStructSimilarTerm($TermID, $TermTitle, $SimilarList)
   }
 
   $SynSetIDs = GetTermSynSetIDs($TermTitle);
-  $SimilarList = GetSameSynSetTerms($SynSetIDs, $TermTitle, $SimilarList); 
+  $SimilarList = GetSameSynSetTerms($SynSetIDs, $TermTitle, $SimilarList);
 
   $HypoSynSetIDs = GetHyponymSynSets($SynSetIDs);
-  $SimilarList = GetHyponymTerms($HypoSynSetIDs, $TermTitle, $SimilarList); 
+  $SimilarList = GetHyponymTerms($HypoSynSetIDs, $TermTitle, $SimilarList);
 
   $HyperSynSetIDs = GetHypernymSynSets($SynSetIDs);
-  $SimilarList = GetHypernymTerms($HyperSynSetIDs, $TermTitle, $SimilarList); 
-  
+  $SimilarList = GetHypernymTerms($HyperSynSetIDs, $TermTitle, $SimilarList);
+
   return $SimilarList;
 }
 
@@ -266,7 +267,7 @@ $CheckAllScript = "";
 $UnCheckAllScript = "";
 $mysql = pdodb::getInstance();
 
-if(isset($_REQUEST["ReplaceTermID"])) 
+if(isset($_REQUEST["ReplaceTermID"]))
 {
   $query = "select TermTitle from projectmanagement.terms where TermID=?";
   $mysql->Prepare($query);
@@ -288,14 +289,14 @@ if(isset($_REQUEST["ReplaceTermID"]))
   $mysql->Prepare($query);
   $mysql->ExecuteStatement(array($_REQUEST["TermID"]));
 
-  $query = "insert into projectmanagement.TermsManipulationHistory (PreTermID, PreTermTitle, NewTermID, NewTermTitle, ActionType, PersonID, ATS) 
+  $query = "insert into projectmanagement.TermsManipulationHistory (PreTermID, PreTermTitle, NewTermID, NewTermTitle, ActionType, PersonID, ATS)
 	    values (?, ?, ?, ?, 'REPLACE', '".$_SESSION["PersonID"]."', now()) ";
   $mysql->Prepare($query);
   $mysql->ExecuteStatement(array($_REQUEST["TermID"], $PreTermTitle, $_REQUEST["ReplaceTermID"], $NewTermTitle));
   
-  echo "<p align=center>عملیات جایگزینی انجام شد</p>";
+  echo "<p class='text-center'>عملیات جایگزینی انجام شد</p>";
   
-  echo "<p align=center><a href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></p>";
+  echo "<p class='text-center'><a href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></p>";
   die();
 }
 
@@ -310,7 +311,7 @@ if(isset($_REQUEST["Merge"]))
   $SimilarList = GetSimilarTerm($rec["TermID"], $rec["TermTitle"], $SimilarList, $thereshold);
   $SimilarList = GetHypoTermsByStructSimilarTerm($rec["TermID"], $rec["TermTitle"], $SimilarList);
   $SimilarList = GetHyperTermsByStructSimilarTerm($rec["TermID"], $rec["TermTitle"], $SimilarList);
-  
+
   $TermElements = explode(" ",$rec["TermTitle"]);
   if(count($TermElements)>1)
   {
@@ -324,7 +325,7 @@ if(isset($_REQUEST["Merge"]))
       }
     }
   }
-  
+
   $DistinctArray = array();
   for($i=0; $i<count($SimilarList); $i++)
   {
@@ -347,17 +348,23 @@ if(isset($_REQUEST["Merge"]))
     }
   }
   $SimilarList = $DistinctArray;
-  
-  echo "<table width=90% align=center border=1 cellspacing=0 cellpadding=5>";
-  echo "<tr bgcolor=#888888>";
-  echo "<td colspan=6>واژه: ".$rec["TermTitle"]." - ثبت کننده: ".$rec["CreatorUserID"];
-  echo "<br>";
-  echo "ارجاعات: ";
-  ShowTermMappings($rec["TermID"]);
-  echo "</td>";
-  echo "</tr>";
-  echo "<tr class=HeaderOfTable>";
-  echo "<td width=1%>کد</td><td>واژه</td><td>نوع شباهت</td><td>ثبت کننده</td><td>منابع و تعداد تکرار</td><td>جایگزینی</td>";
+  echo "<div class='container'><br>";
+  echo "    <table class='table table-striped table-striped'> 
+                <thead>";
+  echo "            <tr class='table-info text-center'>";
+  echo "                <th colspan=4>واژه  : ".$rec["TermTitle"]." </th>
+                        <th>ثبت کننده : ".$rec["CreatorUserID"]. "</th>
+                        <th>ارجاعات: ";ShowTermMappings($rec["TermID"]) ; echo "</th>";
+  echo "            </tr>
+                </thead>
+                <tbody>";
+  echo "<tr>";
+  echo "    <td >کد</td>
+            <td>واژه</td>
+            <td>نوع شباهت</td>
+            <td>ثبت کننده</td>
+            <td>منابع و تعداد تکرار</td>
+            <td>جایگزینی</td>";
   echo "</tr>";
   for($i=0; $i<count($SimilarList); $i++)
   {
@@ -369,16 +376,17 @@ if(isset($_REQUEST["Merge"]))
     echo "<td>";
     ShowTermMappings($SimilarList[$i]["TermID"]);
     echo "</td>";
-    echo "<td><a href='Manageterms.php?TermID=".$rec["TermID"]."&ReplaceTermID=".$SimilarList[$i]["TermID"]."'>واژه انتخابی با واژه این ردیف جایگزین شود</a></td>";
+    echo "<td><a class='btn' href='Manageterms.php?TermID=".$rec["TermID"]."&ReplaceTermID=".$SimilarList[$i]["TermID"]."'>واژه انتخابی با واژه این ردیف جایگزین شود</a></td>";
     echo "</tr>";
   }
   echo "<tr>";
-  echo "<td colspan=6 align=center><input type=button value='بازگشت' onclick='javascript: history.back();'></td>";
-  echo "</tr>";
+  echo "<td colspan=6 class='text-center'>
+            <input type=button class='btn btn-danger' value='بازگشت' onclick='javascript: history.back();'></td>";
+  echo "</tr> </tbody> </div>";
   die();
 }
 
-if(isset($_REQUEST["Save"])) 
+if(isset($_REQUEST["Save"]))
 {
 	if(isset($_REQUEST["Item_TermTitle"]))
 		$Item_TermTitle=$_REQUEST["Item_TermTitle"];
@@ -394,13 +402,13 @@ if(isset($_REQUEST["Save"]))
 				, $Item_comment
 				);
 	}	
-	else 
-	{	
+	else
+	{
 		manage_terms::Update($_REQUEST["UpdateID"] 
 				, $Item_TermTitle
 				, $Item_comment
 				);
-	}	
+	}
 	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
 }
 $LoadDataJavascriptCode = '';
@@ -408,67 +416,80 @@ $Item_comment = "";
 if(isset($_REQUEST["UpdateID"])) 
 {	
 	$obj = new be_terms();
-	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]); 
-	$LoadDataJavascriptCode .= "document.f1.Item_TermTitle.value='".htmlentities($obj->TermTitle, ENT_QUOTES, 'UTF-8')."'; \r\n "; 
-	$Item_comment = htmlentities($obj->comment, ENT_QUOTES, 'UTF-8'); 
-}	
+	$obj->LoadDataFromDatabase($_REQUEST["UpdateID"]);
+	$LoadDataJavascriptCode .= "document.f1.Item_TermTitle.value='".htmlentities($obj->TermTitle, ENT_QUOTES, 'UTF-8')."'; \r\n ";
+	$Item_comment = htmlentities($obj->comment, ENT_QUOTES, 'UTF-8');
+}
 ?>
+
 <form method="post" id="f1" name="f1" >
-<?
-	if(isset($_REQUEST["UpdateID"])) 
+<?php
+	if(isset($_REQUEST["UpdateID"]))
 	{
+	    echo "<div class='container'>";
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 		echo manage_terms::ShowSummary($_REQUEST["UpdateID"]);
 		echo manage_terms::ShowTabs($_REQUEST["UpdateID"], "Newterms");
+		echo "</div>";
 	}
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش اصطلاحات</td>
+
+<div class='container'>
+<!--    **************************************************************************  -->
+<br><table class="table table-bordered ">
+    <thead>
+        <tr class="text-center table-info">
+            <th align="center">ایجاد/ویرایش اصطلاحات</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="form-group row">
+                    <label for="Item_TermTitle" class="col-sm-2 col-form-label">عنوان</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="Item_TermTitle" id="Item_TermTitle" class="form-control" required>
+                    </div>
+	        </td>
+        </tr>
+        <tr>
+	        <td>
+                <div class="form-group row">
+                    <label for="Item_comment" class="col-sm-2 col-form-label">یادداشت</label>
+                    <div class="col-sm-10">
+                        <textarea name="Item_comment" id="Item_comment" class="form-control"><?php echo $Item_comment ?></textarea>
+                    </div>
+
+	        </td>
+
+        </tr>
+        <tr>
+            <td colspan=2 class="text-center">
+                <span id=DetailsSpan name=DetailsSpan></span>
+            </td>
 </tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<tr>
-	<td width="1%" nowrap>
- عنوان
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_TermTitle" id="Item_TermTitle" maxlength="1000" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- یادداشت
-	</td>
-	<td nowrap>
-	<textarea name="Item_comment" id="Item_comment" cols="80" rows="5"><? echo $Item_comment ?></textarea>
-	</td>
-</tr>
-<tr><td colspan=2 bgcolor=#cccccc><span id=DetailsSpan name=DetailsSpan></span></td></tr>
+        <tr class="text-center">
+            <td>
+                <input type="button" class="btn   btn-success" onclick="javascript: ValidateForm();" value="ذخیره">
+                <input type="button" class="btn   btn-danger" onclick="javascript: document.location='Manageterms.php';" value="جدید">
+                <?php if(isset($_REQUEST["UpdateID"])) { ?>
+                <input type="button" class="btn   btn-info" onclick="javascript: MergeSuggestions('<?php echo $_REQUEST["UpdateID"]; ?>');" value="پیشنهادات ادغام">
+                <?php } ?>
+            </td>
+        </tr>
+    </tbody>
+
 </table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='Manageterms.php';" value="جدید">
-<? if(isset($_REQUEST["UpdateID"])) { ?>
-  <input type="button" onclick="javascript: MergeSuggestions('<? echo $_REQUEST["UpdateID"]; ?>');" value="پیشنهادات ادغام">
-<? } ?>
- 
-</td>
-</tr>
-</table>
+
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
-	<? echo $LoadDataJavascriptCode; ?>
+	<?php echo $LoadDataJavascriptCode; ?>
 	function ValidateForm()
 	{
 		document.f1.submit();
 	}
 </script>
-<?php 
+<?php
 $NumberOfRec = 150;
  $k=0;
 $PageNumber = 0;
@@ -482,9 +503,9 @@ if(isset($_REQUEST["PageNumber"]))
 }
 else
 {
-	$FromRec = 0; 
+	$FromRec = 0;
 }
-if(isset($_REQUEST["SearchAction"])) 
+if(isset($_REQUEST["SearchAction"]))
 {
 	$OrderByFieldName = "TermTitle";
 	$OrderType = "";
@@ -495,198 +516,222 @@ if(isset($_REQUEST["SearchAction"]))
 	}
 	$TermTitle=htmlentities($_REQUEST["Item_TermTitle"], ENT_QUOTES, 'UTF-8');
 	$comment=htmlentities($_REQUEST["Item_comment"], ENT_QUOTES, 'UTF-8');
-} 
+}
 else
-{ 
+{
 	$OrderByFieldName = "TermTitle";
 	$OrderType = "";
 	$TermTitle='';
 	$comment='';
 }
-$res = manage_terms::Search($TermTitle, $comment, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
+$res = manage_terms::Search($TermTitle, $comment, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
 $SomeItemsRemoved = false;
 for($k=0; $k<count($res); $k++)
 {
-	if(isset($_REQUEST["ch_".$res[$k]->TermID])) 
+	if(isset($_REQUEST["ch_".$res[$k]->TermID]))
 	{
-		manage_terms::Remove($res[$k]->TermID); 
+		manage_terms::Remove($res[$k]->TermID);
 		$SomeItemsRemoved = true;
 	}
 }
 if($SomeItemsRemoved)
-	$res = manage_terms::Search($TermTitle, $comment, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType); 
+	$res = manage_terms::Search($TermTitle, $comment, "", $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
 ?>
-<form id="SearchForm" name="SearchForm" method=post> 
-<input type="hidden" name="PageNumber" id="PageNumber" value="0">
-<input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
-<input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
-<input type="hidden" name="SearchAction" id="SearchAction" value="1"> 
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr class="HeaderOfTable">
-<td><img src='images/search.gif'><b><a href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'>جستجو</a></td>
-</tr>
-<tr id='SearchTr' style='display: none'>
-<td>
-<table width="100%" align="center" border="0" cellspacing="0">
-<tr>
-	<td width="1%" nowrap>
- عنوان
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_TermTitle" id="Item_TermTitle" maxlength="1000" size="40">
-	</td>
-</tr>
+<form id="SearchForm" name="SearchForm" method=post>
+    <div class="form-group row">
+        <input type="hidden" name="PageNumber" id="PageNumber" value="0" class="form-control">
+        <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" class="form-contro value="<?php echo $OrderByFieldName; ?>">
+        <input type="hidden" name="OrderType" id="OrderType" class="form-contro value="<?php echo $OrderType; ?>">
+        <input type="hidden" name="SearchAction" id="SearchAction" class="form-contro value="1">
+    </div>
+    <br>
+    <table class="table table-bordered ">
+        <thead>
+            <tr class="table-info">
+                <th >
+                    <b><a class='btn btn-sm ' href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display="";
+                                                                            else document.getElementById("SearchTr").style.display="none";'>
+                        <i class="fa fa-search"></i>جستجو
+                    </a>
+            </th>
+            </tr>
+        </thead>
+        <tbody id='SearchTr' style='display: none'>
+            <tr >
+                <td >
+                    <div class="form-group row">
+                        <label for="Item_TermTitle" class="col-sm-2 col-form-label">عنوان</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Item_TermTitle" id="Item_TermTitle" class="form-control">
+                        </div>
+                    </div>
+	            </td>
+            </tr>
 
-<tr>
-	<td width="1%" nowrap>
- یادداشت
-	</td>
-	<td nowrap>
-	<input type="text" name="Item_comment" id="Item_comment" maxlength="1000" size="40">
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-<td colspan="2" align="center"><input type="submit" value="جستجو"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
+            <tr>
+	            <td>
+                    <div class="form-group row">
+                        <label for="Item_comment" class="col-sm-2 col-form-label">یادداشت</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Item_comment" id="Item_comment" rows="2" class="form-control">
+                        </div>
+                    </div>
+	            </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <input type="submit" class="btn btn-success" value="جستجو">
+                </td>
+            </tr>
+    </table>
 </form>
-<? 
-if(isset($_REQUEST["SearchAction"])) 
+<?php
+if(isset($_REQUEST["SearchAction"]))
 {
 ?>
 <script>
-	document.SearchForm.Item_TermTitle.value='<? echo htmlentities($_REQUEST["Item_TermTitle"], ENT_QUOTES, 'UTF-8'); ?>';
-	document.SearchForm.Item_comment.value='<? echo htmlentities($_REQUEST["Item_comment"], ENT_QUOTES, 'UTF-8'); ?>';
+	document.SearchForm.Item_TermTitle.value='<?php echo htmlentities($_REQUEST["Item_TermTitle"], ENT_QUOTES, 'UTF-8'); ?>';
+	document.SearchForm.Item_comment.value='<?php echo htmlentities($_REQUEST["Item_comment"], ENT_QUOTES, 'UTF-8'); ?>';
 </script>
-<?
+<?php
 }
-?> 
-<form id="ListForm" name="ListForm" method="post"> 
-<? if(isset($_REQUEST["PageNumber"]))
-	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
-<? if(isset($_REQUEST["SearchAction"])) { ?>
-<input type="hidden" name="SearchAction" id="SearchAction" value="1"> 
-<input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
-<input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
-<input type="hidden" name="Item_TermTitle" id="Item_TermTitle" value="<? echo $_REQUEST["Item_TermTitle"]; ?>" >
-<input type="hidden" name="Item_comment" id="Item_comment" value="<? echo $_REQUEST["Item_comment"]; ?>" >
-<? } ?>
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="9">
-	اصطلاحات
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"><input type=checkbox name=CAll onclick='javascript: if(this.checked) CheckAll(); else UnCheckAll();'></td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td><a href="javascript: Sort('TermTitle', 'ASC');">عنوان</a></td>
-	<td><a href="javascript: Sort('comment', 'ASC');">یادداشت</a></td>
-	<td><a href="javascript: Sort('CreatorUserID', 'ASC');">ایجاد کننده</a></td>
-	<td><a href="javascript: Sort('CreateDate', 'ASC');">زمان ایجاد</a></td>
-	<td width=1% nowrap><a href="javascript: Sort('ReferCount', 'ASC');">ارجاعات</a></td>
-	<td>عنصر هستان نگار</td>
-</tr>
-<?
+?>
+<form id="ListForm" name="ListForm" method="post">
+    <div class="form-group">
+<?php if(isset($_REQUEST["PageNumber"]))
+	echo "<input class='form-control' type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
+<?php if(isset($_REQUEST["SearchAction"])) { ?>
+    <input class='form-control' type="hidden" name="SearchAction" id="SearchAction" value="1">
+    <input class='form-control' type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<?php echo $OrderByFieldName; ?>">
+    <input class='form-control' type="hidden" name="OrderType" id="OrderType" value="<?php echo $OrderType; ?>">
+    <input class='form-control' type="hidden" name="Item_TermTitle" id="Item_TermTitle" value="<?php echo $_REQUEST["Item_TermTitle"]; ?>" >
+    <input class='form-control' type="hidden" name="Item_comment" id="Item_comment" value="<?php echo $_REQUEST["Item_comment"]; ?>" >
+    </div>
+<?php } ?>
+
+<br><table class="table table-striped table-bordered">
+        <thead>
+            <tr class="text-center table-info">
+                <th colspan="9">
+                اصطلاحات
+                </th>
+            </tr>
+            <tr >
+                <th>
+                    <input type=checkbox name=CAll onclick='javascript: if(this.checked) CheckAll(); else UnCheckAll();'>
+                </th>
+                <th >ردیف</th>
+                <th>ویرایش</th>
+                <th><a class='btn btn-sm' href="javascript: Sort('TermTitle', 'ASC');"><strong>عنوان</strong></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('comment', 'ASC');"><strong>یادداشت</strong></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('CreatorUserID', 'ASC');"><strong>ایجاد کننده</strong></a></th>
+                <th><a class='btn btn-sm' href="javascript: Sort('CreateDate', 'ASC');"><strong>زمان ایجاد</strong></a></th>
+                <th ><a class='btn btn-sm' href="javascript: Sort('ReferCount', 'ASC');"><strong>ارجاعات</strong></a></th>
+                <th>عنصر هستان نگار</th>
+            </tr>
+        </thead>
+        <tbody>
+
+<?php
 for($k=0; $k<count($res); $k++)
 {
   $CheckAllScript .= "document.getElementById(\"ch_".$res[$k]->TermID."\").checked = true;\r\n";
   $UnCheckAllScript .= "document.getElementById(\"ch_".$res[$k]->TermID."\").checked = false;\r\n";
-	if($res[$k]->ReferCount==0)
-		echo "<tr bgcolor='#ff4d4d'>";
-	else if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->TermID."\" id=\"ch_".$res[$k]->TermID."\">";
-	echo "</td>";
-	echo "<td>".($k+$FromRec+1)."</td>";
-	echo "	<td><a href=\"Manageterms.php?UpdateID=".$res[$k]->TermID;
-	if(isset($_REQUEST["SearchAction"]))
-	  echo "&SearchAction=1&Item_TermTitle=".$_REQUEST["Item_TermTitle"]."&Item_comment=".$_REQUEST["Item_comment"];
-	if(isset($_REQUEST["PageNumber"]))
-	  echo "&PageNumber=".$_REQUEST["PageNumber"];
-	echo "\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-	echo "	<td>".htmlentities($res[$k]->TermTitle, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
-	echo "	<td>".htmlentities($res[$k]->CreatorUserID, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".$res[$k]->CreateDate_Shamsi."</td>";
-	echo "<td width=1% nowrap><a  target=\"_blank\" href='ShowTermReferenceMapping.php?TermID=".$res[$k]->TermID ."'>";
-	echo $res[$k]->ReferCount;
-	echo "</a></td>";
-	echo "	<td><a href='TermOntologyPage.php?TermID=".$res[$k]->TermID."' target=_blank>";
-	$ElementName = GetRelatedOntologyElement($res[$k]->TermID);
-	if($ElementName=="")
-	  echo "[ثبت]";
-	else
-	  echo $ElementName;
-	echo "</a></td>";
+//	if($res[$k]->ReferCount==0)
+    echo "<tr >";
+	echo "    <td>";
+	echo "      <input type=\"checkbox\" name=\"ch_".$res[$k]->TermID."\" id=\"ch_".$res[$k]->TermID."\">";
+	echo "    </td>";
+	echo "    <td>".($k+$FromRec+1)."</td>";
+	echo "	  <td><a class = 'btn btn-sm ' href=\"Manageterms.php?UpdateID=".$res[$k]->TermID;
+	                if(isset($_REQUEST["SearchAction"]))
+	                     echo "&SearchAction=1&Item_TermTitle=".$_REQUEST["Item_TermTitle"]."&Item_comment=".$_REQUEST["Item_comment"];
+	                if(isset($_REQUEST["PageNumber"]))
+	                    echo "&PageNumber=".$_REQUEST["PageNumber"];
+	echo "          \"><i class=\"fa fa-edit\" ></i></a></td>";
+	echo "	  <td>".htmlentities($res[$k]->TermTitle, ENT_QUOTES, 'UTF-8')."</td>";
+	echo "	  <td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
+	echo "	  <td>".htmlentities($res[$k]->CreatorUserID, ENT_QUOTES, 'UTF-8')."</td>";
+	echo "	  <td>".$res[$k]->CreateDate_Shamsi."</td>";
+	echo "    <td><a  target=\"_blank\" href='ShowTermReferenceMapping.php?TermID=".$res[$k]->TermID ."'>";
+	echo            $res[$k]->ReferCount;
+	echo "        </a>
+               </td>";
+	echo "	  <td><a href='TermOntologyPage.php?TermID=".$res[$k]->TermID."' target=_blank>";
+	                $ElementName = GetRelatedOntologyElement($res[$k]->TermID);
+                    if($ElementName=="")
+                      echo "ثبت";
+                    else
+                      echo $ElementName;
+	echo "          </a>
+              </td>";
 	echo "</tr>";
 }
 ?>
-<tr class="FooterOfTable">
-<td colspan="9" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	&nbsp;
-	<input type="button" onclick="javascript: window.open('TermFrequency.php');" value="تحلیل آماری">
-</td>
-</tr>
-<tr bgcolor="#cccccc"><td colspan="9" align="right">
-<?
-$TotalCount = manage_terms::SearchResultCount($TermTitle, $comment, ""); 
-for($k=0; $k<$TotalCount/$NumberOfRec; $k++)
-{
-	if($PageNumber!=$k)
-		echo "<a href='javascript: ShowPage(".($k).")'>";
-	echo ($k+1);
-	if($PageNumber!=$k)
-		echo "</a>";
-	echo " ";
-}
-?>
-</td></tr>
-</table>
+        <tr>
+            <td colspan="9" class="text-center">
+	            <input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="حذف">
+	            <input type="button" class="btn btn-success" onclick="javascript: window.open('TermFrequency.php');" value="تحلیل آماری">
+            </td>
+        </tr>
+        <tr >
+            <td colspan="9" class="text-center" ">
+<!--            i couldn't understand why we do need this?-->
+                <?php
+                    $TotalCount = manage_terms::SearchResultCount($TermTitle, $comment, "");
+                    for($k=0; $k<$TotalCount/$NumberOfRec; $k++)
+                    {
+                        if($PageNumber!=$k)
+                            echo "<a href='javascript: ShowPage(".($k).")'>";
+                        echo ($k+1);
+                        if($PageNumber!=$k)
+                            echo "</a>";
+                        echo " ";
+                    }
+                ?>
+            </td>
+        </tr>
+    </tbody>
+    </table>
 </form>
 <form target="_blank" method="post" action="Newterms.php" id="NewRecordForm" name="NewRecordForm">
 </form>
+</div>
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('آیا مطمئن هستید؟')) document.ListForm.submit();
 }
 function ShowPage(PageNumber)
 {
-	SearchForm.PageNumber.value=PageNumber; 
+	SearchForm.PageNumber.value=PageNumber;
 	SearchForm.submit();
 }
 function Sort(OrderByFieldName, OrderType)
 {
-	SearchForm.OrderByFieldName.value=OrderByFieldName; 
-	SearchForm.OrderType.value=OrderType; 
+	SearchForm.OrderByFieldName.value=OrderByFieldName;
+	SearchForm.OrderType.value=OrderType;
 	SearchForm.submit();
 }
 function ShowDetails(TermID)
 {
-  document.getElementById('DetailsSpan').innerHTML = '<img src="images/ajax-loader.gif">';
+  document.getElementById('DetailsSpan').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  // '<img src="images/ajax-loader.gif">';
   var params = "Ajax=1&TermID="+TermID;
-  
   var http = new XMLHttpRequest();
   http.open("POST", "ManageTermReferenceMapping.php", true);
   //Send the proper header information along with the request
-  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  http.setRequestHeader("Content-length", params.length);
-  http.setRequestHeader("Connection", "close");
-  
+    //******XMLHttpRequest isn't allowed to set these headers, they are being set automatically by the browser.
+  // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  // http.setRequestHeader("Content-length", params.length);
+  //http.setRequestHeader("Connection", "close");
+
   http.onreadystatechange = function()
   {//Call a function when the state changes.
     if(http.readyState == 4 && http.status == 200)
     {
-      document.getElementById('DetailsSpan').innerHTML = http.responseText;
+         document.getElementById('DetailsSpan').innerHTML = http.responseText;
     }
   }
   http.send(params);
@@ -698,14 +743,15 @@ function MergeSuggestions(TermID)
 
 function CheckAll()
 {
-  <? echo $CheckAllScript; ?>
+<?php echo $CheckAllScript; ?>
 }
 
 function UnCheckAll()
 {
-  <? echo $UnCheckAllScript; ?>
+<?php echo $UnCheckAllScript; ?>
 }
 
-<? if(isset($_REQUEST["UpdateID"])) { echo "ShowDetails(".$_REQUEST["UpdateID"].");"; } ?>
+<?php
+    if(isset($_REQUEST["UpdateID"])) { echo "ShowDetails(".$_REQUEST["UpdateID"].");"; } ?>
 </script>
 </html>

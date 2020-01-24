@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "EN"); // EN or FA
+define("UI_LANGUAGE", "EN");
 
 if(UI_LANGUAGE=="EN") {
     define("C_SAVE", "Save");
@@ -200,7 +200,7 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define("C_ROLE","Role");
     define("C_SESSIOM_MEMBERS","Session Members");
-    define("C_ARE_YOU_SURE","Are You Sure?");
+   // define("C_ARE_YOU_SURE","Are You Sure?");
     define("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
     define("C_PERSONEL","Employees");
     define("C_OTHER","Others");
@@ -296,9 +296,170 @@ if(UI_LANGUAGE=="EN") {
     define("DATABASE" , "database");
     define("FIELD_M" ,"field");
 
-    //ManageSessionTypes.php By diba aminshahidi
-    // define();
+    // ------------------------ ManageSessionTypes.php By diba aminshahidi -------------------------
+    define("C_PATTERN","Session Pattern");
+    define("C_MEETING_TYPE","Session Type");
+    define("C_SESSIONS","Sessions");
+    define("C_SESSION_NUMBER","Session Number");
+    define("C_SESSION_TITLE","Session Title");
+    define("C_DURATION","Duration");
+    define("C_SESSION_STATUS","Session Status");
+    define("C_CREATE","Create");
+    define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
+    define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
+    define("C_APPROVE","Approve");
+    define("C_REJECTED","Rejected because");
 
+    //ManageProjectMilestones.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
+    define("C_DATE", "Date");
+    define("C_DESCRIPTION", "Description");
+    define("C_SAVE", "Save");
+    define("C_NEW", "New");
+    define("C_ROW", "Row");
+    define("C_EDIT", "Edit");
+    define("C_IMPORTANT_DATES", "Important dates");
+
+    //ManageOntologyPropertyLabels.php By Javad Mahdavian
+    define("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
+    define("C_LABEL" , "Label");
+    define("C_LABELS" , "Labels");
+
+    //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
+    define("C_TITLE", "Title");
+    define("C_SAVE", "Save");
+    define("C_NEW", "New");
+    define("C_ACTIONS_TYPES", "Action types");
+    define("C_ACTIONS_COUNT", "Action count");
+    define("C_DELETE", "Delete");
+    define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
+
+    //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "Create/Edit users assgined to activity");
+    define("C_ASSIGNEE_DESCRIPTION", "Assignee description");
+    define("C_PARTICIPATION_PERCENTAGE", "Participation percentage");
+    define("C_ECECUTOR", "Executor");
+    define("C_VIEWER", "Viewer");
+    define("C_SEND_LETTER_FROM_ADVERTISER", "Send letter from advvertisor to selected person");
+    define("C_DONT_HAVE_VALUE", "A person don't have any value");
+    define("C_USERS_ASSIGNED_TO_ACTIVITY", "Users assigned to activity");
+
+    //Manageontologies.php by Naghme Mohammadifar
+    define("C_ONTOLOGY_FEATURES" , "Ontology features");
+    define("C_ONTOLOGY_CLASSES" , "Ontology classes");
+    define("C_DATA_FEATURES","Data features");
+    define("C_THING_FEATURES","Things features");
+    define("C_CREATE_EDIT_ONTOLOGY" , "Create/Edit ontology");
+    define("C_CLASSES","Classes");
+    define("C_TREE_STRUCTURE","Tree structure");
+    define("C_GET_OWL_CODE_FROM_STRUCTURE","Get owl code from structure");
+    define("C_GET_ER_CODE","Get ER code ");
+    define("C_CLASS_STATISTICAL_ANALYSIS","Classes statistical analysis");
+    define("C_INTERNET_PATH","Internet path");
+    define("C_GETTING_FILE","Receive file");
+    define("C_TRANSMIT_FILE_TO_DB","Transmit file to database");
+    define("C_ONTOLOGY","Ontology");
+    define("C_FEATURES","Features");
+    define("C_EXPERT_JUDGES","Expert judges");
+    define("C_PRINT","Print");
+    define("C_PRINT_WITH_MERGE_SOURCES","Print- with merge sources");
+    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","Print- with vocab extraction sources");
+    define("C_PRINT_WITH_DATABASE_SOURCES","Print- with database sources");
+    define("C_DICTIONARY","Dictionary");
+    define("C_FREQUENCY_ANALYSIS","Frequency analysis");
+    define("C_DISTANCE_ANALYSIS","Distance analysis levenshtein");
+    define("C_STATISTICAL_EVALUATION","Statistical evaluation");
+    define("C_REVERSE_ENGINEERING","Reverse engineering RDB");
+    define("C_ANALYSIS_WITH_WORDNET","Analysis with Wordnet");
+    define("C_CONTENT_COMPARISON","Content comparison");
+    define("C_MERGED_PROJECTS","Merged projects");
+    define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
+    define("C_ONTOLOGIES_LIST","Ontologies lists");
+    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","Classes in terms of referral rates - more that 2 refers");
+    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","Properties in order of reference - more than two references");
+    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","Entities that were once referred to as a class and once as a property");
+    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","Classes referred to only once (not referred to as attributes)");
+    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","Properties that are only mentioned once (not referred to as class)");
+    define("C_ONTOLOGY_TITLE","Ontology title");
+    define("C_ONTOLOGY_TYPE","Ontology type");
+    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES"," percentage of similarity between class titles that do not have the same Persian tag and are related to different masters");
+    define("C_CHECK_TITLES_WITH_OVER","Check titles with over ");
+    define("C_CHECK_TAGS_WITH_OVER","Check tags with over ");
+    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," percentage of similarity between Persian labels for classes that are not identical in title and for different typographers");
+    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS"," percentage of similarity between different titles of attributes that do not match the same Persian tag and are related to different typographers");
+    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," percentage of Similarity among Farsi Labels for Properties That Do Not Have the Same Title and Are Different");
+    define("C_CLASS_TITLE","Class title");
+    define("C_PROPERTY_TITLE","Property title");
+    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Classes with same name acording to wordnet");
+    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Properties with same name acording to wordnet");
+    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","Percentage of each ontology coverage other ontology classes");
+    define("C_AVERAGE","Average");
+    define("C_CLASS_COUNT","Class count");
+    define("C_PROPERTY_COUNT","Property count");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","Average of coverage other ontologies (classes)");
+    define("C_REPOSITORY","Repository");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Percentage of each ontology coverage other ontology properties");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Average of coverage other ontologies (properties)");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","Percentage of each ontology coverage document terms ");
+    define("C_TOTAL_ELEMENTS","Total elements");
+    define("C_COVERAGE_PERCENTAGE","Coverage Percentage");
+
+
+    //TasksForControl.php -- by navidbeta
+    define("C_RELATED_PROJECT" , "Related Project");
+    define("C_PRIORITY" , "Priority");
+    define("C_T_TITLE" , "Title");
+    define("C_CREATOR" , "Creator");
+    define("C_CREATED_TIME" , "Created Time");
+    define("C_T_AREUSURE" , "Are You Sure?");
+
+    //ManageUserFacilities.php -- by navidbeta
+    define("C_ADD_USER_FACILITY" , "Add User Facility");
+    define("C_T_USER" , "User");
+    define("C_PRIVILEGED_USERS" , "Privileged Users");
+    define("C_POSSIBILITY" , "Possibility");
+
+    //ManageUserPermissions.php -- by navidbeta
+    define("C_DATA_STORED" , "Information Stored Successfully");
+    define("C_USER_ACCESSES" , "User Accesses");
+    define("C_MENUS" , "Menus");
+    define("C_T_RETURN" , "Return");
+
+    //ManagePermittedDatabases by Javad Mahdavian
+    define("C_DATABASE_DOC" , "Documentation of Databases");
+    define("C_DATABASES", "Databases");
+    define("C_SERVER", "Server");
+    define("C_TABLES" , "Tables");
+    define("C_DEADLINE" , "Deadline");
+	
+	//EN fo MangePersons.php
+    define("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
+    define("C_MP_EMAIL", "Email");
+    define("C_MP_MOBILE", "Mobile");
+    define("C_MP_USERNAME", "Username");
+    define("C_MP_PEOPLE_LIST", "User lists");
+    define("C_MP_IMAGE", "Image");
+    define("C_MP_PAYMENTS", "Payments");
+	
+	//ManageQuestionnaires.php Hoormazd Ranjbar
+    define("C_MQ_FILTER", "Filter Title");
+    define("C_MQ_CODE", "Code");
+    define("C_MQ_MAIN_FORM", "Main Form");
+    define("C_MQ_MANAGERS", "Managers");
+    define("C_MQ_SETTINGS", "Settings");
+    define("C_MQ_CREATOR", "Creator");
+    define("C_MQ_CREATE_DATE", "Create Date");
+    define("C_MQ_FILL", "Filled");
+    define("C_MQ_LAST_ACCEPT", "Last Accept");
+    define("C_MQ_MAKE", "Make");
+	
+	//MyActions.php Hoormazd Ranjbar
+    //EN
+    define("C_MYACTIONS", "My Actions");
+    define("C_MA_ACTION", "Action");
+    define("C_MA_DONE_DATE", "Date");
+    define("C_MA_TOTAL_FIND", "Total Found items");
 }
 else
 {
@@ -593,6 +754,168 @@ else
     define("C_RECEIVED_LETTERS", "نامه های رسیده");
     define("C_ATTACHMENTS", "ضمیمه");
 
-}
+    //ManageProjectMilestones.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_IMPORTANT_DATE", "ایجاد/ویرایش تاریخهای مهم");
+    define("C_DATE", "تاریخ");
+    define("C_DESCRIPTION", "شرح");
+    define("C_SAVE", "ذخیره");
+    define("C_NEW", "جدید");
+    define("C_ROW", "ردیف");
+    define("C_EDIT", "ویرایش");
+    define("C_IMPORTANT_DATES", "تاریخ های مهم");
+
+    //ManageOntologyPropertyLabels.php By Javad Mahdavian
+    define("C_CREATE_EDIT_LABELS" , "ایجاد/ویرایش برچسبهای خصوصیات");
+    define("C_LABEL" , "برچسب");
+    define("C_LABELS" , "برچسبها");
+
+    //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
+    define("C_TITLE", "عنوان");
+    define("C_SAVE", "ذخیره");
+    define("C_NEW", "جدید");
+    define("C_ACTIONS_TYPES", "انواع اقدامات");
+    define("C_ACTIONS_COUNT", "تعداد اقدامات");
+    define("C_DELETE", "حذف");
+    define("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
+
+    //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
+    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "ایجاد/ویرایش کاربران منتسب به کار");
+    define("C_ASSIGNEE_DESCRIPTION", "شرح انتساب");
+    define("C_PARTICIPATION_PERCENTAGE", "درصد مشارکت");
+    define("C_ECECUTOR", "مجری");
+    define("C_VIEWER", "ناظر");
+    define("C_SEND_LETTER_FROM_ADVERTISER", " ارسال نامه آگاهی دهنده برای فرد انتخاب شده");
+    define("C_DONT_HAVE_VALUE", "مقداری در شخص مربوطه وارد نشده است");
+    define("C_USERS_ASSIGNED_TO_ACTIVITY", "کاربران منتسب به کار");
+
+
+    //Manageontologies.php by Naghme Mohammadifar
+    define("C_ONTOLOGY_CLASSES" , "کلاس‌های هستان‌نگار");
+    define("C_ONTOLOGY_FEATURES" , "خصوصیات هستان‌نگار");
+    define("C_CREATE_EDIT_ONTOLOGY" , "ایجاد/ویرایش هستان نگار");
+    define("C_CLASSES","کلاس‌ها");
+    define("C_THING_FEATURES","خصوصیت شی");
+    define("C_DATA_FEATURES","خصوصیت داده");
+    define("C_TREE_STRUCTURE","ساختار درختی");
+    define("C_GET_OWL_CODE_FROM_STRUCTURE","دریافت کد OWL از روی ساختار");
+    define("C_GET_ER_CODE","دریافت کد ER");
+    define("C_CLASS_STATISTICAL_ANALYSIS","تحلیل آماری کلاس‌ها");
+    define("C_INTERNET_PATH","مسیر اینترنتی");
+    define("C_GETTING_FILE","دریافت فایل");
+    define("C_TRANSMIT_FILE_TO_DB","انتقال عناصر از فایل به پایگاه داده");
+    define("C_ONTOLOGY","هستان نگار");
+    define("C_FEATURES","خصوصیات");
+    define("C_EXPERT_JUDGES","خبرگان ارزیاب");
+    define("C_PRINT","چاپ");
+    define("C_PRINT_WITH_MERGE_SOURCES","چاپ - با منابع ادغام");
+    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","چاپ - با منابع استخراج واژگان");
+    define("C_PRINT_WITH_DATABASE_SOURCES","چاپ - با منابع پایگاه داده");
+    define("C_DICTIONARY","دیکشنری");
+    define("C_FREQUENCY_ANALYSIS","تحیلی فراوانی");
+    define("C_DISTANCE_ANALYSIS","تحلیل فاصله levenshtein");
+    define("C_STATISTICAL_EVALUATION","ارزیابی آماری");
+    define("C_REVERSE_ENGINEERING","مهندسی معکوس RDB");
+    define("C_ANALYSIS_WITH_WORDNET","تحلیل با wordnet");
+    define("C_CONTENT_COMPARISON","مقایسه محتوایی");
+    define("C_MERGED_PROJECTS","پروژه های ادغام");
+    define("C_ALERT_TO_CLOSE","با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟");
+    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)");
+    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)");
+    define("C_ONTOLOGIES_LIST","فهرست هستان‌نگار‌ها");
+    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","کلاسها از نظر میزان ارجاع - بیش از دو ارجاع");
+    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع");
+    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند");
+    define("C_ONTOLOGY_TITLE","عنوان هستان نگار");
+    define("C_ONTOLOGY_TYPE","نوع هستان نگار");
+    define("C_CHECK_TITLES_WITH_OVER","بررسی عناوین با بیش از ");
+    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES","درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_CHECK_TAGS_WITH_OVER","بررسی برچسبها با بیش از ");
+    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS","درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define("C_CLASS_TITLE","عنوان کلاس");
+    define("C_PROPERTY_TITLE","عنوان خصوصیت");
+    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","کلاس‌‌ها با نام مشابه براساس Wordnet");
+    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","خصوصیات با نام مشابه براساس Wordnet");
+    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","درصدی از هر هستان‌نگار که سایر کلاس‌های هستان‌نگار را پوشش می دهد");
+    define("C_AVERAGE","میانگین");
+    define("C_CLASS_COUNT","تعداد کلاس");
+    define("C_PROPERTY_COUNT","تعداد خصوصیت");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","میانگین پوشش سایر هستان‌نگارها (کلاس‌ها)");
+    define("C_REPOSITORY","مخزن");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","درصدی از هر هستان‌نگار که دیگر خصوصیات هستان‌نگار را پوشش می دهد");
+    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","میانگین پوشش سایر هستان‌نگارها (خصوصیات)");
+    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","درصد پوشش واژگان متن هر هستان‌نگار ");
+    define("C_TOTAL_ELEMENTS","عناصر کل");
+    define("C_COVERAGE_PERCENTAGE","درصد پوشش");
+    // ------------------------------  ManageSessionType.php By Diba Aminshahidi ----------------------------
+    define("C_PATTERN","الگو های جلسه");
+    define("C_MEETING_TYPE","نوع جلسه");
+    define("C_SESSIONS","جلسات");
+    define("C_SESSION_NUMBER","شماره جلسه");
+    define("C_SESSION_TITLE","عنوان جلسه");
+    define("C_DURATION","مدت جلسه");
+    define("C_SESSION_STATUS","وضعیت جلسه");
+    define("C_CREATE","ایجاد");
+    define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
+    define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
+    define("C_APPROVE", "تایید");
+    define("C_REJECTED","رد به دلیل");
+
+    //TasksForControl.php -- by navidbeta
+    define("C_RELATED_PROJECT" , "پروژه مربوطه‌");
+    define("C_PRIORITY" , "اولویت");
+    define("C_T_TITLE" , "عنوان");
+    define("C_CREATOR" , "ایجاد کننده");
+    define("C_CREATED_TIME" , "زمان ایجاد");
+    define("C_T_AREUSURE" , "آیا مطمئن هستید؟");
+
+    //ManageUserFacilities.php -- by navidbeta
+    define("C_ADD_USER_FACILITY" , "اضافه کردن دسترسی کاربر");
+    define("C_T_USER" , "کاربر");
+    define("C_PRIVILEGED_USERS" , "کاربران دارای دسترسی");
+    define("C_POSSIBILITY" , "امکان");
+
+    //ManageUserPermissions.php -- by navidbeta
+    define("C_DATA_STORED" , "اطلاعات ذخیره شد");
+    define("C_USER_ACCESSES" , "دسترسی های کاربر");
+    define("C_MENUS" , "منوها");
+    define("C_T_RETURN" , "بازگشت");
+
+    //ManagePermittedDatabases by Javad Mahdavian
+    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
+    define('C_DATABASES', 'پایگاه های داده');
+    define("C_SERVER", "سرور");
+    define("C_TABLES" , "جداول");
+    define("C_DEADLINE" , "مهلت انجام");
+	
+	//ManagePersons.php Hoormazd Ranjbar
+    define("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
+    define("C_MP_EMAIL", "ایمیل");
+    define("C_MP_MOBILE", "موبایل");
+    define("C_MP_USERNAME", "حساب کاربری");
+    define("C_MP_PEOPLE_LIST", "لیست افراد");
+    define("C_MP_IMAGE", "تصویر");
+    define("C_MP_PAYMENTS", "پرداختها");
+
+	//ManageQuestionnaires.php Hoormazd Ranjbar
+    define("C_MQ_FILTER", "عنوان فیلتر");
+    define("C_MQ_CODE", "کد");
+    define("C_MQ_MAIN_FORM", "فرم اصلی");
+    define("C_MQ_MANAGERS", "مدیران");
+    define("C_MQ_SETTINGS", "تنظیمات");
+    define("C_MQ_CREATOR", "ایجاد کننده");
+    define("C_MQ_CREATE_DATE", "تاریخ ایجاد");
+    define("C_MQ_FILL", "پر شده");
+    define("C_MQ_LAST_ACCEPT", "تایید نهایی");
+    define("C_MQ_MAKE", "ایجاد");
+
+	//MyActions.php Hoormazd Ranjbar
+    define("C_MYACTIONS", "اقدامات انجام شده");
+    define("C_MA_ACTION", "عمل انجام شده");
+    define("C_MA_DONE_DATE", "تاریخ انجام شده");
+    define("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");	
+}   
 
 ?>

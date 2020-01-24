@@ -122,16 +122,18 @@ class pdodb {
     $this->statement->execute($parameter_array);
     $endTime = microtime(true);
     $error_info = $this->statement->errorInfo();
+      $statement = $this->pdo->query(" SHOW PROFILES ");
+      $rec = $statement->fetchall();
     if(pdodb::$logQuery) {
-      //$statement = $this->pdo->query(" SHOW PROFILES ");
-      //$rec = $statement->fetchall();
-      //$rec = $rec[count($rec)-1];
-      //($rec ? $rec["Duration"] : "")
+
+
+//      $rec = $rec[count($rec)-1];
+//      ($rec ? $rec["Duration"] : "");
       self::LogQueryToDB((isset($rec['Query']) ? $rec['Query'] : $this->statement->queryString),($endTime-$startTime),$this->default_db,
         ($error_info[0] !='00000' ? 'FAILED' : 'SUCCESS'),$parameter_array);
     }
     else if ($error_info[0] !='00000') {
-      self::LogQueryToDB((isset($rec['Query']) ? $rec['Query'].implode(",",$error_info) : $this->statement->queryString.implode(",",$error_info)),($endTime-$startTime),$this->default_db,
+        self::LogQueryToDB((isset($rec['Query']) ? $rec['Query'].implode(",",$error_info) : $this->statement->queryString.implode(",",$error_info)),($endTime-$startTime),$this->default_db,
         ($error_info[0] !='00000' ? 'FAILED' : 'SUCCESS'),$parameter_array);
     }
     //if ($error_info[0] !='00000' && $debug){

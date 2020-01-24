@@ -8,6 +8,7 @@ include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/ProjectTasks.class.php");
 include("classes/projects.class.php");
+// include("../shares/definitions.php");
 HTMLBegin();
 /*$mysql = pdodb::getInstance();
 if($_SESSION["UserID"]=="gholami-a") {
@@ -64,7 +65,7 @@ $res = manage_ProjectTasks::GetTasksForControl($ProjectID, $FromRec, $NumberOfRe
 <table width="100%" align="center" border="0" cellspacing="0">
 <tr>
 	<td width="1%" nowrap>
- پروژه مربوطه
+  <?php echo C_RELATED_PROJECT?>
 	</td>
 	<td nowrap>
 	<select name="Item_ProjectID" id="Item_ProjectID" onchange='javascript: document.SearchForm.submit();'>
@@ -90,19 +91,19 @@ if(isset($_REQUEST["SearchAction"]))
 <table width="98%" align="center" border="1" cellspacing="0">
 <tr class="FooterOfTable">
 <td colspan="9" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	 <input type="button" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE ?>">
+	 <input type="button" onclick='javascript: NewRecordForm.submit();' value="<? echo C_CREATE ?>">
 </td>
 </tr> 
 <tr class="HeaderOfTable">
-	<td width="1%">&nbsp;</td>
-	<td width="1%">ردیف</td>
-	<td width="1%">ویرایش</td>
-	<td width=1%><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
-	<td width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');">اولویت</a></td>
-	<td width=95%><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
-	<td nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
-	<td nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');">زمان ایجاد</a></td>
+	<td width="1%">&nbsp;</td>‌
+	<td width="1%"><?php echo C_ROW?></td>
+	<td width="1%">‌‌<?php echo C_EDIT?></td>
+	<td width=1%><a href="javascript: Sort('ProjectID', 'ASC');"><?php echo C_RELATED_PROJECT?></a></td>
+	<td width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');"><?php echo C_PRIORITY?></a></td>
+	<td width=95%><a href="javascript: Sort('title', 'ASC');"><?php echo C_T_TITLE?></a></td>
+	<td nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');"><?php echo C_CREATOR?></a></td>
+	<td nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');"><?php echo C_CREATED_TIME ?></a></td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -140,8 +141,8 @@ for($k=0; $k<count($res); $k++)
 ?>
 <tr class="FooterOfTable">
 <td colspan="9" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	 <input type="button" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE ?>">
+	 <input type="button" onclick='javascript: NewRecordForm.submit();' value="<? echo C_CREATE?>">
 </td>
 </tr>
 <tr bgcolor="#cccccc"><td colspan="9" align="right">
@@ -165,7 +166,7 @@ for($k=0; $k<manage_ProjectTasks::GetTasksCountForControl($ProjectID)/$NumberOfR
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.SearchForm.submit();
+	if(confirm("<? echo C_T_AREUSURE ?>")) document.SearchForm.submit();
 }
 function ShowPage(PageNumber)
 {

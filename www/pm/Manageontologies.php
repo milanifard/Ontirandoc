@@ -170,17 +170,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<div class='container'><br><table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology classes</th>
+                <th colspan=".(count($OntoArray)+2).">".PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES."</th>
                 </tr>
              </thead> 
              <tbody>";
   echo "<tr>";
-  echo "<td >Ontology Title</td>";
+  echo "<td ><b>".C_ONTOLOGY_TITLE."</b></td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
     echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
   }
-  echo "<td ><b>Average</b></td>";
+  echo "<td ><b>".C_AVERAGE."</b></td>";
   echo "</tr>";
   $Averages = array();
   for($i=0; $i<count($OntoArray); $i++)
@@ -199,10 +199,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 	$TotalP += $p;
       }
     }
-    echo "<td >".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+      if((count($OntoArray)-1)==0){
+          echo "<td> 0 </td>";
+      }
+      else {
+          echo "<td >" . round($TotalP / (count($OntoArray) - 1), 2) . "</td>";
+      }
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
-    $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
+      if((count($OntoArray)-1)==0) $Averages[$i]["average"] =0;
+      else
+        $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     echo "</tr>";
   }
   echo "</tbody></table>";
@@ -225,10 +232,10 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th>Ontology Title</th>
-                    <th>Class Count</th>
-                    <th>Property Count</th>
-                    <th>(Average of coverage other ontologies (classes</th>
+                    <th>".C_ONTOLOGY_TITLE."</th>
+                    <th>".C_CLASS_COUNT."</th>
+                    <th>".C_PROPERTY_COUNT."</th>
+                    <th>".C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES."</th>
                 </tr>
               </thead>
               <tbody>";
@@ -248,14 +255,14 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   }
   
   echo "<tr>";
-  echo "<td><b>Total</b></td>";
+  echo "<td><b>".C_TOTAL."</b></td>";
   echo "<td>".$TotalClasses."</td>";
   echo "<td>".$TotalProperties."</td>";
   echo "<td>100</td>";
   echo "</tr>";
   
   echo "<tr>";
-  echo "<td><b>Repository</b></td>";
+  echo "<td><b>".C_REPOSITORY."</b></td>";
   echo "<td>".GetRepositoryClassesCount($SelectedOnto)."</td>";
   echo "<td>".GetRepositoryPropertiesCount($SelectedOnto)."</td>";
   echo "<td>100</td>";
@@ -269,17 +276,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                    <th colspan=".(count($OntoArray)+2).">Percentage of each ontology coverage other ontology properties</th>
+                    <th colspan=".(count($OntoArray)+2).">".C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES."</th>
                 </tr>
              </thead> <tbody>";
   echo "<tr>";
-  echo "<td>Ontology Title</td>";
+  echo "<td><b>".C_ONTOLOGY_TITLE."</b></td>";
   for($i=0; $i<count($OntoArray); $i++)
   {
        echo "<td>".$OntoArray[$i]->OntologyTitle."</td>";
 
   }
-  echo "<td><b>Average</b></td>";
+  echo "<td><b>".C_AVERAGE."</b></td>";
   echo "</tr>";
   for($i=0; $i<count($OntoArray); $i++)
   {
@@ -299,10 +306,18 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 	    $TotalP += $p;
       }
     }
-    echo "<td>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    if((count($OntoArray)-1)==0){
+        echo "<td> 0 </td>";
+    }
+    else{
+        echo "<td>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    }
+
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
-    $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
+    if((count($OntoArray)-1) == 0) $Averages[$i]["average"] =0;
+    else
+        $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     
     echo "</tr>";
   }
@@ -327,10 +342,10 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th>Ontology Title</th>
-                    <th>Class Count</th>
-                    <th>Property Count</th>
-                    <th>Average of coverage other ontologies (properties)</th>
+                    <th>".C_ONTOLOGY_TITLE."</th>
+                    <th>".C_CLASS_COUNT."</th>
+                    <th>".C_PROPERTY_COUNT."</th>
+                    <th>".C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES."</th>
                     </tr>
              </thead>
              <tbody>";
@@ -377,13 +392,13 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   echo "<br><table class='table  table-striped table-bordered '>";
   echo "    <thead>
                 <tr class='table-info text-center'>
-                    <th colspan=3 >(Percentage of each ontology coverage document terms (".$TotalTerms."</th>
+                    <th colspan=3 >".C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS.$TotalTerms."</th>
                 </tr>
              </thead>";
   echo "<tr>";
-  echo "<td>Ontology Title</td>";
-  echo "<td>Total Elements</td>";
-  echo "<td><b>Coverage Percentage</b></td>";
+  echo "<td><b>".C_ONTOLOGY_TITLE." </b></td>";
+  echo "<td><b>".C_TOTAL_ELEMENTS."</b></td>";
+  echo "<td><b>".C_COVERAGE_PERCENTAGE."</b></td>";
   echo "</tr>";
   for($i=0; $i<count($Averages); $i++)
   {
@@ -396,7 +411,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
   }
 
   echo "<tr>";
-  echo "<td><b>Repository</b></td>";
+  echo "<td><b>".C_REPOSITORY."</b></td>";
   echo "<td>".(GetRepositoryClassesCount($SelectedOnto)+GetRepositoryPropertiesCount($SelectedOnto))."</td>";
   $p = HowMuchAllCoverDocument($SelectedOnto);
   echo "<td >".round($p, 2)."</td>";
@@ -480,7 +495,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
             <table class='table table-bordered table-striped'>
                 <thead>
                     <tr class='table-info'>
-                        <th class='text-center' colspan='2'>فهرست هستان نگارها  </th> 
+                        <th class='text-center' colspan='2'>".C_ONTOLOGY_TITLE." </th> 
                     </tr>
                 </thead>";
   echo "        <tbody>
@@ -500,8 +515,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   echo "<br><table class='table table-bordered table-striped'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th width='15%'>عنوان کلاس</th>
-                    <th>کلاسها با نام مشابه (بر اساس WordNet)</th>
+                    <th width='15%'>".C_CLASS_TITLE."</th>
+                    <th>".C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET."</th>
                 </tr>
               </thead> 
               <tbody>";
@@ -520,8 +535,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   echo "<br><table class='table table-striped table-bordered'>";
   echo "    <thead>
                 <tr class='table-info'>
-                    <th width='15%'>عنوان خصوصیت</th>
-                    <th>خصوصیتها با نام مشابه (بر اساس WordNet)</th>
+                    <th width='15%'>".C_PROPERTY_TITLE."</th>
+                    <th>".C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET."</th>
                 </tr>
                </thead>
                <tbody>";
@@ -538,7 +553,6 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze3")
   
   die();
 }
-
 //analyzed with distance
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
 {
@@ -561,7 +575,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<div class='container'> <br><table class='table table-bordered table-striped'>
                 <thead>
                     <tr class='text-center table-info'>
-                        <th colspan='2'>فهرست هستان نگارها</th>
+                        <th colspan='2'>".C_ONTOLOGY_TITLE."</th>
                     </tr></thead>";
   echo "        <tbody>";
   $splited = preg_split('/\s+/', $OntoList);
@@ -581,7 +595,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<br><table class='table table-bordered table-striped'";
   echo "<thead>
             <tr class='table-info text-center'>
-              <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند
+              <th colspan=2> ".C_CHECK_TITLES_WITH_OVER.$thereshold.C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES." 
               </th>
             </tr>
         </thead>
@@ -600,7 +614,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   }
   
   echo "<tr class='table-info text-center'>
-            <td><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td>
+            <td><b>". C_CHECK_TAGS_WITH_OVER.$thereshold .C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL."</b></td>
         </tr>";
   for($i=0; $i<count($items); $i++)
   {
@@ -618,7 +632,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   echo "<table  class='table table-bordered table-striped'>";
   echo "    <thead>
                   <tr class='table-info text-center'>
-                    <th colspan=2>بررسی عناوین با بیش از $thereshold درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</th>
+                    <th colspan=2>".C_CHECK_TITLES_WITH_OVER. $thereshold .PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS."</th>
                   </tr>
             </thead>
             <tbody>";
@@ -636,7 +650,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   }
   
   echo "<tr class='text-center table-info'>
-        <td colspan=2 ><strong>بررسی برچسبها با بیش از $thereshold درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند</td></tr>";
+        <td colspan=2 ><b>".C_CHECK_TITLES_WITH_OVER. $thereshold.C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT." </b></td></tr>";
   for($i=0; $i<count($items); $i++)
   {
     if($items[$i]["similar_labels"]!="")
@@ -650,7 +664,6 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze2")
   
   die();
 }
-
 // Dictionary
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
 {
@@ -682,7 +695,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
             <br><table class='table table-bordered table-striped'>
                     <thead>
                         <tr>
-                            <th class='table-info text-center' colspan='2'>فهرست هستان نگارها</th>
+                            <th class='table-info text-center' colspan='2'>".C_ONTOLOGIES_LIST."</th>
                         </tr>
                     </thead> <tbody>";
                     echo "<tr>";
@@ -709,8 +722,8 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Dic")
   echo "        <thead>
                     <tr class='table-info'>
                         <th> </th>
-                        <th> موضوع هستان نگار</th>
-                        <th>نوع هستان نگار</th>
+                        <th>".C_ONTOLOGY_TITLE."</th>
+                        <th>".C_ONTOLOGY_TYPE."</th>
                         <th> </th>
                     </tr>
                 </thead> <tbody>";
@@ -933,8 +946,8 @@ as ItemTitle, label, 'property' as ItemType, OntologyPropertyLabelID as ItemID, 
   }
   echo "<tr >
               <td class='text-center' colspan='4'>
-                <input type='submit' class='btn   btn-success' value='ذخیره'> ";
-  echo "        <input type='button'  class='btn   btn-danger' value='بازگشت' onclick='document.location=\"Manageontologies.php\"'>";
+                <input type='submit' class='btn   btn-success' value=".C_SAVE ."> ";
+  echo "        <input type='button'  class='btn   btn-danger' value=".C_RETURN." onclick='document.location=\"Manageontologies.php\"'>";
   echo "</td></tr>";
   echo "</form> 
         </tbody></div>";
@@ -1038,7 +1051,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
   echo "    <table class='table table-bordered table-striped '> 
                 <thead>
                     <tr class='table-info text-center'>
-                        <th  colspan='2'>فهرست هستان نگارها</th>
+                        <th  colspan='2'>". C_ONTOLOGIES_LIST."</th>
                     </tr>
 </thead>
                 <tbody>";
@@ -1067,7 +1080,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>کلاسها از نظر میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "                    <th colspan=4>".C_CLASSES_IN_TERMS_OF_REFERRAL_RATES."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1097,7 +1110,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع</th>";
+    echo "                    <th colspan=4>".C_PROPERTIES_IN_ORDER_OF_REFERENCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1134,7 +1147,7 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Analyze")
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=4>موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند</th>";
+    echo "                    <th colspan=4>".C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1200,7 +1213,7 @@ using (label)
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=1>کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)</th>";
+    echo "                    <th colspan=1>".C_CLASSES_REFERRED_TO_ONLY_ONCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1245,7 +1258,7 @@ using (label)
     echo "<br><table class='table table-bordered table-striped '>";
     echo "        <thead>
                         <tr class='table-info text-center'>";
-    echo "                    <th colspan=1>خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)</th>";
+    echo "                    <th colspan=1>".C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE."</th>";
     echo "              </tr>
                   </thead>
                   <tbody>";
@@ -1299,7 +1312,7 @@ if(isset($_REQUEST["Save"]))
 	{
 		if ($_FILES['Item_FileContent']['error'] != 0)
 		{
-			echo ' خطا در ارسال فایل' . $_FILES['Item_FileContent']['error'];
+			echo C_SENDING_FILE_ERROR . $_FILES['Item_FileContent']['error'];
 		}
 		else
 		{
@@ -1330,7 +1343,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_comment
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $comment = "";
@@ -1345,11 +1358,11 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
 
 
-
+<div class="container">
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
     <div class="form-group">
-<?
-	if(isset($_REQUEST["UpdateID"])) 
+<?php
+	if(isset($_REQUEST["UpdateID"]))
 	{
 		echo "<input class=\"form-control\" type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
 		echo manage_ontologies::ShowSummary($_REQUEST["UpdateID"]);
@@ -1358,30 +1371,34 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
     </div>
 <br>
-<div class="container">
+
     <table class="table table-bordered table-sm" ">
         <thead >
         <tr>
-            <th class="text-center table-info " colspan="1" >ایجاد/ویرایش هستان نگار</th>
+            <th class="text-center table-info " colspan="1" ><?php echo C_CREATE_EDIT_ONTOLOGY?></th>
         </tr>
         </thead>
         <tboady>
             <tr>
                 <td>
                 <div class="form-group row">
-                    <label for="Item_OntologyTitle" class="col-sm-1 col-form-label">عنوان</label>
-                    <div class="col-sm-11">
+                    <label for="Item_OntologyTitle" class="col-sm-2 col-form-label"><?php echo C_TITLE?></label>
+                    <div class="col-sm-10">
                     <input class="form-control" type="text" name="Item_OntologyTitle" id="Item_OntologyTitle" >
                     <?php if(isset($_REQUEST["UpdateID"])) { ?>
-                                <a target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>کلاسها</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات شیء</a> /
-                                <a target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>خصوصیات داده</a>
-                                <br>
-                                <a target=_blank href='ShowOntologyClassTree.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'>ساختار درختی</a> /
-                                <a target=_blank href='GetOwl.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد owl از روی ساختار</a>
-                                <a target=_blank href='GetER.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت کد ER</a>
-                                <a target=_blank href='ShowClassesAnalysis.php?OntologyID=<? echo $_REQUEST["UpdateID"]; ?>'>تحلیل آماری کلاسها</a>
-                            <? } ?>
+                            <div class="row text-center">
+
+                                <a class="text-black-50 btn" target=_blank href='GetOwl.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GET_OWL_CODE_FROM_STRUCTURE?></a>
+                                <a class="text-black-50 btn" target=_blank href='ShowClassesAnalysis.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_CLASS_STATISTICAL_ANALYSIS?></a>
+                                <a class="text-black-50 btn" target=_blank href='ShowOntologyClassTree.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>&OnlyView=1'><?php echo C_TREE_STRUCTURE ?></a>
+                            </div>
+                             <div class="row text-center">
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=Class&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_CLASSES?></a>
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=OProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_THING_FEATURES?></a>
+                                 <a class="text-black-50 btn" target=_blank href='GetER.php?OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GET_ER_CODE ?></a>
+                                 <a class="text-black-50 btn" target=_blank href='EditOntologyLabels.php?EType=DProp&OntologyID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_DATA_FEATURES?></a>
+                                </div>
+                    <?php } ?>
                     </div>
                 </div>
                 </td>
@@ -1389,8 +1406,8 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
                 <td>
                     <div class="form-group row">
-                        <label for="Item_OntologyURI" class="col-sm-1 col-form-label">مسیر اینترنتی</label>
-                        <div class="col-sm-11">
+                        <label for="Item_OntologyURI" class="col-sm-2 col-form-label"><?php echo C_INTERNET_PATH ?></label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="Item_OntologyURI" id="Item_OntologyURI" >
                         </div>
                     </div>
@@ -1399,15 +1416,15 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
                 <td>
                     <div class="form-group row">
-                        <label for="Item_FileContent" class="col-sm-1 col-form-label"> فایل</label>
-                        <div class="col-sm-11">
+                        <label for="Item_FileContent" class="col-sm-2 col-form-label"> <?php echo C_FILE?></label>
+                        <div class="col-sm-10">
                             <input  type="file" class="form-control" name="Item_FileContent" id="Item_FileContent" data-filesize="3000" data-filesize-error="Max 3000B"
                                     accept="image/* , application/pdf"  />
                             <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<? echo $_REQUEST["UpdateID"]; ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
+                                <a href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo C_GETTING_FILE ?>[<?php echo $obj->FileName; ?>]</a>
                                 &nbsp;
-                                <a href='#' onclick='javascript: ExtractData();'>انتقال عناصر از فایل به پایگاه داده</a>
-                            <? } ?>
+                                <a href='#' onclick='javascript: ExtractData();'><?php echo C_TRANSMIT_FILE_TO_DB?> </a>
+                            <?php } ?>
                         </div>
                     </div>
                 </td>
@@ -1415,8 +1432,8 @@ if(isset($_REQUEST["UpdateID"]))
             <tr>
             <td>
                 <div class="form-group row">
-                    <label for="Item_comment" class="col-sm-1 col-form-label"> شرح</label>
-                    <div class="col-sm-11">
+                    <label for="Item_comment" class="col-sm-2 col-form-label"> <?php echo C_DESCRIPTION?></label>
+                    <div class="col-sm-10">
                         <textarea class="form-control" name="Item_comment" id="Item_comment" rows="2" ><?php echo $comment; ?></textarea>
                     </div>
                 </div>
@@ -1425,41 +1442,41 @@ if(isset($_REQUEST["UpdateID"]))
                 <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
                         <tr>
                             <td colspan=2>
-                                <textarea ><? echo $obj->FileContent ?></textarea>
+                                <label>
+                                    <textarea ><?php echo $obj->FileContent ?></textarea>
+                                </label>
                             </td>
                         </tr>
                     <? } ?>
             <tr>
-                <td class="text-center">
-                    <input type="submit" class="btn btn-success  " " value="ذخیره">
-                    <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value="جدید">
+                <td class="text-center table-info">
+                    <input type="submit" class="btn btn-success  " " value=<?php echo C_SAVE ?>>
+                    <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value=<?php echo C_NEW?>>
                 </td>
             </tr>
         </tboady>
     </table>
-</div>
-
 
 <input type="hidden" name="Save" id="Save" value="1">
 </form>
+</div>
 
-
-<?php 
-$res = manage_ontologies::GetList(); 
+<?php
+$res = manage_ontologies::GetList();
 $SomeItemsRemoved = false;
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Remove")
 {
   for($k=0; $k<count($res); $k++)
   {
-	  if(isset($_REQUEST["ch_".$res[$k]->OntologyID])) 
+	  if(isset($_REQUEST["ch_".$res[$k]->OntologyID]))
 	  {
-		  manage_ontologies::Remove($res[$k]->OntologyID); 
+		  manage_ontologies::Remove($res[$k]->OntologyID);
 		  $SomeItemsRemoved = true;
 	  }
   }
 }
 if($SomeItemsRemoved)
-	$res = manage_ontologies::GetList(); 
+	$res = manage_ontologies::GetList();
 ?>
 <div class="container">
 <form id="ListForm" name="ListForm" method="post">
@@ -1470,24 +1487,24 @@ if($SomeItemsRemoved)
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-	          <th class="table-info text-center"  colspan="14">هستان نگار</th>
+	          <th class="table-info text-center"  colspan="14"><?php echo C_ONTOLOGY?></th>
             </tr>
             <tr>
 <!--                <th ><input type=CheckBox name=CheckAll id=CheckAll onchange='javascript: DoCheckAll(this.checked);'></th>-->
                 <th> </th>
-                <th >ردیف</th>
-                <th >ویرایش</th>
-                <th>عنوان</th>
-                <th>مسیر اینترنتی</th>
-                <th>فایل</th>
-                <th>شرح</th>
-                <th >کلاسها</th>
-                <th  >خصوصیات</th>
-                <th >خبرگان ارزیاب</th>
-                <th >چاپ</th>
-                <th  >چاپ - با منابع ادغام</th>
-                <th  >چاپ - با منابع استخراج واژگان</th>
-                <th >چاپ - با منابع پایگاه داده</th>
+                <th ><?php echo C_ROW?></th>
+                <th ><?php echo C_EDIT?></th>
+                <th><?php echo C_TITLE?></th>
+                <th><?php echo C_INTERNET_PATH?></th>
+                <th><?php echo C_FILE?></th>
+                <th><?php echo C_DESCRIPTION?></th>
+                <th ><?php echo C_CLASSES?></th>
+                <th  ><?php echo C_FEATURES?></th>
+                <th ><?php echo C_EXPERT_JUDGES?></th>
+                <th ><?php echo C_PRINT?></th>
+                <th  ><?php echo C_PRINT_WITH_MERGE_SOURCES?></th>
+                <th  ><?php echo C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES?></th>
+                <th ><?php echo C_PRINT_WITH_DATABASE_SOURCES?></th>
             </tr>
         </thead>
         <tbody>
@@ -1503,12 +1520,12 @@ if($SomeItemsRemoved)
               echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyID."\" id=\"ch_".$res[$k]->OntologyID."\">";
               echo "</td>";
               echo "<td>".($k+1)."</td>";
-              echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"> <i class=\"fa fa-edit\"></a></td>";
+              echo "	<td><a href=\"Manageontologies.php?UpdateID=".$res[$k]->OntologyID."\"> <i class=\"fa fa-edit\"></i></a></td>";
               echo "	<td>".htmlentities($res[$k]->OntologyTitle, ENT_QUOTES, 'UTF-8')."</td>";
               echo "	<td>".htmlentities($res[$k]->OntologyURI, ENT_QUOTES, 'UTF-8')."</td>";
-              echo "	<td><a class='btn btn-sm btn-outline-dark' href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><i class=\"fa fa-file-download\"></a></td>";
+              echo "	<td><a class='btn btn-sm btn-outline-dark' href='DownloadFile.php?FileType=ontologies&FieldName=FileContent&RecID=".$res[$k]->OntologyID."'><i class=\"fa fa-file-download\"></i></a></td>";
               echo "	<td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
-              echo "<td ><a  class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard\">";
+              echo "<td ><a  class='btn btn-sm btn-outline-dark' target=\"_blank\" href='ManageOntologyClasses.php?OntologyID=".$res[$k]->OntologyID ."'><i class=\"fa fa-clipboard\"> </i>";
               if($ccount>0)
                   echo "(".$ccount.")";
                 echo "</a></td>";
@@ -1517,28 +1534,28 @@ if($SomeItemsRemoved)
                   echo "(".$pcount.")";
                 echo "</a></td>";
                 echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='ManageOntologyValidationExperts.php?OntologyID=".$res[$k]->OntologyID."'> <i class=\"fa fa-balance-scale\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-print\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
-                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-print\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails2.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails3.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
+                echo "<td><a class='btn btn-sm btn-outline-dark' target=_blank href='PrintOntologyDetails4.php?OntologyID=".$res[$k]->OntologyID."'><i class=\"fa fa-paste\"></i></a></td>";
                 echo "</tr>";
             }
             ?>
-            <tr>
+            <tr class="table-info">
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value="دیکشنری">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value="تحلیل فراوانی">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value="تحلیل فاصله levenshtein">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value="ارزیابی آماری">
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value=<?php echo "'".C_DELETE. "'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value=<?php echo "'".C_DICTIONARY."'" ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value=<?php echo "'".C_FREQUENCY_ANALYSIS."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value=<?php echo "'".C_DISTANCE_ANALYSIS."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value=<?php echo "'".C_STATISTICAL_ANALYSIS. "'"?>>
                 </td>
             </tr>
-            <tr>
+            <tr class="table-info">
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value="مهندسی معکوس RDB">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value="تحلیل با wordnet">
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value="مقایسه محتوایی">
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value="پروژه های ادغام">
+                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value=<?php echo "'".C_REVERSE_ENGINEERING."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value= <?php echo "'".C_ANALYSIS_WITH_WORDNET."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value=<?php echo "'".C_CONTENT_COMPARISON."'" ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value=<?php echo "'".C_MERGED_PROJECTS."'"?>>
                 </td>
             <tr>
 
@@ -1552,11 +1569,11 @@ if($SomeItemsRemoved)
 <script>
 function DoCheckAll(CheckValue)
 {
-  <? echo $CheckAllCode; ?>
+  <?php echo $CheckAllCode; ?>
 }
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمئن هستید؟'))
+	if(confirm(<?php echo "'".C_CONFIRM_TO_DELETE. "'" ?>))
 	{
 	  document.getElementById('ActionType').value="Remove";
 	  document.ListForm.submit();
@@ -1591,7 +1608,7 @@ function ConfirmStatistical()
 
 function ExtractData()
 {
-	if(confirm('با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟')) document.location='loader.php?OntologyID=<? if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
+	if(confirm(<?php echo "'".C_ALERT_TO_CLOSE."'" ?>)) document.location='loader.php?OntologyID=<?php if(isset($_REQUEST["UpdateID"])) echo $_REQUEST["UpdateID"]; ?>';
 }
 </script>
 </html>

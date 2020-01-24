@@ -24,14 +24,14 @@ echo manage_SystemFacilities::ShowSummary($_REQUEST["FacilityID"]);
 ?>
 <br><table width="90%" border="1" cellspacing="0" align="center">
 <tr class="HeaderOfTable">
-<td align="center">اضافه کردن دسترسی کاربر</td>
+<td align="center"><?php echo C_ADD_USER_FACILITY?></td>
 </tr>
 <tr>
 <td>
 <table width="100%" border="0">
 <tr>
 	<td width="1%" nowrap>
- کاربر
+	<?php echo C_T_USER?>
 	</td>
 	<td nowrap>
 	<select name="Item_UserID" id="Item_UserID">
@@ -45,8 +45,8 @@ echo manage_SystemFacilities::ShowSummary($_REQUEST["FacilityID"]);
 </tr>
 <tr class="FooterOfTable">
 <td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
-<input type="button" onclick="window.close();" value="بستن">
+<input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
+<input type="button" onclick="window.close();" value="<?echo C_CLOSE?>">
 </td>
 </tr>
 </table>
@@ -76,14 +76,14 @@ if($SomeItemsRemoved)
 <br><table width="90%" align="center" border="1" cellspacing="0">
 <tr bgcolor="#cccccc">
 	<td colspan="5">
-	کاربران دارای دسترسی
+	<?php  echo C_PRIVILEGED_USERS?>
 	</td>
 </tr>
 <tr class="HeaderOfTable">
 	<td width="1%">&nbsp;</td>
-	<td width="1%">ردیف</td>
-	<td>کاربر</td>
-	<td>امکان</td>
+	<td width="1%"><?php echo C_ROW?></td>
+	<td><?php echo C_T_USER ?></td>
+	<td><?php echo C_POSSIBILITY?></td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -103,7 +103,7 @@ for($k=0; $k<count($res); $k++)
 ?>
 <tr class="FooterOfTable">
 <td colspan="5" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+	<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE?>">
 </td>
 </tr>
 </table>
@@ -114,7 +114,7 @@ for($k=0; $k<count($res); $k++)
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm(<? echo C_T_AREUSURE ?>)) document.ListForm.submit();
 }
 </script>
 </html>
