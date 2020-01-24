@@ -85,7 +85,7 @@ if(isset($_REQUEST["UpdateID"]))
                     <td>
                         <table class="table table-bordered tab">
                             <tr>
-                                <td width="1%" nowrap>
+                                <td class="font-weight-bold" width="1%" nowrap>
                                     <font color=red>*</font>
                                     <?php
                                     echo C_TITLE
@@ -96,7 +96,7 @@ if(isset($_REQUEST["UpdateID"]))
                                 </td>
                             </tr>
                             <tr>
-                                <td width="1%" nowrap>
+                                <td class="font-weight-bold" width="1%" nowrap>
                                     <font color=red>*</font>
                                     <?php
                                     echo C_SESSION_LOCATION
@@ -107,7 +107,7 @@ if(isset($_REQUEST["UpdateID"]))
                                 </td>
                             </tr>
                             <tr>
-                                <td width="1%" nowrap>
+                                <td class="font-weight-bold" width="1%" nowrap>
                                     <?php
                                     echo C_START_TIME
                                     ?>
@@ -118,7 +118,7 @@ if(isset($_REQUEST["UpdateID"]))
                                 </td>
                             </tr>
                             <tr>
-                                <td width="1%" nowrap>
+                                <td class="font-weight-bold" width="1%" nowrap>
                                     <?php
                                     echo C_END_TIME
                                     ?>
