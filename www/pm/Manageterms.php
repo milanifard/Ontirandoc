@@ -296,19 +296,15 @@ if(isset($_REQUEST["ReplaceTermID"]))
   
   echo "<div class='container '>
 <br>
-            <div class='row align-items-center'>
-                 <div class='test-center'>.col-md-3 .offset-md-3</div>
-                 
-                 </div>
+                <div class= 'col-lg  align-items-center '>
+                    <h1 class='text-center'>عملیات جایگزینی انجام شد</h1>
+                    <div class='text-center'><a class='btn btn-danger' href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></div>
+         
+          </div>
   </div>";
 
 
-//    <div class= 'row  align-items-center justify-content-md-center'>
-//            <div class='text-center'>عملیات جایگزینی انجام شد</div>
-//          </div>
-//          <div class= 'row align-items-center justify-content-md-center'>
-//            <div class='text-center'><a class='btn btn-danger' href='Manageterms.php'>بازگشت به صفحه مدیریت واژگان</a></div>
-//          </div>
+
   die();
 }
 
@@ -634,11 +630,11 @@ if(isset($_REQUEST["SearchAction"]))
                 </th>
                 <th ><?php echo C_ROW ?></th>
                 <th><?php echo C_EDIT ?></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('TermTitle', 'ASC');"><b><?php echo C_TITLE?></b></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('comment', 'ASC');"><b><?php echo C_NOTE?></b></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('CreatorUserID', 'ASC');"><b><?php echo C_CREATOR ?></b></a></th>
-                <th><a class='btn btn-sm' href="javascript: Sort('CreateDate', 'ASC');"><b><?php echo C_CREATION_TIME ?></b></a></th>
-                <th ><a class='btn btn-sm' href="javascript: Sort('ReferCount', 'ASC');"><b><?php echo C_REFERENCES_IN_WORDS ?></b></a></th>
+                <th><a class='btn btn-sm text-black-50' href="javascript: Sort('TermTitle', 'ASC');"><b><?php echo C_TITLE?></b></a></th>
+                <th><a class='btn btn-sm text-black-50' href="javascript: Sort('comment', 'ASC');"><b><?php echo C_NOTE?></b></a></th>
+                <th><a class='btn btn-sm text-black-50' href="javascript: Sort('CreatorUserID', 'ASC');"><b><?php echo C_CREATOR ?></b></a></th>
+                <th><a class='btn btn-sm text-black-50' href="javascript: Sort('CreateDate', 'ASC');"><b><?php echo C_CREATION_TIME ?></b></a></th>
+                <th ><a class='btn btn-sm text-black-50' href="javascript: Sort('ReferCount', 'ASC');"><b><?php echo C_REFERENCES_IN_WORDS ?></b></a></th>
                 <th><?php echo C_ONTOLOGY_ELEMENT ?></th>
             </tr>
         </thead>
@@ -655,7 +651,7 @@ for($k=0; $k<count($res); $k++)
 	echo "      <input type=\"checkbox\" name=\"ch_".$res[$k]->TermID."\" id=\"ch_".$res[$k]->TermID."\">";
 	echo "    </td>";
 	echo "    <td>".($k+$FromRec+1)."</td>";
-	echo "	  <td><a class = 'btn btn-sm ' href=\"Manageterms.php?UpdateID=".$res[$k]->TermID;
+	echo "	  <td><a class = 'btn btn-sm text-black-50 ' href=\"Manageterms.php?UpdateID=".$res[$k]->TermID;
 	                if(isset($_REQUEST["SearchAction"]))
 	                     echo "&SearchAction=1&Item_TermTitle=".$_REQUEST["Item_TermTitle"]."&Item_comment=".$_REQUEST["Item_comment"];
 	                if(isset($_REQUEST["PageNumber"]))
@@ -665,7 +661,7 @@ for($k=0; $k<count($res); $k++)
 	echo "	  <td>".str_replace("\r", "<br>", htmlentities($res[$k]->comment, ENT_QUOTES, 'UTF-8'))."</td>";
 	echo "	  <td>".htmlentities($res[$k]->CreatorUserID, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	  <td>".$res[$k]->CreateDate_Shamsi."</td>";
-	echo "    <td><a  target=\"_blank\" href='ShowTermReferenceMapping.php?TermID=".$res[$k]->TermID ."'>";
+	echo "    <td><a target=\"_blank\" href='ShowTermReferenceMapping.php?TermID=".$res[$k]->TermID ."'>";
 	echo            $res[$k]->ReferCount;
 	echo "        </a>
                </td>";
