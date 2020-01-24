@@ -65,7 +65,7 @@ if (isset($_REQUEST["UpdateID"])) {
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="post" id="f1" name="f1" class="" enctype="multipart/form-data">
+            <form method="post" id="f1" name="f1" class="f1" enctype="multipart/form-data" novalidate>
                 <?
                 if (isset($_REQUEST["UpdateID"])) {
                     echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='" . $_REQUEST["UpdateID"] . "'>";
@@ -74,36 +74,53 @@ if (isset($_REQUEST["UpdateID"])) {
                 <div class="card mt-4">
                     <h5 class="card-title my-2 text-info" style="text-align: center;">ایجاد/ویرایش افراد</h5>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="Item_pfname" style="display: block; text-align: right;">نام</label>
-                            <input type="text" name="Item_pfname" id="Item_pfname" maxlength="45" size="40"
-                                   class="form-control"
-                                   placeholder="omid" style="text-align: right;">
+                        <div class="form-group form-row text-right">
+                            <div class="col">
+                                <label for="Item_plname" class="text-right" style="display: block;">نام خانوادگی</label>
+                                <input type="text" class="form-control text-right" name="Item_plname" id="Item_plname" maxlength="45"
+                                       size="40"
+                                       placeholder="milanifard" required>
+                                <div class="invalid-feedback">
+                                    نیاز به وارد کردن نام خانوادگی خود دارید
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Item_pfname" style="display: block; text-align: right;">نام</label>
+                                <input type="text" name="Item_pfname" id="Item_pfname" maxlength="45" size="40"
+                                       class="form-control"
+                                placeholder="omid" style="text-align: right;" required>
+                                <div class="invalid-feedback">
+                                    نیاز به وارد کردن اسم خود دارید
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="Item_plname" style="display: block; text-align: right;">نام خانوادگی</label>
-                            <input type="text" class="form-control" name="Item_plname" id="Item_plname" maxlength="45"
-                                   size="40"
-                                   placeholder="milanifard" style="text-align: right;">
-                        </div>
-                        <div class="form-group">
-                            <label for="Item_CardNumber" style="display: block; text-align: right;">ایمیل</label>
-                            <input type="email" class="form-control" name="Item_CardNumber" id="Item_CardNumber"
+                        <div class="form-group" style="display: block; text-align: right;">
+                            <label for="Item_CardNumber" >ایمیل</label>
+                            <input type="email" class="form-control text-right" name="Item_CardNumber" id="Item_CardNumber"
                                    maxlength="45"
                                    size="40" dir=ltr
-                                   placeholder="omid@milanifard.com" style="text-align: right;">
+                                   placeholder="omid@milanifard.com" required>
+                            <div class="invalid-feedback">
+                                نیاز به وارد کردن ایمیل خود دارید
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="mobile" style="display: block; text-align: right;">موبایل</label>
+                        <div class="form-group" style="display: block; text-align: right;">
+                            <label for="mobile" >موبایل</label>
                             <!-- TODO: add '-' into the input format of mobile number -->
-                            <input type="text" class="form-control" name="mobile" id="mobile" maxlength="45" size="40"
-                                   dir=ltr placeholder="0910000000020" style="text-align: right;">
+                            <input type="text" class="form-control text-right" name="mobile" id="mobile" maxlength="45" size="40"
+                                   dir=ltr placeholder="09100000020" required>
+                            <div class="invalid-feedback" >
+                                نیاز به وارد کردن شماره موبایل خود دارید
+                            </div>
                         </div>
                         <div class="form-group" style="display: block; text-align: right;">
                             <label for="Item_AccountInfo">حساب کاربری</label>
-                            <input type="text" class="form-control" type="text" name="Item_AccountInfo"
+                            <input type="text" class="form-control text-right" type="text" name="Item_AccountInfo"
                                    id="Item_AccountInfo" maxlength="500"
-                                   size="40" dir=rtl style="text-align: right;">
+                                   size="40" dir=rtl required>
+                            <div class="invalid-feedback">
+                                نیاز به وارد کردن حساب کاربری خود دارید
+                            </div>
                         </div>
                         <div class="custom-file">
                             <label class="custom-file-label" for="Item_FileContent">تصویر</label>
@@ -111,8 +128,8 @@ if (isset($_REQUEST["UpdateID"])) {
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-success col-3">ذخیره</a>
-                        <a href="#" class="btn btn-primary col-3" style="float: right;">جدید</a>
+                        <button class="btn btn-success col-3" type="submit">ذخیره</button>
+                        <a href="#" class="btn btn-primary col-3" style="float: right;" onclick="javascript: document.location='Managepersons.php';">جدید</a>
                     </div>
                 </div>
 
@@ -194,6 +211,25 @@ if (isset($_REQUEST["UpdateID"])) {
         function ValidateForm() {
             document.f1.submit();
         }
+
+
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('f1');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
     </script>
     <?php
     $NumberOfRec = 30;
@@ -257,21 +293,19 @@ if (isset($_REQUEST["UpdateID"])) {
                             <!--                            TODO: change check box to custom layout-->
                             <?
                             for ($k = 0; $k < count($res); $k++) {
-                                if ($k % 2 == 0)
-                                    echo "<tr scope\"row\">";
-                                else
-                                    echo "<tr scope\"row\">";
-                                echo "<td>";
+
+                                echo "<tr scope\"row\">";
+                                echo "<td style='vertical-align: middle;'>";
                                 echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->PersonID . "\">";
                                 echo "</td>";
-                                echo "<td>" . ($k + $FromRec + 1) . "</td>";
-                                echo "	<td><a href=\"Managepersons.php?UpdateID=" . $res[$k]->PersonID . "\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-                                echo "	<td><img src='ShowPersonPhoto.php?PersonID=" . $res[$k]->PersonID . "' width=40></td>";
-                                echo "	<td>" . (isset($res[$k]->pfname) ? htmlentities($res[$k]->pfname, ENT_QUOTES, 'UTF-8') : '') . "</td>";
-                                echo "	<td>" . (isset($res[$k]->plname) ? htmlentities($res[$k]->plname, ENT_QUOTES, 'UTF-8') : '') . "</td>";
-                                echo "	<td>" . (isset($res[$k]->CardNumber) ? htmlentities($res[$k]->CardNumber, ENT_QUOTES, 'UTF-8') : '') . "</td>";
-                                echo "	<td>" . (isset($res[$k]->mobile) ? htmlentities($res[$k]->mobile, ENT_QUOTES, 'UTF-8') : '') . "</td>";
-                                echo "	<td><a href='ManagePayments.php?PersonID=" . $res[$k]->PersonID . "'>پرداختها</a></td>";
+                                echo "<th style='vertical-align: middle;'>" . ($k + $FromRec + 1) . "</th>";
+                                echo "	<td style='vertical-align: middle;'><a href=\"Managepersons.php?UpdateID=" . $res[$k]->PersonID . "\" style='font-size: 25px;'><i class=\"fas fa-edit\" title='ویرایش'></i></a></td>";
+                                echo "	<td style='vertical-align: middle;'><img src='ShowPersonPhoto.php?PersonID=" . $res[$k]->PersonID . "' width=40></td>";
+                                echo "	<td style='vertical-align: middle;'>" . (isset($res[$k]->pfname) ? htmlentities($res[$k]->pfname, ENT_QUOTES, 'UTF-8') : '') . "</td>";
+                                echo "	<td style='vertical-align: middle;'>" . (isset($res[$k]->plname) ? htmlentities($res[$k]->plname, ENT_QUOTES, 'UTF-8') : '') . "</td>";
+                                echo "	<td style='vertical-align: middle;'>" . (isset($res[$k]->CardNumber) ? htmlentities($res[$k]->CardNumber, ENT_QUOTES, 'UTF-8') : '') . "</td>";
+                                echo "	<td style='vertical-align: middle;'>" . (isset($res[$k]->mobile) ? htmlentities($res[$k]->mobile, ENT_QUOTES, 'UTF-8') : '') . "</td>";
+                                echo "	<td style='vertical-align: middle;'><a href='ManagePayments.php?PersonID=" . $res[$k]->PersonID . "'>پرداختها</a></td>";
                                 echo "</tr>";
                             }
                             ?>
@@ -336,5 +370,6 @@ if (isset($_REQUEST["UpdateID"])) {
         f2.OrderType.value = OrderType;
         f2.submit();
     }
+
 </script>
 </html>
