@@ -427,10 +427,11 @@ if(UI_LANGUAGE=="EN") {
     define("C_T_RETURN" , "Return");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
-    define('C_DATABASES', 'پایگاه های داده');
-    define("C_SERVER", "سرور");
-    define("C_TABLES" , "جداول");
+    define("C_DATABASE_DOC" , "Documentation of Databases");
+    define("C_DATABASES", "Databases");
+    define("C_SERVER", "Server");
+    define("C_TABLES" , "Tables");
+    define("C_DOING_TIME" , "Deadline");
 }
 else
 {
@@ -855,10 +856,11 @@ else
     define("C_T_RETURN" , "بازگشت");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "Documentation of Databases");
-    define("C_DATABASES", "Databases");
-    define("C_SERVER", "Server");
-    define("C_TABLES" , "Tables");
+    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
+    define('C_DATABASES', 'پایگاه های داده');
+    define("C_SERVER", "سرور");
+    define("C_TABLES" , "جداول");
+    define("C_DOING_TIME" , "مهلت انجام");
 }   
 
 ?>
