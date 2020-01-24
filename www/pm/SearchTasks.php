@@ -191,37 +191,37 @@ else
 						<td nowrap>
 						<select name="Item_TaskStatus" id="Item_TaskStatus" >
 							<option value=0>-
-							<option value='NOT_START'>اقدام نشده</option>
-							<option value='PROGRESSING'>در دست قدام</option>
-							<option value='DONE'>اقدام شده</option>
-							<option value='SUSPENDED'>معلق</option>
-							<option value='REPLYED'>پاسخ داده شده</option>
+							<option value='NOT_START'>C_STATUS_NOT_START</option>
+							<option value='PROGRESSING'>C_STATUS_PROGRESSING</option>
+							<option value='DONE'>C_STATUS_DONE</option>
+							<option value='SUSPENDED'>C_STATUS_SUSPENDED</option>
+							<option value='REPLYED'>C_STATUS_REPLYED</option>
 						</select>
 						</td>
 					</tr>
 					<tr>
 						<td>
-						ایجاد کننده: 
+							C_CREATOR
 						</td>
 						<td>
 						<input type=hidden name="Item_CreatorID" id="Item_CreatorID" value=0>
 						<span id="Span_PersonID_FullName" name="Span_PersonID_FullName"></span> 	
-						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_CreatorID&SpanName=Span_PersonID_FullName");'>[انتخاب]</a>
+						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_CreatorID&SpanName=Span_PersonID_FullName");'>[C_SELECT]</a>
 						</td>
 					</tr>
 					<tr>
 						<td>
-						مجری/ناظر: 
+							C_ECECUTOR / C_VIEWER
 						</td>
 						<td>
 						<input type=hidden name="Item_ExecutorID" id="Item_ExecutorID">
 						<span id="Span_Executor_FullName" name="Span_Executor_FullName"></span> 	
-						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_ExecutorID&SpanName=Span_Executor_FullName");'>[انتخاب]</a>
+						<a href='#' onclick='javascript: window.open("SelectStaff.php?FormName=SearchForm&InputName=Item_ExecutorID&SpanName=Span_Executor_FullName");'>[C_SELECT]</a>
 						</td>
 					</tr>
 				</table>
-				<input class="btn btn-primary" type="submit" value="جستجو">
-				<input class="btn btn-light" type=button value='حذف انتخاب قبلی' onclick='javascript: ClearLastSelected();'>
+				<input class="btn btn-primary" type="submit" value="C_SEARCH">
+				<input class="btn btn-light" type=button value='C_REMOVE_PREVIOUS_CHOICE' onclick='javascript: ClearLastSelected();'>
 			</div>
 		</div>
 	</div>
