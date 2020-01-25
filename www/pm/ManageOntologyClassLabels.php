@@ -8,7 +8,7 @@
 
 /*
 
-edited by: Mohammad Kahani 9512762447
+edited by: Mohammad Kahani SID: 9512762447
 
  */
 
@@ -59,8 +59,8 @@ if (isset($_REQUEST["UpdateID"])) {
 	<br>
 	<div class="table-responsive container-fluid">
 		<div class="row">
-			<div class="col-sm-2"></div>
-			<table class="table table-bordered col-sm-8">
+			<div class="col-1"></div>
+			<table class="table table-bordered col-10">
 				<thead class="bg-info">
 					<tr>
 						<th class="text-center">
@@ -97,7 +97,7 @@ if (isset($_REQUEST["UpdateID"])) {
 					</tr>
 				</thead>
 			</table>
-			<div class="col-sm-2"></div>
+			<div class="col-1"></div>
 		</div>
 	</div>
 	<input type="hidden" name="Save" id="Save" value="1">
@@ -125,7 +125,7 @@ if ($SomeItemsRemoved) {
 
 ?>
 <form id="ListForm" name="ListForm" method="post">
-	<input type="hidden" id="Item_OntologyClassID" name="Item_OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
+	<input type="hidden" id="Item_OntologyCla7d45ccbea70e3559331f83a4adc1d4db08554337ssID" name="Item_OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
 	<br>
 	<table width="90%" align="center" border="1" cellspacing="0">
 		<tr bgcolor="#cccccc">
