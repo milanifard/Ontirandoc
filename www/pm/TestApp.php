@@ -1046,7 +1046,125 @@ Test::add(
 
 // ---------------------- TermEquivalentEnglishTerms.class.php by Diba Aminshahidi ------------------------
 
+Test::add(
+        function ()
+        {
+            try{
 
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        , "TermEquivalentEnglishTerms->LoadDataFromDatabase()"
+        , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetContent()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetLastID()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Add()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Update()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Remove()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetList()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->ComparePassedDataWithDB()"
+    , "Message"
+);
 // --------------------------------------------- END ------------------------------------------------------
 
 $res = Test::run();
