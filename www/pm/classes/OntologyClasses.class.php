@@ -661,21 +661,29 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 	  return "";
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr>";
-		$ret .= "<td width=\"33%\" ";
+		$ret = "<div class='container-fluid'>";
+ 		$ret .= "<div class='row'>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "<div class='table-responsive col-10'>";
+		$ret .= "<table class='table text-center'>";
+		$ret .= "<tr class='row table-borderless'>";
+		$ret .= "<td class='col-md-4'>";
 		if($CurrentPageName=="NewOntologyClasses")
 			$ret .= "bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='NewOntologyClasses.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageOntologyClassLabels")
  			$ret .= " bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='ManageOntologyClassLabels.php?OntologyClassID=".$RecID."'>برچسب کلاسها</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageOntologyClassHirarchy")
  			$ret .= " bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='ManageOntologyClassHirarchy.php?OntologyClassID=".$RecID."'>سلسله مراتب کلاسهای هستان نگار</a></td>";
 		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "<div class='col-md-2'></div>";
+		$ret .= "</div>";
+        $ret .= "</div>";
 		return $ret;
 	}
 	
