@@ -20,14 +20,14 @@ if(isset($_REQUEST["Save"]))
 	    manage_UserFacilities::Add($Item_UserID, $list[$i]->FacilityID);
 	}
 
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_STORED);
 }
 ?>
 <form method="post" id="f1" name="f1" >
 <input type="hidden" name="Item_UserID" id="Item_UserID" value='<? echo $_REQUEST["Item_UserID"]; ?>'>
 <br><table width="90%" border="1" cellspacing="0" align="center">
 <tr class="HeaderOfTable">
-<td align="center">دسترسی های کاربر: <? echo $_REQUEST["Item_UserID"]; ?></td>
+<td align="center"><? echo C_USER_ACCESSES. ":".$_REQUEST["Item_UserID"]; ?></td>
 </tr>
 <tr>
 <td>
@@ -35,7 +35,7 @@ if(isset($_REQUEST["Save"]))
 <tr>
   <td>
   <?
-    echo "<b>منوها</b><br>";
+    echo "<b>". C_MENUS ."</b><br>";
 	$list = manage_SystemFacilities::GetList();
 	for($i=0; $i<count($list); $i++)
 	{
@@ -57,8 +57,8 @@ if(isset($_REQUEST["Save"]))
 </tr>
 <tr class="FooterOfTable">
 <td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
-<input type="button" onclick="document.location='ManageAccountSpecs.php';" value="بازگشت">
+<input type="button" onclick="javascript: ValidateForm();" value="<?echo C_SAVE?>">
+<input type="button" onclick="document.location='ManageAccountSpecs.php';" value="<?echo C_RETURN?>">
 </td>
 </tr>
 </table>

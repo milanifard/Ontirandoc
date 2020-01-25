@@ -6,6 +6,10 @@
 
 تغییر: 31-2-89
 */
+
+// This file taken by MGhayour
+// local url: http://localhost:90/MyProject/Ontirandoc/www/SessionManagement/ManageMembersPAList.php
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/SessionMembers.class.php");
@@ -51,87 +55,102 @@ if($HasViewAccess=="NONE")
 	<input type="hidden" id="Save" name="Save" value="1">
 <? if(isset($_REQUEST["PageNumber"]))
 	echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="14">
-	اعضا
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td rowspan=2 width="1%">ردیف</td>
-	<td rowspan=2 >نام خانوادگی</td>	
-	<td rowspan=2 >نام</td>
-	<td rowspan=2 >نقش </td>
-	<td rowspan=2 width=1% nowrap>وضعیت تایید درخواست</td>
-	<td align=center colspan=3>امضا</td>
-	<td rowspan=2 width=1% nowrap>نوع حضور</td>
-	<td rowspan=2 width=1% nowrap>مدت حضور</td>
-	<td rowspan=2 width=1% nowrap>غیبت</td>
-</tr>
-<tr class=HeaderOfTable>
-	<td width=1%>وضعیت </td>
-	<td>امضا</td>
-	<td width=1%>زمان </td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
- $SignImg ='<img src="DisplayCanvas.php?RecId=' . $res[$k]->SessionMemberID . '" width="100"  />';
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>".($k+$FromRec+1)."</td>";
-	echo "	<td>".htmlentities($res[$k]->LastName, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".htmlentities($res[$k]->FirstName, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td>".$res[$k]->MemberRole_Desc."</td>";
-	echo "	<td>".$res[$k]->ConfirmStatus_Desc."</td>";
-	echo "	<td>".$res[$k]->SignStatus_Desc."</td>";
-	//echo "	<td>&nbsp;".htmlentities($res[$k]->SignDescription, ENT_QUOTES, 'UTF-8')."</td>";
-	if($res[$k]->canvasimg!='')			
-			echo "<td>" . $SignImg . "</td>";
-			else
-			echo "<td>&nbsp;</td>";
-	
-	if($res[$k]->SignTime_Shamsi!="date-error")
-		echo "	<td nowrap>".$res[$k]->SignTime_Shamsi."</td>";
-	else
-		echo "	<td>-</td>";
-	
-	if($HasUpdateAccess=="PUBLIC") 
-	{ 
-		echo "	<td><select name='PresenceType_".$res[$k]->SessionMemberID."' id='PresenceType_".$res[$k]->SessionMemberID."'>";
-		echo "<option value='PRESENT'>حاضر";
-		echo "<option value='ABSENT' ";
-		if($res[$k]->PresenceType=="ABSENT")
-			echo " selected ";	
-		echo ">غایب";
-		echo "</select></td>";
-		echo "	<td nowrap><input type=text size=2 id='PresentMin_".$res[$k]->SessionMemberID."' name='PresentMin_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime%60)."'>:";
-		echo "	<input type=text size=2 id='PresentHour_".$res[$k]->SessionMemberID."' name='PresentHour_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime/60)."'></td>";
-		echo "	<td nowrap><input type=text size=2 id='TardinessMin_".$res[$k]->SessionMemberID."' name='TardinessMin_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->TardinessTime%60)."'>:";
-		echo "<input type=text size=2 id='TardinessHour_".$res[$k]->SessionMemberID."' name='TardinessHour_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->TardinessTime/60)."'></td>";
-	}
-	else
-	{
-		if($res[$k]->PresenceType=="ABSENT")
-			echo "<td>غایب</td>";
-		else
-			echo "<td>حاضر</td>";
-		echo "	<td nowrap>".floor($res[$k]->PresenceTime%60).":".floor($res[$k]->PresenceTime/60)."</td>";
-		echo "	<td nowrap>".floor($res[$k]->TardinessTime%60).":".floor($res[$k]->TardinessTime/60)."</td>";
-	}
-	echo "</tr>";
-}
-?>
-<? if($HasUpdateAccess=="PUBLIC") { ?>
-<tr class="FooterOfTable">
-<td colspan="14" align="center">
-	 <input type="submit" value='ذخیره'>
-</td>
-</tr>
-<? } ?>
-</table>
+<br>
+<div class="container">
+
+	<div class="row justify-content-center">
+		<div class="card">
+			<div class="card-header">
+				<i class="fa fa-search"></i>
+					اعضا
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<tr bgcolor="#cccccc">
+						<td colspan="14">
+						
+						</td>
+					</tr>
+					<tr class="HeaderOfTable">
+						<td rowspan=2 width="1%">ردیف</td>
+						<td rowspan=2 >نام خانوادگی</td>	
+						<td rowspan=2 >نام</td>
+						<td rowspan=2 >نقش </td>
+						<td rowspan=2 width=1% nowrap>وضعیت تایید درخواست</td>
+						<td align=center colspan=3>امضا</td>
+						<td rowspan=2 width=1% nowrap>نوع حضور</td>
+						<td rowspan=2 width=1% nowrap>مدت حضور</td>
+						<td rowspan=2 width=1% nowrap>غیبت</td>
+					</tr>
+					<tr class=HeaderOfTable>
+						<td width=1%>وضعیت </td>
+						<td>امضا</td>
+						<td width=1%>زمان </td>
+					</tr>
+					<?
+					for($k=0; $k<count($res); $k++)
+					{
+					$SignImg ='<img src="DisplayCanvas.php?RecId=' . $res[$k]->SessionMemberID . '" width="100"  />';
+						if($k%2==0)
+							echo "<tr class=\"OddRow\">";
+						else
+							echo "<tr class=\"EvenRow\">";
+						echo "<td>".($k+$FromRec+1)."</td>";
+						echo "	<td>".htmlentities($res[$k]->LastName, ENT_QUOTES, 'UTF-8')."</td>";
+						echo "	<td>".htmlentities($res[$k]->FirstName, ENT_QUOTES, 'UTF-8')."</td>";
+						echo "	<td>".$res[$k]->MemberRole_Desc."</td>";
+						echo "	<td>".$res[$k]->ConfirmStatus_Desc."</td>";
+						echo "	<td>".$res[$k]->SignStatus_Desc."</td>";
+						//echo "	<td>&nbsp;".htmlentities($res[$k]->SignDescription, ENT_QUOTES, 'UTF-8')."</td>";
+						if($res[$k]->canvasimg!='')			
+								echo "<td>" . $SignImg . "</td>";
+								else
+								echo "<td>&nbsp;</td>";
+						
+						if($res[$k]->SignTime_Shamsi!="date-error")
+							echo "	<td nowrap>".$res[$k]->SignTime_Shamsi."</td>";
+						else
+							echo "	<td>-</td>";
+						
+						if($HasUpdateAccess=="PUBLIC") 
+						{ 
+							echo "	<td><select name='PresenceType_".$res[$k]->SessionMemberID."' id='PresenceType_".$res[$k]->SessionMemberID."'>";
+							echo "<option value='PRESENT'>حاضر";
+							echo "<option value='ABSENT' ";
+							if($res[$k]->PresenceType=="ABSENT")
+								echo " selected ";	
+							echo ">غایب";
+							echo "</select></td>";
+							echo "	<td nowrap><input type=text size=2 id='PresentMin_".$res[$k]->SessionMemberID."' name='PresentMin_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime%60)."'>:";
+							echo "	<input type=text size=2 id='PresentHour_".$res[$k]->SessionMemberID."' name='PresentHour_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime/60)."'></td>";
+							echo "	<td nowrap><input type=text size=2 id='TardinessMin_".$res[$k]->SessionMemberID."' name='TardinessMin_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->TardinessTime%60)."'>:";
+							echo "<input type=text size=2 id='TardinessHour_".$res[$k]->SessionMemberID."' name='TardinessHour_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->TardinessTime/60)."'></td>";
+						}
+						else
+						{
+							if($res[$k]->PresenceType=="ABSENT")
+								echo "<td>غایب</td>";
+							else
+								echo "<td>حاضر</td>";
+							echo "	<td nowrap>".floor($res[$k]->PresenceTime%60).":".floor($res[$k]->PresenceTime/60)."</td>";
+							echo "	<td nowrap>".floor($res[$k]->TardinessTime%60).":".floor($res[$k]->TardinessTime/60)."</td>";
+						}
+						echo "</tr>";
+					}
+					?>
+					<? if($HasUpdateAccess=="PUBLIC") { ?>
+					<tr class="FooterOfTable">
+					<td colspan="14" align="center">
+						<input type="submit" value='ذخیره'>
+					</td>
+					</tr>
+					<? } ?>
+				</table>
+
+			</div> <!-- end of cardbody  -->
+		</div>  <!-- end of card  -->
+	</div>  <!-- end of row  -->
+</div> <!-- end of container  -->
 </form>
 <script>
  setInterval(function(){

@@ -321,7 +321,7 @@ if($SomeItemsRemoved)
                             <b><?php echo C_SESSION_MEMBERS?></b>
                         </td>
                     </tr>
-                    <tr class="bg-secondary">
+                    <tr class="bg-secondary font-weight-bold">
                         <td width="1%"> </td>
                         <td width="1%"><?php echo C_ROW ?></td>
                         <td width="2%"><?php echo C_EDIT?></td>
@@ -343,16 +343,16 @@ if($SomeItemsRemoved)
                         echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->SessionTypeMemberID."\">";
                         echo "</td>";
                         echo "<td>".($k+1)."</td>";
-                        echo "	<td><a href=\"ManageSessionTypeMembers.php?UpdateID=".$res[$k]->SessionTypeMemberID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><img src='images/edit.gif' title='";
+                        echo "	<td class='text-center'><a href=\"ManageSessionTypeMembers.php?UpdateID=".$res[$k]->SessionTypeMemberID."&SessionTypeID=".$_REQUEST["SessionTypeID"]."\"><i class='fa fa-edit fa-3x' title='";
                         echo C_EDIT;
                         echo "'></a></td>";
                         echo "	<td>".$res[$k]->MemberRow."</td>";
                         echo "	<td>".htmlentities($res[$k]->FirstName, ENT_QUOTES, 'UTF-8')."</td>";
                         echo "	<td>".htmlentities($res[$k]->LastName, ENT_QUOTES, 'UTF-8')."</td>";
                         echo "	<td>".$res[$k]->MemberRoleID_Desc."</td>";
-                        echo "	<td>";
+                        echo "	<td class='text-center'>";
                         if($res[$k]->MemberPersonID>0)
-                            echo "<a target=_blank href='SessionTypesSetSecurity.php?RecID=".$_REQUEST["SessionTypeID"]."&SelectedPersonID=".$res[$k]->MemberPersonID."'><img src='images/security.gif' title='تعریف دسترسی'></a>";
+                            echo "<a target=_blank href='SessionTypesSetSecurity.php?RecID=".$_REQUEST["SessionTypeID"]."&SelectedPersonID=".$res[$k]->MemberPersonID."'><i class='fa fa-unlock-alt fa-3x' title='تعریف دسترسی'></a>";
                         else
                             echo "&nbsp;";
                         echo "</td>";

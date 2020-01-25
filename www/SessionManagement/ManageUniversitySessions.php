@@ -162,7 +162,7 @@ if(isset($_REQUEST["view"]) ){
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <form id="SearchForm" name="SearchForm" method=post >
+                <form class="form-group" id="SearchForm" name="SearchForm" method=post >
                     <input type="hidden" name="PageNumber" id="PageNumber" value="0">
                     <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
                     <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
@@ -194,7 +194,7 @@ if(isset($_REQUEST["view"]) ){
 
                                     <tr>
                                         <td width="1%" nowrap>
-                                            شماره جلسه
+                                            <?php echo C_SESSION_NUMBER ?>
                                         </td>
                                         <td nowrap>
                                             <input type="text" name="Item_SessionNumber" id="Item_SessionNumber" maxlength="20" size="40">
@@ -203,7 +203,7 @@ if(isset($_REQUEST["view"]) ){
 
                                     <tr>
                                         <td width="1%" nowrap>
-                                            عنوان جلسه
+                                            <?php echo C_SESSION_TITLE?>
                                         </td>
                                         <td nowrap>
                                             <input type="text" name="Item_SessionTitle" id="Item_SessionTitle" maxlength="500" size="40">
@@ -212,14 +212,14 @@ if(isset($_REQUEST["view"]) ){
 
                                     <tr>
                                         <td width="1%" nowrap>
-                                            تاریخ تشکیل
+                                            <?php echo C_DATE ?>
                                         </td>
                                         <td nowrap>
-                                            از
+                                            <?php echo C_FROM_DATE ?>
                                             <input maxlength="2" id="SessionFromDate_DAY"  name="SessionFromDate_DAY" type="text" size="2">/
                                             <input maxlength="2" id="SessionFromDate_MONTH" name="SessionFromDate_MONTH" type="text" size="2" >/
                                             <input maxlength="2" id="SessionFromDate_YEAR" name="SessionFromDate_YEAR" type="text" size="2" >
-                                            تا
+                                            <?php echo C_TO_DATE ?>
                                             <input maxlength="2" id="SessionToDate_DAY"  name="SessionToDate_DAY" type="text" size="2">/
                                             <input maxlength="2" id="SessionToDate_MONTH" name="SessionToDate_MONTH" type="text" size="2" >/
                                             <input maxlength="2" id="SessionToDate_YEAR" name="SessionToDate_YEAR" type="text" size="2" >
@@ -228,7 +228,7 @@ if(isset($_REQUEST["view"]) ){
 
                                     <tr>
                                         <td width="1%" nowrap>
-                                            محل تشکیل
+                                            <?php echo C_SESSION_LOCATION ?>
                                         </td>
                                         <td nowrap>
                                             <input type="text" name="Item_SessionLocation" id="Item_SessionLocation" maxlength="200" size="40">
@@ -236,7 +236,7 @@ if(isset($_REQUEST["view"]) ){
                                     </tr>
                                     <tr>
                                         <td width="1%" nowrap>
-                                            کلمه کلیدی در دستور کار
+                                            <?php echo C_INSTRUCTION_KEYWORD ?>
                                         </td>
                                         <td nowrap>
                                             <input type="text" name="Item_PreCommandKeyWord" id="Item_PreCommandKeyWord" maxlength="200" size="40">
@@ -244,14 +244,14 @@ if(isset($_REQUEST["view"]) ){
                                     </tr>
                                     <tr>
                                         <td width="1%" nowrap>
-                                            کلمه کلیدی در مصوبه ها
+                                            <?php echo C_ENACTMENT_KEYWORD ?>
                                         </td>
                                         <td nowrap>
                                             <input type="text" name="Item_DecisionKeyWord" id="Item_DecisionKeyWord" maxlength="200" size="40">
                                         </td>
                                     </tr>
-                                    <tr class="HeaderOfTable">
-                                        <td colspan="2" align="center"><input type="submit" value="جستجو" ></td>
+                                    <tr class="bg-info">
+                                        <td colspan="2" align="center"><button class="btn btn-white" type="submit"> <?php echo C_SEARCH ?> </button></td>
                                     </tr>
                                 </table>
                             </td>

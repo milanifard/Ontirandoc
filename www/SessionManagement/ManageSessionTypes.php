@@ -70,8 +70,9 @@ if($SomeItemsRemoved)
                     <tr id='SearchTr' style='display: none'>
                         <td>
                             <table class="table table-bordered">
+
                                 <tr class="h4">
-                                    <td width="1%" nowrap>
+                                    <td class="font-weight-bold" width="1%" nowrap>
                                         <font color=red>*</font> <? echo C_TITLE ?>
                                     </td>
                                     <td nowrap>
@@ -80,7 +81,7 @@ if($SomeItemsRemoved)
                                 </tr>
 
                                 <tr>
-                                    <td width="1%" nowrap>
+                                    <td class="font-weight-bold" width="1%" nowrap>
                                         <font color=red>*</font>  <? echo C_SESSION_LOCATION ?>
                                     </td>
                                     <td nowrap>
@@ -88,9 +89,10 @@ if($SomeItemsRemoved)
                                     </td>
                                 </tr>
 
-                                <thead class="bg-info">
-                                <td colspan="2" align="center"><input type="submit" value="جستجو"></td>
-                                </thead>
+                                <tr class="bg-info">
+
+                                <td colspan="2" align="center"><button class="btn btn-white" type="submit"> <?php echo C_SEARCH ?> </button></td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
