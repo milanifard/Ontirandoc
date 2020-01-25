@@ -75,7 +75,7 @@ if(isset($_REQUEST["UpdateID"]))
                             <?php if(!isset($_REQUEST["UpdateID"])) { ?>
                                 <input type="hidden" name="FacilityID" id="FacilityID" value='<? if(isset($_REQUEST["FacilityID"])) echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>'>
                             <?php } ?>
-                            <input  type="text" class="form-control" name="Item_PageName" id="Item_PageName" required placeholder=<?php echo C_PAGE_PLACE_HOLDER?> />
+                            <input  type="text" class="form-control" name="Item_PageName" id="Item_PageName" required placeholder= <?php echo "'".C_PAGE_PLACE_HOLDER."'" ?> />
                         </div>
                     </div>
                 </td>
@@ -86,7 +86,7 @@ if(isset($_REQUEST["UpdateID"]))
                 <td class="text-center">
                     <input type="submit" class="btn   btn-outline-success" value=<?php echo C_SAVE?> >
                     <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value=<?php echo C_NEW?>>
-                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value=<?php echo C_CLOSE?>>
+                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value=<?php echo "'".C_CLOSE."'"?>>
                 </td>
             </tr>
             </tbody>

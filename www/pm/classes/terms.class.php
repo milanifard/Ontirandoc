@@ -318,6 +318,8 @@ class manage_terms
 		}
 		return $ret;
 	}
+
+	//changed by Naghme Mohammadifar
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";

@@ -5,6 +5,10 @@ include("classes/messages.class.php");
 include("classes/terms.class.php");
 include("classes/ProjectHistory.class.php");
 include("classes/AccountSpecs.class.php");
+include("classes/RefrenceTypes.class.php");
+include("classes/FacilityPages.class.php");
+include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
+include("classes/TermEquivalentEnglishTerms.class.php");
 HTMLBegin();
 class Test
 {
@@ -724,6 +728,464 @@ Test::add(                      #9
 );
 
 //AccountSpecs.class.php -Ali Noori - Finish
+
+//RefrenceTypes.class.php -Hoormazd Ranjbar - Start
+Test::add(              #1
+        function ()
+        {
+            $obj = new be_RefrenceTypes();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    , "be_RefrenceTypes.class->LoadDataFromDatabase", "RefrenceTypes"
+);
+Test::add(              #2
+        function ()
+        {
+            try
+            {
+                manage_RefrenceTypes::Add("1", "RefExpTitle");
+                if(manage_RefrenceTypes::GetCount("1")>=0) {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_RefrenceTypes->GetCount()", "RefrenceTypes"
+);
+Test::add(          #3
+        function ()
+        {
+            try
+            {
+                manage_RefrenceTypes::Add("1", "RefExpTitle");
+                if(manage_RefrenceTypes::GetLastID()==-1)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_RefrenceTypes->GetLastID()", "RefrenceTypes"
+);
+Test::add(          #4
+        function()
+        {
+            try
+            {
+                if(manage_RefrenceTypes::Add("1","RefExpTitle")>-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_RefrenceTypes->Add()", "RefrenceTypes"
+);
+Test::add(          #5
+    function ()
+    {
+        try
+        {
+            manage_RefrenceTypes::Update("1","RefExpTitle");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->Update()", "RefrenceTypes"
+);
+Test::add(                  #6
+    function ()
+    {
+        try
+        {
+            manage_RefrenceTypes::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->Remove()", "RefrenceTypes"
+);
+Test::add(                  #7
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_RefrenceTypes::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->GatList()", "RefrenceTypes"
+);
+Test::add(                      #8
+    function ()
+    {
+        try
+        {
+            if(manage_RefrenceTypes::ComparePassedDataWithDB("1","RefExpTitle")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_RefrenceTypes->ComparePassedDataWithDB()", "RefrenceTypes"
+);
+//RefrenceTypes.class.php -Hoormazd Ranjbar - Finish
+
+
+//-------------------------------------------------------------------------------------------
+//--------------------FacilityPages.class.php  by Naghme Mohammadifar------------------------
+//-------------------------------------Start-------------------------------------------------
+
+Test::add(
+    function()
+    {
+        $obj = new be_FacilityPages();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_FacilityPages.class->LoadDataFromDatabase()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::GetCount(1)==0) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages.class->GetCount()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::GetLastID()==-1) {
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->GetLastID()", "Message"
+);
+
+Test::add(
+        function()
+        {
+            try
+            {
+                if(manage_FacilityPages::Add("1","pageName")>-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+}
+    ,"manage_FacilityPages->Add()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_FacilityPages::Update("1","pageName");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->Update()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_FacilityPages::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->Remove()", "Message"
+);
+Test::add(
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_FacilityPages::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->GetList()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FacilityPages::ComparePassedDataWithDB("1","PageName")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FacilityPages->ComparePassedDataWithDB()", "Message"
+);
+//---------------------------END OF FacilityPages.class.php -----------------------------------------------------
+
+// ========================================+ Arman Ghoreshi +==============================================
+// ========================== SessionManagement/classes/SessionActReg.class.php ===========================
+Test::add(
+        function()
+        {
+            try{
+                if (manage_SessionActReg::GetLastID() != -1)
+                    return true;
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"SessionManagement/classes/SessionActReg->GetLastID()"
+        ,"Message"
+);
+Test::add(
+    function()
+    {
+        try{
+            if (manage_SessionActReg::Added())
+                return true;
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"SessionManagement/classes/SessionActReg->Added()"
+    ,"Message"
+);
+// ==============================================END=======================================================
+
+// ---------------------- TermEquivalentEnglishTerms.class.php by Diba Aminshahidi ------------------------
+
+Test::add(
+        function ()
+        {
+            $obj = new be_TermEquivalentEnglishTerms();
+            try{
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        , "TermEquivalentEnglishTerms->LoadDataFromDatabase()"
+        , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_TermEquivalentEnglishTerms::GetCount(1)==0) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetCount()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_TermEquivalentEnglishTerms::GetLastID()==-1) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetLastID()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_TermEquivalentEnglishTerms::Add("1","Term"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Add()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_TermEquivalentEnglishTerms::Update("1","TermUpdate");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Update()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(is_array(manage_TermEquivalentEnglishTerms::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->GetList()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_TermEquivalentEnglishTerms::ComparePassedDataWithDB("1","TermUpdate")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->ComparePassedDataWithDB()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_TermEquivalentEnglishTerms::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Remove()"
+    , "Message"
+);
+// --------------------------------------------- END ------------------------------------------------------
 
 $res = Test::run();
 echo "<br>";
