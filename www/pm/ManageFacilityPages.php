@@ -85,8 +85,8 @@ if(isset($_REQUEST["UpdateID"]))
             <tr >
                 <td class="text-center">
                     <input type="submit" class="btn   btn-outline-success" value=<?php echo C_SAVE?> >
-                    <input type="button" class="btn   btn-outline-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value=<?php echo C_NEW?>>
-                    <input type="button" class="btn  btn-outline-danger" onclick="javascript: window.close();" value=<?php echo "'".C_CLOSE."'"?>>
+                    <input type="button" class="btn   btn-info" onclick="javascript: document.location='ManageFacilityPages.php?FacilityID=<?php echo $_REQUEST["FacilityID"]; ?>'" value=<?php echo C_NEW?>>
+                    <input type="button" class="btn  btn-danger" onclick="javascript: window.close();" value=<?php echo "'".C_CLOSE."'"?>>
                 </td>
             </tr>
             </tbody>
@@ -148,7 +148,7 @@ if(isset($_REQUEST["UpdateID"]))
 
             <tr >
                 <td class="text-center" colspan="4">
-                    <input type="button" class=" btn btn-outline-danger btn-light" onclick="javascript:ConfirmDelete();" value=<?php echo C_DELETE?>>
+                    <input type="button" class=" btn btn-danger btn-light" onclick="javascript:ConfirmDelete();" value=<?php echo C_DELETE?>>
                 </td>
             </tr>
             </tbody>
