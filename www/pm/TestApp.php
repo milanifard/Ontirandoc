@@ -1345,7 +1345,7 @@ Test::add(
 
 
 
-// Payments.class.php - Alireza Imani - begin
+// FormManagers.class.php - Alireza Imani - begin
 Test::add(
     function()
     {
@@ -1361,7 +1361,7 @@ Test::add(
     }
     ,"be_FormManager.class->LoadDataFromDatabase()", "Message"
 );
-// Payments.class.php - Alireza Imani - end
+// FormManagers.class.php - Alireza Imani - end
 
 
 
