@@ -569,6 +569,19 @@ if(UI_LANGUAGE=="EN") {
     define2("C_VIEW" , "View");
     define2("C_CHOOSE_APPLIER" , "Choose applier");
 
+
+//    ControlForms.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "From Type:");
+    define2("C_SEARCH_SELECTED_FORM" , "Search Appropriate From");
+    define2("C_CREATOR_NAME" , "Creator Name");
+    define2("C_CREATOR" , "Creator: ");
+    define2("C_SENDER" , "Sender: ");
+    define2("C_FORM_NAME_2" , "Form Name: ");
+    define2("C_LAST_SENDER" , "Last Sender");
+    define2("C_SEND_TIME" , "Sending Time");
+    define2("C_CURRENT_STEP" , "Current Step");
+    define2("C_CURRENT_STEP_NAME" , "Current Step Name: ");
+    define2("C_NEW_STEP" , "New Step: ");
 }
 else
 {
@@ -1123,6 +1136,20 @@ else
     define2("C_UPDATE" , "بروزرسانی");
     define2("C_VIEW" , "مشاهده");
     define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
-}   
+
+    //controlFrom.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "نوع فرم:");
+    define2("C_SEARCH_SELECTED_FORM" , "جستجو فرم های مورد نظر");
+    define2("C_CREATOR_NAME" , "نام ایجاد کننده:");
+    define2("C_CREATOR" , "ایجاد کننده:");
+    define2("C_SENDER" , "ارسال کننده:");
+    define2("C_FORM_NAME_2" , "نام فرم");
+    define2("C_LAST_SENDER" , "آخرین ارسال کننده");
+    define2("C_SEND_TIME" , "زمان ارسال");
+    define2("C_CURRENT_STEP" , "مرحله فعلی");
+    define2("C_CURRENT_STEP_NAME" , "نام مرحله فعلی:");
+    define2("C_NEW_STEP" , "مرحله جدید:");
+}
 
 ?>
+
