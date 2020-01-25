@@ -1343,6 +1343,29 @@ Test::add(
 // Payments.class.php - Sajjad Iranmanesh - end
 
 
+
+
+// Payments.class.php - Alireza Imani - begin
+Test::add(
+    function()
+    {
+        $obj = new be_FormManager();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_FormManager.class->LoadDataFromDatabase()", "Message"
+);
+// Payments.class.php - Alireza Imani - end
+
+
+
+
 $res = Test::run();
 echo "<br>";
 echo "<div class='container'>";
