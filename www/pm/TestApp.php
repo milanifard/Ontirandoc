@@ -8,6 +8,7 @@ include("classes/AccountSpecs.class.php");
 include("classes/RefrenceTypes.class.php");
 include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
+include("classes/TermEquivalentEnglishTerms.class.php");
 HTMLBegin();
 class Test
 {
@@ -1043,6 +1044,10 @@ Test::add(
 );
 // ==============================================END=======================================================
 
+// ---------------------- TermEquivalentEnglishTerms.class.php by Diba Aminshahidi ------------------------
+
+
+// --------------------------------------------- END ------------------------------------------------------
 
 $res = Test::run();
 echo "<br>";
