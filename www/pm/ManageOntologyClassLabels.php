@@ -4,6 +4,12 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-3-1
 */
+
+
+/*
+edited by: Mohammad Kahani 9512762447 
+*/
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/OntologyClassLabels.class.php");
