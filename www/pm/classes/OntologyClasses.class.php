@@ -637,23 +637,28 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
 		}
 		return $ret;
 	}
+	
+	/* 
+	edited by: Mohammad Kahani	SID: 9512762447
+	*/
+	
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
+		$ret .= "<div class=\"table-responsive container-fluid\">";
+		$ret .= "<div class=\"row\">";
+		$ret .= "<div class=\"col-sm-2\"></div>";
+		$ret .= "<table class=\"table table-bordered col-sm-8\">";
+		$ret .= "<tbody><tr><td><table class=\"table table-bordered tab\">";
 		$obj = new be_OntologyClasses();
 		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr><td width=10%>هستان نگار: </td><td>".$obj->OntologyTitle."</td></tr>";
-		$ret .= "<tr><td width=10%>کلاس: </td><td>".$obj->ClassTitle."</td></tr>";
-		$ret .= "</table>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
+		$ret .= "<tr><td width=\"1%\" nowrap>هستان نگار</td>".$obj->OntologyTitle."</td></tr>";
+		$ret .= "<tr><td width=\"1%\" nowrap>کلاس</td><td>".$obj->ClassTitle."</td></tr>";
+		$ret .= "</table></tbody></td></tr></table>";
+		$ret .= "<div class=\"col-sm-2\"></div></div></div>";
 		return $ret;
 	}
+	
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 	  return "";
