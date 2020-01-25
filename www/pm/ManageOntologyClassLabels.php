@@ -55,6 +55,7 @@ if (isset($_REQUEST["UpdateID"])) {
 		echo manage_OntologyClasses::ShowSummary($_REQUEST["OntologyClassID"]);
 		echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntologyClassLabels");
 	}
+	
 	?>
 	<br>
 	<div class="table-responsive container-fluid">
@@ -72,21 +73,21 @@ if (isset($_REQUEST["UpdateID"])) {
 						<tr>
 							<td>
 								<table>
-								<tr>
-									<td width="1%" nowrap>
-										<label for="OntologyClassID">
-										<font color=red>*</font>
-										برچسب
-										</label>
-									</td>
-									<td nowrap>
-										<?
-										if (!isset($_REQUEST["UpdateID"])) {
-										?>
-											<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" required value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
-										<? } ?>
-									</td>
-								</tr>
+									<tr>
+										<td width="1%" nowrap>
+											<label for="OntologyClassID">
+												<font color=red>*</font>
+												برچسب
+											</label>
+										</td>
+										<td nowrap>
+											<?
+											if (!isset($_REQUEST["UpdateID"])) {
+											?>
+												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" required value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
+											<? } ?>
+										</td>
+									</tr>
 								</table>
 							</td>
 						</tr>
@@ -100,7 +101,7 @@ if (isset($_REQUEST["UpdateID"])) {
 						</tr>
 					</thead>
 				</table>
-			</div> 
+			</div>
 			<div class="col-1"></div>
 		</div>
 	</div>
@@ -128,42 +129,52 @@ if ($SomeItemsRemoved) {
 }
 
 ?>
+
 <form id="ListForm" name="ListForm" method="post">
 	<input type="hidden" id="Item_OntologyCla7d45ccbea70e3559331f83a4adc1d4db08554337ssID" name="Item_OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
 	<br>
-	<table width="90%" align="center" border="1" cellspacing="0">
-		<tr bgcolor="#cccccc">
-			<td colspan="4">
-				برچسب کلاسها
-			</td>
-		</tr>
-		<tr class="HeaderOfTable">
-			<td width="1%"> </td>
-			<td width="1%">ردیف</td>
-			<td width="2%">ویرایش</td>
-			<td>برچسب</td>
-		</tr>
-		<?
-		for ($k = 0; $k < count($res); $k++) {
-			if ($k % 2 == 0)
-				echo "<tr class=\"OddRow\">";
-			else
-				echo "<tr class=\"EvenRow\">";
-			echo "<td>";
-			echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->OntologyClassLabelID . "\">";
-			echo "</td>";
-			echo "<td>" . ($k + 1) . "</td>";
-			echo "	<td><a href=\"ManageOntologyClassLabels.php?UpdateID=" . $res[$k]->OntologyClassLabelID . "&OntologyClassID=" . $_REQUEST["OntologyClassID"] . "\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-			echo "	<td>" . str_replace("\r", "<br>", htmlentities($res[$k]->label, ENT_QUOTES, 'UTF-8')) . "</td>";
-			echo "</tr>";
-		}
-		?>
-		<tr class="FooterOfTable">
-			<td colspan="4" align="center">
-				<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-			</td>
-		</tr>
-	</table>
+	<div class="table-responsive container-fluid">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<table class="table table-bordered table-sm table-striped">
+					<thead class="table-info">
+						<tr>
+							<th class="text-center" colspan="6">برچسب کلاسها</th>
+						</tr>
+						<tr>
+							<td width="1%"> </td>
+							<td width="1%">ردیف</td>
+							<td width="2%">ویرایش</td>
+							<td width="50%">برچسب</td>
+						</tr>
+					</thead>
+					<?
+					for ($k = 0; $k < count($res); $k++) {
+						if ($k % 2 == 0)
+							echo "<tr class=\"OddRow\">";
+						else
+							echo "<tr class=\"EvenRow\">";
+						echo "<td>";
+						echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->OntologyClassLabelID . "\">";
+						echo "</td>";
+						echo "<td>" . ($k + 1) . "</td>";
+						echo "	<td><a href=\"ManageOntologyClassLabels.php?UpdateID=" . $res[$k]->OntologyClassLabelID . "&OntologyClassID=" . $_REQUEST["OntologyClassID"] . "\"><i class='fas fa-edit'></i></a></td>";
+						echo "	<td>" . str_replace("\r", "<br>", htmlentities($res[$k]->label, ENT_QUOTES, 'UTF-8')) . "</td>";
+						echo "</tr>";
+					}
+					?>
+					<tr class="table-info">
+						<td colspan="6" align="center">
+							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="حذف">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+
 </form>
 <form target="_blank" method="post" action="NewOntologyClassLabels.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="OntologyClassID" name="OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
@@ -175,29 +186,3 @@ if ($SomeItemsRemoved) {
 </script>
 
 </html>
-
-
-<br>
-<div class="table-responsive container-fluid">
-	<div class="row">
-		<div class="col-sm-2"></div>
-		<table class="table table-bordered col-sm-8">
-			<tbody>
-				<tr>
-					<td>
-						<table class="table table-bordered tab">
-							<tr>
-								<td width="1%" nowrap>هستان نگار</td>
-							</tr>
-							<tr>
-								<td width="1%" nowrap>کلاس</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				
-			</tbody>
-		</table>
-		<div class="col-sm-2"></div>
-	</div>
-</div>
