@@ -987,7 +987,10 @@ class manage_projects
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret .= "<div class='row'>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "<div class='col-10'>";
+		$ret .= "<table class='table table-sm table-borderless' align=\"center\" border=\"1\" cellspacing=\"0\">";
 		$ret .= "<tr>";
 		$ret .= "<td>";
 		$ret .= "<table width=\"100%\" border=\"0\">";
@@ -1005,6 +1008,9 @@ class manage_projects
 		$ret .= "</td>";
 		$ret .= "</tr>";
 		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "</div>";
 		return $ret;
 	}
 	
@@ -1060,13 +1066,16 @@ class manage_projects
 		}
 		else
 		{
-			$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
-	 		$ret .= "<tr>";
-			$ret .= "<td width=\"8%\" ";
+			$ret = "<div class='row'>";
+			$ret .= "<div class='col-1'></div>";
+			$ret .= "<div class='col-10'>";
+			$ret .= "<table class='table table-sm' border=\"1\" cellspacing=\"0\">";
+	 		$ret .= "<tr class='table-info'>";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="Newprojects")
 				$ret .= "bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='Newprojects.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectMembers")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectMembers.php?ProjectID=".$RecID."'>اعضا</a></td>";
@@ -1083,36 +1092,39 @@ class manage_projects
 			if($CurrentPageName=="ManageProjectDocuments")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectDocuments.php?ProjectID=".$RecID."'>مستندات</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectMilestones")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectMilestones.php?ProjectID=".$RecID."'>تاریخهای مهم</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectDocumentTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectDocumentTypes.php?ProjectID=".$RecID."'>انواع سند</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskActivityTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectTaskActivityTypes.php?ProjectID=".$RecID."'>انواع اقدام</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectTaskTypes.php?ProjectID=".$RecID."'>انواع کار</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskGroups")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectTaskGroups.php?ProjectID=".$RecID."'>گروه کارها</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectHistory")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ManageProjectHistory.php?ProjectID=".$RecID."'>تاریخچه</a></td>";
-			$ret .= "<td width=\"8%\" ";
+			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ShowProjectActivities")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
 			$ret .= "><a href='ShowProjectActivities.php?ProjectID=".$RecID."'>فعالیتها</a></td>";
 		
 			$ret .= "</table>";
+			$ret .= "</div>";
+			$ret .= "<div class='col-1'></div>";
+			$ret .= "</div>";
 		}
 		return $ret;
 	}
