@@ -9,6 +9,7 @@ include("classes/RefrenceTypes.class.php");
 include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 include("classes/TermEquivalentEnglishTerms.class.php");
+include("classes/payments.class.php");
 HTMLBegin();
 class Test
 {
@@ -1201,6 +1202,146 @@ Test::add(
     , "Message"
 );
 // --------------------------------------------- END ------------------------------------------------------
+
+// Payments.class.php - Sajjad Iranmanesh - begin
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_payments::Add(1, 1000, "2000/01/01", "CASH", "Server CX11", "Some blob", "Invoice11.pdf"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->Add()", "payments"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            $obj = new be_payments();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }, "be_payments.class->LoadDataFromDatabase()", "payments"
+);
+
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_payments::GetLastID()==-1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->GetLastID()", "payments"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_payments::Update(1, 2000, "2020/01/01", "CASH", "Server CX11", "Some blob 1", "Invoice111.pdf"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->Update()", "payments"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_payments::GetList(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->GetList()", "Payments"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_payments::ComparePassedDataWithDB(1, 2000, "2020/01/01","CASH", "Server CX11"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->ComparePassedDataWithDB()", "payments"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_payments::Remove(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->Remove()", "payments"
+);
+// Payments.class.php - Sajjad Iranmanesh - end
+
 
 $res = Test::run();
 echo "<br>";
