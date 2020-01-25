@@ -52,7 +52,7 @@ for($k=0; $k<count($res); $k++)
 if($SomeItemsRemoved)
     $res = manage_ProjectTasks::GetUserRequestedTasks($ProjectID, $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
 ?>
-<form id="SearchForm" name="SearchForm" method=post>
+<form id="f1" name="f1" method=post>
     <input type="hidden" name="PageNumber" id="PageNumber" value="0">
     <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
     <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
@@ -62,7 +62,7 @@ if($SomeItemsRemoved)
     <div class="container">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text border-dark bg-dark text-white" for="inputGroupSelect01">پروژه مربوطه</label>
+                <label class="input-group-text border-dark bg-dark text-white" for="inputGroupSelect01"><?php echo C_RELATED_PROJECT ?></label>
             </div>
             <select class='custom-select' onchange='javascript: document.SearchForm.submit();'>
                 <option value=0>--
@@ -75,30 +75,30 @@ if($SomeItemsRemoved)
 
     <?
     if(isset($_REQUEST["SearchAction"]))
-        {
-            ?>
-            <script>
-                document.SearchForm.Item_ProjectID.value='<? echo htmlentities($_REQUEST["Item_ProjectID"], ENT_QUOTES, 'UTF-8'); ?>';
-            </script>
-            <?
-        }
+    {
+        ?>
+        <script>
+            document.SearchForm.Item_ProjectID.value='<? echo htmlentities($_REQUEST["Item_ProjectID"], ENT_QUOTES, 'UTF-8'); ?>';
+        </script>
+        <?
+    }
     ?>
     <div class="container border-dark">
         <table class="table">
             <thead>
             <tr class="bg-dark border-0 text-white font-weight-bold">
-                <td colspan="9" class="text-center">لیست درخواستهای ارسال شما از سوی شما</td>
+                <td colspan="9" class="text-center"><?php echo C_YOUR_REQUESTS_LIST ?></td>
             </tr>
             </thead>
             <tbody>
             <tr class="bg-light text-black-50 font-weight-bolder text-center">
-                <td>ردیف</td>
-                <td>ویرایش</td>
-                <td><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
-                <td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
-                <td><a href="javascript: Sort('TaskStatus', 'ASC');">وضعیت</a></td>
-                <td><a href="javascript: Sort('CreatorDate', 'ASC');">زمان ایجاد</a></td>
-                <td>سایر مشخصات	</td>
+                <td><?php echo C_ROW ?></td>
+                <td><?php echo C_EDIT ?></td>
+                <td><a href="javascript: Sort('ProjectID', 'ASC');"><?php echo C_RELATED_PROJECT ?></a></td>
+                <td><a href="javascript: Sort('title', 'ASC');"><?php echo C_TITLE ?></a></td>
+                <td><a href="javascript: Sort('TaskStatus', 'ASC');"><?php echo C_STATUS ?></a></td>
+                <td><a href="javascript: Sort('CreatorDate', 'ASC');"><?php echo C_CREATE_TIME1 ?></a></td>
+                <td><?php echo C_OTHER_SPECIFICATIONS ?></td>
             </tr>
             <?
             for($k=0; $k<count($res); $k++)
@@ -147,7 +147,7 @@ if($SomeItemsRemoved)
             ?>
             <tr>
                 <td colspan="9" align="center">
-                    <input type="button" class='btn border-dark text-dark' onclick="javascript: ConfirmDelete();" value="حذف">
+                    <input type="button" class='btn border-dark text-dark' onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE ?>">
                 </td>
             </tr>
             <tr>
@@ -174,7 +174,7 @@ if($SomeItemsRemoved)
 <script>
     function ConfirmDelete()
     {
-        if(confirm('آیا مطمین هستید؟')) document.SearchForm.submit();
+        if(confirm('<?php echo C_ARE_YOU_SURE ?>')) document.SearchForm.submit();
     }
     function ShowPage(PageNumber)
     {
