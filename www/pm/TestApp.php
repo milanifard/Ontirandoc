@@ -7,6 +7,7 @@ include("classes/ProjectHistory.class.php");
 include("classes/AccountSpecs.class.php");
 include("classes/RefrenceTypes.class.php");
 include("classes/FacilityPages.class.php");
+include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 HTMLBegin();
 class Test
 {
@@ -1005,6 +1006,42 @@ Test::add(
     ,"manage_FacilityPages->ComparePassedDataWithDB()", "Message"
 );
 //---------------------------END OF FacilityPages.class.php -----------------------------------------------------
+
+// ========================================+ Arman Ghoreshi +==============================================
+// ========================== SessionManagement/classes/SessionActReg.class.php ===========================
+Test::add(
+        function()
+        {
+            try{
+                if (manage_SessionActReg::GetLastID() != -1)
+                    return true;
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"SessionManagement/classes/SessionActReg->GetLastID()"
+        ,"Message"
+);
+Test::add(
+    function()
+    {
+        try{
+            if (manage_SessionActReg::Added())
+                return true;
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"SessionManagement/classes/SessionActReg->Added()"
+    ,"Message"
+);
+// ==============================================END=======================================================
 
 
 $res = Test::run();
