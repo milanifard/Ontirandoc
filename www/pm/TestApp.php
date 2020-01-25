@@ -1049,8 +1049,10 @@ Test::add(
 Test::add(
         function ()
         {
+            $obj = new be_TermEquivalentEnglishTerms();
             try{
-
+                $obj->LoadDataFromDatabase(1);
+                return true;
             }
             catch (Exception $e)
             {
@@ -1065,14 +1067,17 @@ Test::add(
     function ()
     {
         try{
-
+            if(manage_TermEquivalentEnglishTerms::GetCount(1)==0) {
+                return false;
+            }
+            return true;
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    , "TermEquivalentEnglishTerms->GetContent()"
+    , "TermEquivalentEnglishTerms->GetCount()"
     , "Message"
 );
 
@@ -1080,7 +1085,10 @@ Test::add(
     function ()
     {
         try{
-
+            if(manage_TermEquivalentEnglishTerms::GetLastID()==-1) {
+                return false;
+            }
+            return true;
         }
         catch (Exception $e)
         {
@@ -1095,7 +1103,11 @@ Test::add(
     function ()
     {
         try{
-
+            if(manage_TermEquivalentEnglishTerms::Add("1","Term"))
+            {
+                return true;
+            }
+            return false;
         }
         catch (Exception $e)
         {
@@ -1110,7 +1122,8 @@ Test::add(
     function ()
     {
         try{
-
+            manage_TermEquivalentEnglishTerms::Update("1","TermUpdate");
+            return true;
         }
         catch (Exception $e)
         {
@@ -1125,22 +1138,10 @@ Test::add(
     function ()
     {
         try{
-
-        }
-        catch (Exception $e)
-        {
+            if(is_array(manage_TermEquivalentEnglishTerms::GetList("1"))){
+                return true;
+            }
             return false;
-        }
-    }
-    , "TermEquivalentEnglishTerms->Remove()"
-    , "Message"
-);
-
-Test::add(
-    function ()
-    {
-        try{
-
         }
         catch (Exception $e)
         {
@@ -1155,7 +1156,10 @@ Test::add(
     function ()
     {
         try{
-
+            if(manage_TermEquivalentEnglishTerms::ComparePassedDataWithDB("1","TermUpdate")!=''){
+                return true;
+            }
+            return false;
         }
         catch (Exception $e)
         {
@@ -1163,6 +1167,22 @@ Test::add(
         }
     }
     , "TermEquivalentEnglishTerms->ComparePassedDataWithDB()"
+    , "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_TermEquivalentEnglishTerms::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "TermEquivalentEnglishTerms->Remove()"
     , "Message"
 );
 // --------------------------------------------- END ------------------------------------------------------
