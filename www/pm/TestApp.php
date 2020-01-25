@@ -649,7 +649,8 @@ Test::add(                  #5
         {
             try
             {
-                manage_AccountSpecs::Update("1","ali","123","alavi");//it does not return anything
+                $tid = manage_AccountSpecs::Add("aliTest5", "123555", "alavi");
+                manage_AccountSpecs::Update($tid,"ali","123","alavi");//it does not return anything
                 return true;
             }
             catch (Exception $e)
@@ -664,7 +665,21 @@ Test::add(                  #6
         {
             try
             {
-                manage_AccountSpecs::Remove("1");
+
+                $tid = manage_AccountSpecs::Add("aliTest6","123555","alavi");
+                manage_AccountSpecs::Remove($tid);
+                /*
+                 MGhayour:
+                    WTF!!
+                    you just removed the main testing account of omid, omid3000 :/
+
+                    i fixed it, we add a user and remove him
+                    for whom that (omid, omid3000) dosent work for him
+
+                    plz add this record to your DB, or restore DB backup
+                    Table: projectmanagement/accountspecs
+                    INSERT INTO `AccountSpecs` VALUES (1,'omid','30f9dd65de612bfe458a871b90eabb3026c9fb29',1,'omid')
+                */
                 return true;
             }
             catch (Exception $e)
