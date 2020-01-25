@@ -1359,7 +1359,80 @@ Test::add(
             return false;
         }
     }
-    ,"be_FormManager.class->LoadDataFromDatabase()", "Message"
+    ,"be_FormManager.class->LoadDataFromDatabase()", "FormManagers"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FormManagers::GetLastID()==-1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->GetLastID()", "FormManagers"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_FormManagers::Remove(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->Remove()", "FormManagers"
+);
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_FormManagers::GetList(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->GetList()", "FormManagers"
+);
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_FormManagers::GetRows(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->GetRows()", "FormManagers"
 );
 // FormManagers.class.php - Alireza Imani - end
 
