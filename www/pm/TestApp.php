@@ -1366,7 +1366,7 @@ Test::add(
     {
         try
         {
-            if(manage_FormManagers::GetLastID()==-1)
+            if(manage_FormManagers::GetLastID()!=-1)
             {
                 return true;
             }
@@ -1379,7 +1379,42 @@ Test::add(
     }
     ,"manage_FormManagers->GetLastID()", "FormManagers"
 );
-
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FormManagers::Add("0","0","FULL")==1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->Add()", "FormManagers"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_FormManagers::Update("0","0","DATA")==1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_FormManagers->Update()", "FormManagers"
+);
 Test::add(
     function()
     {
