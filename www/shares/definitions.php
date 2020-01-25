@@ -523,6 +523,51 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FORMPART_TITLE", "Form parts");
     //// End of Mahdi Ghayour //////
 
+    //MyRequests.php by Sara Bolouri
+    define2("C_RELATED_PROJECT","Related Project");
+    define2("C_YOUR_REQUESTS_LIST" , "Your request list");
+    define2("C_STATUS" , "Status");
+    define2("C_OTHER_SPECIFICATIONS" , "Other specification");
+    define2("C_CREATE_TIME1" , "Create time");
+
+    //ManagePayments.php by Sara Bolouri
+    define2("C_CREATING_EDITING_PAYMENT_TO" , "Create/Edit payment to");
+    define2("C_AMOUNT" , "Amount");
+    define2("C_PATMENT_TYPE" , "Payment type");
+    define2("C_CHEQUE" , "Cheque");
+    define2("C_CASH" , "Cash");
+    define2("C_DEPOSIT" , "Deposit");
+    define2("C_DESCRIPTION1" , "Description");
+    define2("C_CHOOSE_FILE" , "Choose file");
+    define2("C_PAYMENTS_TO" , "Payments to");
+    define2("C_FILE1" , "File");
+
+    //ShowProjectActivities.php by Sara Bolouri
+    define2("C_MAIN_SPECIFICATIONS" , "Main Specification");
+    define2("C_MEMBERS" , "Members");
+    define2("C_DOCUMENTS" , "Documents");
+    define2("C_DOCUMENT_TYPES" , "Document types");
+    define2("C_ACTION_TYPES" , "Action types");
+    define2("C_TASK_TYPES" , "Task types");
+    define2("C_GROUP_OF_TASKS" , "Group of tasks");
+    define2("C_HISTORY" , "History");
+    define2("C_ACTIVITIES" , "Activities");
+    define2("C_APPLIER" , "Applier");
+    define2("C_RELATED_ROLE" , "Related role");
+    define2("C-CODE" , "Code");
+    define2("C_ACTION_TYPE" , "Action type");
+    define2("C_RELATED_SECTION" , "Related section");
+    define2("C_OPERATION_DESCRIPTION" , "Operation description");
+    define2("C_MEMBER" , "Member");
+    define2("C_IMPORTANT_DATE", "Important date");
+    define2("C_DOCUMENT", "Document");
+    define2("C_DOCUMENT_TYPE" , "Document type");
+    define2("C_ACTION_TYPE2" , "Action type");
+    define2("C_TASK_TYPE" , "task type");
+    define2("C_ADD" , "Add");
+    define2("C_UPDATE" , "Update");
+    define2("C_VIEW" , "View");
+    define2("C_CHOOSE_APPLIER" , "Choose applier");
 
 }
 else
@@ -1033,6 +1078,51 @@ else
     define2("C_FORMPART_TITLE", "بخشهای فرم");
     //// End of Mahdi Ghayour //////
 
+    //MyRequests.php by Sara Bolouri
+    define2("C_RELATED_PROJECT","پروژه مربوطه");
+    define2("C_YOUR_REQUESTS_LIST" , "لیست درخواست های شما از سوی شما");
+    define2("C_STATUS" , "وضعیت");
+    define2("C_OTHER_SPECIFICATIONS" , "سایر مشخصات");
+    define2("C_CREATE_TIME1" , "زمان ایجاد");
+
+    //ManagePayments.php by Sara Bolouri
+    define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");
+    define2("C_AMOUNT" , "مبلغ");
+    define2("C_PAYMENT_TYPE" , "نوع پرداخت");
+    define2("C_CHEQUE" , "چک");
+    define2("C_CASH" , "نقد");
+    define2("C_DEPOSIT" , "واریز به حساب");
+    define2("C_DESCRIPTION1" , "توضیحات");
+    define2("C_CHOOSE_FILE" , "انتخاب فایل");
+    define2("C_PAYMENTS_TO" , "پرداختی ها به");
+    define2("C_FILE1" , "فایل");
+
+    //ShowProjectActivities.php by Sara Bolouri
+    define2("C_MAIN_SPECIFICATIONS" , "مشخصات اصلی");
+    define2("C_MEMBERS" , "اعضا");
+    define2("C_DOCUMENTS" , "مستندات");
+    define2("C_DOCUMENT_TYPES" , "انواع سند");
+    define2("C_ACTION_TYPES" , "انواع اقدام");
+    define2("C_TASK_TYPES" , "انواع کار");
+    define2("C_GROUP_OF_TASKS" , "گروه کارها");
+    define2("C_HISTORY" , "تاریخچه");
+    define2("C_ACTIVITIES" , "فعالیتها");
+    define2("C_APPLIER" , "اعمال کننده");
+    define2("C_RELATED_ROLE" , "کار مربوطه");
+    define2("C_CODE" , "کد");
+    define2("C_ACTION_TYPE1" , "نوع عمل");
+    define2("C_RELATED_SECTION" , "بخش مربوطه");
+    define2("C_OPERATION_DESCRIPTION" , "شرح عملیات");
+    define2("C_MEMBER" , "عضو");
+    define2("C_IMPORTANT_DATE", "تاریخ مهم");
+    define2("C_DOCUMENT", "سند");
+    define2("C_DOCUMENT_TYPE" , "نوع سند");
+    define2("C_ACTION_TYPE2" , "نوع اقدام");
+    define2("C_TASK_TYPE" , "نوع کار");
+    define2("C_ADD" , "اضافه");
+    define2("C_UPDATE" , "بروزرسانی");
+    define2("C_VIEW" , "مشاهده");
+    define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
 }   
 
 ?>
