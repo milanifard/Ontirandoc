@@ -5,6 +5,8 @@
 	تاریخ ایجاد: 92-8-4
 */
 
+// This file taken by MGhayour
+
 /*
 کلاس پایه: 
 */
