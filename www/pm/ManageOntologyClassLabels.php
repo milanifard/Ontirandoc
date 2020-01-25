@@ -52,51 +52,55 @@ if (isset($_REQUEST["UpdateID"])) {
 	<?
 	if (isset($_REQUEST["UpdateID"])) {
 		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='" . $_REQUEST["UpdateID"] . "'>";
+		echo manage_OntologyClasses::ShowSummary($_REQUEST["OntologyClassID"]);
+		echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntologyClassLabels");
 	}
-	echo manage_OntologyClasses::ShowSummary($_REQUEST["OntologyClassID"]);
-	echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntologyClassLabels");
 	?>
 	<br>
 	<div class="table-responsive container-fluid">
 		<div class="row">
 			<div class="col-1"></div>
-			<table class="table table-bordered col-10">
-				<thead class="bg-info">
-					<tr>
-						<th class="text-center">
-							ایجاد/ویرایش برچسب کلاسها </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<table class="table table-bordered tab">
+			<div class="col-10">
+				<table class="table table-sm table-borderless">
+					<thead class="table-info">
+						<tr>
+							<th class="text-center">
+								ایجاد/ویرایش برچسب کلاسها </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<table>
 								<tr>
 									<td width="1%" nowrap>
+										<label for="OntologyClassID">
 										<font color=red>*</font>
 										برچسب
+										</label>
 									</td>
-									<td>
+									<td nowrap>
 										<?
 										if (!isset($_REQUEST["UpdateID"])) {
 										?>
-											<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
+											<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" required value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
 										<? } ?>
 									</td>
 								</tr>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-				<thead class="text-center bg-info">
-					<tr>
-						<td>
-							<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();">ذخیره</button>
-							<button type="button" class="btn btn-danger" onclick="javascript: window.close();">خروج</button>
-						</td>
-					</tr>
-				</thead>
-			</table>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead class="text-center table-info">
+						<tr>
+							<td>
+								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();">ذخیره</button>
+								<button type="button" class="btn btn-danger" onclick="javascript: window.close();">خروج</button>
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div> 
 			<div class="col-1"></div>
 		</div>
 	</div>
