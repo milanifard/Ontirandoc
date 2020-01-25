@@ -647,18 +647,17 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
 		$ret = "<br>";
 		$ret .= "<div class=\"table-responsive container-fluid\">";
 		$ret .= "<div class=\"row\">";
-		$ret .= "<div class=\"col-sm-2\"></div>";
-		$ret .= "<table class=\"table table-bordered col-sm-8\">";
-		$ret .= "<tbody><tr><td><table class=\"table table-bordered tab\">";
+		$ret .= "<div class=\"col-1\"></div><div class=\"col-10\">";
+		$ret .= "<tbody><tr><td><table>";
 		$obj = new be_OntologyClasses();
 		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr><td width=\"1%\" nowrap>هستان نگار</td>".$obj->OntologyTitle."</td></tr>";
-		$ret .= "<tr><td width=\"1%\" nowrap>کلاس</td><td>".$obj->ClassTitle."</td></tr>";
-		$ret .= "</table></tbody></td></tr></table>";
-		$ret .= "<div class=\"col-sm-2\"></div></div></div>";
+		$ret .= "<tr><td width=\"1%\" nowrap>هستان نگار</td>".$obj->OntologyTitle."</tr>";
+		$ret .= "<tr><td width=\"1%\" nowrap>کلاس</td><td>".$obj->ClassTitle."</tr>";
+		$ret .= "</table></td></tr></tbody></table>";
+		$ret .= "<div class=\"col-1\"></div></div></div>";
 		return $ret;
 	}
-	
+
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 	  return "";
