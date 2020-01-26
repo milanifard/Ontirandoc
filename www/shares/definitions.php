@@ -592,6 +592,37 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
     define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
 
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "Row");
+    define2("C_PROJECT_GROUP", "Project group");
+    define2("C_EDIT", "Edit");
+    define2("C_TITLE","Title");
+    define2("C_PRIORITY" , "Priority");
+    define2("C_STATUS", "Status");
+    define2("C_REPORT", "Report");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'Actions');
+    define2('C_ACTION_TYPE', 'Action type');
+    define2('C_USAGE_TIME', 'Usage time');
+    define2('C_Progress', 'Progress');
+    define2('C_DESCRIPTION', 'Description');
+    define2("C_ATTACHMENTS", "Attachments");
+    define2("C_CREATOR", "Creator");
+    define2("C_ACTION_DATE", "Action date");
+    define2("C_CREATE", "Create");
+    define2("C_DELETE", "Delete");
+    define2("C_NOT_EXIST", "Not exist");
+    define2("C_ARE_YOU_SURE","Are you sure?");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'Project assigned to');
+    define2('C_PROJECT_NAME', 'Project name');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'Precentage of time allocated');
+    define2("C_RETURN","Return");
+    define2("C_SAVE", "Save");
+    define2("C_DATA_STORED","Data stored");
+
 }
 else
 {
@@ -1169,6 +1200,14 @@ else
     define2("C_DELETE", "حذف");
     define2("C_NOT_EXIST", "ندارد");
     define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'پروژه های انتسابی به');
+    define2('C_PROJECT_NAME', 'نام پروژه');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'درصد تخصیصی زمان');
+    define2("C_RETURN","بازگشت");
+    define2("C_SAVE", "ذخیره");
+    define2("C_DATA_STORED","اطلاعات ذخیره شد");
     
 
     //controlFrom.php by Yegane Shabgard

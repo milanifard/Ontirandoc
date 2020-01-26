@@ -47,7 +47,7 @@ echo manage_ProjectTasks::ShowTabs($_REQUEST["ProjectTaskID"], "ManageProjectTas
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<td width="100%"><?php echo C_ACTIONS; ?></th>
+				<?php echo C_ACTIONS; ?>
 			</div>
 			<div class="card-body">
 				<div class="card-column align-middle text-center" style="margin-bottom: 20px">
