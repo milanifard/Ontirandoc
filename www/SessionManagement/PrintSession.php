@@ -60,7 +60,7 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 <div class="container container-fluid  p-0">
     <div class="card">
         <div class="card-header">
-            اطلاعات جلسه
+            <?php echo C_PRINTSESSIONPAGE_MTH;?>
         </div>
 
         <div class="card-body">
@@ -68,9 +68,9 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 
     <div class="row m-0">
         <div class="col">
-            <div class="row"> جلسه: <?php echo $uni_session->SessionTypeID_Desc ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMFC ?>: <?php echo $uni_session->SessionTypeID_Desc ?>
             </div>
-            <div class="row"> عنوان: <?php echo $uni_session->SessionTitle ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMSC ?>: <?php echo $uni_session->SessionTitle ?>
             </div>
             <div class="row"> تاریخ: <?php echo $uni_session->SessionDate_Shamsi ?>
             </div>

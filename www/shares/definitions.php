@@ -641,6 +641,38 @@ if(UI_LANGUAGE=="EN") {
     define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes");
 
 
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "Meeting info");
+    define2("C_PRINTSESSIONPAGE_TMFC", "Meeting");
+    define2("C_PRINTSESSIONPAGE_TMTC", "title");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "date");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "number");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "start hour");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "time");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_STSEC", "instructions");
+    define2("C_PRINTSESSIONPAGE_STTIR", "results");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
+    define2("C_PRINTSESSIONPAGE_TTH", "presents");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "presence");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "delay");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "signiture");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "submition date (sign)");
+    define2("C_PRINTSESSIONPAGE_FTH", "absents");
+    
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "relation");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "sub class");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "in");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "join");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "Join Recommends");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "order");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "class");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "primary key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "relational key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "merge");
 }
 else
 {
@@ -1267,6 +1299,41 @@ else
 
     //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
     define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار");
+
+
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "اطلاعات جلسه");
+    define2("C_PRINTSESSIONPAGE_TMFC", "جلسه");
+    define2("C_PRINTSESSIONPAGE_TMTC", "عنوان");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "تاریخ");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "شماره");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "ساعت تشکلیل");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "مدت جلسه");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_STSEC", "دستور کار");
+    define2("C_PRINTSESSIONPAGE_STTIR", "مصوبه");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "مسوول پیگیری");
+    define2("C_PRINTSESSIONPAGE_TTH", "حاضرین جلسه");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "نام و نام خانوادگی");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "حضور");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "تاخیر");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "امضا");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "تاریخ تایید(امضا)");
+    define2("C_PRINTSESSIONPAGE_FTH", "غایبین جلسه");
+
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "رابطه");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "زیر کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "است");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "در");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "ادغام شود");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "پیشنهادات ادغام");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "ردیف");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "کلیدهای اصلی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "کلید ارتباطی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "انجام ادغام");
+
 
 }
 
