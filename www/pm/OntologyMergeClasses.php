@@ -45,7 +45,7 @@
 	    $MergeID = $rec["OntologyMergeReviewedPotentialID"];
 	    $pos = strpos($rec["ExtraInfo2"], "(MUL)");
 	    if ($pos === false) 
-		    echo "<tr bgcolor=#cccccc>";
+		    echo "<tr>";
 	    else
 	    		echo "<tr>";
 	    echo "<td>".$i."</td>";
@@ -221,18 +221,37 @@
 	{
 	  DoMerge($TargetOnto);
 	}
-	
-	echo "<form method=post>";
-	echo "<input type=hidden name=DoMerge id=DoMerge value=1>";
-	echo "<input type=hidden name=TargetOnto id=TargetOnto value='".$TargetOnto."'>";
-	echo "<table width=90% align=center border=1 cellspacing=0>";
-	echo "<tr class=HeaderOfTable><td colspan=10 align=center>پیشنهادات ادغام</td></tr>";
-	echo "<tr bgcolor=#cccccc><td width=1%>ردیف</td><td>کلاس ۱</td><td>کلیدهای اصلی ۱</td><td>کلاس ۲</td><td>کلید ارتباطی</td><td>کلیدهای اصلی ۲</td><td width=1%>&nbsp;</td>";
-	echo "</tr>";
-	ShowClassMergeSuggestions($TargetOnto);	
-	echo "<tr class=FooterOfTable><td colspan=10 align=center><input type=submit value='انجام ادغام'></td></tr>";
-	echo "</table>";
-	echo "</form>";
+
 	HTMLBegin();
 ?>
+<div class="container container-fluid">
+    <div class="card">
+        <div class="card-header" style="text-align: center">
+            پیشنهادات ادغام
+        </div>
+        <div class="card-body">
+            <form method=post>
+                <input class="form-control" type=hidden name=DoMerge id=DoMerge value=1>
+                <input class="form-control" type=hidden name=TargetOnto id=TargetOnto value='".$TargetOnto."'>
+                <table class="table table-striped">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>کلاس 1</th>
+                        <th>کلیدهای اصلی 1</th>
+                        <th>کلاس 2</th>
+                        <th>کلید ارتباطی</th>
+                        <th>کلیدهای اصلی 2</th>
+                    </tr>
+                    <?php ShowClassMergeSuggestions($TargetOnto); ?>
+                    <tr class=FooterOfTable>
+                        <td colspan=10 align=center>
+                            <input class="btn btn-primary" type=submit value='انجام ادغام'>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+        </div>
+    </div>
+</div>
+
 </body></html>
