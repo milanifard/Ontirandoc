@@ -1,4 +1,4 @@
-<?
+<?php
 	include("header.inc.php");
 	include("classes/DM_Servers.class.php");
 	HTMLBegin();
@@ -20,12 +20,12 @@
 	<table dir=ltr width=50% align=center border=1 cellspacing=0>
 	<tr>
 	<td colspan=2 class=HeaderOfTable>Server: 
-	<select name='DMServersID' id='DMServersID' onchange='document.mf.submit();'><? echo $options; ?></select>
+	<select name='DMServersID' id='DMServersID' onchange='document.mf.submit();'><?php echo $options; ?></select>
 	</td>
 	</tr>
 	</form>
   --->
-<?
+<?php
 	function InsertDBIfNotExist($server, $db)
 	{
 	  $mysql = pdodb::getInstance();
@@ -162,7 +162,7 @@
 	  echo "</table>";	  
 ?>
   <form method=post name=sf id=sf>
-  <input type=hidden id='DMServersID' name='DMServersID' value='<? if(isset($_REQUEST["DMServersID"])) echo $_REQUEST["DMServersID"]; ?>'>
+  <input type=hidden id='DMServersID' name='DMServersID' value='<?php if(isset($_REQUEST["DMServersID"])) echo $_REQUEST["DMServersID"]; ?>'>
   <input type=hidden id='DBName' name='DBName' value=''>
   </form>
   <script>
@@ -172,7 +172,7 @@
       document.getElementById('sf').submit();
     }
   </script>
-<?
+<?php
 	
 	}
 ?>
