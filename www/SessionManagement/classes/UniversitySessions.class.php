@@ -669,7 +669,8 @@ class manage_UniversitySessions
 	
 	function ShowSummary($RecID)
 	{
-		$ret = "<br>";
+		// this method is used in ManageMembersPAList that taken by MGhayour
+		$ret = "<br>MGHAYOUR";
 		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
 		$ret .= "<tr>";
 		$ret .= "<td>";

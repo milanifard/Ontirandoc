@@ -637,41 +637,53 @@ static function GetClassRelatedProperties($ClassTitle, $OntologyID)
 		}
 		return $ret;
 	}
+	
+	/* 
+	edited by: Mohammad Kahani	SID: 9512762447
+	*/
+	
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
+		$ret .= "<div class=\"table-responsive container-fluid\">";
+		$ret .= "<div class=\"row\">";
+		$ret .= "<div class=\"col-1\"></div><div class=\"col-10\">";
+		$ret .= "<tbody><tr><td><table>";
 		$obj = new be_OntologyClasses();
 		$obj->LoadDataFromDatabase($RecID); 
-		$ret .= "<tr><td width=10%>هستان نگار: </td><td>".$obj->OntologyTitle."</td></tr>";
-		$ret .= "<tr><td width=10%>کلاس: </td><td>".$obj->ClassTitle."</td></tr>";
-		$ret .= "</table>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
+		$ret .= "<tr><td width=\"1%\" nowrap><? echo C_ONTOLOGY;?></td>".$obj->OntologyTitle."</tr>";
+		$ret .= "<tr><td width=\"1%\" nowrap><? echo C_T_CLASS;?></td><td>".$obj->ClassTitle."</tr>";
+		$ret .= "</table></td></tr></tbody></table>";
+		$ret .= "<div class=\"col-1\"></div></div></div>";
 		return $ret;
 	}
+
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 	  return "";
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr>";
-		$ret .= "<td width=\"33%\" ";
+		$ret = "<div class='container-fluid'>";
+ 		$ret .= "<div class='row'>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "<div class='table-responsive col-10'>";
+		$ret .= "<table class='table text-center'>";
+		$ret .= "<tr class='row table-borderless'>";
+		$ret .= "<td class='col-md-4'>";
 		if($CurrentPageName=="NewOntologyClasses")
 			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='NewOntologyClasses.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "><a href='NewOntologyClasses.php?UpdateID=".$RecID."'><? echo C_SESSION_INFO; ?></a></td>";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageOntologyClassLabels")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageOntologyClassLabels.php?OntologyClassID=".$RecID."'>برچسب کلاسها</a></td>";
-		$ret .= "<td width=\"33%\" ";
+		$ret .= "><a href='ManageOntologyClassLabels.php?OntologyClassID=".$RecID."'><? echo C_T_CLASS_LABELS ?></a></td>";
+		$ret .= "<td class='col-md-4'";
 		if($CurrentPageName=="ManageOntologyClassHirarchy")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageOntologyClassHirarchy.php?OntologyClassID=".$RecID."'>سلسله مراتب کلاسهای هستان نگار</a></td>";
+		$ret .= "><a href='ManageOntologyClassHirarchy.php?OntologyClassID=".$RecID."'><? echo C_T_HIERARCHY_ONTOLOGY_CLASSES; ?></a></td>";
 		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "<div class='col-md-2'></div>";
+		$ret .= "</div>";
+        $ret .= "</div>";
 		return $ret;
 	}
 	

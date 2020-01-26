@@ -1134,7 +1134,10 @@ class manage_ProjectTasks
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret .= "<div class='row'>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "<div class='col-10'>";
+		$ret .= "<table width=\"100%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
 		$ret .= "<tr>";
 		$ret .= "<td>";
 		$ret .= "<table width=\"100%\" border=\"0\">";
@@ -1168,12 +1171,18 @@ class manage_ProjectTasks
 		$ret .= "</td>";
 		$ret .= "</tr>";
 		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "</div>";
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr>";
+		$ret = "<div class='row'>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "<div class='col-10'>";
+		$ret .= "<table class='table table-sm' align=\"center\" border=\"1\" cellspacing=\"0\">";
+ 		$ret .= "<tr class='table-info'>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="NewProjectTasks")
 			$ret .= "bgcolor=\"#cccccc\" ";
@@ -1203,6 +1212,9 @@ class manage_ProjectTasks
  			$ret .= " bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='ManageProjectTaskHistory.php?ProjectTaskID=".$RecID."'>تاریخچه</a></td>";
 		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "<div class='col-1'></div>";
+		$ret .= "</div>";
 		return $ret;
 	}
 	static function CreateARelatedTableSelectOptions($RelatedTable, $RelatedValueField, $RelatedDescriptionField, $OrderBy = "", $FilterStr = "")

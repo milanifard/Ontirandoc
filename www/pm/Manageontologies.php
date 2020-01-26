@@ -199,10 +199,17 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 	$TotalP += $p;
       }
     }
-    echo "<td >".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+      if((count($OntoArray)-1)==0){
+          echo "<td> 0 </td>";
+      }
+      else {
+          echo "<td >" . round($TotalP / (count($OntoArray) - 1), 2) . "</td>";
+      }
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
-    $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
+      if((count($OntoArray)-1)==0) $Averages[$i]["average"] =0;
+      else
+        $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     echo "</tr>";
   }
   echo "</tbody></table>";
@@ -299,10 +306,18 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Stat")
 	    $TotalP += $p;
       }
     }
-    echo "<td>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    if((count($OntoArray)-1)==0){
+        echo "<td> 0 </td>";
+    }
+    else{
+        echo "<td>".round($TotalP/(count($OntoArray)-1), 2)."</td>";
+    }
+
     $Averages[$i]["OntologyTitle"] = $OntoArray[$i]->OntologyTitle;
     $Averages[$i]["OntologyID"] = $OntoArray[$i]->OntologyID;
-    $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
+    if((count($OntoArray)-1) == 0) $Averages[$i]["average"] =0;
+    else
+        $Averages[$i]["average"] = round($TotalP/(count($OntoArray)-1), 2);
     
     echo "</tr>";
   }
@@ -1427,12 +1442,14 @@ if(isset($_REQUEST["UpdateID"]))
                 <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
                         <tr>
                             <td colspan=2>
-                                <textarea ><?php echo $obj->FileContent ?></textarea>
+                                <label>
+                                    <textarea ><?php echo $obj->FileContent ?></textarea>
+                                </label>
                             </td>
                         </tr>
                     <? } ?>
             <tr>
-                <td class="text-center">
+                <td class="text-center table-info">
                     <input type="submit" class="btn btn-success  " " value=<?php echo C_SAVE ?>>
                     <input type="button" class="btn btn-primary " onclick="javascript: document.location='Manageontologies.php';" value=<?php echo C_NEW?>>
                 </td>
@@ -1524,21 +1541,21 @@ if($SomeItemsRemoved)
                 echo "</tr>";
             }
             ?>
-            <tr>
+            <tr class="table-info">
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value=<?php echo C_DELETE?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value=<?php echo C_DICTIONARY ?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value=<?php echo C_FREQUENCY_ANALYSIS?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value=<?php echo C_DISTANCE_ANALYSIS?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value=<?php echo C_STATISTICAL_ANALYSIS?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDelete();" value=<?php echo "'".C_DELETE. "'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmDic(); " value=<?php echo "'".C_DICTIONARY."'" ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze(); " value=<?php echo "'".C_FREQUENCY_ANALYSIS."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze2(); " value=<?php echo "'".C_DISTANCE_ANALYSIS."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmStatistical(); " value=<?php echo "'".C_STATISTICAL_ANALYSIS. "'"?>>
                 </td>
             </tr>
-            <tr>
+            <tr class="table-info">
                 <td colspan="14" class="text-center table-light">
-                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value=<?php echo C_REVERSE_ENGINEERING?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value= <?php echo C_ANALYSIS_WITH_WORDNET?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value=<?php echo C_CONTENT_COMPARISON ?>>
-                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value=<?php echo C_MERGED_PROJECTS?>>
+                    <input class="btn  btn-dark" type="button" onclick="javascript: document.location='MetaData2Onto.php' " value=<?php echo "'".C_REVERSE_ENGINEERING."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: ConfirmAnalyze3(); " value= <?php echo "'".C_ANALYSIS_WITH_WORDNET."'"?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='CompareOntologies.php' " value=<?php echo "'".C_CONTENT_COMPARISON."'" ?>>
+                    <input class="btn btn-dark " type="button" onclick="javascript: document.location='ManageOntologyMergeProject.php' " value=<?php echo "'".C_MERGED_PROJECTS."'"?>>
                 </td>
             <tr>
 

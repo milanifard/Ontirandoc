@@ -115,7 +115,7 @@ if(isset($_REQUEST["UpdateID"]))
 }
 ?>
 <div class="container ">
-    <div class="col-md-12">
+    <div >
         <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
     <?php
     if(isset($_REQUEST["UpdateID"]))
@@ -125,38 +125,38 @@ if(isset($_REQUEST["UpdateID"]))
     ?>
 
 
-    <br><table width="90%" class="table-bordered" cellspacing="0" align="center">
-        <tr class="HeaderOfTable">
+    <br><table class="table-bordered w-100 " cellspacing="0" align="center">
+        <tr>
             <td align="center" class="table-info"><?php echo CREATE_EDIT ?></td>
         </tr>
         <tr>
             <td>
-                <table width="100%">
+                <table class="w-100">
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo C_MESSAGE?>
                         </td>
                         <td nowrap>
-                            <textarea name="Item_MessageBody" id="Item_MessageBody" cols="80" rows="5"><?php echo $TMessageBody ?></textarea>
+                            <textarea class="form-control col-md-8" name="Item_MessageBody" id="Item_MessageBody" cols="80" rows="5"><?php echo $TMessageBody ?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo AT_FILE?>
                         </td>
                         <td nowrap>
-                            <input type="file" name="Item_FileContent" id="Item_FileContent">
+                            <input class="form-control col-md-4" type="file" name="Item_FileContent" id="Item_FileContent">
                             <?php if(isset($_REQUEST["UpdateID"]) && $obj->RelatedFileName!="") { ?>
                                 <a href='DownloadFile.php?FileType=messages&RecID=<?php echo $_REQUEST["UpdateID"]; ?>'><?php echo REC_FILE?>[<?php echo $obj->RelatedFileName; ?>]</a>
                             <?php } ?>
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo PIC?>
                         </td>
                         <td nowrap>
-                            <input type="file" name="Item_ImageFileContent" id="Item_ImageFileContent">
+                            <input class="form-control col-md-4"   type="file" name="Item_ImageFileContent" id="Item_ImageFileContent">
                             <?php if(isset($_REQUEST["UpdateID"]) && $obj->ImageFileName!="") { ?>
                                 <img width=50 src='ShowMessagePhoto.php?MessageID=<? echo $_REQUEST["UpdateID"]; ?>'>
                             <?php } ?>
@@ -166,8 +166,8 @@ if(isset($_REQUEST["UpdateID"]))
                         <td width="1%" nowrap>
                             <?php echo START_TIME?>
                         </td>
-                        <td nowrap>
-                            <input maxlength="2" id="StartDate_DAY" name="StartDate_DAY" type="text" size="2">/
+                        <td >
+                            <input  maxlength="2" id="StartDate_DAY" name="StartDate_DAY" type="text" size="2">/
                             <input maxlength="2" id="StartDate_MONTH" name="StartDate_MONTH" type="text" size="2" >/
                             <input maxlength="2" id="StartDate_YEAR" name="StartDate_YEAR" type="text" size="2" >
                         </td>
@@ -252,12 +252,12 @@ if($SomeItemsRemoved)
 ?>
     <div class="col-md-12">
         <form id="SearchForm" name="SearchForm" method=post>
-    <input type="hidden" name="PageNumber" id="PageNumber" value="0">
-    <input type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
-    <input type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
-    <input type="hidden" name="SearchAction" id="SearchAction" value="1">
+    <input class="form-control col-md-4"  type="hidden" name="PageNumber" id="PageNumber" value="0">
+    <input class="form-control col-md-4"  type="hidden" name="OrderByFieldName" id="OrderByFieldName" value="<? echo $OrderByFieldName; ?>">
+    <input class="form-control col-md-4"  type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
+    <input class="form-control col-md-4" type="hidden" name="SearchAction" id="SearchAction" value="1">
     <br><table width="90%" align="center" class="table table-borderless" cellspacing="0">
-        <tr class="HeaderOfTable">
+        <tr >
             <td><i class="fa fa-search"></i><b><a href="#"  onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'>
 
                         جستجو </a></td>
@@ -265,18 +265,18 @@ if($SomeItemsRemoved)
         </tr>
         <tr id='SearchTr' style='display: none'>
             <td>
-                <table width="100%" align="center" class="table table-bordered" cellspacing="0">
+                <table  align="center" class="table table-bordered w-100" cellspacing="0">
                     <tr>
                         <td width="1%" nowrap>
                             <?php echo C_MESSAGE?>
                         </td>
                         <td nowrap>
-                            <textarea name="Item_MessageBody" id="Item_MessageBody" cols="80" rows="5"></textarea>
+                            <textarea class="form-control col-md-8"  name="Item_MessageBody" id="Item_MessageBody" cols="80" rows="5"></textarea>
                         </td>
                     </tr>
 
 
-                    <tr class="HeaderOfTable">
+                    <tr >
                         <td colspan="2" align="center"><input type="submit" value="<?php echo SEARCH_M?>"></td>
                     </tr>
                 </table>
@@ -302,7 +302,7 @@ if(isset($_REQUEST["SearchAction"]))
         echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
             <div class="row">
                 <br><table width="90%" align="center" class="table table-bordered" cellspacing="0">
-                    <tr bgcolor="#cccccc" class="table-info">
+                    <tr class="bg-primary">
                     <td colspan="10">
                       <?php echo MESSAGES_M?>
             </td>
@@ -343,10 +343,10 @@ if(isset($_REQUEST["SearchAction"]))
         ?>
         <tr class="FooterOfTable">
             <td colspan="10" align="center">
-                <input type="button"  class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="<?php echo DELETE_M?>">
+                <input  type="button"  class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="<?php echo DELETE_M?>">
             </td>
         </tr>
-        <tr bgcolor="#cccccc"><td colspan="10" align="right">
+        <tr  class="bg-secondary"><td colspan="10" align="right">
                 <?php
                 $TotalCount = manage_messages::SearchResultCount($MessageBody, $CreateDate, "");
                 for($k=0; $k<$TotalCount/$NumberOfRec; $k++)

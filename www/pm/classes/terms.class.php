@@ -318,15 +318,17 @@ class manage_terms
 		}
 		return $ret;
 	}
+
+	//changed by Naghme Mohammadifar
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
 		$ret .= "<table class='table table-bordered '>";
         $ret .= "<thead>";
 		$ret .= "<tr class='table-info text-center'>";
-		$ret .= "<th> خلاصه اطلاعات" ."</th></tr>";
+		$ret .= "<th> ".C_SUMMARY_OF_INFORMATION ."</th></tr>";
         $ret .= "</thead> <tbody>";
-        $ret .= "<tr class='text-center'> <th> سازنده</th>";
+        $ret .= "<tr class='text-center'> <th> ".C_CREATOR."</th>";
 		$obj = new be_terms();
 		$obj->LoadDataFromDatabase($RecID);
 		// I didnt know what kind of information you wanted to show (cause noting showed in primary code ) *Naghme Mohammadifar
@@ -342,9 +344,9 @@ class manage_terms
 		$ret = "<table class='table table-bordered'>";
  		$ret .= "<thead><tr class='table-info'>";
 		$ret .= "<th> ";
-		$ret .= "<a class= 'btn ' href='Newterms.php?UpdateID=".$RecID."'> مشخصات اصلی</a></th>";
+		$ret .= "<a class= 'btn ' href='Newterms.php?UpdateID=".$RecID."'>".C_MAIN_PROPERTIES." </a></th>";
 		$ret .= "<th> ";
-		$ret .= "<a class = 'btn' href='ManageTermOntologyElementMapping.php?TermID=".$RecID."'>نگاشت اصطلاحات و عناصر هستان نگار</a></th>";
+		$ret .= "<a class = 'btn' href='ManageTermOntologyElementMapping.php?TermID=".$RecID."'>".C_MAPPING_OF_IDIOMS_AND_ELEMENTS_OF_HISTOGRAM."</a></th>";
 		$ret .= "</thead></table>";
 		return $ret;
 	}
