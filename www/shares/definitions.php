@@ -749,6 +749,24 @@ if(UI_LANGUAGE=="EN") {
     define("C_Prop_Range","Properties Range");
     define("C_Prop_Name","Properties Name");
     //_________________ END _____________________________
+
+    //SignOut.php Mostafa Ghofrani
+    define("C_SESSION_EXPIRED", "Your session has been expired");
+    define("C_WELCOME", "Welcome");
+    define("C_RELOGING", "For loging in");
+    define("C_CLICK_THIS", "click here!");
+
+    //TaskMessages.php Mostafa Ghofrani
+    define("C_LATEST_STATUS_OTHERS", "Latest tasks doneon your jobs by others ");
+    define("C_JOB_DONE", "Job done");
+    define("C_RELATED_USER", "Assigned user");
+    define("C_RELATED_TITLE", "Assigned job title");
+    define("C_LATEST_STATUS_YOU", "Latest tasks done on your jobs by yourself");
+    define("C_MORE_DET", "Show more");
+    define("C_LESS_DET", "Show less");
+    define("C_JOB_TITLE", "Job title");
+
+
 }
 else
 {
@@ -1499,11 +1517,11 @@ else
     define("C_CLICK_THIS", "اینجا را کلیک کنید");
 
     //TaskMessages.php Mostafa Ghofrani
-    define("C_LATEST_STATUS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
+    define("C_LATEST_STATUS_OTHERS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
     define("C_JOB_DONE", "عملیات انجام شده");
     define("C_RELATED_USER", "کاربر مربوطه");
-    define("C_JOB_TITLE", "عنوان کار مربوطه");
-    define("C_JOB_TITLE", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
+    define("C_RELATED_TITLE", "عنوان کار مربوطه");
+    define("C_LATEST_STATUS_YOU", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
     define("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
     define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
     define("C_JOB_TITLE", "عنوان کار مربوطه");
