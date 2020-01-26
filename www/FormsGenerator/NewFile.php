@@ -241,40 +241,40 @@ if(isset($_REQUEST["UpdateID"]))
 		echo "<input type=hidden name='UpdateID' id='UpdateID' value='".$_REQUEST["UpdateID"]."'>";
 	}
 ?>
-<br><table width=90% border=1 cellspacing=0 align=center>
+<br><table width=90% border=1 cellspacing=0 align=center  class=".container">
 <tr class=HeaderOfTable><td align=center>ایجاد/ویرایش پرونده ها</td></tr>
 <!-- در مود ویرایش امکان مدیریت سایر بخشهای پرونده را در صورت داشتن دسترسی می دهد -->
 <?php if(isset($_REQUEST["UpdateID"])) { ?>
 <tr bgcolor=#cccccc>
 	<td align=center>
-	<table width=100% border=1 cellspacing=0>
-		<tr>
+	<table width=100% border=1 cellspacing=0 class=".container">
+		<tr class="row">
 			<td width=11% align=center bgcolor=#efefef>
-				<a href='NewFile.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img width=50 border=0 title='مشخصات پرونده' src='images/file_Properties.gif'><br>مشخصات</a>			
+				<a href='NewFile.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img width=50 border=0 title="<?php echo C_FILE_DEFINITION; ?>" ><i class="far fa-folder"></i><br><?php echo C_DEFINITION; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=TEXT&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img width=50 border=0 title='متون' src='images/file_text.gif'><br>متون</a>			
+			<td width=11%  class="col-sm-2" align=center >
+				<a href='ManageFileContent.php?ContentType=TEXT&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i width=50 border=0 class="far fa-folder-open" title="<?php echo C_TEXTS; ?>"></i><br><?php echo C_TEXTS; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=PHOTO&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='تصاویر' src='images/file_photo.gif'><br>تصاویر</a>			
+			<td width=11% class="col-sm-2"  align=center >
+				<a href='ManageFileContent.php?ContentType=PHOTO&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i width=50 border=0 title="<?php echo C_IMAGES; ?>" class="far fa-photo-video"></i><br><?php echo C_IMAGES; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=FILE&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='فایلها' src='images/file_file.gif'><br>فایلها</a>			
+			<td width=11% class="col-sm-2"  align=center >
+				<a href='ManageFileContent.php?ContentType=FILE&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i  width=50 border=0 title="<?php echo C_FILES; ?>" class="far fa-file-music"></i><br><?php echo C_FILES; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=FORM&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='فرمها' src='images/file_form.gif'><br>فرمها</a>			
+			<td width=11% class="col-sm-1"  align=center >
+				<a href='ManageFileContent.php?ContentType=FORM&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i  width=50 border=0 title="<?php echo C_FORMS; ?>" class="far fa-folders"></i><br><?php echo C_FORMS; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=LETTER&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='نامه ها' src='images/file_letter.gif'><br>نامه ها</a>			
+			<td width=11% class="col-sm-1"  align=center >
+				<a href='ManageFileContent.php?ContentType=LETTER&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i  width=50 border=0 title="<?php echo C_LETTERS; ?>" class="far fa-mail-bulk"></i><br><?php echo C_LETTERS; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileContent.php?ContentType=SESSION&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='جلسات' src='images/file_session.gif'><br>جلسات</a>			
+			<td width=11% class="col-sm-1"  align=center >
+				<a href='ManageFileContent.php?ContentType=SESSION&UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i  width=50 border=0 title="<?php echo C_SESSIONS; ?>" class="far fa-handshake"></i><br><?php echo C_SESSIONS; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ManageFileTempUsers.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='امانتها' src='images/file_share.gif'><br>امانتها</a>			
+			<td width=11% class="col-sm-2"  align=center >
+				<a href='ManageFileTempUsers.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i  width=50 border=0 title="<?php echo C_DEBTS; ?>" class="far fa-share-alt"></i><br><?php echo C_DEBTS; ?></a>
 			</td>
-			<td width=11% align=center >
-				<a href='ShowFileHistory.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><img  width=50 border=0 title='تاریخچه' src='images/file_history.gif'><br>تاریخچه</a>			
+			<td width=11% class="col-sm-1"  align=center >
+				<a href='ShowFileHistory.php?UpdateID=<?php echo $_REQUEST["UpdateID"]; ?>'><i width=50 border=0 title="<?php echo C_HISTORY; ?>"  class="far fa-history"></i><br><?php echo C_HISTORY; ?></a>
 			</td>
 		</tr>
 	</table>
@@ -282,11 +282,11 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <?php } ?>
 <tr><td>
-<table width=100% border=0>
+<table width=100% border=0 class=".container">
 
 <tr id=tr_FileTypeID name=tr_FileTypeID style='display:'>
 <td width=1% nowrap>
-	نوع پرونده
+    <?php echo C_FILE_TYPE; ?>
 </td>
 <td nowrap>
 	<input type=hidden name=FileTypeID id=FileTypeID value='<?php echo $FileTypeObj->FileTypeID ?>'>
@@ -295,7 +295,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr id=tr_FileNo name=tr_FileNo style='display:'>
 <td width=1% nowrap>
-	شماره پرونده
+    <?php echo C_FILE_NUMBER; ?>
 </td>
 <td nowrap>
 	<input type=text name=Item_FileNo id=Item_FileNo>
@@ -304,15 +304,15 @@ if(isset($_REQUEST["UpdateID"]))
 <?php if($FileTypeObj->RelatedToPerson=="YES") { ?>
 <tr id=tr_PersonType name=tr_PersonType style='display:'>
 <td width=1% nowrap>
-	نوع شخص
+    <?php echo C_USER_TYPE; ?>
 </td>
 <td nowrap>
 	<select name=Item_PersonType id=Item_PersonType onchange='javascript: ChangePersonType();'>
 	<?php 
-	if($FileTypeObj->RelatedPersonCanBeProffessor=="YES") echo "<option value='PROF'>استاد"; 
-	if($FileTypeObj->RelatedPersonCanBeStaff=="YES") echo "<option value='STAFF'>کارمند";
-	if($FileTypeObj->RelatedPersonCanBeStudent=="YES") echo "<option value='STUDENT'>دانشجو";
-	if($FileTypeObj->RelatedPersonCanBeOther=="YES") echo "<option value='OTHER'>سایر";
+	if($FileTypeObj->RelatedPersonCanBeProffessor=="YES") echo "<option value='PROF'>".C_PROFESSOR;
+	if($FileTypeObj->RelatedPersonCanBeStaff=="YES") echo "<option value='STAFF'>".C_EMPLOYER;
+	if($FileTypeObj->RelatedPersonCanBeStudent=="YES") echo "<option value='STUDENT'>".C_STUDENT;
+	if($FileTypeObj->RelatedPersonCanBeOther=="YES") echo "<option value='OTHER'>".C_OTHERS;
 	?>
 	</select>
 </td>
@@ -322,19 +322,19 @@ if(isset($_REQUEST["UpdateID"]))
 <td colspan=2 nowrap>
 	<span name=PersonSpan id=PersonSpan><?php echo $PersonName ?></span>&nbsp;
 	<input type=hidden name=Item_PersonID id=Item_PersonID>
-	<a href='javascript: document.f2.submit()'>[انتخاب]</a>
+	<a href='javascript: document.f2.submit()'>[<?php echo C_SELECT; ?>]</a>
 </td>
 </tr>
 <tr id=tr_StNo name=tr_StNo style='display:'>
 <td colspan=2 nowrap>
 	<span name=StudentSpan id=StudentSpan><?php echo $PersonName ?></span>&nbsp;
 	<input type=hidden name=Item_StNo id=Item_StNo>
-	<a href='javascript: document.f3.submit()'>[انتخاب]</a>
+	<a href='javascript: document.f3.submit()'>[<?php echo C_SELECT; ?>]</a>
 </td>
 </tr>
 <tr id=tr_PFName name=tr_PFName style='display:'>
 <td width=1% nowrap>
-	نام 
+    <?php echo C_NAME; ?>
 </td>
 <td nowrap>
 	<input type=text name=Item_PFName id=Item_PFName>
@@ -342,7 +342,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr id=tr_PLName name=tr_PLName style='display:'>
 <td width=1% nowrap>
-	نام خانوادگی
+    <?php echo C_LAST_NAME; ?>
 </td>
 <td nowrap>
 	<input type=text name=Item_PLName id=Item_PLName>
@@ -351,7 +351,7 @@ if(isset($_REQUEST["UpdateID"]))
 <?php } ?>
 <tr id=tr_ouid name=tr_ouid style='display:'>
 <td width=1% nowrap>
-	واحد سازمانی
+    <?php echo C_STRUCTURE_UNIT; ?>
 </td>
 <td nowrap>
 	<span name=UnitSpan id=UnitSpan><?php echo $UnitName ?></span>&nbsp;
@@ -367,7 +367,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr id=tr_sub_ouid name=tr_sub_ouid style='display:'>
 <td width=1% nowrap>
-	زیر واحد سازمانی
+    <?php echo C_STRUCTURE_SUBUNIT; ?>
 </td>
 <td nowrap>
 	<span name=SubUnitSpan id=SubUnitSpan><?php echo $SubUnitName ?></span>&nbsp;
@@ -382,7 +382,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr id=tr_EduGrpCode name=tr_EduGrpCode style='display:'>
 <td width=1% nowrap>
-	گروه آموزشی
+    <?php echo C_INSTRUCTION_GROUP; ?>
 </td>
 <td nowrap>
 	<span name=EduGrpSpan id=EduGrpSpan><?php echo $EduGroupName ?></span>&nbsp;
@@ -397,7 +397,7 @@ if(isset($_REQUEST["UpdateID"]))
 </tr>
 <tr id=tr_FileTitle name=tr_FileTitle style='display:'>
 <td width=1% nowrap>
-	عنوان
+    <?php echo C_TITLE; ?>
 </td>
 <td nowrap>
 	<input type=text name=Item_FileTitle id=Item_FileTitle>

@@ -592,6 +592,28 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
     define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
 
+    //   NewFile.php by Yegane Shabgard
+    define2("C_TEXTS" , "Texts");
+    define2("C_FILE_DEFINITION" , "File Information");
+    define2("C_DEFINITION" , "Information");
+    define2("C_IMAGES" , "Images");
+    define2("C_FILES" , "Files");
+    define2("C_FORMS" , "Forms");
+    define2("C_LETTERS" , "Letters");
+    define2("C_SESSIONS" , "Sessions");
+    define2("C_DEBTS" , "Debts");
+    define2("C_FILE_TYPE" , "File Type");
+    define2("C_FILE_NUMBER" , "File Number");
+    define2("C_PROFESSOR" , "Professor");
+    define2("C_STUDENT" , "Student");
+    define2("C_EMPLOYER" , "Employer");
+    define2("C_OTHERS" , "Others");
+    define2("C_STRUCTURE_UNIT" , "Structure Unit");
+    define2("C_STRUCTURE_SUBUNIT" , "Structure Sub Unit");
+    define2("C_INSTRUCTION_GROUP" , "Instruction Group");
+    define2("C_USER_TYPE" , "User Type");
+
+
     // Projects Kartable Adel Aboutalebi
     define2("C_ROW", "Row");
     define2("C_PROJECT_GROUP", "Project group");
@@ -1249,6 +1271,27 @@ else
     define2("C_HELP_DEFAULT_ICON" , "در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.");
     define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
     define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
+//   NewFile.php by Yegane Shabgard
+    define2("C_TEXTS" , "متون");
+    define2("C_FILE_DEFINITION" , "مشخصات پرونده");
+    define2("C_DEFINITION" , "مشخصات");
+    define2("C_IMAGES" , "تصاویر");
+    define2("C_FILES" , "فایل ها");
+    define2("C_FORMS" , "فرم ها");
+    define2("C_LETTERS" , "نامه ها");
+    define2("C_SESSIONS" , "جلسات");
+    define2("C_DEBTS" , "امانت ها");
+    define2("C_FILE_TYPE" , "نوع پرونده");
+    define2("C_FILE_NUMBER" , "شماره پرونده");
+    define2("C_PROFESSOR" , "استاد");
+    define2("C_STUDENT" , "دانشجو");
+    define2("C_EMPLOYER" , "کارمند");
+    define2("C_OTHERS" , "سایر");
+    define2("C_STRUCTURE_UNIT" , "واحد سازمانی");
+    define2("C_STRUCTURE_SUBUNIT" , "زیر واحد سازمانی");
+    define2("C_INSTRUCTION_GROUP" , "گروه آموزشی");
+    define2("C_USER_TYPE" , "نوع شخص");
+
 
     // ManageOntologyClassLabels by Mohammad Kahani
     define2("C_T_CREATE_EDIT_CLASS_LABELS","ایجاد/ویرایش برچسب کلاسها");
