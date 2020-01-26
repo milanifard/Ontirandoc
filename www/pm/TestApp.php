@@ -1808,7 +1808,7 @@ Test::add(
 
 
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -begin
-/*
+
 Test::add(
     function()
     {
@@ -1822,15 +1822,14 @@ Test::add(
             return false;
         }
     }
-    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "message"
+    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "OntologyClassLabels"
 );
 Test::add(
         function ()
         {
-            $obj=new manage_OntologyClassLabels;
             try {
 
-                $obj->GetCount(1);
+                manage_OntologyClassLabels::GetCount(1);
                 return true;
             }
             catch (Exception $e)
@@ -1838,16 +1837,15 @@ Test::add(
                 return false;
             }
         }
-    ,"manage_OntologyClassLabels.class->GetCount()", "message"
+    ,"manage_OntologyClassLabels.class->GetCount()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetLastID();
+            manage_OntologyClassLabels::GetLastID();
             return true;
         }
         catch (Exception $e)
@@ -1855,16 +1853,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->GetLastID()", "message"
+    ,"manage_OntologyClassLabels.class->GetLastID()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Add(1,"");
+            manage_OntologyClassLabels::Add(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1872,16 +1869,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Add()", "message"
+    ,"manage_OntologyClassLabels.class->Add()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetFirstLabel(1);
+            manage_OntologyClassLabels::GetFirstLabel(1);
             return true;
         }
         catch (Exception $e)
@@ -1889,16 +1885,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "message"
+    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->UpdateOrInsertFirstLabel(1,"");
+            manage_OntologyClassLabels::UpdateOrInsertFirstLabel(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1906,16 +1901,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "message"
+    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Update(1,"");
+            manage_OntologyClassLabels::Update(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1923,16 +1917,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Update()", "message"
+    ,"manage_OntologyClassLabels.class->Update()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Remove(1);
+            manage_OntologyClassLabels::Remove(1);
             return true;
         }
         catch (Exception $e)
@@ -1950,24 +1943,26 @@ Test::add(
         $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetList(1);
-            return true;
+            if(is_array(manage_OntologyClassLabels::GetList(1)))
+                return true;
+            else
+                return false;
+
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Update()", "message"
+    ,"manage_OntologyClassLabels.class->Update()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->ComparePassedDataWithDB(1,"");
+            manage_OntologyClassLabels::ComparePassedDataWithDB(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1975,10 +1970,10 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "message"
+    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "OntologyClassLabels"
 
 );
-*/
+
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
 
 
