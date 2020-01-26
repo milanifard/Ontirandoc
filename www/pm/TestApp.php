@@ -12,6 +12,8 @@ include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
 include("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
+include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
+
 HTMLBegin();
 class Test
 {
@@ -1800,7 +1802,178 @@ Test::add(
 ##################################################################
 
 
+//OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -begin
 
+Test::add(
+    function()
+    {
+        $obj = new be_OntologyClassLabels;
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "message"
+);
+Test::add(
+        function ()
+        {
+            $obj=new manage_OntologyClassLabels;
+            try {
+
+                $obj->GetCount(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_OntologyClassLabels.class->GetCount()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetLastID();
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->GetLastID()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Add(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Add()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetFirstLabel(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->UpdateOrInsertFirstLabel(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Update(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Update()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Remove(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Remove()", "message"
+
+);
+
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetList(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Update()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->ComparePassedDataWithDB(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "message"
+
+);
+//OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
 
 
 
