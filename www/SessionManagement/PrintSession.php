@@ -57,7 +57,15 @@ if ($ppc->GetPermission("Add_SessionDecisions") == "YES")
 $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 ?>
 
-<div class="container container-fluid  border border-dark p-3">
+<div class="container container-fluid  p-0">
+    <div class="card">
+        <div class="card-header">
+            اطلاعات جلسه
+        </div>
+
+        <div class="card-body">
+
+
     <div class="row m-0">
         <div class="col">
             <div class="row"> جلسه: <?php echo $uni_session->SessionTypeID_Desc ?>
@@ -105,52 +113,11 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
         </table>
 
     </div>
-
+        </div>
+    </div>
 </div>
-<br>
-<table width="90%" align="center" border="1" cellspacing="0">
-    <tr bgcolor="#cccccc">
-        <td colspan="9">
-            جلسه: <?php echo $uni_session->SessionTypeID_Desc ?><br>
-            عنوان: <?php echo $uni_session->SessionTitle ?><br>
-            تاریخ: <?php echo $uni_session->SessionDate_Shamsi ?><br>
-            شماره: <?php echo $uni_session->SessionNumber ?><br>
-            ساعت
-            تشکیل: <?php echo floor($uni_session->SessionStartTime / 60) . ":" . ($uni_session->SessionStartTime % 60) ?>
-            مدت
-            جلسه: <?php echo floor($uni_session->SessionDurationTime / 60) . ":" . ($uni_session->SessionDurationTime % 60) ?>
-            <br>
-        </td>
-    </tr>
-    <tr class="HeaderOfTable">
-        <td width=1%>ردیف</td>
-        <td>دستور کار</td>
-        <td>مصوبه</td>
-        <td width=10% nowrap>مسوول پیگیری</td>
-        <td width=1% nowrap>مهلت اقدام</td>
-    </tr>
-    <?
-    for ($k = 0; $k < count($res); $k++) {
-        if ($k % 2 == 0)
-            echo "<tr class=\"OddRow\">";
-        else
-            echo "<tr class=\"EvenRow\">";
-        echo "	<td>" . htmlentities($res[$k]->OrderNo, ENT_QUOTES, 'UTF-8') . "</td>";
-        echo "	<td>" . str_replace("\n", "<br>", htmlentities($res[$k]->SessionPreCommandDescription, ENT_QUOTES, 'UTF-8')) . "</td>";
-        echo "	<td>" . str_replace("\n", "<br>", htmlentities($res[$k]->description, ENT_QUOTES, 'UTF-8')) . "</td>";
-        echo "	<td>&nbsp;" . $res[$k]->ResponsiblePersonID_FullName . "</td>";
-        echo "	<td nowrap>";
-        if ($res[$k]->DeadlineDate_Shamsi != "date-error")
-            echo $res[$k]->DeadlineDate_Shamsi;
-        else
-            echo "-";
-        echo "</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
 
-<div class="container container-fluid p-0">
+<div class="container container-fluid p-0 mt-3">
     <div class="card">
         <div class="card-header">
             حاضرین جلسه
@@ -201,58 +168,11 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
         </div>
     </div>
 </div>
-<br>
-<form id="ListForm" name="ListForm" method="post">
-    <table width="90%" align="center" border="1" cellspacing="0" cellpadding=10>
-        <tr bgcolor=#cccccc>
-            <td colspan=6>حاضرین جلسه</td>
-        </tr>
-        <tr bgcolor=#cccccc>
-            <td width=1%>ردیف</td>
-            <td width=20%>نام و نام خانوادگی
-            <td width=1% nowrap>حضور</td>
-            <td width=1%>تاخیر</td>
-            <td> امضا</td>
-            <td>تاریخ تایید(امضا)</td>
-        </tr>
-        <?php
-        $k = 0;
-        $list = manage_SessionMembers::GetList($_REQUEST["UniversitySessionID"], 0, 1000);
-        for ($i = 0; $i < count($list); $i++) {
-            $SignImg = '<img src="DisplayCanvas.php?RecId=' . $list[$i]->SessionMemberID . '" width="200"   />';
+<div class="container container-fluid p-0 mt-3">
 
-            if ($list[$i]->PresenceType == "PRESENT") {
-                $k++;
-                echo "<tr>";
-                echo "<td width=1%>" . $k . "</td>";
-                //echo "<td>".$list[$i]->FirstName." ".$list[$i]->LastName."</td>";
-                /*echo "<td>
-                      <a target=\"_blank\" href=\"Signature.php?PID=".$list[$i]->SessionMemberID."\">".$list[$i]->FirstName." ".$list[$i]->LastName."</a>
-                    </td>";*/
-                echo "<td>
-                       <a target=\"_blank\" href=\"Signature.php?MemberPersonID=" . $list[$i]->MemberPersonID . "&UniversitySessionID=" . $_REQUEST["UniversitySessionID"] . "\">" . $list[$i]->FirstName . " " . $list[$i]->LastName . "</a>
-                 </td>";
-
-                echo "<td nowrap>" . floor($list[$i]->PresenceTime / 60) . ":" . ($list[$i]->PresenceTime % 60) . "</td>";
-                echo "<td nowrap>" . floor($list[$i]->TardinessTime / 60) . ":" . ($list[$i]->TardinessTime % 60) . "</td>";
-                if ($list[$i]->canvasimg != '')
-                    echo "<td>" . $SignImg . "</td>";
-                else
-                    echo "<td>&nbsp;</td>";
-                if ($list[$i]->SignTime_Shamsi != "date-error")
-                    echo "	<td nowrap>" . $list[$i]->SignTime_Shamsi . "</td>";
-                else
-                    echo "	<td>-</td>";
-                echo "</tr>";
-            }
-        }
-        ?>
-    </table>
-</form>
-<div class="container">
     <div class="card">
         <div class="card-header">
-            غایبین جلسه:
+            غایبین جلسه
         </div>
         <div class="card-body">
                 <?php
@@ -269,27 +189,6 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
         </div>
     </div>
 </div>
-<br>
-<table width="90%" align="center" border="1" cellspacing="0" cellpadding=10>
-    <tr bgcolor=#cccccc>
-        <td>
-            <b>
-                غایبین جلسه:
-            </b>
-            <?php
-            $k = 0;
-            $list = manage_SessionMembers::GetList($_REQUEST["UniversitySessionID"], 0, 1000);
-            for ($i = 0; $i < count($list); $i++) {
-                if ($list[$i]->PresenceType == "ABSENT") {
-                    $k++;
-                    echo $k . "- ";
-                    echo $list[$i]->FirstName . " " . $list[$i]->LastName . " ";
-                }
-            }
-            ?>
-        </td>
-    </tr>
-</table>
 <script>
     setInterval(function () {
 
