@@ -10,6 +10,7 @@ include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
+include("classes/UserFacilities.class.php"); //by mostafaghr
 include("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
@@ -2085,6 +2086,23 @@ Test::add(function(){
 },"manage_ProjectTaskActivityTypes->CreateSelectOptions(()","ProjectTaskActivityTypes");
 
 //_______________________________END__________________________________________________
+
+
+
+// ProjectTaskRequisites.class.php test Mostafa Ghofrani
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->CreateSelectOptions($obj->GetLastID());
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->CreateSelectOptions(()","ProjectTaskActivityTypes");
+
 
 $res = Test::run();
 echo "<br>";
