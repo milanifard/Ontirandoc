@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA");
+define("UI_LANGUAGE", "EN");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
 // remove this and multiple defined constant after develoment, on release version
