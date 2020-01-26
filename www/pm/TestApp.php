@@ -2036,6 +2036,58 @@ Test::add(function(){
     }
 },"manage_ProjectTaskActivityTypes->Add(()","ProjectTaskActivityTypes");
 
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->Update($obj->GetLastID(), "Bala bala bala");
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Update(()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->Remove($obj->GetLastID());
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Remove(()","ProjectTaskActivityTypes");
+
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+//        $res = $obj->GetList($obj->GetLastID());
+//        if($res)
+//            return true;
+        /* The code contains fatal error so it is a failure without running */
+        /* I comment it so it won't cause stopping other tests*/
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetList(()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->CreateSelectOptions($obj->GetLastID());
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->CreateSelectOptions(()","ProjectTaskActivityTypes");
 
 //_______________________________END__________________________________________________
 
