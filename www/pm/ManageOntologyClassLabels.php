@@ -66,7 +66,7 @@ if (isset($_REQUEST["UpdateID"])) {
 					<thead class="table-info">
 						<tr>
 							<th class="text-center">
-								ایجاد/ویرایش برچسب کلاسها </th>
+								<? echo C_T_CREATE_EDIT_CLASS_LABELS ?> </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,8 +94,8 @@ if (isset($_REQUEST["UpdateID"])) {
 					<thead class="text-center table-info">
 						<tr>
 							<td>
-								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();">ذخیره</button>
-								<button type="button" class="btn btn-danger" onclick="javascript: window.close();">خروج</button>
+								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"><? echo C_SAVE; ?></button>
+								<button type="button" class="btn btn-danger" onclick="javascript: window.close();"><? echo C_EXIT; ?></button>
 							</td>
 						</tr>
 					</thead>
@@ -139,7 +139,7 @@ if ($SomeItemsRemoved) {
 				<table class="table table-bordered table-sm table-striped">
 					<thead class="table-info">
 						<tr>
-							<th class="text-center" colspan="6">برچسب کلاسها</th>
+							<th class="text-center" colspan="6"><? echo C_T_CLASS_LABELS; ?></th>
 						</tr>
 						<tr>
 							<td width="1%"> </td>
