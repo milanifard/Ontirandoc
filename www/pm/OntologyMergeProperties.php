@@ -1,4 +1,4 @@
-<?
+<?php
 	include("header.inc.php");
 	
 	function ShowClassesLabel($ClassList)
