@@ -10,6 +10,7 @@ include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
+include("classes/UserFacilities.class.php"); //by navidbeta
 HTMLBegin();
 class Test
 {
