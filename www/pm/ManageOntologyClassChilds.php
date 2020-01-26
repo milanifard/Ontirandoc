@@ -47,7 +47,7 @@ echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntol
 			<table class="table table-sm table-borderless">
 				<thead class="table-info">
 					<tr>
-						<th class="text-center">اضافه کردن کلاس فرزند</th>
+						<th class="text-center"><? echo C_T_ADD_CHILD_CLASS ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,7 +66,7 @@ echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntol
 								<tr>
 									<th>
 										<label for="OntologyClassID">
-											کلاس فرزند
+											<? echo C_T_CHILD_CLASS ?>
 										</label>
 									</th>
 									<td width="" nowrap>
@@ -142,12 +142,12 @@ if($SomeItemsRemoved)
 				<table class="table table-bordered table-sm table-striped">
 					<thead class="table-info">
 						<tr>
-							<th class="text-center" colspan="6">کلاسهای فرزند</th>
+							<th class="text-center" colspan="6"><? echo C_T_CHILD_CLASSES; ?></th>
 						</tr>
 						<tr>
 							<td width="1%"> </td>
 							<td width="1%"><? echo C_ROW; ?></td>
-							<td width="30%">کلاس</td>
+							<td width="30%"><? echo C_T_CLASS; ?></td>
 						</tr>
 					</thead>
 					<?
