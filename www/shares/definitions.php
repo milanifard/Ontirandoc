@@ -653,6 +653,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PRINTSESSIONPAGE_STSEC", "instructions");
     define2("C_PRINTSESSIONPAGE_STTIR", "results");
     define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
+    define2("C_PRINTSESSIONPAGE_STFIF", "due time");
+   
     define2("C_PRINTSESSIONPAGE_TTH", "presents");
     define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
     define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
@@ -1313,6 +1315,8 @@ else
     define2("C_PRINTSESSIONPAGE_STSEC", "دستور کار");
     define2("C_PRINTSESSIONPAGE_STTIR", "مصوبه");
     define2("C_PRINTSESSIONPAGE_STFORTH", "مسوول پیگیری");
+    define2("C_PRINTSESSIONPAGE_STFIF", "مهلت اقدام");
+
     define2("C_PRINTSESSIONPAGE_TTH", "حاضرین جلسه");
     define2("C_PRINTSESSIONPAGE_TTFIRST", "ردیف");
     define2("C_PRINTSESSIONPAGE_TTSEC", "نام و نام خانوادگی");

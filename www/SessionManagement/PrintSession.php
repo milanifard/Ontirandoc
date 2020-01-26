@@ -60,7 +60,7 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 <div class="container container-fluid  p-0">
     <div class="card">
         <div class="card-header">
-            <?php echo C_PRINTSESSIONPAGE_MTH;?>
+            <?php echo C_PRINTSESSIONPAGE_MTH ?>
         </div>
 
         <div class="card-body">
@@ -70,29 +70,26 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
         <div class="col">
             <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMFC ?>: <?php echo $uni_session->SessionTypeID_Desc ?>
             </div>
-            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMSC ?>: <?php echo $uni_session->SessionTitle ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMTC ?>: <?php echo $uni_session->SessionTitle ?>
             </div>
-            <div class="row"> تاریخ: <?php echo $uni_session->SessionDate_Shamsi ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMFOC ?>: <?php echo $uni_session->SessionDate_Shamsi ?>
             </div>
-            <div class="row"> شماره: <?php echo $uni_session->SessionNumber ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMFIFC ?>: <?php echo $uni_session->SessionNumber ?>
             </div>
-            <div class="row"> ساعت
-                تشکیل: <?php echo floor($uni_session->SessionStartTime / 60) . ":" . ($uni_session->SessionStartTime % 60) ?>
+            <div class="row"> <?php echo C_PRINTSESSIONPAGE_TMSIXC ?>: <?php echo floor($uni_session->SessionStartTime / 60) . ":" . ($uni_session->SessionStartTime % 60) ?>
             </div>
-            <div class="row">
-                مدت
-                جلسه: <?php echo floor($uni_session->SessionDurationTime / 60) . ":" . ($uni_session->SessionDurationTime % 60) ?>
+            <div class="row"><?php echo C_PRINTSESSIONPAGE_TMSEVENC ?>: <?php echo floor($uni_session->SessionDurationTime / 60) . ":" . ($uni_session->SessionDurationTime % 60) ?>
             </div>
         </div>
     </div>
     <div class="row">
         <table class="table table-bordered table-striped">
             <tr>
-                <th scope="col">ردیف</th>
-                <th scope="col">دستور کار</th>
-                <th scope="col">مصوبه</th>
-                <th scope="col">مسوول پیگیری</th>
-                <th scope="col">مهلت اقدام</th>
+                <th scope="col"><?php echo C_PRINTSESSIONPAGE_STFIRST ?></th>
+                <th scope="col"><?php echo C_PRINTSESSIONPAGE_STSEC ?></th>
+                <th scope="col"><?php echo C_PRINTSESSIONPAGE_STTIR ?></th>
+                <th scope="col"><?php echo C_PRINTSESSIONPAGE_STFORTH ?></th>
+                <th scope="col"><?php echo C_PRINTSESSIONPAGE_STFIF ?></th>
             </tr>
             <?
             for ($k = 0; $k < count($res); $k++) {
@@ -120,18 +117,18 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 <div class="container container-fluid p-0 mt-3">
     <div class="card">
         <div class="card-header">
-            حاضرین جلسه
+        <?php echo C_PRINTSESSIONPAGE_TTH ?>
         </div>
         <div class="card-body">
             <form id="ListForm" name="ListForm" method="post">
                 <table class="table table-striped">
                     <tr>
-                        <th scope="col">ردیف</th>
-                        <th scope="col">نام و نام خانوادگی</th>
-                        <th scope="col">حضور</th>
-                        <th scope="col">تاخیر</th>
-                        <th scope="col">امضا</th>
-                        <th scope="col">تاریخ تایید(امضا)</th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTFIRST ?></th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTSEC ?></th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTTIR ?></th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTFOR ?></th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTFIF ?></th>
+                        <th scope="col"><?php echo C_PRINTSESSIONPAGE_TTSIX ?></th>
                     </tr>
                     <?php
                     $k = 0;
@@ -172,7 +169,7 @@ $res = manage_SessionDecisions::GetList($_REQUEST["UniversitySessionID"]);
 
     <div class="card">
         <div class="card-header">
-            غایبین جلسه
+            <?php echo C_PRINTSESSIONPAGE_FTH ?>
         </div>
         <div class="card-body">
                 <?php
