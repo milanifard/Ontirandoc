@@ -4,6 +4,13 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-3-1
 */
+
+
+/*
+edited by: Mohammad Kahani SID: 9512762447
+*/
+
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/OntologyClassHirarchy.class.php");
@@ -31,43 +38,75 @@ $LoadDataJavascriptCode = '';
 echo manage_OntologyClasses::ShowSummary($_REQUEST["OntologyClassID"]);
 echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntologyClassHirarchy");
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">اضافه کردن کلاس فرزند</td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<input type="hidden" name="OntologyClassID" id="OntologyClassID" value='<? if(isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
-<tr>
-	<td width="1%" nowrap>
- کلاس فرزند
-	</td>
-	<td nowrap>
-	<select name="Item_OntologyClassParentID" id="Item_OntologyClassParentID">
-	<option value=0>-
-	  <?
-	    $list = manage_OntologyClasses::GetList($obj->OntologyID);
-	    for($i=0; $i<count($list); $i++)
-	    {
-	      echo "<option value='".$list[$i]->OntologyClassID."'>";
-	      echo $list[$i]->label." (".$list[$i]->ClassTitle.")";
-	    }
-	?>
-	</select>
-	<a onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=Item_OntologyClassParentID&OntologyID=<? echo $OntologyID;  ?>")' href="#">انتخاب</a>
-	</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="اضافه">
- <input type="button" onclick="javascript: window.close();" value="بستن">
-</td>
-</tr>
-</table>
+
+<br>
+<div class="table-responsive container-fluid">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<table class="table table-sm table-borderless">
+				<thead class="table-info">
+					<tr>
+						<th class="text-center">اضافه کردن کلاس فرزند</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td width="25%" nowrap>
+											<?
+											if (!isset($_REQUEST["UpdateID"])) {
+											?>
+												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="25" value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
+											<? } ?>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label for="OntologyClassID">
+											کلاس فرزند
+										</label>
+									</th>
+									<td width="" nowrap>
+										<select class="browser-default custom-select" name="Item_OntologyClassParentID" id="Item_OntologyClassParentID">
+										<option value=0>-
+											<?
+												$list = manage_OntologyClasses::GetList($obj->OntologyID);
+												for($i=0; $i<count($list); $i++)
+												{
+												echo "<option value='".$list[$i]->OntologyClassID."'>";
+												echo $list[$i]->label." (".$list[$i]->ClassTitle.")";
+												}
+											/*$res = $mysql->Execute("select OntologyClassID, ClassTitle from projectmanagement.OntologyClasses where OntologyID='".$obj->OntologyID."'");
+											while($rec = $res->fetch())
+											{
+												echo "<option value='".$rec["OntologyClassID"]."'>".$rec["ClassTitle"];
+											}*/
+											?>
+										</select>
+										<a onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=Item_OntologyClassParentID&OntologyID=<? echo $OntologyID;  ?>")' href="#">انتخاب</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+				<thead class="text-center table-info">
+						<tr>
+							<td>
+								
+								<button type="button" class="btn btn-success" onclick="javascript: ValidationForm();" ?>اضافه</button>
+								<button type="button" class="btn btn-danger" onclick="javascript:windows.close();">بستن</button>
+
+							</td>
+						</tr>
+					</thead>
+			</table>
+		</div>
+	</div>
+</div>
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
 	function ValidateForm()
@@ -75,6 +114,8 @@ echo manage_OntologyClasses::ShowTabs($_REQUEST["OntologyClassID"], "ManageOntol
 		document.f1.submit();
 	}
 </script>
+
+
 <?php 
 $res = manage_OntologyClassHirarchy::GetList($_REQUEST["OntologyClassID"]); 
 $SomeItemsRemoved = false;
@@ -89,40 +130,52 @@ for($k=0; $k<count($res); $k++)
 if($SomeItemsRemoved)
   $res = manage_OntologyClassHirarchy::GetList($_REQUEST["OntologyClassID"]); 
 ?>
-<form id="ListForm" name="ListForm" method="post"> 
-	<input type="hidden" id="Item_OntologyClassID" name="Item_OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="5">
-	کلاسهای فرزند
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td>کلاس</td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyClassHirarchyID."\">";
-	echo "</td>";
-	echo "<td>".($k+1)."</td>";
-	echo "	<td>".$res[$k]->OntologyClassParentID_Desc."</td>";
-	echo "</tr>";
-}
-?>
-<tr class="FooterOfTable">
-<td colspan="5" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-</td>
-</tr>
-</table>
+
+
+<form id="ListForm" name="ListForm" method="post">
+	<input type="hidden" id="Item_OntologyCla7d45ccbea70e3559331f83a4adc1d4db08554337ssID" name="Item_OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
+	<br>
+	<div class="table-responsive container-fluid">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<table class="table table-bordered table-sm table-striped">
+					<thead class="table-info">
+						<tr>
+							<th class="text-center" colspan="6">کلاسهای فرزند</th>
+						</tr>
+						<tr>
+							<td width="1%"> </td>
+							<td width="1%">ردیف</td>
+							<td width="30%">کلاس</td>
+						</tr>
+					</thead>
+					<?
+						for($k=0; $k<count($res); $k++)
+						{
+							if($k%2==0)
+								echo "<tr class=\"OddRow\">";
+							else
+								echo "<tr class=\"EvenRow\">";
+							echo "<td>";
+							echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyClassHirarchyID."\">";
+							echo "</td>";
+							echo "<td>".($k+1)."</td>";
+							echo "	<td>".$res[$k]->OntologyClassParentID_Desc."</td>";
+							echo "</tr>";
+						}
+					?>
+					<tr class="table-info">
+						<td colspan="6" align="center">
+							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="حذف">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+
 </form>
 <form target="_blank" method="post" action="NewOntologyClassHirarchy.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="OntologyClassID" name="OntologyClassID" value="<? echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>">
