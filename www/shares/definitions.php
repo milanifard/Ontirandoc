@@ -304,18 +304,18 @@ if(UI_LANGUAGE=="EN") {
     define("C_SESSION_TITLE","Session Title");
     define("C_DURATION","Duration");
     define("C_SESSION_STATUS","Session Status");
-    define("C_CREATE","Create");
+    //define("C_CREATE","Create");
     define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
     define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
-    define("C_DATE", "Date");
-    define("C_DESCRIPTION", "Description");
-    define("C_SAVE", "Save");
-    define("C_NEW", "New");
-    define("C_ROW", "Row");
-    define("C_EDIT", "Edit");
+    //define("C_DATE", "Date");
+    //define("C_DESCRIPTION", "Description");
+    //define("C_SAVE", "Save");
+    //define("C_NEW", "New");
+    //define("C_ROW", "Row");
+    //define("C_EDIT", "Edit");
     define("C_IMPORTANT_DATES", "Important dates");
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
@@ -325,12 +325,12 @@ if(UI_LANGUAGE=="EN") {
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
     define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
-    define("C_TITLE", "Title");
-    define("C_SAVE", "Save");
-    define("C_NEW", "New");
+    //define("C_TITLE", "Title");
+    //define("C_SAVE", "Save");
+    //define("C_NEW", "New");
     define("C_ACTIONS_TYPES", "Action types");
     define("C_ACTIONS_COUNT", "Action count");
-    define("C_DELETE", "Delete");
+    //define("C_DELETE", "Delete");
     define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh

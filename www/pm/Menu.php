@@ -11,14 +11,25 @@
 	$CurYear = 1300+$yy;	
 	$mysql = pdodb::getInstance();
 ?>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'.
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="">
+		<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'.
 </style>
 <link rel="stylesheet"  href="css/right.css" type="text/css">
-</head>
-<body  <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> link="#0000FF" alink="#0000FF" vlink="#0000FF">
-<table cellspacing=0 cellpadding=3 >
+	</head>
+	<body>
+	<table cellspacing=0 cellpadding=3 >
 <tr>
 <td>
 <?php
@@ -46,7 +57,7 @@ else
 </td>
 </tr>
 </table>
-<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" <? if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> height="15">
+<table border=0 cellpadding=0 cellspacing=0 width='185' class="navbar_sub" <?php if(UI_LANGUAGE=="FA") echo "dir=rtl"; ?> height="15">
 <tr>
 	<td width='83%' height='18'><a href='#' onclick='javascript: parent.document.getElementById("MainContent").src="HomePage.php"'><? echo C_FIRST_PAGE ?></a></td>
 </tr>
@@ -75,7 +86,7 @@ else
 	<table width=100% border=0 cellpadding=0 cellspacing=0 class="navbar_main" height="25">	
 	<tr>
 		<td  width='25'>&nbsp;</td>
-		<td <? if(UI_LANGUAGE=="FA") echo "align=right"; ?>>
+		<td <? if(UI_LANGUAGE=="FA") echo "align=right"; ?>
 		<a href='#' onclick='javascript: ExpandOrColapse("tr_<?php echo $grec["GroupID"] ?>")'>
 		<b><?php if(UI_LANGUAGE=="FA") echo $grec["GroupName"]; else echo $grec["EGroupName"]; ?></b>
 		</a>
@@ -134,4 +145,7 @@ else
 			document.getElementById(tr_id).style.display = '';
 	}
 </script>
-</body>
+
+	</body>
+</html>
+<head>
