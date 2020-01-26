@@ -1030,6 +1030,7 @@ Test::add(
 
 // ========================================+ Arman Ghoreshi +==============================================
 // ========================== SessionManagement/classes/SessionActReg.class.php ===========================
+/*
 Test::add(
         function()
         {
@@ -1062,6 +1063,7 @@ Test::add(
     ,"SessionManagement/classes/SessionActReg->Added()"
     ,"Message"
 );
+*/
 // ==============================================END=======================================================
 
 // ---------------------- TermEquivalentEnglishTerms.class.php by Diba Aminshahidi ------------------------
@@ -1350,6 +1352,7 @@ Test::add(
 
 
 // FormManagers.class.php - Alireza Imani - begin
+/*
 Test::add(
     function()
     {
@@ -1473,6 +1476,8 @@ Test::add(
     }
     ,"manage_FormManagers->GetRows()", "FormManagers"
 );
+*/
+
 // FormManagers.class.php - Alireza Imani - end
 
 
@@ -1680,7 +1685,7 @@ Test::add(
 #  OntologyValidationExperts.class.php - Mohammad Kahani - Start #
 #                                                                #
 ##################################################################
-
+/*
 Test::add(
     function()
     {
@@ -1697,7 +1702,6 @@ Test::add(
     }
     ,"be_OntologyValidationExperts.class->LoadDataFromDatabase()", "OntologyValidationExperts"
 );
-
 Test::add(
     function()
     {
@@ -1794,6 +1798,7 @@ Test::add(
     }
     ,"manage_OntologyValidationExperts.class->ComparePassedDataWithDB()", "OntologyValidationExperts"
 );
+*/
 
 ##################################################################
 #                                                                #
@@ -1803,7 +1808,7 @@ Test::add(
 
 
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -begin
-
+/*
 Test::add(
     function()
     {
@@ -1973,6 +1978,7 @@ Test::add(
     ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "message"
 
 );
+*/
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
 
 
