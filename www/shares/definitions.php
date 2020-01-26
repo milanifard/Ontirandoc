@@ -1250,7 +1250,23 @@ else
     define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
     define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
 
-        
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","ایجاد/ویرایش برچسب کلاسها");
+    define2("C_T_CLASS_LABELS","برچسب کلاسها");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","اضافه کردن کلاسهای فرزند");
+    define2("C_T_CHILD_CLASSES","کلاسهای فرزند");
+    define2("C_T_CLASS","کلاس");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","ایجاد/ویرایش زیرکلاسها");
+    define2("C_T_CHILD_CLASS","کلاس فرزند");
+    define2("C_T_SUBCLASS","زیرکلاسها");
+
+
+    //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار")        
 
 }
 
