@@ -1473,6 +1473,201 @@ Test::add(
 // FormManagers.class.php - Alireza Imani - end
 
 
+// UserFacilities.class.php - navidbeta - start
+
+Test::add(
+    function()
+    {
+        $obj = new be_UserFacilities();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_UserFacilities->LoadDataFromDatabase()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::HasAccess("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->HasAccess()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::GetCount("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetCount()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetLastID()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::RemoveAllUserFacilities("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->RemoveAllUserFacilities()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Add("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Add()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Update("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Update()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Remove("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Remove()","UserFacilities"
+);
+
+Test::add(
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_UserFacilities::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetList()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::Search("","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Search()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::SearchResultCount("","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->SearchResultCount()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::ComparePassedDataWithDB("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->ComparePassedDataWithDB()", "UserFacilities"
+);
+
+// UserFacilities.class.php - navidbeta - end
+
 
 
 $res = Test::run();
