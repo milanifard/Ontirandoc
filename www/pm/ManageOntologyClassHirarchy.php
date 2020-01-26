@@ -4,6 +4,11 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-3-1
 */
+
+/*
+edited by: Mohammad Kahani SID: 9512762447
+*/
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/OntologyClassHirarchy.class.php");
@@ -172,10 +177,10 @@ if($SomeItemsRemoved)
 						else
 							echo "<tr class=\"EvenRow\">";
 						echo "<td>";
-						echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->OntologyClassLabelID . "\">";
+						echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->OntologyClassHirarchyID . "\">";
 						echo "</td>";
 						echo "<td>" . ($k + 1) . "</td>";
-						echo "	<td><a href=\"ManageOntologyClassLabels.php?UpdateID=" . $res[$k]->OntologyClassLabelID . "&OntologyClassID=" . $_REQUEST["OntologyClassID"] . "\"><i class='fas fa-edit'></i></a></td>";
+						echo "	<td><a href=\"ManageOntologyClassHirarchy.php?UpdateID=" . $res[$k]->OntologyClassHirarchyID . "&OntologyClassID=" . $_REQUEST["OntologyClassID"] . "\"><i class='fas fa-edit'></i></a></td>";
 						echo "	<td>" . str_replace("\r", "<br>", htmlentities($res[$k]->label, ENT_QUOTES, 'UTF-8')) . "</td>";
 						echo "</tr>";
 					}
