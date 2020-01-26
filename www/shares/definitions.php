@@ -663,6 +663,92 @@ if(UI_LANGUAGE=="EN") {
     define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes");
 
 
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "Meeting info");
+    define2("C_PRINTSESSIONPAGE_TMFC", "Meeting");
+    define2("C_PRINTSESSIONPAGE_TMTC", "title");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "date");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "number");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "start hour");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "time");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_STSEC", "instructions");
+    define2("C_PRINTSESSIONPAGE_STTIR", "results");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
+    define2("C_PRINTSESSIONPAGE_STFIF", "due time");
+   
+    define2("C_PRINTSESSIONPAGE_TTH", "presents");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "presence");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "delay");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "signiture");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "submition date (sign)");
+    define2("C_PRINTSESSIONPAGE_FTH", "absents");
+    
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "relation");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "sub class");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "in");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "join");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "Join Recommends");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "order");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "class");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "primary key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "relational key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "merge");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "Items search page instructions");
+
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        Sometimes the huge amount of data in a single field cause slow performance of selecting options for user and also consumes a large area
+        of the page.
+        </br>
+        for such cases Look Up could be a good choice.
+        </br>
+        In this method a link is placed in front of this fields name which by clicking it a new window will be opened
+        and user can search the desired item and select it as the value for corresponding field.
+        <br>
+        this page should be programed by the developer and the address should be placed in the 'search page address'.
+        <br>
+        values which system pass to the new page includes:
+        <li>FormName: name of the form which contains the field.
+        <li>InputName: the hidden element in the form which selected item key should be placed in its value
+        <li>SpanName:  a span which contains the information about the selected item
+        <br>
+        for instance consider values below:
+        <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+        <br>
+        Developer should call a javascript code like below when the he selected the desired item:
+    ");
+    //Amir karami
+    define("C_Class", "Class");
+    define("C_Property", "Property");
+    define("C_SinCnnP","Search In Classes Name and Properties");
+    define("C_SinLabels","Search In Labels");
+    define("C_Relation","Relation");
+    define("C_CatSuggest","Categorise Suggestion");
+    define("C_Sentence1","Merge Suggestions or Heirachy Relation Connections(Classes which have common childes) ");
+    define("C_Sentence2","Parrent Relations-Invalid Child(Duplicate)");
+    define("C_MergeComp","Merge Complete");
+    define("C_Merge_Classes","Merge Classes");
+    define("C_Pclasses", "Parent Classes");
+    define("C_SubClasses", "Sub Classes");
+    define("C_Done", "Done");
+    define("C_CoE_Ontology","Create / Edit Ontology Classes");
+    define("C_Class_title","Class Title");
+    define("C_Label","Label");
+    define("C_Upper_Class","Upper Class");
+    define("C_Show_graph","Show Graph");
+    define("C_Cclasses", "Child Classes");
+    define("C_Merge_result","Merge Result");
+    define("C_Ontology_Classes","Ontology Classes");
+    define("C_Related_Prop","Related Properties");
+    define("C_Merge","Merge");
+    define("C_Area","Domain");
+    define("C_Prop_Labels","Properties Label");
+    define("C_Prop_Range","Properties Range");
+    define("C_Prop_Name","Properties Name");
+    //_________________ END _____________________________
 }
 else
 {
@@ -1310,6 +1396,101 @@ else
 
     //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
     define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار");
+
+
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "اطلاعات جلسه");
+    define2("C_PRINTSESSIONPAGE_TMFC", "جلسه");
+    define2("C_PRINTSESSIONPAGE_TMTC", "عنوان");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "تاریخ");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "شماره");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "ساعت تشکلیل");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "مدت جلسه");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_STSEC", "دستور کار");
+    define2("C_PRINTSESSIONPAGE_STTIR", "مصوبه");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "مسوول پیگیری");
+    define2("C_PRINTSESSIONPAGE_STFIF", "مهلت اقدام");
+
+    define2("C_PRINTSESSIONPAGE_TTH", "حاضرین جلسه");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "نام و نام خانوادگی");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "حضور");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "تاخیر");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "امضا");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "تاریخ تایید(امضا)");
+    define2("C_PRINTSESSIONPAGE_FTH", "غایبین جلسه");
+
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "رابطه");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "زیر کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "است");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "در");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "ادغام شود");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "پیشنهادات ادغام");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "ردیف");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "کلیدهای اصلی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "کلید ارتباطی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "انجام ادغام");
+
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "راهنمای تولید صفحه جستجوی مقادیر");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        بعضی از مواقع داده هایی که در یک فیلد لیستی قابل انتخاب هستند بسیاز زیاد بوده و نمایش آنها به صورت لیست
+            کشویی علاوه بر اینکه حجم زیادی
+            از صفحه را به خود اختصاص می دهد باعث کندی عمل کاربر در انتخاب گزینه مورد نظر خود می شود.
+            <br>
+            برای اینگونه موارد می توان نحوه نمایش لیست را Look Up تعیین کرد.
+            <br>
+            در این حالت در فرم ورود داده در جلوی نام این فیلد یک لینک برای انتخاب داده مورد نظر نمایش داده می شود که
+            کاربر بتواند با کلیک روی آن
+            در صفحه ای که در یک پنجره جداگانه باز می شود به جستجوی آیتم مورد نظر خود پرداخته و آن را انتخاب کند تا در
+            مقدار فیلد قرار گیرد.
+            <br>
+            این صفحه باید توسط برنامه نویس نوشته شده و آدرس آن در مشخصه 'آدرس صفحه جستجوی داده' وارد شود.
+            <br>
+            مواردی که سیستم در زمان فراخوانی این صفحه به آن پاس می دهد عبارتند از:
+            <br>
+            <li>FormName: نام فرمی که فیلد در آن قرار دارد
+            <li>InputName: نام عنصری که داخل فرم به صورت مخفی قرار دارد و باید مقدار کلید آیتم انتخاب شده در آن قرار
+                گیرد
+            <li>SpanName: نام span ای را به همراه دارد که توضیحات مربوط به آیتم انتخاب شده در آن نوشته می شود
+                <br>
+                به عنوان مثال مقادیر زیر را در نظر بگیرید:
+                <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+                <br>
+                حال باید برنامه نویس در کد خود زمانیکه کاربر آیتم مورد نظر را انتخاب کرد یک تابع جاوا اسکریپ مشابه این
+                را فراخوانی کند:
+    
+    ");
+    //AMIR Karami
+    define("C_Class", "کلاس");
+    define("C_Property", "ویژگی");
+    define("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
+    define("C_SinLabels","جستجو در برچسبها");
+    define("C_Relation","رابطه");
+    define("C_CatSuggest","پیشنهادهای دسته بندی");
+    define("C_Sentence1","پیشنهادهای ادغام یا برقراری رابطه سلسله مراتبی (کلاسهایی که فرزند مشترک دارند)");
+    define("C_Sentence2","روابط پدر - فرزندی نامعتبر (تکراری): کلاس پدر و فرزند هر دو زیر کلاس مستقیم یک کلاس هستند)");
+    define("C_MergeComp","ادغام انجام شد");
+    define("C_Merge_Classes","ادغام کلاس ها");
+    define("C_Pclasses", "کلاس های پدر");
+    define("C_SubClasses", "زیر کلاس ها");
+    define("C_Cclasses", "کلاس های فرزند");
+    define("C_Done", "انجام");
+    define("C_CoE_Ontology","ایجاد/ویرایش کلاسهای هستان نگار");
+    define("C_Class_title","عنوان کلاس");
+    define("C_Label","برچسب");
+    define("C_Upper_Class","کلاس بالاتر");
+    define("C_Show_graph","نمایش گراف");
+    define("C_Merge_result","حاصل ادغام");
+    define("C_Ontology_Classes","کلاسهای هستان نگار");
+    define("C_Related_Prop","خصوصیات مرتبط");
+    define("C_Merge","ادغام");
+    define("C_Area","حوزه");
+    define("C_Prop_Labels","برچسب خصوصیت");
+    define("C_Prop_Range","برد خصوصیت");
+    define("C_Prop_Name","نام خصوصیت");
+    //_________________ END _____________________________
 
 }
 
