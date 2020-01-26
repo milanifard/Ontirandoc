@@ -638,7 +638,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_T_SUBCLASS","SubClasses");
 
     //ShowSummary() & ShowTabs in OntologyClasses.class by Mohammad Kahani
-    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes")
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes");
 
 
 }
@@ -1266,9 +1266,10 @@ else
 
 
     //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
-    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار")        
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار");
 
 }
 
 ?>
+
 
