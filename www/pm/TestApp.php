@@ -11,6 +11,7 @@ include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Gho
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
 include("classes/UserFacilities.class.php"); //by navidbeta
+include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 HTMLBegin();
 class Test
 {
@@ -1667,6 +1668,139 @@ Test::add(
 );
 
 // UserFacilities.class.php - navidbeta - end
+
+
+
+
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - Start #
+#                                                                #
+##################################################################
+
+Test::add(
+    function()
+    {
+        $obj = new be_OntologyValidationExperts();
+        try {
+            if ($obj->LoadDataFromDatabase(1)){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_OntologyValidationExperts.class->LoadDataFromDatabase()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if(manage_OntologyValidationExperts::GetCount(1)==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->getCount()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        try{
+            if(manage_OntologyValidationExperts::GetLastID()!=-1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->GetLastID()","OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Add("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Add()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Update("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Update()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Remove(1);
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Remove()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function()
+    {
+        $obj = new manage_OntologyValidationExperts();
+        try {
+            $obj->ComparePassedDataWithDB("","","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts.class->ComparePassedDataWithDB()", "OntologyValidationExperts"
+);
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - End   #
+#                                                                #
+##################################################################
+
+
+
 
 
 
