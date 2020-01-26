@@ -307,28 +307,6 @@ if(UI_LANGUAGE=="EN") {
     define2("FIELD_M" ,"field");
 
     // ------------------------ ManageSessionTypes.php By diba aminshahidi -------------------------
-<<<<<<< HEAD
-    define("C_PATTERN","Session Pattern");
-    define("C_MEETING_TYPE","Session Type");
-    define("C_SESSIONS","Sessions");
-    define("C_SESSION_NUMBER","Session Number");
-    define("C_SESSION_TITLE","Session Title");
-    define("C_DURATION","Duration");
-    define("C_SESSION_STATUS","Session Status");
-    //define("C_CREATE","Create");
-    define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
-    define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
-
-    //ManageProjectMilestones.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
-    //define("C_DATE", "Date");
-    //define("C_DESCRIPTION", "Description");
-    //define("C_SAVE", "Save");
-    //define("C_NEW", "New");
-    //define("C_ROW", "Row");
-    //define("C_EDIT", "Edit");
-    define("C_IMPORTANT_DATES", "Important dates");
-=======
     define2("C_PATTERN","Session Pattern");
     define2("C_MEETING_TYPE","Session Type");
     define2("C_SESSIONS","Sessions");
@@ -351,7 +329,6 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ROW", "Row");
     define2("C_EDIT", "Edit");
     define2("C_IMPORTANT_DATES", "Important dates");
->>>>>>> 727c7baa4cdc1e2e7e5e756588cd7f072a7ec225
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
     define2("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
@@ -359,16 +336,6 @@ if(UI_LANGUAGE=="EN") {
     define2("C_LABELS" , "Labels");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
-<<<<<<< HEAD
-    define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
-    //define("C_TITLE", "Title");
-    //define("C_SAVE", "Save");
-    //define("C_NEW", "New");
-    define("C_ACTIONS_TYPES", "Action types");
-    define("C_ACTIONS_COUNT", "Action count");
-    //define("C_DELETE", "Delete");
-    define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
-=======
     define2("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
     define2("C_TITLE", "Title");
     define2("C_SAVE", "Save");
@@ -377,7 +344,6 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ACTIONS_COUNT", "Action count");
     define2("C_DELETE", "Delete");
     define2("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
->>>>>>> 727c7baa4cdc1e2e7e5e756588cd7f072a7ec225
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
     define2("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "Create/Edit users assgined to activity");
@@ -1305,5 +1271,3 @@ else
 }
 
 ?>
-
-
