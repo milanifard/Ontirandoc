@@ -23,9 +23,9 @@ else
 
 if($messages!="")
 {
-	echo "<table width=98% align=center border=1 cellspacing=0>";
-	echo "<tr><td colspan=4><b>آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران<b></td></tr>";
-	echo "<tr class=HeaderOfTable><td width=1% nowrap>زمان</td><td>عملیات انجام شده</td><td width=7% nowrap>کاربر مربوطه</td><td>عنوان کار مربوطه</td></tr>";
+	echo "<table width=98% align=center class=\"table table-bordered\">";
+	echo "<tr class=\"warning\"><td align=center class=\"text-center\"><b> <? echo  C_LATEST_STATUS; ?> <b></td></tr class=\"warning\">";
+	echo "<tr class=warning><td class=\"text-center\"><? echo  C_TIME; ?></td><td class=\"text-center\"><? echo  C_JOB_DONE; ?></td><td width=7% class=\"text-center\"><? echo  C_RELATED_USER; ?></td><td class=\"text-center\"><? echo  C_JOB_TITLE; ?></td></tr>";
 	echo $messages;
 	echo "</table>";
 }
@@ -37,18 +37,18 @@ else
 	$messages = manage_ProjectTasks::GetLastSystemMessage($_SESSION["PersonID"], FALSE, TRUE);
 if($messages!="")
 {
-	echo "<table width=98% align=center border=1 cellspacing=0>";
-	echo "<tr><td colspan=4><b>آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان<b></td></tr>";
-	echo "<tr class=HeaderOfTable><td width=1% nowrap>زمان</td><td>عملیات انجام شده</td><td>عنوان کار مربوطه</td></tr>";
+	echo "<table width=98% align=center class=\"table table-bordered\">";
+	echo "<tr class=\"warning\"><td align=center class=\"text-center\"><b><? echo  C_LATEST_STATUS; ?><b></td></tr>";
+	echo "<tr class=warning><td wiclass=\"text-center\"><? echo  C_TIME; ?></td><td class=\"text-center\"><? echo  C_JOB_DONE; ?></td><td class=\"text-center\"><? echo  C_RELATED_USER; ?></td></tr>";
 	echo $messages;
 	echo "</table>";
 }
 
-echo '<p style="margin-right: 15px;">';
+echo '<p class="text">';
 if (!isset($_GET["Full"]))
-	echo '<input onclick="javascript: Full();" value="مشاهده‌ی جزئیات بیشتر" type="button">';
+	echo "<input onclick=\"javascript: Full();\" value=\"" . C_MORE_DET."\" type=\"button\">";
 else
-	echo '<input onclick="javascript: Partial();" value="مشاهده‌ی خلاصه‌تر" type="button">';
+	echo "<input onclick=\"javascript: Partial();\" value=\"" . C_LESS_DET."\" type=\"button\">>";
 echo "</p>";
 
 ?>

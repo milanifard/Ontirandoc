@@ -1492,6 +1492,24 @@ else
     define("C_Prop_Name","نام خصوصیت");
     //_________________ END _____________________________
 
+    //SignOut.php Mostafa Ghofrani
+    define("C_SESSION_EXPIRED", "نشست شما منقضی شده است");
+    define("C_WELCOME", "خوش آمدید");
+    define("C_RELOGING", "برای ورود مجدد");
+    define("C_CLICK_THIS", "اینجا را کلیک کنید");
+
+    //TaskMessages.php Mostafa Ghofrani
+    define("C_LATEST_STATUS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
+    define("C_JOB_DONE", "عملیات انجام شده");
+    define("C_RELATED_USER", "کاربر مربوطه");
+    define("C_JOB_TITLE", "عنوان کار مربوطه");
+    define("C_JOB_TITLE", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
+    define("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
+    define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
+    define("C_JOB_TITLE", "عنوان کار مربوطه");
+
+    
+
 }
 
 ?>

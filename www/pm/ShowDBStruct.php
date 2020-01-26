@@ -14,10 +14,10 @@ $DMServersID = $_REQUEST["DMServersID"];
 $DMDatabasesID = $_REQUEST["DMDatabasesID"];
 $mysql = pdodb::getInstance();
 ?>
-<table width=80% align=center border=1>
-<tr class="FooterOfTable">
-<td colspan="2" align="center">
-	<input type=button value='بازگشت' onclick='javascript: document.mf.submit()'>
+<table class="table table-bordered">
+<tr class="warning" align="center">
+<td>
+	<input class="btn-primary" type=button value=<? echo C_RETURN ?> onclick='javascript: document.mf.submit()'>
 </td>
 </tr>
 <?
@@ -25,11 +25,11 @@ $mysql->Prepare("select * from projectmanagement.DMTables where DMDatabasesID=? 
 $res = $mysql->ExecuteStatement(array($DMDatabasesID));
 while($rec = $res->fetch())
 {
-  echo "<tr>";
+  echo "<tr class=\"warning\" align=\"center\">";
   echo "<td>";
   echo "<br>";
-  echo "<table width=80% border=1 cellspacing=0>";
-  echo "<tr class=HeaderOfTable>";
+  echo "<table width=80%  class=\"warning\" align=\"center\">";
+  echo "<tr class=\"warning\" align=\"center\">";
   echo "<td colspan=3>";
     echo $rec["TableName"];
     if($rec["description"]!="")
@@ -49,18 +49,18 @@ while($rec = $res->fetch())
     echo "</tr>";
   }
   echo "</table>";
-  echo "</tr>";
+  echo "</tr class=\"warning\" align=\"center\">";
 }
   
 ?>
-<tr class="FooterOfTable">
-<td colspan="2" align="center">
-	<input type=button value='بازگشت' onclick='javascript: document.mf.submit()'>
+<tr class="warning" align="center">
+<td>
+	<input class="btn-primary" type=button value=<? echo C_RETURN ?> onclick='javascript: document.mf.submit()'>
 </td>
 </tr>
 </table>
 </form>
-	<form method=post id=mf name=mf action='ManageDMDatabases.php'>
-	<input type=hidden name='DMServersID' id='DMServersID' value='<? echo $_REQUEST["DMServersID"] ?>'>
+	<form class="table table-bordered" method=post id=mf name=mf action='ManageDMDatabases.php'>
+	<input class="btn-primary" type=hidden name='DMServersID' id='DMServersID' value='<? echo $_REQUEST["DMServersID"] ?>'>
 	</form>
 </html>
