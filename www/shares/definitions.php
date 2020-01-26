@@ -582,6 +582,16 @@ if(UI_LANGUAGE=="EN") {
     define2("C_CURRENT_STEP" , "Current Step");
     define2("C_CURRENT_STEP_NAME" , "Current Step Name: ");
     define2("C_NEW_STEP" , "New Step: ");
+
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "Help For Creating Costume Print Pages");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "Parameter Which Will Be Sent To Your Page Is RecID.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "When You Want Printing Has Specific Format Create Its Own Page And Put It On Server And Add Page Address To Costume Print Page");
+    define2("C_HELP_DEFAULT_ICON" , "In Default Mode By Clicking On Each Record A Table Will Be Shown");
+    define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
+    define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
+
 }
 else
 {
@@ -1173,6 +1183,18 @@ else
     define2("C_CURRENT_STEP" , "مرحله فعلی");
     define2("C_CURRENT_STEP_NAME" , "نام مرحله فعلی:");
     define2("C_NEW_STEP" , "مرحله جدید:");
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "راهنمای تولید صفحات اختصاصی چاپ");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "پارامتری که به صفحه شما ارسال خواهد شد RecID نام دارد.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "	در زمانیکه می خواهید شکل چاپی به فرمت خاصی باشد باید صفحه نمایش آن را خودتان تهیه کرده و بر روی سرور قرار دهید و سپس آدرس صفحه را در 
+	گزینه صفحه چاپ اختصاصی وارد کنید.");
+    define2("C_HELP_DEFAULT_ICON" , "در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.");
+    define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
+    define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
+
+        
+
 }
 
 ?>
