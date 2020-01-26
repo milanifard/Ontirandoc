@@ -24,7 +24,7 @@ if(isset($_REQUEST["label"]))
   where label=?";
   $mysql->Prepare($query);
   $res = $mysql->ExecuteStatement(array($_REQUEST["label"]));
-  echo "<div class='table-responsive text-center'> <table class=\"table table-striped\">";
+  echo "<div class='table-responsive text-center'> <table class=\" text-center table table-striped\">";
   while($rec = $res->fetch())
   {
     echo "<tr>";

@@ -4,6 +4,7 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-2-29
 */
+
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/OntologyClasses.class.php");
@@ -11,7 +12,7 @@ include("classes/OntologyClassLabels.class.php");
 include("classes/OntologyClassHirarchy.class.php");
 include ("classes/ontologies.class.php");
 HTMLBegin();
-
+echo "<div class=\"container text-center\">";
 function ShowValidRelations($ClassID, $OntologyID, $label, $level)
 {
   if($level>5)
@@ -48,7 +49,7 @@ function ShowValidRelations($ClassID, $OntologyID, $label, $level)
   $res = $mysql->ExecuteStatement(array($ClassID, $ClassID));
   while($rec = $res->fetch())
   {
-    echo "رابطه: ";
+    echo C_Relation;
     echo "<a target=_blank href='ManageOntologyClasses.php?UpdateID=".$rec["DomainClassID"]."&OntologyID=".$OntologyID."&OnlyEditForm=1'> ";
     if($rec["DomainClassID"]==$ClassID)
     {
@@ -79,9 +80,9 @@ function ShowValidRelations($ClassID, $OntologyID, $label, $level)
 
 function SuggestClassification()
 {
-	echo "<table border=1 cellspacing=0 cellpadding=5 width=90% align=center>";
-	echo "<tr class=HeaderOfTable><td>";
-	echo "پیشنهادهای دسته بندی";
+	echo "<div class='table-responsive text-center'> <table class=\"table table-striped\">";
+	echo "<tr class=bg-info><td>";
+	echo C_CatSuggest;
 	echo "</td></tr>";
 	$res = manage_OntologyClasses::GetList($_REQUEST["OntologyID"]); 
 
@@ -143,8 +144,8 @@ function SuggestClassification()
 			echo "</tr>";
 		}
 	}
-	echo "<tr class=HeaderOfTable><td>";
-	echo "پیشنهادهای ادغام یا برقراری رابطه سلسله مراتبی (کلاسهایی که فرزند مشترک دارند)";
+	echo "<tr class=bg-info><td>";
+	echo C_Sentence1;
 	echo "</td></tr>";
 	for($i=0; $i<count($res); $i++)
 	{
@@ -163,8 +164,8 @@ function SuggestClassification()
 		}
 	}
 	
-	echo "<tr class=HeaderOfTable><td>";
-	echo "روابط پدر - فرزندی نامعتبر (تکراری): کلاس پدر و فرزند هر دو زیر کلاس مستقیم یک کلاس هستند";
+	echo "<tr class=bg-info><td>";
+	echo C_Sentence2;
 	echo "</td></tr>";
 	for($i=0; $i<count($res); $i++)
 	{
@@ -188,7 +189,7 @@ function SuggestClassification()
 		}
 	}
 	
-	echo "</table>";
+	echo "</table></div>";
 }
 
 function ShowDataTypeProps($ClassTitle, $OntologyID, $label, $level)
@@ -265,16 +266,20 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="DoMerge")
 	manage_OntologyClasses::MergeClasses($res[$k]->OntologyID, $res[$k]->OntologyClassID, $res[$k]->ClassTitle, $TargetClassID, $tobj->ClassTitle);
     }
   }
-  echo "<table align=center><tr><td>ادغام انجام شد</td></tr></table>";
+  echo "<div class='table-responsive text-center'> <table class=\"table table-striped\"><tr><td>".C_MergeComp."</td></tr></table></div>";
 }
 
 if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Merge")
 {
-  echo "<form method=post>";
-  echo "<input type=\"hidden\" id=\"OntologyID\" name=\"OntologyID\" value=\"".$_REQUEST["OntologyID"]."\">";
-  echo "<table>";
-  echo "<tr class=HeaderOfTable><td colspan=4>ادغام کلاس ها</td></tr>";
-  echo "<tr bgcolor=#cccccc><td>کلاس</td><td>کلاسهای پدر</td><td>زیر کلاسها</td><td>خصوصیات</td></tr>";
+  echo "<form class=\"form-horizontal\" method=post>
+        <div class=\"container\">
+        <div class=\"row border border-light shadow-sm\" style=\"margin-top: 3% !important;\">
+            <div class=\"col-12\">";
+
+  echo "<div class=\"row\"><input type=\"hidden\" id=\"OntologyID\" name=\"OntologyID\" value=\"".$_REQUEST["OntologyID"]."\"></div>";
+  echo "<div class='row'></div><table class=\"table table-striped\">";
+  echo "<tr class=bg-info><td colspan=4>".C_Merge_Classes."</td></tr>";
+  echo "<tr bgcolor=#cccccc><td>".C_Class."</td><td>". C_Pclasses."</td><td>".C_SubClasses ."</td><td>".C_FEATURES."</td></tr>";
   
   $res = manage_OntologyClasses::GetList($_REQUEST["OntologyID"]); 
   $Options = "";
@@ -318,12 +323,12 @@ if(isset($_REQUEST["ActionType"]) && $_REQUEST["ActionType"]=="Merge")
 	    echo "</tr>";
 	  }
   }
-  echo "<tr class=HeaderOfTable><td colspan=4>ادغام به کلاس: ";
-  echo "<select name=TargetClassID id=TargetClassID>".$Options."</select>";
-  echo "<input type=submit value='انجام'>";
+  echo "<tr class=bg-info><td colspan=4>".C_Merge_Classes."</td>";
+  echo "<select class=\"form-control\" name=TargetClassID id=TargetClassID>".$Options."</select>";
+  echo "<input class=\"btn btn-success\" type=submit value='".C_Done."'>";
   echo "</td></tr>";	  
-  echo "</table>";
-  echo "</form>";
+  echo "</table></div>";
+  echo "</div></div></div></form>";
   die();
 }
 if(isset($_REQUEST["Save"])) 
@@ -372,7 +377,7 @@ if(isset($_REQUEST["Save"]))
 		  manage_OntologyClassLabels::UpdateOrInsertFirstLabel($_REQUEST["UpdateID"], $_REQUEST["Item_ClassLabel"]);
 		
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 $UpperClassID = 0;
@@ -385,8 +390,12 @@ if(isset($_REQUEST["UpdateID"]))
 	$UpperClassID = $obj->UpperClassID;
 }	
 ?>
-<form method="post" id="f1" name="f1" >
+<form method="post" class="form-horizontal" id="f1" name="f1" >
+    <div class="container">
+        <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
+            <div class="col-12">
 <?
+
 	if(isset($_REQUEST["FromTermOnto"])) 
 	{
 	  echo "<input type=\"hidden\" name=\"FromTermOnto\" id=\"FromTermOnto\" value='1'>";
@@ -400,43 +409,44 @@ if(isset($_REQUEST["UpdateID"]))
 echo manage_ontologies::ShowSummary($_REQUEST["OntologyID"]);
 echo manage_ontologies::ShowTabs($_REQUEST["OntologyID"], "ManageOntologyClasses");
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش کلاسهای هستان نگار</td>
+<br><table class=" text-center table table-striped">
+<tr class="bg-info">
+<td ><? echo C_CoE_Ontology ?></td>
 </tr>
 <tr>
 <td>
-<table width="100%" border="0">
+
+<table class="text-center table table-striped"><div class="container">
 <? 
 if(!isset($_REQUEST["UpdateID"]))
 {
 ?> 
 <input type="hidden" name="OntologyID" id="OntologyID" value='<? if(isset($_REQUEST["OntologyID"])) echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>'>
 <? } ?>
-<tr>
-	<td width="1%" nowrap>
- عنوان کلاس
+<tr >
+	<td class="text-nowrap">
+ <? echo C_Class_title ?>
 	</td>
-	<td nowrap>
-	<input dir=ltr type="text" name="Item_ClassTitle" id="Item_ClassTitle" maxlength="145" size="40">
+	<td class="text-nowrap ">
+	<input dir=ltr type="text" class="form-control" name="Item_ClassTitle" id="Item_ClassTitle" maxlength="145" size="40">
 	</td>
 </tr>
 <tr>
-	<td width="1%" nowrap>
- برچسب
+	<td  class="text-nowrap">
+ <? echo C_Label ?>
 	</td>
-	<td nowrap>
-	<input type="text" name="Item_ClassLabel" id="Item_ClassLabel" maxlength="150" size="40">
+	<td class="text-nowrap">
+	<input type="text" class="form-control" name="Item_ClassLabel" id="Item_ClassLabel" >
 	</td>
 </tr>
 
 <? if(!isset($_REQUEST["UpdateID"])) { ?>
 <tr>
-	<td width="1%" nowrap>
- کلاس بالاتر
+	<td class="text-nowrap">
+ <? echo C_Upper_Class ?>
 	</td>
 	<td nowrap>
-	<select name='UpperClass' id='UpperClass'>
+	<select class="form-control" name='UpperClass' id='UpperClass'>
 	  <option value='0'>-
 	  <?
 	    $list = manage_OntologyClasses::GetList($_REQUEST["OntologyID"]);
@@ -450,7 +460,7 @@ if(!isset($_REQUEST["UpdateID"]))
 	    }
 	  ?>
 	</select>
-<a href='#' onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=UpperClass&OntologyID=<? echo $_REQUEST["OntologyID"] ?>")'>انتخاب</a>
+<a href='#' onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=UpperClass&OntologyID=<? echo $_REQUEST["OntologyID"] ?>")'><? echo C_SELECT ?></a>
 	</td>
 </tr>
 <? } ?>
@@ -464,19 +474,19 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 --->
 <tr>
-  <td colspan=2>
-  <a href='ShowGraph.php?OntologyClassID=<? echo $_REQUEST["UpdateID"]; ?>' target=_blank>نمایش گراف</a>
+  <td>
+  <a href='ShowGraph.php?OntologyClassID=<? echo $_REQUEST["UpdateID"]; ?>' target=_blank> <? echo C_Show_graph ?></a>
   </td>
 </tr>
 <tr>
   <td>
   <a href='ManageOntologyClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>&OntologyClassID=<? echo $_REQUEST["UpdateID"]; ?>' target=_blank>
-خصوصیات: 
+<? echo C_FEATURES ?>
   </a>
   </td>
 <td>
 <?
-      echo "<br><table>";
+      echo "<br><table class=\" text-center table table-striped\">";
       $ClassTitle = $obj->ClassTitle;
       $level = 0;
       ShowDataTypeProps($ClassTitle, $_REQUEST["OntologyID"], "", $level);
@@ -488,12 +498,12 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 <? if(isset($_REQUEST["UpdateID"])) { ?>
 <tr>
-  <td colspan=2><hr></td>
+  <td><hr></td>
 </tr>
 <tr>
-  <td nowrap>
+  <td class="text-nowrap">
   <a href='ManageOntologyClassParents.php?OntologyClassID=<? echo $_REQUEST["UpdateID"] ?>&OntologyID=<? echo $_REQUEST["OntologyID"] ?>' target=_blank>
-  کلاسهای پدر:
+  <? echo C_Pclasses ?>
   </a>
   </td>
   <td>
@@ -512,12 +522,12 @@ if(!isset($_REQUEST["UpdateID"]))
   </td>
 </tr>
 <tr>
-  <td colspan=2><hr></td>
+  <td><hr></td>
 </tr>
 <tr>
-  <td nowrap>
+  <td class="text-nowrap">
   <a href='ManageOntologyClassChilds.php?OntologyClassID=<? echo $_REQUEST["UpdateID"] ?>&OntologyID=<? echo $_REQUEST["OntologyID"] ?>' target=_blank>
-  کلاسهای فرزند:
+  <? echo C_Cclasses ?>
   </a>
   </td>
   <td>
@@ -536,12 +546,12 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 <? } ?>
 <tr>
-  <td colspan=2><hr></td>
+  <td><hr></td>
 </tr>
 <tr>
-  <td nowrap>حاصل ادغام: </td>
+  <td class="text-nowrap"><? echo C_Merge_result ?> </td>
   <td>
-  <table dir=ltr>
+      <table class=" text-center table table-striped">
 <?
   $mysql->Prepare("select distinct OntologyClasses.OntologyID, OntologyTitle, ClassTitle, EntityID from projectmanagement.OntologyMergeEntities 
 			    JOIN projectmanagement.OntologyClasses on (OntologyClasses.OntologyClassID=OntologyMergeEntities.EntityID)
@@ -559,14 +569,15 @@ if(!isset($_REQUEST["UpdateID"]))
   </td>
 </tr>
 <? } ?>
-</table>
+    </div></table>
+
 </td>
 </tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='ManageOntologyClasses.php?OntologyID=<?php echo $_REQUEST["OntologyID"]; ?>'" value="جدید">
- <input type="button" onclick="javascript: window.close();" value="بستن">
+<tr class="bg-dark">
+<td>
+<input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
+ <input type="button" class="btn btn-info" onclick="javascript: document.location='ManageOntologyClasses.php?OntologyID=<?php echo $_REQUEST["OntologyID"]; ?>'" value="<? echo C_NEW ?>">
+ <input type="button" class="btn btn-danger" onclick="javascript: window.close();" value="<? echo C_CLOSE ?>">
 </td>
 </tr>
 </table>
@@ -574,6 +585,9 @@ if(!isset($_REQUEST["UpdateID"]))
 <input type="hidden" name="OnlyEditForm" id="OnlyEditForm" value="1">
 <? } ?>
 <input type="hidden" name="Save" id="Save" value="1">
+            </div>
+        </div>
+    </div>
 </form><script>
 	<? echo $LoadDataJavascriptCode; ?>
 	function ValidateForm()
@@ -605,23 +619,26 @@ if(isset($_REQUEST["ActionType"]))
 if($SomeItemsRemoved)
 	$res = manage_OntologyClasses::GetList($_REQUEST["OntologyID"]); 
 ?>
-<form id="ListForm" name="ListForm" method="post"> 
+<form class="form-horizontal" id="ListForm" name="ListForm" method="post">
+    <div class="container">
+        <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
+            <div class="col-12">
 	<input type="hidden" id="Item_OntologyID" name="Item_OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="8">
-	کلاسهای هستان نگار
+                <div class="row"> <table class=" text-center table table-bordered ">
+<tr>
+	<td colspan="8" class="bg-primary">
+	<? echo C_Ontology_Classes ?>
 	</td>
 </tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>عنوان کلاس</td>
-	<td nowrap>برچسبها</td>
-	<td nowrap>زیر کلاسها</td>
-	<td nowrap>کلاسهای پدر</td>
-        <td nowrap>خصوصیات مرتبط</td>
+<tr class="bg-info">
+	<td > </td>
+	<td ><? echo C_ROW ?></td>
+	<td ><? echo C_EDIT ?></td>
+	<td> <? echo C_CLASS_TITLE ?></td>
+	<td ><? echo C_Label ?></td>
+	<td ><? echo C_SubClasses ?></td>
+	<td ><? echo C_Pclasses ?></td>
+    <td ><? echo C_Related_Prop ?></td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -649,25 +666,25 @@ for($k=0; $k<count($res); $k++)
     for($m=0; $m<count($plist); $m++)
     {
         $RelatedPropList .= $plist[$m]["PropertyType"].": ".$plist[$m]["PropertyTitle"]." (".$plist[$m]["PropertyLabel"].")";
-        $RelatedPropList .= "<br>";    
+        $RelatedPropList .= "<br>";
     }
     
     $ParentClassList = manage_OntologyClassHirarchy::GetParentList($res[$k]->OntologyClassID);
     
     if($RelatedPropList=="" && $SubClassesList=="" && $ParentClassList=="")
-	echo "<tr bgcolor=\"#ff4d4d\">";
+	echo "<tr class='bg-light'>";
     else if($RelatedPropList=="")
-	echo "<tr bgcolor=\"#ffbbbb\">";        
+	echo "<tr class='bg-light'>";
     else if($k%2==0)
-	    echo "<tr class=\"OddRow\">";
+	    echo "<tr>";
     else
-	    echo "<tr class=\"EvenRow\">";
+	    echo "<tr>";
 	   
-    echo "<td>";
+    echo "<td><div class=\"checkbox\">";
     echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyClassID."\">";
-    echo "</td>";
+    echo "</div></td>";
     echo "<td>".($k+1)."</td>";
-    echo "	<td><a target=_blank href=\"ManageOntologyClasses.php?UpdateID=".$res[$k]->OntologyClassID."&OntologyID=".$_REQUEST["OntologyID"]."&OnlyEditForm=1\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+    echo "	<td><a target=_blank href=\"ManageOntologyClasses.php?UpdateID=".$res[$k]->OntologyClassID."&OntologyID=".$_REQUEST["OntologyID"]."&OnlyEditForm=1\"><i class=\"fas fa-edit\"></i></a></td>";
     echo "	<td dir=ltr>".htmlentities($res[$k]->ClassTitle, ENT_QUOTES, 'UTF-8');
     echo "	</td>";
     echo "	<td>".$LabelsList." ";
@@ -678,11 +695,11 @@ for($k=0; $k<count($res); $k++)
       // ok      
     }
     
-    echo "<br><input type=text name='label_".$res[$k]->OntologyClassID."' id='label_".$res[$k]->OntologyClassID."' value='".$SuggestedLabel."'>";
-    echo "<a  target=\"_blank\" href='ManageOntologyClassLabels.php?OntologyClassID=".$res[$k]->OntologyClassID ."'>[ویرایش]</a>";
+    echo "<br><input type=text class=\"form-control \" name='label_".$res[$k]->OntologyClassID."' id='label_".$res[$k]->OntologyClassID."' value='".$SuggestedLabel."'>";
+    echo "<a  target=\"_blank\" href='ManageOntologyClassLabels.php?OntologyClassID=".$res[$k]->OntologyClassID ."'>[".C_EDIT."]</a>";
     echo " </td>";
     echo "<td>".str_replace(", ","<br>", $SubClassesList)." ";
-    echo "<a  target=\"_blank\" href='ManageOntologyClassHirarchy.php?OntologyClassID=".$res[$k]->OntologyClassID ."'>[ویرایش]</a>";
+    echo "<a  target=\"_blank\" href='ManageOntologyClassHirarchy.php?OntologyClassID=".$res[$k]->OntologyClassID ."'>[".C_EDIT."]</a>";
     echo "</td>";
     echo "<td>".str_replace(", ","<br>", $ParentClassList)."</td>";
 
@@ -693,24 +710,26 @@ for($k=0; $k<count($res); $k++)
     echo "</tr>";
 }
 ?>
-<tr class="FooterOfTable">
+<tr class="bg-dark">
 <td colspan="8" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	<input type="button" onclick="javascript: SendMerge();" value="ادغام">
-	<input type=submit value='ذخیره'>
-	<input type="button" onclick="javascript: document.location='ManageOntologyClasses.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&SuggestClassification=1'" value="پیشنهاد دسته بندی">
+	<input type="button"   class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<?echo C_DELETE ?>">
+	<input type="button"  class="btn btn-warning" onclick="javascript: SendMerge();" value="<? echo C_Merge ?>">
+	<input type=submit class="btn btn-success" value='<? echo C_SAVE ?>'>
+	<input type="button" class="btn btn-secondary" onclick="javascript: document.location='ManageOntologyClasses.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&SuggestClassification=1'" value="<? echo C_CatSuggest ?>">
 </td>
 </tr>
-</table>
+</table></div>
 <input type=hidden name='ActionType' id='ActionType' value=''>
-</form>
+            </div>
+        </div>
+    </div></form>
 <form target="_blank" method="post" action="NewOntologyClasses.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="OntologyID" name="OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
 </form>
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) 
+	if(confirm(<? echo C_T_AREUSURE ?>))
 	{
 	  document.getElementById('ActionType').value='Remove';
 	  document.ListForm.submit();
@@ -722,4 +741,5 @@ function SendMerge()
   document.ListForm.submit();
 }
 </script>
+</div>
 </html>
