@@ -1,4 +1,10 @@
-<?php
+<?php	
+include("header.inc.php");
+include("../sharedClasses/SharedClass.class.php");
+include("classes/ProjectTasks.class.php");
+include("classes/projects.class.php");
+
+HTMLBegin();
 	session_start();
 	session_destroy();
 	$Referer = "";
@@ -8,14 +14,13 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'</style>
-	<link rel="stylesheet"  href="./css/login.css" type="text/css">
 </head>
-<body class="table-responsive" dir=rtl link="#0000FF" alink="#0000FF" vlink="#0000FF">
+<body>
 	<br>
 		<form method=post>
-			<table class="table table-bordered" align=center>
+			<table class="table table-bordered bg-info" >
 				<tr class="warning">
-					<td align=center class="text-center">
+					<td class="text-center">
 						<? 
 						if(isset($_REQUEST["SessionExpired"])) { 
 							$Referer="?Referer=".$_SERVER["HTTP_REFERER"];
