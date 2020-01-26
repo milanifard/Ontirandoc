@@ -13,7 +13,7 @@ include("classes/payments.class.php");
 include("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
-
+include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
 HTMLBegin();
 class Test
 {
@@ -1976,6 +1976,14 @@ Test::add(
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
 
 
+
+//_________________ProjectTaskActivityTypes.class.php AMIN ALIZADEH _________________
+Test::add(function(){
+    $obj = new be_ProjectTaskActivityTypes();
+
+
+});
+//_______________________________END__________________________________________________
 
 $res = Test::run();
 echo "<br>";
