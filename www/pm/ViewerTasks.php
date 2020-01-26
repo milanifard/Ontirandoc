@@ -34,16 +34,16 @@ if (isset($_REQUEST["SearchAction"])) {
 	$ProjectID = '';
 }
 
-// $res = manage_ProjectTasks::GetViewerTasks($ProjectID, $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
-// $SomeItemsRemoved = false;
-// for ($k = 0; $k < count($res); $k++) {
-// 	if (isset($_REQUEST["ch_" . $res[$k]->ProjectTaskID])  && $res[$k]->CanRemoveByCaller) {
-// 		manage_ProjectTasks::Remove($res[$k]->ProjectTaskID);
-// 		$SomeItemsRemoved = true;
-// 	}
-// }
-// if ($SomeItemsRemoved)
-// 	$res = manage_ProjectTasks::GetViewerTasks($ProjectID, $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
+$res = manage_ProjectTasks::GetViewerTasks($ProjectID, $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
+$SomeItemsRemoved = false;
+for ($k = 0; $k < count($res); $k++) {
+	if (isset($_REQUEST["ch_" . $res[$k]->ProjectTaskID])  && $res[$k]->CanRemoveByCaller) {
+		manage_ProjectTasks::Remove($res[$k]->ProjectTaskID);
+		$SomeItemsRemoved = true;
+	}
+}
+if ($SomeItemsRemoved)
+	$res = manage_ProjectTasks::GetViewerTasks($ProjectID, $FromRec, $NumberOfRec, $OrderByFieldName, $OrderType);
 ?>
 
 
