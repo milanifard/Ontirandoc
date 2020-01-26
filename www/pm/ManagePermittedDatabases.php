@@ -98,7 +98,7 @@ if (isset($_REQUEST["UpdateID"])) {
 	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
 
-			<thead>
+			<thead class="thead-dark">
 				<tr bgcolor="#cccccc">
 					<td colspan="6">
 						<? echo C_DATABASES ?>

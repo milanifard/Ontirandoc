@@ -55,25 +55,23 @@ if ($SomeItemsRemoved)
 	<br>
 	<?php echo manage_ProjectTasks::CreateKartableHeader("ViewerTasks"); ?>
 
-	<table width="98%" align="center" border="1" cellspacing="0">
-		<tr id='SearchTr'>
-			<td>
-				<table width="100%" align="center" border="0" cellspacing="0">
-					<tr>
-						<td width="1%" nowrap>
-							<? echo C_RELATED_PROJECT ?>
-						</td>
-						<td nowrap>
-							<select name="Item_ProjectID" id="Item_ProjectID" onchange='javascript: document.SearchForm.submit();'>
-								<option value=0>-
-									<? echo manage_projects::GetUserProjectsOptions($_SESSION["PersonID"]); ?>
-							</select>
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
+	<div class="container">
+		<div class="row" id='SearchTr'>
+			<div class="col-12">
+				<div class="row">
+					<div class="col-md-1 col-xs-6" nowrap>
+						<? echo C_RELATED_PROJECT ?>
+					</div>
+					<div class="col-md-11 col-xs-6" nowrap>
+						<select name="Item_ProjectID" id="Item_ProjectID" class="custom-select" onchange='javascript: document.SearchForm.submit();'>
+							<option value=0>-
+								<? echo manage_projects::GetUserProjectsOptions($_SESSION["PersonID"]); ?>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<?
 	if (isset($_REQUEST["SearchAction"])) {
 	?>
@@ -83,50 +81,50 @@ if ($SomeItemsRemoved)
 	<?
 	}
 	?>
-	<table width="98%" align="center" border="1" cellspacing="0">
-		<tr class="FooterOfTable">
-			<td colspan="9" align="center">
-				<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE ?>">
-				<input type="button" onclick='javascript: NewRecordForm.submit();' value='<? echo C_CREATE ?>'>
-			</td>
-		</tr>
-		<tr class="HeaderOfTable">
-			<td width="1%">&nbsp;</td>
-			<td width="1%"><? echo C_ROW ?></td>
-			<td width="1%"><? echo C_EDIT ?></td>
-			<td width=1%><a href="javascript: Sort('ProjectID', 'ASC');"><? echo C_RELATED_PROJECT ?></a></td>
-			<td width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');"><? echo C_PRIORITY ?></a></td>
-			<td width=95%><a href="javascript: Sort('title', 'ASC');"><? echo C_TITLE ?></a></td>
-			<td nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');"><? echo C_CREATOR ?></a></td>
-			<td nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');"><?echo C_CREATED_TIME ?></a></td>
-		</tr>
+	<table class="table table-striped table-bordered table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th colspan="12" class="text-center">
+					<input type="button" class="btn btn-danger mx-3" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE ?>">
+					<input type="button" class="btn btn-primary mx-3" onclick='javascript: NewRecordForm.submit();' value='<? echo C_CREATE ?>'>
+				</th>
+			</tr>
+			<tr class="">
+				<th width="1%">&nbsp;</th>
+				<th width="1%"><? echo C_ROW ?></th>
+				<th width="1%"><? echo C_EDIT ?></th>
+				<th width=1%><a href="javascript: Sort('ProjectID', 'ASC');"><? echo C_RELATED_PROJECT ?></a></th>
+				<th width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');"><? echo C_PRIORITY ?></a></th>
+				<th width=95%><a href="javascript: Sort('title', 'ASC');"><? echo C_TITLE ?></a></th>
+				<th nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');"><? echo C_CREATOR ?></a></th>
+				<th nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');"><? echo C_CREATED_TIME ?></a></th>
+			</tr>
+		</thead>
 		<?
 		for ($k = 0; $k < count($res); $k++) {
 			if ($res[$k]->HasExpireTime == "YES" && $res[$k]->ExpireTime != "0000-00-00 00:00:00" && substr($res[$k]->ExpireTime, 0, 10) < $now)
 				echo "<tr bgcolor=#ffC7C7>";
 			else if ($res[$k]->TaskStatus == "PROGRESSING")
 				echo "<tr bgcolor=#8BC7A1>";
-			else if ($k % 2 == 0)
-				echo "<tr class=\"OddRow\">";
 			else
-				echo "<tr class=\"EvenRow\">";
+				echo "<tr>";
 			echo "<td>";
 			if ($res[$k]->CanRemoveByCaller)
-				echo "<input type=\"checkbox\" name=\"ch_" . $res[$k]->ProjectTaskID . "\">";
+				echo "<input type=\"checkbox\" class=\"form-check-input position-static\" name=\"ch_" . $res[$k]->ProjectTaskID . "\">";
 			else
 				echo "&nbsp;";
 			echo "</td>";
 			echo "<td>" . ($k + $FromRec + 1) . "</td>";
 			echo "	<td>";
 			echo "<a target=\"_blank\" href=\"NewProjectTasks.php?UpdateID=" . $res[$k]->ProjectTaskID . "\">";
-			echo "<img src='images/edit.gif' title='".C_EDIT."'>";
+			echo "<i class='fa fa-edit'></i>";
 			echo "</a></td>";
 			echo "	<td nowrap>&nbsp;";
 			echo $res[$k]->ProjectID_Desc . "</td>";
 			echo "	<td nowrap>&nbsp;" . $res[$k]->TaskPeriority . "</td>";
 			echo "	<td>";
 			if ($res[$k]->HasExpireTime == "YES" && $res[$k]->ExpireTime != "0000-00-00 00:00:00")
-				echo " <img border=0 src='images/deadline.jpg' title='".C_DEADLINE.": " . $res[$k]->ExpireTime_Shamsi . "'> ";
+				echo " <img border=0 src='images/deadline.jpg' title='" . C_DEADLINE . ": " . $res[$k]->ExpireTime_Shamsi . "'> ";
 			echo htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8') . "</td>";
 			echo "	<td nowrap>" . $res[$k]->CreatorID_FullName . "</td>";
 			echo "	<td nowrap>" . $res[$k]->CreateDate_Shamsi . "</td>";
@@ -155,12 +153,14 @@ if ($SomeItemsRemoved)
 			echo "</tr>";
 		}
 		?>
-		<tr class="FooterOfTable">
-			<td colspan="9" align="center">
-				<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE ?>">
-				<input type="button" onclick='javascript: NewRecordForm.submit();' value='<? echo C_CREATE ?>'>
-			</td>
-		</tr>
+		<tfoot>
+			<tr class="FooterOfTable">
+				<td colspan="9" align="center">
+					<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_DELETE ?>">
+					<input type="button" class="btn btn-primary" onclick='javascript: NewRecordForm.submit();' value='<? echo C_CREATE ?>'>
+				</td>
+			</tr>
+		</tfoot>
 		<tr bgcolor="#cccccc">
 			<td colspan="9" align="right">
 				<?

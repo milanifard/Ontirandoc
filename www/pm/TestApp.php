@@ -11,6 +11,9 @@ include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Gho
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
 include("classes/UserFacilities.class.php"); //by navidbeta
+include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
+include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
+
 HTMLBegin();
 class Test
 {
@@ -1472,6 +1475,505 @@ Test::add(
 );
 // FormManagers.class.php - Alireza Imani - end
 
+
+// UserFacilities.class.php - navidbeta - start
+
+Test::add(
+    function()
+    {
+        $obj = new be_UserFacilities();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_UserFacilities->LoadDataFromDatabase()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::HasAccess("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->HasAccess()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::GetCount("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetCount()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetLastID()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::RemoveAllUserFacilities("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->RemoveAllUserFacilities()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Add("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Add()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Update("1" , "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Update()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::Remove("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Remove()","UserFacilities"
+);
+
+Test::add(
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_UserFacilities::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetList()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::Search("","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->Search()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::SearchResultCount("","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->SearchResultCount()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::ComparePassedDataWithDB("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->ComparePassedDataWithDB()", "UserFacilities"
+);
+
+// UserFacilities.class.php - navidbeta - end
+
+
+
+
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - Start #
+#                                                                #
+##################################################################
+
+Test::add(
+    function()
+    {
+        $obj = new be_OntologyValidationExperts();
+        try {
+            if ($obj->LoadDataFromDatabase(1)){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_OntologyValidationExperts.class->LoadDataFromDatabase()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if(manage_OntologyValidationExperts::GetCount(1)==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->getCount()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        try{
+            if(manage_OntologyValidationExperts::GetLastID()!=-1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->GetLastID()","OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Add("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Add()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Update("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Update()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Remove(1);
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Remove()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function()
+    {
+        $obj = new manage_OntologyValidationExperts();
+        try {
+            $obj->ComparePassedDataWithDB("","","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts.class->ComparePassedDataWithDB()", "OntologyValidationExperts"
+);
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - End   #
+#                                                                #
+##################################################################
+
+
+//OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -begin
+
+Test::add(
+    function()
+    {
+        $obj = new be_OntologyClassLabels;
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "message"
+);
+Test::add(
+        function ()
+        {
+            $obj=new manage_OntologyClassLabels;
+            try {
+
+                $obj->GetCount(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_OntologyClassLabels.class->GetCount()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetLastID();
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->GetLastID()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Add(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Add()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetFirstLabel(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->UpdateOrInsertFirstLabel(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Update(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Update()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->Remove(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Remove()", "message"
+
+);
+
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->GetList(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->Update()", "message"
+
+);
+Test::add(
+    function ()
+    {
+        $obj=new manage_OntologyClassLabels;
+        try {
+
+            $obj->ComparePassedDataWithDB(1,"");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "message"
+
+);
+//OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
 
 
 
