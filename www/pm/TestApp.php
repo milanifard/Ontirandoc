@@ -2090,19 +2090,38 @@ Test::add(function(){
 
 
 // ProjectTaskRequisites.class.php test Mostafa Ghofrani
-Test::add(function(){
-    try{
-        $obj = new manage_ProjectTaskActivityTypes();
-        $res = $obj->CreateSelectOptions($obj->GetLastID());
-        if($res)
-            return true;
-        return false;
-    }
-    catch (Exception $e){
-        return false;
-    }
-},"manage_ProjectTaskActivityTypes->CreateSelectOptions(()","ProjectTaskActivityTypes");
 
+Test::add(
+    function()
+    {
+        $obj = new be_ProjectTaskRequisites();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_ProjectTaskRequisites->LoadDataFromDatabase()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetCount("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetCount()","UserFacilities"
+);
 
 $res = Test::run();
 echo "<br>";
