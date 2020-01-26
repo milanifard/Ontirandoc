@@ -223,25 +223,44 @@
 	  }
 	}
 	
-	
-	$TargetOnto = $_REQUEST["TargetOnto"];
+	$TargetOnto = "";
 	if(isset($_REQUEST["DoMerge"]))
 	{
+		$TargetOnto = $_REQUEST["TargetOnto"];
 	  DoPropertyMerge($TargetOnto);
 	}
+	
 	
 	echo "<form method=post>";
 	echo "<input type=hidden name=DoMerge id=DoMerge value=1>";
 	echo "<input type=hidden name=TargetOnto id=TargetOnto value='".$TargetOnto."'>";
-	echo "<table width=90% align=center border=1 cellspacing=0>";
+	
+	echo '<div class="container">';
+	echo '<table class="table table-bordered">';
 	echo "<tr class=HeaderOfTable><td colspan=10 align=center>پیشنهادات ادغام</td></tr>";
-	echo "<tr bgcolor=#cccccc><td width=1%>ردیف</td><td width=1%>&nbsp;</td><td>خصوصیت </td><td>دامنه </td><td>برد</td><td>مقادیر مجاز </td>";
+	echo "<tr bgcolor=#cccccc align=center><td width=1%>ردیف</td><td>خصوصیت </td><td>دامنه </td><td>برد</td><td>مقادیر مجاز </td>";
 	//echo "<td>خصوصیت ۲</td><td>دامنه خصوصیت ۲</td><td>برد خصوصیت ۲</td><td>مقادیر مجاز ۲</td>";
 	echo "</tr>";
 	ShowPropertyMergeSuggestions($TargetOnto);	
 	echo "<tr class=FooterOfTable><td colspan=10 align=center><input type=submit value='اعمال'></td></tr>";
 	echo "</table>";
+	echo "</div>";
+	
 	echo "</form>";
 	HTMLBegin();
 ?>
-</body></html>
+
+
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="direction:rtl">
+</body>
+</html>
+

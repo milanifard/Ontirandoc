@@ -592,6 +592,28 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
     define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
 
+    //   NewFile.php by Yegane Shabgard
+    define2("C_TEXTS" , "Texts");
+    define2("C_FILE_DEFINITION" , "File Information");
+    define2("C_DEFINITION" , "Information");
+    define2("C_IMAGES" , "Images");
+    define2("C_FILES" , "Files");
+    define2("C_FORMS" , "Forms");
+    define2("C_LETTERS" , "Letters");
+    define2("C_SESSIONS" , "Sessions");
+    define2("C_DEBTS" , "Debts");
+    define2("C_FILE_TYPE" , "File Type");
+    define2("C_FILE_NUMBER" , "File Number");
+    define2("C_PROFESSOR" , "Professor");
+    define2("C_STUDENT" , "Student");
+    define2("C_EMPLOYER" , "Employer");
+    define2("C_OTHERS" , "Others");
+    define2("C_STRUCTURE_UNIT" , "Structure Unit");
+    define2("C_STRUCTURE_SUBUNIT" , "Structure Sub Unit");
+    define2("C_INSTRUCTION_GROUP" , "Instruction Group");
+    define2("C_USER_TYPE" , "User Type");
+
+
     // Projects Kartable Adel Aboutalebi
     define2("C_ROW", "Row");
     define2("C_PROJECT_GROUP", "Project group");
@@ -698,6 +720,34 @@ if(UI_LANGUAGE=="EN") {
         <br>
         Developer should call a javascript code like below when the he selected the desired item:
     ");
+    //Amir karami
+    define("C_Class", "Class");
+    define("C_Property", "Property");
+    define("C_SinCnnP","Search In Classes Name and Properties");
+    define("C_SinLabels","Search In Labels");
+    define("C_Relation","Relation");
+    define("C_CatSuggest","Categorise Suggestion");
+    define("C_Sentence1","Merge Suggestions or Heirachy Relation Connections(Classes which have common childes) ");
+    define("C_Sentence2","Parrent Relations-Invalid Child(Duplicate)");
+    define("C_MergeComp","Merge Complete");
+    define("C_Merge_Classes","Merge Classes");
+    define("C_Pclasses", "Parent Classes");
+    define("C_SubClasses", "Sub Classes");
+    define("C_Done", "Done");
+    define("C_CoE_Ontology","Create / Edit Ontology Classes");
+    define("C_Class_title","Class Title");
+    define("C_Label","Label");
+    define("C_Upper_Class","Upper Class");
+    define("C_Show_graph","Show Graph");
+    define("C_Cclasses", "Child Classes");
+    define("C_Merge_result","Merge Result");
+    define("C_Ontology_Classes","Ontology Classes");
+    define("C_Related_Prop","Related Properties");
+    define("C_Merge","Merge");
+    define("C_Area","Domain");
+    define("C_Prop_Labels","Properties Label");
+    define("C_Prop_Range","Properties Range");
+    define("C_Prop_Name","Properties Name");
     //_________________ END _____________________________
 }
 else
@@ -1307,6 +1357,27 @@ else
     define2("C_HELP_DEFAULT_ICON" , "در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.");
     define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
     define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
+//   NewFile.php by Yegane Shabgard
+    define2("C_TEXTS" , "متون");
+    define2("C_FILE_DEFINITION" , "مشخصات پرونده");
+    define2("C_DEFINITION" , "مشخصات");
+    define2("C_IMAGES" , "تصاویر");
+    define2("C_FILES" , "فایل ها");
+    define2("C_FORMS" , "فرم ها");
+    define2("C_LETTERS" , "نامه ها");
+    define2("C_SESSIONS" , "جلسات");
+    define2("C_DEBTS" , "امانت ها");
+    define2("C_FILE_TYPE" , "نوع پرونده");
+    define2("C_FILE_NUMBER" , "شماره پرونده");
+    define2("C_PROFESSOR" , "استاد");
+    define2("C_STUDENT" , "دانشجو");
+    define2("C_EMPLOYER" , "کارمند");
+    define2("C_OTHERS" , "سایر");
+    define2("C_STRUCTURE_UNIT" , "واحد سازمانی");
+    define2("C_STRUCTURE_SUBUNIT" , "زیر واحد سازمانی");
+    define2("C_INSTRUCTION_GROUP" , "گروه آموزشی");
+    define2("C_USER_TYPE" , "نوع شخص");
+
 
     // ManageOntologyClassLabels by Mohammad Kahani
     define2("C_T_CREATE_EDIT_CLASS_LABELS","ایجاد/ویرایش برچسب کلاسها");
@@ -1391,6 +1462,34 @@ else
                 را فراخوانی کند:
     
     ");
+    //AMIR Karami
+    define("C_Class", "کلاس");
+    define("C_Property", "ویژگی");
+    define("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
+    define("C_SinLabels","جستجو در برچسبها");
+    define("C_Relation","رابطه");
+    define("C_CatSuggest","پیشنهادهای دسته بندی");
+    define("C_Sentence1","پیشنهادهای ادغام یا برقراری رابطه سلسله مراتبی (کلاسهایی که فرزند مشترک دارند)");
+    define("C_Sentence2","روابط پدر - فرزندی نامعتبر (تکراری): کلاس پدر و فرزند هر دو زیر کلاس مستقیم یک کلاس هستند)");
+    define("C_MergeComp","ادغام انجام شد");
+    define("C_Merge_Classes","ادغام کلاس ها");
+    define("C_Pclasses", "کلاس های پدر");
+    define("C_SubClasses", "زیر کلاس ها");
+    define("C_Cclasses", "کلاس های فرزند");
+    define("C_Done", "انجام");
+    define("C_CoE_Ontology","ایجاد/ویرایش کلاسهای هستان نگار");
+    define("C_Class_title","عنوان کلاس");
+    define("C_Label","برچسب");
+    define("C_Upper_Class","کلاس بالاتر");
+    define("C_Show_graph","نمایش گراف");
+    define("C_Merge_result","حاصل ادغام");
+    define("C_Ontology_Classes","کلاسهای هستان نگار");
+    define("C_Related_Prop","خصوصیات مرتبط");
+    define("C_Merge","ادغام");
+    define("C_Area","حوزه");
+    define("C_Prop_Labels","برچسب خصوصیت");
+    define("C_Prop_Range","برد خصوصیت");
+    define("C_Prop_Name","نام خصوصیت");
     //_________________ END _____________________________
 
 }
