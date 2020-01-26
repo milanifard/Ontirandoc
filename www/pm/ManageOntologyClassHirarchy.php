@@ -65,7 +65,7 @@ if(isset($_REQUEST["UpdateID"]))
 			<table class="table table-sm table-borderless">
 				<thead class="table-info">
 					<tr>
-						<th class="text-center">ایجاد/ویرایش زیر کلاس</th>
+						<th class="text-center"><? echo C_T_CREATE_EDIT_SUBCLASS; ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -84,7 +84,7 @@ if(isset($_REQUEST["UpdateID"]))
 								<tr>
 									<th>
 										<label for="OntologyClassID">
-											کلاس فرزند
+											<? echo C_T_CHILD_CLASS ?>
 										</label>
 									</th>
 									<td width="" nowrap>
@@ -160,14 +160,14 @@ if($SomeItemsRemoved)
 				<table class="table table-bordered table-sm table-striped">
 					<thead class="table-info">
 						<tr>
-							<th class="text-center" colspan="6">زیرکلاسها</th>
+							<th class="text-center" colspan="6"><? echo C_T_SUBCLASS; ?></th>
 						</tr>
 						<tr>
 							<td width="1%"> </td>
 							<td width="1%"><? echo C_ROW ?></td>
 							<td width="2%"><? echo C_EDIT ?></td>
-							<td width="30%">کلاس</td>
-							<td width="20%">زیر کلاسها</td>
+							<td width="30%"><? echo C_T_CLASS; ?></td>
+							<td width="20%"><? echo C_T_SUBCLASS ?></td>
 						</tr>
 					</thead>
 					<?
