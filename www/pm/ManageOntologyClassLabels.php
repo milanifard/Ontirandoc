@@ -1,4 +1,4 @@
-<?php
+z<?php
 
 /*
 صفحه  نمایش لیست و مدیریت داده ها مربوط به : برچسب کلاسها
@@ -76,7 +76,6 @@ if (isset($_REQUEST["UpdateID"])) {
 									<tr>
 										<td width="1%" nowrap>
 											<label for="OntologyClassID">
-												<font color=red>*</font>
 												برچسب
 											</label>
 										</td>
@@ -84,7 +83,7 @@ if (isset($_REQUEST["UpdateID"])) {
 											<?
 											if (!isset($_REQUEST["UpdateID"])) {
 											?>
-												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" required value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
+												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
 											<? } ?>
 										</td>
 									</tr>
