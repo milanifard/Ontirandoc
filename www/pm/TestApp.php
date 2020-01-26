@@ -1996,7 +1996,47 @@ Test::add(function(){
     catch (Exception $e){
         return false;
     }
-},"be_ProjectTaskActivityTypes->LoadDataFromDatabase()","message");
+},"be_ProjectTaskActivityTypes->LoadDataFromDatabase()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->GetCount(1);
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetCount()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->GetLastID();
+        echo $res;
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetLastID()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->Add("Bala bala bala",  $obj->GetLastID() + 1);
+        if($res)
+            return true;
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Add(()","ProjectTaskActivityTypes");
+
+
 //_______________________________END__________________________________________________
 
 $res = Test::run();
