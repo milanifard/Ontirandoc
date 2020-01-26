@@ -3,6 +3,7 @@
  صفحه  نمایش لیست و مدیریت داده ها مربوط به : 
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 92-8-4
+	edited by navidbeta
 */
 include("header.inc.php");
 include("classes/UserFacilities.class.php");
@@ -15,26 +16,33 @@ if(isset($_REQUEST["Save"]))
 	if(isset($_REQUEST["FacilityID"]))
 		$Item_FacilityID=$_REQUEST["FacilityID"];
 	manage_UserFacilities::Add($Item_UserID, $Item_FacilityID);
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_STORED);
 }
 ?>
+<div class="conteiner">
 <form method="post" id="f1" name="f1" >
 <?
 echo manage_SystemFacilities::ShowSummary($_REQUEST["FacilityID"]);
 ?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center"><?php echo C_ADD_USER_FACILITY?></td>
+<br>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table-bordered" width="100%">
+<tr class="table-primary">
+<td>
+<div class="text-center"><?php echo C_ADD_USER_FACILITY?></div>
+</td>
 </tr>
 <tr>
 <td>
-<table width="100%" border="0">
+<table class="table-borderless" width="100%" >
 <tr>
 	<td width="1%" nowrap>
 	<?php echo C_T_USER?>
 	</td>
 	<td nowrap>
-	<select name="Item_UserID" id="Item_UserID">
+	<select class="browser-default custom-select" name="Item_UserID" id="Item_UserID">
 	<option value=0>-
 	<? echo SharedClass::CreateARelatedTableSelectOptions("projectmanagement.AccountSpecs", "UserID", "UserID", "UserID"); ?>	</select>
 	</td>
@@ -43,13 +51,18 @@ echo manage_SystemFacilities::ShowSummary($_REQUEST["FacilityID"]);
 </table>
 </td>
 </tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
-<input type="button" onclick="window.close();" value="<?echo C_CLOSE?>">
+<tr >
+<td>
+<div class="text-center">
+	<input class="btn btn-success" type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
+	<input class="btn btn-secondary" type="button" onclick="window.close();" value="<?echo C_CLOSE?>">	
+</div>
 </td>
 </tr>
 </table>
+</div>
+<div class="col-md-1"></div>
+</div>
 <input type="hidden" name="Save" id="Save" value="1">
 </form><script>
 	function ValidateForm()
@@ -73,13 +86,17 @@ if($SomeItemsRemoved)
 ?>
 <form id="ListForm" name="ListForm" method="post"> 
 	<input type="hidden" id="Item_FacilityID" name="Item_FacilityID" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
+<br>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table-bordered" width="100%"  >
+<tr class="table-secondary">
 	<td colspan="5">
 	<?php  echo C_PRIVILEGED_USERS?>
 	</td>
 </tr>
-<tr class="HeaderOfTable">
+<tr >
 	<td width="1%">&nbsp;</td>
 	<td width="1%"><?php echo C_ROW?></td>
 	<td><?php echo C_T_USER ?></td>
@@ -89,11 +106,11 @@ if($SomeItemsRemoved)
 for($k=0; $k<count($res); $k++)
 {
 	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
+		echo "<tr class=\"table-secondary\">";
 	else
-		echo "<tr class=\"EvenRow\">";
+		echo "<tr class=\"table-default\">";
 	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->FacilityPageID."\">";
+	echo '<div class="checkbox.checkbox-inline">'.'<input type="checkbox" name="ch_'.$res[$k]->FacilityPageID.'"></div>';
 	echo "</td>";
 	echo "<td>".($k+1)."</td>";
 	echo "	<td>".$res[$k]->UserID_Desc."</td>";
@@ -101,16 +118,23 @@ for($k=0; $k<count($res); $k++)
 	echo "</tr>";
 }
 ?>
-<tr class="FooterOfTable">
-<td colspan="5" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE?>">
+<tr>
+<td colspan="5" >
+<div class="text-center">
+	<input class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE ?>">
+	 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="col-md-1"></div>
+</div>
 </form>
+</div>
 <form target="_blank" method="post" action="NewUserFacilities.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="FacilityID" name="FacilityID" value="<? echo htmlentities($_REQUEST["FacilityID"], ENT_QUOTES, 'UTF-8'); ?>">
 </form>
+
 <script>
 function ConfirmDelete()
 {

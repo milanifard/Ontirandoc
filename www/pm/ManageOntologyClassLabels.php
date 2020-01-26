@@ -1,4 +1,4 @@
-<?php
+z<?php
 
 /*
 صفحه  نمایش لیست و مدیریت داده ها مربوط به : برچسب کلاسها
@@ -38,7 +38,7 @@ if (isset($_REQUEST["Save"])) {
 			$Item_label
 		);
 	}
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 $label = "";
@@ -66,7 +66,7 @@ if (isset($_REQUEST["UpdateID"])) {
 					<thead class="table-info">
 						<tr>
 							<th class="text-center">
-								ایجاد/ویرایش برچسب کلاسها </th>
+								<? echo C_T_CREATE_EDIT_CLASS_LABELS ?> </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,15 +76,14 @@ if (isset($_REQUEST["UpdateID"])) {
 									<tr>
 										<td width="1%" nowrap>
 											<label for="OntologyClassID">
-												<font color=red>*</font>
-												برچسب
+												<? echo C_LABEL; ?>
 											</label>
 										</td>
 										<td nowrap>
 											<?
 											if (!isset($_REQUEST["UpdateID"])) {
 											?>
-												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" required value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
+												<input class="form-control" type="text" name="OntologyClassID" id="OntologyClassID" maxlength="500" value='<? if (isset($_REQUEST["OntologyClassID"])) echo htmlentities($_REQUEST["OntologyClassID"], ENT_QUOTES, 'UTF-8'); ?>'>
 											<? } ?>
 										</td>
 									</tr>
@@ -95,8 +94,8 @@ if (isset($_REQUEST["UpdateID"])) {
 					<thead class="text-center table-info">
 						<tr>
 							<td>
-								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();">ذخیره</button>
-								<button type="button" class="btn btn-danger" onclick="javascript: window.close();">خروج</button>
+								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"><? echo C_SAVE; ?></button>
+								<button type="button" class="btn btn-danger" onclick="javascript: window.close();"><? echo C_EXIT; ?></button>
 							</td>
 						</tr>
 					</thead>
@@ -140,13 +139,13 @@ if ($SomeItemsRemoved) {
 				<table class="table table-bordered table-sm table-striped">
 					<thead class="table-info">
 						<tr>
-							<th class="text-center" colspan="6">برچسب کلاسها</th>
+							<th class="text-center" colspan="6"><? echo C_T_CLASS_LABELS; ?></th>
 						</tr>
 						<tr>
 							<td width="1%"> </td>
-							<td width="1%">ردیف</td>
-							<td width="2%">ویرایش</td>
-							<td width="50%">برچسب</td>
+							<td width="1%"><? echo C_ROW; ?></td>
+							<td width="2%"><? echo C_EDIT; ?></td>
+							<td width="50%"><? echo C_LABEL ?></td>
 						</tr>
 					</thead>
 					<?
@@ -166,7 +165,7 @@ if ($SomeItemsRemoved) {
 					?>
 					<tr class="table-info">
 						<td colspan="6" align="center">
-							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="حذف">
+							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="<? echo C_DELETE ?>">
 						</td>
 					</tr>
 				</table>
@@ -181,7 +180,7 @@ if ($SomeItemsRemoved) {
 </form>
 <script>
 	function ConfirmDelete() {
-		if (confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+		if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 	}
 </script>
 

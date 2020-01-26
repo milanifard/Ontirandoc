@@ -10,7 +10,8 @@ include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
-include ("classes/OntologyPropertyLabels.class.php");//by kourosh ahamadzadeh ataei
+include("classes/UserFacilities.class.php"); //by navidbeta
+include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 HTMLBegin();
 class Test
 {
@@ -1472,11 +1473,13 @@ Test::add(
 );
 // FormManagers.class.php - Alireza Imani - end
 
-// OntologyPropertyLabels.class.php -kourosh ahmadzadeh ataei - begin
+
+// UserFacilities.class.php - navidbeta - start
+
 Test::add(
     function()
     {
-        $obj = new be_OntologyPropertyLabels();
+        $obj = new be_UserFacilities();
         try {
             $obj->LoadDataFromDatabase(1);
             return true;
@@ -1486,155 +1489,317 @@ Test::add(
             return false;
         }
     }
-    ,"be_OntologyPropertyLabels.class->LoadDataFromDatabase()", "message"
+    ,"be_UserFacilities->LoadDataFromDatabase()", "UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj = new manage_OntologyPropertyLabels();
-        try {
-            $obj->GetCount(1);
+        try{
+            manage_UserFacilities::HasAccess("1" , "1");
             return true;
-
-        }
-        catch (Exception $e)
-        {
-            return false;
-        }
-
-    }
-    ,"manage_OntologyPropertyLabels.class->GetCount()", "message"
-
-);
-Test::add(
-    function ()
-    {
-        $obj = new manage_OntologyPropertyLabels();
-        try {
-            $obj->GetLastID();
-            return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->GetLastID()", "message"
+    ,"manage_UserFacilities->HasAccess()","UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj= new manage_OntologyPropertyLabels();
-        try {
-            $obj->Add(1,"lable");
+        try{
+            manage_UserFacilities::GetCount("1");
             return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->add()", "message"
-
+    ,"manage_UserFacilities->GetCount()","UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj= new manage_OntologyPropertyLabels();
         try {
-            $obj->GetFirstLabel(1);
-            return true ;
+            manage_UserFacilities::GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->GetLastID()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_UserFacilities::RemoveAllUserFacilities("1");
+            return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->GetFirstLabel()", "message"
-
+    ,"manage_UserFacilities->RemoveAllUserFacilities()","UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj= new manage_OntologyPropertyLabels();
-        try {
-            $obj->UpdateOrInsertFirstLabel(1,"label");
+        try{
+            manage_UserFacilities::Add("1" , "1");
             return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->UpdateOrInsertFirstLabel()", "message"
-
+    ,"manage_UserFacilities->Add()","UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj =new manage_OntologyPropertyLabels();
-        try {
-            $obj->Update(1,"lable");
+        try{
+            manage_UserFacilities::Update("1" , "1");
             return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->Update()", "message"
-
+    ,"manage_UserFacilities->Update()","UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj=new manage_OntologyPropertyLabels();
-        try {
-            $obj->Remove(1);
+        try{
+            manage_UserFacilities::Remove("1");
             return true;
+            
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->Remove()", "message"
-
+    ,"manage_UserFacilities->Remove()","UserFacilities"
 );
+
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyPropertyLabels();
-        try {
-            $obj->GetList(1);
-            return true;
+
+        try
+        {
+            if(is_array(manage_UserFacilities::GetList("1"))){
+                return true;
+            }
+            return false;
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyPropertyLabels.class->GetList()", "message"
-
+    ,"manage_UserFacilities->GetList()", "UserFacilities"
 );
+
 Test::add(
-    function ()
+    function()
     {
-        $obj= new manage_OntologyPropertyLabels();
         try {
-            $obj->ComparePassedDataWithDB(1,"label");
+            manage_UserFacilities::Search("","","","");
             return true;
         }
-        catch (Exception $e)
-        {return false;
+        catch(Exception $e)
+        {
+            return false;
         }
-
     }
-    ,"manage_OntologyPropertyLabels.class->ComparePassedDataWithDB()", "message"
-
-
+    ,"manage_UserFacilities->Search()", "UserFacilities"
 );
-// OntologyPropertyLabels.class.php -kourosh ahmadzadeh ataei - end
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::SearchResultCount("","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->SearchResultCount()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            manage_UserFacilities::ComparePassedDataWithDB("","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_UserFacilities->ComparePassedDataWithDB()", "UserFacilities"
+);
+
+// UserFacilities.class.php - navidbeta - end
+
+
+
+
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - Start #
+#                                                                #
+##################################################################
+
+Test::add(
+    function()
+    {
+        $obj = new be_OntologyValidationExperts();
+        try {
+            if ($obj->LoadDataFromDatabase(1)){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_OntologyValidationExperts.class->LoadDataFromDatabase()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if(manage_OntologyValidationExperts::GetCount(1)==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->getCount()", "OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        try{
+            if(manage_OntologyValidationExperts::GetLastID()!=-1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->GetLastID()","OntologyValidationExperts"
+);
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Add("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Add()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Update("","","","","");
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Update()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function(){
+        $obj = new manage_OntologyValidationExperts();
+        try{
+            $obj -> Remove(1);
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts->Remove()","OntologyValidationExperts"
+);
+
+
+Test::add(
+    function()
+    {
+        $obj = new manage_OntologyValidationExperts();
+        try {
+            $obj->ComparePassedDataWithDB("","","","","");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_OntologyValidationExperts.class->ComparePassedDataWithDB()", "OntologyValidationExperts"
+);
+
+##################################################################
+#                                                                #
+#  OntologyValidationExperts.class.php - Mohammad Kahani - End   #
+#                                                                #
+##################################################################
+
+
 
 
 

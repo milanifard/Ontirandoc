@@ -1,5 +1,5 @@
 <?php
-define("UI_LANGUAGE", "FA");
+define("UI_LANGUAGE", "EN");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
 // remove this and multiple defined constant after develoment, on release version
@@ -569,6 +569,78 @@ if(UI_LANGUAGE=="EN") {
     define2("C_VIEW" , "View");
     define2("C_CHOOSE_APPLIER" , "Choose applier");
 
+
+//    ControlForms.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "From Type:");
+    define2("C_SEARCH_SELECTED_FORM" , "Search Appropriate From");
+    define2("C_CREATOR_NAME" , "Creator Name");
+    define2("C_CREATOR" , "Creator: ");
+    define2("C_SENDER" , "Sender: ");
+    define2("C_FORM_NAME_2" , "Form Name: ");
+    define2("C_LAST_SENDER" , "Last Sender");
+    define2("C_SEND_TIME" , "Sending Time");
+    define2("C_CURRENT_STEP" , "Current Step");
+    define2("C_CURRENT_STEP_NAME" , "Current Step Name: ");
+    define2("C_NEW_STEP" , "New Step: ");
+
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "Help For Creating Costume Print Pages");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "Parameter Which Will Be Sent To Your Page Is RecID.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "When You Want Printing Has Specific Format Create Its Own Page And Put It On Server And Add Page Address To Costume Print Page");
+    define2("C_HELP_DEFAULT_ICON" , "In Default Mode By Clicking On Each Record A Table Will Be Shown");
+    define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
+    define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
+
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "Row");
+    define2("C_PROJECT_GROUP", "Project group");
+    define2("C_EDIT", "Edit");
+    define2("C_TITLE","Title");
+    define2("C_PRIORITY" , "Priority");
+    define2("C_STATUS", "Status");
+    define2("C_REPORT", "Report");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'Actions');
+    define2('C_ACTION_TYPE', 'Action type');
+    define2('C_USAGE_TIME', 'Usage time');
+    define2('C_Progress', 'Progress');
+    define2('C_DESCRIPTION', 'Description');
+    define2("C_ATTACHMENTS", "Attachments");
+    define2("C_CREATOR", "Creator");
+    define2("C_ACTION_DATE", "Action date");
+    define2("C_CREATE", "Create");
+    define2("C_DELETE", "Delete");
+    define2("C_NOT_EXIST", "Not exist");
+    define2("C_ARE_YOU_SURE","Are you sure?");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'Project assigned to');
+    define2('C_PROJECT_NAME', 'Project name');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'Precentage of time allocated');
+    define2("C_RETURN","Return");
+    define2("C_SAVE", "Save");
+    define2("C_DATA_STORED","Data stored");
+
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","Create/Edit Class Labels");
+    define2("C_T_CLASS_LABELS","Class Labels");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","Add Child Classes");
+    define2("C_T_CHILD_CLASSES","Child Classes");
+    define2("C_T_CLASS","Class");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","Create/Edit SubClasses ");
+    define2("C_T_CHILD_CLASS","Child Class");
+    define2("C_T_SUBCLASS","SubClasses");
+
+    //ShowSummary() & ShowTabs in OntologyClasses.class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes");
+
+
 }
 else
 {
@@ -1123,6 +1195,81 @@ else
     define2("C_UPDATE" , "بروزرسانی");
     define2("C_VIEW" , "مشاهده");
     define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
-}   
+
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "ردیف");
+    define2("C_PROJECT_GROUP", "گروه پروژه");
+    define2("C_EDIT", "ویرایش");
+    define2("C_TITLE","عنوان");
+    define2("C_PRIORITY" , "اولویت");
+    define2("C_STATUS", "وضعیت");
+    define2("C_REPORT", "گزارش");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'اقدامات');
+    define2('C_ACTION_TYPE', 'نوع اقدام');
+    define2('C_USAGE_TIME', 'زمان مصرفی');
+    define2('C_Progress', 'درصد پیشرفت');
+    define2('C_DESCRIPTION', 'شرح');
+    define2("C_ATTACHMENTS", "ضمیمه");
+    define2("C_CREATOR", "ایجاد کننده");
+    define2("C_ACTION_DATE", "تاریخ اقدام");
+    define2("C_CREATE", "ایجاد");
+    define2("C_DELETE", "حذف");
+    define2("C_NOT_EXIST", "ندارد");
+    define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'پروژه های انتسابی به');
+    define2('C_PROJECT_NAME', 'نام پروژه');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'درصد تخصیصی زمان');
+    define2("C_RETURN","بازگشت");
+    define2("C_SAVE", "ذخیره");
+    define2("C_DATA_STORED","اطلاعات ذخیره شد");
+    
+
+    //controlFrom.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "نوع فرم:");
+    define2("C_SEARCH_SELECTED_FORM" , "جستجو فرم های مورد نظر");
+    define2("C_CREATOR_NAME" , "نام ایجاد کننده:");
+    define2("C_CREATOR" , "ایجاد کننده:");
+    define2("C_SENDER" , "ارسال کننده:");
+    define2("C_FORM_NAME_2" , "نام فرم");
+    define2("C_LAST_SENDER" , "آخرین ارسال کننده");
+    define2("C_SEND_TIME" , "زمان ارسال");
+    define2("C_CURRENT_STEP" , "مرحله فعلی");
+    define2("C_CURRENT_STEP_NAME" , "نام مرحله فعلی:");
+    define2("C_NEW_STEP" , "مرحله جدید:");
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "راهنمای تولید صفحات اختصاصی چاپ");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "پارامتری که به صفحه شما ارسال خواهد شد RecID نام دارد.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "	در زمانیکه می خواهید شکل چاپی به فرمت خاصی باشد باید صفحه نمایش آن را خودتان تهیه کرده و بر روی سرور قرار دهید و سپس آدرس صفحه را در 
+	گزینه صفحه چاپ اختصاصی وارد کنید.");
+    define2("C_HELP_DEFAULT_ICON" , "در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.");
+    define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
+    define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
+
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","ایجاد/ویرایش برچسب کلاسها");
+    define2("C_T_CLASS_LABELS","برچسب کلاسها");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","اضافه کردن کلاسهای فرزند");
+    define2("C_T_CHILD_CLASSES","کلاسهای فرزند");
+    define2("C_T_CLASS","کلاس");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","ایجاد/ویرایش زیرکلاسها");
+    define2("C_T_CHILD_CLASS","کلاس فرزند");
+    define2("C_T_SUBCLASS","زیرکلاسها");
+
+
+    //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار");
+
+}
 
 ?>
+
+

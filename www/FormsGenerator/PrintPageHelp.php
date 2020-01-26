@@ -2,22 +2,21 @@
 include("header.inc.php");
 HTMLBegin();
 ?>
-<table width=80% align=center border=1 cellspacing=0>
-<tr>
-	<td class=HeaderOfTable align=center>راهنمای تولید صفحات اختصاصی چاپ</td>
+<table width=80% align=center border=1 cellspacing=0 class=".container">
+<tr class="row">
+	<td class=HeaderOfTable align=center><?php echo C_HELP_TO_CREATE_PAINT_PAGES; ?></td>
 </tr>
-<tr>
+<tr class="row">
 	<td>
-	صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.
+        <?php echo C_PAGE_TO_PRINT_FROM; ?>
 	<br>
-	سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.
+        <?php echo C_FORM_MAKER_SEND; ?>
 	<br>
-	در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.
+        <?php echo C_HELP_DEFAULT_ICON; ?>
 	<br>
-	در زمانیکه می خواهید شکل چاپی به فرمت خاصی باشد باید صفحه نمایش آن را خودتان تهیه کرده و بر روی سرور قرار دهید و سپس آدرس صفحه را در 
-	گزینه صفحه چاپ اختصاصی وارد کنید.
+        <?php echo C_HELP_CREATE_YOUR_OWN; ?>
 	<br>
-	پارامتری که به صفحه شما ارسال خواهد شد RecID نام دارد.
+        <?php echo C_HELP_PARAMETER_SEND_AS_ID; ?>
 	</td>
 </tr>
 </table>
