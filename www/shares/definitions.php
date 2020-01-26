@@ -31,7 +31,9 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FIRST_PAGE", "Home");
     define2("C_CHANGE_PASSWORD", "Change Password");
     define2("C_MY_ACTIONS", "My Actions");
-
+    // NewProjectTaskTypes.php by Mostafa Sader
+    define2("C_CREATE_EDIT_TYPES_OF_WORKS","Create/Edit types of works");
+    define2("C_DESIRED_TITLE","Desired title");
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","Title");
     define2("C_TEXT","Text");
@@ -789,6 +791,10 @@ else
     define2("C_CHANGE_PASSWORD", "تغییر رمز عبور");
     define2("C_MY_ACTIONS", "اقدامات من");
     define2("C_EXIT", "خروج");
+
+    // NewProjectTaskTypes.php by Mostafa Sader
+    define2("C_CREATE_EDIT_TYPES_OF_WORKS","ایجاد/ویرایش انواع کارها");
+    define2("C_DESIRED_TITLE","عنوان مورد نظر");
 
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","عنوان");
