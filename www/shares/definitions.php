@@ -675,6 +675,30 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "primary key");
     define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "relational key");
     define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "merge");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "Items search page instructions");
+
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        Sometimes the huge amount of data in a single field cause slow performance of selecting options for user and also consumes a large area
+        of the page.
+        </br>
+        for such cases Look Up could be a good choice.
+        </br>
+        In this method a link is placed in front of this fields name which by clicking it a new window will be opened
+        and user can search the desired item and select it as the value for corresponding field.
+        <br>
+        this page should be programed by the developer and the address should be placed in the 'search page address'.
+        <br>
+        values which system pass to the new page includes:
+        <li>FormName: name of the form which contains the field.
+        <li>InputName: the hidden element in the form which selected item key should be placed in its value
+        <li>SpanName:  a span which contains the information about the selected item
+        <br>
+        for instance consider values below:
+        <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+        <br>
+        Developer should call a javascript code like below when the he selected the desired item:
+    ");
+    //_________________ END _____________________________
 }
 else
 {
@@ -1338,6 +1362,36 @@ else
     define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "کلید ارتباطی");
     define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "انجام ادغام");
 
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "راهنمای تولید صفحه جستجوی مقادیر");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        بعضی از مواقع داده هایی که در یک فیلد لیستی قابل انتخاب هستند بسیاز زیاد بوده و نمایش آنها به صورت لیست
+            کشویی علاوه بر اینکه حجم زیادی
+            از صفحه را به خود اختصاص می دهد باعث کندی عمل کاربر در انتخاب گزینه مورد نظر خود می شود.
+            <br>
+            برای اینگونه موارد می توان نحوه نمایش لیست را Look Up تعیین کرد.
+            <br>
+            در این حالت در فرم ورود داده در جلوی نام این فیلد یک لینک برای انتخاب داده مورد نظر نمایش داده می شود که
+            کاربر بتواند با کلیک روی آن
+            در صفحه ای که در یک پنجره جداگانه باز می شود به جستجوی آیتم مورد نظر خود پرداخته و آن را انتخاب کند تا در
+            مقدار فیلد قرار گیرد.
+            <br>
+            این صفحه باید توسط برنامه نویس نوشته شده و آدرس آن در مشخصه 'آدرس صفحه جستجوی داده' وارد شود.
+            <br>
+            مواردی که سیستم در زمان فراخوانی این صفحه به آن پاس می دهد عبارتند از:
+            <br>
+            <li>FormName: نام فرمی که فیلد در آن قرار دارد
+            <li>InputName: نام عنصری که داخل فرم به صورت مخفی قرار دارد و باید مقدار کلید آیتم انتخاب شده در آن قرار
+                گیرد
+            <li>SpanName: نام span ای را به همراه دارد که توضیحات مربوط به آیتم انتخاب شده در آن نوشته می شود
+                <br>
+                به عنوان مثال مقادیر زیر را در نظر بگیرید:
+                <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+                <br>
+                حال باید برنامه نویس در کد خود زمانیکه کاربر آیتم مورد نظر را انتخاب کرد یک تابع جاوا اسکریپ مشابه این
+                را فراخوانی کند:
+    
+    ");
+    //_________________ END _____________________________
 
 }
 
