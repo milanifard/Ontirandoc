@@ -1986,9 +1986,17 @@ Test::add(
 //_________________ProjectTaskActivityTypes.class.php AMIN ALIZADEH _________________
 Test::add(function(){
     $obj = new be_ProjectTaskActivityTypes();
-
-
-});
+    try{
+    $res = $obj->LoadDataFromDatabase(1);
+    if($res){
+        return true;
+    }
+    return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"be_ProjectTaskActivityTypes->LoadDataFromDatabase()","message");
 //_______________________________END__________________________________________________
 
 $res = Test::run();
