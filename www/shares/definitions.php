@@ -623,6 +623,24 @@ if(UI_LANGUAGE=="EN") {
     define2("C_SAVE", "Save");
     define2("C_DATA_STORED","Data stored");
 
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","Create/Edit Class Labels");
+    define2("C_T_CLASS_LABELS","Class Labels");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","Add Child Classes");
+    define2("C_T_CHILD_CLASSES","Child Classes");
+    define2("C_T_CLASS","Class");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","Create/Edit SubClasses ");
+    define2("C_T_CHILD_CLASS","Child Class");
+    define2("C_T_SUBCLASS","SubClasses");
+
+    //ShowSummary() & ShowTabs in OntologyClasses.class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes")
+
+
 }
 else
 {
