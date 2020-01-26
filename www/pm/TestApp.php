@@ -2089,7 +2089,7 @@ Test::add(function(){
 
 
 
-// ProjectTaskRequisites.class.php test Mostafa Ghofrani
+// ProjectTaskRequisites.class.php test by Mostafa Ghofrani
 
 Test::add(
     function()
@@ -2122,6 +2122,88 @@ Test::add(
     }
     ,"manage_ProjectTaskRequisites->GetCount()","UserFacilities"
 );
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetLastID();
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetLastID()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Add("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Add()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Update("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Update()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Remove("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Remove()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetList("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetList()","UserFacilities"
+);
+
+// ProjectTaskRequisites.class.php end test by Mostafa Ghofrani
 
 $res = Test::run();
 echo "<br>";
