@@ -1,54 +1,57 @@
-<?php 
+<?php
 /*
  صفحه عملیاتی کار
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 89-3-18
 */
+
+
+//Adel Aboutalebi Pirnaeimi
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/projects.class.php");
 include("classes/ProjectTasks.class.php");
 HTMLBegin();
-$res = manage_projects::GetUserProjects($_SESSION["PersonID"]); 
+$res = manage_projects::GetUserProjects($_SESSION["PersonID"]);
 ?>
 <br>
 
-<table width="98%" align="center" border="1" cellspacing="0">
-<tr class="HeaderOfTable">
-	<td width="1%">ردیف</td>
-	<td width=1% nowrap>ویرایش</td>
-	<td>عنوان</td>
-	<td width=1% nowrap>گروه پروژه</td>
-	<td width=1% nowrap>اولویت</td>
-	<td width=1% nowrap>وضعیت</td>
-	<td width=1% nowrap>گزارش</td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
-	if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>".($k+1)."</td>";
-	echo "	<td nowrap>";
-	echo "	<a target=\"_blank\" href='Newprojects.php?UpdateID=".$res[$k]->ProjectID ."'>";
-	echo "	<img src='images/edit.gif' border='0' title='ویرایش'>";
-	echo "	</a>  ";
-	echo "	</td>";
-	
-	echo "	<td>".htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "	<td nowrap>&nbsp;".$res[$k]->ProjectGroupID_Desc."</td>";
-	echo "	<td nowrap>".$res[$k]->ProjectPriority_Desc."</td>";
-	echo "	<td nowrap>".$res[$k]->ProjectStatus_Desc."</td>";
-	
-	echo "	<td nowrap>";
-	echo "	<a target=\"_blank\" href='ShowProjectOverview.php?ProjectID=".$res[$k]->ProjectID ."'>";
-	echo "	<img src='images/report1.jpg' border='0' title='گزارش'>";
-	echo "	</a>  ";
-	echo "	</td>";
-	
-	/*
+<div class="container">
+	<table class="table table-bordered table-sm table-striped">
+		<thead class="table-info">
+			<tr>
+				<th width="1%"><?php echo C_ROW; ?></th>
+				<th width="1%"><?php echo C_EDIT; ?></th>
+				<th><?php echo C_TITLE; ?></th>
+				<th width="7%"><?php echo C_PROJECT_GROUP; ?></th>
+				<th width="1%"><?php echo C_PRIORITY; ?></th>
+				<th width="1%"><?php echo C_STATUS; ?></th>
+				<th width="1%"><?php echo C_REPORT; ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?
+			for ($k = 0; $k < count($res); $k++) {
+				echo "<tr>";
+				echo "<td class='text-center align-middle'>" . ($k + 1) . "</td>";
+				echo "	<td class='text-center align-middle'>";
+				echo "	<a target=\"_blank\" href='Newprojects.php?UpdateID=" . $res[$k]->ProjectID . "'>";
+				echo "	<i class='fas fa-edit'></i>";
+				echo "	</a>  ";
+				echo "	</td>";
+
+				echo "	<td class='align-middle'>" . htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8') . "</td>";
+				echo "	<td class='align-middle' nowrap>&nbsp;" . $res[$k]->ProjectGroupID_Desc . "</td>";
+				echo "	<td class='align-middle' nowrap>" . $res[$k]->ProjectPriority_Desc . "</td>";
+				echo "	<td class='align-middle' nowrap>" . $res[$k]->ProjectStatus_Desc . "</td>";
+
+				echo "	<td class='text-center align-middle' nowrap>";
+				echo "	<a target=\"_blank\" href='ShowProjectOverview.php?ProjectID=" . $res[$k]->ProjectID . "'>";
+				echo "	<i class='fas fa-file align-middle'></i>";
+				echo "	</a>  ";
+				echo "	</td>";
+
+				/*
 	echo "<td nowrap>";
 	echo "<a target=\"_blank\" href='ManageProjectMembers.php?ProjectID=".$res[$k]->ProjectID ."'>";
 	echo "<img src='images/members.gif' border='0' title='اعضای پروژه'>";
@@ -77,9 +80,15 @@ for($k=0; $k<count($res); $k++)
 	echo "</a>  ";
 	echo "</td>";
 	*/
-	echo "</tr>";
-}
-?>
+				echo "</tr>";
+			}
+			?>
+
+		</tbody>
+	</table>
+</div>
+
 </table>
 </form>
+
 </html>

@@ -1137,6 +1137,30 @@ else
     define2("C_VIEW" , "مشاهده");
     define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
 
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "ردیف");
+    define2("C_PROJECT_GROUP", "گروه پروژه");
+    define2("C_EDIT", "ویرایش");
+    define2("C_TITLE","عنوان");
+    define2("C_PRIORITY" , "اولویت");
+    define2("C_STATUS", "وضعیت");
+    define2("C_REPORT", "گزارش");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'اقدامات');
+    define2('C_ACTION_TYPE', 'نوع اقدام');
+    define2('C_USAGE_TIME', 'زمان مصرفی');
+    define2('C_Progress', 'درصد پیشرفت');
+    define2('C_DESCRIPTION', 'شرح');
+    define2("C_ATTACHMENTS", "ضمیمه");
+    define2("C_CREATOR", "ایجاد کننده");
+    define2("C_ACTION_DATE", "تاریخ اقدام");
+    define2("C_CREATE", "ایجاد");
+    define2("C_DELETE", "حذف");
+    define2("C_NOT_EXIST", "ندارد");
+    define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+    
+
     //controlFrom.php by Yegane Shabgard
     define2("C_FORM_TYPE" , "نوع فرم:");
     define2("C_SEARCH_SELECTED_FORM" , "جستجو فرم های مورد نظر");
