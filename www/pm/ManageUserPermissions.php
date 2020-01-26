@@ -3,6 +3,7 @@
  صفحه  نمایش لیست و مدیریت داده ها مربوط به : 
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 92-8-4
+	edited by navidbeta
 */
 include("header.inc.php");
 include("classes/UserFacilities.class.php");
@@ -23,15 +24,23 @@ if(isset($_REQUEST["Save"]))
 	echo SharedClass::CreateMessageBox(C_DATA_STORED);
 }
 ?>
+<div class="container">
 <form method="post" id="f1" name="f1" >
 <input type="hidden" name="Item_UserID" id="Item_UserID" value='<? echo $_REQUEST["Item_UserID"]; ?>'>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center"><? echo C_USER_ACCESSES. ":".$_REQUEST["Item_UserID"]; ?></td>
+<br>
+
+<div class ="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table-bordered" width="100%">
+<tr class="table-primary">
+<td>
+<div class="text-center"><? echo C_USER_ACCESSES. ":".$_REQUEST["Item_UserID"]; ?></div>
+</td>
 </tr>
 <tr>
 <td>
-<table width="100%" border="0">
+<table class="table-borderless" width="100%">
 <tr>
   <td>
   <?
@@ -39,31 +48,40 @@ if(isset($_REQUEST["Save"]))
 	$list = manage_SystemFacilities::GetList();
 	for($i=0; $i<count($list); $i++)
 	{
-	  echo "<input type=checkbox name=ch_".$list[$i]->FacilityID;
+	  echo '<div class="checkbox.checkbox-inline">'."<label><input type=checkbox name=ch_".$list[$i]->FacilityID;
+	//   '<label>'.$list[$i]->GroupID_Desc." - ".$list[$i]->FacilityName.'<label>'.
 	  if(manage_UserFacilities::HasAccess($_REQUEST["Item_UserID"], $list[$i]->FacilityID))
 	    echo " checked ";
-	  echo ">";
-	  echo $list[$i]->GroupID_Desc." - ".$list[$i]->FacilityName;
+	  echo ">".$list[$i]->GroupID_Desc." - ".$list[$i]->FacilityName.'<label></div>';
+	//   echo ;
 	  echo "<br>";
 	}
   ?>
   </td>
-  <td width=50% valign=top>
-  </td>
+  
 </tr>
+</table class="table-bordered">
+</td>
+</tr>
+<tr >
 
-</table>
+<td>
+<div class="text-center">
+	<input class="btn btn-success" type="button" onclick="javascript: ValidateForm();" value="<?echo C_SAVE?>">
+    <input class="btn btn-secondary" type="button" onclick="document.location='ManageAccountSpecs.php';" value="<?echo C_RETURN?>">
+</div>
 </td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="<?echo C_SAVE?>">
-<input type="button" onclick="document.location='ManageAccountSpecs.php';" value="<?echo C_RETURN?>">
-</td>
+</div>
 </tr>
 </table>
+</table>
+<div class="col-md-1"></div>
+</div>
+
 <input type="hidden" name="Save" id="Save" value="1">
-</form><script>
+</form>
+</div>
+<script>
 	<? //echo $LoadDataJavascriptCode; ?>
 	function ValidateForm()
 	{

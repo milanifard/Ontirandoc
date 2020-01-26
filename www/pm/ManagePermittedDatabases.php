@@ -39,13 +39,15 @@ if (isset($_REQUEST["UpdateID"])) {
 		//echo manage_DM_Servers::ShowTabs($_REQUEST["DMServersID"], "ManageDMDatabases");
 		?>
 		<br>
-		<table width="90%" border="1" cellspacing="0" align="center">
-			<tr class="HeaderOfTable">
-				<td align="center"><? echo C_DATABASE_DOC ?></td>
-			</tr>
-			<tr>
-				<td>
-					<table width="100%" border="0">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 justify-content-center">
+					<? echo C_DATABASE_DOC ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<table class="table">
 						<tr id="tr_DM_ServersID" name="tr_DM_ServersID" style='display:'>
 							<td width="1%" nowrap>
 
@@ -71,16 +73,17 @@ if (isset($_REQUEST["UpdateID"])) {
 							</td>
 						</tr>
 					</table>
-				</td>
-			</tr>
-			<tr class="FooterOfTable">
+				</div>
+			</div>
+			<div class="row FooterOfTable">
 				<td align="center">
-					<input type="button" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
+					<input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value="<? echo C_SAVE ?>">
 				</td>
-			</tr>
-		</table>
+			</div>
+		</div>
 		<input type="hidden" name="Save" id="Save" value="1">
 	</form>
+
 	<script>
 		<? echo $LoadDataJavascriptCode; ?>
 
@@ -92,37 +95,41 @@ if (isset($_REQUEST["UpdateID"])) {
 <form id="ListForm" name="ListForm" method="post">
 	<input type="hidden" id="Item_DMServersID" name="Item_DMServersID" value="<? echo htmlentities($_REQUEST["DMServersID"], ENT_QUOTES, 'UTF-8'); ?>">
 	<br>
-	<table width="90%" align="center" border="1" cellspacing="0">
-		<tr bgcolor="#cccccc">
-			<td colspan="6">
-				<? echo C_DATABASES ?>
-			</td>
-		</tr>
-		<tr class="HeaderOfTable">
-			<td width="1%"><? echo C_ROW ?></td>
-			<td width="2%"><? echo C_EDIT ?></td>
-			<td><? echo C_SERVER ?></td>
-			<td><? echo C_NAME ?></td>
-			<td><? echo C_DESCRIPTION ?></td>
-			<td><? echo C_TABLES ?></td>
-		</tr>
-		<?
-		$res = manage_DMDatabases::GetPermitted($_SESSION["PersonID"]);
-		for ($k = 0; $k < count($res); $k++) {
-			if ($k % 2 == 0)
-				echo "<tr class=\"OddRow\">";
-			else
-				echo "<tr class=\"EvenRow\">";
-			echo "<td>" . ($k + 1) . "</td>";
-			echo "	<td><a href=\"ManagePermittedDatabases.php?UpdateID=" . $res[$k]->DMDatabasesID . "&DMServersID=" . $_REQUEST["DMServersID"] . "\"><img src='images/edit.gif' title='" . C_EDIT . "'></a></td>";
-			echo "	<td>" . htmlentities($res[$k]->ServerName, ENT_QUOTES, 'UTF-8') . "</td>";
-			echo "	<td>" . htmlentities($res[$k]->DBName, ENT_QUOTES, 'UTF-8') . "</td>";
-			echo "	<td>" . str_replace("\r", "<br>", htmlentities($res[$k]->DBDescription, ENT_QUOTES, 'UTF-8')) . "</td>";
-			echo "<td><a href='ManageDMTables.php?DMDatabasesID=" . $res[$k]->DMDatabasesID . "'>" . C_TABLES . "</a></td>";
-			echo "</tr>";
-		}
-		?>
-	</table>
+	<div class="container">
+		<table class="table table-striped table-bordered table-hover">
+
+			<thead class="thead-dark">
+				<tr bgcolor="#cccccc">
+					<td colspan="6">
+						<? echo C_DATABASES ?>
+					</td>
+				</tr>
+				<tr>
+					<th width="1%"><? echo C_ROW ?></th>
+					<th width="2%"><? echo C_EDIT ?></th>
+					<th><? echo C_SERVER ?></th>
+					<th><? echo C_NAME ?></th>
+					<th><? echo C_DESCRIPTION ?></th>
+					<th><? echo C_TABLES ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?
+				$res = manage_DMDatabases::GetPermitted($_SESSION["PersonID"]);
+				for ($k = 0; $k < count($res); $k++) {
+					echo "<tr>";
+					echo "<td>" . ($k + 1) . "</td>";
+					echo "	<td><a href=\"ManagePermittedDatabases.php?UpdateID=" . $res[$k]->DMDatabasesID . "&DMServersID=" . $_REQUEST["DMServersID"] . "\"><i class='fa fa-edit'></i></a></td>";
+					echo "	<td>" . htmlentities($res[$k]->ServerName, ENT_QUOTES, 'UTF-8') . "</td>";
+					echo "	<td>" . htmlentities($res[$k]->DBName, ENT_QUOTES, 'UTF-8') . "</td>";
+					echo "	<td>" . str_replace("\r", "<br>", htmlentities($res[$k]->DBDescription, ENT_QUOTES, 'UTF-8')) . "</td>";
+					echo "<td><a href='ManageDMTables.php?DMDatabasesID=" . $res[$k]->DMDatabasesID . "'>" . C_TABLES . "</a></td>";
+					echo "</tr>";
+				}
+				?>
+			</tbody>
+		</table>
+	</div>
 </form>
 
 </html>

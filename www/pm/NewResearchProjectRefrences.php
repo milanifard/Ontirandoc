@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<html>
+<body class="bg-transparent">
 <?php
 /*
  صفحه  ایجاد/ویرایش مربوط به : مراجع کار پژوهشی
@@ -131,8 +135,10 @@ if($language=="FA")
 else
     $direction = "ltr";
 ?>
+<div class="container">
 <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
-    <?
+    <div class="form-group">
+    <?php
     if(isset($_REQUEST["UpdateID"]))
     {
         echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
@@ -140,25 +146,25 @@ else
         //echo manage_ResearchProjectRefrences::ShowTabs($_REQUEST["UpdateID"], "NewResearchProjectRefrences");
     }
     ?>
-    <br><table width="90%" border="1" cellspacing="0" align="center">
-        <tr class="HeaderOfTable">
-            <td align="center"><?php echo CREAT_AND_EDIT_RES_RESEARCH ?></td>
+    <br><table  class="table-bordered w-auto" cellspacing="0" align="center">
+        <tr class="table-info">
+            <td class="d-flex justify-content-center" ><?php echo CREAT_AND_EDIT_RES_RESEARCH ?></td>
         </tr>
         <tr>
             <td>
-                <table width="100%" border="0">
-                    <?
+                <table class="table-borderless">
+                    <?php
                     if(!isset($_REQUEST["UpdateID"]))
                     {
                         ?>
-                        <input type="hidden" name="ResearchProjectID" id="ResearchProjectID" value='<? if(isset($_REQUEST["ResearchProjectID"])) echo htmlentities($_REQUEST["ResearchProjectID"], ENT_QUOTES, 'UTF-8'); ?>'>
-                    <? } ?>
+                        <input  class="form-control" type="hidden" name="ResearchProjectID" id="ResearchProjectID" value='<?php if(isset($_REQUEST["ResearchProjectID"])) echo htmlentities($_REQUEST["ResearchProjectID"], ENT_QUOTES, 'UTF-8'); ?>'>
+                    <?php } ?>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td class="w-25" nowrap>
                             <?php echo SEARCH_ENG ?>
                         </td>
                         <td nowrap>
-                            <select name="Item_SearchEngine" id="Item_SearchEngine" >
+                            <select  class="form-control col-sm-3" name="Item_SearchEngine" id="Item_SearchEngine" >
                                 <option value=0>-
                                 <option value='GOOGLE'>GOOGLE SCHOLAR</option>
                                 <option value='SCOPUS'>SCOPUS</option>
@@ -167,20 +173,20 @@ else
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td class="w-25" nowrap>
                             <?php echo TAGS_WORDS ?>
                         </td>
                         <td nowrap>
-                            <input dir=ltr type="text" name="Item_SearchKeywords" id="Item_SearchKeywords" maxlength="1000" size="100">
+                            <input class="form-control col-md-8" dir=ltr type="text" name="Item_SearchKeywords" id="Item_SearchKeywords" maxlength="1000" size="100">
                         </td>
                     </tr>
 
                     <tr>
-                        <td width="1%" nowrap>
+                        <td class="w-25" nowrap>
                             <?php echo LANG_N ?>
                         </td>
                         <td nowrap>
-                            <select name="Item_language" id="Item_language" >
+                            <select class="form-control col-sm-3" name="Item_language" id="Item_language" >
                                 <option value=0>-
                                 <option value='EN'><?php echo EN_LAN_N ?></option>
                                 <option value='FA'><?php echo FA_LAN_N ?></option>
@@ -188,19 +194,19 @@ else
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td class="w-25" nowrap>
                             <?php echo TITLE_N ?>
                         </td>
-                        <td nowrap>
-                            <input dir="<? echo $direction ?>" type="text" name="Item_RefrenceTitle" id="Item_RefrenceTitle" maxlength="500" size="100">
+                        <td >
+                            <input class="form-control col-md-8" dir="<?php echo $direction ?>" type="text" name="Item_RefrenceTitle" id="Item_RefrenceTitle" maxlength="500" size="100">
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td  nowrap>
                             <?php echo WRITERS_N ?>
                         </td>
                         <td nowrap>
-                            <input dir="<? echo $direction ?>" type="text" name="Item_authors" id="Item_authors" maxlength="500" size="100">
+                            <input class="form-control col-md-8" dir="<?php echo $direction ?>" type="text" name="Item_authors" id="Item_authors" maxlength="500" size="100">
                         </td>
                     </tr>
                     <tr>
@@ -208,40 +214,40 @@ else
                             <?php echo YEARS_N ?>
                         </td>
                         <td nowrap>
-                            <input type="text" name="Item_PublishYear" id="Item_PublishYear" maxlength="4" size="4">
+                            <input class="form-control col-sm-1" type="text" name="Item_PublishYear" id="Item_PublishYear" maxlength="4" size="4">
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td  nowrap>
                             APA
                         </td>
                         <td nowrap>
-                            <textarea dir=ltr name="Item_APA" id="Item_APA" rows=3 cols=90><? echo $APA; ?></textarea>
+                            <textarea class="form-control col-md-10" dir=ltr name="Item_APA" id="Item_APA" rows=3 cols=90><?php echo $APA; ?></textarea>
                         </td>
                     </tr>
 
                     <tr>
-                        <td width="1%" nowrap>
+                        <td>
                             URL
                         </td>
                         <td nowrap>
-                            <input dir=ltr type="text" name="Item_URL" id="Item_URL" maxlength="500" size="40">
+                            <input class="form-control col-md-8" dir=ltr type="text" name="Item_URL" id="Item_URL" maxlength="500" size="40">
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo SUM_N ?>
                         </td>
-                        <td nowrap>
-                            <textarea name="Item_abstract" id="Item_abstract" cols="80" rows="5"><? echo $abstract; ?></textarea>
+                        <td >
+                            <textarea  class="form-control col-md-10" name="Item_abstract" id="Item_abstract" cols="80" rows="5"><?php echo $abstract; ?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo STATE_OF_STUDY ?>
                         </td>
-                        <td nowrap>
-                            <select name="Item_ReadType" id="Item_ReadType" >
+                        <td >
+                            <select class="form-control col-sm-3" name="Item_ReadType" id="Item_ReadType" >
                                 <option value=0>-
                                 <option value='YES'> <?php echo ALREADY_STUDY ?></option>
                                 <option value='NO'> <?php echo ALREADY_NOT_STUDY ?></option>
@@ -250,22 +256,22 @@ else
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo IMPORTNT ?>
                         </td>
                         <td nowrap>
-                            <input type="text" name="Item_priprity" id="Item_priprity" maxlength="2" size="2" value="1">
+                            <input class="form-control col-sm-1" type="text" name="Item_priprity" id="Item_priprity" maxlength="2" size="2" value="1">
                         </td>
                     </tr>
 
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo CAT_N ?>
                         </td>
                         <td nowrap>
-                            <select name="Item_RefrenceTypeID" id="Item_RefrenceTypeID">
+                            <select class="form-control col-sm-3" name="Item_RefrenceTypeID" id="Item_RefrenceTypeID">
                                 <option value=0>-
-                                    <?
+                                    <?php
                                     $mysql=pdodb::getInstance();
                                     $mysql->Prepare("select RefrenceTypeID, RefrenceTypeTitle from projectmanagement.RefrenceTypes where ResearchProjectID=? order by RefrenceTypeTitle");
                                     $res = $mysql->ExecuteStatement(array($PID));
@@ -278,50 +284,54 @@ else
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo ALL_COM?>
                         </td>
                         <td nowrap>
-                            <textarea name="Item_BriefComment" id="Item_BriefComment" cols="80" rows="5"><? echo $BComment; ?></textarea>
+                            <textarea  class="form-control col-md-8" name="Item_BriefComment" id="Item_BriefComment" cols="80" rows="5"><?php echo $BComment; ?></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td width="1%" nowrap>
+                        <td >
                             <?php echo FILE_N?>
                         </td>
                         <td nowrap>
                             <input type="file" name="Item_FileContent" id="Item_FileContent">
-                            <? if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                <a href='DownloadRFile.php?TableName=ResearchProjectRefrences&ConditionField=ResearchProjectRefrenceID&FieldName=FileContent&RecID=<? echo $_REQUEST["UpdateID"]; ?>&DownloadFileName=<? echo $obj->FileName ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
-                            <? } ?>
+                            <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
+                                <a href='DownloadRFile.php?TableName=ResearchProjectRefrences&ConditionField=ResearchProjectRefrenceID&FieldName=FileContent&RecID=<?php echo $_REQUEST["UpdateID"]; ?>&DownloadFileName=<?php echo $obj->FileName ?>'>دریافت فایل [<?php echo $obj->FileName; ?>]</a>
+                            <?php } ?>
                         </td>
                     </tr>
-                    <? if(isset($_REQUEST["UpdateID"])) { ?>
+                    <?php if(isset($_REQUEST["UpdateID"])) { ?>
                         <tr>
-                            <td width="1%" colspan=2>
-                                <a href='ManageResearchProjectRefrenceComments.php?ResearchProjectRefrenceID=<? echo $_REQUEST["UpdateID"]; ?>'>
+                            <td >
+                                <a href='ManageResearchProjectRefrenceComments.php?ResearchProjectRefrenceID=<?php echo $_REQUEST["UpdateID"]; ?>'>
                                     <b>
                                         <?php echo NOTES_N?>
                                     </b>
                             </td>
                         </tr>
-                    <? } ?>
+                    <?php } ?>
                 </table>
             </td>
         </tr>
-        <tr class="FooterOfTable">
+        <tr>
             <td align="center">
-                <input type="button" onclick="javascript: ValidateForm();" value="<?php echo SAVE_M?>">
-                <input type="button" onclick="javascript: window.close();" value="<?php echo CLOSE_N ?>">
+                <input type="button" class="btn btn-outline-success" onclick="javascript: ValidateForm();" value="<?php echo SAVE_M?>">
+                <input type="button" class="btn btn-outline-danger" onclick="javascript: window.close();" value="<?php echo CLOSE_N ?>">
             </td>
         </tr>
     </table>
     <input type="hidden" name="Save" id="Save" value="1">
-</form><script>
-    <? echo $LoadDataJavascriptCode; ?>
+    </div>
+</form>
+</div>
+<script>
+    <?php echo $LoadDataJavascriptCode; ?>
     function ValidateForm()
     {
         document.f1.submit();
     }
 </script>
+</body>
 </html>

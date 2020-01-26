@@ -1,910 +1,1398 @@
 <?php
 define("UI_LANGUAGE", "EN");
 
-if(UI_LANGUAGE=="EN") {
-    define("C_SAVE", "Save");
-    define("C_NEW", "New");
-    define("C_REMOVE", "Remove");
-    define("C_NAME", "Name");
-    define("C_CREATE", "Create");
-    define("C_ORDER", "Order");
-    define("C_ROW", "Row");
-    define("C_EDIT", "Edit");
-    define("C_PERSIAN", "Persian");
-    define("C_ENGLISH", "English");
-    define("C_EXIT", "Exit");
+// use define2 in development, to prevent multiple constant definition error during developmnet
+// remove this and multiple defined constant after develoment, on release version
+function define2($name,$value) {
+    if (!defined($name))
+        return define($name,$value);
+    return false;
+}
 
-    define("C_DATA_SAVE_SUCCESS", "Data saved successfully");
-//    define("C_ARE_YOU_SURE", "Are you sure?");
-    define("C_ACTIVE_USER", "Active User: ");
-    define("C_MAIN_MENU", "Main Menu");
-    define("C_FIRST_PAGE", "Home");
-    define("C_CHANGE_PASSWORD", "Change Password");
-    define("C_MY_ACTIONS", "My Actions");
+
+
+if(UI_LANGUAGE=="EN") {
+    define2("C_SAVE", "Save");
+    define2("C_NEW", "New");
+    define2("C_REMOVE", "Remove");
+    define2("C_NAME", "Name");
+    define2("C_CREATE", "Create");
+    define2("C_ORDER", "Order");
+    define2("C_ROW", "Row");
+    define2("C_EDIT", "Edit");
+    define2("C_PERSIAN", "Persian");
+    define2("C_ENGLISH", "English");
+    define2("C_EXIT", "Exit");
+
+    define2("C_DATA_SAVE_SUCCESS", "Data saved successfully");
+//    define2("C_ARE_YOU_SURE", "Are you sure?");
+    define2("C_ACTIVE_USER", "Active User: ");
+    define2("C_MAIN_MENU", "Main Menu");
+    define2("C_FIRST_PAGE", "Home");
+    define2("C_CHANGE_PASSWORD", "Change Password");
+    define2("C_MY_ACTIONS", "My Actions");
 
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
-    define("C_TITLE","Title");
-    define("C_TEXT","Text");
-    define("C_FILE","File");
-    define("C_TO_USER","To");
-    define("C_SEND","Send");
-    define("C_SELECT","Select");
-    define("C_SEND_MESSAGE","Send Message");
-    define("C_MESSAGE_SENT","Message Sent");
-    define("C_TITLE_EMPTY","Please Fill The Tile Field");
-    define("C_RECEIVER_EMPTY","Please Select Receiver");
-    define("C_AUTO_SAVE","Auto Saving...");
-    define("C_SENDING_FILE_ERROR","Error In Sending File");
+    define2("C_TITLE","Title");
+    define2("C_TEXT","Text");
+    define2("C_FILE","File");
+    define2("C_TO_USER","To");
+    define2("C_SEND","Send");
+    define2("C_SELECT","Select");
+    define2("C_SEND_MESSAGE","Send Message");
+    define2("C_MESSAGE_SENT","Message Sent");
+    define2("C_TITLE_EMPTY","Please Fill The Tile Field");
+    define2("C_RECEIVER_EMPTY","Please Select Receiver");
+    define2("C_AUTO_SAVE","Auto Saving...");
+    define2("C_SENDING_FILE_ERROR","Error In Sending File");
     //----------------------------------
 
     //MailBox.php needed definitions MOHAMAD_ALI_SAIDI
-    define("C_MESSAGES_RECEIVED","Inbox");
-    define("C_SENDER_NAME","Sender Name");
-    define("C_TIME_SENT","Time Sent");
-    define("C_REPLY_DES","Reply Description");
-    define("C_DELETE","Delete");
+    define2("C_MESSAGES_RECEIVED","Inbox");
+    define2("C_SENDER_NAME","Sender Name");
+    define2("C_TIME_SENT","Time Sent");
+    define2("C_REPLY_DES","Reply Description");
+    define2("C_DELETE","Delete");
     //----------------------------------
 
 
     //SentBox.php needed definitions MOHAMAD_ALI_SAIDI
-    define("C_MESSAGES_SENT","OutBox");
-    define("C_RECEIVER_NAME","Receiver Name");
+    define2("C_MESSAGES_SENT","OutBox");
+    define2("C_RECEIVER_NAME","Receiver Name");
     //----------------------------------
 
 
     //SearchMessage.php needed definitions Alireza Imani
-    define("C_SEARCH_MESSAGE","Search Message");
-    define("C_PART_OF_TEXT","Part of text");
-    define("C_CHOOSE","Choose");
-    define("C_FROM_DATE","From date");
-    define("C_TO_DATE","To date");
-    define("C_SEARCH","Search");
+    define2("C_SEARCH_MESSAGE","Search Message");
+    define2("C_PART_OF_TEXT","Part of text");
+    define2("C_CHOOSE","Choose");
+    define2("C_FROM_DATE","From date");
+    define2("C_TO_DATE","To date");
+    define2("C_SEARCH","Search");
 
     //MetaData2Onto.php needed definitions Alireza Imani
-    define("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","Choose conditions for reverse engineering");
-    define("C_INTENDED_SCOPES","Intended Scopes");
-    define("C_EDUCATIONAL","Educational");
-    define("C_RESEARCH","Research");
-    define("C_STUDENT_SERVICES","Student Services");
-    define("C_WELFARE","Welfare");
-    define("C_FINANCIAL","Financial");
-    define("C_SUPPORT","Support");
-    define("C_ADMINISTRATIVE","Administrative");
-    define("C_RELATED_TO_SYSTEM_OPERATIONS","Related to system operations");
-    define("C_TARGET_ONTOLOGY","Target Ontology");
-    define("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","Remove previous merge suggestions");
-    define("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","Remove existing elements of Ontology");
-    define("C_PERFORM_REVERSE_ENGINEERING","Perform Reverse Engineering");
-    define("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","Review properties merging suggestions");
-    define("C_REVIEW_INTEGRATION_SUGGESTIONS","Review integration suggestions");
-    define("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","Hierarchical relationships between classes");
-    define("C_CONVERSION_DONE","Conversion done");
+    define2("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","Choose conditions for reverse engineering");
+    define2("C_INTENDED_SCOPES","Intended Scopes");
+    define2("C_EDUCATIONAL","Educational");
+    define2("C_RESEARCH","Research");
+    define2("C_STUDENT_SERVICES","Student Services");
+    define2("C_WELFARE","Welfare");
+    define2("C_FINANCIAL","Financial");
+    define2("C_SUPPORT","Support");
+    define2("C_ADMINISTRATIVE","Administrative");
+    define2("C_RELATED_TO_SYSTEM_OPERATIONS","Related to system operations");
+    define2("C_TARGET_ONTOLOGY","Target Ontology");
+    define2("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","Remove previous merge suggestions");
+    define2("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","Remove existing elements of Ontology");
+    define2("C_PERFORM_REVERSE_ENGINEERING","Perform Reverse Engineering");
+    define2("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","Review properties merging suggestions");
+    define2("C_REVIEW_INTEGRATION_SUGGESTIONS","Review integration suggestions");
+    define2("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","Hierarchical relationships between classes");
+    define2("C_CONVERSION_DONE","Conversion done");
 
     //ShowTermsManipulationHistory.php needed definitions Alireza Imani
-    define("C_COMPLETED_TASK","Completed Task");
-    define("C_DESCRIPTION","Description");
-    define("C_SUBJECT","Subject");
-    //define("C_TIME","Time");
-    define("C_EXTRACT_NEW_WORD","Extract new word");
-    define("C_REMOVE_WORD","Remove word");
-    define("C_MERGE_TWO_WORDS","Merge two words");
-    define("C_CHANGE_WORD","Change word");
-    define("C_REPLACE_WORD","Replace word");
-    define("C_TO","to");
-    define("C_BY","by");
+    define2("C_COMPLETED_TASK","Completed Task");
+    define2("C_DESCRIPTION","Description");
+    define2("C_SUBJECT","Subject");
+    //define2("C_TIME","Time");
+    define2("C_EXTRACT_NEW_WORD","Extract new word");
+    define2("C_REMOVE_WORD","Remove word");
+    define2("C_MERGE_TWO_WORDS","Merge two words");
+    define2("C_CHANGE_WORD","Change word");
+    define2("C_REPLACE_WORD","Replace word");
+    define2("C_TO","to");
+    define2("C_BY","by");
 
     //NewQuestionnare.php ALI NOORI
-    define("C_CREATING_EDITTING_QUESTIONNARE","Creating/EdittingQuestionnare");
-    define("C_FORM_NAME","Form Name");
-    define("C_FORM_EXPLANATION_UP","Form Explanation Above");
-    define("C_FORM_EXPLANATION_DOWN","Form Explanation Below");
-    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","Type of entry data layout");
-    define("C_ONE_COLUMN","One Column");
-    define("C_TWO_COLUMN","Two Column");
-    define("C_WIDTH_QUESTION_COLUMN","Width of question column");
-    define("C_MARGIN_SECOND_ROWS","margin for second rows");
-    define("C_MARGIN_SECOND_ROWS_YES","YES");
-    define("C_MARGIN_SECOND_ROWS_NO","NO");
-    define("C_RETURN","Return");
-    define("C_TABLE_INFORMATION","Table Of Information");
-    define("C_BANK_INFORMATION","Bank Of Information");
-    define("C_FORMATION_USER","Formation User");
-    define("C_CREATE_TIME","Create Time");
-    define("C_MANAGE_OPTIONS","Manage Options");
-    define("C_MANAGE_DETAILS_TABLES","Manage details tables");
+    define2("C_CREATING_EDITTING_QUESTIONNARE","Creating/EdittingQuestionnare");
+    define2("C_FORM_NAME","Form Name");
+    define2("C_FORM_EXPLANATION_UP","Form Explanation Above");
+    define2("C_FORM_EXPLANATION_DOWN","Form Explanation Below");
+    define2("C_TYPE_SHOW_ENTER_DATA_LAYOUT","Type of entry data layout");
+    define2("C_ONE_COLUMN","One Column");
+    define2("C_TWO_COLUMN","Two Column");
+    define2("C_WIDTH_QUESTION_COLUMN","Width of question column");
+    define2("C_MARGIN_SECOND_ROWS","margin for second rows");
+    define2("C_MARGIN_SECOND_ROWS_YES","YES");
+    define2("C_MARGIN_SECOND_ROWS_NO","NO");
+    define2("C_RETURN","Return");
+    define2("C_TABLE_INFORMATION","Table Of Information");
+    define2("C_BANK_INFORMATION","Bank Of Information");
+    define2("C_FORMATION_USER","Formation User");
+    define2("C_CREATE_TIME","Create Time");
+    define2("C_MANAGE_OPTIONS","Manage Options");
+    define2("C_MANAGE_DETAILS_TABLES","Manage details tables");
     //-----------------------------
     //MyTimeReport.php ALI NOORI
-    define("C_YEAR","Year");
-    define("C_MONTH","Month");
-    define("C_SHOW_REPORT_ACTIONS","Show Report Actions");
-    define("C_USAGE_TIME_REPORT","Usage Time Report");
-    define("C_DATE","Date");
-    define("C_ACTIVITY","Activity");
-//    define("C_TIME","Time");
-    define("C_TOTAL","Total");
-    define("C_RIAL","Rial");
+    define2("C_YEAR","Year");
+    define2("C_MONTH","Month");
+    define2("C_SHOW_REPORT_ACTIONS","Show Report Actions");
+    define2("C_USAGE_TIME_REPORT","Usage Time Report");
+    define2("C_DATE","Date");
+    define2("C_ACTIVITY","Activity");
+//    define2("C_TIME","Time");
+    define2("C_TOTAL","Total");
+    define2("C_RIAL","Rial");
     //-------------------------
     //CompareAllOntos.php ALI NOORI
-    define("C_COMPARE_COVER_HASTAN_NEGAR","Compare Cover Of HastanNegar");
-    define("C_WITH_OTHER_HASTAN_NEGAR","With Other HastanNegar");
-    define("C_NAME_HASTAN_NEGAR","Name Of HastanNegar");
-    define("C_PERCENTAGE_MAPPING_CLASS","Class Mapping Percentage");
-    define("C_PROPERTIES_MAPPING_PERCENTAGE","Properties mapping percentage");
+    define2("C_COMPARE_COVER_HASTAN_NEGAR","Compare Cover Of HastanNegar");
+    define2("C_WITH_OTHER_HASTAN_NEGAR","With Other HastanNegar");
+    define2("C_NAME_HASTAN_NEGAR","Name Of HastanNegar");
+    define2("C_PERCENTAGE_MAPPING_CLASS","Class Mapping Percentage");
+    define2("C_PROPERTIES_MAPPING_PERCENTAGE","Properties mapping percentage");
     //--------------------------
 
     //ShowTermReferHistory.php Hossein Lotfi
-    define("C_SOURCE_NAME","Source Name");
-    define("C_PAGE","Page");
-    define("C_PARAGRAPH","Paragraph");
-    define("C_SUBMIT_NEW_REFERENCE", "Submit New Reference");
-    define("C_REMOVE_REFERENCE", "Remove Reference");
-    define("C_CHANGE_REFERENCE", "Change Reference");
-    define("C_REPLACE_REFERENCE_WITH", "Replace Reference With");
-    define("C_WITH_REFERENCE_TO", "With Reference To");
-    define("C_S", "P");
-    define("C_P", "p");
+    define2("C_SOURCE_NAME","Source Name");
+    define2("C_PAGE","Page");
+    define2("C_PARAGRAPH","Paragraph");
+    define2("C_SUBMIT_NEW_REFERENCE", "Submit New Reference");
+    define2("C_REMOVE_REFERENCE", "Remove Reference");
+    define2("C_CHANGE_REFERENCE", "Change Reference");
+    define2("C_REPLACE_REFERENCE_WITH", "Replace Reference With");
+    define2("C_WITH_REFERENCE_TO", "With Reference To");
+    define2("C_S", "P");
+    define2("C_P", "p");
 
     //SelectStaff.php Hossein Lotfi
-    define("C_LAST_NAME","Last Name");
-    define("C_REMOVE_PREVIOUS_CHOICE","Remove Previous Choice");
-    define("C_FULL_NAME","Full Name");
+    define2("C_LAST_NAME","Last Name");
+    define2("C_REMOVE_PREVIOUS_CHOICE","Remove Previous Choice");
+    define2("C_FULL_NAME","Full Name");
 
     //ManageTermReferences.php Hossein Lotfi
-    define("C_CONTENT","Content");
-    define("C_TERM", "Term");
-    define("C_FREQUENCY","Frequency");
-    define("C_INFORMATION_SAVED","Information Saved");
-    define("C_CREATE_EDIT_TERMS_REFERENCES","Create/Edit Terms References");
-    define("C_FILE2","File");
-    define("C_GET_FILE", "Get File");
-    define("C_TERMS_REFERENCES","Terms References");
-    define("C_TERMS","Terms");
-    define("C_STATISTICAL_ANALYSIS","Statistical Analysis");
+    define2("C_CONTENT","Content");
+    define2("C_TERM", "Term");
+    define2("C_FREQUENCY","Frequency");
+    define2("C_INFORMATION_SAVED","Information Saved");
+    define2("C_CREATE_EDIT_TERMS_REFERENCES","Create/Edit Terms References");
+    define2("C_FILE2","File");
+    define2("C_GET_FILE", "Get File");
+    define2("C_TERMS_REFERENCES","Terms References");
+    define2("C_TERMS","Terms");
+    define2("C_STATISTICAL_ANALYSIS","Statistical Analysis");
 
     //SelectMultiStaff.php By Ehsan Amini
-    define("C_USER_NAME", "User Name");
+    define2("C_USER_NAME", "User Name");
 
     //NewRequest.php By Ehsan Amini
-    define("C_TASK_REQUEST", "Task Request");
-    define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[If request is about changing access to database data click here]");
-    define("C_UNKNOWN_SYSTEM_CODE", "Unknown system code");
-    define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "No response has been determined for this project");
+    define2("C_TASK_REQUEST", "Task Request");
+    define2("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[If request is about changing access to database data click here]");
+    define2("C_UNKNOWN_SYSTEM_CODE", "Unknown system code");
+    define2("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "No response has been determined for this project");
 
     //CreateKartableHeader function in ProjectTasks.class.php By Ehsan Amini
-    define("C_CURRENT_TASKS", "Current Tasks");
-    define("C_PROJECTS_MEMBERS", "Projects Members");
-    define("C_TASKS_IN_NEED_OF_CONTROL", "Tasks in need of control");
-    define("C_DONE_TASKS", "Done Tasks");
-    define("C_CREATED_TASKS", "Created Tasks");
+    define2("C_CURRENT_TASKS", "Current Tasks");
+    define2("C_PROJECTS_MEMBERS", "Projects Members");
+    define2("C_TASKS_IN_NEED_OF_CONTROL", "Tasks in need of control");
+    define2("C_DONE_TASKS", "Done Tasks");
+    define2("C_CREATED_TASKS", "Created Tasks");
 
     //ShowAllPersonStatus.php By Ehsan Amini
-    define("C_PROJECTS_COUNT", "Projects Count");
-    define("C_TIME_PERCENTAGE_ALLOCATED", "Percentage time allocated");
-    define("C_LAST_NAME_AND_FIRST_NAME", "Last Name and First Name");
-    define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "This list shows members of the projects that you are managing or subordinate to the organizational unit under your management");
-    define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","For adjusting percentages you can click on percentage number in each row");
+    define2("C_PROJECTS_COUNT", "Projects Count");
+    define2("C_TIME_PERCENTAGE_ALLOCATED", "Percentage time allocated");
+    define2("C_LAST_NAME_AND_FIRST_NAME", "Last Name and First Name");
+    define2("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "This list shows members of the projects that you are managing or subordinate to the organizational unit under your management");
+    define2("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","For adjusting percentages you can click on percentage number in each row");
 
     //SessionTypes.class.php By Arman Ghoreshi
-    define("C_SESSION_LOCATION","Location");
-    define("C_SESSION_INFO","Session Info");
-    define("C_SESSION_PERMITTED_PERSON","Permitted Users");
-    define("C_SESSION_MEMBERS","Members");
+    define2("C_SESSION_LOCATION","Location");
+    define2("C_SESSION_INFO","Session Info");
+    define2("C_SESSION_PERMITTED_PERSON","Permitted Users");
+    define2("C_SESSION_MEMBERS","Members");
     //NewSessionTypes.php By Arman Ghoreshi
-    define("C_SESSION_CREATE_EDIT","Create/Edit Session Patterns");
-    define("C_START_TIME","Start Time");
-    define("C_END_TIME","End Time");
+    define2("C_SESSION_CREATE_EDIT","Create/Edit Session Patterns");
+    define2("C_START_TIME","Start Time");
+    define2("C_END_TIME","End Time");
     //managePersonPermittedSessionType.php By Arman Ghoreshi
-    define("C_SESSION_PERMITTED_CREATE_EDIT","Create/Edit Permitted Person");
-    define("C_SESSION_PERMITTED_LIST","Permitted Users for Sessions");
-    define("C_PERMISSIONS","Permissions");
+    define2("C_SESSION_PERMITTED_CREATE_EDIT","Create/Edit Permitted Person");
+    define2("C_SESSION_PERMITTED_LIST","Permitted Users for Sessions");
+    define2("C_PERMISSIONS","Permissions");
     //ManageSessionTypeMembers.php By Arman Ghoreshi
-    define("C_ROLE","Role");
-    define("C_SESSIOM_MEMBERS","Session Members");
-   // define("C_ARE_YOU_SURE","Are You Sure?");
-    define("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
-    define("C_PERSONEL","Employees");
-    define("C_OTHER","Others");
-    define("C_MEMBERSHIP_TYPE","Membership Type");
-    define("C_MEMBER_PERSONAL_ID","Members Personal ID");
-    define("C_SESSION_APPROVAL","The meeting is subject to the approval of this user");
-    define("C_SIGN_MINUTES","PERMISSION TO SIGN MINUTES");
-    define("C_ELECTRONIC_SIGN","An electronic signature is required to confirm the minutes");
-    define("C_YES","Yes");
-    define("C_NO","No");
+    define2("C_ROLE","Role");
+    define2("C_SESSIOM_MEMBERS","Session Members");
+   // define2("C_ARE_YOU_SURE","Are You Sure?");
+    define2("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
+    define2("C_PERSONEL","Employees");
+    define2("C_OTHER","Others");
+    define2("C_MEMBERSHIP_TYPE","Membership Type");
+    define2("C_MEMBER_PERSONAL_ID","Members Personal ID");
+    define2("C_SESSION_APPROVAL","The meeting is subject to the approval of this user");
+    define2("C_SIGN_MINUTES","PERMISSION TO SIGN MINUTES");
+    define2("C_ELECTRONIC_SIGN","An electronic signature is required to confirm the minutes");
+    define2("C_YES","Yes");
+    define2("C_NO","No");
 
     //ManageFacilityPages.php By Naghme Mohammadifar
-    define("C_SAVED_INFO","New information saved!");
-    define("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE", "Create/edit a page related to the part");
-    define("C_TITLE_PAGE","Page");
-    define("C_CLOSE", "Close");
-    define("C_RELATED_PAGES_TO_THIS_FEATURE","Related pages to the part");
-    define("C_CONFIRM_TO_DELETE","Are you sure to delete?");
-
+    define2("C_SAVED_INFO","New information saved!");
+    define2("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE", "Create/edit a page related to the part");
+    define2("C_TITLE_PAGE","Page");
+    define2("C_CLOSE", "Close");
+    define2("C_RELATED_PAGES_TO_THIS_FEATURE","Related pages to the part");
+    define2("C_CONFIRM_TO_DELETE","Are you sure to delete?");
+    define2("C_PAGE_PLACE_HOLDER","Your page name");
     //NewResearchProjectComments.php Alireza Forghani Toosi
-    define("C_SEASON", "Season");
-    define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
-    define("C_COMMENT_CHANGE_HISTORY", "Change history of this comment");
+    define2("C_SEASON", "Season");
+    define2("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "Create/Edit research project comment");
+    define2("C_COMMENT_CHANGE_HISTORY", "Change history of this comment");
 
     //ResearchProject.class.php Alireza Forghani Toosi
-    define("C_SEASONS", "Seasons");
-    define("C_REFERENCE_TYPES", "Reference types");
-    define("C_REFERENCES", "References");
-    define("C_NOTES", "Notes");
-    define("C_OUTPUTS", "Outputs");
-    define("C_PRIVILEGES", "Privileges");
-    define("C_MAIN_PROPERTIES", "Main properties");
+    define2("C_SEASONS", "Seasons");
+    define2("C_REFERENCE_TYPES", "Reference types");
+    define2("C_REFERENCES", "References");
+    define2("C_NOTES", "Notes");
+    define2("C_OUTPUTS", "Outputs");
+    define2("C_PRIVILEGES", "Privileges");
+    define2("C_MAIN_PROPERTIES", "Main properties");
 
     //NewProjectComments.php Alireza Forghani Toosi
-    define("C_DATA_SAVED", "Information saved");
+    define2("C_DATA_SAVED", "Information saved");
 
     //DesktopManager.php Alireza Forghani Toosi
-    define("C_MESSAGES", "Messages");
-    define("C_RECEIVED_LETTERS", "Received letters");
-    define("C_ATTACHMENTS", "Attachments");
+    define2("C_MESSAGES", "Messages");
+    define2("C_RECEIVED_LETTERS", "Received letters");
+    define2("C_ATTACHMENTS", "Attachments");
 
     //Managemessages.php By kouroshAtaei
 
-    define("CREATE_EDIT","create / edit ");
-    define("C_MESSAGE" , "Message");
-    define("AT_FILE" ,"attached file");
-    define("REC_FILE" , "receive file");
-    define("PIC" ,"picture");
-    define("START_TIME" ,"begin");
-    define("END_TIME", "end" );
-    define("SAVE_M" , "save");
-    define("NEW_M" ,"new");
-    define("SEARCH_M" ,"search");
-    define("MESSAGES_M" , "messages");
-    define("CREATOR_M" , "creator");
-    define("CREATE_TIM_M" , "creat time");
-    define("ROW_M" , "row");
-    define("EDIT_M" , "edit");
-    define("DELETE_M" ,"delete");
-    define("ARE_YOU_SURE" , "Are you sure ?");
-    define("ERROR_SEND" ,"Error submitting file");
-    define("INFO_SAVED" , "Information saved");
+    define2("CREATE_EDIT","create / edit ");
+    define2("C_MESSAGE" , "Message");
+    define2("AT_FILE" ,"attached file");
+    define2("REC_FILE" , "receive file");
+    define2("PIC" ,"picture");
+    define2("START_TIME" ,"begin");
+    define2("END_TIME", "end" );
+    define2("SAVE_M" , "save");
+    define2("NEW_M" ,"new");
+    define2("SEARCH_M" ,"search");
+    define2("MESSAGES_M" , "messages");
+    define2("CREATOR_M" , "creator");
+    define2("CREATE_TIM_M" , "creat time");
+    define2("ROW_M" , "row");
+    define2("EDIT_M" , "edit");
+    define2("DELETE_M" ,"delete");
+    define2("ARE_YOU_SURE" , "Are you sure ?");
+    define2("ERROR_SEND" ,"Error submitting file");
+    define2("INFO_SAVED" , "Information saved");
 
     //newResearchProjectRefrences.php By kouroshAtaei
 
-    define("CREAT_AND_EDIT_RES_RESEARCH" , "Create / edit a research work source");
-    define("SEARCH_ENG" , "Search Engine");
-    define("TAGS_WORDS" ,"Search Keywords");
-    define("LANG_N" ,"Language");
-    define("EN_LAN_N", "English");
-    define("FA_LAN_N", "Persian");
-    define("TITLE_N" ,"title");
-    define("WRITERS_N", "writers");
-    define("YEARS_N", "year");
-    define("SUM_N", "Abstract");
-    define("STATE_OF_STUDY", "Study status");
-    define("ALREADY_STUDY", "studied");
-    define("ALREADY_NOT_STUDY", "not studied");
-    define("STUDING", "Studying");
-    define("IMPORTNT", "Importance");
-    define("CAT_N", "Category");
-    define("ALL_COM", "Overview");
-    define("FILE_N" , "file");
-    define("NOTES_N", "notes");
-    define("CLOSE_N" , "close");
+    define2("CREAT_AND_EDIT_RES_RESEARCH" , "Create / edit a research work source");
+    define2("SEARCH_ENG" , "Search Engine");
+    define2("TAGS_WORDS" ,"Search Keywords");
+    define2("LANG_N" ,"Language");
+    define2("EN_LAN_N", "English");
+    define2("FA_LAN_N", "Persian");
+    define2("TITLE_N" ,"title");
+    define2("WRITERS_N", "writers");
+    define2("YEARS_N", "year");
+    define2("SUM_N", "Abstract");
+    define2("STATE_OF_STUDY", "Study status");
+    define2("ALREADY_STUDY", "studied");
+    define2("ALREADY_NOT_STUDY", "not studied");
+    define2("STUDING", "Studying");
+    define2("IMPORTNT", "Importance");
+    define2("CAT_N", "Category");
+    define2("ALL_COM", "Overview");
+    define2("FILE_N" , "file");
+    define2("NOTES_N", "notes");
+    define2("CLOSE_N" , "close");
     //manageFieldsDataMapping.php By kouroshAtaei
-    define("SELECTION_M" , "Select the appropriate table and field to determine the value equation table");
-    define("TABLE_M" , "table") ;
-    define("DEF_TABLE", "Define the equation table");
-    define("VAL_FIELD_M","Equalized values for the corresponding field");
-    define("REAL_VAL" ,"Original value");
-    define("M_VAL_EQ" , "Equivalent value");
-    define("DATABASE" , "database");
-    define("FIELD_M" ,"field");
+    define2("SELECTION_M" , "Select the appropriate table and field to determine the value equation table");
+    define2("TABLE_M" , "table") ;
+    define2("DEF_TABLE", "Define the equation table");
+    define2("VAL_FIELD_M","Equalized values for the corresponding field");
+    define2("REAL_VAL" ,"Original value");
+    define2("M_VAL_EQ" , "Equivalent value");
+    define2("DATABASE" , "database");
+    define2("FIELD_M" ,"field");
 
     // ------------------------ ManageSessionTypes.php By diba aminshahidi -------------------------
-    define("C_PATTERN","Session Pattern");
-    define("C_MEETING_TYPE","Session Type");
-    define("C_SESSIONS","Sessions");
-    define("C_SESSION_NUMBER","Session Number");
-    define("C_SESSION_TITLE","Session Title");
-    define("C_DURATION","Duration");
-    define("C_SESSION_STATUS","Session Status");
-    define("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
-    define("C_ENACTMENT_KEYWORD","Keywords in Enactments");
-    define("C_APPROVE","Approve");
-    define("C_REJECTED","Rejected because");
+    define2("C_PATTERN","Session Pattern");
+    define2("C_MEETING_TYPE","Session Type");
+    define2("C_SESSIONS","Sessions");
+    define2("C_SESSION_NUMBER","Session Number");
+    define2("C_SESSION_TITLE","Session Title");
+    define2("C_DURATION","Duration");
+    define2("C_SESSION_STATUS","Session Status");
+    define2("C_CREATE","Create");
+    define2("C_INSTRUCTION_KEYWORD","Keywords in Instructions");
+    define2("C_ENACTMENT_KEYWORD","Keywords in Enactments");
+    define2("C_APPROVE","Approve");
+    define2("C_REJECTED","Rejected because");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
-
-    define("C_IMPORTANT_DATES", "Important dates");
+    define2("C_CREATE_EDIT_IMPORTANT_DATE", "Create/Edit important date");
+    define2("C_DATE", "Date");
+    define2("C_DESCRIPTION", "Description");
+    define2("C_SAVE", "Save");
+    define2("C_NEW", "New");
+    define2("C_ROW", "Row");
+    define2("C_EDIT", "Edit");
+    define2("C_IMPORTANT_DATES", "Important dates");
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
-    define("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
-    define("C_LABEL" , "Label");
-    define("C_LABELS" , "Labels");
+    define2("C_CREATE_EDIT_LABELS" , "Create/Edit the property labels");
+    define2("C_LABEL" , "Label");
+    define2("C_LABELS" , "Labels");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
-    define("C_ACTIONS_TYPES", "Action types");
-    define("C_ACTIONS_COUNT", "Action count");
-    define("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
+    define2("C_CREATE_EDIT_ACTIONS", "Create/Edit actions");
+    define2("C_TITLE", "Title");
+    define2("C_SAVE", "Save");
+    define2("C_NEW", "New");
+    define2("C_ACTIONS_TYPES", "Action types");
+    define2("C_ACTIONS_COUNT", "Action count");
+    define2("C_DELETE", "Delete");
+    define2("C_DONT_HAVE_PERMISSION", "You don't have permission to view this record");
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "Create/Edit users assgined to activity");
-    define("C_ASSIGNEE_DESCRIPTION", "Assignee description");
-    define("C_PARTICIPATION_PERCENTAGE", "Participation percentage");
-    define("C_ECECUTOR", "Executor");
-    define("C_VIEWER", "Viewer");
-    define("C_SEND_LETTER_FROM_ADVERTISER", "Send letter from advvertisor to selected person");
-    define("C_DONT_HAVE_VALUE", "A person don't have any value");
-    define("C_USERS_ASSIGNED_TO_ACTIVITY", "Users assigned to activity");
+    define2("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "Create/Edit users assgined to activity");
+    define2("C_ASSIGNEE_DESCRIPTION", "Assignee description");
+    define2("C_PARTICIPATION_PERCENTAGE", "Participation percentage");
+    define2("C_ECECUTOR", "Executor");
+    define2("C_VIEWER", "Viewer");
+    define2("C_SEND_LETTER_FROM_ADVERTISER", "Send letter from advvertisor to selected person");
+    define2("C_DONT_HAVE_VALUE", "A person don't have any value");
+    define2("C_USERS_ASSIGNED_TO_ACTIVITY", "Users assigned to activity");
 
     //Manageontologies.php by Naghme Mohammadifar
-    define("C_ONTOLOGY_FEATURES" , "Ontology features");
-    define("C_ONTOLOGY_CLASSES" , "Ontology classes");
-    define("C_DATA_FEATURES","Data features");
-    define("C_THING_FEATURES","Things features");
-    define("C_CREATE_EDIT_ONTOLOGY" , "Create/Edit ontology");
-    define("C_CLASSES","Classes");
-    define("C_TREE_STRUCTURE","Tree structure");
-    define("C_GET_OWL_CODE_FROM_STRUCTURE","Get owl code from structure");
-    define("C_GET_ER_CODE","Get ER code ");
-    define("C_CLASS_STATISTICAL_ANALYSIS","Classes statistical analysis");
-    define("C_INTERNET_PATH","Internet path");
-    define("C_GETTING_FILE","Receive file");
-    define("C_TRANSMIT_FILE_TO_DB","Transmit file to database");
-    define("C_ONTOLOGY","Ontology");
-    define("C_FEATURES","Features");
-    define("C_EXPERT_JUDGES","Expert judges");
-    define("C_PRINT","Print");
-    define("C_PRINT_WITH_MERGE_SOURCES","Print- with merge sources");
-    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","Print- with vocab extraction sources");
-    define("C_PRINT_WITH_DATABASE_SOURCES","Print- with database sources");
-    define("C_DICTIONARY","Dictionary");
-    define("C_FREQUENCY_ANALYSIS","Frequency analysis");
-    define("C_DISTANCE_ANALYSIS","Distance analysis levenshtein");
-    define("C_STATISTICAL_EVALUATION","Statistical evaluation");
-    define("C_REVERSE_ENGINEERING","Reverse engineering RDB");
-    define("C_ANALYSIS_WITH_WORDNET","Analysis with Wordnet");
-    define("C_CONTENT_COMPARISON","Content comparison");
-    define("C_MERGED_PROJECTS","Merged projects");
-    define("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
-    define("C_ONTOLOGIES_LIST","Ontologies lists");
-    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","Classes in terms of referral rates - more that 2 refers");
-    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","Properties in order of reference - more than two references");
-    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","Entities that were once referred to as a class and once as a property");
-    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","Classes referred to only once (not referred to as attributes)");
-    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","Properties that are only mentioned once (not referred to as class)");
-    define("C_ONTOLOGY_TITLE","Ontology title");
-    define("C_ONTOLOGY_TYPE","Ontology type");
-    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES"," percentage of similarity between class titles that do not have the same Persian tag and are related to different masters");
-    define("C_CHECK_TITLES_WITH_OVER","Check titles with over ");
-    define("C_CHECK_TAGS_WITH_OVER","Check tags with over ");
-    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," percentage of similarity between Persian labels for classes that are not identical in title and for different typographers");
-    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS"," percentage of similarity between different titles of attributes that do not match the same Persian tag and are related to different typographers");
-    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," percentage of Similarity among Farsi Labels for Properties That Do Not Have the Same Title and Are Different");
-    define("C_CLASS_TITLE","Class title");
-    define("C_PROPERTY_TITLE","Property title");
-    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Classes with same name acording to wordnet");
-    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Properties with same name acording to wordnet");
-    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","Percentage of each ontology coverage other ontology classes");
-    define("C_AVERAGE","Average");
-    define("C_CLASS_COUNT","Class count");
-    define("C_PROPERTY_COUNT","Property count");
-    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","Average of coverage other ontologies (classes)");
-    define("C_REPOSITORY","Repository");
-    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Percentage of each ontology coverage other ontology properties");
-    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Average of coverage other ontologies (properties)");
-    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","Percentage of each ontology coverage document terms ");
-    define("C_TOTAL_ELEMENTS","Total elements");
-    define("C_COVERAGE_PERCENTAGE","Coverage Percentage");
+    define2("C_ONTOLOGY_FEATURES" , "Ontology features");
+    define2("C_ONTOLOGY_CLASSES" , "Ontology classes");
+    define2("C_DATA_FEATURES","Data features");
+    define2("C_THING_FEATURES","Things features");
+    define2("C_CREATE_EDIT_ONTOLOGY" , "Create/Edit ontology");
+    define2("C_CLASSES","Classes");
+    define2("C_TREE_STRUCTURE","Tree structure");
+    define2("C_GET_OWL_CODE_FROM_STRUCTURE","Get owl code from structure");
+    define2("C_GET_ER_CODE","Get ER code ");
+    define2("C_CLASS_STATISTICAL_ANALYSIS","Classes statistical analysis");
+    define2("C_INTERNET_PATH","Internet path");
+    define2("C_GETTING_FILE","Receive file");
+    define2("C_TRANSMIT_FILE_TO_DB","Transmit file to database");
+    define2("C_ONTOLOGY","Ontology");
+    define2("C_FEATURES","Features");
+    define2("C_EXPERT_JUDGES","Expert judges");
+    define2("C_PRINT","Print");
+    define2("C_PRINT_WITH_MERGE_SOURCES","Print- with merge sources");
+    define2("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","Print- with vocab extraction sources");
+    define2("C_PRINT_WITH_DATABASE_SOURCES","Print- with database sources");
+    define2("C_DICTIONARY","Dictionary");
+    define2("C_FREQUENCY_ANALYSIS","Frequency analysis");
+    define2("C_DISTANCE_ANALYSIS","Distance analysis levenshtein");
+    define2("C_STATISTICAL_EVALUATION","Statistical evaluation");
+    define2("C_REVERSE_ENGINEERING","Reverse engineering RDB");
+    define2("C_ANALYSIS_WITH_WORDNET","Analysis with Wordnet");
+    define2("C_CONTENT_COMPARISON","Content comparison");
+    define2("C_MERGED_PROJECTS","Merged projects");
+    define2("C_ALERT_TO_CLOSE","By doing this all the things will be deleted, are you sure?");
+    define2("C_ONTOLOGIES_LIST","Ontologies lists");
+    define2("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","Classes in terms of referral rates - more that 2 refers");
+    define2("C_PROPERTIES_IN_ORDER_OF_REFERENCE","Properties in order of reference - more than two references");
+    define2("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","Entities that were once referred to as a class and once as a property");
+    define2("C_CLASSES_REFERRED_TO_ONLY_ONCE","Classes referred to only once (not referred to as attributes)");
+    define2("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","Properties that are only mentioned once (not referred to as class)");
+    define2("C_ONTOLOGY_TITLE","Ontology title");
+    define2("C_ONTOLOGY_TYPE","Ontology type");
+    define2("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES"," percentage of similarity between class titles that do not have the same Persian tag and are related to different masters");
+    define2("C_CHECK_TITLES_WITH_OVER","Check titles with over ");
+    define2("C_CHECK_TAGS_WITH_OVER","Check tags with over ");
+    define2("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," percentage of similarity between Persian labels for classes that are not identical in title and for different typographers");
+    define2("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS"," percentage of similarity between different titles of attributes that do not match the same Persian tag and are related to different typographers");
+    define2("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," percentage of Similarity among Farsi Labels for Properties That Do Not Have the Same Title and Are Different");
+    define2("C_CLASS_TITLE","Class title");
+    define2("C_PROPERTY_TITLE","Property title");
+    define2("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Classes with same name acording to wordnet");
+    define2("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","Properties with same name acording to wordnet");
+    define2("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","Percentage of each ontology coverage other ontology classes");
+    define2("C_AVERAGE","Average");
+    define2("C_CLASS_COUNT","Class count");
+    define2("C_PROPERTY_COUNT","Property count");
+    define2("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","Average of coverage other ontologies (classes)");
+    define2("C_REPOSITORY","Repository");
+    define2("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Percentage of each ontology coverage other ontology properties");
+    define2("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","Average of coverage other ontologies (properties)");
+    define2("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","Percentage of each ontology coverage document terms ");
+    define2("C_TOTAL_ELEMENTS","Total elements");
+    define2("C_COVERAGE_PERCENTAGE","Coverage Percentage");
 
 
     //TasksForControl.php -- by navidbeta
-    define("C_RELATED_PROJECT" , "Related Project");
-    define("C_PRIORITY" , "Priority");
-    define("C_T_TITLE" , "Title");
-    define("C_CREATOR" , "Creator");
-    define("C_CREATED_TIME" , "Created Time");
-    define("C_T_AREUSURE" , "Are You Sure?");
+    define2("C_RELATED_PROJECT" , "Related Project");
+    define2("C_PRIORITY" , "Priority");
+    define2("C_T_TITLE" , "Title");
+    define2("C_CREATOR" , "Creator");
+    define2("C_CREATED_TIME" , "Created Time");
+    define2("C_T_AREUSURE" , "Are You Sure?");
 
     //ManageUserFacilities.php -- by navidbeta
-    define("C_ADD_USER_FACILITY" , "Add User Facility");
-    define("C_T_USER" , "User");
-    define("C_PRIVILEGED_USERS" , "Privileged Users");
-    define("C_POSSIBILITY" , "Possibility");
+    define2("C_ADD_USER_FACILITY" , "Add User Facility");
+    define2("C_T_USER" , "User");
+    define2("C_PRIVILEGED_USERS" , "Privileged Users");
+    define2("C_POSSIBILITY" , "Possibility");
 
     //ManageUserPermissions.php -- by navidbeta
-    define("C_DATA_STORED" , "Information Stored Successfully");
-    define("C_USER_ACCESSES" , "User Accesses");
-    define("C_MENUS" , "Menus");
-    define("C_T_RETURN" , "Return");
+    define2("C_DATA_STORED" , "Information Stored Successfully");
+    define2("C_USER_ACCESSES" , "User Accesses");
+    define2("C_MENUS" , "Menus");
+    define2("C_T_RETURN" , "Return");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "Documentation of Databases");
-    define("C_DATABASES", "Databases");
-    define("C_SERVER", "Server");
-    define("C_TABLES" , "Tables");
-    define("C_DEADLINE" , "Deadline");
+    define2("C_DATABASE_DOC" , "Documentation of Databases");
+    define2("C_DATABASES", "Databases");
+    define2("C_SERVER", "Server");
+    define2("C_TABLES" , "Tables");
+    define2("C_DEADLINE" , "Deadline");
 	
 	//EN fo MangePersons.php
-    define("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
-    define("C_MP_EMAIL", "Email");
-    define("C_MP_MOBILE", "Mobile");
-    define("C_MP_USERNAME", "Username");
-    define("C_MP_PEOPLE_LIST", "User lists");
-    define("C_MP_IMAGE", "Image");
-    define("C_MP_PAYMENTS", "Payments");
+    define2("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
+    define2("C_MP_EMAIL", "Email");
+    define2("C_MP_MOBILE", "Mobile");
+    define2("C_MP_USERNAME", "Username");
+    define2("C_MP_PEOPLE_LIST", "User lists");
+    define2("C_MP_IMAGE", "Image");
+    define2("C_MP_PAYMENTS", "Payments");
 	
 	//ManageQuestionnaires.php Hoormazd Ranjbar
-    define("C_MQ_FILTER", "Filter Title");
-    define("C_MQ_CODE", "Code");
-    define("C_MQ_MAIN_FORM", "Main Form");
-    define("C_MQ_MANAGERS", "Managers");
-    define("C_MQ_SETTINGS", "Settings");
-    define("C_MQ_CREATOR", "Creator");
-    define("C_MQ_CREATE_DATE", "Create Date");
-    define("C_MQ_FILL", "Filled");
-    define("C_MQ_LAST_ACCEPT", "Last Accept");
-    define("C_MQ_MAKE", "Make");
+    define2("C_MQ_FILTER", "Filter Title");
+    define2("C_MQ_CODE", "Code");
+    define2("C_MQ_MAIN_FORM", "Main Form");
+    define2("C_MQ_MANAGERS", "Managers");
+    define2("C_MQ_SETTINGS", "Settings");
+    define2("C_MQ_CREATOR", "Creator");
+    define2("C_MQ_CREATE_DATE", "Create Date");
+    define2("C_MQ_FILL", "Filled");
+    define2("C_MQ_LAST_ACCEPT", "Last Accept");
+    define2("C_MQ_MAKE", "Make");
 	
 	//MyActions.php Hoormazd Ranjbar
     //EN
-    define("C_MYACTIONS", "My Actions");
-    define("C_MA_ACTION", "Action");
-    define("C_MA_DONE_DATE", "Date");
-    define("C_MA_TOTAL_FIND", "Total Found items");
-    //Analyze Ontology By Amir Karami
-    define("C_Class", "Class");
-    define("C_Property", "Property");
-    define("C_SinCnnP","Search In Classes Name and Properties");
-    define("C_SinLabels","Search In Labels");
+    define2("C_MYACTIONS", "My Actions");
+    define2("C_MA_ACTION", "Action");
+    define2("C_MA_DONE_DATE", "Date");
+    define2("C_MA_TOTAL_FIND", "Total Found items");
+
+
+    //Manageterms by Naghme Mohammadifar
+    define2("C_STRUCTURAL_SIMILARITY","Structural similarity");
+    define2("C_PEERS_IN_THE_SEMANTIC_NETWORK","Peers in the semantic network");
+    define2("C_MORE_SPECIFIC_MEANING_IN_THE_SEMANTIC_GRID","More specific meaning in the semantic grid");
+    define2("C_MORE_GENERAL_MEANING_IN_THE_SEMANTIC_GRID","More general meaning in the semantic grid");
+    define2("C_PERIODICITY","periodicity");
+    define2("C_WORD","Word ");
+    define2("C_RECORDER","Recorder ");
+    define2("C_REFERENCES_IN_WORDS","References");
+    define2("C_WORD_CODE","Code");
+    define2("C_SIMILARITY_TYPE","Similarity type");
+    define2("C_RESOURCES_AND_THE_NUMBER_OF_REPETITIONS","Resources and the number of repetitions");
+    define2("C_REPLACEMENT","Replacement");
+    define2("C_REPLACE_THE_SELECTED_WORD_WITH_THE_WORD_IN_THIS_ROW","Replace the selected word with the word in this row");
+    define2("C_CREATE_EDIT_TERMS","Create / edit terms");
+    define2("C_NOTE","Note");
+    define2("C_MERGE_SUGGESTIONS","Merge suggestions");
+    define2("C_CREATION_TIME","Creation time");
+    define2("C_ONTOLOGY_ELEMENT","Ontology element");
+    define2("C_RECORD","Record");
+    define2("C_SUMMARY_OF_INFORMATION","Summary of information");
+    define2("C_MAPPING_OF_IDIOMS_AND_ELEMENTS_OF_HISTOGRAM","Mapping of idioms and elements of ontology");
+
+
+
+
+    ///// Mahdi Ghayour /////
+    define2("C_TASK", "Task");
+    define2("C_TASK_TYPE", "Task type");
+    define2("C_DOCUMENT", "Document");
+    define2("C_ACTION", "Action");
+    define2("C_PRIORITY_NORMAL", "Normal");
+    define2("C_PRIORITY_LOW", "Low");
+    define2("C_PRIORITY_HIGH", "High");
+    define2("C_PRIORITY_CRITICAL", "Critical");
+
+    define2("C_STATUS", "Status");
+    define2('C_STATUS_NOT_START', 'not started');
+    define2('C_STATUS_PROGRESSING', 'progressing');
+    define2('C_STATUS_DONE', 'done');
+    define2('C_STATUS_SUSPENDED', 'suspended');
+    define2('C_STATUS_REPLYED', 'replyed');
+    
+    define2("C_FORMPART_NEWEDIT", "Create/Edit form parts");
+    define2("C_FORMPART_NAME", "Name");
+    define2("C_FORMPART_ORDER", "Order");
+    define2("C_FORMPART_TOPTEXT", "Top text");
+    define2("C_FORMPART_BOTTOMTEXT", "Bottom text");
+    define2("C_FORMPART_TITLE", "Form parts");
+    //// End of Mahdi Ghayour //////
+
+    //MyRequests.php by Sara Bolouri
+    define2("C_RELATED_PROJECT","Related Project");
+    define2("C_YOUR_REQUESTS_LIST" , "Your request list");
+    define2("C_STATUS" , "Status");
+    define2("C_OTHER_SPECIFICATIONS" , "Other specification");
+    define2("C_CREATE_TIME1" , "Create time");
+
+    //ManagePayments.php by Sara Bolouri
+    define2("C_CREATING_EDITING_PAYMENT_TO" , "Create/Edit payment to");
+    define2("C_AMOUNT" , "Amount");
+    define2("C_PATMENT_TYPE" , "Payment type");
+    define2("C_CHEQUE" , "Cheque");
+    define2("C_CASH" , "Cash");
+    define2("C_DEPOSIT" , "Deposit");
+    define2("C_DESCRIPTION1" , "Description");
+    define2("C_CHOOSE_FILE" , "Choose file");
+    define2("C_PAYMENTS_TO" , "Payments to");
+    define2("C_FILE1" , "File");
+
+    //ShowProjectActivities.php by Sara Bolouri
+    define2("C_MAIN_SPECIFICATIONS" , "Main Specification");
+    define2("C_MEMBERS" , "Members");
+    define2("C_DOCUMENTS" , "Documents");
+    define2("C_DOCUMENT_TYPES" , "Document types");
+    define2("C_ACTION_TYPES" , "Action types");
+    define2("C_TASK_TYPES" , "Task types");
+    define2("C_GROUP_OF_TASKS" , "Group of tasks");
+    define2("C_HISTORY" , "History");
+    define2("C_ACTIVITIES" , "Activities");
+    define2("C_APPLIER" , "Applier");
+    define2("C_RELATED_ROLE" , "Related role");
+    define2("C-CODE" , "Code");
+    define2("C_ACTION_TYPE" , "Action type");
+    define2("C_RELATED_SECTION" , "Related section");
+    define2("C_OPERATION_DESCRIPTION" , "Operation description");
+    define2("C_MEMBER" , "Member");
+    define2("C_IMPORTANT_DATE", "Important date");
+    define2("C_DOCUMENT", "Document");
+    define2("C_DOCUMENT_TYPE" , "Document type");
+    define2("C_ACTION_TYPE2" , "Action type");
+    define2("C_TASK_TYPE" , "task type");
+    define2("C_ADD" , "Add");
+    define2("C_UPDATE" , "Update");
+    define2("C_VIEW" , "View");
+    define2("C_CHOOSE_APPLIER" , "Choose applier");
+
+
+//    ControlForms.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "From Type:");
+    define2("C_SEARCH_SELECTED_FORM" , "Search Appropriate From");
+    define2("C_CREATOR_NAME" , "Creator Name");
+    define2("C_CREATOR" , "Creator: ");
+    define2("C_SENDER" , "Sender: ");
+    define2("C_FORM_NAME_2" , "Form Name: ");
+    define2("C_LAST_SENDER" , "Last Sender");
+    define2("C_SEND_TIME" , "Sending Time");
+    define2("C_CURRENT_STEP" , "Current Step");
+    define2("C_CURRENT_STEP_NAME" , "Current Step Name: ");
+    define2("C_NEW_STEP" , "New Step: ");
+
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "Help For Creating Costume Print Pages");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "Parameter Which Will Be Sent To Your Page Is RecID.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "When You Want Printing Has Specific Format Create Its Own Page And Put It On Server And Add Page Address To Costume Print Page");
+    define2("C_HELP_DEFAULT_ICON" , "In Default Mode By Clicking On Each Record A Table Will Be Shown");
+    define2("C_FORM_MAKER_SEND" , "Form Generator System Add An Icon As Print Icon By Default");
+    define2("C_PAGE_TO_PRINT_FROM" , "Printing Specific Page Is A PHP Page Which Sends Record code To It");
+
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "Row");
+    define2("C_PROJECT_GROUP", "Project group");
+    define2("C_EDIT", "Edit");
+    define2("C_TITLE","Title");
+    define2("C_PRIORITY" , "Priority");
+    define2("C_STATUS", "Status");
+    define2("C_REPORT", "Report");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'Actions');
+    define2('C_ACTION_TYPE', 'Action type');
+    define2('C_USAGE_TIME', 'Usage time');
+    define2('C_Progress', 'Progress');
+    define2('C_DESCRIPTION', 'Description');
+    define2("C_ATTACHMENTS", "Attachments");
+    define2("C_CREATOR", "Creator");
+    define2("C_ACTION_DATE", "Action date");
+    define2("C_CREATE", "Create");
+    define2("C_DELETE", "Delete");
+    define2("C_NOT_EXIST", "Not exist");
+    define2("C_ARE_YOU_SURE","Are you sure?");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'Project assigned to');
+    define2('C_PROJECT_NAME', 'Project name');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'Precentage of time allocated');
+    define2("C_RETURN","Return");
+    define2("C_SAVE", "Save");
+    define2("C_DATA_STORED","Data stored");
+
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","Create/Edit Class Labels");
+    define2("C_T_CLASS_LABELS","Class Labels");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","Add Child Classes");
+    define2("C_T_CHILD_CLASSES","Child Classes");
+    define2("C_T_CLASS","Class");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","Create/Edit SubClasses ");
+    define2("C_T_CHILD_CLASS","Child Class");
+    define2("C_T_SUBCLASS","SubClasses");
+
+    //ShowSummary() & ShowTabs in OntologyClasses.class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","Hierarchy Ontology Classes");
+
+
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "Meeting info");
+    define2("C_PRINTSESSIONPAGE_TMFC", "Meeting");
+    define2("C_PRINTSESSIONPAGE_TMTC", "title");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "date");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "number");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "start hour");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "time");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_STSEC", "instructions");
+    define2("C_PRINTSESSIONPAGE_STTIR", "results");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
+    define2("C_PRINTSESSIONPAGE_STFIF", "due time");
+   
+    define2("C_PRINTSESSIONPAGE_TTH", "presents");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "presence");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "delay");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "signiture");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "submition date (sign)");
+    define2("C_PRINTSESSIONPAGE_FTH", "absents");
+    
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "relation");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "sub class");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "in");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "join");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "Join Recommends");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "order");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "class");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "primary key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "relational key");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "merge");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "Items search page instructions");
+
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        Sometimes the huge amount of data in a single field cause slow performance of selecting options for user and also consumes a large area
+        of the page.
+        </br>
+        for such cases Look Up could be a good choice.
+        </br>
+        In this method a link is placed in front of this fields name which by clicking it a new window will be opened
+        and user can search the desired item and select it as the value for corresponding field.
+        <br>
+        this page should be programed by the developer and the address should be placed in the 'search page address'.
+        <br>
+        values which system pass to the new page includes:
+        <li>FormName: name of the form which contains the field.
+        <li>InputName: the hidden element in the form which selected item key should be placed in its value
+        <li>SpanName:  a span which contains the information about the selected item
+        <br>
+        for instance consider values below:
+        <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+        <br>
+        Developer should call a javascript code like below when the he selected the desired item:
+    ");
+    //_________________ END _____________________________
 }
 else
 {
-    define("C_SAVE", "ذخیره");
-    define("C_NEW", "جدید");
-    define("C_REMOVE", "حذف");
-    define("C_NAME", "نام");
-    define("C_CREATE", "ایجاد");
-    define("C_ORDER", "ترتیب");
-    define("C_ROW", "ردیف");
-    define("C_EDIT", "ویرایش");
-    define("C_PERSIAN", "فارسی");
-    define("C_ENGLISH", "انگلیسی");
+    define2("C_SAVE", "ذخیره");
+    define2("C_NEW", "جدید");
+    define2("C_REMOVE", "حذف");
+    define2("C_NAME", "نام");
+    define2("C_CREATE", "ایجاد");
+    define2("C_ORDER", "ترتیب");
+    define2("C_ROW", "ردیف");
+    define2("C_EDIT", "ویرایش");
+    define2("C_PERSIAN", "فارسی");
+    define2("C_ENGLISH", "انگلیسی");
 
-    define("C_DATA_SAVE_SUCCESS", "اطلاعات با موفقیت ذخیره شد");
-//    define("C_ARE_YOU_SURE", "مطمئن هستید؟");
-    define("C_ACTIVE_USER", "کاربر فعال: ");
-    define("C_MAIN_MENU", "منوی اصلی");
-    define("C_FIRST_PAGE", "صفحه اول");
-    define("C_CHANGE_PASSWORD", "تغییر رمز عبور");
-    define("C_MY_ACTIONS", "اقدامات من");
-    define("C_EXIT", "خروج");
+    define2("C_DATA_SAVE_SUCCESS", "اطلاعات با موفقیت ذخیره شد");
+//    define2("C_ARE_YOU_SURE", "مطمئن هستید؟");
+    define2("C_ACTIVE_USER", "کاربر فعال: ");
+    define2("C_MAIN_MENU", "منوی اصلی");
+    define2("C_FIRST_PAGE", "صفحه اول");
+    define2("C_CHANGE_PASSWORD", "تغییر رمز عبور");
+    define2("C_MY_ACTIONS", "اقدامات من");
+    define2("C_EXIT", "خروج");
 
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
-    define("C_TITLE","عنوان");
-    define("C_TEXT","متن");
-    define("C_FILE","محتوای فایل");
-    define("C_TO_USER","به کاربر");
-    define("C_SEND","ارسال");
-    define("C_SELECT","انتخاب");
-    define("C_SEND_MESSAGE","ارسال پیام");
-    define("C_MESSAGE_SENT","پیام ارسال شد");
-    define("C_TITLE_EMPTY","عنوان را وارد کنید");
-    define("C_RECEIVER_EMPTY","گیرنده را مشخص کنید");
-    define("C_AUTO_SAVE","ذخیره سازی خودکار..");
-    define("C_SENDING_FILE_ERROR"," خطا در ارسال فایل");
+    define2("C_TITLE","عنوان");
+    define2("C_TEXT","متن");
+    define2("C_FILE","محتوای فایل");
+    define2("C_TO_USER","به کاربر");
+    define2("C_SEND","ارسال");
+    define2("C_SELECT","انتخاب");
+    define2("C_SEND_MESSAGE","ارسال پیام");
+    define2("C_MESSAGE_SENT","پیام ارسال شد");
+    define2("C_TITLE_EMPTY","عنوان را وارد کنید");
+    define2("C_RECEIVER_EMPTY","گیرنده را مشخص کنید");
+    define2("C_AUTO_SAVE","ذخیره سازی خودکار..");
+    define2("C_SENDING_FILE_ERROR"," خطا در ارسال فایل");
     //----------------------------------
     //MailBox.php needed definitions MOHAMAD_ALI_SAIDI
 
-    define("C_MESSAGES_RECEIVED","نامه های رسیده");
-    define("C_SENDER_NAME","فرستنده");
-    define("C_TIME_SENT","زمان ارسال");
-    define("C_REPLY_DES","شرح ارجاع");
-    define("C_DELETE","حذف");
+    define2("C_MESSAGES_RECEIVED","نامه های رسیده");
+    define2("C_SENDER_NAME","فرستنده");
+    define2("C_TIME_SENT","زمان ارسال");
+    define2("C_REPLY_DES","شرح ارجاع");
+    define2("C_DELETE","حذف");
 
     //----------------------------------
 
     //SentBox.php needed definitions MOHAMAD_ALI_SAIDI
-    define("C_MESSAGES_SENT","نامه های ارسالی");
-    define("C_RECEIVER_NAME","دریافت کننده");
+    define2("C_MESSAGES_SENT","نامه های ارسالی");
+    define2("C_RECEIVER_NAME","دریافت کننده");
     //----------------------------------
 
 
     //SearchMessage.php needed definitions Alireza Imani
-    define("C_SEARCH_MESSAGE","جستجوی نامه");
-    define("C_PART_OF_TEXT","بخشی از متن");
-    define("C_CHOOSE","انتخاب");
-    define("C_FROM_DATE","از تاریخ");
-    define("C_TO_DATE","تا تاریخ");
-    define("C_SEARCH","جستجو");
+    define2("C_SEARCH_MESSAGE","جستجوی نامه");
+    define2("C_PART_OF_TEXT","بخشی از متن");
+    define2("C_CHOOSE","انتخاب");
+    define2("C_FROM_DATE","از تاریخ");
+    define2("C_TO_DATE","تا تاریخ");
+    define2("C_SEARCH","جستجو");
 
     //MetaData2Onto.php needed definitions Alireza Imani
-    define("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","انتخاب شرایط برای مهندسی معکوس");
-    define("C_INTENDED_SCOPES","حوزه‌های مورد نظر");
-    define("C_EDUCATIONAL","آموزشی");
-    define("C_RESEARCH","پژوهشی");
-    define("C_STUDENT_SERVICES","خدمات دانشجویی");
-    define("C_WELFARE","رفاهی");
-    define("C_FINANCIAL","مالی");
-    define("C_SUPPORT","پشتیبانی");
-    define("C_ADMINISTRATIVE","اداری");
-    define("C_RELATED_TO_SYSTEM_OPERATIONS","مرتبط با عملیات سیستمی");
-    define("C_TARGET_ONTOLOGY","هستان نگار مقصد");
-    define("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","حذف پیشنهادهای ادغام قبلی");
-    define("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","حذف عناصر موجود در هستان نگار");
-    define("C_PERFORM_REVERSE_ENGINEERING","انجام مهندسی معکوس");
-    define("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","بررسی پیشنهاد ادغام خصوصیت ها");
-    define("C_REVIEW_INTEGRATION_SUGGESTIONS","بررسی پیشنهادهای تجمیع");
-    define("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","روابط سلسله مراتبی بین کلاس ها");
-    define("C_CONVERSION_DONE","تبدیل انجام شد");
+    define2("C_CHOOSE_CONDITIONS_FOR_REVERSE_ENGINEERING","انتخاب شرایط برای مهندسی معکوس");
+    define2("C_INTENDED_SCOPES","حوزه‌های مورد نظر");
+    define2("C_EDUCATIONAL","آموزشی");
+    define2("C_RESEARCH","پژوهشی");
+    define2("C_STUDENT_SERVICES","خدمات دانشجویی");
+    define2("C_WELFARE","رفاهی");
+    define2("C_FINANCIAL","مالی");
+    define2("C_SUPPORT","پشتیبانی");
+    define2("C_ADMINISTRATIVE","اداری");
+    define2("C_RELATED_TO_SYSTEM_OPERATIONS","مرتبط با عملیات سیستمی");
+    define2("C_TARGET_ONTOLOGY","هستان نگار مقصد");
+    define2("C_REMOVE_PREVIOUS_MERGE_SUGGESTIONS","حذف پیشنهادهای ادغام قبلی");
+    define2("C_REMOVE_EXISTING_ELEMENTS_OF_ONTOLOGY","حذف عناصر موجود در هستان نگار");
+    define2("C_PERFORM_REVERSE_ENGINEERING","انجام مهندسی معکوس");
+    define2("C_REVIEW_PROPERTIES_MERGING_SUGGESTIONS","بررسی پیشنهاد ادغام خصوصیت ها");
+    define2("C_REVIEW_INTEGRATION_SUGGESTIONS","بررسی پیشنهادهای تجمیع");
+    define2("C_HIERARCHICAL_RELATIONSHIPS_BETWEEN_CLASSES","روابط سلسله مراتبی بین کلاس ها");
+    define2("C_CONVERSION_DONE","تبدیل انجام شد");
 
     //ShowTermsManipulationHistory.php needed definitions Alireza Imani
-    define("C_COMPLETED_TASK","عمل انجام شده");
-    define("C_DESCRIPTION","شرح");
-    define("C_SUBJECT","عمل کننده");
-    define("C_TIME","زمان");
-    define("C_EXTRACT_NEW_WORD","استخراج واژه‌ی جدید");
-    define("C_REMOVE_WORD","حذف واژه");
-    define("C_MERGE_TWO_WORDS","ادغام دو واژه");
-    define("C_CHANGE_WORD","تغییر واژه");
-    define("C_REPLACE_WORD","جایگزینی واژه");
-    define("C_TO","به");
-    define("C_BY","با");
+    define2("C_COMPLETED_TASK","عمل انجام شده");
+    define2("C_DESCRIPTION","شرح");
+    define2("C_SUBJECT","عمل کننده");
+    define2("C_TIME","زمان");
+    define2("C_EXTRACT_NEW_WORD","استخراج واژه‌ی جدید");
+    define2("C_REMOVE_WORD","حذف واژه");
+    define2("C_MERGE_TWO_WORDS","ادغام دو واژه");
+    define2("C_CHANGE_WORD","تغییر واژه");
+    define2("C_REPLACE_WORD","جایگزینی واژه");
+    define2("C_TO","به");
+    define2("C_BY","با");
 
     //NewQuestionnare.php ALI NOORI
-    define("C_CREATING_EDITTING_QUESTIONNARE","ایجاد/ویرایش پرسشنامه");
-    define("C_FORM_NAME","عنوان فرم");
-    define("C_FORM_EXPLANATION_UP","توضیحات بالای فرم");
-    define("C_FORM_EXPLANATION_DOWN","توضیحات پایین فرم");
-    define("C_TYPE_SHOW_ENTER_DATA_LAYOUT","نوع نمایش صفحه ورود داده");
-    define("C_ONE_COLUMN","یک ستونی");
-    define("C_TWO_COLUMN","دو ستونی");
-    define("C_WIDTH_QUESTION_COLUMN","عرض ستون سوالات");
-    define("C_MARGIN_SECOND_ROWS","حاشیه برای ردیفهای فرم");
-    define("C_MARGIN_SECOND_ROWS_YES","قرار داده شود");
-    define("C_MARGIN_SECOND_ROWS_NO","قرار داده نشود");
-    define("C_RETURN","بازگشت");
-    define("C_TABLE_INFORMATION","جدول اطلاعاتی مربوطه");
-    define("C_BANK_INFORMATION","بانک اطلاعاتی مربوطه");
-    define("C_FORMATION USER","کاربرسازنده");
-    define("C_CREATE_TIME","تاریخ ایجاد");
-    define("C_MANAGE_OPTIONS","مدریت گزینه ها");
-    define("C_MANAGE_DETAILS_TABLES","مدیریت جداول جزییات");
+    define2("C_CREATING_EDITTING_QUESTIONNARE","ایجاد/ویرایش پرسشنامه");
+    define2("C_FORM_NAME","عنوان فرم");
+    define2("C_FORM_EXPLANATION_UP","توضیحات بالای فرم");
+    define2("C_FORM_EXPLANATION_DOWN","توضیحات پایین فرم");
+    define2("C_TYPE_SHOW_ENTER_DATA_LAYOUT","نوع نمایش صفحه ورود داده");
+    define2("C_ONE_COLUMN","یک ستونی");
+    define2("C_TWO_COLUMN","دو ستونی");
+    define2("C_WIDTH_QUESTION_COLUMN","عرض ستون سوالات");
+    define2("C_MARGIN_SECOND_ROWS","حاشیه برای ردیفهای فرم");
+    define2("C_MARGIN_SECOND_ROWS_YES","قرار داده شود");
+    define2("C_MARGIN_SECOND_ROWS_NO","قرار داده نشود");
+    define2("C_RETURN","بازگشت");
+    define2("C_TABLE_INFORMATION","جدول اطلاعاتی مربوطه");
+    define2("C_BANK_INFORMATION","بانک اطلاعاتی مربوطه");
+    define2("C_FORMATION USER","کاربرسازنده");
+    define2("C_CREATE_TIME","تاریخ ایجاد");
+    define2("C_MANAGE_OPTIONS","مدریت گزینه ها");
+    define2("C_MANAGE_DETAILS_TABLES","مدیریت جداول جزییات");
     //-----------------------------
     //MyTimeReport.php ALI NOORI
-    define("C_YEAR","سال :");
-    define("C_MONTH","ماه :");
-    define("C_SHOW_REPORT_ACTIONS","نمایش گزارش اقدامات کاری");
-    define("C_USAGE_TIME_REPORT","گزارش زمان مصرفی");
-    define("C_DATE","تاریخ");
-    define("C_ACTIVITY","فعالیت");
-//    define("C_TIME","زمان");
-    define("C_TOTAL","مجموع");
-    define("C_RIAL","ریال");
+    define2("C_YEAR","سال :");
+    define2("C_MONTH","ماه :");
+    define2("C_SHOW_REPORT_ACTIONS","نمایش گزارش اقدامات کاری");
+    define2("C_USAGE_TIME_REPORT","گزارش زمان مصرفی");
+    define2("C_DATE","تاریخ");
+    define2("C_ACTIVITY","فعالیت");
+//    define2("C_TIME","زمان");
+    define2("C_TOTAL","مجموع");
+    define2("C_RIAL","ریال");
     //-------------------------
     //CompareAllOntos.php ALI NOORI
-    define("C_COMPARE_COVER_HASTAN_NEGAR","مقایسه همپوشانی هستان نگار");
-    define("C_WITH_OTHER_HASTAN_NEGAR"," با سایر هستان نگاره");
-    define("C_NAME_HASTAN_NEGAR","نام هستان نگار");
-    define("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
-    define("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
+    define2("C_COMPARE_COVER_HASTAN_NEGAR","مقایسه همپوشانی هستان نگار");
+    define2("C_WITH_OTHER_HASTAN_NEGAR"," با سایر هستان نگاره");
+    define2("C_NAME_HASTAN_NEGAR","نام هستان نگار");
+    define2("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
+    define2("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
     //--------------------------
     
     //ShowTermReferHistory.php Hossein Lotfi
-    define("C_SOURCE_NAME","نام منبع");
-    define("C_PAGE","صفحه");
-    define("C_PARAGRAPH","پاراگراف");
-    define("C_SUBMIT_NEW_REFERENCE", "ثبت ارجاع جدید");
-    define("C_REMOVE_REFERENCE", "حذف ارجاع");
-    define("C_CHANGE_REFERENCE", "تغییر ارجاع");
-    define("C_REPLACE_REFERENCE_WITH", "جایگزینی ارجاع به");
-    define("C_WITH_REFERENCE_TO", "با ارجاع به");
-    define("C_S", "ص");
-    define("C_P", "پ");
+    define2("C_SOURCE_NAME","نام منبع");
+    define2("C_PAGE","صفحه");
+    define2("C_PARAGRAPH","پاراگراف");
+    define2("C_SUBMIT_NEW_REFERENCE", "ثبت ارجاع جدید");
+    define2("C_REMOVE_REFERENCE", "حذف ارجاع");
+    define2("C_CHANGE_REFERENCE", "تغییر ارجاع");
+    define2("C_REPLACE_REFERENCE_WITH", "جایگزینی ارجاع به");
+    define2("C_WITH_REFERENCE_TO", "با ارجاع به");
+    define2("C_S", "ص");
+    define2("C_P", "پ");
 
     //SelectStaff.php Hossein Lotfi
-    define("C_LAST_NAME","نام خانوادگی");
-    define("C_REMOVE_PREVIOUS_CHOICE","حذف انتخاب قبلی");
-    define("C_FULL_NAME","نام و نام خانوادگی");
+    define2("C_LAST_NAME","نام خانوادگی");
+    define2("C_REMOVE_PREVIOUS_CHOICE","حذف انتخاب قبلی");
+    define2("C_FULL_NAME","نام و نام خانوادگی");
 
     //ManageTermReferences.php Hossein Lotfi
-    define("C_CONTENT","محتوا");
-    define("C_TERM", "اصطلاح");
-    define("C_FREQUENCY","فراوانی");
-    define("C_INFORMATION_SAVED","اطلاعات ذخیره شد");
-    define("C_CREATE_EDIT_TERMS_REFERENCES","ایجاد/ویرایش منابع اصطلاحات");
-    define("C_FILE2","فایل");
-    define("C_GET_FILE", "دریافت فایل");
-    define("C_TERMS_REFERENCES","منابع اصطلاحات");
-    define("C_TERMS","اصطلاحات");
-    define("C_STATISTICAL_ANALYSIS","تحلیل آماری");
+    define2("C_CONTENT","محتوا");
+    define2("C_TERM", "اصطلاح");
+    define2("C_FREQUENCY","فراوانی");
+    define2("C_INFORMATION_SAVED","اطلاعات ذخیره شد");
+    define2("C_CREATE_EDIT_TERMS_REFERENCES","ایجاد/ویرایش منابع اصطلاحات");
+    define2("C_FILE2","فایل");
+    define2("C_GET_FILE", "دریافت فایل");
+    define2("C_TERMS_REFERENCES","منابع اصطلاحات");
+    define2("C_TERMS","اصطلاحات");
+    define2("C_STATISTICAL_ANALYSIS","تحلیل آماری");
 
     //SelectMultiStaff.php By Ehsan Amini
-    define("C_USER_NAME", "نام کاربر");
+    define2("C_USER_NAME", "نام کاربر");
 
     //NewRequest.php By Ehsan Amini
-    define("C_TASK_REQUEST", "درخواست انجام کار");
-    define("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[در صورتیکه درخواست به منظور ایجاد تغییرات دستی بر روی داده های بانک اطلاعاتی است اینجا را کلیک کنید]");
-    define("C_UNKNOWN_SYSTEM_CODE", "کد سیستم نامشخص است");
-    define("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "برای این پروژه پاسخگویی تعیین نشده است");
+    define2("C_TASK_REQUEST", "درخواست انجام کار");
+    define2("C_IF_REQUEST_IS_ABOUT_CHANGING_ACCESS_TO_DATABASE_DATA_CLICK_HERE", "[در صورتیکه درخواست به منظور ایجاد تغییرات دستی بر روی داده های بانک اطلاعاتی است اینجا را کلیک کنید]");
+    define2("C_UNKNOWN_SYSTEM_CODE", "کد سیستم نامشخص است");
+    define2("C_NO_RESPONSE_HAS_BEEN_DETERMINED_FOR_THIS_PROJECT", "برای این پروژه پاسخگویی تعیین نشده است");
 
     //CreateKartableHeader function in ProjectTasks.class.php By Ehsan Amini
-    define("C_CURRENT_TASKS", "کارهای جاری");
-    define("C_PROJECTS_MEMBERS", "اعضای پروژه ها");
-    define("C_TASKS_IN_NEED_OF_CONTROL", "کارهای نیازمند کنترل");
-    define("C_DONE_TASKS", "کارهای انجام شده");
-    define("C_CREATED_TASKS", "کارهای ایجاد شده");
+    define2("C_CURRENT_TASKS", "کارهای جاری");
+    define2("C_PROJECTS_MEMBERS", "اعضای پروژه ها");
+    define2("C_TASKS_IN_NEED_OF_CONTROL", "کارهای نیازمند کنترل");
+    define2("C_DONE_TASKS", "کارهای انجام شده");
+    define2("C_CREATED_TASKS", "کارهای ایجاد شده");
 
     //ShowAllPersonStatus.php By Ehsan Amini
-    define("C_PROJECTS_COUNT", "تعداد پروژه ها");
-    define("C_TIME_PERCENTAGE_ALLOCATED", "درصد تخصیصی زمان");
-    define("C_LAST_NAME_AND_FIRST_NAME", "نام خانوادگی و نام");
-    define("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "در این لیست اعضای پروژه هایی که شما مدیر آنها هستید و یا در زیرمجموعه واحد سازمانی تحت مدیریت شماست نمایش داده میشوند");
-    define("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","برای تنظیم درصدها میتوانید روی عدددرصد در هر ردیف کلیک نمایید");
+    define2("C_PROJECTS_COUNT", "تعداد پروژه ها");
+    define2("C_TIME_PERCENTAGE_ALLOCATED", "درصد تخصیصی زمان");
+    define2("C_LAST_NAME_AND_FIRST_NAME", "نام خانوادگی و نام");
+    define2("C_THIS_LIST_SHOWS_MEMBERS_OF_THE_PROJECTS_THAT_YOU_ARE_MANAGING_OR_SUBORDINATE_TO_THE_ORGANIZATIONAL_UNIT_UNDER_YOUR_MANAGEMENT", "در این لیست اعضای پروژه هایی که شما مدیر آنها هستید و یا در زیرمجموعه واحد سازمانی تحت مدیریت شماست نمایش داده میشوند");
+    define2("C_FOR_ADJUSTING_PERCENTAGES_YOU_CAN_CLICK_ON_PERCENTAGE_NUMBER_IN_EACH_ROW","برای تنظیم درصدها میتوانید روی عدددرصد در هر ردیف کلیک نمایید");
 
     //SessionTypes.class.php By Arman Ghoreshi
-    define("C_SESSION_LOCATION","محل تشکیل");
-    define("C_SESSION_INFO","مشخصات اصلی");
-    define("C_SESSION_PERMITTED_PERSON","کاربران مجاز");
-    define("C_SESSION_MEMBERS","اعضا");
+    define2("C_SESSION_LOCATION","محل تشکیل");
+    define2("C_SESSION_INFO","مشخصات اصلی");
+    define2("C_SESSION_PERMITTED_PERSON","کاربران مجاز");
+    define2("C_SESSION_MEMBERS","اعضا");
     //NewSessionTypes.php By Arman Ghoreshi
-    define("C_SESSION_CREATE_EDIT","ایجاد/ویرایش الگوهای جلسه");
-    define("C_START_TIME","زمان شروع");
-    define("C_END_TIME","زمان پایان");
+    define2("C_SESSION_CREATE_EDIT","ایجاد/ویرایش الگوهای جلسه");
+    define2("C_START_TIME","زمان شروع");
+    define2("C_END_TIME","زمان پایان");
     //managePersonPermittedSessionType.php By Arman Ghoreshi
-    define("C_SESSION_PERMITTED_CREATE_EDIT","ایجاد/ویرایش کاربران مجاز الگوهای جلسه");
-    define("C_SESSION_PERMITTED_LIST","کاربران مجاز الگوهای جلسات");
-    define("C_PERMISSIONS","دسترسی ها");
+    define2("C_SESSION_PERMITTED_CREATE_EDIT","ایجاد/ویرایش کاربران مجاز الگوهای جلسه");
+    define2("C_SESSION_PERMITTED_LIST","کاربران مجاز الگوهای جلسات");
+    define2("C_PERMISSIONS","دسترسی ها");
     //ManageSessionTypeMembers.php By Arman Ghoreshi
-    define("C_ROLE","نقش");
-    define("C_SESSIOM_MEMBERS","اعضای الگوهای جلسه");
-    define("C_ARE_YOU_SURE","آیا مطمین هستید؟");
-    define("C_SESSION_MEMBERS_CREATE_EDIT","ایجاد/ویرایش اعضای الگوهای جلسه");
-    define("C_PERSONEL","پرسنل");
-    define("C_OTHER","سایر");
-    define("C_MEMBERSHIP_TYPE","نوع عضو");
-    define("C_MEMBER_PERSONAL_ID","کد شخصی عضو");
-    define("C_SESSION_APPROVAL","برگزاری جلسه منوط به تایید این کاربر است");
-    define("C_SIGN_MINUTES","اجازه امضای صورتجلسه");
-    define("C_ELECTRONIC_SIGN","برای قطعی شدن صورتجلسه نیاز به امضای الکترونیکی فرد می باشد");
-    define("C_YES","بلی");
-    define("C_NO","خیر");
+    define2("C_ROLE","نقش");
+    define2("C_SESSIOM_MEMBERS","اعضای الگوهای جلسه");
+    define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+    define2("C_SESSION_MEMBERS_CREATE_EDIT","ایجاد/ویرایش اعضای الگوهای جلسه");
+    define2("C_PERSONEL","پرسنل");
+    define2("C_OTHER","سایر");
+    define2("C_MEMBERSHIP_TYPE","نوع عضو");
+    define2("C_MEMBER_PERSONAL_ID","کد شخصی عضو");
+    define2("C_SESSION_APPROVAL","برگزاری جلسه منوط به تایید این کاربر است");
+    define2("C_SIGN_MINUTES","اجازه امضای صورتجلسه");
+    define2("C_ELECTRONIC_SIGN","برای قطعی شدن صورتجلسه نیاز به امضای الکترونیکی فرد می باشد");
+    define2("C_YES","بلی");
+    define2("C_NO","خیر");
 
 
     //ManageFacilityPages.php By Naghme Mohammadifar
-    define("C_SAVED_INFO","اطلاعات ذخیره شد!");
-    define("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE","ایجاد/ویرایش صفحه مرتبط با امکان");
-    define("C_TITLE_PAGE","صفحه");
-    define("C_CLOSE", "بستن");
-    define("C_CONFIRM_TO_DELETE","آیا مطمئن هستید؟");
-    define("C_RELATED_PAGES_TO_THIS_FEATURE","صفحات مرتبط با این امکان");
+    define2("C_SAVED_INFO","اطلاعات ذخیره شد!");
+    define2("C_CREATE_EDIT_A_PAGE_RELATED_TO_FEATURE","ایجاد/ویرایش صفحه مرتبط با امکان");
+    define2("C_TITLE_PAGE","صفحه");
+    define2("C_CLOSE", "بستن");
+    define2("C_CONFIRM_TO_DELETE","آیا مطمئن هستید؟");
+    define2("C_RELATED_PAGES_TO_THIS_FEATURE","صفحات مرتبط با این امکان");
+    define2("C_PAGE_PLACE_HOLDER","نام صفحه مورد نظر");
 
     //NewResearchProjectComments.php Alireza Forghani Toosi
-    define("C_SEASON", "فصل");
-    define("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
-    define("C_COMMENT_CHANGE_HISTORY", "سابقه ی تغییرات روی این یادداشت");
+    define2("C_SEASON", "فصل");
+    define2("C_CREATE_EDIT_RESEARCH_PROJECT_COMMENT", "ایجاد/ویرایش یادداشت کار پژوهشی");
+    define2("C_COMMENT_CHANGE_HISTORY", "سابقه ی تغییرات روی این یادداشت");
 
     //ResearchProject.class.php Alireza Forghani Toosi
-    define("C_SEASONS", "فصول");
-    define("C_REFERENCE_TYPES", "انواع منابع");
-    define("C_REFERENCES", "منابع");
-    define("C_NOTES", "یادداشتها");
-    define("C_OUTPUTS", "خروجی ها");
-    define("C_PRIVILEGES", "دسترسی ها");
-    define("C_MAIN_PROPERTIES", "مشخصات اصلی");
+    define2("C_SEASONS", "فصول");
+    define2("C_REFERENCE_TYPES", "انواع منابع");
+    define2("C_REFERENCES", "منابع");
+    define2("C_NOTES", "یادداشتها");
+    define2("C_OUTPUTS", "خروجی ها");
+    define2("C_PRIVILEGES", "دسترسی ها");
+    define2("C_MAIN_PROPERTIES", "مشخصات اصلی");
 
     //Managemessages.php By kouroshAtaei
 
-    define("CREATE_EDIT","ایجاد/ویرایش پیام");
-    define("C_MESSAGE" , "متن پیام");
-    define("AT_FILE" ,"فایل پیوست");
-    define("REC_FILE" , "دریاف فایل");
-    define("PIC" ,"تصویر");
-    define("START_TIME" ,"زمان شروع");
-    define("END_TIME", "زمان پایان" );
-    define("SAVE_M" , "ذخیره");
-    define("NEW_M" ,"جدید");
-    define("SEARCH_M" ,"جستجو");
-    define("MESSAGES_M" , "پیام ها");
-    define("CREATOR_M" , "ایجاد کننده ");
-    define("CREATE_TIM_M" , "زمان ایجاد");
-    define("ROW_M" , "ردیف");
-    define("EDIT_M" , "ویرایش");
-    define("DELETE_M" ,"حذف");
-    define("ARE_YOU_SURE" , "آیا مطمئن هستید ؟");
-    define("ERROR_SEND" ,"خطا در ارسال فایل");
-    define("INFO_SAVED" , "اطلاعات ذخیره شد");
+    define2("CREATE_EDIT","ایجاد/ویرایش پیام");
+    define2("C_MESSAGE" , "متن پیام");
+    define2("AT_FILE" ,"فایل پیوست");
+    define2("REC_FILE" , "دریاف فایل");
+    define2("PIC" ,"تصویر");
+    define2("START_TIME" ,"زمان شروع");
+    define2("END_TIME", "زمان پایان" );
+    define2("SAVE_M" , "ذخیره");
+    define2("NEW_M" ,"جدید");
+    define2("SEARCH_M" ,"جستجو");
+    define2("MESSAGES_M" , "پیام ها");
+    define2("CREATOR_M" , "ایجاد کننده ");
+    define2("CREATE_TIM_M" , "زمان ایجاد");
+    define2("ROW_M" , "ردیف");
+    define2("EDIT_M" , "ویرایش");
+    define2("DELETE_M" ,"حذف");
+    define2("ARE_YOU_SURE" , "آیا مطمئن هستید ؟");
+    define2("ERROR_SEND" ,"خطا در ارسال فایل");
+    define2("INFO_SAVED" , "اطلاعات ذخیره شد");
     //newResearchProjectRefrences.php By kouroshAtaei
-    define("CREAT_AND_EDIT_RES_RESEARCH" , "ایجاد/ویرایش منبع کار پژوهشی");
-    define("SEARCH_ENG" , "موتور جستجو");
-    define("TAGS_WORDS" ,"کلمات کلیدی جستجو");
-    define("LANG_N" ,"زبان");
-    define("EN_LAN_N", "انگلیسی");
-    define("FA_LAN_N", "فارسی");
-    define("TITLE_N" ,"عنوان");
-    define("WRITERS_N", "نویسندگان");
-    define("YEARS_N", "سال");
-    define("SUM_N", "چکیده");
-    define("STATE_OF_STUDY", "وضیعت مطالعه");
-    define("ALREADY_STUDY", "مطالعه شده");
-    define("ALREADY_NOT_STUDY", "مطالعه نشده");
-    define("STUDING", "در حال مطالعه");
-    define("IMPORTNT", "اهمیت");
-    define("CAT_N", "دسته");
-    define("ALL_COM", "نظر کلی");
-    define("FILE_N" , "فایل");
-    define("NOTES_N", "یادداشتها");
-    define("CLOSE_N" , "بستن");
+    define2("CREAT_AND_EDIT_RES_RESEARCH" , "ایجاد/ویرایش منبع کار پژوهشی");
+    define2("SEARCH_ENG" , "موتور جستجو");
+    define2("TAGS_WORDS" ,"کلمات کلیدی جستجو");
+    define2("LANG_N" ,"زبان");
+    define2("EN_LAN_N", "انگلیسی");
+    define2("FA_LAN_N", "فارسی");
+    define2("TITLE_N" ,"عنوان");
+    define2("WRITERS_N", "نویسندگان");
+    define2("YEARS_N", "سال");
+    define2("SUM_N", "چکیده");
+    define2("STATE_OF_STUDY", "وضیعت مطالعه");
+    define2("ALREADY_STUDY", "مطالعه شده");
+    define2("ALREADY_NOT_STUDY", "مطالعه نشده");
+    define2("STUDING", "در حال مطالعه");
+    define2("IMPORTNT", "اهمیت");
+    define2("CAT_N", "دسته");
+    define2("ALL_COM", "نظر کلی");
+    define2("FILE_N" , "فایل");
+    define2("NOTES_N", "یادداشتها");
+    define2("CLOSE_N" , "بستن");
 
     //manageFieldsDataMapping.php By kouroshAtaei
-    define("SELECTION_M" , "انتخاب جدول و فیلد مربوطه برای تعیین جدول معادلسازی مقادیر");
-    define("TABLE_M" , "جدول") ;
-    define("DEF_TABLE", "تعریف جدول معادلسازی");
-    define("VAL_FIELD_M","مقادیر معادلسازی شده برای فیلد مربوطه");
-    define("REAL_VAL" ,"مقدار اصلی");
-    define("M_VAL_EQ" , "مقدار معادل");
-    define("DATABASE" , "بانک اطلاعاتی");
-    define("FIELD_M" ,"فیلد");
+    define2("SELECTION_M" , "انتخاب جدول و فیلد مربوطه برای تعیین جدول معادلسازی مقادیر");
+    define2("TABLE_M" , "جدول") ;
+    define2("DEF_TABLE", "تعریف جدول معادلسازی");
+    define2("VAL_FIELD_M","مقادیر معادلسازی شده برای فیلد مربوطه");
+    define2("REAL_VAL" ,"مقدار اصلی");
+    define2("M_VAL_EQ" , "مقدار معادل");
+    define2("DATABASE" , "بانک اطلاعاتی");
+    define2("FIELD_M" ,"فیلد");
 
     //ManagerDesktop.php Alireza Forghani Toosi
-    define("C_MESSAGES", "پیام ها");
-    define("C_RECEIVED_LETTERS", "نامه های رسیده");
-    define("C_ATTACHMENTS", "ضمیمه");
+    define2("C_MESSAGES", "پیام ها");
+    define2("C_RECEIVED_LETTERS", "نامه های رسیده");
+    define2("C_ATTACHMENTS", "ضمیمه");
 
     //ManageProjectMilestones.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_IMPORTANT_DATE", "ایجاد/ویرایش تاریخهای مهم");
-    define("C_IMPORTANT_DATES", "تاریخ های مهم");
+    define2("C_CREATE_EDIT_IMPORTANT_DATE", "ایجاد/ویرایش تاریخهای مهم");
+    define2("C_DATE", "تاریخ");
+    define2("C_DESCRIPTION", "شرح");
+    define2("C_SAVE", "ذخیره");
+    define2("C_NEW", "جدید");
+    define2("C_ROW", "ردیف");
+    define2("C_EDIT", "ویرایش");
+    define2("C_IMPORTANT_DATES", "تاریخ های مهم");
 
     //ManageOntologyPropertyLabels.php By Javad Mahdavian
-    define("C_CREATE_EDIT_LABELS" , "ایجاد/ویرایش برچسبهای خصوصیات");
-    define("C_LABEL" , "برچسب");
-    define("C_LABELS" , "برچسبها");
+    define2("C_CREATE_EDIT_LABELS" , "ایجاد/ویرایش برچسبهای خصوصیات");
+    define2("C_LABEL" , "برچسب");
+    define2("C_LABELS" , "برچسبها");
 
     //ManageProjectTaskActivityTypes.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
-    define("C_ACTIONS_TYPES", "انواع اقدامات");
-    define("C_ACTIONS_COUNT", "تعداد اقدامات");
-    define("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
+    define2("C_CREATE_EDIT_ACTIONS", "ایجاد/ویرایش انواع اقدامات");
+    define2("C_TITLE", "عنوان");
+    define2("C_SAVE", "ذخیره");
+    define2("C_NEW", "جدید");
+    define2("C_ACTIONS_TYPES", "انواع اقدامات");
+    define2("C_ACTIONS_COUNT", "تعداد اقدامات");
+    define2("C_DELETE", "حذف");
+    define2("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
 
     //ManageProjectTaskAssignedUsers.php by Sajjad Iranmanesh
-    define("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "ایجاد/ویرایش کاربران منتسب به کار");
-    define("C_ASSIGNEE_DESCRIPTION", "شرح انتساب");
-    define("C_PARTICIPATION_PERCENTAGE", "درصد مشارکت");
-    define("C_ECECUTOR", "مجری");
-    define("C_VIEWER", "ناظر");
-    define("C_SEND_LETTER_FROM_ADVERTISER", " ارسال نامه آگاهی دهنده برای فرد انتخاب شده");
-    define("C_DONT_HAVE_VALUE", "مقداری در شخص مربوطه وارد نشده است");
-    define("C_USERS_ASSIGNED_TO_ACTIVITY", "کاربران منتسب به کار");
+    define2("C_CREATE_EDIT_USERS_ASSIGNED_TO_ACTIVITY", "ایجاد/ویرایش کاربران منتسب به کار");
+    define2("C_ASSIGNEE_DESCRIPTION", "شرح انتساب");
+    define2("C_PARTICIPATION_PERCENTAGE", "درصد مشارکت");
+    define2("C_ECECUTOR", "مجری");
+    define2("C_VIEWER", "ناظر");
+    define2("C_SEND_LETTER_FROM_ADVERTISER", " ارسال نامه آگاهی دهنده برای فرد انتخاب شده");
+    define2("C_DONT_HAVE_VALUE", "مقداری در شخص مربوطه وارد نشده است");
+    define2("C_USERS_ASSIGNED_TO_ACTIVITY", "کاربران منتسب به کار");
 
 
     //Manageontologies.php by Naghme Mohammadifar
-    define("C_ONTOLOGY_CLASSES" , "کلاس‌های هستان‌نگار");
-    define("C_ONTOLOGY_FEATURES" , "خصوصیات هستان‌نگار");
-    define("C_CREATE_EDIT_ONTOLOGY" , "ایجاد/ویرایش هستان نگار");
-    define("C_CLASSES","کلاس‌ها");
-    define("C_THING_FEATURES","خصوصیت شی");
-    define("C_DATA_FEATURES","خصوصیت داده");
-    define("C_TREE_STRUCTURE","ساختار درختی");
-    define("C_GET_OWL_CODE_FROM_STRUCTURE","دریافت کد OWL از روی ساختار");
-    define("C_GET_ER_CODE","دریافت کد ER");
-    define("C_CLASS_STATISTICAL_ANALYSIS","تحلیل آماری کلاس‌ها");
-    define("C_INTERNET_PATH","مسیر اینترنتی");
-    define("C_GETTING_FILE","دریافت فایل");
-    define("C_TRANSMIT_FILE_TO_DB","انتقال عناصر از فایل به پایگاه داده");
-    define("C_ONTOLOGY","هستان نگار");
-    define("C_FEATURES","خصوصیات");
-    define("C_EXPERT_JUDGES","خبرگان ارزیاب");
-    define("C_PRINT","چاپ");
-    define("C_PRINT_WITH_MERGE_SOURCES","چاپ - با منابع ادغام");
-    define("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","چاپ - با منابع استخراج واژگان");
-    define("C_PRINT_WITH_DATABASE_SOURCES","چاپ - با منابع پایگاه داده");
-    define("C_DICTIONARY","دیکشنری");
-    define("C_FREQUENCY_ANALYSIS","تحیلی فراوانی");
-    define("C_DISTANCE_ANALYSIS","تحلیل فاصله levenshtein");
-    define("C_STATISTICAL_EVALUATION","ارزیابی آماری");
-    define("C_REVERSE_ENGINEERING","مهندسی معکوس RDB");
-    define("C_ANALYSIS_WITH_WORDNET","تحلیل با wordnet");
-    define("C_CONTENT_COMPARISON","مقایسه محتوایی");
-    define("C_MERGED_PROJECTS","پروژه های ادغام");
-    define("C_ALERT_TO_CLOSE","با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟");
-    define("C_CLASSES_REFERRED_TO_ONLY_ONCE","کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)");
-    define("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)");
-    define("C_ONTOLOGIES_LIST","فهرست هستان‌نگار‌ها");
-    define("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","کلاسها از نظر میزان ارجاع - بیش از دو ارجاع");
-    define("C_PROPERTIES_IN_ORDER_OF_REFERENCE","خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع");
-    define("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند");
-    define("C_ONTOLOGY_TITLE","عنوان هستان نگار");
-    define("C_ONTOLOGY_TYPE","نوع هستان نگار");
-    define("C_CHECK_TITLES_WITH_OVER","بررسی عناوین با بیش از ");
-    define("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES","درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
-    define("C_CHECK_TAGS_WITH_OVER","بررسی برچسبها با بیش از ");
-    define("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS","درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
-    define("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
-    define("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
-    define("C_CLASS_TITLE","عنوان کلاس");
-    define("C_PROPERTY_TITLE","عنوان خصوصیت");
-    define("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","کلاس‌‌ها با نام مشابه براساس Wordnet");
-    define("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","خصوصیات با نام مشابه براساس Wordnet");
-    define("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","درصدی از هر هستان‌نگار که سایر کلاس‌های هستان‌نگار را پوشش می دهد");
-    define("C_AVERAGE","میانگین");
-    define("C_CLASS_COUNT","تعداد کلاس");
-    define("C_PROPERTY_COUNT","تعداد خصوصیت");
-    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","میانگین پوشش سایر هستان‌نگارها (کلاس‌ها)");
-    define("C_REPOSITORY","مخزن");
-    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","درصدی از هر هستان‌نگار که دیگر خصوصیات هستان‌نگار را پوشش می دهد");
-    define("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","میانگین پوشش سایر هستان‌نگارها (خصوصیات)");
-    define("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","درصد پوشش واژگان متن هر هستان‌نگار ");
-    define("C_TOTAL_ELEMENTS","عناصر کل");
-    define("C_COVERAGE_PERCENTAGE","درصد پوشش");
+    define2("C_ONTOLOGY_CLASSES" , "کلاس‌های هستان‌نگار");
+    define2("C_ONTOLOGY_FEATURES" , "خصوصیات هستان‌نگار");
+    define2("C_CREATE_EDIT_ONTOLOGY" , "ایجاد/ویرایش هستان نگار");
+    define2("C_CLASSES","کلاس‌ها");
+    define2("C_THING_FEATURES","خصوصیت شی");
+    define2("C_DATA_FEATURES","خصوصیت داده");
+    define2("C_TREE_STRUCTURE","ساختار درختی");
+    define2("C_GET_OWL_CODE_FROM_STRUCTURE","دریافت کد OWL از روی ساختار");
+    define2("C_GET_ER_CODE","دریافت کد ER");
+    define2("C_CLASS_STATISTICAL_ANALYSIS","تحلیل آماری کلاس‌ها");
+    define2("C_INTERNET_PATH","مسیر اینترنتی");
+    define2("C_GETTING_FILE","دریافت فایل");
+    define2("C_TRANSMIT_FILE_TO_DB","انتقال عناصر از فایل به پایگاه داده");
+    define2("C_ONTOLOGY","هستان نگار");
+    define2("C_FEATURES","خصوصیات");
+    define2("C_EXPERT_JUDGES","خبرگان ارزیاب");
+    define2("C_PRINT","چاپ");
+    define2("C_PRINT_WITH_MERGE_SOURCES","چاپ - با منابع ادغام");
+    define2("C_PRINT_WITH_VOCAB_EXTRACTION_SOURCES","چاپ - با منابع استخراج واژگان");
+    define2("C_PRINT_WITH_DATABASE_SOURCES","چاپ - با منابع پایگاه داده");
+    define2("C_DICTIONARY","دیکشنری");
+    define2("C_FREQUENCY_ANALYSIS","تحیلی فراوانی");
+    define2("C_DISTANCE_ANALYSIS","تحلیل فاصله levenshtein");
+    define2("C_STATISTICAL_EVALUATION","ارزیابی آماری");
+    define2("C_REVERSE_ENGINEERING","مهندسی معکوس RDB");
+    define2("C_ANALYSIS_WITH_WORDNET","تحلیل با wordnet");
+    define2("C_CONTENT_COMPARISON","مقایسه محتوایی");
+    define2("C_MERGED_PROJECTS","پروژه های ادغام");
+    define2("C_ALERT_TO_CLOSE","با اینکار عناصر قبلی حذف خواهند شد. اطمینان دارید؟");
+    define2("C_CLASSES_REFERRED_TO_ONLY_ONCE","کلاسهایی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان خصوصیت نیز ارجاع نشده اند)");
+    define2("C_PROPERTIES_THAT_ARE_ONLY_MENTIONED_ONCE","خصوصیاتی که تنها یکبار مورد اشاره قرار گرفته اند (به عنوان کلاس هم ارجاع نشده اند)");
+    define2("C_ONTOLOGIES_LIST","فهرست هستان‌نگار‌ها");
+    define2("C_CLASSES_IN_TERMS_OF_REFERRAL_RATES","کلاسها از نظر میزان ارجاع - بیش از دو ارجاع");
+    define2("C_PROPERTIES_IN_ORDER_OF_REFERENCE","خصوصیات به ترتیب میزان ارجاع - بیش از دو ارجاع");
+    define2("C_ENTITIES_THAT_WERE_ONCE_REFERRED_TO_AS_A_CLASS_AND_ONCE_AS_A_PROPERTY","موجودیتهایی که یکبار به عنوان کلاس و یکبار به عنوان خصوصیت مورد ارجاع بوده اند");
+    define2("C_ONTOLOGY_TITLE","عنوان هستان نگار");
+    define2("C_ONTOLOGY_TYPE","نوع هستان نگار");
+    define2("C_CHECK_TITLES_WITH_OVER","بررسی عناوین با بیش از ");
+    define2("C_PERCENTAGE_OF_SIMILARITY__BETWEEN_CLASS_TITLES","درصد مشابهت در بین عناوین کلاسها که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define2("C_CHECK_TAGS_WITH_OVER","بررسی برچسبها با بیش از ");
+    define2("PERCENTAGE_OF_SIMILARITY_BETWEEN_DIFFERENT_TITLES_OF_ATTRIBUTES_THAT_DO_NOT_MATCH_THE_SAME_PERSIAN_TAG_AND_ARE_RELATED_TO_DIFFERENT_TYPOGRAPHERS","درصد مشابهت در بین عناوین خصوصیات که برچسب فارسی یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define2("C_PERCENTAGE_OF_SIMILARITY_BETWEEN_PERSIAN_LABELS_FOR_CLASSES_THAT_ARE_NOT_IDENTICAL"," درصد مشابهت در بین برچسب فارسی کلاسهایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define2("C_PERCENTAGE_OF_SIMILARITY_AMONG_FARSI_LABELS_FOR_PROPERTIES_THAT_DO_NOT_HAVE_THE_SAME_TITLE_AND_ARE_DIFFERENT"," درصد مشابهت در بین برچسب فارسی خصوصیت هایی که عنوان یکسان ندارند و مربوط به هستان نگارهای متفاوت هستند");
+    define2("C_CLASS_TITLE","عنوان کلاس");
+    define2("C_PROPERTY_TITLE","عنوان خصوصیت");
+    define2("C_CLASSES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","کلاس‌‌ها با نام مشابه براساس Wordnet");
+    define2("C_PROPERTIES_WITH_SAME_NAME_ACCORDING_TO_WORDNET","خصوصیات با نام مشابه براساس Wordnet");
+    define2("PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_CLASSES","درصدی از هر هستان‌نگار که سایر کلاس‌های هستان‌نگار را پوشش می دهد");
+    define2("C_AVERAGE","میانگین");
+    define2("C_CLASS_COUNT","تعداد کلاس");
+    define2("C_PROPERTY_COUNT","تعداد خصوصیت");
+    define2("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_CLASSES","میانگین پوشش سایر هستان‌نگارها (کلاس‌ها)");
+    define2("C_REPOSITORY","مخزن");
+    define2("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","درصدی از هر هستان‌نگار که دیگر خصوصیات هستان‌نگار را پوشش می دهد");
+    define2("C_AVERAGE_OF_COVERAGE_OTHER_ONTOLOGY_PROPERTIES","میانگین پوشش سایر هستان‌نگارها (خصوصیات)");
+    define2("C_PERCENTAGE_OF_EACH_ONTOLOGY_COVERAGE_DOCUMENT_TERMS","درصد پوشش واژگان متن هر هستان‌نگار ");
+    define2("C_TOTAL_ELEMENTS","عناصر کل");
+    define2("C_COVERAGE_PERCENTAGE","درصد پوشش");
     // ------------------------------  ManageSessionType.php By Diba Aminshahidi ----------------------------
-    define("C_PATTERN","الگو های جلسه");
-    define("C_MEETING_TYPE","نوع جلسه");
-    define("C_SESSIONS","جلسات");
-    define("C_SESSION_NUMBER","شماره جلسه");
-    define("C_SESSION_TITLE","عنوان جلسه");
-    define("C_DURATION","مدت جلسه");
-    define("C_SESSION_STATUS","وضعیت جلسه");
-    define("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
-    define("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
-    define("C_APPROVE", "تایید");
-    define("C_REJECTED","رد به دلیل");
+    define2("C_PATTERN","الگو های جلسه");
+    define2("C_MEETING_TYPE","نوع جلسه");
+    define2("C_SESSIONS","جلسات");
+    define2("C_SESSION_NUMBER","شماره جلسه");
+    define2("C_SESSION_TITLE","عنوان جلسه");
+    define2("C_DURATION","مدت جلسه");
+    define2("C_SESSION_STATUS","وضعیت جلسه");
+    define2("C_CREATE","ایجاد");
+    define2("C_INSTRUCTION_KEYWORD","کلمه کلیدی در دستور کار");
+    define2("C_ENACTMENT_KEYWORD","کلمه کلیدی در مصوبه ها");
+    define2("C_APPROVE", "تایید");
+    define2("C_REJECTED","رد به دلیل");
 
     //TasksForControl.php -- by navidbeta
-    define("C_RELATED_PROJECT" , "پروژه مربوطه‌");
-    define("C_PRIORITY" , "اولویت");
-    define("C_T_TITLE" , "عنوان");
-    define("C_CREATOR" , "ایجاد کننده");
-    define("C_CREATED_TIME" , "زمان ایجاد");
-    define("C_T_AREUSURE" , "آیا مطمئن هستید؟");
+    define2("C_RELATED_PROJECT" , "پروژه مربوطه‌");
+    define2("C_PRIORITY" , "اولویت");
+    define2("C_T_TITLE" , "عنوان");
+    define2("C_CREATOR" , "ایجاد کننده");
+    define2("C_CREATED_TIME" , "زمان ایجاد");
+    define2("C_T_AREUSURE" , "آیا مطمئن هستید؟");
 
     //ManageUserFacilities.php -- by navidbeta
-    define("C_ADD_USER_FACILITY" , "اضافه کردن دسترسی کاربر");
-    define("C_T_USER" , "کاربر");
-    define("C_PRIVILEGED_USERS" , "کاربران دارای دسترسی");
-    define("C_POSSIBILITY" , "امکان");
+    define2("C_ADD_USER_FACILITY" , "اضافه کردن دسترسی کاربر");
+    define2("C_T_USER" , "کاربر");
+    define2("C_PRIVILEGED_USERS" , "کاربران دارای دسترسی");
+    define2("C_POSSIBILITY" , "امکان");
 
     //ManageUserPermissions.php -- by navidbeta
-    define("C_DATA_STORED" , "اطلاعات ذخیره شد");
-    define("C_USER_ACCESSES" , "دسترسی های کاربر");
-    define("C_MENUS" , "منوها");
-    define("C_T_RETURN" , "بازگشت");
+    define2("C_DATA_STORED" , "اطلاعات ذخیره شد");
+    define2("C_USER_ACCESSES" , "دسترسی های کاربر");
+    define2("C_MENUS" , "منوها");
+    define2("C_T_RETURN" , "بازگشت");
 
     //ManagePermittedDatabases by Javad Mahdavian
-    define("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
-    define('C_DATABASES', 'پایگاه های داده');
-    define("C_SERVER", "سرور");
-    define("C_TABLES" , "جداول");
-    define("C_DEADLINE" , "مهلت انجام");
+    define2("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
+    define2('C_DATABASES', 'پایگاه های داده');
+    define2("C_SERVER", "سرور");
+    define2("C_TABLES" , "جداول");
+    define2("C_DEADLINE" , "مهلت انجام");
 	
 	//ManagePersons.php Hoormazd Ranjbar
-    define("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
-    define("C_MP_EMAIL", "ایمیل");
-    define("C_MP_MOBILE", "موبایل");
-    define("C_MP_USERNAME", "حساب کاربری");
-    define("C_MP_PEOPLE_LIST", "لیست افراد");
-    define("C_MP_IMAGE", "تصویر");
-    define("C_MP_PAYMENTS", "پرداختها");
+    define2("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
+    define2("C_MP_EMAIL", "ایمیل");
+    define2("C_MP_MOBILE", "موبایل");
+    define2("C_MP_USERNAME", "حساب کاربری");
+    define2("C_MP_PEOPLE_LIST", "لیست افراد");
+    define2("C_MP_IMAGE", "تصویر");
+    define2("C_MP_PAYMENTS", "پرداختها");
 
 	//ManageQuestionnaires.php Hoormazd Ranjbar
-    define("C_MQ_FILTER", "عنوان فیلتر");
-    define("C_MQ_CODE", "کد");
-    define("C_MQ_MAIN_FORM", "فرم اصلی");
-    define("C_MQ_MANAGERS", "مدیران");
-    define("C_MQ_SETTINGS", "تنظیمات");
-    define("C_MQ_CREATOR", "ایجاد کننده");
-    define("C_MQ_CREATE_DATE", "تاریخ ایجاد");
-    define("C_MQ_FILL", "پر شده");
-    define("C_MQ_LAST_ACCEPT", "تایید نهایی");
-    define("C_MQ_MAKE", "ایجاد");
-    define("C_Time", "ss");
+    define2("C_MQ_FILTER", "عنوان فیلتر");
+    define2("C_MQ_CODE", "کد");
+    define2("C_MQ_MAIN_FORM", "فرم اصلی");
+    define2("C_MQ_MANAGERS", "مدیران");
+    define2("C_MQ_SETTINGS", "تنظیمات");
+    define2("C_MQ_CREATOR", "ایجاد کننده");
+    define2("C_MQ_CREATE_DATE", "تاریخ ایجاد");
+    define2("C_MQ_FILL", "پر شده");
+    define2("C_MQ_LAST_ACCEPT", "تایید نهایی");
+    define2("C_MQ_MAKE", "ایجاد");
+
 	//MyActions.php Hoormazd Ranjbar
-    define("C_MYACTIONS", "اقدامات انجام شده");
-    define("C_MA_ACTION", "عمل انجام شده");
-    define("C_MA_DONE_DATE", "تاریخ انجام شده");
-    define("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");
-    //Analyze Ontology By Amir Karami:
-    define("C_Class", "کلاس");
-    define("C_Property", "ویژگی");
-    define("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
-    define("C_SinLabels","جستجو در برچسبها");
+    define2("C_MYACTIONS", "اقدامات انجام شده");
+    define2("C_MA_ACTION", "عمل انجام شده");
+    define2("C_MA_DONE_DATE", "تاریخ انجام شده");
+    define2("C_MA_TOTAL_FIND", "تعداد کل موارد یافت شده");
+
+
+
+    //Manageterms.php by Naghme mohammadifar
+    define2("C_STRUCTURAL_SIMILARITY","شباهت ساختاری");
+    define2("C_PEERS_IN_THE_SEMANTIC_NETWORK","همرده در شبکه معنایی");
+    define2("C_MORE_SPECIFIC_MEANING_IN_THE_SEMANTIC_GRID","معنای خاص تر در شبکه معنایی");
+    define2("C_MORE_GENERAL_MEANING_IN_THE_SEMANTIC_GRID","معنای عام تر در شبکه معنایی");
+    define2("C_PERIODICITY","تناوب");
+    define2("C_WORD","واژه : ");
+    define2("C_RECORDER","ثبت کننده : ");
+    define2("C_REFERENCES_IN_WORDS","ارجاعات: ");
+    define2("C_WORD_CODE","کد");
+    define2("C_SIMILARITY_TYPE","نوع شباهت");
+    define2("C_RESOURCES_AND_THE_NUMBER_OF_REPETITIONS","منابع و تعداد تکرار");
+    define2("C_REPLACEMENT","جایگزینی");
+    define2("C_REPLACE_THE_SELECTED_WORD_WITH_THE_WORD_IN_THIS_ROW","واژه انتخابی با واژه این ردیف جایگزین شود");
+    define2("C_CREATE_EDIT_TERMS","ایجاد/ویرایش اصطلاحات");
+    define2("C_NOTE","یادداشت");
+    define2("C_MERGE_SUGGESTIONS","پیشنهادات ادغام");
+    define2("C_CREATION_TIME","زمان ایجاد");
+    define2("C_ONTOLOGY_ELEMENT","عنصر هستان نگار");
+    define2("C_RECORD","ثبت");
+    define2("C_SUMMARY_OF_INFORMATION","خلاصه اطلاعات");
+    define2("C_MAPPING_OF_IDIOMS_AND_ELEMENTS_OF_HISTOGRAM","نگاشت اصطلاحات و عناصر هستان نگار");
+
+
+    ///// Mahdi Ghayour /////
+    define2("C_TASK", "کار");
+    define2("C_TASK_TYPE", "نوع کار");
+    define2("C_DOCUMENT", "سند");
+    define2("C_ACTION", "اقدام");
+    define2("C_PRIORITY_NORMAL", "عادی");
+    define2("C_PRIORITY_LOW", "پایین");
+    define2("C_PRIORITY_HIGH", "بالا");
+    define2("C_PRIORITY_CRITICAL", "بحرانی");
+
+    define2("C_STATUS", "وضعیت");
+    define2('C_STATUS_NOT_START', 'اقدام نشده');
+    define2('C_STATUS_PROGRESSING', 'در دست قدام');
+    define2('C_STATUS_DONE', 'اقدام شده');
+    define2('C_STATUS_SUSPENDED', 'معلق');
+    define2('C_STATUS_REPLYED', 'پاسخ داده شده');
+
+    define2("C_FORMPART_NEWEDIT", "ایجاد/ویرایش بخش های فرم");
+    define2("C_FORMPART_NAME", "نام بخش");
+    define2("C_FORMPART_ORDER", "ترتیب نمایش");
+    define2("C_FORMPART_TOPTEXT", "متن بالای بخش");
+    define2("C_FORMPART_BOTTOMTEXT", "متن پایین بخش");
+    define2("C_FORMPART_TITLE", "بخشهای فرم");
+    //// End of Mahdi Ghayour //////
+
+    //MyRequests.php by Sara Bolouri
+    define2("C_RELATED_PROJECT","پروژه مربوطه");
+    define2("C_YOUR_REQUESTS_LIST" , "لیست درخواست های شما از سوی شما");
+    define2("C_STATUS" , "وضعیت");
+    define2("C_OTHER_SPECIFICATIONS" , "سایر مشخصات");
+    define2("C_CREATE_TIME1" , "زمان ایجاد");
+
+    //ManagePayments.php by Sara Bolouri
+    define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");
+    define2("C_AMOUNT" , "مبلغ");
+    define2("C_PAYMENT_TYPE" , "نوع پرداخت");
+    define2("C_CHEQUE" , "چک");
+    define2("C_CASH" , "نقد");
+    define2("C_DEPOSIT" , "واریز به حساب");
+    define2("C_DESCRIPTION1" , "توضیحات");
+    define2("C_CHOOSE_FILE" , "انتخاب فایل");
+    define2("C_PAYMENTS_TO" , "پرداختی ها به");
+    define2("C_FILE1" , "فایل");
+
+    //ShowProjectActivities.php by Sara Bolouri
+    define2("C_MAIN_SPECIFICATIONS" , "مشخصات اصلی");
+    define2("C_MEMBERS" , "اعضا");
+    define2("C_DOCUMENTS" , "مستندات");
+    define2("C_DOCUMENT_TYPES" , "انواع سند");
+    define2("C_ACTION_TYPES" , "انواع اقدام");
+    define2("C_TASK_TYPES" , "انواع کار");
+    define2("C_GROUP_OF_TASKS" , "گروه کارها");
+    define2("C_HISTORY" , "تاریخچه");
+    define2("C_ACTIVITIES" , "فعالیتها");
+    define2("C_APPLIER" , "اعمال کننده");
+    define2("C_RELATED_ROLE" , "کار مربوطه");
+    define2("C_CODE" , "کد");
+    define2("C_ACTION_TYPE1" , "نوع عمل");
+    define2("C_RELATED_SECTION" , "بخش مربوطه");
+    define2("C_OPERATION_DESCRIPTION" , "شرح عملیات");
+    define2("C_MEMBER" , "عضو");
+    define2("C_IMPORTANT_DATE", "تاریخ مهم");
+    define2("C_DOCUMENT", "سند");
+    define2("C_DOCUMENT_TYPE" , "نوع سند");
+    define2("C_ACTION_TYPE2" , "نوع اقدام");
+    define2("C_TASK_TYPE" , "نوع کار");
+    define2("C_ADD" , "اضافه");
+    define2("C_UPDATE" , "بروزرسانی");
+    define2("C_VIEW" , "مشاهده");
+    define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
+
+    // Projects Kartable Adel Aboutalebi
+    define2("C_ROW", "ردیف");
+    define2("C_PROJECT_GROUP", "گروه پروژه");
+    define2("C_EDIT", "ویرایش");
+    define2("C_TITLE","عنوان");
+    define2("C_PRIORITY" , "اولویت");
+    define2("C_STATUS", "وضعیت");
+    define2("C_REPORT", "گزارش");
+
+    // ManageProjectTaskActivities Adel Aboutalebi
+    define2('C_ACTIONS', 'اقدامات');
+    define2('C_ACTION_TYPE', 'نوع اقدام');
+    define2('C_USAGE_TIME', 'زمان مصرفی');
+    define2('C_Progress', 'درصد پیشرفت');
+    define2('C_DESCRIPTION', 'شرح');
+    define2("C_ATTACHMENTS", "ضمیمه");
+    define2("C_CREATOR", "ایجاد کننده");
+    define2("C_ACTION_DATE", "تاریخ اقدام");
+    define2("C_CREATE", "ایجاد");
+    define2("C_DELETE", "حذف");
+    define2("C_NOT_EXIST", "ندارد");
+    define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+
+    // ManageProjectPrecentage Adel Aboutalebi
+    define2('C_PROJECTS_ASSIGNED_TO', 'پروژه های انتسابی به');
+    define2('C_PROJECT_NAME', 'نام پروژه');
+    define2('C_PERCENTAGE_OF_TIME_ALLOCATED', 'درصد تخصیصی زمان');
+    define2("C_RETURN","بازگشت");
+    define2("C_SAVE", "ذخیره");
+    define2("C_DATA_STORED","اطلاعات ذخیره شد");
+    
+
+    //controlFrom.php by Yegane Shabgard
+    define2("C_FORM_TYPE" , "نوع فرم:");
+    define2("C_SEARCH_SELECTED_FORM" , "جستجو فرم های مورد نظر");
+    define2("C_CREATOR_NAME" , "نام ایجاد کننده:");
+    define2("C_CREATOR" , "ایجاد کننده:");
+    define2("C_SENDER" , "ارسال کننده:");
+    define2("C_FORM_NAME_2" , "نام فرم");
+    define2("C_LAST_SENDER" , "آخرین ارسال کننده");
+    define2("C_SEND_TIME" , "زمان ارسال");
+    define2("C_CURRENT_STEP" , "مرحله فعلی");
+    define2("C_CURRENT_STEP_NAME" , "نام مرحله فعلی:");
+    define2("C_NEW_STEP" , "مرحله جدید:");
+
+//    PrintPageHelper.php by Yegane Shabgard
+    define2("C_HELP_TO_CREATE_PAINT_PAGES" , "راهنمای تولید صفحات اختصاصی چاپ");
+    define2("C_HELP_PARAMETER_SEND_AS_ID" , "پارامتری که به صفحه شما ارسال خواهد شد RecID نام دارد.");
+    define2("C_HELP_CREATE_YOUR_OWN" , "	در زمانیکه می خواهید شکل چاپی به فرمت خاصی باشد باید صفحه نمایش آن را خودتان تهیه کرده و بر روی سرور قرار دهید و سپس آدرس صفحه را در 
+	گزینه صفحه چاپ اختصاصی وارد کنید.");
+    define2("C_HELP_DEFAULT_ICON" , "در حالت پیش فرض با کلیک روی آیکون چاپ هر رکورد اطلاعات به صورت زیر هم در یک جدول نمایش داده می شود.");
+    define2("C_FORM_MAKER_SEND" , "سیستم فرم ساز به طور اتومات در کنار هر رکورد از داده های مربوط به هر فرم یک آیکون برای چاپ اطلاعات آن رکورد قرار می دهد.");
+    define2("C_PAGE_TO_PRINT_FROM" , "صفحه چاپ اختصاصی یک فرم یک صفحه PHP می باشد که کد رکورد مربوطه به آن پاس می شود.");
+
+    // ManageOntologyClassLabels by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_CLASS_LABELS","ایجاد/ویرایش برچسب کلاسها");
+    define2("C_T_CLASS_LABELS","برچسب کلاسها");
+
+    //ManageOntologyClassChilds by Mohammad Kahani
+    define2("C_T_ADD_CHILD_CLASS","اضافه کردن کلاسهای فرزند");
+    define2("C_T_CHILD_CLASSES","کلاسهای فرزند");
+    define2("C_T_CLASS","کلاس");
+
+    //ManageOntologyClassHirarchy by Mohammad Kahani
+    define2("C_T_CREATE_EDIT_SUBCLASS","ایجاد/ویرایش زیرکلاسها");
+    define2("C_T_CHILD_CLASS","کلاس فرزند");
+    define2("C_T_SUBCLASS","زیرکلاسها");
+
+
+    //ShowSummary() & ShowTabs in my .class by Mohammad Kahani
+    define2("C_T_HIERARCHY_ONTOLOGY_CLASSES","سلسله مراتب کلاسهای هستان نگار");
+
+
+    //_________________ AMIN ALIZADEH _____________________________
+    define2("C_PRINTSESSIONPAGE_MTH", "اطلاعات جلسه");
+    define2("C_PRINTSESSIONPAGE_TMFC", "جلسه");
+    define2("C_PRINTSESSIONPAGE_TMTC", "عنوان");
+    define2("C_PRINTSESSIONPAGE_TMFOC", "تاریخ");
+    define2("C_PRINTSESSIONPAGE_TMFIFC", "شماره");
+    define2("C_PRINTSESSIONPAGE_TMSIXC", "ساعت تشکلیل");
+    define2("C_PRINTSESSIONPAGE_TMSEVENC", "مدت جلسه");
+    define2("C_PRINTSESSIONPAGE_STFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_STSEC", "دستور کار");
+    define2("C_PRINTSESSIONPAGE_STTIR", "مصوبه");
+    define2("C_PRINTSESSIONPAGE_STFORTH", "مسوول پیگیری");
+    define2("C_PRINTSESSIONPAGE_STFIF", "مهلت اقدام");
+
+    define2("C_PRINTSESSIONPAGE_TTH", "حاضرین جلسه");
+    define2("C_PRINTSESSIONPAGE_TTFIRST", "ردیف");
+    define2("C_PRINTSESSIONPAGE_TTSEC", "نام و نام خانوادگی");
+    define2("C_PRINTSESSIONPAGE_TTTIR", "حضور");
+    define2("C_PRINTSESSIONPAGE_TTFOR", "تاخیر");
+    define2("C_PRINTSESSIONPAGE_TTFIF", "امضا");
+    define2("C_PRINTSESSIONPAGE_TTSIX", "تاریخ تایید(امضا)");
+    define2("C_PRINTSESSIONPAGE_FTH", "غایبین جلسه");
+
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "رابطه");
+    define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "زیر کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "است");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFOR", "در");
+    define2("C_ONT_MERG_CLASSES_PAGE_OFIF", "ادغام شود");
+    define2("C_ONT_MERG_CLASSES_PAGE_CH", "پیشنهادات ادغام");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIR", "ردیف");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBSEC", "کلاس");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBTIR", "کلیدهای اصلی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFOR", "کلید ارتباطی");
+    define2("C_ONT_MERG_CLASSES_PAGE_CBFIF", "انجام ادغام");
+
+    define2("C_LOOKUP_PAGE_HELP_PAGE_HEADER", "راهنمای تولید صفحه جستجوی مقادیر");
+    define2("C_LOOKUP_PAGE_HELP_PAGE_CONTENT", "
+        بعضی از مواقع داده هایی که در یک فیلد لیستی قابل انتخاب هستند بسیاز زیاد بوده و نمایش آنها به صورت لیست
+            کشویی علاوه بر اینکه حجم زیادی
+            از صفحه را به خود اختصاص می دهد باعث کندی عمل کاربر در انتخاب گزینه مورد نظر خود می شود.
+            <br>
+            برای اینگونه موارد می توان نحوه نمایش لیست را Look Up تعیین کرد.
+            <br>
+            در این حالت در فرم ورود داده در جلوی نام این فیلد یک لینک برای انتخاب داده مورد نظر نمایش داده می شود که
+            کاربر بتواند با کلیک روی آن
+            در صفحه ای که در یک پنجره جداگانه باز می شود به جستجوی آیتم مورد نظر خود پرداخته و آن را انتخاب کند تا در
+            مقدار فیلد قرار گیرد.
+            <br>
+            این صفحه باید توسط برنامه نویس نوشته شده و آدرس آن در مشخصه 'آدرس صفحه جستجوی داده' وارد شود.
+            <br>
+            مواردی که سیستم در زمان فراخوانی این صفحه به آن پاس می دهد عبارتند از:
+            <br>
+            <li>FormName: نام فرمی که فیلد در آن قرار دارد
+            <li>InputName: نام عنصری که داخل فرم به صورت مخفی قرار دارد و باید مقدار کلید آیتم انتخاب شده در آن قرار
+                گیرد
+            <li>SpanName: نام span ای را به همراه دارد که توضیحات مربوط به آیتم انتخاب شده در آن نوشته می شود
+                <br>
+                به عنوان مثال مقادیر زیر را در نظر بگیرید:
+                <br>FormName=f1&InputName=PersonID&SpanName=MySpan
+                <br>
+                حال باید برنامه نویس در کد خود زمانیکه کاربر آیتم مورد نظر را انتخاب کرد یک تابع جاوا اسکریپ مشابه این
+                را فراخوانی کند:
+    
+    ");
+    //_________________ END _____________________________
+
 }
 
 ?>

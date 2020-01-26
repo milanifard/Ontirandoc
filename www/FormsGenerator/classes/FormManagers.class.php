@@ -56,6 +56,7 @@ class manage_FormManagers
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array());
 		$mysql->audit("ثبت داده جدید در مدیران فرم با کد ".manage_FormManagers::GetLastID());
+		return 1;
 	}
 	static function Update($UpdateRecordID, $PersonID, $AccessType)
 	{
@@ -66,6 +67,7 @@ class manage_FormManagers
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array());
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در مدیران فرم");
+		return 1;
 	}
 	static function Remove($RemoveRecordID)
 	{
@@ -75,6 +77,7 @@ class manage_FormManagers
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array());
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از مدیران فرم");
+		return 1;
 	}
 	static function GetList($WhereCondition)
 	{
@@ -113,4 +116,5 @@ class manage_FormManagers
 		return $res->fetchall();
 	}
 }
+
 ?>
