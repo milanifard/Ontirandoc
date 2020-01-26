@@ -1,6 +1,6 @@
 <?
 	include "header.inc.php";
-	
+
 	function ShowClassListLabels($ClassListString, $OntologyID)
 	{
 		$mysql = pdodb::getInstance();
@@ -59,13 +59,18 @@
 		LEFT JOIN projectmanagement.OntologyPropertyLabels using (OntologyPropertyID)
 		where OntologyID=? and PropertyType='OBJECT' order by label");
 		$res = $mysql->ExecuteStatement(array($OntologyID));
-		echo "<form method=post>";
+		echo "<form class=\"form-horizontal\" method=post>
+        <div class=\"container\">
+        <div class=\"row border border-light\" style=\"margin-top: 3% !important;\">
+        <div class=\"col-12\">";
+
 		echo "<input type=hidden name=Save id=Save value=1>";
 		
 		echo "<input type=hidden name=EType id=EType value='OProp'>";
-		echo "<table border=1 cellspacing=0 cellpadding=5>";
-		echo "<tr class=HeaderOfTable>";
-		echo "<td>ردیف</td><td>حوزه</td><td>برچسب خصوصیت</td><td>برد خصوصیت</td><td>نام خصوصیت</td></tr>";
+
+		echo "<table class=\" text-center table table-bordered\">";
+		echo "<tr class=bg-info>";
+		echo "<td>".C_ROW."</td><td>".C_Area."</td><td>".C_Prop_Labels."</td><td>".C_Prop_Range." </td><td>".C_Prop_Name."</td></tr>";
 		
 		$i=0;
 		while($rec = $res->fetch())
@@ -78,7 +83,7 @@
 			ShowClassListLabels($rec["domain"], $OntologyID);
 			echo "</td>";
 			echo "<td>";
-			echo "<input type=text name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
+			echo "<input class=\"form-control text-center\" type=text name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
 			echo "</td>";
 			echo "<td>";
 			ShowClassListLabels($rec["range"], $OntologyID);
@@ -86,11 +91,13 @@
 			echo "<td>".$rec["PropertyTitle"]."</td>";
 			echo "</tr>";			
 		}
-		echo "<tr class=FooterOfTable>";
-		echo "<td colspan=4 align=center><input type=submit value='ذخیره'></td>";
+		echo "<tr class=bg-dark>";
+		echo "<td colspan=5 class='text-center'><input type=submit class='btn btn-success'value='".C_SAVE."'></td>";
 		echo "</tr>";
 		echo "</table>";
-		echo "</form>";
+		echo "</div>
+        </div>
+    </div></form>";
 	}
 	
 	
@@ -101,13 +108,16 @@
 		LEFT JOIN projectmanagement.OntologyPropertyLabels using (OntologyPropertyID)
 		where OntologyID=? and PropertyType='DATATYPE' order by label");
 		$res = $mysql->ExecuteStatement(array($OntologyID));
-		echo "<form method=post>";
+        echo "<form class=\"form-horizontal\" method=post>
+        <div class=\"container\">
+        <div class=\"row border border-light shadow-sm\" style=\"margin-top: 3% !important;\">
+        <div class=\"col-12\">";
 		echo "<input type=hidden name=Save id=Save value=1>";
 		
 		echo "<input type=hidden name=EType id=EType value='DProp'>";
-		echo "<table border=1 cellspacing=0 cellpadding=5>";
-		echo "<tr class=HeaderOfTable>";
-		echo "<td>ردیف</td><td>کلاس</td><td>برچسب خصوصیت</td><td>نام خصوصیت</td>";
+		echo "<table class=\" text-center table table-bordered\">";
+		echo "<tr class=bg-info>";
+		echo "<td>".C_ROW."</td><td>".C_Class."</td><td>".C_Prop_Labels."</td><td>".C_Prop_Name."</td>";
 		echo "</tr>";
 		$i = 0;
 		while($rec = $res->fetch())
@@ -120,16 +130,18 @@
 			ShowClassListLabels($rec["domain"], $OntologyID);
 			echo "</td>";
 			echo "<td>";
-			echo "<input type=text size=60 name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
+			echo "<input type=text class=\"form-control text-center\" size=60 name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
 			echo "</td>";
 			echo "<td>".$rec["PropertyTitle"]."</td>";
 			echo "</tr>";
 		}
-		echo "<tr class=FooterOfTable>";
-		echo "<td colspan=4 align=center><input type=submit value='ذخیره'></td>";
+		echo "<tr class=bg-dark>";
+		echo "<td colspan=4 align=center><input type=submit class='btn btn-success'value='".C_SAVE."'></td>";
 		echo "</tr>";
 		echo "</table>";
-		echo "</form>";
+		echo "</div>
+        </div>
+    </div></form>";
 	}
 		
 	function SaveClassLabels($OntologyID)
@@ -161,11 +173,14 @@
 		LEFT JOIN projectmanagement.OntologyClassLabels using (OntologyClassID)
 		where OntologyID=? order by label");
 		$res = $mysql->ExecuteStatement(array($OntologyID));
-		echo "<form method=post>";
+		echo "<form class=\"form-horizontal\" method=post>
+<div class=\"row border border-light shadow-sm\" style=\"margin-top: 3% !important;\">
+            <div class=\"col-12\">
+                <div class=\"row\">";
 		echo "<input type=hidden name=Save id=Save value=1>";
 		
 		echo "<input type=hidden name=EType id=EType value='Class'>";
-		echo "<table border=1 cellspacing=0 cellpadding=5>";
+		echo "<table class=\" text-center table table-bordered bg-info\">";
 		$i = 0;
 		while($rec = $res->fetch())
 		{
@@ -175,17 +190,19 @@
 			echo "<td>".$i."</td>";
 			echo "<td>".$rec["ClassTitle"]."</td>";
 			echo "<td>";
-			echo "<input type=text size=60 name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
+			echo "<input type=text class='form-control'size=60 name='".$InputName."' id='".$InputName."' value='".$rec["label"]."'>";
 			echo "<br>";
 			ShowClassProp($OntologyID, $rec["ClassTitle"]);
 			echo "</td>";
 			echo "</tr>";
 		}
-		echo "<tr class=FooterOfTable>";
-		echo "<td colspan=4 align=center><input type=submit value='ذخیره'></td>";
+		echo "<tr class=bg-dark>";
+		echo "<td colspan=4 align=center><input type=submit class='btn btn-success'value='".C_SAVE."'></td>";
 		echo "</tr>";
 		echo "</table>";
-		echo "</form>";
+		echo "</div>
+        </div>
+    </div>  </form>";
 	}
 	
 
@@ -235,6 +252,7 @@
 	}	
 	
 	HTMLBegin();
+echo "<div class=\"container text-center\">";
 	if($_REQUEST["EType"]=="OProp")
 	{
 		if(isset($_REQUEST["Save"]))
@@ -253,5 +271,5 @@
 			SaveClassLabels($_REQUEST["OntologyID"]);
 		ShowOntologyClasses($_REQUEST["OntologyID"]);
 	}
-
+echo "</div>"
 ?>
