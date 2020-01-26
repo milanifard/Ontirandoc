@@ -38,7 +38,7 @@ if (isset($_REQUEST["Save"])) {
 			$Item_label
 		);
 	}
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 $label = "";
@@ -76,7 +76,7 @@ if (isset($_REQUEST["UpdateID"])) {
 									<tr>
 										<td width="1%" nowrap>
 											<label for="OntologyClassID">
-												برچسب
+												<? echo C_LABEL; ?>
 											</label>
 										</td>
 										<td nowrap>
@@ -143,9 +143,9 @@ if ($SomeItemsRemoved) {
 						</tr>
 						<tr>
 							<td width="1%"> </td>
-							<td width="1%">ردیف</td>
-							<td width="2%">ویرایش</td>
-							<td width="50%">برچسب</td>
+							<td width="1%"><? echo C_ROW; ?></td>
+							<td width="2%"><? echo C_EDIT; ?></td>
+							<td width="50%"><? echo C_LABEL ?></td>
 						</tr>
 					</thead>
 					<?
@@ -165,7 +165,7 @@ if ($SomeItemsRemoved) {
 					?>
 					<tr class="table-info">
 						<td colspan="6" align="center">
-							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="حذف">
+							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="<? echo C_DELETE ?>">
 						</td>
 					</tr>
 				</table>
@@ -180,7 +180,7 @@ if ($SomeItemsRemoved) {
 </form>
 <script>
 	function ConfirmDelete() {
-		if (confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+		if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 	}
 </script>
 

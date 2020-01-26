@@ -36,7 +36,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_OntologyClassParentID
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 if(isset($_REQUEST["UpdateID"])) 
@@ -104,7 +104,7 @@ if(isset($_REQUEST["UpdateID"]))
 											}*/
 											?>
 										</select>
-										<a onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=Item_OntologyClassParentID&OntologyID=<? echo $OntologyID;  ?>")' href="#">انتخاب</a>
+										<a onclick='javascript: window.open("ShowOntologyClassTree.php?ReturnID=1&InputName=Item_OntologyClassParentID&OntologyID=<? echo $OntologyID;  ?>")' href="#"><? echo C_SELECT ?></a>
 									</td>
 								</tr>
 							</table>
@@ -114,9 +114,9 @@ if(isset($_REQUEST["UpdateID"]))
 				<thead class="text-center table-info">
 						<tr>
 							<td>
-								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();">ذخیره</button>
-								<button type="button" class="btn btn-info" onclick="javascript: document.location='ManageOntologyClassHirarchy.php?OntologyClassID=<?php echo $_REQUEST["OntologyClassID"]; ?>'">جدید</button>
-								<button type="button" class="btn btn-danger" onclick="javascript:windows.close();">بستن</button>
+								<button type="button" class="btn btn-success" onclick="javascript: ValidateForm();"><? echo C_SAVE ?></button>
+								<button type="button" class="btn btn-info" onclick="javascript: document.location='ManageOntologyClassHirarchy.php?OntologyClassID=<?php echo $_REQUEST["OntologyClassID"]; ?>'"><? echo C_NEW ?></button>
+								<button type="button" class="btn btn-danger" onclick="javascript:windows.close();"><? echo C_CLOSE ?></button>
 
 							</td>
 						</tr>
@@ -164,8 +164,8 @@ if($SomeItemsRemoved)
 						</tr>
 						<tr>
 							<td width="1%"> </td>
-							<td width="1%">ردیف</td>
-							<td width="2%">ویرایش</td>
+							<td width="1%"><? echo C_ROW ?></td>
+							<td width="2%"><? echo C_EDIT ?></td>
 							<td width="30%">کلاس</td>
 							<td width="20%">زیر کلاسها</td>
 						</tr>
@@ -187,7 +187,7 @@ if($SomeItemsRemoved)
 					?>
 					<tr class="table-info">
 						<td colspan="6" align="center">
-							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="حذف">
+							<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="<? echo C_DELETE; ?>">
 						</td>
 					</tr>
 				</table>
@@ -204,7 +204,7 @@ if($SomeItemsRemoved)
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 }
 </script>
 </html>
