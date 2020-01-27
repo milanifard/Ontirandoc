@@ -438,6 +438,12 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MENUS" , "Menus");
     define2("C_T_RETURN" , "Return");
 
+    //additionals for classes -- by navidbeta
+    define2("C_CONTRACTS" , "CONTRACTS");
+    define2("C_APPROVAED_CREDIT" , "Approved credit");
+    define2("C_PROJECT_PROGRESS" , "Project progress");
+    define2("C_OTHER_RESOURCES" , "Other Resources");
+
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "Documentation of Databases");
     define2("C_DATABASES", "Databases");
@@ -1196,6 +1202,12 @@ else
     define2("C_USER_ACCESSES" , "دسترسی های کاربر");
     define2("C_MENUS" , "منوها");
     define2("C_T_RETURN" , "بازگشت");
+
+    //additionals for classes -- by navidbeta
+    define2("C_CONTRACTS" , "قرارداد ها‌");
+    define2("C_APPROVAED_CREDIT" , "اعتبار مصوب‌");
+    define2("C_PROJECT_PROGRESS" , "پیشرفت پروژه");
+    define2("C_OTHER_RESOURCES" , "سایر منابع");
 
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
