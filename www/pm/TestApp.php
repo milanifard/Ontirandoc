@@ -16,6 +16,7 @@ include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
 include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
 include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
+include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
 HTMLBegin();
 class Test
 {
@@ -2346,8 +2347,117 @@ Test::add(
 );
 // End of ProjectsSecurity.class.php By Javad Mahdavian ===========================
 //=================================================================================
+// UniversitySessionsSecurity.class.php Unit Test =============== AMIR Karami =================
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try {
+            $obj->SaveFieldPermission("1","File_Name","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->SaveFieldPermission()", "UniversitySessionsSecurity"
+);
 
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->SaveDetailTablePermission("1", "Table", "1", "1", "1", "1", "1");
+            return true;
 
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->SaveDetailTablePermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ReadFieldPermission("1", "Table", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ReadFieldPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ReadDetailTablePermission("1", "Table", "1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ReadDetailTablePermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ResetRecordFieldsPermission("1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordFieldsPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ResetRecordDetailTablesPermission("1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordDetailTablesPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        try {
+            security_UniversitySessions::LoadUserPermissions("1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordDetailTablesPermission()", "UniversitySessionsSecurity"
+);
 
 $res = Test::run();
 echo "<br>";
