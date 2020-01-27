@@ -156,19 +156,19 @@ class manage_SystemFacilityGroups
 	static function ComparePassedDataWithDB($CurRecID, $GroupName, $OrderNo)
 	{
 		$ret = "";
-		$obj = new be_SystemFacilityGroups();
+		$obj = new C_NAMEbe_SystemFacilityGroups();
 		$obj->LoadDataFromDatabase($CurRecID);
 		if($GroupName!=$obj->GroupName)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "نام ";
+			$ret .= C_NAME;
 		}
 		if($OrderNo!=$obj->OrderNo)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "شماره ترتیب";
+			$ret .= C_ORDERNUM;
 		}
 		return $ret;
 	}

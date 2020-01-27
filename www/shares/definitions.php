@@ -445,6 +445,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_OTHER_RESOURCES" , "Other Resources");
     define2("C_GROUP" , "Group");
     define2("C_T_PAGEADDRESS" , "Page Address");
+    define2("C_ORDERNUM" , "Order Number");
 
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "Documentation of Databases");
@@ -1212,6 +1213,7 @@ else
     define2("C_OTHER_RESOURCES" , "سایر منابع");
     define2("C_GROUP" , "گروه");
     define2("C_T_PAGEADDRESS" , "آدرس صفحه");
+    define2("C_ORDERNUM" , "شماره ترتیب");
 
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
