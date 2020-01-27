@@ -18,6 +18,7 @@ include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
 include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
 include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
 include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
+include("classes/persons.class.php"); //by Sara Bolouri Bazaz
 HTMLBegin();
 class Test
 {
@@ -2638,7 +2639,184 @@ Test::add(
 );
 
 // --------------------------------------------- END ----------------------moahmmad afsharian shandiz-------------------------------
-//
+
+//persons.class.php UNIT TEST Start ------------> by Sara Bolouri Bazaz
+Test::add(
+
+    function ()
+    {
+        $obj = new be_persons();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "be_persons->LoadDataFromDatabase()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetCount("whereCondition") == 0){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetCount()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetLastID() == -1){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetLastID()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::Add("pfname", "plname", "CardNumber" ) > -1){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Add()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_persons::Update("1", "pfname", "plname", "CardNumber" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Update()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_persons::Remove("1" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Remove()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetList("1", "1", "FieldName", "OrderType" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetList()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::Search("pfname", "plname", "FieldName", "OrderType" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Search()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::SearchResultCount("pfname", "plname") == 0){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->SearchResultCount()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::ComparePassedDataWithDB("1", "pfname", "plname", "CardName" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->ComparePassedDataWithDB()" , "Message"
+);
+
+//persons.class.php UNIT TEST Finish ------------> by Sara Bolouri Bazaz
 
 
 
