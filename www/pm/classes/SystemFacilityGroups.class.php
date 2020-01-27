@@ -156,7 +156,7 @@ class manage_SystemFacilityGroups
 	static function ComparePassedDataWithDB($CurRecID, $GroupName, $OrderNo)
 	{
 		$ret = "";
-		$obj = new C_NAMEbe_SystemFacilityGroups();
+		$obj = new be_SystemFacilityGroups();
 		$obj->LoadDataFromDatabase($CurRecID);
 		if($GroupName!=$obj->GroupName)
 		{
