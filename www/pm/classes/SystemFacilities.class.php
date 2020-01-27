@@ -191,25 +191,25 @@ class manage_SystemFacilities
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($GroupID!=$obj->GroupID)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "گروه";
+			$ret .= C_GROUP;
 		}
 		if($OrderNo!=$obj->OrderNo)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "ترتیب";
+			$ret .= C_ORDER;
 		}
 		if($PageAddress!=$obj->PageAddress)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "آدرس صفحه";
+			$ret .= C_T_PAGEADDRESS;
 		}
 		return $ret;
 	}
@@ -245,7 +245,7 @@ class manage_SystemFacilities
 		$ret .= "<td width=\"33%\" ";
 		if($CurrentPageName=="NewSystemFacilities")
 			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='NewSystemFacilities.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+		$ret .= "><a href='NewSystemFacilities.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
 		$ret .= "<td width=\"33%\" ";
 		if($CurrentPageName=="ManageUserFacilities")
  			$ret .= " bgcolor=\"#cccccc\" ";

@@ -443,6 +443,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_APPROVAED_CREDIT" , "Approved credit");
     define2("C_PROJECT_PROGRESS" , "Project progress");
     define2("C_OTHER_RESOURCES" , "Other Resources");
+    define2("C_GROUP" , "Group");
+    define2("C_T_PAGEADDRESS" , "Page Address");
 
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "Documentation of Databases");
@@ -1208,6 +1210,8 @@ else
     define2("C_APPROVAED_CREDIT" , "اعتبار مصوب‌");
     define2("C_PROJECT_PROGRESS" , "پیشرفت پروژه");
     define2("C_OTHER_RESOURCES" , "سایر منابع");
+    define2("C_GROUP" , "گروه");
+    define2("C_T_PAGEADDRESS" , "آدرس صفحه");
 
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
