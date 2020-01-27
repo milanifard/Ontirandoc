@@ -15,6 +15,7 @@ include("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
 include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
+include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
 HTMLBegin();
 class Test
 {
@@ -2204,6 +2205,149 @@ Test::add(
 );
 
 // ProjectTaskRequisites.class.php end test by Mostafa Ghofrani
+
+
+
+// ProjectsSecurity.class.php Unit Test =============== Javad Mahdavian =================
+//===================================================================================================================
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->SaveFieldPermission("1","","1","Add") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SaveFieldPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->SaveDetailTablePermission("1","","1","1","1","1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SaveDetailTablePermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ReadFieldPermission("1","","1")){
+                return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ReadFieldPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ReadDetailTablePermission("1","","1","Add")){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ReadDetailTablePermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ResetRecordFieldsPermission("1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ResetRecordFieldsPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ResetRecordDetailTablesPermission("1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ResetRecordDetailTablesPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if (security_projects::LoadUserPermissions("1","1")){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->LoadUserPermissions()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if (security_projects::SetPermissionToFullControl()){
+                return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SetPermissionToFullControl()", "security_projects"
+);
+// End of ProjectsSecurity.class.php By Javad Mahdavian ===========================
+//=================================================================================
+
+
 
 $res = Test::run();
 echo "<br>";
