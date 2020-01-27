@@ -274,7 +274,7 @@ class manage_UserFacilities
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "کاربر";
+			$ret .= C_T_USER;
 		}
 		return $ret;
 	}
