@@ -212,7 +212,7 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define2("C_ROLE","Role");
     define2("C_SESSIOM_MEMBERS","Session Members");
-   // define2("C_ARE_YOU_SURE","Are You Sure?");
+    // define2("C_ARE_YOU_SURE","Are You Sure?");
     define2("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
     define2("C_PERSONEL","Employees");
     define2("C_OTHER","Others");
@@ -453,8 +453,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_SERVER", "Server");
     define2("C_TABLES" , "Tables");
     define2("C_DEADLINE" , "Deadline");
-	
-	//EN fo MangePersons.php
+
+    //EN fo MangePersons.php
     define2("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
     define2("C_MP_EMAIL", "Email");
     define2("C_MP_MOBILE", "Mobile");
@@ -462,8 +462,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MP_PEOPLE_LIST", "User lists");
     define2("C_MP_IMAGE", "Image");
     define2("C_MP_PAYMENTS", "Payments");
-	
-	//ManageQuestionnaires.php Hoormazd Ranjbar
+
+    //ManageQuestionnaires.php Hoormazd Ranjbar
     define2("C_MQ_FILTER", "Filter Title");
     define2("C_MQ_CODE", "Code");
     define2("C_MQ_MAIN_FORM", "Main Form");
@@ -474,8 +474,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MQ_FILL", "Filled");
     define2("C_MQ_LAST_ACCEPT", "Last Accept");
     define2("C_MQ_MAKE", "Make");
-	
-	//MyActions.php Hoormazd Ranjbar
+
+    //MyActions.php Hoormazd Ranjbar
     //EN
     define2("C_MYACTIONS", "My Actions");
     define2("C_MA_ACTION", "Action");
@@ -525,7 +525,7 @@ if(UI_LANGUAGE=="EN") {
     define2('C_STATUS_DONE', 'done');
     define2('C_STATUS_SUSPENDED', 'suspended');
     define2('C_STATUS_REPLYED', 'replyed');
-    
+
     define2("C_FORMPART_NEWEDIT", "Create/Edit form parts");
     define2("C_FORMPART_NAME", "Name");
     define2("C_FORMPART_ORDER", "Order");
@@ -540,11 +540,14 @@ if(UI_LANGUAGE=="EN") {
     define2("C_STATUS" , "Status");
     define2("C_OTHER_SPECIFICATIONS" , "Other specification");
     define2("C_CREATE_TIME1" , "Create time");
+    define2("C_PREREQUISITES" , "Prerequisites");
+    define2("C_NOTES" , "Notes");
+    define2("C_USERS_ASSIGNED_TO_WORK" , "User assigned to work");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "Create/Edit payment to");
     define2("C_AMOUNT" , "Amount");
-    define2("C_PATMENT_TYPE" , "Payment type");
+    define2("C_PAYMENT_TYPE" , "Payment type");
     define2("C_CHEQUE" , "Cheque");
     define2("C_CASH" , "Cash");
     define2("C_DEPOSIT" , "Deposit");
@@ -565,8 +568,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ACTIVITIES" , "Activities");
     define2("C_APPLIER" , "Applier");
     define2("C_RELATED_ROLE" , "Related role");
-    define2("C-CODE" , "Code");
-    define2("C_ACTION_TYPE" , "Action type");
+    define2("C_CODE" , "Code");
+    define2("C_ACTION_TYPE1" , "Action type");
     define2("C_RELATED_SECTION" , "Related section");
     define2("C_OPERATION_DESCRIPTION" , "Operation description");
     define2("C_MEMBER" , "Member");
@@ -579,6 +582,10 @@ if(UI_LANGUAGE=="EN") {
     define2("C_UPDATE" , "Update");
     define2("C_VIEW" , "View");
     define2("C_CHOOSE_APPLIER" , "Choose applier");
+    define2("C_CONTRACTS" , "Contracts");
+    define2("C_PROJECT_PROGRESS" , "Project progress");
+    define2("C_CREDITS_APPROVED" , "Credits approved");
+    define2("C_CONTRACTS_OTHER_RESOURCES" , "Credits approved - Other resources");
 
 
 //    ControlForms.php by Yegane Shabgard
@@ -687,7 +694,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PRINTSESSIONPAGE_STTIR", "results");
     define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
     define2("C_PRINTSESSIONPAGE_STFIF", "due time");
-   
+
     define2("C_PRINTSESSIONPAGE_TTH", "presents");
     define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
     define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
@@ -696,7 +703,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PRINTSESSIONPAGE_TTFIF", "signiture");
     define2("C_PRINTSESSIONPAGE_TTSIX", "submition date (sign)");
     define2("C_PRINTSESSIONPAGE_FTH", "absents");
-    
+
     define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "relation");
     define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "sub class");
     define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "");
@@ -914,7 +921,7 @@ else
     define2("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
     define2("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
     //--------------------------
-    
+
     //ShowTermReferHistory.php Hossein Lotfi
     define2("C_SOURCE_NAME","نام منبع");
     define2("C_PAGE","صفحه");
@@ -1221,8 +1228,8 @@ else
     define2("C_SERVER", "سرور");
     define2("C_TABLES" , "جداول");
     define2("C_DEADLINE" , "مهلت انجام");
-	
-	//ManagePersons.php Hoormazd Ranjbar
+
+    //ManagePersons.php Hoormazd Ranjbar
     define2("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
     define2("C_MP_EMAIL", "ایمیل");
     define2("C_MP_MOBILE", "موبایل");
@@ -1231,7 +1238,7 @@ else
     define2("C_MP_IMAGE", "تصویر");
     define2("C_MP_PAYMENTS", "پرداختها");
 
-	//ManageQuestionnaires.php Hoormazd Ranjbar
+    //ManageQuestionnaires.php Hoormazd Ranjbar
     define2("C_MQ_FILTER", "عنوان فیلتر");
     define2("C_MQ_CODE", "کد");
     define2("C_MQ_MAIN_FORM", "فرم اصلی");
@@ -1243,7 +1250,7 @@ else
     define2("C_MQ_LAST_ACCEPT", "تایید نهایی");
     define2("C_MQ_MAKE", "ایجاد");
 
-	//MyActions.php Hoormazd Ranjbar
+    //MyActions.php Hoormazd Ranjbar
     define2("C_MYACTIONS", "اقدامات انجام شده");
     define2("C_MA_ACTION", "عمل انجام شده");
     define2("C_MA_DONE_DATE", "تاریخ انجام شده");
@@ -1306,6 +1313,9 @@ else
     define2("C_STATUS" , "وضعیت");
     define2("C_OTHER_SPECIFICATIONS" , "سایر مشخصات");
     define2("C_CREATE_TIME1" , "زمان ایجاد");
+    define2("C_PREREQUISITES" , "پیشنیازها");
+    define2("C_NOTES" , "یادداشت ها");
+    define2("C_USERS_ASSIGNED_TO_WORK" , "کاربران منتصب به کار");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");
@@ -1345,6 +1355,10 @@ else
     define2("C_UPDATE" , "بروزرسانی");
     define2("C_VIEW" , "مشاهده");
     define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
+    define2("C_CONTRACTS" , "قراردادها");
+    define2("C_PROJECT_PROGRESS" , "پیشرفت پروژه");
+    define2("C_CREDITS_APPROVED" , "اعتبارات مصوب");
+    define2("C_CONTRACTS_OTHER_RESOURCES" , "اعتبارات مصوب - منابع دیگر");
 
     // Projects Kartable Adel Aboutalebi
     define2("C_ROW", "ردیف");
@@ -1376,7 +1390,7 @@ else
     define2("C_RETURN","بازگشت");
     define2("C_SAVE", "ذخیره");
     define2("C_DATA_STORED","اطلاعات ذخیره شد");
-    
+
 
     //controlFrom.php by Yegane Shabgard
     define2("C_FORM_TYPE" , "نوع فرم:");
@@ -1550,7 +1564,7 @@ else
     define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
     define("C_JOB_TITLE", "عنوان کار مربوطه");
 
-    
+
 
 }
 
