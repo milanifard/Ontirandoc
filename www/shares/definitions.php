@@ -543,6 +543,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PREREQUISITES" , "Prerequisites");
     define2("C_NOTES" , "Notes");
     define2("C_USERS_ASSIGNED_TO_WORK" , "User assigned to work");
+    define2("C_DOCUMENTS" , "Documents");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "Create/Edit payment to");
@@ -1316,6 +1317,7 @@ else
     define2("C_PREREQUISITES" , "پیشنیازها");
     define2("C_NOTES" , "یادداشت ها");
     define2("C_USERS_ASSIGNED_TO_WORK" , "کاربران منتصب به کار");
+    define2("C_DOCUMENTS" , "اسناد کارها");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");

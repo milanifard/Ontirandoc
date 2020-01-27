@@ -4,6 +4,9 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 89-3-31
 */
+/*
+ * Changed by Sara Bolouri Bazaz
+ */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/ProjectTasks.class.php");
@@ -124,22 +127,22 @@ if($SomeItemsRemoved)
                 echo "	<td nowrap>".$res[$k]->CreateDate_Shamsi."</td>";
                 echo "<td nowrap>";
                 echo "<a target=\"_blank\" href='ManageProjectTaskAssignedUsers.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/members.gif' border='0' title='کاربران منتسب به کار'>";
+                echo "<img src='images/members.gif' border='0' title=". C_USERS_ASSIGNED_TO_WORK ."";
                 echo "</a>  ";
                 echo "<a target=\"_blank\" href='ManageProjectTaskActivities.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/activity.gif' border='0' title='اقدامات'>";
+                echo "<img src='images/activity.gif' border='0' title= ".C_ACTIONS .">";
                 echo "</a>  ";
                 echo "<a target=\"_blank\" href='ManageProjectTaskComments.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/comment.gif' border='0' title='یادداشتها'>";
+                echo "<img src='images/comment.gif' border='0' title=".C_NOTES.">";
                 echo "</a>  ";
                 echo "<a target=\"_blank\" href='ManageProjectTaskDocuments.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/document.gif' border='0' title='اسناد کارها'>";
+                echo "<img src='images/document.gif' border='0' title=".C_DOCUMENTS.">";
                 echo "</a>  ";
                 echo "<a target=\"_blank\" href='ManageProjectTaskRequisites.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/chain.gif' border='0' title='پیشنیازها'>";
+                echo "<img src='images/chain.gif' border='0' title=".C_PREREQUISITES.">";
                 echo "</a>  ";
                 echo "<a target=\"_blank\" href='ManageProjectTaskHistory.php?ProjectTaskID=".$res[$k]->ProjectTaskID ."'>";
-                echo "<img src='images/history.gif' border='0' title='تاریخچه'>";
+                echo "<img src='images/history.gif' border='0' title=".C_HISTORY.">";
                 echo "</a>  ";
                 echo "</td>";
                 echo "</tr>";
