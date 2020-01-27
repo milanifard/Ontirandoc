@@ -998,7 +998,7 @@ class manage_projects
 		$obj->LoadDataFromDatabase($RecID); 
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>عنوان: </b>";
+		$ret .= "<b>".C_TITLE.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->title, ENT_QUOTES, 'UTF-8');
@@ -1025,42 +1025,42 @@ class manage_projects
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="Newprojects")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='NewCivilProjects.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+			$ret .= "><a href='NewCivilProjects.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectAgreements")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectAgreements.php?ProjectID=".$RecID."'>قراردادها</a></td>";
+			$ret .= "><a href='ManageProjectAgreements.php?ProjectID=".$RecID."'>".C_CONTRACTS ."</a></td>";
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectProgressTable")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectProgressTable.php?ProjectID=".$RecID."'>پیشرفت پروژه</a></td>";
+			$ret .= "><a href='ManageProjectProgressTable.php?ProjectID=".$RecID."'>".C_PROJECT_PROGRESS."</a></td>";
 
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectApprovedCredits")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectApprovedCredits.php?ProjectID=".$RecID."'>اعتبارات مصوب</a></td>";
+			$ret .= "><a href='ManageProjectApprovedCredits.php?ProjectID=".$RecID."'>".C_APPROVAED_CREDIT."</a></td>";
 
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectApprovedCreditsFromOtherResource")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectApprovedCreditsFromOtherResource.php?ProjectID=".$RecID."'>اعتبارات مصوب - سایر منابع</a></td>";
+			$ret .= "><a href='ManageProjectApprovedCreditsFromOtherResource.php?ProjectID=".$RecID."'>".C_OTHER_RESOURCES."</a></td>";
 						
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectDocuments")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectDocuments.php?ProjectID=".$RecID."'>مستندات</a></td>";
+			$ret .= "><a href='ManageProjectDocuments.php?ProjectID=".$RecID."'>".C_DOCUMENTS."</a></td>";
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectMilestones")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectMilestones.php?ProjectID=".$RecID."'>تاریخهای مهم</a></td>";
+			$ret .= "><a href='ManageProjectMilestones.php?ProjectID=".$RecID."'>".C_IMPORTANT_DATES."</a></td>";
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectDocumentTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectDocumentTypes.php?ProjectID=".$RecID."'>انواع سند</a></td>";
+			$ret .= "><a href='ManageProjectDocumentTypes.php?ProjectID=".$RecID."'>".C_DOCUMENT_TYPES."</a></td>";
 			$ret .= "<td width=\"11%\" ";
 			if($CurrentPageName=="ManageProjectHistory")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectHistory.php?ProjectID=".$RecID."'>تاریخچه</a></td>";
+			$ret .= "><a href='ManageProjectHistory.php?ProjectID=".$RecID."'>".C_HISTORY."</a></td>";
 			
 			$ret .= "</table>";
 		}
@@ -1074,11 +1074,11 @@ class manage_projects
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="Newprojects")
 				$ret .= "bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='Newprojects.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+			$ret .= "><a href='Newprojects.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectMembers")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectMembers.php?ProjectID=".$RecID."'>اعضا</a></td>";
+			$ret .= "><a href='ManageProjectMembers.php?ProjectID=".$RecID."'>". C_SESSION_MEMBERS. "</a></td>";
 			/*$ret .= "<td width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectExternalMembers")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
@@ -1091,35 +1091,35 @@ class manage_projects
 			$ret .= "<td width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectDocuments")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectDocuments.php?ProjectID=".$RecID."'>مستندات</a></td>";
+			$ret .= "><a href='ManageProjectDocuments.php?ProjectID=".$RecID."'>".C_DOCUMENTS."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectMilestones")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectMilestones.php?ProjectID=".$RecID."'>تاریخهای مهم</a></td>";
+			$ret .= "><a href='ManageProjectMilestones.php?ProjectID=".$RecID."'>".C_IMPORTANT_DATES."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectDocumentTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectDocumentTypes.php?ProjectID=".$RecID."'>انواع سند</a></td>";
+			$ret .= "><a href='ManageProjectDocumentTypes.php?ProjectID=".$RecID."'>".C_DOCUMENT_TYPES."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskActivityTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectTaskActivityTypes.php?ProjectID=".$RecID."'>انواع اقدام</a></td>";
+			$ret .= "><a href='ManageProjectTaskActivityTypes.php?ProjectID=".$RecID."'>".C_ACTION_TYPES."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskTypes")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectTaskTypes.php?ProjectID=".$RecID."'>انواع کار</a></td>";
+			$ret .= "><a href='ManageProjectTaskTypes.php?ProjectID=".$RecID."'>".C_TASK_TYPES."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectTaskGroups")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectTaskGroups.php?ProjectID=".$RecID."'>گروه کارها</a></td>";
+			$ret .= "><a href='ManageProjectTaskGroups.php?ProjectID=".$RecID."'>".C_GROUP_OF_TASKS."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ManageProjectHistory")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ManageProjectHistory.php?ProjectID=".$RecID."'>تاریخچه</a></td>";
+			$ret .= "><a href='ManageProjectHistory.php?ProjectID=".$RecID."'>".C_HISTORY."</a></td>";
 			$ret .= "<td class='text-center' width=\"8%\" ";
 			if($CurrentPageName=="ShowProjectActivities")
 	 			$ret .= " bgcolor=\"#cccccc\" ";
-			$ret .= "><a href='ShowProjectActivities.php?ProjectID=".$RecID."'>فعالیتها</a></td>";
+			$ret .= "><a href='ShowProjectActivities.php?ProjectID=".$RecID."'>".C_ACTIVITIES."</a></td>";
 		
 			$ret .= "</table>";
 			$ret .= "</div>";

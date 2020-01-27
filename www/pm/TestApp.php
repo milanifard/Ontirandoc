@@ -10,10 +10,15 @@ include("classes/FacilityPages.class.php");
 include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
 include("classes/TermEquivalentEnglishTerms.class.php");
 include("classes/payments.class.php");
+include("classes/UserFacilities.class.php"); //by mostafaghr
 include("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
 include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
-
+include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
+include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
+include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
+include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
+include("classes/persons.class.php"); //by Sara Bolouri Bazaz
 HTMLBegin();
 class Test
 {
@@ -86,7 +91,7 @@ Test::add(
     ,"manage_SystemFacilityGroups::GetCount()", "Administration"
 );
 
-//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !ma
 Test::add(
     function()
     {
@@ -1030,6 +1035,7 @@ Test::add(
 
 // ========================================+ Arman Ghoreshi +==============================================
 // ========================== SessionManagement/classes/SessionActReg.class.php ===========================
+/*
 Test::add(
         function()
         {
@@ -1062,6 +1068,7 @@ Test::add(
     ,"SessionManagement/classes/SessionActReg->Added()"
     ,"Message"
 );
+*/
 // ==============================================END=======================================================
 
 // ---------------------- TermEquivalentEnglishTerms.class.php by Diba Aminshahidi ------------------------
@@ -1350,6 +1357,7 @@ Test::add(
 
 
 // FormManagers.class.php - Alireza Imani - begin
+/*
 Test::add(
     function()
     {
@@ -1473,6 +1481,8 @@ Test::add(
     }
     ,"manage_FormManagers->GetRows()", "FormManagers"
 );
+*/
+
 // FormManagers.class.php - Alireza Imani - end
 
 
@@ -1680,7 +1690,7 @@ Test::add(
 #  OntologyValidationExperts.class.php - Mohammad Kahani - Start #
 #                                                                #
 ##################################################################
-
+/*
 Test::add(
     function()
     {
@@ -1697,7 +1707,6 @@ Test::add(
     }
     ,"be_OntologyValidationExperts.class->LoadDataFromDatabase()", "OntologyValidationExperts"
 );
-
 Test::add(
     function()
     {
@@ -1794,6 +1803,7 @@ Test::add(
     }
     ,"manage_OntologyValidationExperts.class->ComparePassedDataWithDB()", "OntologyValidationExperts"
 );
+*/
 
 ##################################################################
 #                                                                #
@@ -1817,15 +1827,14 @@ Test::add(
             return false;
         }
     }
-    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "message"
+    ,"be_OntologyClassLabels.class->LoadDataFromDatabase()", "OntologyClassLabels"
 );
 Test::add(
         function ()
         {
-            $obj=new manage_OntologyClassLabels;
             try {
 
-                $obj->GetCount(1);
+                manage_OntologyClassLabels::GetCount(1);
                 return true;
             }
             catch (Exception $e)
@@ -1833,16 +1842,15 @@ Test::add(
                 return false;
             }
         }
-    ,"manage_OntologyClassLabels.class->GetCount()", "message"
+    ,"manage_OntologyClassLabels.class->GetCount()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetLastID();
+            manage_OntologyClassLabels::GetLastID();
             return true;
         }
         catch (Exception $e)
@@ -1850,16 +1858,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->GetLastID()", "message"
+    ,"manage_OntologyClassLabels.class->GetLastID()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Add(1,"");
+            manage_OntologyClassLabels::Add(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1867,16 +1874,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Add()", "message"
+    ,"manage_OntologyClassLabels.class->Add()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetFirstLabel(1);
+            manage_OntologyClassLabels::GetFirstLabel(1);
             return true;
         }
         catch (Exception $e)
@@ -1884,16 +1890,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "message"
+    ,"manage_OntologyClassLabels.class->GetFirstLabel()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->UpdateOrInsertFirstLabel(1,"");
+            manage_OntologyClassLabels::UpdateOrInsertFirstLabel(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1901,16 +1906,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "message"
+    ,"manage_OntologyClassLabels.class->UpdateOrInsertFirstLabel()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Update(1,"");
+            manage_OntologyClassLabels::Update(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1918,16 +1922,15 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Update()", "message"
+    ,"manage_OntologyClassLabels.class->Update()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->Remove(1);
+            manage_OntologyClassLabels::Remove(1);
             return true;
         }
         catch (Exception $e)
@@ -1945,24 +1948,26 @@ Test::add(
         $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->GetList(1);
-            return true;
+            if(is_array(manage_OntologyClassLabels::GetList(1)))
+                return true;
+            else
+                return false;
+
         }
         catch (Exception $e)
         {
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->Update()", "message"
+    ,"manage_OntologyClassLabels.class->Update()", "OntologyClassLabels"
 
 );
 Test::add(
     function ()
     {
-        $obj=new manage_OntologyClassLabels;
         try {
 
-            $obj->ComparePassedDataWithDB(1,"");
+            manage_OntologyClassLabels::ComparePassedDataWithDB(1,"");
             return true;
         }
         catch (Exception $e)
@@ -1970,10 +1975,848 @@ Test::add(
             return false;
         }
     }
-    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "message"
+    ,"manage_OntologyClassLabels.class->ComparePassedDataWithDB()", "OntologyClassLabels"
 
 );
+
 //OntologyClassLabels.class.php -kourosh ahamadzadeh ataei -end
+
+
+
+//_________________ProjectTaskActivityTypes.class.php AMIN ALIZADEH _________________
+Test::add(function(){
+    $obj = new be_ProjectTaskActivityTypes();
+    try{
+    $res = $obj->LoadDataFromDatabase(1);
+    if($res){
+        return true;
+    }
+    return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"be_ProjectTaskActivityTypes->LoadDataFromDatabase()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->GetCount(1);
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetCount()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->GetLastID();
+        echo $res;
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetLastID()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    $obj = new manage_ProjectTaskActivityTypes();
+    try{
+        $res = $obj->Add("Bala bala bala",  $obj->GetLastID() + 1);
+        if($res)
+            return true;
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Add(()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->Update($obj->GetLastID(), "Bala bala bala");
+        return true;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Update(()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->Remove($obj->GetLastID());
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->Remove(()","ProjectTaskActivityTypes");
+
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+//        $res = $obj->GetList($obj->GetLastID());
+//        if($res)
+//            return true;
+        /* The code contains fatal error so it is a failure without running */
+        /* I comment it so it won't cause stopping other tests*/
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->GetList(()","ProjectTaskActivityTypes");
+
+Test::add(function(){
+    try{
+        $obj = new manage_ProjectTaskActivityTypes();
+        $res = $obj->CreateSelectOptions($obj->GetLastID());
+        if($res)
+            return true;
+        return false;
+    }
+    catch (Exception $e){
+        return false;
+    }
+},"manage_ProjectTaskActivityTypes->CreateSelectOptions(()","ProjectTaskActivityTypes");
+
+//_______________________________END__________________________________________________
+
+
+
+// ProjectTaskRequisites.class.php test by Mostafa Ghofrani
+
+Test::add(
+    function()
+    {
+        $obj = new be_ProjectTaskRequisites();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"be_ProjectTaskRequisites->LoadDataFromDatabase()", "UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetCount("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetCount()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetLastID();
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetLastID()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Add("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Add()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Update("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Update()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::Remove("1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->Remove()","UserFacilities"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            manage_ProjectTaskRequisites::GetList("1", "1");
+            return true;
+            
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectTaskRequisites->GetList()","UserFacilities"
+);
+
+// ProjectTaskRequisites.class.php end test by Mostafa Ghofrani
+
+
+
+// ProjectsSecurity.class.php Unit Test =============== Javad Mahdavian =================
+//===================================================================================================================
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->SaveFieldPermission("1","","1","Add") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SaveFieldPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->SaveDetailTablePermission("1","","1","1","1","1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SaveDetailTablePermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ReadFieldPermission("1","","1")){
+                return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ReadFieldPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ReadDetailTablePermission("1","","1","Add")){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ReadDetailTablePermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ResetRecordFieldsPermission("1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ResetRecordFieldsPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_projects();
+        try {
+            if ($obj->ResetRecordDetailTablesPermission("1","1") == 1){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->ResetRecordDetailTablesPermission()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if (security_projects::LoadUserPermissions("1","1")){
+            return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->LoadUserPermissions()", "security_projects"
+);
+
+Test::add(
+    function()
+    {
+        try {
+            if (security_projects::SetPermissionToFullControl()){
+                return true;
+            }
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_projects->SetPermissionToFullControl()", "security_projects"
+);
+// End of ProjectsSecurity.class.php By Javad Mahdavian ===========================
+//=================================================================================
+// UniversitySessionsSecurity.class.php Unit Test =============== AMIR Karami =================
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try {
+            $obj->SaveFieldPermission("1","File_Name","1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->SaveFieldPermission()", "UniversitySessionsSecurity"
+);
+
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->SaveDetailTablePermission("1", "Table", "1", "1", "1", "1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->SaveDetailTablePermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ReadFieldPermission("1", "Table", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ReadFieldPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ReadDetailTablePermission("1", "Table", "1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ReadDetailTablePermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ResetRecordFieldsPermission("1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordFieldsPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        $obj = new security_UniversitySessions();
+        try{
+            $obj->ResetRecordDetailTablesPermission("1", "1");
+            return true;
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordDetailTablesPermission()","UniversitySessionsSecurity"
+);
+Test::add(
+    function()
+    {
+        try {
+            security_UniversitySessions::LoadUserPermissions("1","1");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"security_UniversitySessions->ResetRecordDetailTablesPermission()", "UniversitySessionsSecurity"
+);
+
+//=================================================================================
+// ResearchProject.class.php Unit Test =============== Mohammad Afsharian Shandiz =================
+//=================================================================================================
+Test::add(
+    function ()
+    {
+        $obj = new be_ResearchProject();
+        try{
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "be_ResearchProject->LoadDataFromDatabase()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::GetCount(1)==0) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetCount()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::GetLastID()==-1) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetLastID()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::Add("1","Term"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Add()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::Update("1","TermUpdate");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Update()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(is_array(manage_ResearchProject::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetList()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::ComparePassedDataWithDB("1","TermUpdate")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ComparePassedDataWithDB()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Remove()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::ShowSummary("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ShowSummary()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::IsCurrentUserValid("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->IsCurrentUserValid()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::ShowTabs("1" , "NewResearchProject");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ShowTabs()", "Message"
+);
+
+// --------------------------------------------- END ----------------------moahmmad afsharian shandiz-------------------------------
+
+//persons.class.php UNIT TEST Start ------------> by Sara Bolouri Bazaz
+Test::add(
+
+    function ()
+    {
+        $obj = new be_persons();
+        try {
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "be_persons->LoadDataFromDatabase()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetCount("whereCondition") == 0){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetCount()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetLastID() == -1){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetLastID()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::Add("pfname", "plname", "CardNumber" ) > -1){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Add()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_persons::Update("1", "pfname", "plname", "CardNumber" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Update()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_persons::Remove("1" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Remove()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::GetList("1", "1", "FieldName", "OrderType" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->GetList()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::Search("pfname", "plname", "FieldName", "OrderType" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->Search()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::SearchResultCount("pfname", "plname") == 0){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->SearchResultCount()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_persons::ComparePassedDataWithDB("1", "pfname", "plname", "CardName" ) != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_persons->ComparePassedDataWithDB()" , "Message"
+);
+
+//persons.class.php UNIT TEST Finish ------------> by Sara Bolouri Bazaz
 
 
 

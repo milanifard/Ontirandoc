@@ -4,6 +4,9 @@
 	برنامه نویس: امید میلانی فرد
 	تاریخ ایجاد: 94-1-2
 */
+/*
+ * Changed by Sara Bolouri Bazaz
+ */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
 include("classes/payments.class.php");
@@ -11,6 +14,10 @@ include ("classes/persons.class.php");
 HTMLBegin();
 $PersonName = "";
 $pobj = new be_persons();
+if(!isset($_REQUEST["PersonID"]))
+{
+    $_REQUEST["PersonID"]  = '';
+}
 $pobj->LoadDataFromDatabase($_REQUEST["PersonID"]);
 $PersonName = $pobj->pfname." ".$pobj->plname;
 
@@ -35,7 +42,7 @@ if(isset($_REQUEST["Save"]))
     {
         if ($_FILES['Item_PaymentFile']['error'] != 0)
         {
-            echo ' خطا در ارسال فایل' . $_FILES['Item_PaymentFile']['error'];
+            echo ERROR_SEND . $_FILES['Item_PaymentFile']['error'];
         }
         else
         {
@@ -68,7 +75,8 @@ if(isset($_REQUEST["Save"]))
             , $Item_PaymentFileName
         );
     }
-    echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+
+    echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 $PaymentDescription = "";
@@ -89,74 +97,75 @@ if(isset($_REQUEST["UpdateID"]))
 ?>
 <br>
 <div class="container border"">
-    <?
-    if(isset($_REQUEST["UpdateID"]))
-    {
-        echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
-    }
-    ?>
-    <br>
-    <div>
-        <div class="bg-dark text-white text-center font-weight-bolder">
-            ایجاد/ویرایش پرداخت به <b><? echo $PersonName ?></b>
-            <br>
-            <br>
-        </div>
+<?
+if(isset($_REQUEST["UpdateID"]))
+{
+    echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
+}
+?>
+<br>
+<div>
+    <div class="bg-dark text-white text-center font-weight-bolder">
+        <br>
+        <?php echo C_CREATING_EDITING_PAYMENT_TO ?> <b><? echo $PersonName ?></b>
+        <br>
+        <br>
     </div>
-    <br>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label text-right">مبلغ</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" value="ریال">
-        </div>
+</div>
+<br>
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-right"> <?php echo C_AMOUNT ?></label>
+    <div class="col-sm-8">
+        <input type="text" class="form-control" value=<?php echo C_RIAL ?>>
     </div>
+</div>
 
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0 text-right">نوع پرداخت</legend>
-            <div class="col-sm-9">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" >
-                    <label class="form-check-label" for="gridRadios1">
-                        واریز به حساب
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">
-                        چک
-                    </label>
-                </div>
-                <div class="form-check disabled">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-                    <label class="form-check-label" for="gridRadios3">
-                        نقد
-                    </label>
-                </div>
+<fieldset class="form-group">
+    <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0 text-right"><?php echo C_PAYMENT_TYPE ?></legend>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" >
+                <label class="form-check-label" for="gridRadios1">
+                    <?php echo C_DEPOSIT ?>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                    <?php echo C_CHEQUE ?>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                <label class="form-check-label" for="gridRadios3">
+                    <?php echo C_CASH ?>
+                </label>
             </div>
         </div>
-    </fieldset>
-
-    <div class="form-group">
-        <div class="row">
-            <label class="col-form-label text-right col-sm-2">توضیحات</label>
-            <textarea  class="form-control col-sm-8"  rows="3"></textarea>
-        </div>
     </div>
+</fieldset>
 
-    <div class="form-group">
-        <div class="row">
-            <label class="col-form-label text-right col-sm-2">انتخاب فایل</label>
-            <input type="file" class="form-control-file col-sm-9" >
-        </div>
+<div class="form-group">
+    <div class="row">
+        <label class="col-form-label text-right col-sm-2"> <?php echo C_DESCRIPTION1 ?></label>
+        <textarea  class="form-control col-sm-8"  rows="3"></textarea>
     </div>
+</div>
 
-    <div class="container row-cols-lg-6" >
-        <input type="button" class= "btn btn-dark"  onclick="javascript: ValidateForm();" value="ذخیره">
-        <input type="button" class="btn btn-dark" onclick="javascript: document.location='ManagePayments.php?PersonID=--><?php echo $_REQUEST["PersonID"]; ?>'" value="جدید">
+<div class="form-group">
+    <div class="row">
+        <label class="col-form-label text-right col-sm-2"> <?php echo C_CHOOSE_FILE ?></label>
+        <input type="file" class="form-control-file col-sm-9" >
     </div>
-    <br>
-    <input type="hidden" name="Save" id="Save" value="1">
+</div>
+
+<div class="container row-cols-lg-6" >
+    <input type="button" class= "btn btn-dark"  onclick="javascript: ValidateForm();" value=" <?php echo C_SAVE ?>">
+    <input type="button" class="btn btn-dark" onclick="javascript: document.location='ManagePayments.php?PersonID=--><?php echo $_REQUEST["PersonID"]; ?>'" value=" <?php echo C_ADD ?>">
+</div>
+<br>
+<input type="hidden" name="Save" id="Save" value="1">
 </div>
 
 <script>
@@ -186,20 +195,21 @@ if($SomeItemsRemoved)
     <br>
     <table class="table">
         <thead class="thead-light">
-            <tr>
-                <th colspan="8" class="text-center"> پرداختی ها به <b><? echo $PersonName ?></b></th>
-            </tr>
+        <tr>
+            <th colspan="8" class="text-center">  <?php echo C_PAYMENTS_TO ?> <b><? echo $PersonName ?></b></th>
+        </tr>
         </thead>
         <thead>
-            <tr >
-                <td>ردیف</td>
-                <td>ویرایش</td>
-                <td>مبلغ</td>
-                <td>تاریخ</td>
-                <td>نوع پرداخت</td>
-                <td>توضیحات</td>
-                <td>فایل</td>
-            </tr>
+
+        <tr >
+            <td> <?php echo C_ROW ?></td>
+            <td> <?php echo C_EDIT ?></td>
+            <td> <?php echo C_AMOUNT ?></td>
+            <td> <?php echo C_DATE ?></td>
+            <td> <?php echo C_PAYMENT_TYPE ?></td>
+            <td> <?php echo C_DESCRIPTION1 ?></td>
+            <td> <?php echo C_FILE1?></td>
+        </tr>
         </thead>
         <?
         for($k=0; $k<count($res); $k++)
@@ -212,7 +222,7 @@ if($SomeItemsRemoved)
             echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->PaymentID."\">";
             echo "</td>";
             echo "<td>".($k+1)."</td>";
-            echo "	<td><a href=\"ManagePayments.php?UpdateID=".$res[$k]->PaymentID."&PersonID=".$_REQUEST["PersonID"]."\"><img src='images/edit.gif' title='ویرایش'></a></td>";
+            echo "	<td><a href=\"ManagePayments.php?UpdateID=".$res[$k]->PaymentID."&PersonID=".$_REQUEST["PersonID"]."\"><img src='images/edit.gif' title=".C_EDIT."></a></td>";
             echo "	<td>".htmlentities($res[$k]->amount, ENT_QUOTES, 'UTF-8')."</td>";
             echo "	<td>".$res[$k]->PaymentDate_Shamsi."</td>";
             echo "	<td>".$res[$k]->PayType_Desc."</td>";
@@ -229,11 +239,11 @@ if($SomeItemsRemoved)
         }
         ?>
         <tfoot>
-            <tr>
-                <td colspan="8" align="center">
-                    <input type="button" class="btn bg-light text-dark" onclick="javascript: ConfirmDelete();" value="حذف">
-                </td>
-            </tr>
+        <tr>
+            <td colspan="8" align="center">
+                <input type="button" class="btn border-dark text-dark" onclick="javascript: ConfirmDelete();" value=" <?php echo C_REMOVE ?>">
+            </td>
+        </tr>
         </tfoot>
     </table>
 </div>
@@ -244,7 +254,7 @@ if($SomeItemsRemoved)
 <script>
     function ConfirmDelete()
     {
-        if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+        if(confirm(' <?php echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
     }
 </script>
 </html>

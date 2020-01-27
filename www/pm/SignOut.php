@@ -1,35 +1,43 @@
-<?php
+<?php	
+include("header.inc.php");
+include("../sharedClasses/SharedClass.class.php");
+include("classes/ProjectTasks.class.php");
+include("classes/projects.class.php");
+
+HTMLBegin();
 	session_start();
 	session_destroy();
 	$Referer = "";
 ?>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'.
-</style>
-<link rel="stylesheet"  href="../template/css/login.css" type="text/css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'</style>
 </head>
-<body  dir=rtl link="#0000FF" alink="#0000FF" vlink="#0000FF">
-<br>
-<form method=post>
-<table with=80% align=center border=1 celspacing=0 cellpadding=15>
-<tr>
-	<td align=center>
-		<font size=5>
-		<? if(isset($_REQUEST["SessionExpired"])) { $Referer="?Referer=".$_SERVER["HTTP_REFERER"]; ?>
-		<font color=red>
-		نشست شما منقضی شده است
-		</font>
-		<? } else { ?>
-		خوش آمدید
-		<? } ?>
-		<br>
-		<br>
-		برای ورود مجدد
-		<a href='login.php<?php echo $Referer; ?>'>
-		اینجا</a> را کلیک کنید
-	</td>
-</tr>
-</table>
-</form>
+<body>
+	<br>
+		<form method=post>
+			<table class="table table-bordered bg-info" >
+				<tr class="warning">
+					<td class="text-center">
+						<? 
+						if(isset($_REQUEST["SessionExpired"])) { 
+							$Referer="?Referer=".$_SERVER["HTTP_REFERER"];
+							echo C_SESSION_EXPIRED;
+						} 
+						else { 
+							echo C_WELCOME;
+						} 
+						?>
+						<br>
+						<br>
+						<? echo  C_RELOGING; ?>
+						<a class="text-center" href='login.php<?php echo $Referer; ?>'> 
+							<? echo  C_CLICK_THIS; ?> 
+						</a>
+					</td>
+				</tr>
+			</table>
+		</form>
 </body>

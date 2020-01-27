@@ -1,4 +1,4 @@
-<?php
+`<?php
 define("UI_LANGUAGE", "EN");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
@@ -31,7 +31,9 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FIRST_PAGE", "Home");
     define2("C_CHANGE_PASSWORD", "Change Password");
     define2("C_MY_ACTIONS", "My Actions");
-
+    // NewProjectTaskTypes.php by Mostafa Sader
+    define2("C_CREATE_EDIT_TYPES_OF_WORKS","Create/Edit types of works");
+    define2("C_DESIRED_TITLE","Desired title");
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","Title");
     define2("C_TEXT","Text");
@@ -210,7 +212,7 @@ if(UI_LANGUAGE=="EN") {
     //ManageSessionTypeMembers.php By Arman Ghoreshi
     define2("C_ROLE","Role");
     define2("C_SESSIOM_MEMBERS","Session Members");
-   // define2("C_ARE_YOU_SURE","Are You Sure?");
+    // define2("C_ARE_YOU_SURE","Are You Sure?");
     define2("C_SESSION_MEMBERS_CREATE_EDIT","Create/Edit Session Members");
     define2("C_PERSONEL","Employees");
     define2("C_OTHER","Others");
@@ -436,14 +438,23 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MENUS" , "Menus");
     define2("C_T_RETURN" , "Return");
 
+    //additionals for classes -- by navidbeta
+    define2("C_CONTRACTS" , "CONTRACTS");
+    define2("C_APPROVAED_CREDIT" , "Approved credit");
+    define2("C_PROJECT_PROGRESS" , "Project progress");
+    define2("C_OTHER_RESOURCES" , "Other Resources");
+    define2("C_GROUP" , "Group");
+    define2("C_T_PAGEADDRESS" , "Page Address");
+    define2("C_ORDERNUM" , "Order Number");
+
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "Documentation of Databases");
     define2("C_DATABASES", "Databases");
     define2("C_SERVER", "Server");
     define2("C_TABLES" , "Tables");
     define2("C_DEADLINE" , "Deadline");
-	
-	//EN fo MangePersons.php
+
+    //EN fo MangePersons.php
     define2("C_CREATING_EDITTING_PERSONS", "Add/Edit users");
     define2("C_MP_EMAIL", "Email");
     define2("C_MP_MOBILE", "Mobile");
@@ -451,8 +462,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MP_PEOPLE_LIST", "User lists");
     define2("C_MP_IMAGE", "Image");
     define2("C_MP_PAYMENTS", "Payments");
-	
-	//ManageQuestionnaires.php Hoormazd Ranjbar
+
+    //ManageQuestionnaires.php Hoormazd Ranjbar
     define2("C_MQ_FILTER", "Filter Title");
     define2("C_MQ_CODE", "Code");
     define2("C_MQ_MAIN_FORM", "Main Form");
@@ -463,8 +474,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MQ_FILL", "Filled");
     define2("C_MQ_LAST_ACCEPT", "Last Accept");
     define2("C_MQ_MAKE", "Make");
-	
-	//MyActions.php Hoormazd Ranjbar
+
+    //MyActions.php Hoormazd Ranjbar
     //EN
     define2("C_MYACTIONS", "My Actions");
     define2("C_MA_ACTION", "Action");
@@ -514,7 +525,7 @@ if(UI_LANGUAGE=="EN") {
     define2('C_STATUS_DONE', 'done');
     define2('C_STATUS_SUSPENDED', 'suspended');
     define2('C_STATUS_REPLYED', 'replyed');
-    
+
     define2("C_FORMPART_NEWEDIT", "Create/Edit form parts");
     define2("C_FORMPART_NAME", "Name");
     define2("C_FORMPART_ORDER", "Order");
@@ -529,11 +540,15 @@ if(UI_LANGUAGE=="EN") {
     define2("C_STATUS" , "Status");
     define2("C_OTHER_SPECIFICATIONS" , "Other specification");
     define2("C_CREATE_TIME1" , "Create time");
+    define2("C_PREREQUISITES" , "Prerequisites");
+    define2("C_NOTES" , "Notes");
+    define2("C_USERS_ASSIGNED_TO_WORK" , "User assigned to work");
+    define2("C_DOCUMENTS" , "Documents");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "Create/Edit payment to");
     define2("C_AMOUNT" , "Amount");
-    define2("C_PATMENT_TYPE" , "Payment type");
+    define2("C_PAYMENT_TYPE" , "Payment type");
     define2("C_CHEQUE" , "Cheque");
     define2("C_CASH" , "Cash");
     define2("C_DEPOSIT" , "Deposit");
@@ -554,8 +569,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ACTIVITIES" , "Activities");
     define2("C_APPLIER" , "Applier");
     define2("C_RELATED_ROLE" , "Related role");
-    define2("C-CODE" , "Code");
-    define2("C_ACTION_TYPE" , "Action type");
+    define2("C_CODE" , "Code");
+    define2("C_ACTION_TYPE1" , "Action type");
     define2("C_RELATED_SECTION" , "Related section");
     define2("C_OPERATION_DESCRIPTION" , "Operation description");
     define2("C_MEMBER" , "Member");
@@ -568,6 +583,10 @@ if(UI_LANGUAGE=="EN") {
     define2("C_UPDATE" , "Update");
     define2("C_VIEW" , "View");
     define2("C_CHOOSE_APPLIER" , "Choose applier");
+    define2("C_CONTRACTS" , "Contracts");
+    define2("C_PROJECT_PROGRESS" , "Project progress");
+    define2("C_CREDITS_APPROVED" , "Credits approved");
+    define2("C_CONTRACTS_OTHER_RESOURCES" , "Credits approved - Other resources");
 
 
 //    ControlForms.php by Yegane Shabgard
@@ -676,7 +695,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PRINTSESSIONPAGE_STTIR", "results");
     define2("C_PRINTSESSIONPAGE_STFORTH", "follow up agent");
     define2("C_PRINTSESSIONPAGE_STFIF", "due time");
-   
+
     define2("C_PRINTSESSIONPAGE_TTH", "presents");
     define2("C_PRINTSESSIONPAGE_TTFIRST", "order");
     define2("C_PRINTSESSIONPAGE_TTSEC", "first name & last name");
@@ -685,7 +704,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_PRINTSESSIONPAGE_TTFIF", "signiture");
     define2("C_PRINTSESSIONPAGE_TTSIX", "submition date (sign)");
     define2("C_PRINTSESSIONPAGE_FTH", "absents");
-    
+
     define2("C_ONT_MERG_CLASSES_PAGE_OFIR", "relation");
     define2("C_ONT_MERG_CLASSES_PAGE_OSEC", "sub class");
     define2("C_ONT_MERG_CLASSES_PAGE_OTIR", "");
@@ -749,6 +768,65 @@ if(UI_LANGUAGE=="EN") {
     define("C_Prop_Range","Properties Range");
     define("C_Prop_Name","Properties Name");
     //_________________ END _____________________________
+
+    //SignOut.php Mostafa Ghofrani
+    define("C_SESSION_EXPIRED", "Your session has been expired");
+    define("C_WELCOME", "Welcome");
+    define("C_RELOGING", "For loging in");
+    define("C_CLICK_THIS", "click here!");
+
+    //TaskMessages.php Mostafa Ghofrani
+    define("C_LATEST_STATUS_OTHERS", "Latest tasks doneon your jobs by others ");
+    define("C_JOB_DONE", "Job done");
+    define("C_RELATED_USER", "Assigned user");
+    define("C_RELATED_TITLE", "Assigned job title");
+    define("C_LATEST_STATUS_YOU", "Latest tasks done on your jobs by yourself");
+    define("C_MORE_DET", "Show more");
+    define("C_LESS_DET", "Show less");
+    define("C_JOB_TITLE", "Job title");
+
+    //HomePage.php and compare_ontologies By mohammadAfsharian
+    define("C_RECIVED_LETTER","Recived Letter");
+    define("C_COMPAIRE_ONTOLOGIES","Compair Ontologies");
+    define("C_CLASS","Class");
+    define("C_PROPERTICE","Propertice");
+    define("C_TO","to");
+    define("C_CHOICE","Choice");
+    define("C_ALLOWED_ATTRBIUTE_DATA" , "Allowed Attribute Data");
+    define("C_ABUSES_AND_SYMMETRIES","Abuses And Symmetries");
+    define("C_CLEAR_PRE_EXITING_MAPPING","Clear Pre-Existing Mapping");
+    define("C_COMPARE_THE_ELEMENT","Compare The Element");
+    define("C_WITH","With");
+    define("C_SHOWING_COMPARISON_RESULTS","Showing Comparison Result");
+    define("C_SEMI_AUTOMATED_MAPPING","Semi Automated Mapping");
+    define("C_MESSAGES","Message");
+
+    //Manage_projects By mohammadAfsharian
+    define("C_TITLE","Title");
+    define("C_SEARCH","Search");
+    define("C_PROJECT_GROUP","Project Group");
+    define("C_RELATED_SYSTEM","Related System");
+    define("C_CONDITION","Condition");
+    define("C_REMOVE","Remove");
+    define("C_CREAT","Creat");
+    define("C_RESPONSIV"," Responsiv");
+    define("C_EDIT","Edit");
+    define("C_ROW","Row");
+    define("C_PARTS","Parts");
+    define("C_PROJECT","Project");
+    define("C_PRIORITY","Priority");
+    define("C_ARE_YOU_SURE","Are You Sure?");
+    define("C_CHOSE_YOUR_CONDITIONS", "Chose Your Conditions");
+    define("C_NOT_STARTED","Not Started");
+    define("C_ONGOING","ongoing");
+    define("C_SUPPORTED","supported");
+    define("C_FINISHED","finished");
+    define("C_SUSPENDED","Suspended");
+    define("C_PROJECT_MEMBER","Project Member:");
+    define("C_CHOISE","[choise]");
+    define("C_BY_MY_OWN","By My Own");
+
+
 }
 else
 {
@@ -771,6 +849,10 @@ else
     define2("C_CHANGE_PASSWORD", "تغییر رمز عبور");
     define2("C_MY_ACTIONS", "اقدامات من");
     define2("C_EXIT", "خروج");
+
+    // NewProjectTaskTypes.php by Mostafa Sader
+    define2("C_CREATE_EDIT_TYPES_OF_WORKS","ایجاد/ویرایش انواع کارها");
+    define2("C_DESIRED_TITLE","عنوان مورد نظر");
 
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","عنوان");
@@ -881,7 +963,7 @@ else
     define2("C_PERCENTAGE_MAPPING_CLASS","درصد نگاشت کلاسه");
     define2("C_PROPERTIES_MAPPING_PERCENTAGE","درصد نگاشت خصوصیات");
     //--------------------------
-    
+
     //ShowTermReferHistory.php Hossein Lotfi
     define2("C_SOURCE_NAME","نام منبع");
     define2("C_PAGE","صفحه");
@@ -1173,14 +1255,23 @@ else
     define2("C_MENUS" , "منوها");
     define2("C_T_RETURN" , "بازگشت");
 
+    //additionals for classes -- by navidbeta
+    define2("C_CONTRACTS" , "قرارداد ها‌");
+    define2("C_APPROVAED_CREDIT" , "اعتبار مصوب‌");
+    define2("C_PROJECT_PROGRESS" , "پیشرفت پروژه");
+    define2("C_OTHER_RESOURCES" , "سایر منابع");
+    define2("C_GROUP" , "گروه");
+    define2("C_T_PAGEADDRESS" , "آدرس صفحه");
+    define2("C_ORDERNUM" , "شماره ترتیب");
+
     //ManagePermittedDatabases by Javad Mahdavian
     define2("C_DATABASE_DOC" , "مستند سازی پایگاه های داده");
     define2('C_DATABASES', 'پایگاه های داده');
     define2("C_SERVER", "سرور");
     define2("C_TABLES" , "جداول");
     define2("C_DEADLINE" , "مهلت انجام");
-	
-	//ManagePersons.php Hoormazd Ranjbar
+
+    //ManagePersons.php Hoormazd Ranjbar
     define2("C_CREATING_EDITTING_PERSONS", "ایجاد/ویرایش افراد");
     define2("C_MP_EMAIL", "ایمیل");
     define2("C_MP_MOBILE", "موبایل");
@@ -1189,7 +1280,7 @@ else
     define2("C_MP_IMAGE", "تصویر");
     define2("C_MP_PAYMENTS", "پرداختها");
 
-	//ManageQuestionnaires.php Hoormazd Ranjbar
+    //ManageQuestionnaires.php Hoormazd Ranjbar
     define2("C_MQ_FILTER", "عنوان فیلتر");
     define2("C_MQ_CODE", "کد");
     define2("C_MQ_MAIN_FORM", "فرم اصلی");
@@ -1201,7 +1292,7 @@ else
     define2("C_MQ_LAST_ACCEPT", "تایید نهایی");
     define2("C_MQ_MAKE", "ایجاد");
 
-	//MyActions.php Hoormazd Ranjbar
+    //MyActions.php Hoormazd Ranjbar
     define2("C_MYACTIONS", "اقدامات انجام شده");
     define2("C_MA_ACTION", "عمل انجام شده");
     define2("C_MA_DONE_DATE", "تاریخ انجام شده");
@@ -1264,6 +1355,10 @@ else
     define2("C_STATUS" , "وضعیت");
     define2("C_OTHER_SPECIFICATIONS" , "سایر مشخصات");
     define2("C_CREATE_TIME1" , "زمان ایجاد");
+    define2("C_PREREQUISITES" , "پیشنیازها");
+    define2("C_NOTES" , "یادداشت ها");
+    define2("C_USERS_ASSIGNED_TO_WORK" , "کاربران منتصب به کار");
+    define2("C_DOCUMENTS" , "اسناد کارها");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");
@@ -1303,6 +1398,10 @@ else
     define2("C_UPDATE" , "بروزرسانی");
     define2("C_VIEW" , "مشاهده");
     define2("C_CHOOSE_APPLIER" , "انتخاب عمل کننده");
+    define2("C_CONTRACTS" , "قراردادها");
+    define2("C_PROJECT_PROGRESS" , "پیشرفت پروژه");
+    define2("C_CREDITS_APPROVED" , "اعتبارات مصوب");
+    define2("C_CONTRACTS_OTHER_RESOURCES" , "اعتبارات مصوب - منابع دیگر");
 
     // Projects Kartable Adel Aboutalebi
     define2("C_ROW", "ردیف");
@@ -1334,7 +1433,7 @@ else
     define2("C_RETURN","بازگشت");
     define2("C_SAVE", "ذخیره");
     define2("C_DATA_STORED","اطلاعات ذخیره شد");
-    
+
 
     //controlFrom.php by Yegane Shabgard
     define2("C_FORM_TYPE" , "نوع فرم:");
@@ -1491,6 +1590,65 @@ else
     define("C_Prop_Range","برد خصوصیت");
     define("C_Prop_Name","نام خصوصیت");
     //_________________ END _____________________________
+
+    //SignOut.php Mostafa Ghofrani
+    define("C_SESSION_EXPIRED", "نشست شما منقضی شده است");
+    define("C_WELCOME", "خوش آمدید");
+    define("C_RELOGING", "برای ورود مجدد");
+    define("C_CLICK_THIS", "اینجا را کلیک کنید");
+
+    //TaskMessages.php Mostafa Ghofrani
+    define("C_LATEST_STATUS_OTHERS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
+    define("C_JOB_DONE", "عملیات انجام شده");
+    define("C_RELATED_USER", "کاربر مربوطه");
+    define("C_RELATED_TITLE", "عنوان کار مربوطه");
+    define("C_LATEST_STATUS_YOU", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
+    define("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
+    define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
+    define("C_JOB_TITLE", "عنوان کار مربوطه");
+
+    //HomePage.php and compare_ontologies By mohammadAfsharian
+    define("C_RECIVED_LETTER"," نامه های رسیده ");
+    define("C_COMPAIRE_ONTOLOGIES","مقایسه دو هستان نگار");
+    define("C_CLASS","کلاس");
+    define("C_PROPERTICE","خصوصیت");
+    define("C_TO","به");
+    define("C_CHOICE","انتخاب");
+    define("C_ALLOWED_ATTRBIUTE_DATA" , "داده مجاز خصوصیت");
+    define("C_ABUSES_AND_SYMMETRIES","اعمال تعدی و تقارنی");
+    define("C_CLEAR_PRE_EXITING_MAPPING","نگاشت از پیش موجود پاک شود");
+    define("C_COMPARE_THE_ELEMENT","مقایسه عناصر");
+    define("C_WITH","با");
+    define("C_SHOWING_COMPARISON_RESULTS","نمایش نتایج مقایسه");
+    define("C_SEMI_AUTOMATED_MAPPING","انجام نگاشت نیمه خودکار");
+    define("C_MESSAGES","پیامها");
+
+    //Manage_projects By mohammadAfsharian
+    define("C_TITLE","عنوان");
+    define("C_SEARCH","جستجو");
+    define("C_PROJECT_GROUP","گروه پروژه");
+    define("C_RELATED_SYSTEM","سیستم مربوطه");
+    define("C_CONDITION","وضعیت");
+    define("C_REMOVE","حذف");
+    define("C_CREAT","ایجاد");
+    define("C_RESPONSIV","پاسخگو");
+    define("C_EDIT","ویرایش");
+    define("C_ROW","ردیف");
+    define("C_PARTS","اعضا");
+    define("C_PROJECT","پروژه");
+    define("C_PRIORITY","اولویت");
+    define("C_ARE_YOU_SURE","آیا مطمِن هستید?");
+    define("C_CHOSE_YOUR_CONDITIONS", "وضعیت خود را انتخاب کنید");
+    define("C_NOT_STARTED","شروع نشده");
+    define("C_ONGOING","شروع نشده");
+    define("C_SUPPORTED","درحال پشتیبانی");
+    define("C_FINISHED","خاتمه یافته");
+    define("C_SUSPENDED","معلق");
+    define("C_PROJECT_MEMBER","اعضای پروژه:");
+    define("C_CHOISE","[انتخاب]");
+    define("C_BY_MY_OWN","خودم");
+
+
 
 }
 
