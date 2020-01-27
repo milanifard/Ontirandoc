@@ -8,14 +8,14 @@
 	  $classes = explode(",", $ClassList);
 	  for($i=0; $i<count($classes); $i++)
 	  {
-	    $res = $mysql->Execute("select * from projectmanagement.OntologyClasses 
-					    JOIN projectmanagement.OntologyClassLabels using (OntologyClassID) 
+			$res = $mysql->Execute("select * from projectmanagement.OntologyClasses 
+							JOIN projectmanagement.OntologyClassLabels using (OntologyClassID) 
 					    where ClassTitle='".$classes[$i]."'");
 	    if($rec = $res->fetch())
 	    {
 	      if($ret!="")
-		$ret .= " - ";
-	      $ret .= $rec["ClassTitle"]." ( ".$rec["label"]." ) ";
+					$ret .= " - ";
+	      	$ret .= $rec["ClassTitle"]." ( ".$rec["label"]." ) ";
 	    }
 	  }
 	  return $ret;
@@ -64,8 +64,8 @@
 			  JOIN projectmanagement.OntologyPropertyLabels l1 on (l1.OntologyPropertyID=p1.OntologyPropertyID)
 			  JOIN projectmanagement.OntologyProperties p2 on (p2.OntologyPropertyID=EntityID2)
 			  JOIN projectmanagement.OntologyPropertyLabels l2 on (l2.OntologyPropertyID=p2.OntologyPropertyID)
-			  where TargetOntologyID=? and (EntityType1='OBJPROP' or EntityType1='DATAPROP') and ActionType='NOT_DECIDE' limit 0,30";
-;
+				where TargetOntologyID=? and (EntityType1='OBJPROP' or EntityType1='DATAPROP') and ActionType='NOT_DECIDE' limit 0,30";
+				
 	  $mysql->Prepare($query);
 	  $res = $mysql->ExecuteStatement(array($TargetOnto));
 	  $i=0;
@@ -77,49 +77,48 @@
 	    	echo "<tr class=OddRow>";
 	    else
 	    	echo "<tr class=EvenRow>";
-	    echo "<td>".$i."</td>";
-	    echo "<td>";
-	    echo "<select id=ch_".$MergeID." name=ch_".$MergeID.">";
-	    echo "<option value='Merge'>ادغام";
-	    echo "<option value='DoNotMerge' ";
-		if($rec["PermittedValues1"]!=$rec["PermittedValues2"])
-			echo " selected ";
-	    echo ">عدم ادغام";	    	    
-	    echo "</select>";
-	    echo "</td>";
-	    echo "<td>";
-	    echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID1"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
-	    echo $rec["PropertyLabel1"];
-	    echo "</a>";
-	    echo "</td>";
-	    echo "<td>".ShowClassesLabel($rec["PropertyDomain1"])."</td>";
-	    echo "<td>".ShowClassesLabel($rec["PropertyRange1"])."</td>";
-	    echo "<td>".$rec["PermittedValues1"]."</td>";
-	    echo "</tr>";
+				echo "<td>".$i."</td>";
+				echo "<td>";
+				echo "<select id=ch_".$MergeID." name=ch_".$MergeID.">";
+				echo "<option value='Merge'>ادغام";
+				echo "<option value='DoNotMerge' ";
+			if($rec["PermittedValues1"]!=$rec["PermittedValues2"])
+				echo " selected ";
+				echo ">عدم ادغام";	    	    
+				echo "</select>";
+				echo "</td>";
+				echo "<td>";
+				echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID1"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
+				echo $rec["PropertyLabel1"];
+				echo "</a>";
+				echo "</td>";
+				echo "<td>".ShowClassesLabel($rec["PropertyDomain1"])."</td>";
+				echo "<td>".ShowClassesLabel($rec["PropertyRange1"])."</td>";
+				echo "<td>".$rec["PermittedValues1"]."</td>";
+				echo "</tr>";
 	    
 	    if($i%2==0)
 	    	echo "<tr class=OddRow>";
 	    else
 	    	echo "<tr class=EvenRow>";
 
-	    echo "<td colspan=2>&nbsp;</td>";
-	    echo "<td>";
-	    echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID2"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
-	    echo $rec["PropertyLabel2"];
-	    echo "</a>";
-	    echo "</td>";
-	    echo "<td>".ShowClassesLabel($rec["PropertyDomain2"])."</td>";
-	    echo "<td>".ShowClassesLabel($rec["PropertyRange2"])."</td>";
-	    echo "<td>".$rec["PermittedValues2"]."</td>";
-	    echo "</tr>";
+			echo "<td colspan=2>&nbsp;</td>";
+			echo "<td>";
+			echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID2"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
+			echo $rec["PropertyLabel2"];
+			echo "</a>";
+			echo "</td>";
+			echo "<td>".ShowClassesLabel($rec["PropertyDomain2"])."</td>";
+			echo "<td>".ShowClassesLabel($rec["PropertyRange2"])."</td>";
+			echo "<td>".$rec["PermittedValues2"]."</td>";
+			echo "</tr>";
 	  }
 	}
 	
 	function GetClassID($ClassTitle, $TargetOnto)
 	{
 	  $mysql = pdodb::getInstance();
-	  $query = "select OntologyClassID from projectmanagement.OntologyClasses 
-			where ClassTitle=? and OntologyID=?";
+	  $query = "select OntologyClassID from projectmanagement.OntologyClasses where ClassTitle=? and OntologyID=?";
 	  $mysql->Prepare($query);
 	  $res = $mysql->ExecuteStatement(array($ClassTitle, $TargetOnto));
 	  if($rec = $res->fetch())
@@ -133,8 +132,7 @@
 	function IsValidMerge($PropertyID1, $PropertyID2)
 	{
 	  $mysql = pdodb::getInstance();
-	  $query = "select count(*) as tcount from projectmanagement.OntologyProperties 
-			where OntologyPropertyID=? or OntologyPropertyID=?";
+	  $query = "select count(*) as tcount from projectmanagement.OntologyProperties where OntologyPropertyID=? or OntologyPropertyID=?";
 	  $mysql->Prepare($query);
 	  $res = $mysql->ExecuteStatement(array($PropertyID1, $PropertyID2));
 	  if($rec = $res->fetch())
@@ -153,15 +151,14 @@
 	      $mysql->Execute($query);
 	      if($PropertyRange2!="")
 	      {
-		$query = "update projectmanagement.OntologyProperties set `range`=concat(`range`,', ', '".$PropertyRange2."') where OntologyPropertyID=".$PropertyID1."
-	    and `range` not like '%".$PropertyRange2."%'";
-		$mysql->Execute($query);
+					$query = "update projectmanagement.OntologyProperties set `range`=concat(`range`,', ', '".$PropertyRange2."') where OntologyPropertyID=".$PropertyID1."and `range` not like '%".$PropertyRange2."%'";
+					$mysql->Execute($query);
 	      }
 	      
 	      $DomainClassID = GetClassID($PropertyDomain2, $TargetOnto);
 	      $RangeClassID = GetClassID($PropertyRange2, $TargetOnto);
 	      if($DomainClassID!="0" && $RangeClassID!="0")
-		SetValidRelation($PropertyID1, $DomainClassID, $RangeClassID);
+					SetValidRelation($PropertyID1, $DomainClassID, $RangeClassID);
 	      
 	      $query = "delete from projectmanagement.OntologyProperties where OntologyPropertyID=".$PropertyID2;
 	      $mysql->Execute($query);
@@ -197,70 +194,99 @@
 			  JOIN projectmanagement.OntologyPropertyLabels l1 on (l1.OntologyPropertyID=p1.OntologyPropertyID)
 			  JOIN projectmanagement.OntologyProperties p2 on (p2.OntologyPropertyID=EntityID2)
 			  JOIN projectmanagement.OntologyPropertyLabels l2 on (l2.OntologyPropertyID=p2.OntologyPropertyID)
-			  where TargetOntologyID=? and (EntityType1='OBJPROP' or EntityType1='DATAPROP') and ActionType='NOT_DECIDE'";
-;
-	  $mysql->Prepare($query);
-	  $res = $mysql->ExecuteStatement(array($TargetOnto));
-	  $i=0;
-	  while($rec = $res->fetch())
-	  {
+				where TargetOntologyID=? and (EntityType1='OBJPROP' or EntityType1='DATAPROP') and ActionType='NOT_DECIDE'";
+		
+		$mysql->Prepare($query);
+		$res = $mysql->ExecuteStatement(array($TargetOnto));
+		$i=0;
+		while($rec = $res->fetch())
+		{
+			echo "<p>aref</p>";
 	    $i++;
 	    $MergeID = $rec["OntologyMergeReviewedPotentialID"];
 	    if(isset($_REQUEST["ch_".$MergeID]))
 	    {
-		if($_REQUEST["ch_".$MergeID]=="Merge")	    
-		{
-		
-		    	if(IsValidMerge($rec["PropertyID1"], $rec["PropertyID2"]))
-		    	{
-			     	MergeTwoProperty($TargetOnto, $rec["PropertyID1"], $rec["PropertyID2"], $rec["PropertyDomain2"], $rec["PropertyRange2"]); 
-				SetMergeSuggestionRecordStatus($MergeID, "MERGE");
-			}
-			else SetMergeSuggestionRecordStatus($MergeID, "NOT_MERGE");
-		}
-		else SetMergeSuggestionRecordStatus($MergeID, "NOT_MERGE");
-	     }
+				if($_REQUEST["ch_".$MergeID]=="Merge")	    
+				{
+					if(IsValidMerge($rec["PropertyID1"], $rec["PropertyID2"]))
+					{
+						MergeTwoProperty($TargetOnto, $rec["PropertyID1"], $rec["PropertyID2"], $rec["PropertyDomain2"], $rec["PropertyRange2"]); 
+						SetMergeSuggestionRecordStatus($MergeID, "MERGE");
+					}
+					else SetMergeSuggestionRecordStatus($MergeID, "NOT_MERGE");
+				}
+				else SetMergeSuggestionRecordStatus($MergeID, "NOT_MERGE");
+	    }
 	  }
 	}
-	
-	$TargetOnto = "";
-	if(isset($_REQUEST["DoMerge"]))
-	{
-		$TargetOnto = $_REQUEST["TargetOnto"];
-	  DoPropertyMerge($TargetOnto);
-	}
-	
-	
-	echo "<form method=post>";
-	echo "<input type=hidden name=DoMerge id=DoMerge value=1>";
-	echo "<input type=hidden name=TargetOnto id=TargetOnto value='".$TargetOnto."'>";
-	
-	echo '<div class="container">';
-	echo '<table class="table table-bordered">';
-	echo "<tr class=HeaderOfTable><td colspan=10 align=center>پیشنهادات ادغام</td></tr>";
-	echo "<tr bgcolor=#cccccc align=center><td width=1%>ردیف</td><td>خصوصیت </td><td>دامنه </td><td>برد</td><td>مقادیر مجاز </td>";
-	//echo "<td>خصوصیت ۲</td><td>دامنه خصوصیت ۲</td><td>برد خصوصیت ۲</td><td>مقادیر مجاز ۲</td>";
-	echo "</tr>";
-	ShowPropertyMergeSuggestions($TargetOnto);	
-	echo "<tr class=FooterOfTable><td colspan=10 align=center><input type=submit value='اعمال'></td></tr>";
-	echo "</table>";
-	echo "</div>";
-	
-	echo "</form>";
-	HTMLBegin();
 ?>
 
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body style="direction:rtl">
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class = "container-fluid">
+			<div class = "row">
+				<div class = "col">
+				</div>
+				<div class = "col-10">
+					<form method = "post">
+						<!-- <input type="hidden" name="DoMerge" id="DoMerge" value="1">
+						<input type="hidden" name="TargetOnto" id="TargetOnto" value='.$TargetOnto.'> -->
+						<table class="table table-bordered text-center" dir="rtl">
+							<thead class="thead-dark">
+								<tr>
+									<th colspan="10" align="center">پیشنهادات ادغام</th>
+								</tr>
+								<tr>
+									<th>ردیف</th>
+									<th>خصوصیت</th>
+									<th>دامنه</th>
+									<th>برد</th>
+									<th>مقادیر مجاز</th>
+									<!-- <th>خصوصیت 2</th>
+									<th>دامنه خصوصیت ۲</th>
+									<th>برد خصوصیت ۲</th>
+									<th>مقادیر مجاز ۲</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									$TargetOnto = "";
+									if(isset($_REQUEST["DoMerge"]))
+									{
+										$TargetOnto = $_REQUEST["TargetOnto"];
+									  DoPropertyMerge($TargetOnto);
+									}
+									echo "<input type=hidden name=DoMerge id=DoMerge value=1>";
+									echo "<input type=hidden name=TargetOnto id=TargetOnto value='".$TargetOnto."'>";
+									ShowPropertyMergeSuggestions($TargetOnto);
+								?>
+							</tbody>
+							<!-- <tfoot>
+								<tr>
+									<td colspan ="10" align="center">
+										<input type="submit" value="اعمال">
+									</td>
+								</tr>
+							</tfoot> -->
+						</table>
+						<div class="text-center">
+							<input class="btn btn-primary btn-customized" type="submit" value="اعمال">
+						</div>
+					</form>
+				</div>
+				<div class="col">
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
-
