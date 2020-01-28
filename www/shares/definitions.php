@@ -34,6 +34,14 @@ if(UI_LANGUAGE=="EN") {
     // NewProjectTaskTypes.php by Mostafa Sader
     define2("C_CREATE_EDIT_TYPES_OF_WORKS","Create/Edit types of works");
     define2("C_DESIRED_TITLE","Desired title");
+    // NewProjectTaskActivities.php by Mostafa Sader
+    define2("C_ACTION_DATE","Action Date");
+    define2("C_TYPE_OF_ACTION","Type of action");
+    define2("C_TIME_CONSUMING","Time consuming");
+	define2("C_PROGRESS","Progress");
+	define2("C_ATTACHED_FILE","attached file");
+	define2("C_CHANGED_TABLES","Changed tables");
+	define2("C_CHANGED_PAGES","Changed pages");
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","Title");
     define2("C_TEXT","Text");
@@ -902,6 +910,14 @@ else
     // NewProjectTaskTypes.php by Mostafa Sader
     define2("C_CREATE_EDIT_TYPES_OF_WORKS","ایجاد/ویرایش انواع کارها");
     define2("C_DESIRED_TITLE","عنوان مورد نظر");
+    // NewProjectTaskActivities.php by Mostafa Sader
+    define2("C_ACTION_DATE"," تاریخ اقدام");
+    define2("C_TYPE_OF_ACTION"," نوع اقدام");
+    define2("C_TIME_CONSUMING","زمان مصرفی");
+	define2("C_PROGRESS","درصد پیشرفت");
+	define2("C_ATTACHED_FILE","فایل ضمیمه");
+	define2("C_CHANGED_TABLES","جداول تغییر داده شده");
+	define2("C_CHANGED_PAGES","صفحات تغییر داده شده");
 
     //SendMessage.php needed definitions MOHAMAD_ALI_SAIDI
     define2("C_TITLE","عنوان");

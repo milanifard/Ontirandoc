@@ -250,7 +250,10 @@ else
         <br>
         <table class="table table-bordered table-striped">
             <thead class="HeaderOfTable">
-            <th class="text-center table-primary">ایجاد/ویرایش اقدامات</th>
+                <tr>
+                  <th class="text-center table-primary"><?php echo C_CREATE_EDIT_ACTIONS ?></th>
+                </tr>
+
             </thead>
             <tbody>
                 <tr>
@@ -264,7 +267,7 @@ else
 
 
                         <div class="form-group row">
-                            <label for="Activity_groups" class="col-sm-2 col-form-label"> تاریخ اقدام</label>
+                            <label for="Activity_groups" class="col-sm-2 col-form-label"><?php echo C_ACTION_DATE ?></label>
                             <div >
                                 <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                     <div id="Activity_groups" >
@@ -286,7 +289,7 @@ else
                     <td>
                         <div class="form-row">
                             <div class="form-group col-sm-2">
-                                <label for="Item_ProjectTaskActivityTypeID" > نوع اقدام</label>
+                                <label for="Item_ProjectTaskActivityTypeID" ><?php echo C_TYPE_OF_ACTION ?> </label>
                             </div>
 
                             <div class="form-group col-md-10">
@@ -308,7 +311,7 @@ else
                     <td>
                         <div class="form-row ">
                             <div class="form-group col-sm-2">
-                            <label for="Activity_Length" >زمان مصرفی</label>
+                            <label for="Activity_Length" ><?php echo C_TIME_CONSUMING?></label>
                             </div>
                                 <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                      <div id="Activity_Length" class="form-group col-md-4" >
@@ -326,7 +329,7 @@ else
                 <tr>
                     <td>
                         <div class="form-group row">
-                            <label for="Item_ProgressPercent" class="col-sm-2 col-form-label">درصد پیشرفت</label>
+                            <label for="Item_ProgressPercent" class="col-sm-2 col-form-label"><?php echo C_PROGRESS?></label>
                             <div class="col-sm-10">
                                 <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                     <input class="form-control" type="text" name="Item_ProgressPercent" id="Item_ProgressPercent" maxlength="3" size="3">
@@ -340,7 +343,7 @@ else
                 <tr>
                     <td>
                         <div class="form-group row">
-                                <label for="Item_ActivityDescription" class="col-sm-2 col-form-label">شرح</label>
+                                <label for="Item_ActivityDescription" class="col-sm-2 col-form-label"><?php echo C_DESCRIPTION?></label>
                                 <div class="col-sm-10">
                                     <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                     <textarea class="form-control" name="Item_ActivityDescription" id="Item_ActivityDescription" cols="80" rows="5"><?php echo $ActivityDescription ?></textarea>
@@ -354,17 +357,19 @@ else
                         <tr>
                             <td>
                                 <div class="form-group row">
-                                <label for="Item_FileContent" class="col-sm-2 col-form-label">فایل ضمیمه</label>
+                                <label for="Item_FileContent" class="col-sm-2 col-form-label"><?php echo C_ATTACHED_FILE?></label>
                                 <div class="col-sm-10">
                                     <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                      <input class="form-control" type="file" name="Item_FileContent" id="Item_FileContent">
                                     <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'>دریافت فایل [<?php
+                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'><?php echo C_GETTING_FILE ?> [
+                                    <?php
                                     echo $obj->FileName ?>]</a>
                                     <?php } ?>
                                     <?php } else { ?>
                                     <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'>دریافت فایل [<?php
+                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'><?php echo C_GETTING_FILE ?>
+                                        [<?php
                                             echo $obj->FileName ?>]</a>
                                     <?php } ?>
                                     <?php } ?>
@@ -375,7 +380,7 @@ else
                         <tr>
                             <td>
                                 <div class="form-group row">
-                                    <label for="Item_ChangedTables" class="col-sm-2 col-form-label">جداول تغییر داده شده</label>
+                                    <label for="Item_ChangedTables" class="col-sm-2 col-form-label"><?php echo C_CHANGED_TABLES?></label>
                                     <div class="col-sm-10">
                                     <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                         <textarea  class="form-control name="Item_ChangedTables" id="Item_ChangedTables" cols="80" rows="5"><?php echo $ChangeTables ?></textarea>
@@ -389,7 +394,7 @@ else
                         <tr>
                             <td>
                                 <div class="form-group row">
-                                    <label for="Item_ChangedPages" class="col-sm-2 col-form-label">صفحات تغییر داده شده</label>
+                                    <label for="Item_ChangedPages" class="col-sm-2 col-form-label"><?php echo C_CHANGED_PAGES ?></label>
                                     <div class="col-sm-10">
                                     <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
                                         <textarea class="form-control name="Item_ChangedPages" id="Item_ChangedPages" cols="80" rows="5"><?php echo $ChangePages ?></textarea>
@@ -406,9 +411,9 @@ else
                             <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || (!isset($_REQUEST["UpdateID"]) && $HasAddAccess))
                                 {
                             ?>
-                            <input class="btn btn-success" type="submit" value="ذخیره">
+                            <input class="btn btn-success" type="submit" value=<?php echo C_SAVE ?>>
                             <?php } ?>
-                             <input class="btn btn-danger" type="button" onclick="javascript: window.close();" value="بستن">
+                             <input class="btn btn-danger" type="button" onclick="javascript: window.close();" value=<?php echo C_CLOSE?>>
                             </td>
                          </tr>
     </table>
