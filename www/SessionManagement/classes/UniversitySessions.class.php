@@ -670,22 +670,19 @@ class manage_UniversitySessions
 	function ShowSummary($RecID)
 	{
 		// this method is used in ManageMembersPAList that taken by MGhayour
-		$ret = "";
+		$ret = "<br>";
 		$ret .= '<div class="container">';
 		$ret .= '';
 		$ret .= '	<div class="row justify-content-center">';
 		$ret .= '		<div class="card">';
 		$ret .= '			<div class="card-header">';
-		$ret .= '				<i class="fa fa-search"></i>';
-		$ret .= '					mghayour';
+		$ret .= '				<i class="fa fa-igloo"></i>';
+		$ret .= '					Summary';
 		$ret .= '			</div>';
 		$ret .= '			<div class="card-body">';
 		$ret .= '				<table class="table">';
 
 
-		$ret .= "<tr>";
-		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
 		$obj = new be_UniversitySessions();
 		$obj->LoadDataFromDatabase($RecID); 
 		$ret .= "<tr>";
@@ -713,13 +710,13 @@ class manage_UniversitySessions
 		$ret .= substr($obj->SessionDate_Shamsi, 0, 4).'/'.substr($obj->SessionDate_Shamsi, 5, 2).'/'.substr($obj->SessionDate_Shamsi, 8, 2); 
 		$ret .= "</td>";
 		$ret .= "</tr>";
-		$ret .= "</td>";
-		$ret .= "</tr>";
-		$ret .= "</table>";
 		$ret .= "</table>";
 		$ret .= "</div>";
 		$ret .= "</div>";
 		$ret .= "</div>";
+		$ret .= "<br/>";
+		$ret .= "<br/>";
+
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
