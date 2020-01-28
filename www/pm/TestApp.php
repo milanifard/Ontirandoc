@@ -1587,7 +1587,7 @@ Test::add(
     function()
     {
         try{
-            manage_UserFacilities::Update("1" , "1");
+     \       manage_UserFacilities::Update("1" , "1");
             return true;
             
         }
@@ -1681,9 +1681,136 @@ Test::add(
 
 // UserFacilities.class.php - navidbeta - end
 
+//OntologyClassLabels.class.php by Alireza Forghani Toosi
+Test::add(
+    function(){
+        try {
+            be_OntologyClassLabels::LoadDataFromDatabase(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
 
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::GetCount(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
 
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::GetLastID();
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
 
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::Add(1, "label");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::GetFirstLabel(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::UpdateOrInsertFirstLabel(1, "label");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::Update(1, "label");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::Remove(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::GetList(1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            manage_OntologyClassLabels::ComparePassedDataWithDB(1, "label");
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
 
 ##################################################################
 #                                                                #
