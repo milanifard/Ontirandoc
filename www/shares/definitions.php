@@ -856,6 +856,8 @@ if(UI_LANGUAGE=="EN") {
     define("C_PASSWORD","password");
     define("C_LIST_OF_USERS","list of users");
     define("C_REGISTERED_INFO","registered information");
+    define("C_USER","user");
+    define("C_PAGES","pages");
 
 
 
@@ -868,6 +870,8 @@ else
 {
     define("C_LIST_OF_USERS","لیست کاربران");
     define("C_REGISTERED_INFO","اطلاعات ذخیره شد");
+    define("C_USER","کاربر");
+    define("C_PAGES","صفحات");
 
     define("C_NAME_OF_USER","نام کاربری");
     define("C_NAME_AND_FAMILY","نام و نام خانوادگی");
