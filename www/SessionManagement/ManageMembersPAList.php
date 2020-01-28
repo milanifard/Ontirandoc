@@ -66,11 +66,6 @@ if($HasViewAccess=="NONE")
 			</div>
 			<div class="card-body">
 				<table class="table">
-					<tr bgcolor="#cccccc">
-						<td colspan="14">
-						
-						</td>
-					</tr>
 					<tr class="HeaderOfTable">
 						<td rowspan=2 width="1%">ردیف</td>
 						<td rowspan=2 >نام خانوادگی</td>	

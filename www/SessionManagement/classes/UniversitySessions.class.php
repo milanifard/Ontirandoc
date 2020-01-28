@@ -670,8 +670,19 @@ class manage_UniversitySessions
 	function ShowSummary($RecID)
 	{
 		// this method is used in ManageMembersPAList that taken by MGhayour
-		$ret = "<br>MGHAYOUR";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret = "";
+		$ret .= '<div class="container">';
+		$ret .= '';
+		$ret .= '	<div class="row justify-content-center">';
+		$ret .= '		<div class="card">';
+		$ret .= '			<div class="card-header">';
+		$ret .= '				<i class="fa fa-search"></i>';
+		$ret .= '					mghayour';
+		$ret .= '			</div>';
+		$ret .= '			<div class="card-body">';
+		$ret .= '				<table class="table">';
+
+
 		$ret .= "<tr>";
 		$ret .= "<td>";
 		$ret .= "<table width=\"100%\" border=\"0\">";
@@ -705,11 +716,27 @@ class manage_UniversitySessions
 		$ret .= "</td>";
 		$ret .= "</tr>";
 		$ret .= "</table>";
+		$ret .= "</table>";
+		$ret .= "</div>";
+		$ret .= "</div>";
+		$ret .= "</div>";
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
+
+		// this method is used in ManageMembersPAList that taken by MGhayour
+		$ret = "";
+		$ret .= '<div class="container">';
+		$ret .= '';
+		$ret .= '	<div class="row justify-content-center">';
+		$ret .= '		<div class="card">';
+		$ret .= '			<div class="card-header">';
+		$ret .= '				<i class="fa fa-search"></i>';
+		$ret .= '					mghayour';
+		$ret .= '			</div>';
+		$ret .= '			<div class="card-body">';
+		$ret .= '				<table class="table">';
  		$ret .= "<tr>";
 		$ret .= "<td width=\"13%\" ";
 		if($CurrentPageName=="NewUniversitySessions")
@@ -744,6 +771,11 @@ class manage_UniversitySessions
  			$ret .= " bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='ManageSessionHistory.php?UniversitySessionID=".$RecID."'>سابقه</a></td>";
 		$ret .= "</table>";
+
+		$ret .= "</div>";
+		$ret .= "</div>";
+		$ret .= "</div>";
+
 		return $ret;
 	}
 	
