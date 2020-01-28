@@ -3094,7 +3094,7 @@ Test::add(
         }
     },
     "manage_OntologyMergeProjectMembers.class->GetCount()",
-    "OntologyClassLabels"
+    "manage_OntologyMergeProjectMembers"
 );
 
 ///////////////// end of OntologyMergeProjectMembers.class.php //////////
