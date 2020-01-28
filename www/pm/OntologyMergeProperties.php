@@ -201,7 +201,6 @@
 		$i=0;
 		while($rec = $res->fetch())
 		{
-			echo "<p>aref</p>";
 	    $i++;
 	    $MergeID = $rec["OntologyMergeReviewedPotentialID"];
 	    if(isset($_REQUEST["ch_".$MergeID]))
