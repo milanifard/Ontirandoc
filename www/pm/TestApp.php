@@ -17,6 +17,7 @@ include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh atae
 include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
 include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
 include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
+include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
 HTMLBegin();
 class Test
 {
@@ -89,7 +90,7 @@ Test::add(
     ,"manage_SystemFacilityGroups::GetCount()", "Administration"
 );
 
-//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !
+//Mohamad_Ali_Al_Saidi php test for class messages.class.php *** plz be careful !ma
 Test::add(
     function()
     {
@@ -2458,6 +2459,188 @@ Test::add(
     }
     ,"security_UniversitySessions->ResetRecordDetailTablesPermission()", "UniversitySessionsSecurity"
 );
+
+//=================================================================================
+// ResearchProject.class.php Unit Test =============== Mohammad Afsharian Shandiz =================
+//=================================================================================================
+Test::add(
+    function ()
+    {
+        $obj = new be_ResearchProject();
+        try{
+            $obj->LoadDataFromDatabase(1);
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "be_ResearchProject->LoadDataFromDatabase()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::GetCount(1)==0) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetCount()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::GetLastID()==-1) {
+                return false;
+            }
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetLastID()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::Add("1","Term"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Add()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::Update("1","TermUpdate");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Update()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(is_array(manage_ResearchProject::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->GetList()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            if(manage_ResearchProject::ComparePassedDataWithDB("1","TermUpdate")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ComparePassedDataWithDB()", "Message"
+);
+
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->Remove()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::ShowSummary("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ShowSummary()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::IsCurrentUserValid("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->IsCurrentUserValid()", "Message"
+);
+Test::add(
+    function ()
+    {
+        try{
+            manage_ResearchProject::ShowTabs("1" , "NewResearchProject");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    , "ResearchProject->ShowTabs()", "Message"
+);
+
+// --------------------------------------------- END ----------------------moahmmad afsharian shandiz-------------------------------
+//
+
+
 
 $res = Test::run();
 echo "<br>";
