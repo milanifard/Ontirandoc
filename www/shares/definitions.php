@@ -1,4 +1,4 @@
-<?php
+`<?php
 define("UI_LANGUAGE", "EN");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
@@ -785,6 +785,47 @@ if(UI_LANGUAGE=="EN") {
     define("C_LESS_DET", "Show less");
     define("C_JOB_TITLE", "Job title");
 
+    //HomePage.php and compare_ontologies By mohammadAfsharian
+    define("C_RECIVED_LETTER","Recived Letter");
+    define("C_COMPAIRE_ONTOLOGIES","Compair Ontologies");
+    define("C_CLASS","Class");
+    define("C_PROPERTICE","Propertice");
+    define("C_TO","to");
+    define("C_CHOICE","Choice");
+    define("C_ALLOWED_ATTRBIUTE_DATA" , "Allowed Attribute Data");
+    define("C_ABUSES_AND_SYMMETRIES","Abuses And Symmetries");
+    define("C_CLEAR_PRE_EXITING_MAPPING","Clear Pre-Existing Mapping");
+    define("C_COMPARE_THE_ELEMENT","Compare The Element");
+    define("C_WITH","With");
+    define("C_SHOWING_COMPARISON_RESULTS","Showing Comparison Result");
+    define("C_SEMI_AUTOMATED_MAPPING","Semi Automated Mapping");
+    define("C_MESSAGES","Message");
+
+    //Manage_projects By mohammadAfsharian
+    define("C_TITLE","Title");
+    define("C_SEARCH","Search");
+    define("C_PROJECT_GROUP","Project Group");
+    define("C_RELATED_SYSTEM","Related System");
+    define("C_CONDITION","Condition");
+    define("C_REMOVE","Remove");
+    define("C_CREAT","Creat");
+    define("C_RESPONSIV"," Responsiv");
+    define("C_EDIT","Edit");
+    define("C_ROW","Row");
+    define("C_PARTS","Parts");
+    define("C_PROJECT","Project");
+    define("C_PRIORITY","Priority");
+    define("C_ARE_YOU_SURE","Are You Sure?");
+    define("C_CHOSE_YOUR_CONDITIONS", "Chose Your Conditions");
+    define("C_NOT_STARTED","Not Started");
+    define("C_ONGOING","ongoing");
+    define("C_SUPPORTED","supported");
+    define("C_FINISHED","finished");
+    define("C_SUSPENDED","Suspended");
+    define("C_PROJECT_MEMBER","Project Member:");
+    define("C_CHOISE","[choise]");
+    define("C_BY_MY_OWN","By My Own");
+
 
 }
 else
@@ -1565,6 +1606,47 @@ else
     define("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
     define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
     define("C_JOB_TITLE", "عنوان کار مربوطه");
+
+    //HomePage.php and compare_ontologies By mohammadAfsharian
+    define("C_RECIVED_LETTER"," نامه های رسیده ");
+    define("C_COMPAIRE_ONTOLOGIES","مقایسه دو هستان نگار");
+    define("C_CLASS","کلاس");
+    define("C_PROPERTICE","خصوصیت");
+    define("C_TO","به");
+    define("C_CHOICE","انتخاب");
+    define("C_ALLOWED_ATTRBIUTE_DATA" , "داده مجاز خصوصیت");
+    define("C_ABUSES_AND_SYMMETRIES","اعمال تعدی و تقارنی");
+    define("C_CLEAR_PRE_EXITING_MAPPING","نگاشت از پیش موجود پاک شود");
+    define("C_COMPARE_THE_ELEMENT","مقایسه عناصر");
+    define("C_WITH","با");
+    define("C_SHOWING_COMPARISON_RESULTS","نمایش نتایج مقایسه");
+    define("C_SEMI_AUTOMATED_MAPPING","انجام نگاشت نیمه خودکار");
+    define("C_MESSAGES","پیامها");
+
+    //Manage_projects By mohammadAfsharian
+    define("C_TITLE","عنوان");
+    define("C_SEARCH","جستجو");
+    define("C_PROJECT_GROUP","گروه پروژه");
+    define("C_RELATED_SYSTEM","سیستم مربوطه");
+    define("C_CONDITION","وضعیت");
+    define("C_REMOVE","حذف");
+    define("C_CREAT","ایجاد");
+    define("C_RESPONSIV","پاسخگو");
+    define("C_EDIT","ویرایش");
+    define("C_ROW","ردیف");
+    define("C_PARTS","اعضا");
+    define("C_PROJECT","پروژه");
+    define("C_PRIORITY","اولویت");
+    define("C_ARE_YOU_SURE","آیا مطمِن هستید?");
+    define("C_CHOSE_YOUR_CONDITIONS", "وضعیت خود را انتخاب کنید");
+    define("C_NOT_STARTED","شروع نشده");
+    define("C_ONGOING","شروع نشده");
+    define("C_SUPPORTED","درحال پشتیبانی");
+    define("C_FINISHED","خاتمه یافته");
+    define("C_SUSPENDED","معلق");
+    define("C_PROJECT_MEMBER","اعضای پروژه:");
+    define("C_CHOISE","[انتخاب]");
+    define("C_BY_MY_OWN","خودم");
 
 
 
