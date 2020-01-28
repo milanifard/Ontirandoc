@@ -748,94 +748,94 @@ if(UI_LANGUAGE=="EN") {
         Developer should call a javascript code like below when the he selected the desired item:
     ");
     //Amir karami
-    define("C_Class", "Class");
-    define("C_Property", "Property");
-    define("C_SinCnnP","Search In Classes Name and Properties");
-    define("C_SinLabels","Search In Labels");
-    define("C_Relation","Relation");
-    define("C_CatSuggest","Categorise Suggestion");
-    define("C_Sentence1","Merge Suggestions or Heirachy Relation Connections(Classes which have common childes) ");
-    define("C_Sentence2","Parrent Relations-Invalid Child(Duplicate)");
-    define("C_MergeComp","Merge Complete");
-    define("C_Merge_Classes","Merge Classes");
-    define("C_Pclasses", "Parent Classes");
-    define("C_SubClasses", "Sub Classes");
-    define("C_Done", "Done");
-    define("C_CoE_Ontology","Create / Edit Ontology Classes");
-    define("C_Class_title","Class Title");
-    define("C_Label","Label");
-    define("C_Upper_Class","Upper Class");
-    define("C_Show_graph","Show Graph");
-    define("C_Cclasses", "Child Classes");
-    define("C_Merge_result","Merge Result");
-    define("C_Ontology_Classes","Ontology Classes");
-    define("C_Related_Prop","Related Properties");
-    define("C_Merge","Merge");
-    define("C_Area","Domain");
-    define("C_Prop_Labels","Properties Label");
-    define("C_Prop_Range","Properties Range");
-    define("C_Prop_Name","Properties Name");
+    define2("C_Class", "Class");
+    define2("C_Property", "Property");
+    define2("C_SinCnnP","Search In Classes Name and Properties");
+    define2("C_SinLabels","Search In Labels");
+    define2("C_Relation","Relation");
+    define2("C_CatSuggest","Categorise Suggestion");
+    define2("C_Sentence1","Merge Suggestions or Heirachy Relation Connections(Classes which have common childes) ");
+    define2("C_Sentence2","Parrent Relations-Invalid Child(Duplicate)");
+    define2("C_MergeComp","Merge Complete");
+    define2("C_Merge_Classes","Merge Classes");
+    define2("C_Pclasses", "Parent Classes");
+    define2("C_SubClasses", "Sub Classes");
+    define2("C_Done", "Done");
+    define2("C_CoE_Ontology","Create / Edit Ontology Classes");
+    define2("C_Class_title","Class Title");
+    define2("C_Label","Label");
+    define2("C_Upper_Class","Upper Class");
+    define2("C_Show_graph","Show Graph");
+    define2("C_Cclasses", "Child Classes");
+    define2("C_Merge_result","Merge Result");
+    define2("C_Ontology_Classes","Ontology Classes");
+    define2("C_Related_Prop","Related Properties");
+    define2("C_Merge","Merge");
+    define2("C_Area","Domain");
+    define2("C_Prop_Labels","Properties Label");
+    define2("C_Prop_Range","Properties Range");
+    define2("C_Prop_Name","Properties Name");
     //_________________ END _____________________________
 
     //SignOut.php Mostafa Ghofrani
-    define("C_SESSION_EXPIRED", "Your session has been expired");
-    define("C_WELCOME", "Welcome");
-    define("C_RELOGING", "For loging in");
-    define("C_CLICK_THIS", "click here!");
+    define2("C_SESSION_EXPIRED", "Your session has been expired");
+    define2("C_WELCOME", "Welcome");
+    define2("C_RELOGING", "For loging in");
+    define2("C_CLICK_THIS", "click here!");
 
     //TaskMessages.php Mostafa Ghofrani
-    define("C_LATEST_STATUS_OTHERS", "Latest tasks doneon your jobs by others ");
-    define("C_JOB_DONE", "Job done");
-    define("C_RELATED_USER", "Assigned user");
-    define("C_RELATED_TITLE", "Assigned job title");
-    define("C_LATEST_STATUS_YOU", "Latest tasks done on your jobs by yourself");
-    define("C_MORE_DET", "Show more");
-    define("C_LESS_DET", "Show less");
-    define("C_JOB_TITLE", "Job title");
+    define2("C_LATEST_STATUS_OTHERS", "Latest tasks doneon your jobs by others ");
+    define2("C_JOB_DONE", "Job done");
+    define2("C_RELATED_USER", "Assigned user");
+    define2("C_RELATED_TITLE", "Assigned job title");
+    define2("C_LATEST_STATUS_YOU", "Latest tasks done on your jobs by yourself");
+    define2("C_MORE_DET", "Show more");
+    define2("C_LESS_DET", "Show less");
+    define2("C_JOB_TITLE", "Job title");
 
     //HomePage.php and compare_ontologies By mohammadAfsharian
-    define("C_RECIVED_LETTER","Recived Letter");
-    define("C_COMPAIRE_ONTOLOGIES","Compair Ontologies");
-    define("C_CLASS","Class");
-    define("C_PROPERTICE","Propertice");
-    //define("C_TO","to");
-    define("C_CHOICE","Choice");
-    define("C_ALLOWED_ATTRBIUTE_DATA" , "Allowed Attribute Data");
-    define("C_ABUSES_AND_SYMMETRIES","Abuses And Symmetries");
-    define("C_CLEAR_PRE_EXITING_MAPPING","Clear Pre-Existing Mapping");
-    define("C_COMPARE_THE_ELEMENT","Compare The Element");
-    define("C_WITH","With");
-    define("C_SHOWING_COMPARISON_RESULTS","Showing Comparison Result");
-    define("C_SEMI_AUTOMATED_MAPPING","Semi Automated Mapping");
-    //define("C_MESSAGES","Message");
+    define2("C_RECIVED_LETTER","Recived Letter");
+    define2("C_COMPAIRE_ONTOLOGIES","Compair Ontologies");
+    define2("C_CLASS","Class");
+    define2("C_PROPERTICE","Propertice");
+    //define2("C_TO","to");
+    define2("C_CHOICE","Choice");
+    define2("C_ALLOWED_ATTRBIUTE_DATA" , "Allowed Attribute Data");
+    define2("C_ABUSES_AND_SYMMETRIES","Abuses And Symmetries");
+    define2("C_CLEAR_PRE_EXITING_MAPPING","Clear Pre-Existing Mapping");
+    define2("C_COMPARE_THE_ELEMENT","Compare The Element");
+    define2("C_WITH","With");
+    define2("C_SHOWING_COMPARISON_RESULTS","Showing Comparison Result");
+    define2("C_SEMI_AUTOMATED_MAPPING","Semi Automated Mapping");
+    //define2("C_MESSAGES","Message");
 
     //Manage_projects By mohammadAfsharian
-    //define("C_TITLE","Title");
-    //define("C_SEARCH","Search");
-    //define("C_PROJECT_GROUP","Project Group");
-    define("C_RELATED_SYSTEM","Related System");
-    define("C_CONDITION","Condition");
-    //define("C_REMOVE","Remove");
-    define("C_CREAT","Creat");
-    define("C_RESPONSIV"," Responsiv");
-    //define("C_EDIT","Edit");
-    //define("C_ROW","Row");
-    define("C_PARTS","Parts");
-    define("C_PROJECT","Project");
-    //define("C_PRIORITY","Priority");
-    //define("C_ARE_YOU_SURE","Are You Sure?");
-    define("C_CHOSE_YOUR_CONDITIONS", "Chose Your Conditions");
-    define("C_NOT_STARTED","Not Started");
-    define("C_ONGOING","ongoing");
-    define("C_SUPPORTED","supported");
-    define("C_FINISHED","finished");
-    define("C_SUSPENDED","Suspended");
-    define("C_PROJECT_MEMBER","Project Member:");
-    define("C_CHOISE","[choise]");
-    define("C_BY_MY_OWN","By My Own");
-    define("C_CREATE_EDIT_POSBBLE","edit/create poss");
-    define("C_PAGE_ADDRE","page address");
-    define("C_LIST_SYSTEM_POSSIBILITIES"," list of sysytem possibilited");
+    //define2("C_TITLE","Title");
+    //define2("C_SEARCH","Search");
+    //define2("C_PROJECT_GROUP","Project Group");
+    define2("C_RELATED_SYSTEM","Related System");
+    define2("C_CONDITION","Condition");
+    //define2("C_REMOVE","Remove");
+    define2("C_CREAT","Creat");
+    define2("C_RESPONSIV"," Responsiv");
+    //define2("C_EDIT","Edit");
+    //define2("C_ROW","Row");
+    define2("C_PARTS","Parts");
+    define2("C_PROJECT","Project");
+    //define2("C_PRIORITY","Priority");
+    //define2("C_ARE_YOU_SURE","Are You Sure?");
+    define2("C_CHOSE_YOUR_CONDITIONS", "Chose Your Conditions");
+    define2("C_NOT_STARTED","Not Started");
+    define2("C_ONGOING","ongoing");
+    define2("C_SUPPORTED","supported");
+    define2("C_FINISHED","finished");
+    define2("C_SUSPENDED","Suspended");
+    define2("C_PROJECT_MEMBER","Project Member:");
+    define2("C_CHOISE","[choise]");
+    define2("C_BY_MY_OWN","By My Own");
+    define2("C_CREATE_EDIT_POSBBLE","edit/create poss");
+    define2("C_PAGE_ADDRE","page address");
+    define2("C_LIST_SYSTEM_POSSIBILITIES"," list of sysytem possibilited");
 
     
     /**
@@ -843,29 +843,29 @@ if(UI_LANGUAGE=="EN") {
     * OntologyMergePropeperties by ArefNazari  
     **/
 
-    define("C_DIR","ltr");        
+    define2("C_DIR","ltr");        
     define2("C_ROW","Row");
     define2("C_PRIORITY","Priority");
-    define("C_DOMAIN","Domain");
-    define("C_RANGE","Range");
-    define("C_ALLOWED_VALUES","Allowed values");
+    define2("C_DOMAIN","Domain");
+    define2("C_RANGE","Range");
+    define2("C_ALLOWED_VALUES","Allowed values");
     define2("C_MERGE_SUGGESTIONS","Merge suggestions");
     define2("C_ACTIONS","Actions");    
     
-    define("C_PRIORITY2","Property 2");
-    define("C_DOMAIN_PRIORITY2","Domain Property 2");
-    define("C_RANGE_PRIORITY2","Range Property 2");
-    define("C_ALLOWED_VALUES2","Allowed values 2");
+    define2("C_PRIORITY2","Property 2");
+    define2("C_DOMAIN_PRIORITY2","Domain Property 2");
+    define2("C_RANGE_PRIORITY2","Range Property 2");
+    define2("C_ALLOWED_VALUES2","Allowed values 2");
 
     define2("C_MERGE","Merge");
     define2("C_NOT_MERGE","Not Merge");
-    define("C_NAME_OF_USER","name of user");
-    define("C_NAME_AND_FAMILY","name and last name");
-    define("C_PASSWORD","password");
-    define("C_LIST_OF_USERS","list of users");
-    define("C_REGISTERED_INFO","registered information");
-    define("C_USER","user");
-    define("C_PAGES","pages");
+    define2("C_NAME_OF_USER","name of user");
+    define2("C_NAME_AND_FAMILY","name and last name");
+    define2("C_PASSWORD","password");
+    define2("C_LIST_OF_USERS","list of users");
+    define2("C_REGISTERED_INFO","registered information");
+    define2("C_USER","user");
+    define2("C_PAGES","pages");
 
 
 
@@ -876,17 +876,17 @@ if(UI_LANGUAGE=="EN") {
 }
 else
 {
-    define("C_LIST_OF_USERS","لیست کاربران");
-    define("C_REGISTERED_INFO","اطلاعات ذخیره شد");
-    define("C_USER","کاربر");
-    define("C_PAGES","صفحات");
+    define2("C_LIST_OF_USERS","لیست کاربران");
+    define2("C_REGISTERED_INFO","اطلاعات ذخیره شد");
+    define2("C_USER","کاربر");
+    define2("C_PAGES","صفحات");
 
-    define("C_NAME_OF_USER","نام کاربری");
-    define("C_NAME_AND_FAMILY","نام و نام خانوادگی");
-    define("C_PASSWORD","کلمه عبور");
-    define("C_PAGE_ADDRE","آدرس صفحه");
-    define("C_LIST_SYSTEM_POSSIBILITIES","لیست امکانات صفحه");
-    define("C_CREATE_EDIT_POSBBLE","ایجاد/ویرایش امکانات");
+    define2("C_NAME_OF_USER","نام کاربری");
+    define2("C_NAME_AND_FAMILY","نام و نام خانوادگی");
+    define2("C_PASSWORD","کلمه عبور");
+    define2("C_PAGE_ADDRE","آدرس صفحه");
+    define2("C_LIST_SYSTEM_POSSIBILITIES","لیست امکانات صفحه");
+    define2("C_CREATE_EDIT_POSBBLE","ایجاد/ویرایش امکانات");
     define2("C_SAVE", "ذخیره");
     define2("C_NEW", "جدید");
     define2("C_REMOVE", "حذف");
@@ -1627,109 +1627,109 @@ else
     
     ");
     //AMIR Karami
-    define("C_Class", "کلاس");
-    define("C_Property", "ویژگی");
-    define("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
-    define("C_SinLabels","جستجو در برچسبها");
-    define("C_Relation","رابطه");
-    define("C_CatSuggest","پیشنهادهای دسته بندی");
-    define("C_Sentence1","پیشنهادهای ادغام یا برقراری رابطه سلسله مراتبی (کلاسهایی که فرزند مشترک دارند)");
-    define("C_Sentence2","روابط پدر - فرزندی نامعتبر (تکراری): کلاس پدر و فرزند هر دو زیر کلاس مستقیم یک کلاس هستند)");
-    define("C_MergeComp","ادغام انجام شد");
-    define("C_Merge_Classes","ادغام کلاس ها");
-    define("C_Pclasses", "کلاس های پدر");
-    define("C_SubClasses", "زیر کلاس ها");
-    define("C_Cclasses", "کلاس های فرزند");
-    define("C_Done", "انجام");
-    define("C_CoE_Ontology","ایجاد/ویرایش کلاسهای هستان نگار");
-    define("C_Class_title","عنوان کلاس");
-    define("C_Label","برچسب");
-    define("C_Upper_Class","کلاس بالاتر");
-    define("C_Show_graph","نمایش گراف");
-    define("C_Merge_result","حاصل ادغام");
-    define("C_Ontology_Classes","کلاسهای هستان نگار");
-    define("C_Related_Prop","خصوصیات مرتبط");
-    define("C_Merge","ادغام");
-    define("C_Area","حوزه");
-    define("C_Prop_Labels","برچسب خصوصیت");
-    define("C_Prop_Range","برد خصوصیت");
-    define("C_Prop_Name","نام خصوصیت");
+    define2("C_Class", "کلاس");
+    define2("C_Property", "ویژگی");
+    define2("C_SinCnnP","جستجو در نام کلاسها و خصوصیات");
+    define2("C_SinLabels","جستجو در برچسبها");
+    define2("C_Relation","رابطه");
+    define2("C_CatSuggest","پیشنهادهای دسته بندی");
+    define2("C_Sentence1","پیشنهادهای ادغام یا برقراری رابطه سلسله مراتبی (کلاسهایی که فرزند مشترک دارند)");
+    define2("C_Sentence2","روابط پدر - فرزندی نامعتبر (تکراری): کلاس پدر و فرزند هر دو زیر کلاس مستقیم یک کلاس هستند)");
+    define2("C_MergeComp","ادغام انجام شد");
+    define2("C_Merge_Classes","ادغام کلاس ها");
+    define2("C_Pclasses", "کلاس های پدر");
+    define2("C_SubClasses", "زیر کلاس ها");
+    define2("C_Cclasses", "کلاس های فرزند");
+    define2("C_Done", "انجام");
+    define2("C_CoE_Ontology","ایجاد/ویرایش کلاسهای هستان نگار");
+    define2("C_Class_title","عنوان کلاس");
+    define2("C_Label","برچسب");
+    define2("C_Upper_Class","کلاس بالاتر");
+    define2("C_Show_graph","نمایش گراف");
+    define2("C_Merge_result","حاصل ادغام");
+    define2("C_Ontology_Classes","کلاسهای هستان نگار");
+    define2("C_Related_Prop","خصوصیات مرتبط");
+    define2("C_Merge","ادغام");
+    define2("C_Area","حوزه");
+    define2("C_Prop_Labels","برچسب خصوصیت");
+    define2("C_Prop_Range","برد خصوصیت");
+    define2("C_Prop_Name","نام خصوصیت");
     //_________________ END _____________________________
 
     //SignOut.php Mostafa Ghofrani
-    define("C_SESSION_EXPIRED", "نشست شما منقضی شده است");
-    define("C_WELCOME", "خوش آمدید");
-    define("C_RELOGING", "برای ورود مجدد");
-    define("C_CLICK_THIS", "اینجا را کلیک کنید");
+    define2("C_SESSION_EXPIRED", "نشست شما منقضی شده است");
+    define2("C_WELCOME", "خوش آمدید");
+    define2("C_RELOGING", "برای ورود مجدد");
+    define2("C_CLICK_THIS", "اینجا را کلیک کنید");
 
     //TaskMessages.php Mostafa Ghofrani
-    define("C_LATEST_STATUS_OTHERS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
-    define("C_JOB_DONE", "عملیات انجام شده");
-    define("C_RELATED_USER", "کاربر مربوطه");
-    define("C_RELATED_TITLE", "عنوان کار مربوطه");
-    define("C_LATEST_STATUS_YOU", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
-    define("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
-    define("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
-    define("C_JOB_TITLE", "عنوان کار مربوطه");
+    define2("C_LATEST_STATUS_OTHERS", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط دیگر کاربران");
+    define2("C_JOB_DONE", "عملیات انجام شده");
+    define2("C_RELATED_USER", "کاربر مربوطه");
+    define2("C_RELATED_TITLE", "عنوان کار مربوطه");
+    define2("C_LATEST_STATUS_YOU", "آخرین عملیات انجام شده روی کارهای مرتبط با شما توسط خودتان");
+    define2("C_MORE_DET", "مشاهده‌ی جزئیات بیشتر");
+    define2("C_LESS_DET", "مشاهده‌ی خلاصه‌تر");
+    define2("C_JOB_TITLE", "عنوان کار مربوطه");
 
     //HomePage.php and compare_ontologies By mohammadAfsharian
-    define("C_RECIVED_LETTER"," نامه های رسیده ");
-    define("C_COMPAIRE_ONTOLOGIES","مقایسه دو هستان نگار");
-    define("C_CLASS","کلاس");
-    define("C_PROPERTICE","خصوصیت");
-    define("C_TO","به");
-    define("C_CHOICE","انتخاب");
-    define("C_ALLOWED_ATTRBIUTE_DATA" , "داده مجاز خصوصیت");
-    define("C_ABUSES_AND_SYMMETRIES","اعمال تعدی و تقارنی");
-    define("C_CLEAR_PRE_EXITING_MAPPING","نگاشت از پیش موجود پاک شود");
-    define("C_COMPARE_THE_ELEMENT","مقایسه عناصر");
-    define("C_WITH","با");
-    define("C_SHOWING_COMPARISON_RESULTS","نمایش نتایج مقایسه");
-    define("C_SEMI_AUTOMATED_MAPPING","انجام نگاشت نیمه خودکار");
-    define("C_MESSAGES","پیامها");
+    define2("C_RECIVED_LETTER"," نامه های رسیده ");
+    define2("C_COMPAIRE_ONTOLOGIES","مقایسه دو هستان نگار");
+    define2("C_CLASS","کلاس");
+    define2("C_PROPERTICE","خصوصیت");
+    define2("C_TO","به");
+    define2("C_CHOICE","انتخاب");
+    define2("C_ALLOWED_ATTRBIUTE_DATA" , "داده مجاز خصوصیت");
+    define2("C_ABUSES_AND_SYMMETRIES","اعمال تعدی و تقارنی");
+    define2("C_CLEAR_PRE_EXITING_MAPPING","نگاشت از پیش موجود پاک شود");
+    define2("C_COMPARE_THE_ELEMENT","مقایسه عناصر");
+    define2("C_WITH","با");
+    define2("C_SHOWING_COMPARISON_RESULTS","نمایش نتایج مقایسه");
+    define2("C_SEMI_AUTOMATED_MAPPING","انجام نگاشت نیمه خودکار");
+    define2("C_MESSAGES","پیامها");
 
     //Manage_projects By mohammadAfsharian
-    define("C_TITLE","عنوان");
-    define("C_SEARCH","جستجو");
-    define("C_PROJECT_GROUP","گروه پروژه");
-    define("C_RELATED_SYSTEM","سیستم مربوطه");
-    define("C_CONDITION","وضعیت");
-    define("C_REMOVE","حذف");
-    define("C_CREAT","ایجاد");
-    define("C_RESPONSIV","پاسخگو");
-    define("C_EDIT","ویرایش");
-    define("C_ROW","ردیف");
-    define("C_PARTS","اعضا");
-    define("C_PROJECT","پروژه");
-    define("C_PRIORITY","اولویت");
-    define("C_ARE_YOU_SURE","آیا مطمِن هستید?");
-    define("C_CHOSE_YOUR_CONDITIONS", "وضعیت خود را انتخاب کنید");
-    define("C_NOT_STARTED","شروع نشده");
-    define("C_ONGOING","شروع نشده");
-    define("C_SUPPORTED","درحال پشتیبانی");
-    define("C_FINISHED","خاتمه یافته");
-    define("C_SUSPENDED","معلق");
-    define("C_PROJECT_MEMBER","اعضای پروژه:");
-    define("C_CHOISE","[انتخاب]");
-    define("C_BY_MY_OWN","خودم");
+    define2("C_TITLE","عنوان");
+    define2("C_SEARCH","جستجو");
+    define2("C_PROJECT_GROUP","گروه پروژه");
+    define2("C_RELATED_SYSTEM","سیستم مربوطه");
+    define2("C_CONDITION","وضعیت");
+    define2("C_REMOVE","حذف");
+    define2("C_CREAT","ایجاد");
+    define2("C_RESPONSIV","پاسخگو");
+    define2("C_EDIT","ویرایش");
+    define2("C_ROW","ردیف");
+    define2("C_PARTS","اعضا");
+    define2("C_PROJECT","پروژه");
+    define2("C_PRIORITY","اولویت");
+    define2("C_ARE_YOU_SURE","آیا مطمِن هستید?");
+    define2("C_CHOSE_YOUR_CONDITIONS", "وضعیت خود را انتخاب کنید");
+    define2("C_NOT_STARTED","شروع نشده");
+    define2("C_ONGOING","شروع نشده");
+    define2("C_SUPPORTED","درحال پشتیبانی");
+    define2("C_FINISHED","خاتمه یافته");
+    define2("C_SUSPENDED","معلق");
+    define2("C_PROJECT_MEMBER","اعضای پروژه:");
+    define2("C_CHOISE","[انتخاب]");
+    define2("C_BY_MY_OWN","خودم");
 
     /**
     * define Constant Persian Word
     * OntologyMergePropeperties by ArefNazari  
     **/
-    define("C_DIR","rtl");    
+    define2("C_DIR","rtl");    
     define2("C_ROW","ردیف");
     define2("C_PRIORITY","خصوصیت");
-    define("C_DOMAIN","دامنه");
-    define("C_RANGE","برد");
-    define("C_ALLOWED_VALUES","مقادیر مجاز");
+    define2("C_DOMAIN","دامنه");
+    define2("C_RANGE","برد");
+    define2("C_ALLOWED_VALUES","مقادیر مجاز");
     define2("C_MERGE_SUGGESTIONS","پیشنهادات ادغام");
     define2("C_ACTIONS","اعمال");
     
-    define("C_PRIORITY2","خصوصیت 2");
-    define("C_DOMAIN_PRIORITY2","دامنه خصوصیت 2");
-    define("C_RANGE_PRIORITY2","برد خصوصیت 2");
-    define("C_ALLOWED_VALUES2","مقادیر مجاز 2");
+    define2("C_PRIORITY2","خصوصیت 2");
+    define2("C_DOMAIN_PRIORITY2","دامنه خصوصیت 2");
+    define2("C_RANGE_PRIORITY2","برد خصوصیت 2");
+    define2("C_ALLOWED_VALUES2","مقادیر مجاز 2");
 
     define2("C_MERGE","ادغام");    
     define2("C_NOT_MERGE","عدم ادغام");    
