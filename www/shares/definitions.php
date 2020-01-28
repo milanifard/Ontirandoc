@@ -1,4 +1,4 @@
-`<?php
+<?php
 define("UI_LANGUAGE", "EN");
 
 // use define2 in development, to prevent multiple constant definition error during developmnet
@@ -826,6 +826,27 @@ if(UI_LANGUAGE=="EN") {
     define("C_CHOISE","[choise]");
     define("C_BY_MY_OWN","By My Own");
 
+    
+    /**
+    * define Constant English Word
+    * OntologyMergePropeperties by ArefNazari  
+    **/
+    define("C_DIR","ltr");        
+    define2("C_ROW","Row");
+    define2("C_PRIORITY","Priority");
+    define("C_DOMAIN","Domain");
+    define("C_RANGE","Range");
+    define("C_ALLOWED_VALUES","Allowed values");
+    define2("C_MERGE_SUGGESTIONS","Merge suggestions");
+    define2("C_ACTIONS","Actions");    
+    
+    define("C_PRIORITY2","Property 2");
+    define("C_DOMAIN_PRIORITY2","Domain Property 2");
+    define("C_RANGE_PRIORITY2","Range Property 2");
+    define("C_ALLOWED_VALUES2","Allowed values 2");
+    /**
+    * END
+    **/
 
 }
 else
@@ -1648,8 +1669,26 @@ else
     define("C_CHOISE","[انتخاب]");
     define("C_BY_MY_OWN","خودم");
 
-
-
+    /**
+    * define Constant Persian Word
+    * OntologyMergePropeperties by ArefNazari  
+    **/
+    define("C_DIR","rtl");    
+    define2("C_ROW","ردیف");
+    define2("C_PRIORITY","خصوصیت");
+    define("C_DOMAIN","دامنه");
+    define("C_RANGE","برد");
+    define("C_ALLOWED_VALUES","مقادیر مجاز");
+    define2("C_MERGE_SUGGESTIONS","پیشنهادات ادغام");
+    define2("C_ACTIONS","اعمال");
+    
+    define("C_PRIORITY2","خصوصیت 2");
+    define("C_DOMAIN_PRIORITY2","دامنه خصوصیت 2");
+    define("C_RANGE_PRIORITY2","برد خصوصیت 2");
+    define("C_ALLOWED_VALUES2","مقادیر مجاز 2");
+    /**
+    * END
+    **/
 }
 
 ?>

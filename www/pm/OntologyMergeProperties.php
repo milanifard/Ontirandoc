@@ -1,3 +1,6 @@
+<!-- 
+	* Edite by Aref-Nazari
+ -->
 <?php
 	include("header.inc.php");
 	
@@ -240,21 +243,22 @@
 					<form method = "post">
 						<!-- <input type="hidden" name="DoMerge" id="DoMerge" value="1">
 						<input type="hidden" name="TargetOnto" id="TargetOnto" value='.$TargetOnto.'> -->
-						<table class="table table-bordered text-center" dir="rtl">
+						<table class="table table-bordered text-center" dir="<?php echo C_DIR; ?>">
 							<thead class="thead-dark">
 								<tr>
-									<th colspan="10" align="center">پیشنهادات ادغام</th>
+									<th colspan="10" align="center"><?php echo C_MERGE_SUGGESTIONS; ?></th>
 								</tr>
 								<tr>
-									<th>ردیف</th>
-									<th>خصوصیت</th>
-									<th>دامنه</th>
-									<th>برد</th>
-									<th>مقادیر مجاز</th>
-									<!-- <th>خصوصیت 2</th>
-									<th>دامنه خصوصیت ۲</th>
-									<th>برد خصوصیت ۲</th>
-									<th>مقادیر مجاز ۲</th> -->
+									<th><?php echo C_ROW; ?></th>
+									<th><?php echo C_PRIORITY; ?></th>
+									<th><?php echo C_DOMAIN; ?></th>
+									<th><?php echo C_RANGE; ?></th>
+									<th><?php echo C_ALLOWED_VALUES; ?></th>
+
+									<!-- <th><?php echo C_PRIORITY2; ?></th>
+									<th><?php echo C_DOMAIN_PRIORITY2; ?></th>
+									<th><?php echo C_RANGE_PRIORITY2; ?></th>
+									<th><?php echo C_ALLOWED_VALUES2; ?></th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -279,7 +283,7 @@
 							</tfoot> -->
 						</table>
 						<div class="text-center">
-							<input class="btn btn-primary btn-customized" type="submit" value="اعمال">
+							<input class="btn btn-primary btn-customized" type="submit" value="<?php echo C_ACTIONS; ?>">
 						</div>
 					</form>
 				</div>
