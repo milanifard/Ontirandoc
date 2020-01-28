@@ -790,7 +790,7 @@ if(UI_LANGUAGE=="EN") {
     define("C_COMPAIRE_ONTOLOGIES","Compair Ontologies");
     define("C_CLASS","Class");
     define("C_PROPERTICE","Propertice");
-    define("C_TO","to");
+    //define("C_TO","to");
     define("C_CHOICE","Choice");
     define("C_ALLOWED_ATTRBIUTE_DATA" , "Allowed Attribute Data");
     define("C_ABUSES_AND_SYMMETRIES","Abuses And Symmetries");
@@ -799,23 +799,23 @@ if(UI_LANGUAGE=="EN") {
     define("C_WITH","With");
     define("C_SHOWING_COMPARISON_RESULTS","Showing Comparison Result");
     define("C_SEMI_AUTOMATED_MAPPING","Semi Automated Mapping");
-    define("C_MESSAGES","Message");
+    //define("C_MESSAGES","Message");
 
     //Manage_projects By mohammadAfsharian
-    define("C_TITLE","Title");
-    define("C_SEARCH","Search");
-    define("C_PROJECT_GROUP","Project Group");
+    //define("C_TITLE","Title");
+    //define("C_SEARCH","Search");
+    //define("C_PROJECT_GROUP","Project Group");
     define("C_RELATED_SYSTEM","Related System");
     define("C_CONDITION","Condition");
-    define("C_REMOVE","Remove");
+    //define("C_REMOVE","Remove");
     define("C_CREAT","Creat");
     define("C_RESPONSIV"," Responsiv");
-    define("C_EDIT","Edit");
-    define("C_ROW","Row");
+    //define("C_EDIT","Edit");
+    //define("C_ROW","Row");
     define("C_PARTS","Parts");
     define("C_PROJECT","Project");
-    define("C_PRIORITY","Priority");
-    define("C_ARE_YOU_SURE","Are You Sure?");
+    //define("C_PRIORITY","Priority");
+    //define("C_ARE_YOU_SURE","Are You Sure?");
     define("C_CHOSE_YOUR_CONDITIONS", "Chose Your Conditions");
     define("C_NOT_STARTED","Not Started");
     define("C_ONGOING","ongoing");
@@ -825,12 +825,16 @@ if(UI_LANGUAGE=="EN") {
     define("C_PROJECT_MEMBER","Project Member:");
     define("C_CHOISE","[choise]");
     define("C_BY_MY_OWN","By My Own");
+    define("C_CREATE_EDIT_POSBBLE","edit/create poss");
+    define("C_PAGE_ADDRE","page address");
+    define("C_LIST_SYSTEM_POSSIBILITIES"," list of sysytem possibilited");
 
     
     /**
     * define Constant English Word
     * OntologyMergePropeperties by ArefNazari  
     **/
+
     define("C_DIR","ltr");        
     define2("C_ROW","Row");
     define2("C_PRIORITY","Priority");
@@ -847,7 +851,14 @@ if(UI_LANGUAGE=="EN") {
 
     define2("C_MERGE","Merge");
     define2("C_NOT_MERGE","Not Merge");
-    
+    define("C_NAME_OF_USER","name of user");
+    define("C_NAME_AND_FAMILY","name and last name");
+    define("C_PASSWORD","password");
+    define("C_LIST_OF_USERS","list of users");
+    define("C_REGISTERED_INFO","registered information");
+
+
+
     /**
     * END
     **/
@@ -855,6 +866,15 @@ if(UI_LANGUAGE=="EN") {
 }
 else
 {
+    define("C_LIST_OF_USERS","لیست کاربران");
+    define("C_REGISTERED_INFO","اطلاعات ذخیره شد");
+
+    define("C_NAME_OF_USER","نام کاربری");
+    define("C_NAME_AND_FAMILY","نام و نام خانوادگی");
+    define("C_PASSWORD","کلمه عبور");
+    define("C_PAGE_ADDRE","آدرس صفحه");
+    define("C_LIST_SYSTEM_POSSIBILITIES","لیست امکانات صفحه");
+    define("C_CREATE_EDIT_POSBBLE","ایجاد/ویرایش امکانات");
     define2("C_SAVE", "ذخیره");
     define2("C_NEW", "جدید");
     define2("C_REMOVE", "حذف");
