@@ -685,9 +685,9 @@ Test::add(                  #6
                     you just removed the main testing account of omid, omid3000 :/
 
                     i fixed it, we add a user and remove him
-                    for whom that (omid, omid3000) dosent work for him
+                    if (omid, omid3000) dosent work you
 
-                    plz add this record to your DB, or restore DB backup
+                    add this record to your DB, or restore DB backup
                     Table: projectmanagement/accountspecs
                     INSERT INTO `AccountSpecs` VALUES (1,'omid','30f9dd65de612bfe458a871b90eabb3026c9fb29',1,'omid')
                 */
