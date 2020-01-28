@@ -723,11 +723,7 @@ class manage_UniversitySessions
 	{
 
 		// this method is used in ManageMembersPAList that taken by MGhayour
-		$ret = "";
-		$ret .= '<div class="container">';
-		$ret .= '';
-		$ret .= '	<ul class="nav nav-tabs">';
-
+		
 		$tabItems = array(
 			array(
 				"name" => "NewUniversitySessions",
@@ -771,51 +767,19 @@ class manage_UniversitySessions
 			),
 		);
 
-		// $ret .= "<tr>";
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="NewUniversitySessions")
-		// 	$ret .= "bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='UpdateUniversitySessions.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
 
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionPreCommands")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionPreCommands.php?UniversitySessionID=".$RecID."'>دستور کار</a></td>";
+		$ret = "";
+		$ret .= '<div class="container">';
+		$ret .= '	<ul class="nav nav-tabs">';
 
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageMembersPAList")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageMembersPAList.php?UniversitySessionID=".$RecID."'>حضور و غیاب اعضا</a></td>";
+		foreach ($tabItems as $item) {
+			$active= $CurrentPageName==$item['name']?'active':'';
+			$ret .= '<li class="nav-item">';
+  		$ret .= '  <a class="nav-link '.$active.'" href="'.$item['href'].'">'.$item['text'].'</a>';
+  		$ret .= '</li>';
+		}
 
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionDecisions")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionDecisions.php?UniversitySessionID=".$RecID."'>مصوبات جلسه</a></td>";
-
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionDocuments")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionDocuments.php?UniversitySessionID=".$RecID."'>مستندات</a></td>";
-
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionMembers")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionMembers.php?UniversitySessionID=".$RecID."'>اعضا</a></td>";
-
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionOtherUsers")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionOtherUsers.php?UniversitySessionID=".$RecID."'>سایر کاربران</a></td>";
-
-		// $ret .= "<td width=\"13%\" ";
-		// if($CurrentPageName=="ManageSessionHistory")
- 		// 	$ret .= " bgcolor=\"#cccccc\" ";
-		// $ret .= "><a href='ManageSessionHistory.php?UniversitySessionID=".$RecID."'>سابقه</a></td>";
-
-		// $ret .= "</table>";
-
-
-		$ret .= "</ul>";
+		$ret .= "	</ul>";
 		$ret .= "</div>";
 
 		return $ret;
