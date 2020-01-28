@@ -19,6 +19,7 @@ include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
 include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
 include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
 include("classes/persons.class.php"); //by Sara Bolouri Bazaz
+include("classes/ProjectDocuments.class.php"); // by Samin Hazeri
 HTMLBegin();
 class Test
 {
@@ -2944,6 +2945,137 @@ Test::add(
 );
 
 //persons.class.php UNIT TEST Finish ------------> by Sara Bolouri Bazaz
+
+
+
+// ----------> projectDocuments.class.ph ------UNIT TEST START--------> Samin Hazeri
+
+
+Test::add(
+
+    function ()
+    {
+        $obj = new be_ProjectDocuments();
+        try {
+            $obj->LoadDataFromDatabase(1 );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "be_ProjectDocuments->LoadDataFromDatabase()" , "Message"
+);
+
+
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_ProjectDocuments::GetCount("ProjectId") == 0){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->GetCount()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_ProjectDocuments::GetLastID() == -1){
+                return false;
+            }
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->GetLastID()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_ProjectDocuments::Add("ProjectID", "ProjectDocument", "FileContent", "FileName", "description" ) > -1){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->Add()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_ProjectDocuments::Update("UpdateRecord", "ProjectDoc", "FileName", "Description" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->Update()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            manage_ProjectDocuments::Remove("removeRecord" );
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->Remove()" , "Message"
+);
+
+Test::add(
+
+    function ()
+    {
+        try {
+            if(manage_ProjectDocuments::GetList("pId") != ''){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+    , "manage_ProjectDocuments->GetList()" , "Message"
+);
+
+
+// ----------> projectDocuments.class.ph ------UNIT TEST FINISH--------> Samin Hazeri
 
 
 
