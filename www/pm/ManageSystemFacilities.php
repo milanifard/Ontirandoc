@@ -132,20 +132,20 @@ if(isset($_REQUEST["UpdateID"]))
     <form id="ListForm" name="ListForm" method="post">
         <br><table class="table table-danger">
             <tr bgcolor="#cccccc">
-                <td colspan="9">
+                <td align="center" colspan="9">
                     <?php echo C_LIST_SYSTEM_POSSIBILITIES?>
                 </td>
             </tr>
             <tr class="HeaderOfTable">
                 <td width="1%">&nbsp;</td>
-                <td class="text-info" width="1%">ردیف</td>
-                <td class="text-info" width="2%">ویرایش</td>
-                <td class="text-info">عنوان</td>
-                <td class="text-info">گروه</td>
-                <td class="text-info">ترتیب</td>
-                <td class="text-info"> آدرس صفحه</td>
-                <td class="text-info" width=1% nowrap>کاربران</td>
-                <td class="text-info" width=1% nowrap>صفحات</td>
+                <td class="text-info" width="1%"><?php echo C_ROW?></td>
+                <td class="text-info" width="2%"><?php echo C_EDIT?></td>
+                <td class="text-info"><?php echo C_TITLE?></td>
+                <td class="text-info"><?php echo C_GROUP?></td>
+                <td class="text-info"><?php echo C_ORDER?></td>
+                <td class="text-info"> <?php echo C_PAGE_ADDRE?></td>
+                <td class="text-info" width=1% nowrap><?php echo C_USER?></td>
+                <td class="text-info" width=1% nowrap><?php echo C_PAGES?></td>
             </tr>
             <?php
             for($k=0; $k<count($res); $k++)
