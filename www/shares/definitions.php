@@ -540,6 +540,14 @@ if(UI_LANGUAGE=="EN") {
     define2("C_FORMPART_TOPTEXT", "Top text");
     define2("C_FORMPART_BOTTOMTEXT", "Bottom text");
     define2("C_FORMPART_TITLE", "Form parts");
+
+    define2("C_APPROVAL_STATUS", "approval status");
+    define2("C_PRESENT_TYPE", "present type");
+    define2("C_PRESENT_TIME", "present time");
+    define2("C_ABSENT", "absent");
+    define2("C_ABSENT2", "absent");
+    define2("C_PRESENT", "present");
+
     //// End of Mahdi Ghayour //////
 
     //MyRequests.php by Sara Bolouri
@@ -1412,6 +1420,13 @@ else
     define2("C_FORMPART_TOPTEXT", "متن بالای بخش");
     define2("C_FORMPART_BOTTOMTEXT", "متن پایین بخش");
     define2("C_FORMPART_TITLE", "بخشهای فرم");
+
+    define2("C_APPROVAL_STATUS", "وضعیت تایید درخواست");
+    define2("C_PRESENT_TYPE", "نوع حضور");
+    define2("C_PRESENT_TIME", "مدت حضور");
+    define2("C_ABSENT", "غایب");
+    define2("C_ABSENT2", "غیبت");
+    define2("C_PRESENT", "حاضر");
     //// End of Mahdi Ghayour //////
 
     //MyRequests.php by Sara Bolouri

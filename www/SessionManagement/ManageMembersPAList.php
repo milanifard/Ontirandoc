@@ -43,7 +43,7 @@ if(isset($_REQUEST["Save"]) && $HasUpdateAccess)
 		manage_SessionMembers::UpdatePAStatus($res[$k]->SessionMemberID, $_REQUEST["PresenceType_".$res[$k]->SessionMemberID], $_REQUEST["PresentHour_".$res[$k]->SessionMemberID]*60+$_REQUEST["PresentMin_".$res[$k]->SessionMemberID], $_REQUEST["TardinessHour_".$res[$k]->SessionMemberID]*60+$_REQUEST["TardinessMin_".$res[$k]->SessionMemberID]);
 	}
 	$res = manage_SessionMembers::GetList($_REQUEST["UniversitySessionID"], $FromRec, $NumberOfRec);
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_REGISTERED_INFO);
 }
 echo manage_UniversitySessions::ShowSummary($_REQUEST["UniversitySessionID"]);
 echo manage_UniversitySessions::ShowTabs($_REQUEST["UniversitySessionID"], "ManageMembersPAList");
@@ -62,25 +62,25 @@ if($HasViewAccess=="NONE")
 		<div class="card">
 			<div class="card-header">
 				<i class="fa fa-search"></i>
-					اعضا
+					<?php echo C_SESSION_MEMBERS; ?>
 			</div>
 			<div class="card-body">
 				<table class="table">
 					<tr class="HeaderOfTable">
-						<td rowspan=2 width="1%">ردیف</td>
-						<td rowspan=2 >نام خانوادگی</td>	
-						<td rowspan=2 >نام</td>
-						<td rowspan=2 >نقش </td>
-						<td rowspan=2 width=1% nowrap>وضعیت تایید درخواست</td>
-						<td align=center colspan=3>امضا</td>
-						<td rowspan=2 width=1% nowrap>نوع حضور</td>
-						<td rowspan=2 width=1% nowrap>مدت حضور</td>
-						<td rowspan=2 width=1% nowrap>غیبت</td>
+						<td rowspan=2 width="1%"><?php echo ROW_M; ?></td>
+						<td rowspan=2 ><?php echo C_LAST_NAME; ?></td>	
+						<td rowspan=2 ><?php echo C_NAME; ?></td>
+						<td rowspan=2 ><?php echo C_ROLE; ?> </td>
+						<td rowspan=2 width=1% nowrap><?php echo C_APPROVAL_STATUS; ?></td>
+						<td align=center colspan=3><?php echo C_PRINTSESSIONPAGE_TTFIF; ?></td>
+						<td rowspan=2 width=1% nowrap><?php echo C_PRESENT_TYPE; ?></td>
+						<td rowspan=2 width=1% nowrap><?php echo C_PRESENT_TIME; ?></td>
+						<td rowspan=2 width=1% nowrap><?php echo C_ABSENT2; ?></td>
 					</tr>
 					<tr class=HeaderOfTable>
-						<td width=1%>وضعیت </td>
-						<td>امضا</td>
-						<td width=1%>زمان </td>
+						<td width=1%><?php echo C_STATUS; ?></td>
+						<td><?php echo C_PRINTSESSIONPAGE_TTFIF; ?></td>
+						<td width=1%><?php echo C_TIME; ?> </td>
 					</tr>
 					<?
 					for($k=0; $k<count($res); $k++)
@@ -110,11 +110,11 @@ if($HasViewAccess=="NONE")
 						if($HasUpdateAccess=="PUBLIC") 
 						{ 
 							echo "	<td><select name='PresenceType_".$res[$k]->SessionMemberID."' id='PresenceType_".$res[$k]->SessionMemberID."'>";
-							echo "<option value='PRESENT'>حاضر";
+							echo "<option value='PRESENT'>".C_PRESENT;
 							echo "<option value='ABSENT' ";
 							if($res[$k]->PresenceType=="ABSENT")
 								echo " selected ";	
-							echo ">غایب";
+							echo ">".C_ABSENT;
 							echo "</select></td>";
 							echo "	<td nowrap><input type=text size=2 id='PresentMin_".$res[$k]->SessionMemberID."' name='PresentMin_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime%60)."'>:";
 							echo "	<input type=text size=2 id='PresentHour_".$res[$k]->SessionMemberID."' name='PresentHour_".$res[$k]->SessionMemberID."' value='".floor($res[$k]->PresenceTime/60)."'></td>";
@@ -124,9 +124,9 @@ if($HasViewAccess=="NONE")
 						else
 						{
 							if($res[$k]->PresenceType=="ABSENT")
-								echo "<td>غایب</td>";
+								echo "<td>".C_ABSENT."</td>";
 							else
-								echo "<td>حاضر</td>";
+								echo "<td>".C_PRESENT."</td>";
 							echo "	<td nowrap>".floor($res[$k]->PresenceTime%60).":".floor($res[$k]->PresenceTime/60)."</td>";
 							echo "	<td nowrap>".floor($res[$k]->TardinessTime%60).":".floor($res[$k]->TardinessTime/60)."</td>";
 						}
@@ -136,7 +136,7 @@ if($HasViewAccess=="NONE")
 					<? if($HasUpdateAccess=="PUBLIC") { ?>
 					<tr class="FooterOfTable">
 					<td colspan="14" align="center">
-						<input type="submit" value='ذخیره'>
+						<input type="submit" value='<?php echo C_SAVE; ?>'>
 					</td>
 					</tr>
 					<? } ?>
