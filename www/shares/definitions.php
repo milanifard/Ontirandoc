@@ -844,6 +844,10 @@ if(UI_LANGUAGE=="EN") {
     define("C_DOMAIN_PRIORITY2","Domain Property 2");
     define("C_RANGE_PRIORITY2","Range Property 2");
     define("C_ALLOWED_VALUES2","Allowed values 2");
+
+    define2("C_MERGE","Merge");
+    define2("C_NOT_MERGE","Not Merge");
+    
     /**
     * END
     **/
@@ -1686,6 +1690,9 @@ else
     define("C_DOMAIN_PRIORITY2","دامنه خصوصیت 2");
     define("C_RANGE_PRIORITY2","برد خصوصیت 2");
     define("C_ALLOWED_VALUES2","مقادیر مجاز 2");
+
+    define2("C_MERGE","ادغام");    
+    define2("C_NOT_MERGE","عدم ادغام");    
     /**
     * END
     **/

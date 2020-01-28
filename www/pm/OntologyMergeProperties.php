@@ -80,25 +80,25 @@
 	    	echo "<tr class=OddRow>";
 	    else
 	    	echo "<tr class=EvenRow>";
-				echo "<td>".$i."</td>";
-				echo "<td>";
-				echo "<select id=ch_".$MergeID." name=ch_".$MergeID.">";
-				echo "<option value='Merge'>ادغام";
-				echo "<option value='DoNotMerge' ";
+			echo "<td>".$i."</td>";
+			echo "<td>";
+			echo "<select id=ch_".$MergeID." name=ch_".$MergeID.">";
+			echo '<option value="Merge">' .C_MERGE;
+			echo "<option value='DoNotMerge' ";
 			if($rec["PermittedValues1"]!=$rec["PermittedValues2"])
 				echo " selected ";
-				echo ">عدم ادغام";	    	    
-				echo "</select>";
-				echo "</td>";
-				echo "<td>";
-				echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID1"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
-				echo $rec["PropertyLabel1"];
-				echo "</a>";
-				echo "</td>";
-				echo "<td>".ShowClassesLabel($rec["PropertyDomain1"])."</td>";
-				echo "<td>".ShowClassesLabel($rec["PropertyRange1"])."</td>";
-				echo "<td>".$rec["PermittedValues1"]."</td>";
-				echo "</tr>";
+			echo ">" .C_NOT_MERGE;	    	    
+			echo "</select>";
+			echo "</td>";
+			echo "<td>";
+			echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["PropertyID1"]."&OntologyID=".$TargetOnto."&DoNotShowList=1'>";
+			echo $rec["PropertyLabel1"];
+			echo "</a>";
+			echo "</td>";
+			echo "<td>".ShowClassesLabel($rec["PropertyDomain1"])."</td>";
+			echo "<td>".ShowClassesLabel($rec["PropertyRange1"])."</td>";
+			echo "<td>".$rec["PermittedValues1"]."</td>";
+			echo "</tr>";
 	    
 	    if($i%2==0)
 	    	echo "<tr class=OddRow>";
