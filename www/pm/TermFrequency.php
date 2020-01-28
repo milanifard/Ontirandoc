@@ -5,7 +5,7 @@
 	تاریخ ایجاد: 89-3-16
 */
 include("header.inc.php");
-include("classes/TermReferenceMapping.class.php");
+include_once("classes/TermReferenceMapping.class.php");
 HTMLBegin();
 
 function ShowCoOccuranceTerms($TermID)

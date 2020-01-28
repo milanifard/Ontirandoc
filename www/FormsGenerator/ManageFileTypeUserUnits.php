@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FileTypeUserPermissions.class.php");
-include("classes/FileTypeUserPermittedUnits.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FileTypeUserPermissions.class.php");
+include_once("classes/FileTypeUserPermittedUnits.class.php");
+include_once("classes/FormUtils.class.php");
 HTMLBegin();
 $ParentObj = new be_FileTypeUserPermissions();
 $ParentObj->LoadDataFromDatabase($_REQUEST["id"]);

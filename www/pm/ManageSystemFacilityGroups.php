@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 92-8-4
 */
 include("header.inc.php");
-//include("../sharedClasses/SharedClass.class.php");
-include("classes/SystemFacilityGroups.class.php");
+//include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SystemFacilityGroups.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

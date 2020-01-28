@@ -1,9 +1,9 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormFields.class.php");
-include("classes/FileTypeUserPermissions.class.php");
-include("classes/FileTypeUserPermittedForms.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FileTypeUserPermissions.class.php");
+include_once("classes/FileTypeUserPermittedForms.class.php");
 HTMLBegin();
 $ListCondition = " 1=1 ";
 $ParentObj = new be_FileTypeUserPermittedForms();

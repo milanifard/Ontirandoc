@@ -8,9 +8,9 @@
  * Changed by Sara Bolouri Bazaz
  */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/payments.class.php");
-include ("classes/persons.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/payments.class.php");
+include_once("classes/persons.class.php");
 HTMLBegin();
 $PersonName = "";
 $pobj = new be_persons();

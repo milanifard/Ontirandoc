@@ -1,26 +1,28 @@
 <?php 
 include("header.inc.php");
-include("classes/SystemFacilityGroups.class.php");
-include("classes/messages.class.php");
-include("classes/terms.class.php");
-include("classes/ProjectHistory.class.php");
-include("classes/AccountSpecs.class.php");
-include("classes/RefrenceTypes.class.php");
-include("classes/FacilityPages.class.php");
-include("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
-include("classes/TermEquivalentEnglishTerms.class.php");
-include("classes/payments.class.php");
-include("classes/UserFacilities.class.php"); //by mostafaghr
-include("classes/UserFacilities.class.php"); //by navidbeta
+include_once("classes/SystemFacilityGroups.class.php");
+include_once("classes/messages.class.php");
+include_once("classes/terms.class.php");
+include_once("classes/ProjectHistory.class.php");
+include_once("classes/AccountSpecs.class.php");
+include_once("classes/RefrenceTypes.class.php");
+include_once("classes/FacilityPages.class.php");
+include_once("../SessionManagement/classes/SessionActReg.class.php"); // By Arman Ghoreshi
+include_once("classes/TermEquivalentEnglishTerms.class.php");
+include_once("classes/payments.class.php");
+include_once("classes/UserFacilities.class.php"); //by mostafaghr
+include_once("classes/UserFacilities.class.php"); //by navidbeta
 include("classes/OntologyValidationExperts.php"); //by Mohammad Kahani
-include("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
-include("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
-include("classes/projectsSecurity.class.php"); // By Javad Mahdavian
-include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
-include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
-include("classes/persons.class.php"); //by Sara Bolouri Bazaz
-include("classes/ProjectDocuments.class.php"); // by Samin Hazeri
-include("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
+include_once("classes/OntologyPropertyLabels.class.php");//by kourosh ahmadzadeh ataei
+include_once("classes/ProjectTaskActivityTypes.class.php"); // By AMINAG
+include_once("classes/projectsSecurity.class.php"); // By Javad Mahdavian
+include_once("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//By Amir Karami
+include_once("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
+include_once("classes/persons.class.php"); //by Sara Bolouri Bazaz
+include_once("classes/ProjectDocuments.class.php"); // by Samin Hazeri
+include_once("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
+include_once("classes/OntologyClassLabels.class.php");
+include_once("classes/ProjectTaskRequisites.class.php");
 
 HTMLBegin();
 class Test

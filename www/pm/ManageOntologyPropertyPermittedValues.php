@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 95-6-1
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyPropertyPermittedValues.class.php");
-include ("classes/OntologyProperties.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyPropertyPermittedValues.class.php");
+include_once("classes/OntologyProperties.class.php");
 HTMLBegin();
 $LoadScript = "";
 if(isset($_REQUEST["Save"])) 

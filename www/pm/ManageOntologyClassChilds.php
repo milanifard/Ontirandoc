@@ -12,9 +12,9 @@ edited by: Mohammad Kahani SID: 9512762447
 
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyClassHirarchy.class.php");
-include ("classes/OntologyClasses.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
+include_once("classes/OntologyClasses.class.php");
 HTMLBegin();
 $mysql = pdodb::getInstance();
 $obj = new be_OntologyClasses();

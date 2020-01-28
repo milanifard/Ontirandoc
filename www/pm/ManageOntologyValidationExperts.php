@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 95-5-24
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyValidationExperts.class.php");
-include ("classes/ontologies.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyValidationExperts.class.php");
+include_once("classes/ontologies.class.php");
 HTMLBegin();
 $onto = new be_ontologies();
 if(isset($_REQUEST["Save"])) 

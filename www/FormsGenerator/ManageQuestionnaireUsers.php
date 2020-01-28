@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormManagers.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormManagers.class.php");
 
 $ParentObj = new be_FormsStruct();
 $ParentObj->LoadDataFromDatabase($_REQUEST["Item_FormStructID"]);

@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-3-16
 */
 include("header.inc.php");
-include("classes/OntologyClasses.class.php");
-include("classes/OntologyProperties.class.php");
-include("classes/OntologyClassHirarchy.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyProperties.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
 
 $mysql = pdodb::getInstance();
 $TargetOntologyID = 0;

@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
-include("classes/FormsDetailTables.class.php");
-include("classes/FormsStruct.class.php");
+include_once("classes/FormsDetailTables.class.php");
+include_once("classes/FormsStruct.class.php");
 HTMLBegin();
 echo "*";
 $ParentObj = new be_FormsStruct();

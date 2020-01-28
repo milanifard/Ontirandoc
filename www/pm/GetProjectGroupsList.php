@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-5-16
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectGroups.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectGroups.class.php");
 echo "<select name='Item_ProjectGroupID' id='Item_ProjectGroupID'>";
 echo "<option value=0>-";
 echo manage_ProjectGroups::CreateSelectOptions($_REQUEST["ouid"]);

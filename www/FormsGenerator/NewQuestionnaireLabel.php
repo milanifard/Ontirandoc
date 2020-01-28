@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
-include("classes/FormLabels.class.php");
-include("classes/FormFields.class.php");
+include_once("classes/FormLabels.class.php");
+include_once("classes/FormFields.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"]))
 {

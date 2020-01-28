@@ -1,13 +1,13 @@
 <?php
 include("header.inc.php");
-include("classes/files.class.php");
-include("classes/FileTypeUserPermissions.class.php");
-include("classes/FileTypeUserPermittedEduGroups.class.php");
-include("classes/FileTypeUserPermittedUnits.class.php");
-include("classes/FileTypeUserPermittedSubUnits.class.php");
-include("classes/SecurityManager.class.php");
-include("classes/FileTypes.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/files.class.php");
+include_once("classes/FileTypeUserPermissions.class.php");
+include_once("classes/FileTypeUserPermittedEduGroups.class.php");
+include_once("classes/FileTypeUserPermittedUnits.class.php");
+include_once("classes/FileTypeUserPermittedSubUnits.class.php");
+include_once("classes/SecurityManager.class.php");
+include_once("classes/FileTypes.class.php");
+include_once("classes/FormUtils.class.php");
 
 HTMLBegin();
 $FileTypeName = "";

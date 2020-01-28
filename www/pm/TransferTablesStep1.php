@@ -1,6 +1,6 @@
 <?php
 	include("header.inc.php");
-	include("classes/DM_Servers.class.php");
+	include_once("classes/DM_Servers.class.php");
 	HTMLBegin();
 	$res = manage_DM_Servers::GetList(); 
 	$options = "<option value='0'>-";

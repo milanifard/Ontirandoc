@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 89-3-16
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectDocumentTypes.class.php");
-include ("classes/projects.class.php");
-include("classes/projectsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectDocumentTypes.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/projectsSecurity.class.php");
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند
 if(isset($_REQUEST["UpdateID"])) 

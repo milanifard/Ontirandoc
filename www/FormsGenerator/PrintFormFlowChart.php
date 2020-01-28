@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/FormsStruct.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/FormsStruct.class.php");
 HTMLBegin();
 echo "<font family='tahoma' size=1px>";
 $ShowAccessList = FALSE;

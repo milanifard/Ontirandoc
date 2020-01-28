@@ -5,14 +5,14 @@
 	تاریخ ایجاد: 94-2-7
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/TermReferenceMapping.class.php");
-include ("classes/TermReferences.class.php");
-include ("classes/terms.class.php");
-include("classes/TermReferenceContent.class.php");
-include ("classes/OntologyClasses.class.php");
-include ("classes/OntologyProperties.class.php");
-include("classes/OntologyClassHirarchy.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/TermReferenceMapping.class.php");
+include_once("classes/TermReferences.class.php");
+include_once("classes/terms.class.php");
+include_once("classes/TermReferenceContent.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyProperties.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
 
 function GetRelatedOntologyElement($TermID)
 {

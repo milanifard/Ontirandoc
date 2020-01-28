@@ -1,6 +1,6 @@
 <?php
 include("header.inc.php");
-include("classes/FieldsItemList.class.php");
+include_once("classes/FieldsItemList.class.php");
 HTMLBegin();
 $mysql = dbclass::getInstance();
 if(isset($_REQUEST["Save"]))

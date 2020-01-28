@@ -8,9 +8,9 @@
  * Changed By Sara Bolouri Bazaz
  */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTaskHistory.class.php");
-include ("classes/projects.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTaskHistory.class.php");
+include_once("classes/projects.class.php");
 HTMLBegin();
 $NumberOfRec = 30;
 $k=0;

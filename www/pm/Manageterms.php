@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 94-2-6
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/terms.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/terms.class.php");
 HTMLBegin();
 
 function GetRelatedOntologyElement($TermID)

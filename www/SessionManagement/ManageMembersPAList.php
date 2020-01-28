@@ -11,10 +11,10 @@
 // local url: http://localhost:90/MyProject/Ontirandoc/www/SessionManagement/ManageMembersPAList.php
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/SessionMembers.class.php");
-include ("classes/UniversitySessions.class.php");
-include("classes/UniversitySessionsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SessionMembers.class.php");
+include_once("classes/UniversitySessions.class.php");
+include_once("classes/UniversitySessionsSecurity.class.php");
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند
 $ppc = security_UniversitySessions::LoadUserPermissions($_SESSION["PersonID"], $_REQUEST["UniversitySessionID"]);

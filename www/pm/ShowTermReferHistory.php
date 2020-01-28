@@ -5,7 +5,7 @@
 	تاریخ ایجاد: 94-2-6
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
 HTMLBegin();
   $mysql = pdodb::getInstance();
   $res = $mysql->Execute("select *, g2j(ATS) as ActionDate from projectmanagement.TermsReferHistory

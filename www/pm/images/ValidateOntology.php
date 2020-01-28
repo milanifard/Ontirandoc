@@ -28,12 +28,12 @@ set_include_path(get_include_path() . PATH_SEPARATOR . getenv("DOCUMENT_ROOT") .
 //require_once inc_PDODataAccess;
 //require_once inc_component;
 
-include("classes/OntologyClasses.class.php");
-include("classes/OntologyClassLabels.class.php");
-include("classes/OntologyClassHirarchy.class.php");
-include ("classes/ontologies.class.php");
-include ("classes/OntologyPropertyPermittedValues.class.php");
-include("classes/terms.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyClassLabels.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
+include_once("classes/ontologies.class.php");
+include_once("classes/OntologyPropertyPermittedValues.class.php");
+include_once("classes/terms.class.php");
 
 function ShowChilds($LevelNo, $ParentID)
 {

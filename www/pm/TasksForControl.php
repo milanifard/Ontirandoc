@@ -6,9 +6,9 @@
 	edited by navidbeta
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/projects.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/projects.class.php");
 // include("../shares/definitions.php");
 HTMLBegin();
 /*$mysql = pdodb::getInstance();

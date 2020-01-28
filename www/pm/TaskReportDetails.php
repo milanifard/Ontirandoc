@@ -5,7 +5,7 @@
 	تاریخ ایجاد: 89-07-05
 */
 include("header.inc.php");
-include("../organization/classes/ChartServices.class.php");
+include_once("../organization/classes/ChartServices.class.php");
 include("../staff/PAS/PAS_shared_utils.php");
 if(config::$critical_status!=10){
 echo "<br><br>

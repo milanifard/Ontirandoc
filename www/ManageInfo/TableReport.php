@@ -1,8 +1,8 @@
 <?
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/BusinessModelUploadedExcelFiles.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/BusinessModelUploadedExcelFiles.class.php");
 HTMLBegin();
 
 $res = manage_BusinessModelUploadedExcelFiles::GetList(); 

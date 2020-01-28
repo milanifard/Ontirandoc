@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-3-6
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/UniversitySession.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/UniversitySession.class.php");
 
 HTMLBegin();
 

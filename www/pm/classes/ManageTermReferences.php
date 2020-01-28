@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 94-2-6
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/TermReferences.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/TermReferences.class.php");
 HTMLBegin();
 if($_SESSION["UserID"]!="omid")
 {

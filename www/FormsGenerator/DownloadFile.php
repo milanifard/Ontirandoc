@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FormUtils.class.php");
-include("classes/SecurityManager.class.php");
-include("classes/FormsFlowSteps.class.php");
+include_once("classes/FormUtils.class.php");
+include_once("classes/SecurityManager.class.php");
+include_once("classes/FormsFlowSteps.class.php");
 $mysql = dbclass::getInstance();
 $FormsStructID = $_REQUEST["FormsStructID"];
 $RecID = $_REQUEST["RecID"];

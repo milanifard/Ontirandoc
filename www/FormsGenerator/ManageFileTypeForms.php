@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FileTypeForms.class.php");
-include("classes/FileTypes.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FileTypeForms.class.php");
+include_once("classes/FileTypes.class.php");
+include_once("classes/FormUtils.class.php");
 HTMLBegin();
 $ParentObj = new be_FileTypes();
 $ParentObj->LoadDataFromDatabase($_REQUEST["FileTypeID"]);

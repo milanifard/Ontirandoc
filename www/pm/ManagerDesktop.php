@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 94-2-5
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/messages.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/PrivateMessageFollows.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/messages.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/PrivateMessageFollows.class.php");
 HTMLBegin();
 $res = manage_messages::GetActiveMessages(); 
 $LettersCount = manage_PrivateMessageFollows::GetNewMessagesCount();

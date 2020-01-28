@@ -1,12 +1,12 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormFields.class.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/FieldsItemList.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/FieldsItemList.class.php");
+include_once("classes/FormUtils.class.php");
 require_once('classes/FormsFlowStepRelations.class.php');
-include("classes/FormsDetailTables.class.php");
+include_once("classes/FormsDetailTables.class.php");
 
 HTMLBegin();
 ?>

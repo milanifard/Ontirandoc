@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-2-22
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/UniversitySessions.class.php");
-include("classes/SessionTypeMembers.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/UniversitySessions.class.php");
+include_once("classes/SessionTypeMembers.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Item_SessionTypeID"]))
 {

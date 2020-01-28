@@ -34,8 +34,8 @@
 
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/PrivateMessageFollows.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/PrivateMessageFollows.class.php");
 
 HTMLBegin();
 

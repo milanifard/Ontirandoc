@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-10-06
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTaskGroups.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTaskGroups.class.php");
 $CurValue = 0;
 if(isset($_REQUEST["CurValue"]))
 	$CurValue = $_REQUEST["CurValue"];

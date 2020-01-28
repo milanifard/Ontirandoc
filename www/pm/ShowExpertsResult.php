@@ -1,12 +1,12 @@
 <?php 
 include("header.inc.php");
-include("classes/OntologyClasses.class.php");
-include("classes/OntologyClassLabels.class.php");
-include("classes/OntologyClassHirarchy.class.php");
-include ("classes/ontologies.class.php");
-include ("classes/OntologyPropertyPermittedValues.class.php");
-include("classes/terms.class.php");
-include("classes/OntologyValidationExperts.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyClassLabels.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
+include_once("classes/ontologies.class.php");
+include_once("classes/OntologyPropertyPermittedValues.class.php");
+include_once("classes/terms.class.php");
+include_once("classes/OntologyValidationExperts.class.php");
 
 function ShowChilds($LevelNo, $ParentID, $PreIndent)
 {

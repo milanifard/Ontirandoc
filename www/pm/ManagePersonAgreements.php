@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 93-12-26
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/PersonAgreements.class.php");
-include ("classes/persons.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/PersonAgreements.class.php");
+include_once("classes/persons.class.php");
 HTMLBegin();
 $PersonName = "";
 $pobj = new be_persons();

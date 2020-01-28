@@ -1,10 +1,10 @@
 <?php
 include("header.inc.php");
-include("classes/FileContents.class.php");
-include("classes/FormsStruct.class.php");
-include("classes/files.class.php");
-include("classes/FileTypeUserPermittedForms.class.php");
-include("classes/SecurityManager.class.php");
+include_once("classes/FileContents.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/files.class.php");
+include_once("classes/FileTypeUserPermittedForms.class.php");
+include_once("classes/SecurityManager.class.php");
 
 HTMLBegin();
 ?>

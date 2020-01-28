@@ -1,11 +1,11 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormFields.class.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/FieldsItemList.class.php");
-include("classes/FormUtils.class.php");
-include("classes/SecurityManager.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/FieldsItemList.class.php");
+include_once("classes/FormUtils.class.php");
+include_once("classes/SecurityManager.class.php");
 require_once('classes/FormsFlowStepRelations.class.php');
 require_once('../organization/classes/ChartServices.class.php');
 HTMLBegin();

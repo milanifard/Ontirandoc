@@ -8,8 +8,8 @@
 //ini_set('display_errors', "on");
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/PrivateMessageFollows.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/PrivateMessageFollows.class.php");
 HTMLBegin();
 $headers = 'From: falinoos@falinoos.com';
 if(isset($_REQUEST["MessageFollowID"]))

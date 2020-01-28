@@ -10,8 +10,8 @@
 
 //-------------------- Include Part ---------------------------------
 include("header.inc.php");
-include("classes/FacilityPages.class.php");
-include ("classes/SystemFacilities.class.php");
+include_once("classes/FacilityPages.class.php");
+include_once("classes/SystemFacilities.class.php");
 //-------------------------------------------------------------------
 
 

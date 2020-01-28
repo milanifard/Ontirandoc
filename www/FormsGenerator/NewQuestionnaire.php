@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormsFlowStepRelations.class.php");
-include("classes/FormsFlowSteps.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormsFlowStepRelations.class.php");
+include_once("classes/FormsFlowSteps.class.php");
 HTMLBegin();
 
 $mysql = pdodb::getInstance();

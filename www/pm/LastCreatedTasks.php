@@ -5,11 +5,11 @@
 	تاریخ ایجاد: 89-3-18
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/projects.class.php");
-include("classes/ProjectTasksSecurity.class.php");
-include("classes/ProjectTaskAssignedUsers.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/ProjectTasksSecurity.class.php");
+include_once("classes/ProjectTaskAssignedUsers.class.php");
 
 HTMLBegin();
 $NumberOfRec = 30;

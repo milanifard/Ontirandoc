@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FormFields.class.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormUtils.class.php");
 HTMLBegin();
 $mysql = dbclass::getInstance();
 $FormFieldID = 0;

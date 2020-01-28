@@ -5,12 +5,12 @@
 	تاریخ ایجاد: 94-2-29
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyClasses.class.php");
-include("classes/OntologyClassLabels.class.php");
-include("classes/OntologyClassHirarchy.class.php");
-include("classes/OntologyProperties.class.php");
-include ("classes/ontologies.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyClassLabels.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
+include_once("classes/OntologyProperties.class.php");
+include_once("classes/ontologies.class.php");
 HTMLBegin();
 echo manage_ontologies::ShowSummary($_REQUEST["OntologyID"]);
 $res = manage_OntologyClasses::GetList($_REQUEST["OntologyID"]); 

@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-3-18
 */
 include("header.inc.php");
-//include("SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/projects.class.php");
+//include_once("SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/projects.class.php");
 HTMLBegin();
 
 $now = date("Y-m-d");

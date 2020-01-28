@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-2-30
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/SessionTypesSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SessionTypesSecurity.class.php");
 HTMLBegin();
 function CreateYesNoSelectBox($SelectBoxName, $CurValue)
 {

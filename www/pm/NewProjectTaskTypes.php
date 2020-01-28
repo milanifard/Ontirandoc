@@ -8,9 +8,9 @@
  * changed by mostafa sader
  */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTaskTypes.class.php");
-include ("classes/projects.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTaskTypes.class.php");
+include_once("classes/projects.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"]))
 {

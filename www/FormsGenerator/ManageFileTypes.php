@@ -1,6 +1,6 @@
 <?php
 include("header.inc.php");
-include("classes/FileTypes.class.php");
+include_once("classes/FileTypes.class.php");
 
 HTMLBegin();
 function ShowTick($FieldValue)

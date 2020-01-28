@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 94-2-7
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/terms.class.php");
-include("classes/TermReferenceMapping.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/terms.class.php");
+include_once("classes/TermReferenceMapping.class.php");
 $mysql = pdodb::getInstance();
 
 HTMLBegin();

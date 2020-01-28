@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 94-3-2
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyPropertyLabels.class.php");
-include("classes/OntologyProperties.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyPropertyLabels.class.php");
+include_once("classes/OntologyProperties.class.php");
 HTMLBegin();
 if (isset($_REQUEST["Save"])) {
 	if (isset($_REQUEST["OntologyPropertyID"]))

@@ -1,6 +1,6 @@
 <?php
 include("header.inc.php");
-include("classes/FormsStruct.class.php");
+include_once("classes/FormsStruct.class.php");
 HTMLBegin();
 
 function CreateFormIntoUserkartabl($SelectedPersonID, $FormsStructID, $FormFlowStepID, $TableName, $KeyName)

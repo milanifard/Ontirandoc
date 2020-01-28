@@ -1,9 +1,9 @@
 <?php
 include("header.inc.php");
-include("classes/FormFields.class.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormUtils.class.php");
-include("classes/FormsSections.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormUtils.class.php");
+include_once("classes/FormsSections.class.php");
 HTMLBegin();
 $mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 $FormFieldID = 0;

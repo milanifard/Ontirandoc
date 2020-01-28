@@ -6,11 +6,11 @@
 */
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyClasses.class.php");
-include("classes/OntologyClassLabels.class.php");
-include("classes/OntologyClassHirarchy.class.php");
-include ("classes/ontologies.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyClasses.class.php");
+include_once("classes/OntologyClassLabels.class.php");
+include_once("classes/OntologyClassHirarchy.class.php");
+include_once("classes/ontologies.class.php");
 HTMLBegin();
 echo "<div class=\"container text-center\">";
 function ShowValidRelations($ClassID, $OntologyID, $label, $level)

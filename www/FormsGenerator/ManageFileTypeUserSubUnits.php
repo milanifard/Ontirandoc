@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FileTypeUserPermissions.class.php");
-include("classes/FileTypeUserPermittedSubUnits.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FileTypeUserPermissions.class.php");
+include_once("classes/FileTypeUserPermittedSubUnits.class.php");
+include_once("classes/FormUtils.class.php");
 HTMLBegin();
 
 $ParentObj = new be_FileTypeUserPermissions();

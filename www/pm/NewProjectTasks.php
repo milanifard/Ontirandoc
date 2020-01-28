@@ -6,16 +6,16 @@
 */
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/ProjectTaskTypes.class.php");
-include("classes/ProjectTaskGroups.class.php");
-include("classes/projects.class.php");
-include("classes/ProjectTasksSecurity.class.php");
-include("classes/ProjectTaskAssignedUsers.class.php");
-include("classes/ProjectTaskDocuments.class.php");
-include("classes/ProjectTaskComments.class.php");
-include("classes/ProjectTaskActivities.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/ProjectTaskTypes.class.php");
+include_once("classes/ProjectTaskGroups.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/ProjectTasksSecurity.class.php");
+include_once("classes/ProjectTaskAssignedUsers.class.php");
+include_once("classes/ProjectTaskDocuments.class.php");
+include_once("classes/ProjectTaskComments.class.php");
+include_once("classes/ProjectTaskActivities.class.php");
 
 ini_set('display_errors','off');
 

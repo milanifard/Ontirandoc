@@ -8,8 +8,8 @@
  * Changed by Sara Bolouri Bazaz
  */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
 include_once("classes/ProjectTasksSecurity.class.php");
 HTMLBegin();
 $NumberOfRec = 20;

@@ -8,9 +8,9 @@
 
 //Adel Aboutalebi Pirnaeimi
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/projects.class.php");
-include("classes/ProjectTasks.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/ProjectTasks.class.php");
 HTMLBegin();
 $res = manage_projects::GetUserProjects($_SESSION["PersonID"]);
 ?>

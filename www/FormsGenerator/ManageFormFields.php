@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FormFields.class.php");
-include("classes/FormsStruct.class.php");
-include("classes/FormLabels.class.php");
+include_once("classes/FormFields.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("classes/FormLabels.class.php");
 HTMLBegin();
 $k = 0;
 $FormsStructID = $_REQUEST["FormsStructID"];

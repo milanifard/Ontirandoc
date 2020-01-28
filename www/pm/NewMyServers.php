@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 93-12-2
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/VirtualServers.class.php");
-include ("classes/PhysicalServers.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/VirtualServers.class.php");
+include_once("classes/PhysicalServers.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

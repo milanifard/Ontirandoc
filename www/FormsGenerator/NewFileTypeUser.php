@@ -1,6 +1,6 @@
 <?php
 include("header.inc.php");
-include("classes/FileTypeUserPermissions.class.php");
+include_once("classes/FileTypeUserPermissions.class.php");
 HTMLBegin();
 
 if(isset($_REQUEST["UpdateID"])) 

@@ -1,6 +1,6 @@
 <?php
 include("header.inc.php");
-include("classes/FieldsItemList.class.php");
+include_once("classes/FieldsItemList.class.php");
 HTMLBegin();
 $mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 $FormsStructID = $_REQUEST["FormsStructID"];

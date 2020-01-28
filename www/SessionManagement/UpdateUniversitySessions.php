@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 89-2-29
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/SessionMembers.class.php");
-include("classes/UniversitySessions.class.php");
-include("classes/UniversitySessionsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SessionMembers.class.php");
+include_once("classes/UniversitySessions.class.php");
+include_once("classes/UniversitySessionsSecurity.class.php");
 HTMLBegin();
 
 /*$mysql = pdodb::getInstance();

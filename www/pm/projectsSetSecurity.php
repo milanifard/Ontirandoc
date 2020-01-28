@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-3-15
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/projects.class.php");
-include("classes/projectsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/projectsSecurity.class.php");
 HTMLBegin();
 function CreateYesNoSelectBox($SelectBoxName, $CurValue)
 {

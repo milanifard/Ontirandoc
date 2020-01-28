@@ -1,7 +1,7 @@
 <?php
 include("header.inc.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/FormsStruct.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/FormsStruct.class.php");
 HTMLBegin();
 $mysql = dbclass::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 if(isset($_REQUEST["SourceID"]))

@@ -5,11 +5,11 @@
 	تاریخ ایجاد: 89-3-3
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/SessionPreCommands.class.php");
-include ("classes/UniversitySessions.class.php");
-include("classes/UniversitySessionsSecurity.class.php");
-include ("classes/SessionActReg.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SessionPreCommands.class.php");
+include_once("classes/UniversitySessions.class.php");
+include_once("classes/UniversitySessionsSecurity.class.php");
+include_once("classes/SessionActReg.class.php");
 
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند

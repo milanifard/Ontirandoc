@@ -13,8 +13,8 @@
 برنامه نویس :کورش احمدزاده عطایی
  */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/messages.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/messages.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"]))
 {

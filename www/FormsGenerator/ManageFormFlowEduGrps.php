@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/StepPermittedEduGrps.class.php");
-include("classes/FormUtils.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/StepPermittedEduGrps.class.php");
+include_once("classes/FormUtils.class.php");
 HTMLBegin();
 $ParentObj = new be_FormsFlowSteps();
 $ParentObj->LoadDataFromDatabase($_REQUEST["FormFlowStepID"]);

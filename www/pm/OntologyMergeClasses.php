@@ -1,6 +1,6 @@
 <?
 include("header.inc.php");
-include("classes/OntologyClasses.class.php");
+include_once("classes/OntologyClasses.class.php");
 
 function GetSourceTablePKs($ClassID)
 {

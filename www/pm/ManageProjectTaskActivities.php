@@ -8,10 +8,10 @@
 
 //Adel Aboutalebi Pirnaeimi
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTaskActivities.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/ProjectTasksSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTaskActivities.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/ProjectTasksSecurity.class.php");
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند
 $ppc = security_ProjectTasks::LoadUserPermissions($_SESSION["PersonID"], $_REQUEST["ProjectTaskID"]);

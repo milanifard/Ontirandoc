@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 94-10-15
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyMergeProject.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyMergeProject.class.php");
 require_once("classes/OntologyProperties.class.php");
 require_once("classes/OntologyClasses.class.php");
 require_once("classes/MergeOntology.class.php");

@@ -1,8 +1,8 @@
 <?php
 include("header.inc.php");
-include("classes/files.class.php");
-include("classes/FileContents.class.php");
-include("classes/FileTypeForms.class.php");
+include_once("classes/files.class.php");
+include_once("classes/FileContents.class.php");
+include_once("classes/FileTypeForms.class.php");
 
 HTMLBegin();
 $FileTypeName = "";

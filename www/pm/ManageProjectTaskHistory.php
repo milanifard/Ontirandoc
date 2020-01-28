@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-3-23
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTaskHistory.class.php");
-include ("classes/ProjectTasks.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTaskHistory.class.php");
+include_once("classes/ProjectTasks.class.php");
 HTMLBegin();
 $NumberOfRec = 30;
  $k=0;

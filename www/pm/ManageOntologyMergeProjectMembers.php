@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 94-10-15
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyMergeProjectMembers.class.php");
-include ("classes/OntologyMergeProject.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/OntologyMergeProjectMembers.class.php");
+include_once("classes/OntologyMergeProject.class.php");
 HTMLBegin();
 
 function GetNumberOfChilds($LevelNo, $ParentID)

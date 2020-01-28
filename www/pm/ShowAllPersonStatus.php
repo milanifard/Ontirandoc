@@ -5,11 +5,11 @@
 	تاریخ ایجاد: 89-3-16
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectMembers.class.php");
-include ("classes/projects.class.php");
-include ("classes/ProjectTasks.class.php");
-include("classes/projectsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectMembers.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/projectsSecurity.class.php");
 HTMLBegin();
 
 if(isset($_REQUEST["OrderBy"]))

@@ -1,9 +1,9 @@
 <?php
 include("header.inc.php");
-include("classes/FormUtils.class.php");
-include("classes/FileTypes.class.php");
-include("classes/SecurityManager.class.php");
-include("classes/files.class.php");
+include_once("classes/FormUtils.class.php");
+include_once("classes/FileTypes.class.php");
+include_once("classes/SecurityManager.class.php");
+include_once("classes/files.class.php");
 HTMLBegin();
 $list = SecurityManager::GetUserPermittedFileTypesForAccess($_SESSION["PersonID"]);
 $FileTypeOptions = "";

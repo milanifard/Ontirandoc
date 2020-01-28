@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 94-1-26
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/DMDatabases.class.php");
-include("classes/DMDatabasesManagers.class.php");
-include ("classes/DM_Servers.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/DMDatabases.class.php");
+include_once("classes/DMDatabasesManagers.class.php");
+include_once("classes/DM_Servers.class.php");
 HTMLBegin();
 $DMServersID = $_REQUEST["DMServersID"];
 $DMDatabasesID = $_REQUEST["DMDatabasesID"];

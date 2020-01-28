@@ -1,10 +1,10 @@
 <?php
 	include('header.inc');
-	include("../sharedClasses/SharedClass.class.php");
-	include("classes/SessionDecisions.class.php");
-	include ("classes/UniversitySessions.class.php");
-	include("classes/UniversitySessionsSecurity.class.php");
-	include("classes/SessionMembers.class.php");
+	include_once("../sharedClasses/SharedClass.class.php");
+	include_once("classes/SessionDecisions.class.php");
+	include_once("classes/UniversitySessions.class.php");
+	include_once("classes/UniversitySessionsSecurity.class.php");
+	include_once("classes/SessionMembers.class.php");
 	
 	require_once(config::$root_path."educ/MPDF52/mpdf.php"); 	
 	$mysql = pdodb::getInstance();

@@ -9,9 +9,9 @@
 // local url: http://localhost:90/MyProject/Ontirandoc/www/FormsGenerator/ManageFormsSections.php
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/FormsSections.class.php");
-include ("classes/FormsStruct.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/FormsSections.class.php");
+include_once("classes/FormsStruct.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

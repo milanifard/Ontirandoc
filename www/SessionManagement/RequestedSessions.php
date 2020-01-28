@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-3-6
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/UniversitySessions.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/UniversitySessions.class.php");
 
 HTMLBegin();
 if(isset($_REQUEST["RejectID"]))

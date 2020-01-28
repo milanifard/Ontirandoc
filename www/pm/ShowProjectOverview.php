@@ -5,11 +5,11 @@
 	تاریخ ایجاد: 89-4-7
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/projects.class.php");
-include("classes/projectsSecurity.class.php");
-include("classes/ProjectTaskGroups.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ProjectTasks.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/projectsSecurity.class.php");
+include_once("classes/ProjectTaskGroups.class.php");
 require_once("classes/ProjectTaskTypes.class.php");
 
 HTMLBegin();

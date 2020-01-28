@@ -8,8 +8,8 @@
 //ini_set('display_errors', "on");
 
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ontologies.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ontologies.class.php");
 HTMLBegin();
 echo "<div class=\"container\">";
 $mysql = pdodb::getInstance();

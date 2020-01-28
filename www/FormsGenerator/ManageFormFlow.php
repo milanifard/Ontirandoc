@@ -1,9 +1,9 @@
 <?php
 include("header.inc.php");
-include("classes/FormsFlowSteps.class.php");
-include("classes/FormsStruct.class.php");
-include("../organization/classes/OrganizationCharts.class.php");
-include("../sharedClasses/SharedClass.class.php");
+include_once("classes/FormsFlowSteps.class.php");
+include_once("classes/FormsStruct.class.php");
+include_once("../organization/classes/OrganizationCharts.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
 
 HTMLBegin();
 

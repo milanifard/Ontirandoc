@@ -1,5 +1,5 @@
 <?php
-	include ("../shares/sys_config.class.php");
+	include_once("../shares/sys_config.class.php");
 	session_start();
 	function getRealIpAddr()
 	{

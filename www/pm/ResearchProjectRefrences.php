@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 93-3-5
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/ResearchProjectRefrences.class.php");
-include ("classes/ResearchProject.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/ResearchProjectRefrences.class.php");
+include_once("classes/ResearchProject.class.php");
 HTMLBegin();
 $res = manage_ResearchProjectRefrences::Search($_REQUEST["ResearchProjectID"] , $RefrenceTitle, $URL, $ReadType, $RefrenceTypeID, ""); 
 ?>

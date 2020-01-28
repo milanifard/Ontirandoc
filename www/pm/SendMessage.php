@@ -27,8 +27,8 @@ error_reporting(E_ERROR | E_PARSE );
 //error_reporting(E_ALL);
 ini_set("display_errors", 1);
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/PrivateMessageFollows.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/PrivateMessageFollows.class.php");
 HTMLBegin();
 $headers = 'From: falinoos@falinoos.com';
 

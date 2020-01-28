@@ -5,8 +5,8 @@
 	تاریخ ایجاد: 89-2-26
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/SessionTypes.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/SessionTypes.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

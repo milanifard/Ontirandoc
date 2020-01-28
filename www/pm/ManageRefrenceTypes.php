@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 93-3-5
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/RefrenceTypes.class.php");
-include ("classes/ResearchProject.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/RefrenceTypes.class.php");
+include_once("classes/ResearchProject.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

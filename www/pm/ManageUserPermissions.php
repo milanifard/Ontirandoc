@@ -6,9 +6,9 @@
 	edited by navidbeta
 */
 include("header.inc.php");
-include("classes/UserFacilities.class.php");
-include ("classes/SystemFacilities.class.php");
-include ("classes/SystemFacilityGroups.class.php");
+include_once("classes/UserFacilities.class.php");
+include_once("classes/SystemFacilities.class.php");
+include_once("classes/SystemFacilityGroups.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

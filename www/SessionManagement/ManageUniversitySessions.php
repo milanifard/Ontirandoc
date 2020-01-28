@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 89-3-6
 */
 include("../shares/header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/UniversitySessions.class.php");
-include("classes/UniversitySessionsSecurity.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/UniversitySessions.class.php");
+include_once("classes/UniversitySessionsSecurity.class.php");
 /*if(config::$critical_status!=10){
 echo "<br><br>
 		<div style='color:red;font-family:tahoma;font-size:14px;font-weight:bold' align=center>" . 

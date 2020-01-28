@@ -5,9 +5,9 @@
 	تاریخ ایجاد: 94-2-19
 */
 include("header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/TermEquivalentEnglishTerms.class.php");
-include ("classes/terms.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/TermEquivalentEnglishTerms.class.php");
+include_once("classes/terms.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"])) 
 {

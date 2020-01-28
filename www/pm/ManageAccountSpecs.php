@@ -5,7 +5,7 @@
 	تاریخ ایجاد: 92-8-4
 */
 include("header.inc.php");
-include("classes/AccountSpecs.class.php");
+include_once("classes/AccountSpecs.class.php");
 HTMLBegin();
 if(isset($_REQUEST["Save"]))
 {

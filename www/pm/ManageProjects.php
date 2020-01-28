@@ -18,12 +18,12 @@
 ///
 ///
 include("../shares/header.inc.php");
-include("../sharedClasses/SharedClass.class.php");
-include("classes/projects.class.php");
-include("classes/projectsSecurity.class.php");
-include("classes/ProjectGroups.class.php");
-include("classes/ProjectMembers.class.php");
-include("classes/ProjectResponsibles.class.php");
+include_once("../sharedClasses/SharedClass.class.php");
+include_once("classes/projects.class.php");
+include_once("classes/projectsSecurity.class.php");
+include_once("classes/ProjectGroups.class.php");
+include_once("classes/ProjectMembers.class.php");
+include_once("classes/ProjectResponsibles.class.php");
 
 $mysql = pdodb::getInstance();
 
