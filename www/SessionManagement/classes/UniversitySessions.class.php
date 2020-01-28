@@ -726,51 +726,96 @@ class manage_UniversitySessions
 		$ret = "";
 		$ret .= '<div class="container">';
 		$ret .= '';
-		$ret .= '	<div class="row justify-content-center">';
-		$ret .= '		<div class="card">';
-		$ret .= '			<div class="card-header">';
-		$ret .= '				<i class="fa fa-search"></i>';
-		$ret .= '					mghayour';
-		$ret .= '			</div>';
-		$ret .= '			<div class="card-body">';
-		$ret .= '				<table class="table">';
- 		$ret .= "<tr>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="NewUniversitySessions")
-			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='UpdateUniversitySessions.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionPreCommands")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionPreCommands.php?UniversitySessionID=".$RecID."'>دستور کار</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageMembersPAList")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageMembersPAList.php?UniversitySessionID=".$RecID."'>حضور و غیاب اعضا</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionDecisions")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionDecisions.php?UniversitySessionID=".$RecID."'>مصوبات جلسه</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionDocuments")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionDocuments.php?UniversitySessionID=".$RecID."'>مستندات</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionMembers")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionMembers.php?UniversitySessionID=".$RecID."'>اعضا</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionOtherUsers")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionOtherUsers.php?UniversitySessionID=".$RecID."'>سایر کاربران</a></td>";
-		$ret .= "<td width=\"13%\" ";
-		if($CurrentPageName=="ManageSessionHistory")
- 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageSessionHistory.php?UniversitySessionID=".$RecID."'>سابقه</a></td>";
-		$ret .= "</table>";
+		$ret .= '	<ul class="nav nav-tabs">';
 
-		$ret .= "</div>";
-		$ret .= "</div>";
+		$tabItems = array(
+			array(
+				"name" => "NewUniversitySessions",
+				"href" => "UpdateUniversitySessions.php?UpdateID=".$RecID,
+				"text" => "مشخصات اصلی"
+			),
+			array(
+				"name" => "ManageSessionPreCommands",
+				"href" => "ManageSessionPreCommands.php?UniversitySessionID=".$RecID,
+				"text" => "دستور کار"
+			),
+			array(
+				"name" => "ManageMembersPAList",
+				"href" => "ManageMembersPAList.php?UniversitySessionID=".$RecID,
+				"text" => "حضور و غیاب اعضا"
+			),
+			array(
+				"name" => "ManageSessionDecisions",
+				"href" => "ManageSessionDecisions.php?UniversitySessionID=".$RecID,
+				"text" => "مصوبات جلسه"
+			),
+			array(
+				"name" => "ManageSessionDocuments",
+				"href" => "ManageSessionDocuments.php?UpdateID=".$RecID,
+				"text" => "مستندات"
+			),
+			array(
+				"name" => "ManageSessionMembers",
+				"href" => "ManageSessionMembers.php?UpdateID=".$RecID,
+				"text" => "اعضا"
+			),
+			array(
+				"name" => "ManageSessionOtherUsers",
+				"href" => "ManageSessionOtherUsers.php?UpdateID=".$RecID,
+				"text" => "سایر کاربران"
+			),
+			array(
+				"name" => "ManageSessionHistory",
+				"href" => "ManageSessionHistory.php?UpdateID=".$RecID,
+				"text" => "سابقه"
+			),
+		);
+
+		// $ret .= "<tr>";
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="NewUniversitySessions")
+		// 	$ret .= "bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='UpdateUniversitySessions.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionPreCommands")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionPreCommands.php?UniversitySessionID=".$RecID."'>دستور کار</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageMembersPAList")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageMembersPAList.php?UniversitySessionID=".$RecID."'>حضور و غیاب اعضا</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionDecisions")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionDecisions.php?UniversitySessionID=".$RecID."'>مصوبات جلسه</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionDocuments")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionDocuments.php?UniversitySessionID=".$RecID."'>مستندات</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionMembers")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionMembers.php?UniversitySessionID=".$RecID."'>اعضا</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionOtherUsers")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionOtherUsers.php?UniversitySessionID=".$RecID."'>سایر کاربران</a></td>";
+
+		// $ret .= "<td width=\"13%\" ";
+		// if($CurrentPageName=="ManageSessionHistory")
+ 		// 	$ret .= " bgcolor=\"#cccccc\" ";
+		// $ret .= "><a href='ManageSessionHistory.php?UniversitySessionID=".$RecID."'>سابقه</a></td>";
+
+		// $ret .= "</table>";
+
+
+		$ret .= "</ul>";
 		$ret .= "</div>";
 
 		return $ret;
