@@ -239,159 +239,187 @@ else
 	}
 }
 ?>
-<form method="post" id="f1" name="f1" enctype="multipart/form-data" >
-<?
-	if(isset($_REQUEST["UpdateID"])) 
-	{
-		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
-	}
-?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش اقدامات</td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<? 
-if(!isset($_REQUEST["UpdateID"]))
-{
-?> 
-<input type="hidden" name="ProjectTaskID" id="ProjectTaskID" value='<? if(isset($_REQUEST["ProjectTaskID"])) echo htmlentities($_REQUEST["ProjectTaskID"], ENT_QUOTES, 'UTF-8'); ?>'>
-<? } ?>
-<tr>
-	<td width="1%" nowrap>
- تاریخ اقدام
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<input maxlength="2" id="ActivityDate_DAY"  name="ActivityDate_DAY" type="text" size="2">/
-	<input maxlength="2" id="ActivityDate_MONTH"  name="ActivityDate_MONTH" type="text" size="2" >/
-	<input maxlength="2" id="ActivityDate_YEAR" name="ActivityDate_YEAR" type="text" size="2" >
-	<? } else { ?>
-	<span id="ActivityDate_DAY" name="ActivityDate_DAY"></span>/
- 	<span id="ActivityDate_MONTH" name="ActivityDate_MONTH"></span>/
- 	<span id="ActivityDate_YEAR" name="ActivityDate_YEAR"></span>
- 	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- نوع اقدام
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<select name="Item_ProjectTaskActivityTypeID" id="Item_ProjectTaskActivityTypeID">
-	<option value=0>-
-	<? echo manage_ProjectTaskActivityTypes::CreateSelectOptions($task->ProjectID); ?>	</select>
-	<? } else { ?>
-	<span id="Item_ProjectTaskActivityTypeID" name="Item_ProjectTaskActivityTypeID"></span> 	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- زمان مصرفی
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<input maxlength="2" id="ActivityLength_MIN"  name="ActivityLength_MIN" type="text" size="2">:
-	<input maxlength="3" id="ActivityLength_HOUR"  name="ActivityLength_HOUR" type="text" size="3" >
-	<? } else { ?>
-	<span id="ActivityLength_MIN" name="ActivityLength_MIN"></span>:
- 	<span id="ActivityLength_HOUR" name="ActivityLength_HOUR"></span>
- 	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- درصد پیشرفت
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	
-	<input type="text" name="Item_ProgressPercent" id="Item_ProgressPercent" maxlength="3" size="3">%
-	<? } else { ?>
-	<span id="Item_ProgressPercent" name="Item_ProgressPercent"></span> 
-	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- شرح
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<textarea name="Item_ActivityDescription" id="Item_ActivityDescription" cols="80" rows="5"><?php echo $ActivityDescription ?></textarea>
-	<? } else { ?>
-	<span id="Item_ActivityDescription" name="Item_ActivityDescription"><?php echo str_replace("\r", "<br>", $ActivityDescription); ?></span> 
-	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- فایل ضمیمه
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<input type="file" name="Item_FileContent" id="Item_FileContent">
-	<? if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
-       <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'>دریافت فایل [<?php 
-            echo $obj->FileName ?>]</a> 
+<div class="container">
+    <form method="post" id="f1" name="f1" enctype="multipart/form-data" >
+        <?php
+            if(isset($_REQUEST["UpdateID"]))
+            {
+                echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
+            }
+        ?>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead class="HeaderOfTable">
+                <tr>
+                  <th class="text-center table-primary"><?php echo C_CREATE_EDIT_ACTIONS ?></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <?php
+                        if(!isset($_REQUEST["UpdateID"]))
+                        {
+                        ?>
+                        <input type="hidden" name="ProjectTaskID" id="ProjectTaskID" value='<?php if(isset($_REQUEST["ProjectTaskID"])) echo htmlentities($_REQUEST["ProjectTaskID"], ENT_QUOTES, 'UTF-8'); ?>'>
+                        <?php } ?>
 
 
-	<? } ?>
-	<? } else { ?>
-	<? if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
- <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'>دریافت فایل [<?php 
-            echo $obj->FileName ?>]</a> 
-	<? } ?>
-	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- جداول تغییر داده شده
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<textarea dir=ltr name="Item_ChangedTables" id="Item_ChangedTables" cols="80" rows="5"><?php echo $ChangeTables ?></textarea>
-	<? } else { ?>
-	<span id="Item_ChangedTables" name="Item_ChangedTables"><?php echo str_replace("\r", "<br>", $ChangeTables); ?></span> 
-	<? } ?>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- صفحات تغییر داده شده
-	</td>
-	<td nowrap>
-	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
-	<textarea dir=ltr name="Item_ChangedPages" id="Item_ChangedPages" cols="80" rows="5"><?php echo $ChangePages ?></textarea>
-	<? } else { ?>
-	<span id="Item_ChangedPages" name="Item_ChangedPages"><?php echo str_replace("\r", "<br>", $ChangePages); ?></span> 
-	<? } ?>
-	</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || (!isset($_REQUEST["UpdateID"]) && $HasAddAccess))
-	{
-?>
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
-<? } ?>
- <input type="button" onclick="javascript: window.close();" value="بستن">
-</td>
-</tr>
-</table>
+                        <div class="form-group row">
+                            <label for="Activity_groups" class="col-sm-2 col-form-label"><?php echo C_ACTION_DATE ?></label>
+                            <div >
+                                <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                    <div id="Activity_groups" >
+                                        <input type="text" class="form-control col-sm-4 " maxlength="2" id="ActivityDate_DAY"  name="ActivityDate_DAY"  size="2">
+                                        <input type="text" class="form-control col-sm-4" maxlength="2" id="ActivityDate_MONTH"  name="ActivityDate_MONTH" size="2" >
+                                        <input type="text" class="form-control col-sm-4" maxlength="2" id="ActivityDate_YEAR" name="ActivityDate_YEAR"  size="2" >
+                                    </div>
+                                <?php } else { ?>
+                                <div id="Activity_groups " class="row" >
+                                    <span class="form-control col-sm-4" id="ActivityDate_DAY" name="ActivityDate_DAY"></span>
+                                    <span class="form-control col-sm-4" id="ActivityDate_MONTH" name="ActivityDate_MONTH"></span>
+                                    <span class="form-control col-sm-4" id="ActivityDate_YEAR" name="ActivityDate_YEAR"></span>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                     </td>
+                <tr>
+                    <td>
+                        <div class="form-row">
+                            <div class="form-group col-sm-2">
+                                <label for="Item_ProjectTaskActivityTypeID" ><?php echo C_TYPE_OF_ACTION ?> </label>
+                            </div>
+
+                            <div class="form-group col-md-10">
+                                <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                    <div>
+                                        <select class="form-control " name="Item_ProjectTaskActivityTypeID" id="Item_ProjectTaskActivityTypeID">
+                                            <option value=0>
+                                                <?php echo manage_ProjectTaskActivityTypes::CreateSelectOptions($task->ProjectID); ?>
+                                        </select>
+                                        </div>
+                                <?php }
+                                else { ?>
+                                    <span class="form-control " id="Item_ProjectTaskActivityTypeID" name="Item_ProjectTaskActivityTypeID"></span>
+                                    <? } ?>
+                            </div>
+                        </div>
+                    </td>
+                <tr>
+                    <td>
+                        <div class="form-row ">
+                            <div class="form-group col-sm-2">
+                            <label for="Activity_Length" ><?php echo C_TIME_CONSUMING?></label>
+                            </div>
+                                <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                     <div id="Activity_Length" class="form-group col-md-4" >
+                                        <input class="form-control " maxlength="2" id="ActivityLength_MIN"  name="ActivityLength_MIN" type="text" size="2">:
+                                        <input class="form-control" maxlength="3" id="ActivityLength_HOUR"  name="ActivityLength_HOUR" type="text" size="3" >
+                                    </div>
+                                <?php } else { ?>
+                                    <div id="Activity_Length"  class="form-group row">
+                                        <span class="form-control col-5" id="ActivityLength_MIN" name="ActivityLength_MIN"></span> :
+                                        <span class="form-control col-5" id="ActivityLength_HOUR" name="ActivityLength_HOUR"></span>
+                                    </div>
+                                <?php } ?>
+                        </div>
+                    </td>
+                <tr>
+                    <td>
+                        <div class="form-group row">
+                            <label for="Item_ProgressPercent" class="col-sm-2 col-form-label"><?php echo C_PROGRESS?></label>
+                            <div class="col-sm-10">
+                                <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                    <input class="form-control" type="text" name="Item_ProgressPercent" id="Item_ProgressPercent" maxlength="3" size="3">
+                                <?php } else { ?>
+                                    <span class="form-control"  id="Item_ProgressPercent" name="Item_ProgressPercent"></span>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group row">
+                                <label for="Item_ActivityDescription" class="col-sm-2 col-form-label"><?php echo C_DESCRIPTION?></label>
+                                <div class="col-sm-10">
+                                    <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                    <textarea class="form-control" name="Item_ActivityDescription" id="Item_ActivityDescription" cols="80" rows="5"><?php echo $ActivityDescription ?></textarea>
+                                    <?php } else { ?>
+                                    <span class="form-control" id="Item_ActivityDescription" name="Item_ActivityDescription"><?php echo str_replace("\r", "<br>", $ActivityDescription); ?></span>
+                                    <?php } ?>
+                                </div>
+                        </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group row">
+                                <label for="Item_FileContent" class="col-sm-2 col-form-label"><?php echo C_ATTACHED_FILE?></label>
+                                <div class="col-sm-10">
+                                    <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                     <input class="form-control" type="file" name="Item_FileContent" id="Item_FileContent">
+                                    <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
+                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'><?php echo C_GETTING_FILE ?> [
+                                    <?php
+                                    echo $obj->FileName ?>]</a>
+                                    <?php } ?>
+                                    <?php } else { ?>
+                                    <?php if(isset($_REQUEST["UpdateID"]) && $obj->FileName!="") { ?>
+                                    <a  href='ReciptFile.php?AID=<? echo $obj->ProjectTaskActivityID; ?>&FileName_AID=<? echo $obj->FileName;?>'><?php echo C_GETTING_FILE ?>
+                                        [<?php
+                                            echo $obj->FileName ?>]</a>
+                                    <?php } ?>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group row">
+                                    <label for="Item_ChangedTables" class="col-sm-2 col-form-label"><?php echo C_CHANGED_TABLES?></label>
+                                    <div class="col-sm-10">
+                                    <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                        <textarea  class="form-control name="Item_ChangedTables" id="Item_ChangedTables" cols="80" rows="5"><?php echo $ChangeTables ?></textarea>
+                                    <?php } else { ?>
+                                        <span class="form-control id="Item_ChangedTables" name="Item_ChangedTables"><?php echo str_replace("\r", "<br>", $ChangeTables); ?></span>
+                                    <?php } ?>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group row">
+                                    <label for="Item_ChangedPages" class="col-sm-2 col-form-label"><?php echo C_CHANGED_PAGES ?></label>
+                                    <div class="col-sm-10">
+                                    <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
+                                        <textarea class="form-control name="Item_ChangedPages" id="Item_ChangedPages" cols="80" rows="5"><?php echo $ChangePages ?></textarea>
+                                    <?php } else { ?>
+                                    <span class="form-control id="Item_ChangedPages" name="Item_ChangedPages"><?php echo str_replace("\r", "<br>", $ChangePages); ?></span>
+                                    <?php } ?>
+                                    </div>
+                                    </div>
+
+                            </td>
+                        </tr>
+                         <tr >
+                            <td class="text-center table-primary">
+                            <?php if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || (!isset($_REQUEST["UpdateID"]) && $HasAddAccess))
+                                {
+                            ?>
+                            <input class="btn btn-success" type="submit" value=<?php echo C_SAVE ?>>
+                            <?php } ?>
+                             <input class="btn btn-danger" type="button" onclick="javascript: window.close();" value=<?php echo C_CLOSE?>>
+                            </td>
+                         </tr>
+    </table>
 <input type="hidden" name="Save" id="Save" value="1">
-</form><script>
+</form>
+</div>
+    <script>
 	<? echo $LoadDataJavascriptCode; ?>
-	function ValidateForm()
-	{
-		document.f1.submit();
-	}
 </script>
-</html>
