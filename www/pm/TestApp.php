@@ -20,6 +20,8 @@ include("../SessionManagement/classes/UniversitySessionsSecurity.class.php");//B
 include("../SessionManagement/classes/ResearchProject.class.php");//by Mohammad Afsharian Shandiz
 include("classes/persons.class.php"); //by Sara Bolouri Bazaz
 include("classes/ProjectDocuments.class.php"); // by Samin Hazeri
+include("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
+
 HTMLBegin();
 class Test
 {
@@ -3077,6 +3079,11 @@ Test::add(
 
 // ----------> projectDocuments.class.ph ------UNIT TEST FINISH--------> Samin Hazeri
 
+///////////////// OntologyMergeProjectMembers.class.php By Mahdi Ghayour /////////
+
+// TODO: unit test
+
+///////////////// end of OntologyMergeProjectMembers.class.php //////////
 
 
 $res = Test::run();
