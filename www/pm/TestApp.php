@@ -3082,6 +3082,18 @@ Test::add(
 ///////////////// OntologyMergeProjectMembers.class.php By Mahdi Ghayour /////////
 
 // TODO: unit test
+Test::add(
+    function () {
+        try {
+            manage_OntologyMergeProjectMembers::GetCount(1);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    },
+    "manage_OntologyMergeProjectMembers.class->GetCount()",
+    "OntologyClassLabels"
+);
 
 ///////////////// end of OntologyMergeProjectMembers.class.php //////////
 
