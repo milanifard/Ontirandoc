@@ -162,13 +162,13 @@ class manage_SystemFacilityGroups
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "نام ";
+			$ret .= C_NAME;
 		}
 		if($OrderNo!=$obj->OrderNo)
 		{
 			if($ret!="")
 				$ret .= " - ";
-			$ret .= "شماره ترتیب";
+			$ret .= C_ORDERNUM;
 		}
 		return $ret;
 	}

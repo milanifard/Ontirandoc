@@ -6,8 +6,7 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");
-include("classes/projects.class.php");
+
 
 HTMLBegin();
 $now = date("Y-m-d");
@@ -46,9 +45,9 @@ if($messages!="")
 
 echo '<p class="text">';
 if (!isset($_GET["Full"]))
-	echo "<input onclick=\"javascript: Full();\" value=\"" . C_MORE_DET."\" type=\"button\">";
+	echo "<input onclick=\"javascript: Full();\" value=\"" . C_MORE_DET ."\" type=\"button\">";
 else
-	echo "<input onclick=\"javascript: Partial();\" value=\"" . C_LESS_DET."\" type=\"button\">>";
+	echo "<input onclick=\"javascript: Partial();\" value=\"" . C_LESS_DET ."\" type=\"button\">>";
 echo "</p>";
 
 ?>
