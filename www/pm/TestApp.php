@@ -2950,6 +2950,149 @@ Test::add(
 
 //persons.class.php UNIT TEST Finish ------------> by Sara Bolouri Bazaz
 
+//Adel Aboutalebi TermEquivalentEnglishTerms.class.php
+
+Test::add(
+        function ()
+        {
+            $obj = new be_TermEquivalentEnglishTerms();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        , "TermEquivalentEnglishTerms->LoadDataFromDatabase()"
+        , "TermEquivalentEnglishTerms"
+);
+Test::add(
+        function ()
+        {
+            try
+            {
+                manage_TermEquivalentEnglishTerms::Add("1", "RefExpTitle");
+                if(manage_TermEquivalentEnglishTerms::GetCount("1")>=0) {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_TermEquivalentEnglishTerms->GetCount()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+        function ()
+        {
+            try
+            {
+                manage_TermEquivalentEnglishTerms::Add("1", "RefExpTitle");
+                if(manage_TermEquivalentEnglishTerms::GetLastID()==-1)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        ,"manage_TermEquivalentEnglishTerms->GetLastID()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+        function()
+        {
+            try
+            {
+                if(manage_TermEquivalentEnglishTerms::Add("1","RefExpTitle")>-1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+    ,"manage_TermEquivalentEnglishTerms->Add()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_TermEquivalentEnglishTerms::Update("1","RefExpTitle");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermEquivalentEnglishTerms->Update()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            manage_TermEquivalentEnglishTerms::Remove("1");
+            return true;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermEquivalentEnglishTerms->Remove()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+    function ()
+    {
+
+        try
+        {
+            if(is_array(manage_TermEquivalentEnglishTerms::GetList("1"))){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermEquivalentEnglishTerms->GatList()", "TermEquivalentEnglishTerms"
+);
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_TermEquivalentEnglishTerms::ComparePassedDataWithDB("1","RefExpTitle")!=''){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermEquivalentEnglishTerms->ComparePassedDataWithDB()", "TermEquivalentEnglishTerms"
+);
+
+
+
+
 
 
 // ----------> projectDocuments.class.ph ------UNIT TEST START--------> Samin Hazeri
