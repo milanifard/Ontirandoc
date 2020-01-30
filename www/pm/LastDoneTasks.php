@@ -206,6 +206,7 @@ if($SomeItemsRemoved)
         SearchForm.OrderByFieldName.value=OrderByFieldName;
         SearchForm.OrderType.value=OrderType;
         SearchForm.submit();
+        
     }
 </script>
 </html>
