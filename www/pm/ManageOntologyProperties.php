@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 94-3-1
 */
 include("header.inc.php");
-include_once("../sharedClasses/SharedClass.class.php");
-include_once("classes/OntologyProperties.class.php");
-include_once("classes/OntologyPropertyLabels.class.php");
-include_once("classes/ontologies.class.php");
+include("../sharedClasses/SharedClass.class.php");
+include("classes/OntologyProperties.class.php");		// Need to change audit descriptions + bilingual
+include("classes/OntologyPropertyLabels.class.php");	// Need to change audit descriptions
+include ("classes/ontologies.class.php");				// Need to change audit descriptions
 HTMLBegin();
 
 function NumberOfValidRelation($ObjectPropertyID)
@@ -263,7 +263,7 @@ if(isset($_REQUEST["Save"]))
 		$Item_label = $_REQUEST["Item_label"];
 		manage_OntologyPropertyLabels::UpdateOrInsertFirstLabel($_REQUEST["UpdateID"], $Item_label);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_DATA_SAVE_SUCCESS);
 }
 $LoadDataJavascriptCode = '';
 $range = $domain = '';
@@ -287,351 +287,337 @@ else if(isset($_REQUEST["DataProp"]))
   $LoadDataJavascriptCode .= "document.f1.Item_PropertyType.value='DATATYPE'; \r\n "; 
 }
 ?>
-<form method="post" id="f1" name="f1" >
-<input type="hidden" name="Save" id="Save" value="1">
-<?
-  if(isset($_REQUEST["DoNotShowList"]))
-  {
-    echo "<input type=\"hidden\" name=\"DoNotShowList\" id=\"DoNotShowList\" value='1'>";
-  }
-  
-  if(isset($_REQUEST["UpdateID"])) 
-  {
-    echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
-    echo manage_OntologyProperties::ShowSummary($_REQUEST["UpdateID"]);
-    echo manage_OntologyProperties::ShowTabs($_REQUEST["UpdateID"], "NewOntologyProperties");
-  }
-  echo manage_ontologies::ShowSummary($_REQUEST["OntologyID"]);
-  echo manage_ontologies::ShowTabs($_REQUEST["OntologyID"], "ManageOntologyProperties");
-?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
-<tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش خصوصیات هستان نگار</td>
-</tr>
-<tr>
-<td>
-<table width="100%" border="0">
-<? 
-	if(isset($_REQUEST["FromTermOnto"])) 
-	{
-	  echo "<input type=\"hidden\" name=\"FromTermOnto\" id=\"FromTermOnto\" value='1'>";
-	}
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+		<form method="post" id="f1" name="f1" >
+			<input type="hidden" name="Save" id="Save" value="1">
+			<?
+			  if(isset($_REQUEST["DoNotShowList"]))
+			  {
+				echo "<input type=\"hidden\" name=\"DoNotShowList\" id=\"DoNotShowList\" value='1'>";
+			  }
+			  
+			  if(isset($_REQUEST["UpdateID"])) 
+			  {
+				echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
+				echo manage_OntologyProperties::ShowSummary($_REQUEST["UpdateID"]);
+				echo manage_OntologyProperties::ShowTabs($_REQUEST["UpdateID"], "NewOntologyProperties");
+			  }
+			  echo manage_ontologies::ShowSummary($_REQUEST["OntologyID"]);
+			  echo manage_ontologies::ShowTabs($_REQUEST["OntologyID"], "ManageOntologyProperties");
+			?>
+			<br>
+			<table class="table table-sm table-borderless">
+				<thead>
+					<tr class="table-info">
+						<td class="text-center"><? echo C_CREATE."/".C_EDIT." ".C_ONTOLOGY_FEATURES ?></td>
+					</tr>
+				</thead>
+				<tr>
+				<td>
+					<table>
+						<? 
+							if(isset($_REQUEST["FromTermOnto"])) 
+							{
+							  echo "<input type=\"hidden\" name=\"FromTermOnto\" id=\"FromTermOnto\" value='1'>";
+							}
 
-if(!isset($_REQUEST["UpdateID"]))
-{
-?> 
-<input type="hidden" name="OntologyID" id="OntologyID" value='<? if(isset($_REQUEST["OntologyID"])) echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>'>
-<? } ?>
-<tr>
-	<td width="1%" nowrap>
- عنوان
-	</td>
-	<td nowrap>
-	<input dir=ltr type="text" name="Item_PropertyTitle" id="Item_PropertyTitle" maxlength="245" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- برچسب
-	</td>
-	<td nowrap>
-	<input type="text" dir=rtl name="Item_label" id="Item_label" maxlength="245" size="40">
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- نوع
-	</td>
-	<td nowrap>
-	<select dir="ltr" name="Item_PropertyType" id="Item_PropertyType" >
-		<option value=0>-
-		<option value='DATATYPE'>DATATYPE</option>
-		<option value='OBJECT' selected>OBJECT</option>
-		<option value='ANNOTATION'>ANNOTATION</option>
-	</select>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
-	<a href='#' onclick='javascript: document.getElementById("DomainTR").style.display="";'>حوزه</a>
-	</td>
-	<td nowrap>
-	<? 
-	  if($PropType=="OBJECT")
-	  	ShowClassListLabels($domain, $_REQUEST["OntologyID"],"DOMAIN", true);
-	  if($PropType=="DATATYPE")
-	  	ShowClassListLabels($domain, $_REQUEST["OntologyID"],"DOMAIN", false);
-	?>
-	</td>
-</tr>
-<tr style='display: ' id=DomainTR name=DomainTR>
-	<td width="1%" nowrap>
- 
-	</td>
-	<td nowrap>
-	<textarea name="Item_domain" id="Item_domain" rows="8" cols="100" dir=ltr><? echo $domain; ?></textarea>
-	<a target=_blank href='ShowOntologyClassTree.php?InputName=Item_domain&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'>انتخاب</a>
-	</td>
-</tr>
+						if(!isset($_REQUEST["UpdateID"]))
+						{
+						?> 
+						<input type="hidden" name="OntologyID" id="OntologyID" value='<? if(isset($_REQUEST["OntologyID"])) echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>'>
+						<? } ?>
+						<tr>
+							<td width="1%" nowrap><? echo C_TITLE ?></td>
+							<td nowrap>
+							<input dir="ltr" type="text" name="Item_PropertyTitle" id="Item_PropertyTitle" maxlength="245" size="40" required>
+							</td>
+						</tr>
+						<tr>
+							<td width="1%" nowrap><? echo C_LABEL ?></td>
+							<td nowrap>
+							<input type="text" dir="<?php echo (UI_LANGUAGE=="FA")?"rtl":"ltr" ?>" name="Item_label" id="Item_label" maxlength="245" size="40" required>
+							</td>
+						</tr>
+						<tr>
+							<td width="1%" nowrap>نوع</td>
+							<td nowrap>
+								<select dir="ltr" name="Item_PropertyType" id="Item_PropertyType" >
+									<option value=0>-</option>
+									<option value='DATATYPE'>DATATYPE</option>
+									<option value='OBJECT' selected>OBJECT</option>
+									<option value='ANNOTATION'>ANNOTATION</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td width="1%" nowrap>
+								<a href='#' onclick='javascript: document.getElementById("DomainTR").style.display="";'>حوزه</a>
+							</td>
+							<td nowrap>
+								<? 
+								  if($PropType=="OBJECT")
+									ShowClassListLabels($domain, $_REQUEST["OntologyID"],"DOMAIN", true);
+								  if($PropType=="DATATYPE")
+									ShowClassListLabels($domain, $_REQUEST["OntologyID"],"DOMAIN", false);
+								?>
+							</td>
+						</tr>
+						<tr style='display: ' id="DomainTR" name="DomainTR">
+							<td width="1%" nowrap></td>
+							<td nowrap>
+							<textarea name="Item_domain" id="Item_domain" rows="8" cols="100" dir="ltr" required><? echo $domain; ?></textarea>
+							<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_domain&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
+							</td>
+						</tr>
 
-<tr>
-	<td width="1%" nowrap>
-	<a href='#' onclick='javascript: document.getElementById("RangeTR").style.display="";'>
- بازه
-  </a>
-	</td>
-	<td nowrap>
-	<? 
-	  if($PropType=="OBJECT")
-	  {
-	  	ShowClassListLabels($range, $_REQUEST["OntologyID"],"RANGE", true);
-	  }
-	  else
-	  	echo $range;
-	?>
-	</td>
-</tr>
+						<tr>
+							<td width="1%" nowrap>
+								<a href='#' onclick='javascript: document.getElementById("RangeTR").style.display="";'>بازه</a>
+							</td>
+							<td nowrap>
+								<? 
+								  if($PropType=="OBJECT")
+								  {
+									ShowClassListLabels($range, $_REQUEST["OntologyID"],"RANGE", true);
+								  }
+								  else
+									echo $range;
+								?>
+							</td>
+						</tr>
 
-<tr style='display: ' id=RangeTR name=RangeTR>
-	<td width="1%" nowrap>
- 
-	</td>
-	<td nowrap>
-	<textarea name="Item_range" id="Item_range" rows="8" cols="100" dir=ltr><? echo $range; ?></textarea>
-	<a target=_blank href='ShowOntologyClassTree.php?InputName=Item_range&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'>انتخاب</a>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- معکوس
-	</td>
-	<td nowrap>
-	<input type="text" dir=ltr name="Item_inverseOf" id="Item_inverseOf" maxlength="245" size="40">
-	<a target=_blank href='ShowOntologyClassTree.php?InputName=Item_inverseOf&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'>انتخاب</a>
-	</td>
-</tr>
-<tr>
-	<td width="1%" nowrap>
- Functional
-	</td>
-	<td nowrap>
-	<select name="Item_IsFunctional" id="Item_IsFunctional" >
-		<option value='NO'>خیر</option>
-		<option value='YES'>بلی</option>
-	</select>
-	</td>
-</tr>
-<? if(isset($_REQUEST["UpdateID"])) { 
-$RelationList = GetAllPossibleLinks($_REQUEST["UpdateID"], $_REQUEST["OntologyID"]); 
-echo "<tr>";
-echo "<td colspan=2>";
-echo "<b>تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت: <br></b>";
-echo $RelationList;
-echo "</td>";
-echo "</tr>";
-?>
-<tr>
-<td>مقادیر</td><td>
-<a href='ManageOntologyPropertyPermittedValues.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&OntologyPropertyID=<? echo $_REQUEST["UpdateID"] ?>'>ویرایش</a>
-<br>
-<?
-$query = "select PermittedValue from projectmanagement.OntologyPropertyPermittedValues where OntologyPropertyID=?";
-$mysql->Prepare($query);
-$res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
-while($rec = $res->fetch())
-	echo $rec["PermittedValue"]."<br>";
+						<tr style='display: ' id="RangeTR" name="RangeTR">
+							<td width="1%" nowrap></td>
+							<td nowrap>
+								<textarea name="Item_range" id="Item_range" rows="8" cols="100" dir=ltr required><? echo $range; ?></textarea>
+								<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_range&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="1%" nowrap>معکوس</td>
+							<td nowrap>
+								<input type="text" dir=ltr name="Item_inverseOf" id="Item_inverseOf" maxlength="245" size="40" required>
+								<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_inverseOf&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="1%" nowrap>Functional</td>
+							<td nowrap>
+								<select name="Item_IsFunctional" id="Item_IsFunctional" >
+									<option value='NO'><? echo C_NO ?></option>
+									<option value='YES'><? echo C_YES ?></option>
+								</select>
+							</td>
+						</tr>
+						<? if(isset($_REQUEST["UpdateID"])) { 
+						$RelationList = GetAllPossibleLinks($_REQUEST["UpdateID"], $_REQUEST["OntologyID"]); 
+						echo "<tr>";
+						echo "<td colspan=2>";
+						echo "<b>تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت: <br></b>";
+						echo $RelationList;
+						echo "</td>";
+						echo "</tr>";
+						?>
+						<tr>
+							<td>مقادیر</td>
+							<td>
+								<a href='ManageOntologyPropertyPermittedValues.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&OntologyPropertyID=<? echo $_REQUEST["UpdateID"] ?>'><? echo C_EDIT ?></a>
+								<br>
+								<?
+								$query = "select PermittedValue from projectmanagement.OntologyPropertyPermittedValues where OntologyPropertyID=?";
+								$mysql->Prepare($query);
+								$res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
+								while($rec = $res->fetch())
+									echo $rec["PermittedValue"]."<br>";
 
-/*
-$query = "select distinct DataValue from projectmanagement.TermOntologyElementMapping where EntityType='DATA_RANGE' and OntologyEntityID=?";
-$mysql->Prepare($query);
-$res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
-while($rec = $res->fetch())
-	echo $rec["DataValue"]."<br>";
-*/	
-?>
-</td>
-</tr>
+								/*
+								$query = "select distinct DataValue from projectmanagement.TermOntologyElementMapping where EntityType='DATA_RANGE' and OntologyEntityID=?";
+								$mysql->Prepare($query);
+								$res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
+								while($rec = $res->fetch())
+									echo $rec["DataValue"]."<br>";
+								*/	
+								?>
+							</td>
+						</tr>
 
-<tr>
-  <td nowrap>حاصل ادغام: </td>
-  <td>
-  <table dir=ltr>
-<?
-  $mysql->Prepare("select distinct OntologyProperties.OntologyID, EntityID, OntologyTitle, PropertyTitle from projectmanagement.OntologyMergeEntities 
-			    LEFT JOIN projectmanagement.OntologyProperties on (OntologyProperties.OntologyPropertyID=OntologyMergeEntities.EntityID)
-			    LEFT JOIN projectmanagement.ontologies using (OntologyID)
-				  where TargetEntityType='PROPERTY' and TargetEntityID=?");
-  $res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
-  while($rec = $res->fetch())
-  {
-    echo "<tr><td>".$rec["OntologyTitle"]."</td><td>";
-    echo "<td><a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["EntityID"]."&OntologyID=".$rec["OntologyID"]."'>".$rec["PropertyTitle"]."</a>";
-    echo "</td></tr>";
-  }
-?>
-  </tr>
-  </table>
-  </td>
-</tr>
+						<tr>
+							<td nowrap>حاصل ادغام: </td>
+							<td>
+								<table dir=ltr>
+									<?
+									  $mysql->Prepare("select distinct OntologyProperties.OntologyID, EntityID, OntologyTitle, PropertyTitle from projectmanagement.OntologyMergeEntities 
+													LEFT JOIN projectmanagement.OntologyProperties on (OntologyProperties.OntologyPropertyID=OntologyMergeEntities.EntityID)
+													LEFT JOIN projectmanagement.ontologies using (OntologyID)
+													  where TargetEntityType='PROPERTY' and TargetEntityID=?");
+									  $res = $mysql->ExecuteStatement(array($_REQUEST["UpdateID"]));
+									  while($rec = $res->fetch())
+									  {
+										echo "<tr><td>".$rec["OntologyTitle"]."</td>";
+										echo "<td><a target=_blank href='ManageOntologyProperties.php?UpdateID=".$rec["EntityID"]."&OntologyID=".$rec["OntologyID"]."'>".$rec["PropertyTitle"]."</a>";
+										echo "</td></tr>";
+									  }
+									?>
+								</table>
+							</td>
+						</tr>
 
-<? } ?>
-</table>
-</td>
-</tr>
-<tr class="FooterOfTable">
-<td align="center">
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
- <input type="button" onclick="javascript: document.location='ManageOntologyProperties.php?OntologyID=<?php echo $_REQUEST["OntologyID"]; ?>'" value="جدید">
- <input type="button" onclick="javascript: window.close();" value="بستن">
- <? if(isset($_REQUEST["UpdateID"])) { ?>
-  <input type="button" onclick="javascript: if(confirm('برای حذف مطمئن هستید؟')) document.location='ManageOntologyProperties.php?RemovePropertyID=<?php echo $_REQUEST["UpdateID"]; ?>';" value="حذف">
-  <? } ?>
-</td>
-</tr>
-</table>
+						<? } ?>
+					</table>
+				</td>
+				</tr>
+				<tfoot>
+					<tr class="table-info">
+						<td align="center">
+							<input type="submit" class="btn btn-success" value="<? echo C_SAVE; ?>">
+							<input type="button" class="btn btn-info" onclick="javascript: document.location='ManageOntologyProperties.php?OntologyID=<?php echo $_REQUEST["OntologyID"]; ?>'" value="<? echo C_NEW; ?>">
+							<input type="button" class="btn btn-warning" onclick="javascript: window.close();" value="<? echo C_CLOSE ?>">
+							<? if(isset($_REQUEST["UpdateID"])) { ?>
+								<input type="button" class="btn btn-danger" onclick="javascript: if(confirm('برای حذف مطمئن هستید؟')) document.location='ManageOntologyProperties.php?RemovePropertyID=<?php echo $_REQUEST["UpdateID"]; ?>';" value="<? echo C_REMOVE; ?>">
+							<? } ?>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+		<script>
+			<? echo $LoadDataJavascriptCode; ?>
+		</script>
+		<?php 
+		if(isset($_REQUEST["DoNotShowList"]))
+		  die();
+		$res = manage_OntologyProperties::GetList($_REQUEST["OntologyID"]); 
+		$SomeItemsRemoved = false;
+		for($k=0; $k<count($res); $k++)
+		{
+			if(isset($_REQUEST["ch_".$res[$k]->OntologyPropertyID])) 
+			{
+				manage_OntologyProperties::Remove($res[$k]->OntologyPropertyID); 
+				$SomeItemsRemoved = true;
+			}
+			if(isset($_REQUEST["label_".$res[$k]->OntologyPropertyID]) && $_REQUEST["label_".$res[$k]->OntologyPropertyID]!="") 
+			{
+				manage_OntologyPropertyLabels::Add($res[$k]->OntologyPropertyID, $_REQUEST["label_".$res[$k]->OntologyPropertyID]);
+				$SomeItemsRemoved = true;
+			}
+			if(isset($_REQUEST["Domain_".$res[$k]->OntologyPropertyID])) 
+			{
+				$query = "update projectmanagement.OntologyProperties set domain='".$_REQUEST["Domain_".$res[$k]->OntologyPropertyID]."' where OntologyPropertyID=".$res[$k]->OntologyPropertyID;
+				$mysql->Execute($query);
+				$query = "update projectmanagement.OntologyProperties set `range`='".$_REQUEST["Range_".$res[$k]->OntologyPropertyID]."' where OntologyPropertyID=".$res[$k]->OntologyPropertyID;
+				$mysql->Execute($query);
+				$SomeItemsRemoved = true;
+			}
+			
+		}
+		if($SomeItemsRemoved)
+			$res = manage_OntologyProperties::GetList($_REQUEST["OntologyID"]); 
+		?>
+		<form id="ListForm" name="ListForm" method="post"> 
+			<input type="hidden" id="Item_OntologyID" name="Item_OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
+			<br>
+			<table class="table table-bordered table-sm table-striped">
+				<tr><td colspan="10">
+					<? echo C_ONTOLOGY_FEATURES; ?>
+				</td></tr>
+				<thead class="table-info">
+					<tr>
+						<td width="1%"> </td>
+						<td width="1%"><? echo C_ROW; ?></td>
+						<td width="2%"><? echo C_EDIT; ?></td>
+						<td><? echo C_TITLE; ?></td>
+						<td>حوزه و برد</td>
+						<td nowrap><? echo C_LABELS ?></td>
+					</tr>
+				</thead>
+				<?
+				for($k=0; $k<count($res); $k++)
+				{
+					$LabelsList = "";
+					$list = manage_OntologyPropertyLabels::GetList($res[$k]->OntologyPropertyID);
+					for($m=0; $m<count($list); $m++)
+					{
+					  if($m>0)
+					$LabelsList .= ", ";
+					  $LabelsList .= $list[$m]->label;
+					}
+					if($res[$k]->domain=="" && $res[$k]->range=="")
+						echo "<tr bgcolor=\"#ff4d4d\">";
+					echo "<tr><td>";
+					echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyPropertyID."\">";
+					echo "</td>";
+					echo "<td>".($k+1)."</td>";
+					echo "	<td><a target=_blank href=\"ManageOntologyProperties.php?UpdateID=".$res[$k]->OntologyPropertyID."&OntologyID=".$_REQUEST["OntologyID"]."&DoNotShowList=1\"><i class='fas fa-edit' title='".C_EDIT."'></i></a></td>";
+					echo "	<td dir=ltr>";
+					if($res[$k]->IsFunctional_Desc=="بلی")
+					  echo "<i class='fas fa-calendar-times' title='خصوصیت functional است'></i>";
+					if($res[$k]->PropertyType_Desc=="DATATYPE") echo "<i class='fas fa-link' title='خصوصیت شیء'></i>";
+					else echo "<i class='fas fa-tasks' title='خصوصیت داده'></i>";
 
-</form><script>
-	<? echo $LoadDataJavascriptCode; ?>
-	function ValidateForm()
-	{
-		document.f1.submit();
-	}
-</script>
-<?php 
-if(isset($_REQUEST["DoNotShowList"]))
-  die();
-$res = manage_OntologyProperties::GetList($_REQUEST["OntologyID"]); 
-$SomeItemsRemoved = false;
-for($k=0; $k<count($res); $k++)
-{
-	if(isset($_REQUEST["ch_".$res[$k]->OntologyPropertyID])) 
-	{
-		manage_OntologyProperties::Remove($res[$k]->OntologyPropertyID); 
-		$SomeItemsRemoved = true;
-	}
-	if(isset($_REQUEST["label_".$res[$k]->OntologyPropertyID]) && $_REQUEST["label_".$res[$k]->OntologyPropertyID]!="") 
-	{
-		manage_OntologyPropertyLabels::Add($res[$k]->OntologyPropertyID, $_REQUEST["label_".$res[$k]->OntologyPropertyID]);
-		$SomeItemsRemoved = true;
-	}
-	if(isset($_REQUEST["Domain_".$res[$k]->OntologyPropertyID])) 
-	{
-	    $query = "update projectmanagement.OntologyProperties set domain='".$_REQUEST["Domain_".$res[$k]->OntologyPropertyID]."' where OntologyPropertyID=".$res[$k]->OntologyPropertyID;
-	    $mysql->Execute($query);
-	    $query = "update projectmanagement.OntologyProperties set `range`='".$_REQUEST["Range_".$res[$k]->OntologyPropertyID]."' where OntologyPropertyID=".$res[$k]->OntologyPropertyID;
-	    $mysql->Execute($query);
-	    $SomeItemsRemoved = true;
-	}
-	
-}
-if($SomeItemsRemoved)
-	$res = manage_OntologyProperties::GetList($_REQUEST["OntologyID"]); 
-?>
-<form id="ListForm" name="ListForm" method="post"> 
-	<input type="hidden" id="Item_OntologyID" name="Item_OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
-	<td colspan="10">
-	خصوصیات هستان نگار
-	</td>
-</tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>عنوان</td>
-	<td>حوزه و برد</td>
-	<td nowrap>برچسبها </td>
-</tr>
-<?
-for($k=0; $k<count($res); $k++)
-{
-    $LabelsList = "";
-    $list = manage_OntologyPropertyLabels::GetList($res[$k]->OntologyPropertyID);
-    for($m=0; $m<count($list); $m++)
-    {
-      if($m>0)
-	$LabelsList .= ", ";
-      $LabelsList .= $list[$m]->label;
-    }
-	if($res[$k]->domain=="" && $res[$k]->range=="")
-		echo "<tr bgcolor=\"#ff4d4d\">";
-	else if($k%2==0)
-		echo "<tr class=\"OddRow\">";
-	else
-		echo "<tr class=\"EvenRow\">";
-	echo "<td>";
-	echo "<input type=\"checkbox\" name=\"ch_".$res[$k]->OntologyPropertyID."\">";
-	echo "</td>";
-	echo "<td>".($k+1)."</td>";
-	echo "	<td><a target=_blank href=\"ManageOntologyProperties.php?UpdateID=".$res[$k]->OntologyPropertyID."&OntologyID=".$_REQUEST["OntologyID"]."&DoNotShowList=1\"><img src='images/edit.gif' title='ویرایش'></a></td>";
-	echo "	<td dir=ltr>";
-	if($res[$k]->IsFunctional_Desc=="بلی")
-	  echo "<img src='images/cal.jpeg' title='خصوصیت functional است'>";
-	if($res[$k]->PropertyType_Desc=="DATATYPE") echo "<img src='images/chain.gif' title='خصوصیت شیء'>";
-	else echo "<img src='images/task.jpg' title='خصوصیت داده'>";
-
-	echo htmlentities($res[$k]->PropertyTitle, ENT_QUOTES, 'UTF-8');
-	echo "<br>";
-	echo $LabelsList;
-	echo "</td>";
-	//echo "	<td>".$res[$k]->PropertyType_Desc."</td>";
-	//echo "	<td>".$res[$k]->IsFunctional_Desc."</td>";
-	echo "	<td dir=ltr>
-	حوزه: <br>
-	<textarea id='Domain_".$res[$k]->OntologyPropertyID."' name='Domain_".$res[$k]->OntologyPropertyID."'>".htmlentities($res[$k]->domain, ENT_QUOTES, 'UTF-8')."</textarea>";
-	$l = explode(", ", $res[$k]->domain);
-	for($i=0; $i<count($l); $i++)
-	{
-	  $ro = $mysql->Execute("select * from projectmanagement.OntologyClasses where ClassTitle='".$l[$i]."' and OntologyID=".$_REQUEST["OntologyID"]);
-	  if(!($ro->fetch()))
-	    echo "<br><font color=red>".$l[$i]."</font>";
-	}
-	echo "	<br>برد:<br>
-	<textarea id='Range_".$res[$k]->OntologyPropertyID."' name='Range_".$res[$k]->OntologyPropertyID."'>".htmlentities($res[$k]->range, ENT_QUOTES, 'UTF-8')."</textarea>";
-	$l = explode(", ", $res[$k]->range);
-	for($i=0; $i<count($l); $i++)
-	{
-	  $ro = $mysql->Execute("select * from projectmanagement.OntologyClasses where ClassTitle='".$l[$i]."' and OntologyID=".$_REQUEST["OntologyID"]);
-	  if(!($ro->fetch()))
-	    echo "<br><font color=red>".$l[$i]."</font>";
-	}
-	if($res[$k]->PropertyType_Desc=="OBJECT" && NumberOfValidRelation($res[$k]->OntologyPropertyID)==0)
-		echo "<br><b><font color=red>روابط مجاز حوزه و برد تعریف نشده</font></b>";
-	echo "</td>";
-	//echo "	<td dir=ltr>".htmlentities($res[$k]->inverseOf, ENT_QUOTES, 'UTF-8')."</td>";
-	echo "<td nowrap>";
-	$SuggestedLabel = "";
-	if($LabelsList=="")
-	{
-	  $SuggestedLabel = manage_OntologyProperties::GetSuggestedLabel($res[$k]->PropertyTitle);
-	}
-	
-	echo "<input type=text name='label_".$res[$k]->OntologyPropertyID."' id='label_".$res[$k]->OntologyPropertyID."' value='".$SuggestedLabel."'>";
-	echo "<br><a  target=\"_blank\" href='ManageOntologyPropertyLabels.php?OntologyPropertyID=".$res[$k]->OntologyPropertyID ."'>[ویرایش]</a></td>";
-	echo "</tr>";
-}
-?>
-<tr class="FooterOfTable">
-<td colspan="10" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-&nbsp;
-	<input type=submit value='ذخیره'>
-&nbsp;
-	<input type="button" onclick="javascript: window.open('ShowSimilarClassRelations.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="روابط مشابه">
-&nbsp;
-	<input type="button" onclick="javascript: window.open('ShowSimilarClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="خصوصیات تکراری">
-</td>
-</tr>
-</table>
-</form>
-<form target="_blank" method="post" action="NewOntologyProperties.php" id="NewRecordForm" name="NewRecordForm">
-	<input type="hidden" id="OntologyID" name="OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
-</form>
+					echo htmlentities($res[$k]->PropertyTitle, ENT_QUOTES, 'UTF-8');
+					echo "<br>";
+					echo $LabelsList;
+					echo "</td>";
+					//echo "	<td>".$res[$k]->PropertyType_Desc."</td>";
+					//echo "	<td>".$res[$k]->IsFunctional_Desc."</td>";
+					echo "	<td dir=ltr>
+					حوزه: <br>
+					<textarea id='Domain_".$res[$k]->OntologyPropertyID."' name='Domain_".$res[$k]->OntologyPropertyID."' required>".htmlentities($res[$k]->domain, ENT_QUOTES, 'UTF-8')."</textarea>";
+					$l = explode(", ", $res[$k]->domain);
+					for($i=0; $i<count($l); $i++)
+					{
+					  $ro = $mysql->Execute("select * from projectmanagement.OntologyClasses where ClassTitle='".$l[$i]."' and OntologyID=".$_REQUEST["OntologyID"]);
+					  if(!($ro->fetch()))
+						echo "<br><font color=red>".$l[$i]."</font>";
+					}
+					echo "	<br>برد:<br>
+					<textarea id='Range_".$res[$k]->OntologyPropertyID."' name='Range_".$res[$k]->OntologyPropertyID."' required>".htmlentities($res[$k]->range, ENT_QUOTES, 'UTF-8')."</textarea>";
+					$l = explode(", ", $res[$k]->range);
+					for($i=0; $i<count($l); $i++)
+					{
+					  $ro = $mysql->Execute("select * from projectmanagement.OntologyClasses where ClassTitle='".$l[$i]."' and OntologyID=".$_REQUEST["OntologyID"]);
+					  if(!($ro->fetch()))
+						echo "<br><font color=red>".$l[$i]."</font>";
+					}
+					if($res[$k]->PropertyType_Desc=="OBJECT" && NumberOfValidRelation($res[$k]->OntologyPropertyID)==0)
+						echo "<br><b><font color=red>روابط مجاز حوزه و برد تعریف نشده</font></b>";
+					echo "</td>";
+					//echo "	<td dir=ltr>".htmlentities($res[$k]->inverseOf, ENT_QUOTES, 'UTF-8')."</td>";
+					echo "<td nowrap>";
+					$SuggestedLabel = "";
+					if($LabelsList=="")
+					{
+					  $SuggestedLabel = manage_OntologyProperties::GetSuggestedLabel($res[$k]->PropertyTitle);
+					}
+					
+					echo "<input type=text name='label_".$res[$k]->OntologyPropertyID."' id='label_".$res[$k]->OntologyPropertyID."' value='".$SuggestedLabel."' required>";
+					echo "<br><a  target=\"_blank\" href='ManageOntologyPropertyLabels.php?OntologyPropertyID=".$res[$k]->OntologyPropertyID ."'>[".C_EDIT."]</a></td>";
+					echo "</tr>";
+				}
+				?>
+				<tfoot>
+					<tr class="table-info">
+						<td colspan="10" align="center">
+							<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE; ?>">
+							<input type="submit" class="btn btn-success"  value="<? echo C_SAVE; ?>">
+							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassRelations.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="روابط مشابه">
+							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="خصوصیات تکراری">
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+		<form target="_blank" method="post" action="NewOntologyProperties.php" id="NewRecordForm" name="NewRecordForm">
+			<input type="hidden" id="OntologyID" name="OntologyID" value="<? echo htmlentities($_REQUEST["OntologyID"], ENT_QUOTES, 'UTF-8'); ?>">
+		</form>
+	</div>
+</div>
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<? echo C_ARE_YOU_SURE ?>')) document.ListForm.submit();
 }
 </script>
 </html>

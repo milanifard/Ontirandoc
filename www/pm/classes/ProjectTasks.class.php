@@ -1134,13 +1134,10 @@ class manage_ProjectTasks
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<div class='row'>";
-		$ret .= "<div class='col-1'></div>";
-		$ret .= "<div class='col-10'>";
-		$ret .= "<table width=\"100%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret .= "<table class=\"table table-sm table-bordered\">";
 		$ret .= "<tr>";
 		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
+		$ret .= "<table class=\"table table-sm table-borderless\">";
 		$obj = new be_ProjectTasks();
 		$obj->LoadDataFromDatabase($RecID); 
 		$ret .= "<tr>";
@@ -1161,7 +1158,7 @@ class manage_ProjectTasks
 		$ret .= "</tr>";
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>عنوان: </b>";
+		$ret .= "<b>".C_TITLE.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->title, ENT_QUOTES, 'UTF-8');
@@ -1171,22 +1168,16 @@ class manage_ProjectTasks
 		$ret .= "</td>";
 		$ret .= "</tr>";
 		$ret .= "</table>";
-		$ret .= "</div>";
-		$ret .= "<div class='col-1'></div>";
-		$ret .= "</div>";
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-		$ret = "<div class='row'>";
-		$ret .= "<div class='col-1'></div>";
-		$ret .= "<div class='col-10'>";
-		$ret .= "<table class='table table-sm' align=\"center\" border=\"1\" cellspacing=\"0\">";
- 		$ret .= "<tr class='table-info'>";
+		$ret = "<table class=\"table table-sm table-bordered\">";
+ 		$ret .= "<tr>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="NewProjectTasks")
 			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='NewProjectTasks.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+		$ret .= "><a href='NewProjectTasks.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskAssignedUsers")
  			$ret .= " bgcolor=\"#cccccc\" ";
@@ -1198,7 +1189,7 @@ class manage_ProjectTasks
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskComments")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskComments.php?ProjectTaskID=".$RecID."'>یادداشتها</a></td>";
+		$ret .= "><a href='ManageProjectTaskComments.php?ProjectTaskID=".$RecID."'>".C_NOTES."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskDocuments")
  			$ret .= " bgcolor=\"#cccccc\" ";
@@ -1212,9 +1203,6 @@ class manage_ProjectTasks
  			$ret .= " bgcolor=\"#cccccc\" ";
 		$ret .= "><a href='ManageProjectTaskHistory.php?ProjectTaskID=".$RecID."'>تاریخچه</a></td>";
 		$ret .= "</table>";
-		$ret .= "</div>";
-		$ret .= "<div class='col-1'></div>";
-		$ret .= "</div>";
 		return $ret;
 	}
 	static function CreateARelatedTableSelectOptions($RelatedTable, $RelatedValueField, $RelatedDescriptionField, $OrderBy = "", $FilterStr = "")

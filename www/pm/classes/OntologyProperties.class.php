@@ -316,15 +316,15 @@ class manage_OntologyProperties
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table width=\"90%\" align=\"center\" border=\"1\" cellspacing=\"0\">";
+		$ret .= "<table class=\"table table-sm table-bordered\">";
 		$ret .= "<tr>";
 		$ret .= "<td>";
-		$ret .= "<table width=\"100%\" border=\"0\">";
+		$ret .= "<table class=\"table table-sm table-borderless\">";
 		$obj = new be_OntologyProperties();
 		$obj->LoadDataFromDatabase($RecID); 
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>هستان نگار: </b>";
+		$ret .= "<b>".C_ONTOLOGY.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->OntologyTitle, ENT_QUOTES, 'UTF-8');
@@ -333,7 +333,7 @@ class manage_OntologyProperties
 
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>عنوان: </b>";
+		$ret .= "<b>".C_TITLE.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->PropertyTitle, ENT_QUOTES, 'UTF-8');
@@ -348,12 +348,12 @@ class manage_OntologyProperties
 	function ShowTabs($RecID, $CurrentPageName)
 	{
 		  return "";
-		$ret = "<table align=\"center\" width=\"90%\" border=\"1\" cellspacing=\"0\">";
+		$ret = "<table class=\"table table-sm table-bordered\">";
  		$ret .= "<tr>";
 		$ret .= "<td width=\"50%\" ";
 		if($CurrentPageName=="NewOntologyProperties")
 			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='NewOntologyProperties.php?UpdateID=".$RecID."'>مشخصات اصلی</a></td>";
+		$ret .= "><a href='NewOntologyProperties.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
 		$ret .= "<td width=\"50%\" ";
 		if($CurrentPageName=="ManageOntologyPropertyLabels")
  			$ret .= " bgcolor=\"#cccccc\" ";

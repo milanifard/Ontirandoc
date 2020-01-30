@@ -611,40 +611,42 @@ class manage_ontologies
 	function ShowSummary($RecID)
 	{
 		$ret = "<br>";
-		$ret .= "<table class='table table-bordered'>";
-		$ret .= "<thead>
-                    <tr class='table-info'>";
-		$ret .= "        <th>";
+		$ret .= "<table class=\"table table-sm table-bordered\">";
+		$ret .= "<tr>";
+		$ret .= "<td>";
+		$ret .= "<table class=\"table table-sm table-borderless\">";
 		$obj = new be_ontologies();
 		$obj->LoadDataFromDatabase($RecID); 
-		$ret .=  C_TITLE.':'.$obj->OntologyTitle."</th>";
-		$ret .= "<th >". C_DESCRIPTION.':' .str_replace("\n", "<br>", $obj->comment)."</th></tr>";
-		$ret .= "</thead></table>";
+		$ret .= "<tr><td width=10%>".C_TITLE.": </td><td>".$obj->OntologyTitle."</td></tr>";
+		$ret .= "<tr><td width=10%>".C_DESCRIPTION.": </td><td>".str_replace("\n", "<br>", $obj->comment)."</td></tr>";
+		$ret .= "</table>";
+		$ret .= "</td>";
+		$ret .= "</tr>";
+		$ret .= "</table>";
 		return $ret;
 	}
 	function ShowTabs($RecID, $CurrentPageName)
 	{
-//	    return "";
-		$ret = "<table class='table table-bordered table-striped table-sm'>";
- 		$ret .= "<thead><tr >";
-		$ret .= "<th > ";
-//		if($CurrentPageName=="Newontologies")
-//			$ret .= "bgcolor=\"#cccccc\" ";
-		$ret .= "<a class = 'btn text-dark' href='Newontologies.php?UpdateID=".$RecID."'>". C_SESSION_INFO ."<a></th/>";
-		$ret .= "<th> ";
-//		if($CurrentPageName=="Manage")
-// 			$ret .= " bgcolor=\"#cccccc\" ";
-        // I dont know what value should assign here
-		$ret .= "<a class = 'btn text-dark' href='Manage.php?OntologyID=".$RecID."'></a></td>";
-		$ret .= "<td > ";
-//		if($CurrentPageName=="ManageOntologyClasses")
-// 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "<a class = 'btn text-dark' href='ManageOntologyClasses.php?OntologyID=".$RecID."'>". C_ONTOLOGY_CLASSES ."<a></td>";
-		$ret .= "<td>";
-//		if($CurrentPageName=="ManageOntologyProperties")
-// 			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "<a class = 'btn text-dark' href='ManageOntologyProperties.php?OntologyID=".$RecID."'>". C_ONTOLOGY_FEATURES ."<a></td/>";
-		$ret .= "</tr></thead></table>";
+	    return "";
+		$ret = "<table class=\"table table-sm table-bordered\">";
+ 		$ret .= "<tr>";
+		$ret .= "<td width=\"25%\" ";
+		if($CurrentPageName=="Newontologies")
+			$ret .= "bgcolor=\"#cccccc\" ";
+		$ret .= "><a href='Newontologies.php?UpdateID=".$RecID."'>".C_SESSION_INFO."</a></td>";
+		$ret .= "<td width=\"25%\" ";
+		if($CurrentPageName=="Manage")
+ 			$ret .= " bgcolor=\"#cccccc\" ";
+		$ret .= "><a href='Manage.php?OntologyID=".$RecID."'></a></td>";
+		$ret .= "<td width=\"25%\" ";
+		if($CurrentPageName=="ManageOntologyClasses")
+ 			$ret .= " bgcolor=\"#cccccc\" ";
+		$ret .= "><a href='ManageOntologyClasses.php?OntologyID=".$RecID."'>".C_ONTOLOGY_CLASSES."</a></td>";
+		$ret .= "<td width=\"25%\" ";
+		if($CurrentPageName=="ManageOntologyProperties")
+ 			$ret .= " bgcolor=\"#cccccc\" ";
+		$ret .= "><a href='ManageOntologyProperties.php?OntologyID=".$RecID."'>".C_ONTOLOGY_FEATURES."</a></td>";
+		$ret .= "</table>";
 		return $ret;
 	}
 }
