@@ -3243,6 +3243,147 @@ Test::add(
 ///////////////// end of OntologyMergeProjectMembers.class.php //////////
 
 
+
+// ProjectDocumentTypes.php - Saeed Rastegar - begin
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_ProjectDocumentTypes::Add("My title", 1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectDocumentTypes->Add()", "ProjectDocumentTypes"
+);
+
+Test::add(
+    function()
+    {
+        try{
+            $obj = new be_ProjectDocumentTypes();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }, "be_ProjectDocumentTypes.class->LoadDataFromDatabase()", "manage_ProjectDocumentTypes"
+);
+
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_ProjectDocumentTypes::GetLastID()==-1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectDocumentTypes->GetLastID()", "manage_ProjectDocumentTypes"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_ProjectDocumentTypes::Update("New title", 2))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectDocumentTypes->Update()", "manage_ProjectDocumentTypes"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_ProjectDocumentTypes::GetList(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectDocumentTypes->GetList()", "manage_ProjectDocumentTypes"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_ProjectDocumentTypes::CreateSelectOptions(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectDocumentTypes->CreateSelectOptions()", "manage_ProjectDocumentTypes"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_payments::Remove(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_payments->Remove()", "payments"
+);
+// Payments.class.php - Sajjad Iranmanesh - end
+
+
 $res = Test::run();
 echo "<br>";
 echo "<div class='container'>";
