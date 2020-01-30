@@ -834,6 +834,10 @@ if(UI_LANGUAGE=="EN") {
     define("C_ADD_PARENT_CLASS"," add parent class");
     define("C_CREATE_EDIT_MERGE_ONTOLOGY","create, edit and merge ontology project");
 
+    //--arezoO abdi----
+    define("C_CREATE_EXTERNAL_REQUEST_RESONDERS","Create / edit external request responders in the project");
+    define("C_EXTERNAL_REQUEST_RESONDERS","external request responders in the project");
+
 }
 else
 {
@@ -1662,6 +1666,10 @@ else
     define("C_PARENT_CLASS","کلاس پدر");
     define("C_ADD_PARENT_CLASS","اضافه کردن کلاس پدر");
     define("C_CREATE_EDIT_MERGE_ONTOLOGY","ایجاد/ویرایش پروژه ادغام هستان نگار");
+
+    //--arezoO abdi----
+    define("C_CREATE_EXTERNAL_REQUEST_RESONDERS","ایجاد/ویرایش پاسخگویان به درخواستهای خارجی در پروژه");
+    define("C_EXTERNAL_REQUEST_RESONDERS","پاسخگویان به درخواستهای خارجی در پروژه");
 }
 
 ?>
