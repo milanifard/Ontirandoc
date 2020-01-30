@@ -889,15 +889,30 @@ if(UI_LANGUAGE=="EN") {
     define("C_MY_FILE","File");
 
 
-      // Saeed rastegar moghaddam - MyProjectMembers.php
-      define("C_NO_PERMISSION","you dont have the permission to view this record");
-      define("C_DATA_STORED","data has been stored");
-      define("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
-      define("C_USER_CODE","Uer Code");
-      define("C_PERMISSION_TYPE","Permission Type");
-      define("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
-      define("C_STORE","store");
-      define("C_CLOSE","close");
+    // Saeed rastegar moghaddam - MyProjectMembers.php
+    define("C_NO_PERMISSION","you dont have the permission to view this record");
+    define("C_DATA_STORED","data has been stored");
+    define("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
+    define("C_USER_CODE","Uer Code");
+    define("C_PERMISSION_TYPE","Permission Type");
+    define("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
+    define("C_STORE","store");
+    define("C_CLOSE","close");
+
+    
+    // Saeed rastegar moghaddam - ManageProjectDocumentTypes.php
+    define("C_NO_PERMISSION","You don't have permission to view this record.");
+    define("C_DATA_STORED","Data has been stored.");
+    define("C_MY_TITLE_PROJECTDOCUMENTTYPES","Create/Edit document types");
+    define("C_MY_TITLE_PROJECTDOCUMENTTYPES_TITLE","Different types of document");
+    define("C_TITLE","Title");
+    define("C_ROW","Row");
+    define("C_EDIT","Edit");
+    define("C_STORE","Save");
+    define("C_DOCUMENTS_COUNT","Number of documents");
+    define("C_ARE_YOU_SURE","Are you sure?");
+    define("C_NEW","New");
+    define("C_CLOSE","Close");
     
 }
 else
@@ -1770,23 +1785,37 @@ else
     * END
     **/
 
-     // Saeed rastegar moghaddam - MyPayments.php
-     define("C_MY_REPORTS","گزارش دریافتی های من");
-     define("C_MY_DATE","تاریخ");
-     define("C_MY_PRICE","مبلغ");
-     define("C_MY_INFO","شرح");
-     define("C_MY_FILE","فایل");
+    // Saeed rastegar moghaddam - MyPayments.php
+    define("C_MY_REPORTS","گزارش دریافتی های من");
+    define("C_MY_DATE","تاریخ");
+    define("C_MY_PRICE","مبلغ");
+    define("C_MY_INFO","شرح");
+    define("C_MY_FILE","فایل");
 
 
-      // Saeed rastegar moghaddam - MyProjectMembers.php
-      define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
-      define("C_DATA_STORED","داده ذخیره شد");
-      define("C_MY_TITLE_PROJECTMEMBERS","ایچاد / ویرایش اعضای پروژه");
-      define("C_USER_CODE","کد شخص");
-      define("C_PERMISSION_TYPE","نوع دسترسی");
-      define("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
-      define("C_STORE","ذخیره");
-      define("C_CLOSE","بستن");
+    // Saeed rastegar moghaddam - MyProjectMembers.php
+    define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+    define("C_DATA_STORED","داده ذخیره شد");
+    define("C_MY_TITLE_PROJECTMEMBERS","ایچاد / ویرایش اعضای پروژه");
+    define("C_USER_CODE","کد شخص");
+    define("C_PERMISSION_TYPE","نوع دسترسی");
+    define("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
+    define("C_STORE","ذخیره");
+    define("C_CLOSE","بستن");
+
+
+    // Saeed rastegar moghaddam - ManageProjectDocumentTypes.php
+    define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+    define("C_DATA_STORED","داده ذخیره شد");
+    define("C_MY_TITLE_PROJECTDOCUMENTTYPES","ایجاد/ویرایش انواع سند پروژه ها");
+    define("C_MY_TITLE_PROJECTDOCUMENTTYPES_TITLE","عنوان");
+    define("C_ROW","ردیف");
+    define("C_EDIT","ویرایش");
+    define("C_STORE","ذخیره");
+    define("C_DOCUMENTS_COUNT","تعداد سند ها");
+    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
+    define("C_NEW","جدید");
+    define("C_CLOSE","بستن");
 }
 
 ?>
