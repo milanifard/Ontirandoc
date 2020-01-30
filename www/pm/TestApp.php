@@ -23,6 +23,7 @@ include_once("classes/ProjectDocuments.class.php"); // by Samin Hazeri
 include_once("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
 include_once("classes/OntologyClassLabels.class.php");
 include_once("classes/ProjectTaskRequisites.class.php");
+include_once("classes/ProjectTasksSecurity.class.php");	/* ==== By JavadZamani ====*/
 
 HTMLBegin();
 class Test
@@ -3382,6 +3383,34 @@ Test::add(
     ,"manage_payments->Remove()", "payments"
 );
 // Payments.class.php - Sajjad Iranmanesh - end
+
+/* ==== ProjectTasksSecurity.class.php BY JavadZamani START ====*/
+Test::add(
+    function(){
+        try {
+            security_ProjectTasks::GetPersonRoleOnATask(1, 1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+
+Test::add(
+    function(){
+        try {
+            security_ProjectTasks::LoadUserPermissions(1, 1);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
+);
+/* ==== ProjectTasksSecurity.class.php BY JavadZamani END ====*/
 
 
 $res = Test::run();

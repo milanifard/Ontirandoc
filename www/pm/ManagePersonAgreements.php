@@ -6,8 +6,8 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-include("classes/PersonAgreements.class.php");		// No such file
-include ("classes/persons.class.php");				// Need to change audit descriptions
+include("classes/PersonAgreements.class.php");
+include ("classes/persons.class.php");
 HTMLBegin();
 $PersonName = "";
 $pobj = new be_persons();
@@ -87,7 +87,7 @@ if(isset($_REQUEST["UpdateID"]))
 		<table class="table table-sm table-borderless">
 			<thead>
                 <tr class="table-info">
-					<td class="text-center"><? echo C_CREATE."/".C_EDIT ?> قرارداد پرسنل</td>
+					<td class="text-center"><? echo C_CREATE."/".C_EDIT." ".C_PERSONEL_CONTRACT ?></td>
                 </tr>
             </thead>
 			<tr><td><table>
@@ -114,13 +114,13 @@ if(isset($_REQUEST["UpdateID"]))
 					</td>
 				</tr>
 				<tr>
-					<td width="1%" nowrap>شرح قرارداد</td>
+					<td width="1%" nowrap><? echo C_CONTRACT_DESCRIPTION; ?></td>
 					<td nowrap>
 						<textarea name="Item_AgreementDescription" id="Item_AgreementDescription" cols="80" rows="5"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td width="1%" nowrap>مبلغ ساعتی</td>
+					<td width="1%" nowrap><? echo C_HOURLY_PRICE; ?></td>
 					<td nowrap>
 						<input type="text" name="Item_HourlyPrice" id="Item_HourlyPrice" maxlength="10" size="10" required> <? echo C_RIAL; ?>
 					</td>
@@ -164,7 +164,7 @@ if($SomeItemsRemoved)
         <div class="col-10">
 			<table class="table table-bordered table-sm table-striped">
 				<tr><td colspan="6">
-					قراردادهای <b><? echo $PersonName; ?> </b>
+					<? echo C_CONTRACTS_OF; ?> <b><? echo $PersonName; ?> </b>
 				</td></tr>
 				<thead class="table-info">
 					<tr>
@@ -173,7 +173,7 @@ if($SomeItemsRemoved)
 						<td width="2%"><? echo C_EDIT; ?></td>
 						<td><? echo C_FROM_DATE; ?></td>
 						<td><? echo C_TO_DATE; ?></td>
-						<td>مبلغ ساعتی</td>
+						<td><? echo C_HOURLY_PRICE; ?></td>
 					</tr>
 				</thead>
 				<?

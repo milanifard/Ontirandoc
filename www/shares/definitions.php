@@ -913,6 +913,42 @@ if(UI_LANGUAGE=="EN") {
     define("C_ARE_YOU_SURE","Are you sure?");
     define("C_NEW","New");
     define("C_CLOSE","Close");
+	
+	/*==== JavadZamani ====*/
+	define2("C_PERSONEL_CONTRACT","Personnel Contract");
+	define2("C_CONTRACT_DESCRIPTION","Contract Description");
+	define2("C_HOURLY_PRICE","Hourly Price");
+	define2("C_CONTRACTS_OF","Contracts of");
+	define2("C_SORT_TYPE_ASC","Current sorting is ASCENDING");
+	define2("C_SORT_TYPE_DESC","Current sorting is DESCENDING");
+	define2("C_WORK_CODE","Work Code");
+	define2("C_READY_FOR_CONTROL","Ready for Control");
+	define2("C_CONSIDER_WORK_CREATION_TIME_RANGE","Cosider Work Creation Time Range");
+	define2("C_CONSIDER_ACTION_CREATION_TIME_RANGE","Cosider Action Creation Time Range");
+	define2("C_CREATION_TIME_RANGE","Creation Time Range");
+	define2("C_ACTION_TIME_RANGE","Action Time Range");
+	define2("C_FROM","From");
+	define2("C_TO","To");
+	define2("C_SEARCH_RESULTS","Search Results");
+	define2("C_LAST_ACTION_TIME","Last Action Time");
+	define2("C_EXECUTORS","Executors");
+	define2("C_VIEWERS","Viewers");
+	define2("C_DOCUMENTS_T","Documents");
+	define2("C_UNKNOWN","Unknown");
+	define2("C_REMOVED","Removed");
+	define2("C_TYPE","Type");
+	define2("C_RANGE","Range");
+	define2("C_REVERSE","Reverse");
+	define2("C_SPECIFY_VALID_RELATIONSHIPS","Specify valid relationships between domain concepts and the range of this property");
+	define2("C_VALUES","Values");
+	define2("C_ARE_YOU_SURE_TO_REMOVE","Are You Sure to Remove");
+	define2("C_DOMAIN_AND_RANGE","Domain and Range");
+	define2("C_PROPERTY_IS_FUNCTIONAL","Property is Functional");
+	define2("C_PERMITTED_DOMAIN_AND_RANGE_RELATIONSHIPS_ARE_NOT_DEFINED","Permitted Domain and Range Relationships are not Defined");
+	define2("C_SIMILAR_RELATIONSHIPS","Similar Relationships");
+	define2("C_DUPLICATE_PROPERTIES","Duplicate Properties");
+	define2("C_PROPERTIES_LABELS","Properties' Labels");
+	/*==== JavadZamani ====*/
     
 }
 else
@@ -1816,6 +1852,42 @@ else
     define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
     define("C_NEW","جدید");
     define("C_CLOSE","بستن");
+	
+	/*==== JavadZamani ====*/
+	define2("C_PERSONEL_CONTRACT","قرارداد پرسنل");
+	define2("C_CONTRACT_DESCRIPTION","شرح قرارداد");
+	define2("C_HOURLY_PRICE","مبلغ ساعتی");
+	define2("C_CONTRACTS_OF","قراردادهای");
+	define2("C_SORT_TYPE_ASC","ترتیب فعلی بر اساس این فیلد صعودی است");
+	define2("C_SORT_TYPE_DESC","ترتیب فعلی بر اساس این فیلد نزولی است");
+	define2("C_WORK_CODE","کد کار");
+	define2("C_READY_FOR_CONTROL","آماده برای کنترل");
+	define2("C_CONSIDER_WORK_CREATION_TIME_RANGE","در نظر گرفتن بازه‌ی زمانی ایجاد کار");
+	define2("C_CONSIDER_ACTION_CREATION_TIME_RANGE","در نظر گرفتن بازه‌ی زمانی ایجاد اقدام");
+	define2("C_CREATION_TIME_RANGE","بازه ایجاد");
+	define2("C_ACTION_TIME_RANGE","بازه اقدام");
+	define2("C_FROM","از");
+	define2("C_TO","تا");
+	define2("C_SEARCH_RESULTS","نتایج جستجو");
+	define2("C_LAST_ACTION_TIME","زمان آخرین اقدام");
+	define2("C_EXECUTORS","مجریان");
+	define2("C_VIEWERS","ناظران");
+	define2("C_DOCUMENTS_T","اسناد");
+	define2("C_UNKNOWN","نامشخص");
+	define2("C_REMOVED","حذف شد");
+	define2("C_TYPE","نوع");
+	define2("C_RANGE","بازه");
+	define2("C_REVERSE","معکوس");
+	define2("C_SPECIFY_VALID_RELATIONSHIPS","تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت");
+	define2("C_VALUES","مقادیر");
+	define2("C_ARE_YOU_SURE_TO_REMOVE","رای حذف مطمئن هستید؟");
+	define2("C_DOMAIN_AND_RANGE","حوزه و برد");
+	define2("C_PROPERTY_IS_FUNCTIONAL","خصوصیت functional است");
+	define2("C_PERMITTED_DOMAIN_AND_RANGE_RELATIONSHIPS_ARE_NOT_DEFINED","روابط مجاز حوزه و برد تعریف نشده");
+	define2("C_SIMILAR_RELATIONSHIPS","روابط مشابه");
+	define2("C_DUPLICATE_PROPERTIES","خصوصیات تکراری");
+	define2("C_PROPERTIES_LABELS","برچسبهای خصوصیات");
+	/*==== JavadZamani ====*/
 }
 
 ?>

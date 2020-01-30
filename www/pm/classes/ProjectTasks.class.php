@@ -1142,7 +1142,7 @@ class manage_ProjectTasks
 		$obj->LoadDataFromDatabase($RecID); 
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>پروژه: </b>";
+		$ret .= "<b>".C_PROJECT.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->ProjectID_Desc, ENT_QUOTES, 'UTF-8');
@@ -1150,7 +1150,7 @@ class manage_ProjectTasks
 		$ret .= "</tr>";
 		$ret .= "<tr>";
 		$ret .= "<td width=\"1%\" nowrap>";
-		$ret .= "<b>کد کار: </b>";
+		$ret .= "<b>".C_WORK_CODE.": </b>";
 		$ret .= "</td>";
 		$ret .= "<td>";
 		$ret .= htmlentities($obj->ProjectTaskID, ENT_QUOTES, 'UTF-8');
@@ -1181,11 +1181,11 @@ class manage_ProjectTasks
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskAssignedUsers")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskAssignedUsers.php?ProjectTaskID=".$RecID."'>مجریان/ناظران</a></td>";
+		$ret .= "><a href='ManageProjectTaskAssignedUsers.php?ProjectTaskID=".$RecID."'>".C_WORK_CODE."/".C_VIEWERS."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskActivities")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskActivities.php?ProjectTaskID=".$RecID."'>اقدامات</a></td>";
+		$ret .= "><a href='ManageProjectTaskActivities.php?ProjectTaskID=".$RecID."'>".C_ACTIONS."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskComments")
  			$ret .= " bgcolor=\"#cccccc\" ";
@@ -1193,15 +1193,15 @@ class manage_ProjectTasks
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskDocuments")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskDocuments.php?ProjectTaskID=".$RecID."'>اسناد</a></td>";
+		$ret .= "><a href='ManageProjectTaskDocuments.php?ProjectTaskID=".$RecID."'>".C_DOCUMENTS_T."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskRequisites")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskRequisites.php?ProjectTaskID=".$RecID."'>پیشنیازها</a></td>";
+		$ret .= "><a href='ManageProjectTaskRequisites.php?ProjectTaskID=".$RecID."'>".C_PREREQUISITES."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskHistory")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskHistory.php?ProjectTaskID=".$RecID."'>تاریخچه</a></td>";
+		$ret .= "><a href='ManageProjectTaskHistory.php?ProjectTaskID=".$RecID."'>".C_HISTORY."</a></td>";
 		$ret .= "</table>";
 		return $ret;
 	}
