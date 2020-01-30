@@ -23,7 +23,6 @@ include_once("classes/ProjectDocuments.class.php"); // by Samin Hazeri
 include_once("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
 include_once("classes/OntologyClassLabels.class.php");
 include_once("classes/ProjectTaskRequisites.class.php");
-include_once("classes/ProjectTasksSecurity.class.php");	/* ==== By JavadZamani ====*/
 
 HTMLBegin();
 class Test
@@ -3384,33 +3383,125 @@ Test::add(
 );
 // Payments.class.php - Sajjad Iranmanesh - end
 
-/* ==== ProjectTasksSecurity.class.php BY JavadZamani START ====*/
+//UNIT TEST - ProjectMilestones.class.php - Amin Bigdeli - start
 Test::add(
-    function(){
-        try {
-            security_ProjectTasks::GetPersonRoleOnATask(1, 1);
-            return true;
+    function()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::Add(1, 1000, "2000/01/01"))
+            {
+                return true;
+            }
+            return false;
         }
-        catch(Exception $e)
+        catch (Exception $e)
         {
             return false;
         }
     }
+    ,"manage_ProjectMilestones->Add()", "manage_ProjectMilestones"
 );
 
 Test::add(
-    function(){
-        try {
-            security_ProjectTasks::LoadUserPermissions(1, 1);
-            return true;
+    function()
+    {
+        try{
+            $obj = new be_ProjectMilestones();
+            try
+            {
+                $obj->LoadDataFromDatabase(1);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                return false;
+            }
         }
-        catch(Exception $e)
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }, "be_ProjectMilestones.class->LoadDataFromDatabase()", "be_ProjectMilestones"
+);
+
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::GetLastID()==-1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
         {
             return false;
         }
     }
+    ,"manage_ProjectMilestones->GetLastID()", "manage_ProjectMilestones"
 );
-/* ==== ProjectTasksSecurity.class.php BY JavadZamani END ====*/
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::Update(1, 2000, "2020/01/01"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectMilestones->Update()", "manage_ProjectMilestones"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::Remove(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectMilestones->Remove()", "Payments"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::GetList(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectMilestones->ComparePassedDataWithDB()", "manage_ProjectMilestones"
+);
+
+// UNIT TEST - ProjectMilestones.class.php - Amin Bigdeli - end
 
 
 $res = Test::run();
