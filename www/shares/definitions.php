@@ -887,6 +887,17 @@ if(UI_LANGUAGE=="EN") {
     define("C_MY_PRICE","Price");
     define("C_MY_INFO","Info");
     define("C_MY_FILE","File");
+
+
+      // Saeed rastegar moghaddam - MyProjectMembers.php
+      define("C_NO_PERMISSION","you dont have the permission to view this record");
+      define("C_DATA_STORED","data has been stored");
+      define("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
+      define("C_USER_CODE","Uer Code");
+      define("C_PERMISSION_TYPE","Permission Type");
+      define("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
+      define("C_STORE","store");
+      define("C_CLOSE","close");
     
 }
 else
@@ -1765,6 +1776,17 @@ else
      define("C_MY_PRICE","مبلغ");
      define("C_MY_INFO","شرح");
      define("C_MY_FILE","فایل");
+
+
+      // Saeed rastegar moghaddam - MyProjectMembers.php
+      define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+      define("C_DATA_STORED","داده ذخیره شد");
+      define("C_MY_TITLE_PROJECTMEMBERS","ایچاد / ویرایش اعضای پروژه");
+      define("C_USER_CODE","کد شخص");
+      define("C_PERMISSION_TYPE","نوع دسترسی");
+      define("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
+      define("C_STORE","ذخیره");
+      define("C_CLOSE","بستن");
 }
 
 ?>
