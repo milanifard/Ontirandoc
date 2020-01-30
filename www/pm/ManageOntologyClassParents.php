@@ -172,6 +172,7 @@ if($SomeItemsRemoved)
         if(confirm(<?php echo C_ARE_YOU_SURE ?>)) document.ListForm.submit();
     }
 
+    
 </script>
 </div>
 </html>
