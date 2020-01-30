@@ -6,9 +6,9 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-include("classes/OntologyProperties.class.php");		// Need to change audit descriptions + bilingual
-include("classes/OntologyPropertyLabels.class.php");	// Need to change audit descriptions
-include ("classes/ontologies.class.php");				// Need to change audit descriptions
+include("classes/OntologyProperties.class.php");
+include("classes/OntologyPropertyLabels.class.php");
+include ("classes/ontologies.class.php");
 HTMLBegin();
 
 function NumberOfValidRelation($ObjectPropertyID)
@@ -37,7 +37,7 @@ function ShowClassListLabels($ClassListString, $OntologyID, $DomainOrRange, $Not
     }
     else
     {
-    	echo "<font color=red>نامشخص</font> (".$ClassList[$i].")<br>";
+    	echo "<font color=red>".C_UNKNOWN."</font> (".$ClassList[$i].")<br>";
     }
   }
 }
@@ -198,7 +198,7 @@ $mysql = pdodb::getInstance();
 if(isset($_REQUEST["RemovePropertyID"])) 
 {
 	manage_OntologyProperties::Remove($_REQUEST["RemovePropertyID"]); 
-	echo "<p align=center>حذف شد</p>";
+	echo "<p align=center>".C_REMOVED."</p>";
 	die();
 }
 if(isset($_REQUEST["Save"])) 
@@ -341,7 +341,7 @@ else if(isset($_REQUEST["DataProp"]))
 							</td>
 						</tr>
 						<tr>
-							<td width="1%" nowrap>نوع</td>
+							<td width="1%" nowrap><? echo C_TYPE ?></td>
 							<td nowrap>
 								<select dir="ltr" name="Item_PropertyType" id="Item_PropertyType" >
 									<option value=0>-</option>
@@ -353,7 +353,7 @@ else if(isset($_REQUEST["DataProp"]))
 						</tr>
 						<tr>
 							<td width="1%" nowrap>
-								<a href='#' onclick='javascript: document.getElementById("DomainTR").style.display="";'>حوزه</a>
+								<a href='#' onclick='javascript: document.getElementById("DomainTR").style.display="";'><? echo C_Area ?></a>
 							</td>
 							<td nowrap>
 								<? 
@@ -374,7 +374,7 @@ else if(isset($_REQUEST["DataProp"]))
 
 						<tr>
 							<td width="1%" nowrap>
-								<a href='#' onclick='javascript: document.getElementById("RangeTR").style.display="";'>بازه</a>
+								<a href='#' onclick='javascript: document.getElementById("RangeTR").style.display="";'><? echo C_RANGE ?></a>
 							</td>
 							<td nowrap>
 								<? 
@@ -396,7 +396,7 @@ else if(isset($_REQUEST["DataProp"]))
 							</td>
 						</tr>
 						<tr>
-							<td width="1%" nowrap>معکوس</td>
+							<td width="1%" nowrap><? echo C_REVERSE ?></td>
 							<td nowrap>
 								<input type="text" dir=ltr name="Item_inverseOf" id="Item_inverseOf" maxlength="245" size="40" required>
 								<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_inverseOf&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
@@ -415,13 +415,13 @@ else if(isset($_REQUEST["DataProp"]))
 						$RelationList = GetAllPossibleLinks($_REQUEST["UpdateID"], $_REQUEST["OntologyID"]); 
 						echo "<tr>";
 						echo "<td colspan=2>";
-						echo "<b>تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت: <br></b>";
+						echo "<b>".C_SPECIFY_VALID_RELATIONSHIPS.": <br></b>";
 						echo $RelationList;
 						echo "</td>";
 						echo "</tr>";
 						?>
 						<tr>
-							<td>مقادیر</td>
+							<td><? echo C_VALUES ?></td>
 							<td>
 								<a href='ManageOntologyPropertyPermittedValues.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&OntologyPropertyID=<? echo $_REQUEST["UpdateID"] ?>'><? echo C_EDIT ?></a>
 								<br>
@@ -444,7 +444,7 @@ else if(isset($_REQUEST["DataProp"]))
 						</tr>
 
 						<tr>
-							<td nowrap>حاصل ادغام: </td>
+							<td nowrap><? echo C_Merge_result ?>: </td>
 							<td>
 								<table dir=ltr>
 									<?
@@ -475,7 +475,7 @@ else if(isset($_REQUEST["DataProp"]))
 							<input type="button" class="btn btn-info" onclick="javascript: document.location='ManageOntologyProperties.php?OntologyID=<?php echo $_REQUEST["OntologyID"]; ?>'" value="<? echo C_NEW; ?>">
 							<input type="button" class="btn btn-warning" onclick="javascript: window.close();" value="<? echo C_CLOSE ?>">
 							<? if(isset($_REQUEST["UpdateID"])) { ?>
-								<input type="button" class="btn btn-danger" onclick="javascript: if(confirm('برای حذف مطمئن هستید؟')) document.location='ManageOntologyProperties.php?RemovePropertyID=<?php echo $_REQUEST["UpdateID"]; ?>';" value="<? echo C_REMOVE; ?>">
+								<input type="button" class="btn btn-danger" onclick="javascript: if(confirm('<? echo C_ARE_YOU_SURE_TO_REMOVE; ?>?')) document.location='ManageOntologyProperties.php?RemovePropertyID=<?php echo $_REQUEST["UpdateID"]; ?>';" value="<? echo C_REMOVE; ?>">
 							<? } ?>
 						</td>
 					</tr>
@@ -528,7 +528,7 @@ else if(isset($_REQUEST["DataProp"]))
 						<td width="1%"><? echo C_ROW; ?></td>
 						<td width="2%"><? echo C_EDIT; ?></td>
 						<td><? echo C_TITLE; ?></td>
-						<td>حوزه و برد</td>
+						<td><? echo C_DOMAIN_AND_RANGE; ?></td>
 						<td nowrap><? echo C_LABELS ?></td>
 					</tr>
 				</thead>
@@ -552,9 +552,9 @@ else if(isset($_REQUEST["DataProp"]))
 					echo "	<td><a target=_blank href=\"ManageOntologyProperties.php?UpdateID=".$res[$k]->OntologyPropertyID."&OntologyID=".$_REQUEST["OntologyID"]."&DoNotShowList=1\"><i class='fas fa-edit' title='".C_EDIT."'></i></a></td>";
 					echo "	<td dir=ltr>";
 					if($res[$k]->IsFunctional_Desc=="بلی")
-					  echo "<i class='fas fa-calendar-times' title='خصوصیت functional است'></i>";
-					if($res[$k]->PropertyType_Desc=="DATATYPE") echo "<i class='fas fa-link' title='خصوصیت شیء'></i>";
-					else echo "<i class='fas fa-tasks' title='خصوصیت داده'></i>";
+					  echo "<i class='fas fa-calendar-times' title='".C_PROPERTY_IS_FUNCTIONAL."'></i>";
+					if($res[$k]->PropertyType_Desc=="DATATYPE") echo "<i class='fas fa-link' title='".C_THING_FEATURES."'></i>";
+					else echo "<i class='fas fa-tasks' title='".C_DATA_FEATURES."'></i>";
 
 					echo htmlentities($res[$k]->PropertyTitle, ENT_QUOTES, 'UTF-8');
 					echo "<br>";
@@ -582,7 +582,7 @@ else if(isset($_REQUEST["DataProp"]))
 						echo "<br><font color=red>".$l[$i]."</font>";
 					}
 					if($res[$k]->PropertyType_Desc=="OBJECT" && NumberOfValidRelation($res[$k]->OntologyPropertyID)==0)
-						echo "<br><b><font color=red>روابط مجاز حوزه و برد تعریف نشده</font></b>";
+						echo "<br><b><font color=red>".C_PERMITTED_DOMAIN_AND_RANGE_RELATIONSHIPS_ARE_NOT_DEFINED."</font></b>";
 					echo "</td>";
 					//echo "	<td dir=ltr>".htmlentities($res[$k]->inverseOf, ENT_QUOTES, 'UTF-8')."</td>";
 					echo "<td nowrap>";
@@ -602,8 +602,8 @@ else if(isset($_REQUEST["DataProp"]))
 						<td colspan="10" align="center">
 							<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE; ?>">
 							<input type="submit" class="btn btn-success"  value="<? echo C_SAVE; ?>">
-							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassRelations.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="روابط مشابه">
-							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="خصوصیات تکراری">
+							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassRelations.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="<? echo C_SIMILAR_RELATIONSHIPS; ?>">
+							<input type="button" class="btn btn-info" onclick="javascript: window.open('ShowSimilarClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"]; ?>');" value="<? echo C_DUPLICATE_PROPERTIES; ?>">
 						</td>
 					</tr>
 				</tfoot>

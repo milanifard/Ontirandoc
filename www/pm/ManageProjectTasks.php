@@ -6,9 +6,9 @@
 */
 include("header.inc.php");
 include("../sharedClasses/SharedClass.class.php");
-include("classes/ProjectTasks.class.php");				// Need to change bilingual data
-include("classes/ProjectTasksSecurity.class.php");		// No need to change
-include("classes/ProjectTaskAssignedUsers.class.php");	// Need to change bilingual data
+include("classes/ProjectTasks.class.php");
+include("classes/ProjectTasksSecurity.class.php");
+include("classes/ProjectTaskAssignedUsers.class.php");
 
 $mysql = pdodb::getInstance();
 $query = " select  person_type,PersonID 
@@ -93,9 +93,9 @@ function PutHeader($Title, $OrderBy)
 		if ($OrderBy == $OrderByFieldName)
 		{
 			if ($NextOrderType == 'DESC')
-				$Output .= "<i class='fas fa-sort-amount-down' title='ترتیب فعلی بر اساس این فیلد نزولی است'></i> ";
+				$Output .= "<i class='fas fa-sort-amount-down' title='".C_SORT_TYPE_DESC."'></i> ";
 			else
-				$Output .= "<i class='fas fa-sort-amount-down-alt' title='ترتیب فعلی بر اساس این فیلد صعودی است'></i> ";
+				$Output .= "<i class='fas fa-sort-amount-down-alt' title='".C_SORT_TYPE_ASC."'></i> ";
 		}
 		
 		$Output .= "</a>";
@@ -131,47 +131,6 @@ if(isset($_REQUEST["SearchAction"]))
 ?>
 <META http-equiv=Content-Type content="text/html; charset=UTF-8" >
 <link rel="stylesheet" type="text/css" href="/sharedClasses/resources/css/ext-all.css" />
-<!--style>
-td{
-	height : 26px;
-	padding-right : 4px;
-	vertical-align: middle;
-}
-div.pagination 
-{
-	padding: 3px;
-	margin: 3px;
-	text-align:center;		
-}
-div.pagination a
-{
-	padding: 2px 5px 2px 5px; 
-	margin: 2px;
-	border: 1px solid #000000;
-	text-decoration: none; /* no underline */
-	color: #000000;
-}
-div.pagination a:hover, div.meneame a:active 
-{
-	border: 1px solid #000;
-	background-image:none;
-	background-color:#0061de;
-	color: #fff;
-}
-div.pagination span.current 
-{
-	margin-right:3px;
-	padding:2px 6px;		
-	font-weight: bold;
-	color: #ff0084;
-} 
-div.pagination span.disabled
-{
-	margin-right:3px;
-	padding:2px 6px;
-	color: #adaaad;
-}
-</style!-->
 
 <body dir='<?php echo (UI_LANGUAGE=="FA")?"rtl":"ltr" ?>'>
 	<div class="row">
@@ -201,7 +160,7 @@ div.pagination span.disabled
 							</tr>
 								<input type="hidden" name="Item_ProjectTaskTypeID" id="Item_ProjectTaskTypeID" value="0">
 							<tr>
-								<td width="1%" nowrap>کد کار</td>
+								<td width="1%" nowrap><? echo C_WORK_CODE ?></td>
 								<td nowrap>
 								<input type="text" name="Item_ProjectTaskID" id="Item_ProjectTaskID" required>
 								</td>
@@ -258,7 +217,7 @@ div.pagination span.disabled
 										<option value='DONE'><? echo C_STATUS_DONE ?></option>
 										<option value='SUSPENDED'><? echo C_STATUS_SUSPENDED ?></option>
 										<option value='REPLYED'><? echo C_STATUS_REPLYED ?></option>
-										<option value='READY_FOR_TEST'>آماده برای کنترل</option>
+										<option value='READY_FOR_TEST'><? echo C_READY_FOR_CONTROL ?></option>
 									</select>
 								</td>
 							</tr>
@@ -279,30 +238,30 @@ div.pagination span.disabled
 								</td>
 							</tr>
 							<tr>
-								<td title="در نظر گرفتن بازه‌ی زمانی ایجاد کار">
-									<input type="checkbox" name="ConsiderDateRange" <?= (isset($_POST["ConsiderDateRange"]) || !isset($_REQUEST["SearchAction"]))?  "checked" : ""; ?>>بازه ایجاد:
+								<td title="<? echo C_CONSIDER_WORK_CREATION_TIME_RANGE ?>">
+									<input type="checkbox" name="ConsiderDateRange" <?= (isset($_POST["ConsiderDateRange"]) || !isset($_REQUEST["SearchAction"]))?  "checked" : ""; ?>><? echo C_CREATION_TIME_RANGE ?>:
 								</td>
 								<td>
-									<span>از</span>
+									<span><? echo C_FROM ?></span>
 									<input type="number" name="FromDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ShamsiFromDate)[2] ?>" required> /
 									<input type="number" name="FromMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ShamsiFromDate)[1] ?>" required> /
 									<input type="number" name="FromYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ShamsiFromDate)[0] ?>" required>
-									<span>تا</span>
+									<span><? echo C_TO ?></span>
 									<input type="number" name="ToDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ShamsiToDate)[2] ?>" required> /
 									<input type="number" name="ToMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ShamsiToDate)[1] ?>" required> /
 									<input type="number" name="ToYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ShamsiToDate)[0] ?>" required>
 								</td>
 							</tr>
 							<tr>
-								<td title="در نظر گرفتن بازه‌ی زمانی ایجاد اقدام">
-									<input type="checkbox" name="ConsiderActivityDateRange" <?= isset($_POST["ConsiderActivityDateRange"])?  "checked" : ""; ?>>بازه اقدام:
+								<td title="<? echo C_CONSIDER_ACTION_CREATION_TIME_RANGE ?>">
+									<input type="checkbox" name="ConsiderActivityDateRange" <?= isset($_POST["ConsiderActivityDateRange"])?  "checked" : ""; ?>><? echo C_ACTION_TIME_RANGE ?>:
 								</td>
 								<td>
-									<span>از</span>
+									<span><? echo C_FROM ?></span>
 									<input type="number" name="ActivityFromDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ActivityShamsiFromDate)[2] ?>" required> /
 									<input type="number" name="ActivityFromMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ActivityShamsiFromDate)[1] ?>" required> /
 									<input type="number" name="ActivityFromYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ActivityShamsiFromDate)[0] ?>" required>
-									<span>تا</span>
+									<span><? echo C_TO ?></span>
 									<input type="number" name="ActivityToDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ActivityShamsiToDate)[2] ?>" required> /
 									<input type="number" name="ActivityToMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ActivityShamsiToDate)[1] ?>" required> /
 									<input type="number" name="ActivityToYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ActivityShamsiToDate)[0] ?>" required>
@@ -341,23 +300,23 @@ div.pagination span.disabled
 				<br>
 				<table class="table table-bordered table-sm table-striped">
 					<tr><td colspan="13">
-						نتایج جستجو
+						<? echo C_SEARCH_RESULTS ?>
 					</td></tr>
 					<thead class="table-info">
 						<tr>
 							<td width="1%" nowrap><?= PutHeader(' ', '') ?></td>
 							<td width="1%" nowrap><?= PutHeader(C_ROW, '') ?></td>
 							<td width="2%" nowrap><?= PutHeader(C_EDIT, '') ?></td>
-							<td width=8% nowrap><?= PutHeader('پروژه مربوطه', 'trim(p1_title)') ?></td>
-							<td width=1% nowrap><?= PutHeader('اولویت', 'TaskPeriority') ?></td>
+							<td width=8% nowrap><?= PutHeader(C_RELATED_PROJECT, 'trim(p1_title)') ?></td>
+							<td width=1% nowrap><?= PutHeader(C_PRIORITY, 'TaskPeriority') ?></td>
 							<td nowrap><?= PutHeader(C_TITLE, 'trim(ProjectTasks.title)') ?></td>
-							<td width=4% nowrap><?= PutHeader('وضعیت', 'TaskStatus') ?></td>
-							<td width=6% nowrap><?= PutHeader('ایجاد کننده', 'persons5_FullName') ?></td>
-							<td width=5% nowrap><?= PutHeader('زمان ایجاد', 'ProjectTasks.CreateDate') ?></td>
-							<td width=5% nowrap><?= PutHeader('زمان آخرین اقدام', 'LastActivityDate') ?></td>
-							<td width=1% nowrap>مجریان</a></td>
-							<td width=1% nowrap><?= PutHeader('زمان انجام', 'DoneDate') ?></td>
-							<td width=1% nowrap><?= PutHeader('زمان مصرفی', 'ActivityLength') ?></td>
+							<td width=4% nowrap><?= PutHeader(C_STATUS, 'TaskStatus') ?></td>
+							<td width=6% nowrap><?= PutHeader(C_CREATOR, 'persons5_FullName') ?></td>
+							<td width=5% nowrap><?= PutHeader(CREATE_TIM_M, 'ProjectTasks.CreateDate') ?></td>
+							<td width=5% nowrap><?= PutHeader(C_LAST_ACTION_TIME, 'LastActivityDate') ?></td>
+							<td width=1% nowrap><? echo C_EXECUTORS ?></a></td>
+							<td width=1% nowrap><?= PutHeader(C_TIME_TO_DO, 'DoneDate') ?></td>
+							<td width=1% nowrap><?= PutHeader(C_USAGE_TIME, 'ActivityLength') ?></td>
 						</tr>
 					</thead>
 					<?
@@ -426,7 +385,7 @@ div.pagination span.disabled
 						<tr class="table-info">
 							<td colspan="13" align="center">
 								<input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE; ?>">
-								<input type="button" class="btn btn-success" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+								<input type="button" class="btn btn-success" onclick='javascript: NewRecordForm.submit();' value='<? echo C_CREATE; ?>'>
 							</td>
 						</tr>
 					</tfoot>

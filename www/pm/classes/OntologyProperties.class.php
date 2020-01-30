@@ -357,7 +357,7 @@ class manage_OntologyProperties
 		$ret .= "<td width=\"50%\" ";
 		if($CurrentPageName=="ManageOntologyPropertyLabels")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageOntologyPropertyLabels.php?OntologyPropertyID=".$RecID."'>برچسبهای خصوصیات</a></td>";
+		$ret .= "><a href='ManageOntologyPropertyLabels.php?OntologyPropertyID=".$RecID."'>".C_PROPERTIES_LABELS."</a></td>";
 		$ret .= "</table>";
 		return $ret;
 	}
