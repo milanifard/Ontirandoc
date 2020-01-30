@@ -914,6 +914,37 @@ if(UI_LANGUAGE=="EN") {
     define("C_NEW","New");
     define("C_CLOSE","Close");
 	
+	
+	
+	 //ManageOntologyClassProperties.php - by Amin Bigdeli
+    define("C_DATA_STORED","Data has been stored.");
+    define("C_ADD_FEATURE_TO_ONTOLOGY","Add feature to ontology");
+    define("C_FEATURE_TYPE","feature type");
+    define("C_DATATYPE_FEATURE","data feature");
+    define("C_OBJECT_RELATION","realtion of object");
+    define("C_FIRST_PART_RELATION","first part of relation");
+    define("C_RELATION","realtion :");
+    define("C_SECOND_PART_RELATION","second part of relation");
+    define("C_FEATURE","feature");
+    define("C_NEW","new");
+    define("C_CLOSE","close");
+    define("C_ARE_YOU_SURE","Are you sure!?");
+
+    //ManageOntologyPropertyPermittedValues.php - by Amin Bigdeli
+    define("C_DATA_STORED","Data has been stored.");
+    define("C_CRAETE_EDIT_FEATURE_POSSIBLE_VALUES","Create / Edit feature possible values");
+    define("C_POSSIBLE_VALUE","possible value");
+    define("C_FEATURE_POSSIABLE_VALUES","feature possiable values");
+    define("C_ROW","row");
+    define("C_EDIT","edit");
+    define("C_NEW","new");
+    define("C_SAVE","save");
+    define("C_VALUE","value");
+    define("C_CLOSE","close");
+    define("C_BACK","back");
+    define("C_REMOVE","remove");
+    define("C_ARE_YOU_SURE","Are you sure?!");
+	
 	/*==== JavadZamani ====*/
 	define2("C_PERSONEL_CONTRACT","Personnel Contract");
 	define2("C_CONTRACT_DESCRIPTION","Contract Description");
@@ -950,6 +981,7 @@ if(UI_LANGUAGE=="EN") {
 	define2("C_PROPERTIES_LABELS","Properties' Labels");
 	/*==== JavadZamani ====*/
     
+	
 }
 else
 {
@@ -1852,6 +1884,35 @@ else
     define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
     define("C_NEW","جدید");
     define("C_CLOSE","بستن");
+	
+	    //ManageOntologyClassProperties.php - by Amin Bigdeli
+    define("C_DATA_STORED","داده ذخیره شد");
+    define("C_ADD_FEATURE_TO_ONTOLOGY","افزودن خصوصیت به هستان نگار");
+    define("C_FEATURE_TYPE","نوع حصوصیت");
+    define("C_DATATYPE_FEATURE","خصوصیت داده");
+    define("C_OBJECT_RELATION","رابطه شی");
+    define("C_FIRST_PART_RELATION","طرف اول رابطه: ");
+    define("C_RELATION","رابطه: ");
+    define("C_SECOND_PART_RELATION","طرف دوم رابطه: ");
+    define("C_FEATURE","خصوصیت");
+    define("C_NEW","جدید");
+    define("C_CLOSE","بستن");
+    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
+
+    //ManageOntologyPropertyPermittedValues.php - by Amin Bigdeli
+    define("C_DATA_STORED","داده ذخیره شد");
+    define("C_CRAETE_EDIT_FEATURE_POSSIBLE_FEATURES","ایجاد/ویرایش مقادیر مجاز خصوصیت");
+    define("C_POSSIBLE_VALUE","مقدار مجاز");
+    define("C_FEATURE_POSSIABLE_VALUES","مقادیر مجاز خصوصیت");
+    define("C_ROW","ردیف");
+    define("C_EDIT","ویرایش");
+    define("C_NEW","جدید");
+    define("C_SAVE","دخیره");
+    define("C_VALUE","مقدار");
+    define("C_CLOSE","بستن");
+    define("C_BACK","بازگشت");
+    define("C_REMOVE","حذف");
+    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
 	
 	/*==== JavadZamani ====*/
 	define2("C_PERSONEL_CONTRACT","قرارداد پرسنل");
