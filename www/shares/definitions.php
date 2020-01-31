@@ -914,6 +914,13 @@ if(UI_LANGUAGE=="EN") {
     define2('C_STATEMENT_TO_GO_TO_THE_NEXT_STATE','statement to go to the next state');
     define2('C_FIELD_NAME','field name');
     define2('C_STATEMENT', 'term');
+    define2('C_EQUAL', 'equal');
+    define2('C_CONTAIN', 'contain');
+    define2('C_GREATER_THAN', 'greater than');
+    define2('C_LESS_THAN', 'less than');
+    define2('C_GREATER_THAN_OR_EQUAL', 'greater than or equal');
+    define2('C_LESS_THAN_OR_EQUAL', 'less than or eqaul');
+    define2('C_NOT_EQUAL', 'not equal');
     /**
     * END
     **/
@@ -1844,6 +1851,14 @@ else
     define2('C_STATEMENT_TO_GO_TO_THE_NEXT_STATE','تعریف شرط برای رفتن به مرحله بعد');
     define2('C_FIELD_NAME','نام فیلد');
     define2('C_STATEMENT', 'شرط');
+    define2('C_EQUAL', 'مساوی');
+    define2('C_CONTAIN', 'شامل');
+    define2('C_GREATER_THAN', 'بزرگتر');
+    define2('C_LESS_THAN', 'کوچکتر');
+    define2('C_GREATER_THAN_OR_EQUAL', 'بزرگتر یا برابر');
+    define2('C_LESS_THAN_OR_EQUAL', 'کوچکتر یا برابر');
+    define2('C_NOT_EQUAL', 'مخالف');
+    
     /**
     * END
     **/
