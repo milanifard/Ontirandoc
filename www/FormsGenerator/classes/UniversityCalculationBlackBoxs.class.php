@@ -71,26 +71,9 @@ class be_UniversityCalculationBlackBoxs
 		$res = $mysql->ExecuteStatement (array ($RecID));
 		if($rec=$res->fetch())
 		{
-			$this->UniversityCalculationBlackBoxID=$rec["UniversityCalculationBlackBoxID"];
-			$this->title=$rec["title"];
-			$this->IsEducational=$rec["IsEducational"];
-			$this->IsEducational_Desc=$rec["IsEducational_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->IsResearch=$rec["IsResearch"];
-			$this->IsResearch_Desc=$rec["IsResearch_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->IsOfficial=$rec["IsOfficial"];
-			$this->IsOfficial_Desc=$rec["IsOfficial_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->IsFinancial=$rec["IsFinancial"];
-			$this->IsFinancial_Desc=$rec["IsFinancial_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->IsPersonal=$rec["IsPersonal"];
-			$this->IsPersonal_Desc=$rec["IsPersonal_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->IsOther=$rec["IsOther"];
-			$this->IsOther_Desc=$rec["IsOther_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->Output=$rec["Output"];
-			$this->Output_Desc=$rec["f8_title"]; // محاسبه از روی جدول وابسته
-			$this->CalculationType=$rec["CalculationType"];
-			$this->CalculationType_Desc=$rec["CalculationType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->CalculationQuery=$rec["CalculationQuery"];
-			$this->CodeFileName=$rec["CodeFileName"];
+			foreach($res as $key => $value){
+			$this->$key = $value;
+			}
 		}
 	}
 }
@@ -103,7 +86,7 @@ class manage_UniversityCalculationBlackBoxs
 	{
 		$mysql = dbclass::getInstance();
 		$query = "select count(UniversityCalculationBlackBoxID) as TotalCount from formsgenerator.UniversityCalculationBlackBoxs";
-		if($WhereCondition!="")
+		if(!empty($WhereCondition))
 		{
 			$query .= " where ".$WhereCondition;
 		}
@@ -140,7 +123,6 @@ class manage_UniversityCalculationBlackBoxs
 	* @return کد داده اضافه شده	*/
 	static function Add($title, $IsEducational, $IsResearch, $IsOfficial, $IsFinancial, $IsPersonal, $IsOther, $Output, $CalculationType, $CalculationQuery, $CodeFileName)
 	{
-		$k=0;
 		$mysql = pdodb::getInstance();
 		$query = "insert into formsgenerator.UniversityCalculationBlackBoxs (";
 		$query .= " title";
@@ -157,18 +139,18 @@ class manage_UniversityCalculationBlackBoxs
 		$query .= ") values (";
 		$query .= "? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ";
 		$query .= ")";
-		$ValueListArray = array();
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $IsEducational); 
-		array_push($ValueListArray, $IsResearch); 
-		array_push($ValueListArray, $IsOfficial); 
-		array_push($ValueListArray, $IsFinancial); 
-		array_push($ValueListArray, $IsPersonal); 
-		array_push($ValueListArray, $IsOther); 
-		array_push($ValueListArray, $Output); 
-		array_push($ValueListArray, $CalculationType); 
-		array_push($ValueListArray, $CalculationQuery); 
-		array_push($ValueListArray, $CodeFileName); 
+		$ValueListArray = [$title, 
+											$IsEducational, 
+											$IsResearch, 
+											$IsOfficial, 
+											$IsFinancial, 
+											$IsPersonal, 
+											$IsOther, 
+											$Output, 
+											$CalculationType, 
+											$CalculationQuery, 
+											$CodeFileName
+											];
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_UniversityCalculationBlackBoxs::GetLastID();
@@ -207,19 +189,19 @@ class manage_UniversityCalculationBlackBoxs
 			$query .= ", CalculationQuery=? ";
 			$query .= ", CodeFileName=? ";
 		$query .= " where UniversityCalculationBlackBoxID=?";
-		$ValueListArray = array();
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $IsEducational); 
-		array_push($ValueListArray, $IsResearch); 
-		array_push($ValueListArray, $IsOfficial); 
-		array_push($ValueListArray, $IsFinancial); 
-		array_push($ValueListArray, $IsPersonal); 
-		array_push($ValueListArray, $IsOther); 
-		array_push($ValueListArray, $Output); 
-		array_push($ValueListArray, $CalculationType); 
-		array_push($ValueListArray, $CalculationQuery); 
-		array_push($ValueListArray, $CodeFileName); 
-		array_push($ValueListArray, $UpdateRecordID); 
+		$ValueListArray = [$title, 
+											$IsEducational, 
+											$IsResearch, 
+											$IsOfficial, 
+											$IsFinancial, 
+											$IsPersonal, 
+											$IsOther, 
+											$Output, 
+											$CalculationType, 
+											$CalculationQuery, 
+											$CodeFileName,
+											$UpdateRecordID
+											];
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در جعبه سیاه های محاسباتی - موارد تغییر داده شده: ".$LogDesc);
@@ -232,10 +214,10 @@ class manage_UniversityCalculationBlackBoxs
 		$mysql = pdodb::getInstance();
 		$query = "delete from formsgenerator.UniversityCalculationBlackBoxs where UniversityCalculationBlackBoxID=?";
 		$mysql->Prepare($query);
-		$mysql->ExecuteStatement(array($RemoveRecordID));
+		$mysql->ExecuteStatement([$RemoveRecordID]);
 		$query = "delete from formsgenerator.UniversityBlackBoxesParameters where UniversityCalculationBlackBoxID=?";
 		$mysql->Prepare($query);
-		$mysql->ExecuteStatement(array($RemoveRecordID));
+		$mysql->ExecuteStatement([$RemoveRecordID]);
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از جعبه سیاه های محاسباتی");
 	}
 	static function GetList($FromRec, $NumberOfRec, $OrderByFieldName, $OrderType)
@@ -247,7 +229,6 @@ class manage_UniversityCalculationBlackBoxs
 		if(strtoupper($OrderType)!="ASC" && strtoupper($OrderType)!="DESC")
 			$OrderType = "";
 		$mysql = pdodb::getInstance();
-		$k=0;
 		$ret = array();
 		$query = "select UniversityCalculationBlackBoxs.UniversityCalculationBlackBoxID
 				,UniversityCalculationBlackBoxs.title
@@ -295,31 +276,14 @@ class manage_UniversityCalculationBlackBoxs
 		$query .= " limit ".$FromRec.",".$NumberOfRec." ";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array());
-		$i=0;
 		while($rec=$res->fetch())
 		{
-			$ret[$k] = new be_UniversityCalculationBlackBoxs();
-			$ret[$k]->UniversityCalculationBlackBoxID=$rec["UniversityCalculationBlackBoxID"];
-			$ret[$k]->title=$rec["title"];
-			$ret[$k]->IsEducational=$rec["IsEducational"];
-			$ret[$k]->IsEducational_Desc=$rec["IsEducational_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->IsResearch=$rec["IsResearch"];
-			$ret[$k]->IsResearch_Desc=$rec["IsResearch_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->IsOfficial=$rec["IsOfficial"];
-			$ret[$k]->IsOfficial_Desc=$rec["IsOfficial_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->IsFinancial=$rec["IsFinancial"];
-			$ret[$k]->IsFinancial_Desc=$rec["IsFinancial_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->IsPersonal=$rec["IsPersonal"];
-			$ret[$k]->IsPersonal_Desc=$rec["IsPersonal_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->IsOther=$rec["IsOther"];
-			$ret[$k]->IsOther_Desc=$rec["IsOther_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->Output=$rec["Output"];
-			$ret[$k]->Output_Desc=$rec["f8_title"]; // محاسبه از روی جدول وابسته
-			$ret[$k]->CalculationType=$rec["CalculationType"];
-			$ret[$k]->CalculationType_Desc=$rec["CalculationType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->CalculationQuery=$rec["CalculationQuery"];
-			$ret[$k]->CodeFileName=$rec["CodeFileName"];
-			$k++;
+			$item = new be_UniversityCalculationBlackBoxs();
+			foreach($rec as $key=>$value){
+				$item->$key = $value;
+			}
+			$item->Output_Desc=$rec["f8_title"]; // محاسبه از روی جدول وابسته
+			array_push($ret, $item);
 		}
 		return $ret;
 	}
@@ -345,69 +309,69 @@ class manage_UniversityCalculationBlackBoxs
 		$obj->LoadDataFromDatabase($CurRecID);
 		if($title!=$obj->title)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($IsEducational!=$obj->IsEducational)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "آموزشی؟";
+			$ret .= C_EDUCATIONAL ."?";
 		}
 		if($IsResearch!=$obj->IsResearch)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "پژوهشی؟";
+			$ret .= C_RESEARCH ."?";
 		}
 		if($IsOfficial!=$obj->IsOfficial)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "اداری؟";
+			$ret .= C_OFFICIAL ."?";
 		}
 		if($IsFinancial!=$obj->IsFinancial)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "مالی؟";
+			$ret .= C_FINANCIAL . "?";
 		}
 		if($IsPersonal!=$obj->IsPersonal)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "شخصی؟";
+			$ret .= C_PERSONAL . "?";
 		}
 		if($IsOther!=$obj->IsOther)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "سایر؟";
+			$ret .= C_OTHER . "?";
 		}
 		if($Output!=$obj->Output)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع خروجی (مشخصه)";
+			$ret .= C_OUTPUT_TYPE . "?";
 		}
 		if($CalculationType!=$obj->CalculationType)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع محاسبه";
+			$ret .= C_CALCULATION_TYPE . "?";
 		}
 		if($CalculationQuery!=$obj->CalculationQuery)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "پرس و جوی محاسبه";
+			$ret .= C_CALCULATION_QUERY . "?";
 		}
 		if($CodeFileName!=$obj->CodeFileName)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نام فایل محتوی کد محاسبه";
+			$ret .= C_CODE_FILE_NAME;
 		}
 		return $ret;
 	}

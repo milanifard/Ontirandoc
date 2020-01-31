@@ -23,8 +23,7 @@ class be_TermReferenceContent
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
-		if($rec=$res->fetch())
-		{
+		if($rec=$res->fetch()) {
 			$this->TermReferenceContentID=$rec["TermReferenceContentID"];
 			$this->TermReferenceID=$rec["TermReferenceID"];
 			$this->PageNum=$rec["PageNum"];
@@ -44,33 +43,36 @@ class manage_TermReferenceContent
 		$query .= " where TermReferenceID=? and PageNum=?";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement($TermReferenceID, $PageNum);
-		if($rec = $res->fetch())
-		  return $rec["content"];
-		return "";
+		if($rec = $res->fetch()){
+			return $rec["content"];
+		} else {
+			return "";
+		}
 	}
 	
 	static function GetCount($TermReferenceID)
 	{
 		$mysql = dbclass::getInstance();
 		$query = "select count(TermReferenceContentID) as TotalCount from projectmanagement.TermReferenceContent";
-			$query .= " where TermReferenceID='".$TermReferenceID."'";
+		$query .= " where TermReferenceID='".$TermReferenceID."'";
 		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
-		{
+		if($rec=$res->FetchRow()) {
 			return $rec["TotalCount"];
+		} else {
+			return 0;
 		}
-		return 0;
 	}
 	static function GetLastID()
 	{
 		$mysql = dbclass::getInstance();
 		$query = "select max(TermReferenceContentID) as MaxID from projectmanagement.TermReferenceContent";
 		$res = $mysql->Execute($query);
-		if($rec=$res->FetchRow())
-		{
+		if($rec=$res->FetchRow()) {
 			return $rec["MaxID"];
+		} else {
+			return -1;
 		}
-		return -1;
+		
 	}
 	/**
 	* @param $TermReferenceID: 
@@ -95,7 +97,10 @@ class manage_TermReferenceContent
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_TermReferenceContent::GetLastID();
-		$mysql->audit("ثبت داده جدید در محتوای پاراگرافهای مراجع با کد ".$LastID);
+		
+		// Farsi: ثبت داده جدید در محتوای پاراگرافهای مراجع با کد
+		$mysql->audit("Submit new data in content of reference paragprahs with code".$LastID);
+
 		return $LastID;
 	}
 	/**
@@ -109,8 +114,8 @@ class manage_TermReferenceContent
 		$LogDesc = manage_TermReferenceContent::ComparePassedDataWithDB($UpdateRecordID, $PageNum, $content);
 		$mysql = pdodb::getInstance();
 		$query = "update projectmanagement.TermReferenceContent set ";
-			$query .= " PageNum=? ";
-			$query .= ", content=? ";
+		$query .= " PageNum=? ";
+		$query .= ", content=? ";
 		$query .= " where TermReferenceContentID=?";
 		$ValueListArray = array();
 		array_push($ValueListArray, $PageNum); 
@@ -118,7 +123,11 @@ class manage_TermReferenceContent
 		array_push($ValueListArray, $UpdateRecordID); 
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
-		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در محتوای پاراگرافهای مراجع - موارد تغییر داده شده: ".$LogDesc);
+		/*
+		Farsi 1: بروز رسانی داده با شماره شناسایی 
+		Farsi 2:  در محتوای پاراگرافهای مراجع - موارد تغییر داده شده
+		*/
+		$mysql->audit("Update data with ID".$UpdateRecordID.": In content of reference paraghraphs - Modified".$LogDesc);
 	}
 	/**
 	* @param $RemoveRecordID: کد رکوردی که باید حذف شود
@@ -129,14 +138,22 @@ class manage_TermReferenceContent
 		$query = "delete from projectmanagement.TermReferenceContent where TermReferenceContentID=?";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($RemoveRecordID));
-		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از محتوای پاراگرافهای مراجع");
+		/*
+		Farsi 1: حذف داده با شماره شناسایی
+		Farsi 2: از محتوای پاراگرافهای مراجع 
+		*/
+		$mysql->audit("Delete data with ID".$RemoveRecordID."From content of reference paraghraphs");
 	}
 	static function GetList($TermReferenceID, $FromRec, $NumberOfRec)
 	{
-		if(!is_numeric($FromRec))
-			$FromRec=0;
-		if(!is_numeric($NumberOfRec))
-			$NumberOfRec=0;
+		if(!is_numeric($FromRec)){
+			$FromRec = 0;
+		} 
+
+		if(!is_numeric($NumberOfRec)) {
+			$NumberOfRec = 0;
+		}
+			
 		$mysql = pdodb::getInstance();
 		$k=0;
 		$ret = array();
@@ -149,8 +166,7 @@ class manage_TermReferenceContent
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($TermReferenceID));
 		$i=0;
-		while($rec=$res->fetch())
-		{
+		while($rec=$res->fetch()) {
 			$ret[$k] = new be_TermReferenceContent();
 			$ret[$k]->TermReferenceContentID=$rec["TermReferenceContentID"];
 			$ret[$k]->TermReferenceID=$rec["TermReferenceID"];
@@ -158,6 +174,7 @@ class manage_TermReferenceContent
 			$ret[$k]->content=$rec["content"];
 			$k++;
 		}
+
 		return $ret;
 	}
 	// داده های پاس شده را با محتویات ذخیره شده فعلی در دیتابیس مقایسه کرده و موارد تفاوت را در یک رشته بر می گرداند
@@ -171,19 +188,24 @@ class manage_TermReferenceContent
 		$ret = "";
 		$obj = new be_TermReferenceContent();
 		$obj->LoadDataFromDatabase($CurRecID);
-		if($PageNum!=$obj->PageNum)
-		{
-			if($ret!="")
+		if($PageNum!=$obj->PageNum) {
+			if($ret!=""){
 				$ret .= " - ";
-			$ret .= "صفحه";
+			}
+			// Farsi: صفحه
+			$ret .= "Page";
 		}
-		if($content!=$obj->content)
-		{
-			if($ret!="")
+
+		if($content!=$obj->content) {
+			if($ret!="") {
 				$ret .= " - ";
-			$ret .= "محتوا";
+			}
+			// Farsi: محتوا
+			$ret .= "Content";
+		} else {
+			return $ret;
 		}
-		return $ret;
+		
 	}
 }
 ?>

@@ -722,6 +722,26 @@ class SecurityManager
 				$mysql->Execute($query);
 		}
 	}
+
+	// prevent injection attacks
+	static function validateInput(array $input):array{
+		foreach($input as $key => $value){
+			$input[$key] = self::validateText($value);
+		}
+		return $input;
+	}
+
+	static function validateText($str):string{
+    if (is_object($str) || is_array($str)) {
+        return '';
+    }
+    $filtered = iconv('UTF-8//IGNORE', "ISO-8859-1//IGNORE", (string) $str); // check if chrarachters are in UTF-8
+		$filtered = htmlentities($filtered);
+		$filtered = htmlspecialchars($filtered);
+		$filtered = preg_replace('/[\r\n\t ]+/', ' ', $filtered); // ignore white spaces
+    $filtered = trim($filtered);
+    return $filtered;
+	}
 	
 }
 ?>

@@ -55,18 +55,9 @@ class be_UniversityEntities
 		$res = $mysql->ExecuteStatement (array ($RecID));
 		if($rec=$res->fetch())
 		{
-			$this->UniversityEntityID=$rec["UniversityEntityID"];
-			$this->title=$rec["title"];
-			$this->EntityType=$rec["EntityType"];
-			$this->EntityType_Desc=$rec["EntityType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->DataMask=$rec["DataMask"];
-			$this->MinValue=$rec["MinValue"];
-			$this->MaxValue=$rec["MaxValue"];
-			$this->DomainTableName=$rec["DomainTableName"];
-			$this->OwnerType=$rec["OwnerType"];
-			$this->OwnerType_Desc=$rec["OwnerType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$this->DataCategory=$rec["DataCategory"];
-			$this->DataCategory_Desc=$rec["DataCategory_Desc"];  // محاسبه بر اساس لیست ثابت
+			foreach($rec as $key => $value){
+				$this->$key = $value;
+			}
 		}
 	}
 }
@@ -79,7 +70,7 @@ class manage_UniversityEntities
 	{
 		$mysql = dbclass::getInstance();
 		$query = "select count(UniversityEntityID) as TotalCount from formsgenerator.UniversityEntities";
-		if($WhereCondition!="")
+		if(!empty($WhereCondition))
 		{
 			$query .= " where ".$WhereCondition;
 		}
@@ -127,15 +118,14 @@ class manage_UniversityEntities
 		$query .= ") values (";
 		$query .= "? , ? , ? , ? , ? , ? , ? , ? ";
 		$query .= ")";
-		$ValueListArray = array();
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $EntityType); 
-		array_push($ValueListArray, $DataMask); 
-		array_push($ValueListArray, $MinValue); 
-		array_push($ValueListArray, $MaxValue); 
-		array_push($ValueListArray, $DomainTableName); 
-		array_push($ValueListArray, $OwnerType); 
-		array_push($ValueListArray, $DataCategory); 
+		$ValueListArray = [$title, 
+											$EntityType, 
+											$DataMask, 
+											$MinValue, 
+											$MaxValue, 
+											$DomainTableName, 
+											$OwnerType, 
+											$DataCategory]; 
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_UniversityEntities::GetLastID();
@@ -168,16 +158,15 @@ class manage_UniversityEntities
 			$query .= ", OwnerType=? ";
 			$query .= ", DataCategory=? ";
 		$query .= " where UniversityEntityID=?";
-		$ValueListArray = array();
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $EntityType); 
-		array_push($ValueListArray, $DataMask); 
-		array_push($ValueListArray, $MinValue); 
-		array_push($ValueListArray, $MaxValue); 
-		array_push($ValueListArray, $DomainTableName); 
-		array_push($ValueListArray, $OwnerType); 
-		array_push($ValueListArray, $DataCategory); 
-		array_push($ValueListArray, $UpdateRecordID); 
+		$ValueListArray = [$title, 
+											$EntityType, 
+											$DataMask, 
+											$MinValue, 
+											$MaxValue, 
+											$DomainTableName, 
+											$OwnerType, 
+											$DataCategory, 
+											$UpdateRecordID]; 
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در مشخصه ها - موارد تغییر داده شده: ".$LogDesc);
@@ -202,7 +191,6 @@ class manage_UniversityEntities
 		if(strtoupper($OrderType)!="ASC" && strtoupper($OrderType)!="DESC")
 			$OrderType = "";
 		$mysql = pdodb::getInstance();
-		$k=0;
 		$ret = array();
 		$query = "select UniversityEntities.UniversityEntityID
 				,UniversityEntities.title
@@ -238,24 +226,14 @@ class manage_UniversityEntities
 		$query .= " order by ".$OrderByFieldName." ".$OrderType." ";
 		$query .= " limit ".$FromRec.",".$NumberOfRec." ";
 		$mysql->Prepare($query);
-		$res = $mysql->ExecuteStatement(array());
-		$i=0;
+		$res = $mysql->ExecuteStatement([]);
 		while($rec=$res->fetch())
 		{
-			$ret[$k] = new be_UniversityEntities();
-			$ret[$k]->UniversityEntityID=$rec["UniversityEntityID"];
-			$ret[$k]->title=$rec["title"];
-			$ret[$k]->EntityType=$rec["EntityType"];
-			$ret[$k]->EntityType_Desc=$rec["EntityType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->DataMask=$rec["DataMask"];
-			$ret[$k]->MinValue=$rec["MinValue"];
-			$ret[$k]->MaxValue=$rec["MaxValue"];
-			$ret[$k]->DomainTableName=$rec["DomainTableName"];
-			$ret[$k]->OwnerType=$rec["OwnerType"];
-			$ret[$k]->OwnerType_Desc=$rec["OwnerType_Desc"];  // محاسبه بر اساس لیست ثابت
-			$ret[$k]->DataCategory=$rec["DataCategory"];
-			$ret[$k]->DataCategory_Desc=$rec["DataCategory_Desc"];  // محاسبه بر اساس لیست ثابت
-			$k++;
+			$item = new be_UniversityEntities();
+			foreach($rec as $key=>$value){
+				$item->$key = $value;
+			}
+			array_push($ret, $item);
 		}
 		return $ret;
 	}
@@ -278,51 +256,51 @@ class manage_UniversityEntities
 		$obj->LoadDataFromDatabase($CurRecID);
 		if($title!=$obj->title)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($EntityType!=$obj->EntityType)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع داده";
+			$ret .= C_ENTITY_TYPE;
 		}
 		if($DataMask!=$obj->DataMask)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عبار منظم (کنترلی)";
+			$ret .= C_REGULAR_EXPRESSION;
 		}
 		if($MinValue!=$obj->MinValue)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "حداقل مقدار مجاز";
+			$ret .= C_MIN_VALID_VALUE;
 		}
 		if($MaxValue!=$obj->MaxValue)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "حداکثر مقدار مجاز";
+			$ret .= C_MAX_VALID_VALUE;
 		}
 		if($DomainTableName!=$obj->DomainTableName)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "جدولی که داده های این مشخصه فقط می توانند از آن باشند";
+			$ret .= C_DOMAIN_TABLE;
 		}
 		if($OwnerType!=$obj->OwnerType)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "مالک";
+			$ret .= C_OWNER;
 		}
 		if($DataCategory!=$obj->DataCategory)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "طبقه داده";
+			$ret .= C_CATEGORY;
 		}
 		return $ret;
 	}

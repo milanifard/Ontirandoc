@@ -1,30 +1,35 @@
 <?php
-	include "header.inc.php";
-	include "classes/OntologyClasses.class.php";
+	include_once("header.inc.php");
+	include_once("classes/OntologyClasses.class.php");
 
 	function ShowPropValues($OntologyID, $OntologyPropertyID)
 	{
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare("select * from projectmanagement.OntologyPropertyPermittedValues
-		where OntologyPropertyID=?");
+			where OntologyPropertyID=?");
 		$res = $mysql->ExecuteStatement(array($OntologyPropertyID));
 		$ValuesCount = $res->rowCount();
-		if($ValuesCount>0)
+		if($ValuesCount>0) {
 			echo "(";
+		}
+			
 		$i=0;
-		while($rec = $res->fetch())
-		{
+		while($rec = $res->fetch()) {
 			if($i>0)
 				echo ", ";
 			$i++;
 			echo $rec["PermittedValue"];
-echo "<a href='javascript: Select(\"DATA_PROP\", \"".$rec["OntologyPropertyPermittedValueID"]."\", \"".$rec["PermittedValue"]."\");'>";
+			echo "<a href='javascript: Select(\"DATA_PROP\", \""
+			.$rec["OntologyPropertyPermittedValueID"]
+			."\", \""
+			.$rec["PermittedValue"]."\");'>";
 			echo "<img src='images/down.gif' border=0>";
-			echo "</a> ";
+			echo "</a>";
 			
 		}
-		if($ValuesCount>0)
+		if($ValuesCount>0) {
 			echo ")";
+		}
 	}
 	
 	function ShowClassProp($OntologyID, $ClassTitle)
@@ -33,11 +38,9 @@ echo "<a href='javascript: Select(\"DATA_PROP\", \"".$rec["OntologyPropertyPermi
 		$res = manage_OntologyClasses::GetClassRelatedProperties($ClassTitle, $OntologyID);
 		$mysql = pdodb::getInstance();
 		
-		echo "<table>";
-		for($i=0; $i<count($res); $i++)
-		{
-			if($res[$i]["PropertyType"]=="DATATYPE")
-			{
+		echo "<table class=\"table table-dark\">";
+		for($i=0; $i<count($res); $i++) {
+			if($res[$i]["PropertyType"]=="DATATYPE") {
 				echo "<tr>";
 				echo "<td>";
 				echo " &nbsp;&nbsp;&nbsp;&nbsp; ";
@@ -51,36 +54,33 @@ echo "<a href='javascript: Select(\"DATA_PROP\", \"".$rec["OntologyPropertyPermi
 				ShowPropValues($OntologyID, $res[$i]["PropertyID"]);
 				echo "</td>";
 				echo "</tr>";
-			}
-			else
-			{
+			} else {
 				echo "<tr>";
 				echo "<td>";
 				echo " &nbsp;&nbsp;&nbsp;&nbsp; ";
 			
 				$mysql->Prepare("select * from projectmanagement.OntologyObjectPropertyRestriction 
-				JOIN projectmanagement.OntologyClassLabels on (OntologyClassID=DomainClassID) 
-where RangeClassID=? and OntologyObjectPropertyRestriction.OntologyPropertyID=? and RelationStatus='VALID'");
+					JOIN projectmanagement.OntologyClassLabels on (OntologyClassID=DomainClassID) 
+					where RangeClassID=? and OntologyObjectPropertyRestriction.OntologyPropertyID=? and RelationStatus='VALID'");
 				$domains = $mysql->ExecuteStatement(array($ClassID, $res[$i]["PropertyID"]));
-				while($drec = $domains->fetch())
-				{
-					echo $drec["label"]." ";
+				while($drec = $domains->fetch()){
+					echo $drec["label"] . " ";
 				}
+				
 				echo "<a target=_blank href='ManageOntologyProperties.php?UpdateID=".$res[$i]["PropertyID"]."&OntologyID=".$OntologyID."&DoNotShowList=1'>";
 				echo $res[$i]["PropertyLabel"];
 				echo "</a> ";
 
 				$mysql->Prepare("select * from projectmanagement.OntologyObjectPropertyRestriction 
-				JOIN projectmanagement.OntologyClassLabels on (OntologyClassID=RangeClassID) 
-where DomainClassID=? and OntologyObjectPropertyRestriction.OntologyPropertyID=? and RelationStatus='VALID'");
+					JOIN projectmanagement.OntologyClassLabels on (OntologyClassID=RangeClassID) 
+					where DomainClassID=? and OntologyObjectPropertyRestriction.OntologyPropertyID=? and RelationStatus='VALID'");
 				$domains = $mysql->ExecuteStatement(array($ClassID, $res[$i]["PropertyID"]));
-				while($drec = $domains->fetch())
-				{
+				while($drec = $domains->fetch()) {
 					echo $drec["label"]." ";
 				}
 
 
-echo "<a href='javascript: Select(\"PROP\", \"".$res[$i]["PropertyID"]."\", \"".$res[$i]["PropertyLabel"]."\");'>";
+				echo "<a href='javascript: Select(\"PROP\", \"".$res[$i]["PropertyID"]."\", \"".$res[$i]["PropertyLabel"]."\");'>";
 				echo "<img src='images/down.gif' border=0>";
 				echo "</a> ";				
 				echo "</td>";
@@ -98,15 +98,16 @@ echo "<a href='javascript: Select(\"PROP\", \"".$res[$i]["PropertyID"]."\", \"".
 		JOIN projectmanagement.OntologyClassLabels using (OntologyClassID)
 		where OntologyID=? order by label");
 		$res = $mysql->ExecuteStatement(array($OntologyID));
-		echo "<table>";
+		echo "<table class=\"table table-dark\">";
 		echo "<tr>";
 		echo "<td>";
-		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>معادل ندارد</font>\");'>";
-		echo "<font color=red><b>معادل ندارد</b></font></a>";
+
+		// Farsi: معادل ندارد
+		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>No Equivalent Found</font>\");'>";
+		echo "<font color=red><b>No Equivalent Found</b></font></a>";
 		echo "</tr>";		
 		
-		while($rec = $res->fetch())
-		{
+		while($rec = $res->fetch()) {
 			echo "<tr>";
 			echo "<td>";
 			echo "<a target=_blank href='ManageOntologyClasses.php?UpdateID=".$rec["OntologyClassID"]."&OntologyID=".$OntologyID."&OnlyEditForm=1'>";
@@ -121,8 +122,10 @@ echo "<a href='javascript: Select(\"PROP\", \"".$res[$i]["PropertyID"]."\", \"".
 		}
 		echo "<tr>";
 		echo "<td>";
-		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>معادل ندارد</font>\");'>";
-		echo "<font color=red><b>معادل ندارد</b></font></a>";
+
+		// Farsi: معادل ندارد
+		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>No Equivalent Found</font>\");'>";
+		echo "<font color=red><b>No Equivalent Found</b></font></a>";
 		echo "</tr>";		
 		echo "</table>";
 	}
@@ -148,8 +151,8 @@ echo "<a href='javascript: Select(\"PROP\", \"".$res[$i]["PropertyID"]."\", \"".
 		{
 			if(http.readyState == 4 && http.status == 200)
 			{ 
-				window.opener.document.getElementById('span_<? echo $_REQUEST["MapID"] ?>').innerHTML='<b>'+EntityLabel+'</b>';
-				window.close(); 				
+				window.opener.document.getElementById('span_<? echo $_REQUEST["MapID"] ?>').innerHTML= '<b>' + EntityLabel + '</b>';
+				window.close();
 			}
 		}
 		http.send(params);	
