@@ -980,8 +980,31 @@ if(UI_LANGUAGE=="EN") {
 	define2("C_DUPLICATE_PROPERTIES","Duplicate Properties");
 	define2("C_PROPERTIES_LABELS","Properties' Labels");
 	/*==== JavadZamani ====*/
-    
-	
+
+    // NewResearchProject - by Zahra RazaviPoor
+    define("C_CREATE_OR_EDIT_RESEARCH_WORK", "Create/Edit research work");
+    define("C_SAVED_INFO", "Information saved");
+    define("C_TYPE","Tyep");
+    define("C_ARTICLE","Article");
+    define("C_THESIS", "Thesis");
+    define("C_BOOK", "Book");
+    define("C_KEY_WORD", "Key Word");
+    define("C_SEARCH", "Search");
+    define("C_SEARCH_RESULT_IN_ABSTRACT", "Search result in abstract section and overview of resources");
+
+    // ReferredTasks - by Zahra RazaviPoor
+    define("C_RELATED_PROJECT" , "Related Project");
+    define("C_PRIORITY" , "Priority");
+    define("C_CREATED_TIME" , "Created Time");
+    define("C_CREATOR" , "Creator");
+    define("C_STATUS" , "Status");
+    define("C_LAST_REFERENCED_TIME", "Last referenced time");
+    define("C_EXECUTOR", "Executor");
+
+    // ShowSimilarClassProperties - by Zahra RazaviPoor
+    define("C_REPEATED_CLASSES_PROPERTIES", "Properties repeated for two classes with hierarchical relation");
+    define("C_REPEATED_CLASSES_RELATION", "A relation that is repeated for two classes with a hierarchical relation");
+
 }
 else
 {
@@ -1913,7 +1936,7 @@ else
     define("C_BACK","بازگشت");
     define("C_REMOVE","حذف");
     define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
-	
+
 	/*==== JavadZamani ====*/
 	define2("C_PERSONEL_CONTRACT","قرارداد پرسنل");
 	define2("C_CONTRACT_DESCRIPTION","شرح قرارداد");
@@ -1949,6 +1972,30 @@ else
 	define2("C_DUPLICATE_PROPERTIES","خصوصیات تکراری");
 	define2("C_PROPERTIES_LABELS","برچسبهای خصوصیات");
 	/*==== JavadZamani ====*/
+
+    // NewResearchProject - by Zahra RazaviPoor
+    define("C_CREATE_OR_EDIT_RESEARCH_WORK", "ایجاد/ویرایش کار پژوهشی");
+    define("C_SAVED_INFO", "اطلاعات ذخیره شد");
+    define("C_TYPE","نوع");
+    define("C_ARTICLE","مقاله");
+    define("C_THESIS", "پایان نامه");
+    define("C_BOOK", "کتاب");
+    define("C_KEY_WORD", "کلمه کلیدی");
+    define("C_SEARCH", "جستجو");
+    define("C_SEARCH_RESULT_IN_ABSTRACT", "نتیجه جستجو در بخش چکیده و نظر کلی در مورد منابع");
+
+    // ReferredTasks - by Zahra RazaviPoor
+    define("C_RELATED_PROJECT" , "پروژه مربوطه‌");
+    define("C_PRIORITY" , "اولویت");
+    define("C_CREATED_TIME" , "زمان ایجاد");
+    define("C_CREATOR" , "ایجاد کننده");
+    define("C_STATUS" , "وضعیت");
+    define("C_LAST_REFERENCED_TIME", "زمان آخرین ارجاع");
+    define("C_EXECUTOR", "مجری");
+
+    // ShowSimilarClassProperties - by Zahra RazaviPoor
+    define("C_REPEATED_CLASSES_PROPERTIES", "خصوصیاتی که برای دو کلاس دارای رابطه سلسله مراتبی تکرار شده اند");
+    define("C_REPEATED_CLASSES_RELATION", "رابطه ای که برای دو کلاس دارای رابطه سلسله مراتبی تکرار شده اند");
 }
 
 ?>
