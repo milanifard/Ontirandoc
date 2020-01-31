@@ -887,6 +887,7 @@ if(UI_LANGUAGE=="EN") {
     define2("C_QUESTIONNAIRE_ALREADY_FILLED", "You have filled this questionnairy brfore");
     define2("C_NO_PERMISSION_TO_FILL_QUES", "You don't have permission to fill this questionnairy");
     define2("C_INFORMATION_SAVED", "information saved");
+    define2('C_LOGOUT', 'logout');
     /**
     * END
     **/
@@ -1790,6 +1791,8 @@ else
     define2("C_QUESTIONNAIRE_ALREADY_FILLED", "قبلا پرسشنامه را پر کرده اید");
     define2("C_NO_PERMISSION_TO_FILL_QUES", "مجوز پر کردن این پرسشنامه را ندارید");
     define2("C_INFORMATION_SAVED", "اطلاعات ذخیره شد");
+    define2('C_LOGOUT', 'خروج از سیستم');
+    
     /**
     * END
     **/
