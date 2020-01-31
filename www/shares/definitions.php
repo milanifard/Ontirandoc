@@ -908,6 +908,9 @@ if(UI_LANGUAGE=="EN") {
     define2("C_UPDATER", "updater:");
     define2("C_DETAILS", "details");
     define2("C_UPDATE_DATE", "update date");
+    define2("C_ORDER", "order");
+    define2("C_ENTITY", "entity");
+    define2("C_USED_KEY", "used key");
     /**
     * END
     **/
@@ -1832,6 +1835,9 @@ else
     define2("C_UPDATER", "بروزرسانی کننده");
     define2("C_DETAILS", "شرح");
     define2("C_UPDATE_DATE", "تاریخ بروزرسانی");
+    define2("C_ORDER", "ترتیب");
+    define2("C_ENTITY", "تعداد");
+    define2("C_USED_KEY", "کلید مورد استفاده");
     
     /**
     * END
