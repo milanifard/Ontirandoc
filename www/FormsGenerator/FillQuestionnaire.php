@@ -21,7 +21,7 @@ if(!isset($_REQUEST["SelectedFormStructID"]))
 <SCRIPT LANGUAGE="JavaScript1.1" SRC="FormCheck.js"></SCRIPT>
 
 <br>
-<p align=center><span id=MessageSpan name=MessageSpan></span></p>
+<p align='center'><span id='MessageSpan' name='MessageSpan'></span></p>
 <br>
 <?php
 	$CurForm = new be_FormsStruct();
