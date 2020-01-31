@@ -884,7 +884,9 @@ if(UI_LANGUAGE=="EN") {
     define2("C_IDENTIFICATION_CODE", "ID");
     define2("C_STEP_CODE", "step code");
     define2("C_DEPARTMENT_CODE","department code");
-
+    define2("C_QUESTIONNAIRE_ALREADY_FILLED", "You have filled this questionnairy brfore");
+    define2("C_NO_PERMISSION_TO_FILL_QUES", "You don't have permission to fill this questionnairy");
+    define2("C_INFORMATION_SAVED", "information saved");
     /**
     * END
     **/
@@ -1785,7 +1787,9 @@ else
     define2("C_IDENTIFICATION_CODE", "کد شناسایی");
     define2("C_STEP_CODE", "کد مرحله");    
     define2("C_DEPARTMENT_CODE","کد واحد سازمانی");
-
+    define2("C_QUESTIONNAIRE_ALREADY_FILLED", "قبلا پرسشنامه را پر کرده اید");
+    define2("C_NO_PERMISSION_TO_FILL_QUES", "مجوز پر کردن این پرسشنامه را ندارید");
+    define2("C_INFORMATION_SAVED", "اطلاعات ذخیره شد");
     /**
     * END
     **/
