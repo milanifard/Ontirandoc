@@ -1,5 +1,5 @@
 <?php
-	include("header.inc.php");
+	include_once("header.inc.php");
 	$mysql = pdodb::getInstance();
 	if (!isset($_GET['MessageID'])){
 		return;
