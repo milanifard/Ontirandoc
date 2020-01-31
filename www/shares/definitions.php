@@ -898,6 +898,13 @@ if(UI_LANGUAGE=="EN") {
     define2('C_CALCULATION_TYPE', 'calculation type');
     define2('C_CALCULATION_QUERY', 'calculation request');
     define2('C_CODE_FILE_NAME', 'source code file name');
+    define2('C_ENTITY_TYPE', 'entity type');
+    define2('C_REGULAR_EXPRESSION', 'regular expression');
+    define2('C_MIN_VALID_VALUE', 'minimum valid value');
+    define2('C_MAX_VALID_VALUE', 'maximum valid value');
+    define2('C_DOMAIN_TABLE', 'valid values domain table');
+    define2('C_OWNER', 'owner');
+    define2('C_CATEGORY', 'category');
     /**
     * END
     **/
@@ -1812,6 +1819,13 @@ else
     define2('C_CALCULATION_TYPE', 'نوع محاسبات');
     define2('C_CALCULATION_QUERY', 'درخواست محاسبه');
     define2('C_CODE_FILE_NAME', 'نام فایل حاوی کد');
+    define2('C_ENTITY_TYPE', 'نوع داده');
+    define2('C_REGULAR_EXPRESSION', 'عبارت منظم');
+    define2('C_MIN_VALID_VALUE', 'حداقل مقدار مجاز');
+    define2('C_MAX_VALID_VALUE', 'حداکثر مقدار مجاز');
+    define2('C_DOMAIN_TABLE', 'جدول مقادیر مجاز');
+    define2('C_OWNER', 'مالک');
+    define2('C_CATEGORY', 'دسته بندی');
     
     /**
     * END
