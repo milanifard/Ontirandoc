@@ -30,13 +30,10 @@ class be_UniversityBlackBoxesParameters
 		$res = $mysql->ExecuteStatement (array ($RecID));
 		if($rec=$res->fetch())
 		{
-			$this->UniversityBlackBoxesParameterID=$rec["UniversityBlackBoxesParameterID"];
-			$this->UniversityCalculationBlackBoxID=$rec["UniversityCalculationBlackBoxID"];
-			$this->title=$rec["title"];
-			$this->OrderNo=$rec["OrderNo"];
-			$this->UniversityEntityID=$rec["UniversityEntityID"];
+			foreach($rec as $key => $value){
+				$this->$$key = $value;
+			}
 			$this->UniversityEntityID_Desc=$rec["f4_title"]; // محاسبه از روی جدول وابسته
-			$this->KeyName=$rec["KeyName"];
 		}
 	}
 }
@@ -88,12 +85,11 @@ class manage_UniversityBlackBoxesParameters
 		$query .= ") values (";
 		$query .= "? , ? , ? , ? , ? ";
 		$query .= ")";
-		$ValueListArray = array();
-		array_push($ValueListArray, $UniversityCalculationBlackBoxID); 
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $OrderNo); 
-		array_push($ValueListArray, $UniversityEntityID); 
-		array_push($ValueListArray, $KeyName); 
+		$ValueListArray = [$UniversityCalculationBlackBoxID, 
+											$title, 
+											$OrderNo, 
+											$UniversityEntityID, 
+											$KeyName];
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_UniversityBlackBoxesParameters::GetLastID();
@@ -109,7 +105,6 @@ class manage_UniversityBlackBoxesParameters
 	* @return 	*/
 	static function Update($UpdateRecordID, $title, $OrderNo, $UniversityEntityID, $KeyName)
 	{
-		$k=0;
 		$LogDesc = manage_UniversityBlackBoxesParameters::ComparePassedDataWithDB($UpdateRecordID, $title, $OrderNo, $UniversityEntityID, $KeyName);
 		$mysql = pdodb::getInstance();
 		$query = "update formsgenerator.UniversityBlackBoxesParameters set ";
@@ -118,12 +113,11 @@ class manage_UniversityBlackBoxesParameters
 			$query .= ", UniversityEntityID=? ";
 			$query .= ", KeyName=? ";
 		$query .= " where UniversityBlackBoxesParameterID=?";
-		$ValueListArray = array();
-		array_push($ValueListArray, $title); 
-		array_push($ValueListArray, $OrderNo); 
-		array_push($ValueListArray, $UniversityEntityID); 
-		array_push($ValueListArray, $KeyName); 
-		array_push($ValueListArray, $UpdateRecordID); 
+		$ValueListArray = [$title, 
+											$OrderNo, 
+											$UniversityEntityID, 
+											$KeyName, 
+											$UpdateRecordID];
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در پارامترهای ورودی جعبه سیاه های محاسباتی - موارد تغییر داده شده: ".$LogDesc);
@@ -142,7 +136,6 @@ class manage_UniversityBlackBoxesParameters
 	static function GetList($UniversityCalculationBlackBoxID)
 	{
 		$mysql = pdodb::getInstance();
-		$k=0;
 		$ret = array();
 		$query = "select UniversityBlackBoxesParameters.UniversityBlackBoxesParameterID
 				,UniversityBlackBoxesParameters.UniversityCalculationBlackBoxID
@@ -155,18 +148,14 @@ class manage_UniversityBlackBoxesParameters
 		$query .= " where UniversityCalculationBlackBoxID=? ";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($UniversityCalculationBlackBoxID));
-		$i=0;
 		while($rec=$res->fetch())
 		{
-			$ret[$k] = new be_UniversityBlackBoxesParameters();
-			$ret[$k]->UniversityBlackBoxesParameterID=$rec["UniversityBlackBoxesParameterID"];
-			$ret[$k]->UniversityCalculationBlackBoxID=$rec["UniversityCalculationBlackBoxID"];
-			$ret[$k]->title=$rec["title"];
-			$ret[$k]->OrderNo=$rec["OrderNo"];
-			$ret[$k]->UniversityEntityID=$rec["UniversityEntityID"];
-			$ret[$k]->UniversityEntityID_Desc=$rec["f4_title"]; // محاسبه از روی جدول وابسته
-			$ret[$k]->KeyName=$rec["KeyName"];
-			$k++;
+			$item = new be_UniversityBlackBoxesParameters();
+			foreach($rec as $key => $value){
+				$item->$$key = $value;
+			}
+			$item->UniversityEntityID_Desc=$rec["f4_title"]; // محاسبه از روی جدول وابسته
+			array_push($ret, $item);
 		}
 		return $ret;
 	}
@@ -185,25 +174,25 @@ class manage_UniversityBlackBoxesParameters
 		$obj->LoadDataFromDatabase($CurRecID);
 		if($title!=$obj->title)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
 			$ret .= "عنوان";
 		}
 		if($OrderNo!=$obj->OrderNo)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
 			$ret .= "ترتیب";
 		}
 		if($UniversityEntityID!=$obj->UniversityEntityID)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
 			$ret .= "مشخصه مربوطه";
 		}
 		if($KeyName!=$obj->KeyName)
 		{
-			if($ret!="")
+			if(!empty($ret))
 				$ret .= " - ";
 			$ret .= "کلید مورد استفاده در پرس و جو یا کد";
 		}
