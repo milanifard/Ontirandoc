@@ -95,23 +95,21 @@ class manage_StepPermittedUnits
 	}
 	static function GetList($WhereCondition)
 	{
-		$k=0;
-		$ret = array();
+		$ret = [];
 		$mysql = dbclass::getInstance();
 		$query = '';
 		$query .= "select * from StepPermittedUnits  LEFT JOIN hrms_total.org_units on (UnitID=ouid) ";
 		if($WhereCondition!="") 
 			$query .= " where ".$WhereCondition;
 		$res = $mysql->Execute($query);
-		$i=0;
 		while($rec=$res->FetchRow())
 		{
-			$ret[$k] = new be_StepPermittedUnits();
-			$ret[$k]->StepPermittedUnitsID=$rec["StepPermittedUnitsID"];
-			$ret[$k]->FormFlowStepID=$rec["FormFlowStepID"];
-			$ret[$k]->UnitID=$rec["UnitID"];
-			$ret[$k]->UnitName=$rec["ptitle"];
-			$k++;
+			$item = new be_StepPermittedUnits();
+			foreach($rec as $key=>$value){
+				$item->$key = $value;
+			}
+			$item->UnitName=$rec["ptitle"];
+			array_push($ret, $item);
 		}
 		return $ret;
 	}
