@@ -3,6 +3,9 @@ include("header.inc.php");
 include_once("classes/FormsStruct.class.php");
 include_once("classes/FormManagers.class.php");
 include_once("classes/FormFields.class.php");
+require_once("classes/SecurityManager.class.php");
+
+$_REQUEST = SecurityManager::validateInput($_REQUEST);
 
 $ParentObj = new be_FormsStruct();
 $ParentObj->LoadDataFromDatabase($_REQUEST["Item_FormStructID"]);
@@ -25,12 +28,11 @@ $mysql = pdodb::getInstance();
 	$res = $mysql->ExecuteStatement(array());
 	echo "<table>";
 	echo "<tr>";
-	for($i=0; $i<count($fields); $i++)
+	foreach($fields as $filed)
 	{
 		echo "<td>";
-		if(strlen($fields[$i]->FieldTitle)>40)
-			$fields[$i]->FieldTitle = substr($fields[$i]->FieldTitle, 0, 40)."...";
-		echo $fields[$i]->FieldTitle;			
+		$field->FieldTitle = strlen($field->FieldTitle)>40 ? substr($field->FieldTitle, 0, 40)."..." : $field->FieldTitle;
+		echo $field->FieldTitle;			
 		echo "</td>";
 	}
 	echo "<td>تایید نهایی</td>";
