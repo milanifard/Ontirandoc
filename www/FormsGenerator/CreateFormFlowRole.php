@@ -1,5 +1,5 @@
 <? 
-include "header.inc.php"; 
+include("../shares/header.inc.php"); 
 require_once("classes/SecurityManager.class.php");
 HTMLBegin();
 ?>
@@ -102,7 +102,7 @@ while($rec = $res->FetchRow())
 <table width='95%' align='center' border='1px' cellspacing='0' cellpadding='3px'>
 <tr class='HeaderOfTable'>
 <td align='center'>
-	تعریف شرط برای رفتن به مرحله بعد
+	<?php echo C_STATEMENT_TO_GO_TO_THE_NEXT_STATE;?>
 </td>
 </tr>
 <tr>
@@ -121,7 +121,7 @@ while($rec = $res->FetchRow())
 </tr>
 <tr>
 	<td width='20%' nowrap>
-	نام فیلد
+	<?php echo C_FIELD_NAME;?>
 	</td>
 	<td>
 		<select dir='rtl' name='FormFieldID' id='FormFieldID'>
@@ -132,7 +132,7 @@ while($rec = $res->FetchRow())
 </tr>
 <tr>
 	<td width='20%' nowrap>
-	شرط
+	<?php echo C_STATEMENT; ?>
 	</td>
 	<td>
 		<select name='OperationType' id='OperationType' >
@@ -147,13 +147,13 @@ while($rec = $res->FetchRow())
 			$operations[$OperationType] = "selected";
 			?>
 			<option value='notDefined'>-
-			<option value='eq' 	 <?php echo $operations["eq"];  ?> >مساوی
-			<option value='LIKE' <?php echo $operations["LIKE"];?> >محتوی
-			<option value='gt' 	 <?php echo $operations["gt"];  ?> >بزرگتر
-			<option value='lt'   <?php echo $operations["lt"];  ?> >کوچکتر
-			<option value='gtq'  <?php echo $operations["gtq"]; ?> >بزرگتر یا مساوی
-			<option value='ltq'  <?php echo $operations["ltq"]; ?> >کوچکتر یا مساوی
-			<option value='nq'   <?php echo $operations["nq"];  ?> >مخالف
+			<option value='eq' 	 <?php echo $operations["eq"];  ?> ><?php echo C_EQUAL;?>
+			<option value='LIKE' <?php echo $operations["LIKE"];?> ><?php echo C_CONTAIN;?>
+			<option value='gt' 	 <?php echo $operations["gt"];  ?> ><?php echo C_GREATER_THAN;?>
+			<option value='lt'   <?php echo $operations["lt"];  ?> ><?php echo C_LESS_THAN;?>
+			<option value='gtq'  <?php echo $operations["gtq"]; ?> ><?php echo C_GREATER_THAN_OR_EQUAL;?>
+			<option value='ltq'  <?php echo $operations["ltq"]; ?> ><?php echo C_LESS_THAN_OR_EQUAL;?>
+			<option value='nq'   <?php echo $operations["nq"];  ?> ><?php echo C_NOT_EQUAL;?>
 		</select>
 	</td>
 </tr>
@@ -194,8 +194,8 @@ while($rec = $res->FetchRow())
 </tr>
 <tr class='FooterOfTable'>
 	<td align='center'>
-	<input type='submit' value='ذخیره'>&nbsp;
-	<input type='button' value='بستن' onclick='javascript: window.close()'>
+	<input type='submit' value='<?php echo C_STORE;?>'>&nbsp;
+	<input type='button' value='<?php echo C_CLOSE;?>' onclick='javascript: window.close()'>
 	</td>
 </tr>
 </table>
