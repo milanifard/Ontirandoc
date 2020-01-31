@@ -726,7 +726,7 @@ class SecurityManager
 	// prevent injection attacks
 	static function validateInput(array $input):array{
 		foreach($input as $key => $value){
-			$input[$key] = validateText($value);
+			$input[$key] = self::validateText($value);
 		}
 		return $input;
 	}
