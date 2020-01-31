@@ -518,7 +518,7 @@ class FormUtils
 		$mysql = pdodb::getInstance(config::$db_servers["master"]["host"], config::$db_servers["master"]["formsgenerator_user"], config::$db_servers["master"]["formsgenerator_pass"], FormsGeneratorDB::DB_NAME);
 		$query = "select CreatorID from DetailFormRecords where DetailFormsStructID='".$DetailFormsStructID."' and DetailRecordID='".$RecID."'";
 		$mysql->Prepare($query);
-		$res = $mysql->ExecuteStatement(array());
+		$res = $mysql->ExecuteStatement([]);
 		if($rec = $res->fetch())
 			return $rec[0];
 		return 0;
