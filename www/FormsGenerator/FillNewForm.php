@@ -1,5 +1,5 @@
 <?php
-include("header.inc.php");
+include("../shares/header.inc.php");
 
 include_once("classes/FormsStruct.class.php");
 include_once("classes/FormFields.class.php");
