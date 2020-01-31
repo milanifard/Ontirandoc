@@ -15,23 +15,23 @@ class be_StepPermittedUnits
 		$res = $mysql->Execute("select * from StepPermittedUnits LEFT JOIN hrms_total.org_units on (UnitID=ouid) where StepPermittedUnitsID='".$RecID."' ");
 		if($rec=$res->FetchRow())
 		{
-			$this->StepPermittedUnitsID=$rec["StepPermittedUnitsID"];
-			$this->FormFlowStepID=$rec["FormFlowStepID"];
-			$this->UnitID=$rec["UnitID"];
-			$this->UnitName=$rec["ptitle"];
+			foreach($rec as $key => $value){
+				$this->$$key = $value;
+			}
+			$this->UnitName=$ptitle;
 		}
 	}
 	function ShowInfo()
 	{
-		echo "<table width=80% align=center border=1 cellsapcing=0>";
+		echo "<table width='80%' align='center' border='1px' cellsapcing='0'>";
 		echo "<tr>";
-		echo "<td>کد شناسایی </td><td>".$this->StepPermittedUnitsID."</td>";
+		echo "<td>".C_IDENTIFICATION_CODE."</td><td>".$this->StepPermittedUnitsID."</td>";
 		echo "</tr>";
 		echo "<tr>";
-		echo "<td>کد مرحله </td><td>".$this->FormFlowStepID."</td>";
+		echo "<td>".C_STEP_CODE."</td><td>".$this->FormFlowStepID."</td>";
 		echo "</tr>";
 		echo "<tr>";
-		echo "<td>کد واحد سازمانی </td><td>".$this->UnitID."</td>";
+		echo "<td>".C_DEPARTMENT_CODE."</td><td>".$this->UnitID."</td>";
 		echo "</tr>";
 		echo "</table>";
 	}
