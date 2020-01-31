@@ -120,7 +120,7 @@ class manage_StepPermittedUnits
 		$mysql = dbclass::getInstance();
 		$query = '';
 		$query .= "select * from StepPermittedUnits  LEFT JOIN hrms_total.org_units on (UnitID=ouid) ";
-		if($WhereCondition!="") 
+		if(!empty($WhereCondition)) 
 			$query .= "where ".$WhereCondition;
 		$res = $mysql->Execute($query);
 		$i=0;
