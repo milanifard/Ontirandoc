@@ -31,7 +31,7 @@ class be_UniversityBlackBoxesParameters
 		if($rec=$res->fetch())
 		{
 			foreach($rec as $key => $value){
-				$this->$$key = $value;
+				$this->$key = $value;
 			}
 			$this->UniversityEntityID_Desc=$rec["f4_title"]; // محاسبه از روی جدول وابسته
 		}
@@ -152,7 +152,7 @@ class manage_UniversityBlackBoxesParameters
 		{
 			$item = new be_UniversityBlackBoxesParameters();
 			foreach($rec as $key => $value){
-				$item->$$key = $value;
+				$item->$key = $value;
 			}
 			$item->UniversityEntityID_Desc=$rec["f4_title"]; // محاسبه از روی جدول وابسته
 			array_push($ret, $item);
