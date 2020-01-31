@@ -28,8 +28,7 @@ class be_ProjectTaskActivityTypes
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
 		$res = $mysql->ExecuteStatement (array ($RecID));
-		if($rec=$res->fetch())
-		{
+		if($rec=$res->fetch()) {
 			$this->ProjectTaskActivityTypeID=$rec["ProjectTaskActivityTypeID"];
 			$this->title=$rec["title"];
 			$this->ProjectID=$rec["ProjectID"];
@@ -51,11 +50,12 @@ class manage_ProjectTaskActivityTypes
 			$query .= " where ProjectID='".$ProjectID."'";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array());
-		if($rec=$res->fetch())
-		{
+		if($rec=$res->fetch()){
 			return $rec["TotalCount"];
+		} else {
+			return 0;
 		}
-		return 0;
+		
 	}
 	static function GetLastID()
 	{
@@ -63,11 +63,11 @@ class manage_ProjectTaskActivityTypes
 		$query = "select max(ProjectTaskActivityTypeID) as MaxID from projectmanagement.ProjectTaskActivityTypes";
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array());
-		if($rec=$res->fetch())
-		{
+		if($rec=$res->fetch()) {
 			return $rec["MaxID"];
+		} else {
+			return -1;
 		}
-		return -1;
 	}
 	/**
 	* @param $title: عنوان
@@ -128,8 +128,7 @@ class manage_ProjectTaskActivityTypes
 	{
 		$obj = new be_ProjectTaskActivityTypes();
 		$obj->LoadDataFromDatabase($RemoveRecordID);
-		if($obj->RelatedActivityCount==0)
-		{
+		if($obj->RelatedActivityCount==0) {
 			$mysql = pdodb::getInstance();
 			$query = "delete from projectmanagement.ProjectTaskActivityTypes where ProjectTaskActivityTypeID=?";
 			$mysql->Prepare($query);
@@ -138,8 +137,9 @@ class manage_ProjectTaskActivityTypes
 			require_once("ProjectHistory.class.php");
 			manage_ProjectHistory::Add($obj->ProjectID, "", "ACTIVITY_TYPE", $RemoveRecordID, "REMOVE");
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	static function GetList($ProjectID)
 	{
@@ -155,15 +155,15 @@ class manage_ProjectTaskActivityTypes
 			LEFT JOIN projectmanagement.persons persons3 on (persons3.PersonID=ProjectTaskActivityTypes.CreatorID)  ";
 		$query .= " where ProjectID=? ";
 		$ppc = security_projects::LoadUserPermissions($_SESSION["PersonID"], $ProjectID);
-		if($ppc->GetPermission("View_ProjectTaskActivityTypes")=="PRIVATE")
-				$query .= " and ProjectTaskActivityTypes.CreatorID='".$_SESSION["PersonID"]." ";
-		else if($ppc->GetPermission("View_ProjectTaskActivityTypes")=="NONE")
-				$query .= " and 0=1 ";
+		if($ppc->GetPermission("View_ProjectTaskActivityTypes")=="PRIVATE") {
+			$query .= " and ProjectTaskActivityTypes.CreatorID='".$_SESSION["PersonID"]." ";
+		} else if($ppc->GetPermission("View_ProjectTaskActivityTypes")=="NONE") {
+			$query .= " and 0=1 ";
+		}
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($ProjectID));
 		$i=0;
-		while($rec=$res->fetch())
-		{
+		while($rec=$res->fetch()) {
 			$ret[$k] = new be_ProjectTaskActivityTypes();
 			$ret[$k]->ProjectTaskActivityTypeID=$rec["ProjectTaskActivityTypeID"];
 			$ret[$k]->title=$rec["title"];
@@ -173,6 +173,7 @@ class manage_ProjectTaskActivityTypes
 			$ret[$k]->RelatedActivityCount=$rec["RelatedActivityCount"];
 			$k++;
 		}
+
 		return $ret;
 	}
 
@@ -188,10 +189,10 @@ class manage_ProjectTaskActivityTypes
 		$mysql->Prepare($query);
 		$res = $mysql->ExecuteStatement(array($ProjectID));
 		$i=0;
-		while($rec=$res->fetch())
-		{
+		while($rec=$res->fetch()) {
 			$ret .= "<option value='".$rec["ProjectTaskActivityTypeID"]."'>".$rec["title"];
 		}
+		
 		return $ret;
 	}
 	

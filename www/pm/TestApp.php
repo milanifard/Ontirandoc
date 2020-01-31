@@ -23,6 +23,7 @@ include_once("classes/ProjectDocuments.class.php"); // by Samin Hazeri
 include_once("classes/OntologyMergeProjectMembers.class.php"); // by Mahdi Ghayour
 include_once("classes/OntologyClassLabels.class.php");
 include_once("classes/ProjectTaskRequisites.class.php");
+include_once("classes/ProjectTaskActivityTypes.class.php");
 
 HTMLBegin();
 class Test
