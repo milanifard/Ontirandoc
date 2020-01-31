@@ -875,7 +875,12 @@ if(UI_LANGUAGE=="EN") {
     define2("C_USER","user");
     define2("C_PAGES","pages");
 
-
+    /**
+    * define Constant English Word
+    * OntologyMergePropeperties by Reza Latifi  
+    **/
+    define2("C_USER_NO_PERMISSION", "You don't have permission");
+    define2("C_FINAL_ACEEPT", "final agreement");
 
     /**
     * END
@@ -889,99 +894,16 @@ if(UI_LANGUAGE=="EN") {
     define("C_MY_FILE","File");
 
 
-    // Saeed rastegar moghaddam - MyProjectMembers.php
-    define("C_NO_PERMISSION","you dont have the permission to view this record");
-    define("C_DATA_STORED","data has been stored");
-    define("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
-    define("C_USER_CODE","Uer Code");
-    define("C_PERMISSION_TYPE","Permission Type");
-    define("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
-    define("C_STORE","store");
-    define("C_CLOSE","close");
-
+      // Saeed rastegar moghaddam - MyProjectMembers.php
+      define("C_NO_PERMISSION","you dont have the permission to view this record");
+      define("C_DATA_STORED","data has been stored");
+      define("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
+      define("C_USER_CODE","Uer Code");
+      define("C_PERMISSION_TYPE","Permission Type");
+      define("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
+      define("C_STORE","store");
+      define("C_CLOSE","close");
     
-    // Saeed rastegar moghaddam - ManageProjectDocumentTypes.php
-    define("C_NO_PERMISSION","You don't have permission to view this record.");
-    define("C_DATA_STORED","Data has been stored.");
-    define("C_MY_TITLE_PROJECTDOCUMENTTYPES","Create/Edit document types");
-    define("C_MY_TITLE_PROJECTDOCUMENTTYPES_TITLE","Different types of document");
-    define("C_TITLE","Title");
-    define("C_ROW","Row");
-    define("C_EDIT","Edit");
-    define("C_STORE","Save");
-    define("C_DOCUMENTS_COUNT","Number of documents");
-    define("C_ARE_YOU_SURE","Are you sure?");
-    define("C_NEW","New");
-    define("C_CLOSE","Close");
-	
-	
-	
-	 //ManageOntologyClassProperties.php - by Amin Bigdeli
-    define("C_DATA_STORED","Data has been stored.");
-    define("C_ADD_FEATURE_TO_ONTOLOGY","Add feature to ontology");
-    define("C_FEATURE_TYPE","feature type");
-    define("C_DATATYPE_FEATURE","data feature");
-    define("C_OBJECT_RELATION","realtion of object");
-    define("C_FIRST_PART_RELATION","first part of relation");
-    define("C_RELATION","realtion :");
-    define("C_SECOND_PART_RELATION","second part of relation");
-    define("C_FEATURE","feature");
-    define("C_NEW","new");
-    define("C_CLOSE","close");
-    define("C_ARE_YOU_SURE","Are you sure!?");
-
-    //ManageOntologyPropertyPermittedValues.php - by Amin Bigdeli
-    define("C_DATA_STORED","Data has been stored.");
-    define("C_CRAETE_EDIT_FEATURE_POSSIBLE_VALUES","Create / Edit feature possible values");
-    define("C_POSSIBLE_VALUE","possible value");
-    define("C_FEATURE_POSSIABLE_VALUES","feature possiable values");
-    define("C_ROW","row");
-    define("C_EDIT","edit");
-    define("C_NEW","new");
-    define("C_SAVE","save");
-    define("C_VALUE","value");
-    define("C_CLOSE","close");
-    define("C_BACK","back");
-    define("C_REMOVE","remove");
-    define("C_ARE_YOU_SURE","Are you sure?!");
-	
-	/*==== JavadZamani ====*/
-	define2("C_PERSONEL_CONTRACT","Personnel Contract");
-	define2("C_CONTRACT_DESCRIPTION","Contract Description");
-	define2("C_HOURLY_PRICE","Hourly Price");
-	define2("C_CONTRACTS_OF","Contracts of");
-	define2("C_SORT_TYPE_ASC","Current sorting is ASCENDING");
-	define2("C_SORT_TYPE_DESC","Current sorting is DESCENDING");
-	define2("C_WORK_CODE","Work Code");
-	define2("C_READY_FOR_CONTROL","Ready for Control");
-	define2("C_CONSIDER_WORK_CREATION_TIME_RANGE","Cosider Work Creation Time Range");
-	define2("C_CONSIDER_ACTION_CREATION_TIME_RANGE","Cosider Action Creation Time Range");
-	define2("C_CREATION_TIME_RANGE","Creation Time Range");
-	define2("C_ACTION_TIME_RANGE","Action Time Range");
-	define2("C_FROM","From");
-	define2("C_TO","To");
-	define2("C_SEARCH_RESULTS","Search Results");
-	define2("C_LAST_ACTION_TIME","Last Action Time");
-	define2("C_EXECUTORS","Executors");
-	define2("C_VIEWERS","Viewers");
-	define2("C_DOCUMENTS_T","Documents");
-	define2("C_UNKNOWN","Unknown");
-	define2("C_REMOVED","Removed");
-	define2("C_TYPE","Type");
-	define2("C_RANGE","Range");
-	define2("C_REVERSE","Reverse");
-	define2("C_SPECIFY_VALID_RELATIONSHIPS","Specify valid relationships between domain concepts and the range of this property");
-	define2("C_VALUES","Values");
-	define2("C_ARE_YOU_SURE_TO_REMOVE","Are You Sure to Remove");
-	define2("C_DOMAIN_AND_RANGE","Domain and Range");
-	define2("C_PROPERTY_IS_FUNCTIONAL","Property is Functional");
-	define2("C_PERMITTED_DOMAIN_AND_RANGE_RELATIONSHIPS_ARE_NOT_DEFINED","Permitted Domain and Range Relationships are not Defined");
-	define2("C_SIMILAR_RELATIONSHIPS","Similar Relationships");
-	define2("C_DUPLICATE_PROPERTIES","Duplicate Properties");
-	define2("C_PROPERTIES_LABELS","Properties' Labels");
-	/*==== JavadZamani ====*/
-    
-	
 }
 else
 {
@@ -1849,106 +1771,38 @@ else
 
     define2("C_MERGE","ادغام");    
     define2("C_NOT_MERGE","عدم ادغام");    
+
+
+    /**
+    * define Constant English Word
+    * OntologyMergePropeperties by Reza Latifi  
+    **/
+    define2("C_USER_NO_PERMISSION", "عدم دسترسی");
+    define2("C_FINAL_ACEEPT", "تایید نهایی");
+    
+
+
     /**
     * END
     **/
 
-    // Saeed rastegar moghaddam - MyPayments.php
-    define("C_MY_REPORTS","گزارش دریافتی های من");
-    define("C_MY_DATE","تاریخ");
-    define("C_MY_PRICE","مبلغ");
-    define("C_MY_INFO","شرح");
-    define("C_MY_FILE","فایل");
+     // Saeed rastegar moghaddam - MyPayments.php
+     define("C_MY_REPORTS","گزارش دریافتی های من");
+     define("C_MY_DATE","تاریخ");
+     define("C_MY_PRICE","مبلغ");
+     define("C_MY_INFO","شرح");
+     define("C_MY_FILE","فایل");
 
 
-    // Saeed rastegar moghaddam - MyProjectMembers.php
-    define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
-    define("C_DATA_STORED","داده ذخیره شد");
-    define("C_MY_TITLE_PROJECTMEMBERS","ایچاد / ویرایش اعضای پروژه");
-    define("C_USER_CODE","کد شخص");
-    define("C_PERMISSION_TYPE","نوع دسترسی");
-    define("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
-    define("C_STORE","ذخیره");
-    define("C_CLOSE","بستن");
-
-
-    // Saeed rastegar moghaddam - ManageProjectDocumentTypes.php
-    define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
-    define("C_DATA_STORED","داده ذخیره شد");
-    define("C_MY_TITLE_PROJECTDOCUMENTTYPES","ایجاد/ویرایش انواع سند پروژه ها");
-    define("C_MY_TITLE_PROJECTDOCUMENTTYPES_TITLE","عنوان");
-    define("C_ROW","ردیف");
-    define("C_EDIT","ویرایش");
-    define("C_STORE","ذخیره");
-    define("C_DOCUMENTS_COUNT","تعداد سند ها");
-    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
-    define("C_NEW","جدید");
-    define("C_CLOSE","بستن");
-	
-	    //ManageOntologyClassProperties.php - by Amin Bigdeli
-    define("C_DATA_STORED","داده ذخیره شد");
-    define("C_ADD_FEATURE_TO_ONTOLOGY","افزودن خصوصیت به هستان نگار");
-    define("C_FEATURE_TYPE","نوع حصوصیت");
-    define("C_DATATYPE_FEATURE","خصوصیت داده");
-    define("C_OBJECT_RELATION","رابطه شی");
-    define("C_FIRST_PART_RELATION","طرف اول رابطه: ");
-    define("C_RELATION","رابطه: ");
-    define("C_SECOND_PART_RELATION","طرف دوم رابطه: ");
-    define("C_FEATURE","خصوصیت");
-    define("C_NEW","جدید");
-    define("C_CLOSE","بستن");
-    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
-
-    //ManageOntologyPropertyPermittedValues.php - by Amin Bigdeli
-    define("C_DATA_STORED","داده ذخیره شد");
-    define("C_CRAETE_EDIT_FEATURE_POSSIBLE_FEATURES","ایجاد/ویرایش مقادیر مجاز خصوصیت");
-    define("C_POSSIBLE_VALUE","مقدار مجاز");
-    define("C_FEATURE_POSSIABLE_VALUES","مقادیر مجاز خصوصیت");
-    define("C_ROW","ردیف");
-    define("C_EDIT","ویرایش");
-    define("C_NEW","جدید");
-    define("C_SAVE","دخیره");
-    define("C_VALUE","مقدار");
-    define("C_CLOSE","بستن");
-    define("C_BACK","بازگشت");
-    define("C_REMOVE","حذف");
-    define("C_ARE_YOU_SURE","آیا مطمعن هستید!؟");
-	
-	/*==== JavadZamani ====*/
-	define2("C_PERSONEL_CONTRACT","قرارداد پرسنل");
-	define2("C_CONTRACT_DESCRIPTION","شرح قرارداد");
-	define2("C_HOURLY_PRICE","مبلغ ساعتی");
-	define2("C_CONTRACTS_OF","قراردادهای");
-	define2("C_SORT_TYPE_ASC","ترتیب فعلی بر اساس این فیلد صعودی است");
-	define2("C_SORT_TYPE_DESC","ترتیب فعلی بر اساس این فیلد نزولی است");
-	define2("C_WORK_CODE","کد کار");
-	define2("C_READY_FOR_CONTROL","آماده برای کنترل");
-	define2("C_CONSIDER_WORK_CREATION_TIME_RANGE","در نظر گرفتن بازه‌ی زمانی ایجاد کار");
-	define2("C_CONSIDER_ACTION_CREATION_TIME_RANGE","در نظر گرفتن بازه‌ی زمانی ایجاد اقدام");
-	define2("C_CREATION_TIME_RANGE","بازه ایجاد");
-	define2("C_ACTION_TIME_RANGE","بازه اقدام");
-	define2("C_FROM","از");
-	define2("C_TO","تا");
-	define2("C_SEARCH_RESULTS","نتایج جستجو");
-	define2("C_LAST_ACTION_TIME","زمان آخرین اقدام");
-	define2("C_EXECUTORS","مجریان");
-	define2("C_VIEWERS","ناظران");
-	define2("C_DOCUMENTS_T","اسناد");
-	define2("C_UNKNOWN","نامشخص");
-	define2("C_REMOVED","حذف شد");
-	define2("C_TYPE","نوع");
-	define2("C_RANGE","بازه");
-	define2("C_REVERSE","معکوس");
-	define2("C_SPECIFY_VALID_RELATIONSHIPS","تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت");
-	define2("C_VALUES","مقادیر");
-	define2("C_ARE_YOU_SURE_TO_REMOVE","رای حذف مطمئن هستید؟");
-	define2("C_DOMAIN_AND_RANGE","حوزه و برد");
-	define2("C_PROPERTY_IS_FUNCTIONAL","خصوصیت functional است");
-	define2("C_PERMITTED_DOMAIN_AND_RANGE_RELATIONSHIPS_ARE_NOT_DEFINED","روابط مجاز حوزه و برد تعریف نشده");
-	define2("C_SIMILAR_RELATIONSHIPS","روابط مشابه");
-	define2("C_DUPLICATE_PROPERTIES","خصوصیات تکراری");
-	define2("C_PROPERTIES_LABELS","برچسبهای خصوصیات");
-	/*==== JavadZamani ====*/
+      // Saeed rastegar moghaddam - MyProjectMembers.php
+      define("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+      define("C_DATA_STORED","داده ذخیره شد");
+      define("C_MY_TITLE_PROJECTMEMBERS","ایچاد / ویرایش اعضای پروژه");
+      define("C_USER_CODE","کد شخص");
+      define("C_PERMISSION_TYPE","نوع دسترسی");
+      define("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
+      define("C_STORE","ذخیره");
+      define("C_CLOSE","بستن");
 }
 
 ?>
