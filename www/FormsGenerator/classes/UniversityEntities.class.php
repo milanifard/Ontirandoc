@@ -258,49 +258,49 @@ class manage_UniversityEntities
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($EntityType!=$obj->EntityType)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع داده";
+			$ret .= C_ENTITY_TYPE;
 		}
 		if($DataMask!=$obj->DataMask)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عبار منظم (کنترلی)";
+			$ret .= C_REGULAR_EXPRESSION;
 		}
 		if($MinValue!=$obj->MinValue)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "حداقل مقدار مجاز";
+			$ret .= C_MIN_VALID_VALUE;
 		}
 		if($MaxValue!=$obj->MaxValue)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "حداکثر مقدار مجاز";
+			$ret .= C_MAX_VALID_VALUE;
 		}
 		if($DomainTableName!=$obj->DomainTableName)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "جدولی که داده های این مشخصه فقط می توانند از آن باشند";
+			$ret .= C_DOMAIN_TABLE;
 		}
 		if($OwnerType!=$obj->OwnerType)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "مالک";
+			$ret .= C_OWNER;
 		}
 		if($DataCategory!=$obj->DataCategory)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "طبقه داده";
+			$ret .= C_CATEGORY;
 		}
 		return $ret;
 	}
