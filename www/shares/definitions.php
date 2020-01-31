@@ -911,6 +911,9 @@ if(UI_LANGUAGE=="EN") {
     define2("C_ORDER", "order");
     define2("C_ENTITY", "entity");
     define2("C_USED_KEY", "used key");
+    define2('C_STATEMENT_TO_GO_TO_THE_NEXT_STATE','statement to go to the next state');
+    define2('C_FIELD_NAME','field name');
+    define2('C_STATEMENT', 'term');
     /**
     * END
     **/
@@ -1838,7 +1841,9 @@ else
     define2("C_ORDER", "ترتیب");
     define2("C_ENTITY", "تعداد");
     define2("C_USED_KEY", "کلید مورد استفاده");
-    
+    define2('C_STATEMENT_TO_GO_TO_THE_NEXT_STATE','تعریف شرط برای رفتن به مرحله بعد');
+    define2('C_FIELD_NAME','نام فیلد');
+    define2('C_STATEMENT', 'شرط');
     /**
     * END
     **/
