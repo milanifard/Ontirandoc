@@ -11,7 +11,7 @@ include_once("classes/SecurityManager.class.php");
 //require_once('../organization/classes/ChartServices.class.php');
 HTMLBegin();
 $mysql = pdodb::getInstance();
-$_REQUEST = validateInput($_REQUEST);
+$_REQUEST = SecurityManager::validateInput($_REQUEST);
 if(!isset($_REQUEST["SelectedFormStructID"]))
 {
 	echo "SelectedFormStructID=?";
@@ -116,25 +116,5 @@ if(!isset($_REQUEST["SelectedFormStructID"]))
 	}
 echo $CurForm->CreateUserInterface(-1, $_SESSION["PersonID"], 0);
 	echo "<p align=center><input type=button value='خروج از سیستم' onclick='javascript: document.location=\"login.php?logout=1\"'></p>";
-
-	// prevent injection attacks
-	function validateInput(array $input):array{
-		foreach($input as $key => $value){
-			$input[$key] = validateText($value);
-		}
-		return $input;
-	}
-
-	function validateText($str):string{
-    if (is_object($str) || is_array($str)) {
-        return '';
-    }
-    $filtered = iconv('UTF-8//IGNORE', "ISO-8859-1//IGNORE", (string) $str); // check if chrarachters are in UTF-8
-		$filtered = htmlentities($filtered);
-		$filtered = htmlspecialchars($filtered);
-		$filtered = preg_replace('/[\r\n\t ]+/', ' ', $filtered); // ignore white spaces
-    $filtered = trim($filtered);
-    return $filtered;
-	}
 ?>
 </html>
