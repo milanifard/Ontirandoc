@@ -27,7 +27,7 @@ class be_UniversityBlackBoxesParameters
 			LEFT JOIN formsgenerator.UniversityEntities  f4 on (f4.UniversityEntityID=UniversityBlackBoxesParameters.UniversityEntityID)  where  UniversityBlackBoxesParameters.UniversityBlackBoxesParameterID=? ";
 		$mysql = pdodb::getInstance();
 		$mysql->Prepare ($query);
-		$res = $mysql->ExecuteStatement (array ($RecID));
+		$res = $mysql->ExecuteStatement ([$RecID]);
 		if($rec=$res->fetch())
 		{
 			foreach($rec as $key => $value){
@@ -130,13 +130,13 @@ class manage_UniversityBlackBoxesParameters
 		$mysql = pdodb::getInstance();
 		$query = "delete from formsgenerator.UniversityBlackBoxesParameters where UniversityBlackBoxesParameterID=?";
 		$mysql->Prepare($query);
-		$mysql->ExecuteStatement(array($RemoveRecordID));
+		$mysql->ExecuteStatement([$RemoveRecordID]);
 		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از پارامترهای ورودی جعبه سیاه های محاسباتی");
 	}
 	static function GetList($UniversityCalculationBlackBoxID)
 	{
 		$mysql = pdodb::getInstance();
-		$ret = array();
+		$ret = [];
 		$query = "select UniversityBlackBoxesParameters.UniversityBlackBoxesParameterID
 				,UniversityBlackBoxesParameters.UniversityCalculationBlackBoxID
 				,UniversityBlackBoxesParameters.title
@@ -147,7 +147,7 @@ class manage_UniversityBlackBoxesParameters
 			LEFT JOIN formsgenerator.UniversityEntities  f4 on (f4.UniversityEntityID=UniversityBlackBoxesParameters.UniversityEntityID)  ";
 		$query .= " where UniversityCalculationBlackBoxID=? ";
 		$mysql->Prepare($query);
-		$res = $mysql->ExecuteStatement(array($UniversityCalculationBlackBoxID));
+		$res = $mysql->ExecuteStatement([$UniversityCalculationBlackBoxID]);
 		while($rec=$res->fetch())
 		{
 			$item = new be_UniversityBlackBoxesParameters();
@@ -176,25 +176,25 @@ class manage_UniversityBlackBoxesParameters
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($OrderNo!=$obj->OrderNo)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "ترتیب";
+			$ret .= C_ORDER;
 		}
 		if($UniversityEntityID!=$obj->UniversityEntityID)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "مشخصه مربوطه";
+			$ret .= C_ENTITY;
 		}
 		if($KeyName!=$obj->KeyName)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "کلید مورد استفاده در پرس و جو یا کد";
+			$ret .= C_USED_KEY;
 		}
 		return $ret;
 	}
