@@ -905,6 +905,9 @@ if(UI_LANGUAGE=="EN") {
     define2('C_DOMAIN_TABLE', 'valid values domain table');
     define2('C_OWNER', 'owner');
     define2('C_CATEGORY', 'category');
+    define2("C_UPDATER", "updater:");
+    define2("C_DETAILS", "details");
+    define2("C_UPDATE_DATE", "update date");
     /**
     * END
     **/
@@ -1826,6 +1829,9 @@ else
     define2('C_DOMAIN_TABLE', 'جدول مقادیر مجاز');
     define2('C_OWNER', 'مالک');
     define2('C_CATEGORY', 'دسته بندی');
+    define2("C_UPDATER", "بروزرسانی کننده");
+    define2("C_DETAILS", "شرح");
+    define2("C_UPDATE_DATE", "تاریخ بروزرسانی");
     
     /**
     * END
