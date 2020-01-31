@@ -8,7 +8,7 @@ include_once("classes/FieldsItemList.class.php");
 include_once("classes/FormUtils.class.php");
 require_once('classes/FormsFlowStepRelations.class.php');
 include_once("classes/FormsDetailTables.class.php");
-include_once("classes/SecurityManager.class.php");
+require_once("classes/SecurityManager.class.php");
 require_once('../organization/classes/ChartServices.class.php');
 /*
 if($_SESSION["UserID"]!="omid")
