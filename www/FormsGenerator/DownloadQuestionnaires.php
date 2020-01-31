@@ -11,7 +11,7 @@ $ParentObj = new be_FormsStruct();
 $ParentObj->LoadDataFromDatabase($_REQUEST["Item_FormStructID"]);
 if($ParentObj->CreatorUser!=$_SESSION["UserID"] && !$ParentObj->HasThisPersonAccessToManageStruct($_SESSION["PersonID"]))
 {
-	echo "You don't have permission";
+	echo C_USER_NO_PERMISSION;
 	die();
 }
 $fields = manage_FormFields::GetList($_REQUEST["Item_FormStructID"]);
@@ -31,19 +31,21 @@ $mysql = pdodb::getInstance();
 	foreach($fields as $filed)
 	{
 		echo "<td>";
-		$field->FieldTitle = strlen($field->FieldTitle)>40 ? substr($field->FieldTitle, 0, 40)."..." : $field->FieldTitle;
+		$field->FieldTitle = strlen($field->FieldTitle) > 40 ?
+												 substr($field->FieldTitle, 0, 40)."..." :
+												 $field->FieldTitle;
 		echo $field->FieldTitle;			
 		echo "</td>";
 	}
-	echo "<td>تایید نهایی</td>";
+	echo "<td>".C_FINAL_ACEEPT."</td>";
 	echo "</tr>";
 	while($rec = $res->fetch())
 	{
 		echo "<tr>";
-		for($i=0; $i<count($fields); $i++)
+		foreach($fields as $field)
 		{
 			echo "<td>";
-			echo $rec[$fields[$i]->RelatedFieldName];			
+			echo $rec[$field->RelatedFieldName];			
 			echo "</td>";
 		}
 		echo "<td>".$rec["filled"]."</td>";
