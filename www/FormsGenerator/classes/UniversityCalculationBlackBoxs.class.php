@@ -72,7 +72,7 @@ class be_UniversityCalculationBlackBoxs
 		if($rec=$res->fetch())
 		{
 			foreach($res as $key => $value){
-			$this->$$key = $value;
+			$this->$key = $value;
 			}
 		}
 	}
