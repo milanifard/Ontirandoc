@@ -101,8 +101,10 @@
 		echo "<table class=\"table table-dark\">";
 		echo "<tr>";
 		echo "<td>";
-		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>معادل ندارد</font>\");'>";
-		echo "<font color=red><b>معادل ندارد</b></font></a>";
+
+		// Farsi: معادل ندارد
+		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>No Equivalent Found</font>\");'>";
+		echo "<font color=red><b>No Equivalent Found</b></font></a>";
 		echo "</tr>";		
 		
 		while($rec = $res->fetch()) {
@@ -120,8 +122,10 @@
 		}
 		echo "<tr>";
 		echo "<td>";
-		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>معادل ندارد</font>\");'>";
-		echo "<font color=red><b>معادل ندارد</b></font></a>";
+
+		// Farsi: معادل ندارد
+		echo "<a href='javascript: Select(\"CLASS\", \"0\", \"<font color=red>No Equivalent Found</font>\");'>";
+		echo "<font color=red><b>No Equivalent Found</b></font></a>";
 		echo "</tr>";		
 		echo "</table>";
 	}
