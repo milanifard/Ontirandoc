@@ -888,6 +888,16 @@ if(UI_LANGUAGE=="EN") {
     define2("C_NO_PERMISSION_TO_FILL_QUES", "You don't have permission to fill this questionnairy");
     define2("C_INFORMATION_SAVED", "information saved");
     define2('C_LOGOUT', 'logout');
+    define2("C_EDUCATIONAL", "educational");
+    define2("C_RESEARCH", "research");
+    define2("C_OFFICIAL", "official");
+    define2("C_FINANCIAL", "financial");
+    define2('C_PERSONAL', 'personal');
+    define2('C_OTHER', 'other');
+    define2('C_OUTPUT_TYPE', 'output type');
+    define2('C_CALCULATION_TYPE', 'calculation type');
+    define2('C_CALCULATION_QUERY', 'calculation request');
+    define2('C_CODE_FILE_NAME', 'source code file name');
     /**
     * END
     **/
@@ -1792,6 +1802,16 @@ else
     define2("C_NO_PERMISSION_TO_FILL_QUES", "مجوز پر کردن این پرسشنامه را ندارید");
     define2("C_INFORMATION_SAVED", "اطلاعات ذخیره شد");
     define2('C_LOGOUT', 'خروج از سیستم');
+    define2("C_EDUCATIONAL", "تحصیلی");
+    define2("C_RESEARCH", "تحقیقاتی");
+    define2("C_OFFICIAL", "اداری");
+    define2("C_FINANCIAL", "مالی");
+    define2('C_PERSONAL', 'شخصی');
+    define2('C_OTHER', 'سایر');
+    define2('C_OUTPUT_TYPE', 'نوع خروجی');
+    define2('C_CALCULATION_TYPE', 'نوع محاسبات');
+    define2('C_CALCULATION_QUERY', 'درخواست محاسبه');
+    define2('C_CODE_FILE_NAME', 'نام فایل حاوی کد');
     
     /**
     * END
