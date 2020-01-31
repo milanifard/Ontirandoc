@@ -3504,6 +3504,107 @@ Test::add(          #4
 // UNIT TEST - ProjectMilestones.class.php - Amin Bigdeli - end
 
 
+
+
+//UNIT TEST - manage_TermReferences.class.php - mersad esalate- start
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_TermReferences::GetCount(""))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermReferences->GetCount()", "manage_TermReferences"
+);
+
+Test::add(
+    function ()
+    {
+        try
+        {
+            if(LoadDataFromDatabase::GetLastID()==-1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"LoadDataFromDatabase->GetLastID()", "LoadDataFromDatabase"
+);
+
+Test::add(
+    function()
+    {
+        try
+        {
+            if(manage_TermReferences::Update(1, "title",null,"text"))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermReferences->Update()", "manage_TermReferences"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_ProjectMilestones::Remove(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_ProjectMilestones->Remove()", "Payments"
+);
+
+Test::add(          #4
+    function()
+    {
+        try
+        {
+            if(manage_TermReferences::GetList(1))
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
+    }
+    ,"manage_TermReferences->GetList()", "manage_TermReferences"
+);
+
+// UNIT TEST - TermRefrences.class.php -mersad esalate - end
+
+
 $res = Test::run();
 echo "<br>";
 echo "<div class='container'>";

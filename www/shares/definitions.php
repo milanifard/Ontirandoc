@@ -933,15 +933,62 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MY_FILE","File");
 
 
-      // Saeed rastegar moghaddam - MyProjectMembers.php
-      define2("C_NO_PERMISSION","you dont have the permission to view this record");
-      define2("C_DATA_STORED","data has been stored");
-      define2("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
-      define2("C_USER_CODE","Uer Code");
-      define2("C_PERMISSION_TYPE","Permission Type");
-      define2("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
-      define2("C_STORE","store");
-      define2("C_CLOSE","close");
+    // Saeed rastegar moghaddam - MyProjectMembers.php
+    define2("C_NO_PERMISSION","you dont have the permission to view this record");
+    define2("C_DATA_STORED","data has been stored");
+    define2("C_MY_TITLE_PROJECTMEMBERS","Edit / Create Project Members");
+    define2("C_USER_CODE","Uer Code");
+    define2("C_PERMISSION_TYPE","Permission Type");
+    define2("C_USER_PARTNERSHIP_PERSENTAGE","User persentage of partnership in project");
+    define2("C_STORE","store");
+    define2("C_CLOSE","close");
+
+
+    // mersad esalate manage project task types
+
+    define2("C_NO_PERMISSION","you dont have the permission to view this record");
+    define2("C_DATA_STORED","data has been stored");
+    define2("C_MY_TITLE_PROJECT_TASKS","Edit / Create Project Tasks");
+    define2("C_TITLE","title");
+    define2("C_STORE","store");
+    define2("C_NEW","new");
+    define2("C_CLOSE","close");
+    define2("C_TASK_TYPES","task types");
+    define2("C_ROW","row");
+    define2("C_EDIT","edit");
+    define2("C_TASK_NUMBER","task number");
+    define2("C_ARE_YOU_SURE","Are You Sure?");
+
+    // mersad esalate - manage project task comments
+
+    define2("C_NO_PERMISSION","you dont have the permission to view this record");
+    define2("C_DATA_STORED","data has been stored");
+    define2("C_MY_TITLE_PROJECT_COMMENTS","Edit/Create Comments");
+    define2("C_STORE","store");
+    define2("C_NEW","new");
+    define2("C_CLOSE","close"); 
+    define2("C_TEXT","text");
+    define2("C_ROW","row");
+    define2("C_EDIT","edit");
+    define2("C_COMMENTS","comments");
+    define2("C_CREATOR","creator");
+    define2("C_CREATED_AT","created at");
+
+    // mersad esalate - manage project task requisites
+
+    define2("C_NO_PERMISSION","you dont have the permission to view this record");
+    define2("C_DATA_STORED","data has been stored");
+    define2("C_MY_TITLE_PROJECT_REQUISITES","crate/edit project pre requirements");
+    define2("C_MY_TITLE_PRE_REQUIREMENTS","pre requirements");
+    define2("C_ROW","row");
+    define2("C_EDIT","edit");
+    define2("C_STORE","store");
+    define2("C_NEW","new");
+    define2("C_CLOSE","close");
+    define2("C_REQUIREMENTS_JOB","pre requirements job");
+    define2("C_NO_REQ_ADDED","no value added for pre requirement");
+    define2("C_REQUISITIE_WORK","pre requirement work");
+   
     
 }
 else
@@ -1880,6 +1927,55 @@ else
       define2("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
       define2("C_STORE","ذخیره");
       define2("C_CLOSE","بستن");
+
+
+      
+    // mersad esalate manage project task types
+
+    define2("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+    define2("C_DATA_STORED","داده ذخیره شد");
+    define2("C_MY_TITLE_PROJECT_TASKS","ایجاد / ویرایش کار های پروژه");
+    define2("C_TITLE","عنوان");
+    define2("C_STORE","ذخیره");
+    define2("C_NEW","جدید"); 
+    define2("C_CLOSE","بستن");
+    define2("C_TASK_TYPES","انواع کار ها");
+    define2("C_ROW","ردیف");
+    define2("C_EDIT","ویرایش");
+    define2("C_TASK_NUMBER","تعداد کار ها");
+    define2("C_ARE_YOU_SURE","آیا مطمین هستید؟");
+
+    // mersad esalate - manage project task comments
+
+    define2("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+    define2("C_DATA_STORED","داده ذخیره شد");
+    define2("C_MY_TITLE_PROJECT_COMMENTS","ایجاد / ویرایش متن ها");
+    define2("C_STORE","ذخیره");
+    define2("C_NEW","جدید"); 
+    define2("C_CLOSE","بستن");
+    define2("C_TEXT","متن");
+    define2("C_COMMENTS","کامنت ها");
+    define2("C_CREATOR","ایجاد کننده");
+    define2("C_CREATED_AT","تاریخ ایجاد");
+
+
+     // mersad esalate - manage project task requisites
+
+     define2("C_NO_PERMISSION","مجوز مشاهده این رکورد را ندارید");
+     define2("C_DATA_STORED","داده ذخیره شد");
+     define2("C_MY_TITLE_PROJECT_REQUISITES","ایجاد/ویرایش پیش نیاز های پروژه");
+     define2("C_MY_TITLE_PRE_REQUIREMENTS","پیش نیاز ها");
+     define2("C_ROW","ردیف");
+     define2("C_EDIT","ویرایش");
+     define2("C_STORE","ذخیره");
+     define2("C_NEW","جدید"); 
+     define2("C_CLOSE","بستن");
+     define2("C_TEXT","متن");
+     define2("C_REQUIREMENTS_JOB","کار های پیش نیاز");
+     define2("C_NO_REQ_ADDED","هیچ مقداری به پیش نیاز ها اختصاص پیدا نکرده است");
+     define2("C_REQUISITIE_WORK","کار های پیش نیاز");
+
+
 }
 
 ?>
