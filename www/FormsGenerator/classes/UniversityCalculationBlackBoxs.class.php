@@ -311,67 +311,67 @@ class manage_UniversityCalculationBlackBoxs
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "عنوان";
+			$ret .= C_TITLE;
 		}
 		if($IsEducational!=$obj->IsEducational)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "آموزشی؟";
+			$ret .= C_EDUCATIONAL ."?";
 		}
 		if($IsResearch!=$obj->IsResearch)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "پژوهشی؟";
+			$ret .= C_RESEARCH ."?";
 		}
 		if($IsOfficial!=$obj->IsOfficial)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "اداری؟";
+			$ret .= C_OFFICIAL ."?";
 		}
 		if($IsFinancial!=$obj->IsFinancial)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "مالی؟";
+			$ret .= C_FINANCIAL . "?";
 		}
 		if($IsPersonal!=$obj->IsPersonal)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "شخصی؟";
+			$ret .= C_PERSONAL . "?";
 		}
 		if($IsOther!=$obj->IsOther)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "سایر؟";
+			$ret .= C_OTHER . "?";
 		}
 		if($Output!=$obj->Output)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع خروجی (مشخصه)";
+			$ret .= C_OUTPUT_TYPE . "?";
 		}
 		if($CalculationType!=$obj->CalculationType)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نوع محاسبه";
+			$ret .= C_CALCULATION_TYPE . "?";
 		}
 		if($CalculationQuery!=$obj->CalculationQuery)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "پرس و جوی محاسبه";
+			$ret .= C_CALCULATION_QUERY . "?";
 		}
 		if($CodeFileName!=$obj->CodeFileName)
 		{
 			if(!empty($ret))
 				$ret .= " - ";
-			$ret .= "نام فایل محتوی کد محاسبه";
+			$ret .= C_CODE_FILE_NAME;
 		}
 		return $ret;
 	}
