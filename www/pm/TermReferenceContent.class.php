@@ -97,7 +97,9 @@ class manage_TermReferenceContent
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
 		$LastID = manage_TermReferenceContent::GetLastID();
-		$mysql->audit("ثبت داده جدید در محتوای پاراگرافهای مراجع با کد ".$LastID);
+		
+		// Farsi: ثبت داده جدید در محتوای پاراگرافهای مراجع با کد
+		$mysql->audit("Submit new data in content of reference paragprahs with code".$LastID);
 
 		return $LastID;
 	}
@@ -121,7 +123,11 @@ class manage_TermReferenceContent
 		array_push($ValueListArray, $UpdateRecordID); 
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement($ValueListArray);
-		$mysql->audit("بروز رسانی داده با شماره شناسایی ".$UpdateRecordID." در محتوای پاراگرافهای مراجع - موارد تغییر داده شده: ".$LogDesc);
+		/*
+		Farsi 1: بروز رسانی داده با شماره شناسایی 
+		Farsi 2:  در محتوای پاراگرافهای مراجع - موارد تغییر داده شده
+		*/
+		$mysql->audit("Update data with ID".$UpdateRecordID.": In content of reference paraghraphs - Modified".$LogDesc);
 	}
 	/**
 	* @param $RemoveRecordID: کد رکوردی که باید حذف شود
@@ -132,7 +138,11 @@ class manage_TermReferenceContent
 		$query = "delete from projectmanagement.TermReferenceContent where TermReferenceContentID=?";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($RemoveRecordID));
-		$mysql->audit("حذف داده با شماره شناسایی ".$RemoveRecordID." از محتوای پاراگرافهای مراجع");
+		/*
+		Farsi 1: حذف داده با شماره شناسایی
+		Farsi 2: از محتوای پاراگرافهای مراجع 
+		*/
+		$mysql->audit("Delete data with ID".$RemoveRecordID."From content of reference paraghraphs");
 	}
 	static function GetList($TermReferenceID, $FromRec, $NumberOfRec)
 	{
@@ -182,14 +192,16 @@ class manage_TermReferenceContent
 			if($ret!=""){
 				$ret .= " - ";
 			}
-			$ret .= "صفحه";
+			// Farsi: صفحه
+			$ret .= "Page";
 		}
 
 		if($content!=$obj->content) {
 			if($ret!="") {
 				$ret .= " - ";
 			}
-			$ret .= "محتوا";
+			// Farsi: محتوا
+			$ret .= "Content";
 		} else {
 			return $ret;
 		}
