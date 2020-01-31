@@ -881,6 +881,9 @@ if(UI_LANGUAGE=="EN") {
     **/
     define2("C_USER_NO_PERMISSION", "You don't have permission");
     define2("C_FINAL_ACEEPT", "final agreement");
+    define2("C_IDENTIFICATION_CODE", "ID");
+    define2("C_STEP_CODE", "step code");
+    define2("C_DEPARTMENT_CODE","department code");
 
     /**
     * END
@@ -1779,8 +1782,9 @@ else
     **/
     define2("C_USER_NO_PERMISSION", "عدم دسترسی");
     define2("C_FINAL_ACEEPT", "تایید نهایی");
-    
-
+    define2("C_IDENTIFICATION_CODE", "کد شناسایی");
+    define2("C_STEP_CODE", "کد مرحله");    
+    define2("C_DEPARTMENT_CODE","کد واحد سازمانی");
 
     /**
     * END
