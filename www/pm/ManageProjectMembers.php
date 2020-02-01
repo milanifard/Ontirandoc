@@ -5,10 +5,10 @@
 	تاریخ ایجاد: 89-3-16
 */
 include("header.inc.php");
-include_once("../sharedClasses/SharedClass.class.php");
-include_once("classes/ProjectMembers.class.php");
-include_once("classes/projects.class.php");
-include_once("classes/projectsSecurity.class.php");
+include("../sharedClasses/SharedClass.class.php");
+include("classes/ProjectMembers.class.php");
+include ("classes/projects.class.php");
+include("classes/projectsSecurity.class.php");
 HTMLBegin();
 // نحوه دسترسی کاربر به آیتم پدر را بارگذاری می کند
 if(isset($_REQUEST["UpdateID"])) 
@@ -39,7 +39,7 @@ else
 } 
 if(!$HasViewAccess)
 { 
-	echo "مجوز مشاهده این رکورد را ندارید";
+	echo C_DONT_HAVE_PERMISSION;
 	die();
 } 
 if(isset($_REQUEST["Save"])) 
@@ -72,7 +72,7 @@ if(isset($_REQUEST["Save"]))
 				, $Item_ParticipationPercent
 				);
 	}	
-	echo SharedClass::CreateMessageBox("اطلاعات ذخیره شد");
+	echo SharedClass::CreateMessageBox(C_INFORMATION_SAVED);
 }
 $LoadDataJavascriptCode = '';
 if(isset($_REQUEST["UpdateID"])) 
@@ -92,22 +92,67 @@ if(isset($_REQUEST["UpdateID"]))
 		$LoadDataJavascriptCode .= "document.getElementById('Item_ParticipationPercent').innerHTML='".htmlentities($obj->ParticipationPercent, ENT_QUOTES, 'UTF-8')."'; \r\n "; 
 }	
 ?>
-<form method="post" id="f1" name="f1" >
-<?
-	if(isset($_REQUEST["UpdateID"])) 
-	{
-		echo "<input type=\"hidden\" name=\"UpdateID\" id=\"UpdateID\" value='".$_REQUEST["UpdateID"]."'>";
-	}
-echo manage_projects::ShowSummary($_REQUEST["ProjectID"]);
-echo manage_projects::ShowTabs($_REQUEST["ProjectID"], "ManageProjectMembers");
-?>
-<br><table width="90%" border="1" cellspacing="0" align="center">
+<style>
+    .table-bordered td , .table-bordered th{
+        border: 3px solid #FFFFFF;
+    }
+
+</style>
+
+<div class="main container-fluid" style="padding-left: 0;padding-right: 0">
+
+<form method="post" id="f1" name="f1" style="width: 100%">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler text-center ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse float-right ml-auto" id="navbarTogglerDemo02">
+            <ul class="navbar-nav" style= "text-align: right !important">
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" href="Newprojects.php?UpdateID=1"><? echo C_SESSION_INFO?> </a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" href="ManageProjectMembers.php?ProjectID=1"><? echo C_SESSION_MEMBERS ?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" href="ManageProjectDocuments.php?ProjectID=1"><? echo C_DOCUMENTS ?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectMilestones.php?ProjectID=1"><? echo C_IMPORTANT_DATE?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectDocumentTypes.php?ProjectID=1"><? echo C_DOCUMENT_TYPES?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectDocumentTypes.php?ProjectID=1"><? echo C_ACTION_TYPES?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectTaskTypes.php?ProjectID=1"><? echo C_TASK_TYPES?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectTaskGroups.php?ProjectID=1"><? echo C_GROUP_OF_TASKS?></a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link " href="ManageProjectHistory.php?ProjectID=1"><? echo C_HISTORY?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="ShowProjectActivities.php?ProjectID=1"><? echo C_ACTIVITIES?></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+<br><table class="table table-bordered table-hover table-success"  style="width: 80% !important;"  cellpadding="5px" align="center">
 <tr class="HeaderOfTable">
-<td align="center">ایجاد/ویرایش اعضای پروژه</td>
+<td class="font-weight-bold" align="center"><? echo C_EDIT_MEMBER?></td>
 </tr>
 <tr>
 <td>
-<table width="100%" border="0">
+<table>
 <? 
 if(!isset($_REQUEST["UpdateID"]))
 {
@@ -116,7 +161,7 @@ if(!isset($_REQUEST["UpdateID"]))
 <? } ?>
 <tr>
 	<td width="1%" nowrap>
- نام و نام خانوادگی
+ <? echo C_FULL_NAME?>
 	</td>
 	<td nowrap>
 	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
@@ -128,14 +173,14 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 <tr>
 	<td width="1%" nowrap>
- نوع دسترسی
+ <? echo C_ACCESS_TYPE?>
 	</td>
 	<td nowrap>
 	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
 	<select name="Item_AccessType" id="Item_AccessType" >
-		<option value='MEMBER'>عضو</option>
-		<option value='VIEWER'>ناظر</option>
-		<option value='MANAGER'>مدیر</option>
+		<option value='MEMBER'><? echo C_MEMBER?></option>
+		<option value='VIEWER'><? echo C_VIEWER?></option>
+		<option value='MANAGER'><? echo C_MQ_MANAGERS?></option>
 	</select>
 	<? } else { ?>
 	<span id="Item_AccessType" name="Item_AccessType"></span> 	<? } ?>
@@ -143,7 +188,7 @@ if(!isset($_REQUEST["UpdateID"]))
 </tr>
 <tr>
 	<td width="1%" nowrap>
- درصد مشارکت
+ <? echo C_PARTICIPATION_PERCENTAGE?>
 	</td>
 	<td nowrap>
 	<? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || ($HasAddAccess && !isset($_REQUEST["UpdateID"]))) { ?>
@@ -161,9 +206,9 @@ if(!isset($_REQUEST["UpdateID"]))
 <? if(($HasUpdateAccess && isset($_REQUEST["UpdateID"])) || (!isset($_REQUEST["UpdateID"]) && $HasAddAccess))
 	{
 ?>
-<input type="button" onclick="javascript: ValidateForm();" value="ذخیره">
+<input type="button" class="btn btn-outline-danger btn-lg" style="width: 10%" onclick="javascript: ValidateForm();" value="<? echo C_FA_SAVE?>">
 <? } ?>
- <input type="button" onclick="javascript: document.location='ManageProjectMembers.php?ProjectID=<?php echo $_REQUEST["ProjectID"]; ?>'" value="جدید">
+ <input type="button" class="btn btn-outline-success btn-lg" style="width: 10%" onclick="javascript: document.location='ManageProjectMembers.php?ProjectID=<?php echo $_REQUEST["ProjectID"]; ?>'" value="<? echo C_FA_NEW?>">
 </td>
 </tr>
 </table>
@@ -202,21 +247,21 @@ if($SomeItemsRemoved)
 ?>
 <form id="ListForm" name="ListForm" method="post"> 
 	<input type="hidden" id="Item_ProjectID" name="Item_ProjectID" value="<? echo htmlentities($_REQUEST["ProjectID"], ENT_QUOTES, 'UTF-8'); ?>">
-<br><table width="90%" align="center" border="1" cellspacing="0">
-<tr bgcolor="#cccccc">
+<br><table class="table table-bordered table-hover table-warning"  style="width: 80% !important;"  cellpadding="5px" align="center">
+<tr class="font-weight-bold text-center" style="background-color: #e0a800">
 	<td colspan="8">
-	اعضای پروژه
+	<? echo C_PROJECTS_MEMBERS?>
 	</td>
 </tr>
-<tr class="HeaderOfTable">
-	<td width="1%"> </td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td>نام و نام خانوادگی</td>
-	<td width=10% nowrap>نوع دسترسی</td>
-	<td width=5% nowrap>درصد زمانی فرد در این پروژه</td>
-	<td width=5% nowrap>درصد زمانی استفاده شده کل</td>
-	<td width=1% nowrap>مجوزها</td>
+<tr class="HeaderOfTable row">
+	<td class="col-1"> </td>
+	<td class="col-1"><? echo C_ROW?></td>
+	<td class="col-1"><? echo C_EDIT?></td>
+	<td class="col-2"><? echo C_FULL_NAME?></td>
+	<td class="col-2"><? echo C_ACCESS_TYPE?></td>
+	<td class="col-2"><? echo C_TIME_PERCENTAGE?></td>
+	<td class="col-2"><? echo C_TOTAL_TIME_PERCENTAGE?></td>
+	<td class="col-1"><? echo C_PERMISSION?></td>
 </tr>
 <?
 for($k=0; $k<count($res); $k++)
@@ -248,7 +293,7 @@ for($k=0; $k<count($res); $k++)
 <tr class="FooterOfTable">
 <td colspan="8" align="center">
 <? if($RemoveType!="NONE") { ?>
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
+	<input type="button" class="btn btn-outline-success btn-lg" style="width: 10%" onclick="javascript: ConfirmDelete();" value="<? echo C_REMOVE?>">
 <? } ?>
 </td>
 </tr>
@@ -257,10 +302,11 @@ for($k=0; $k<count($res); $k++)
 <form target="_blank" method="post" action="NewProjectMembers.php" id="NewRecordForm" name="NewRecordForm">
 	<input type="hidden" id="ProjectID" name="ProjectID" value="<? echo htmlentities($_REQUEST["ProjectID"], ENT_QUOTES, 'UTF-8'); ?>">
 </form>
+</div>
 <script>
 function ConfirmDelete()
 {
-	if(confirm('آیا مطمین هستید؟')) document.ListForm.submit();
+	if(confirm('<? echo C_ARE_YOU_SURE?>')) document.ListForm.submit();
 }
 </script>
 </html>
