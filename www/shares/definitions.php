@@ -1954,6 +1954,53 @@ else
       define2("C_USER_PARTNERSHIP_PERSENTAGE","درصد مشارکت در پروژه");
       define2("C_STORE","ذخیره");
       define2("C_CLOSE","بستن");
+	
+	
+	    //ManageTermReferenceContent.php by bita joharchi
+    define2("C_DATA_STORED","اطلاعات ذخیره شد");
+    define2("C_TITLE","عنوان");
+    define2("C_EDIT_REF_CONTENT","ایجاد/ویرایش محتوای پاراگرافهای مراجع");
+    define2("C_FA_PAGE","صفحه");
+    define2("C_FA_CONTENT","محتوا");
+    define2("C_REFINE","پالایش");
+    define2("C_FA_SAVE", "ذخیره");
+    define2("C_FA_NEW", "جدید");
+    define2("C_REF_CONTENT", "محتوای پاراگرافهای مراجع");
+    define2("C_ROW", "ردیف");
+    define2("C_EDIT", "ویرایش");
+    define2("C_VOCAB", "واژگان مستخرج");
+    define2("C_REMOVE", "حذف");
+
+//ManageProjectMembers.php by bita joharchi
+    define2("C_DONT_HAVE_PERMISSION", "مجوز مشاهده این رکورد را ندارید");
+    define2("C_INFORMATION_SAVED","اطلاعات ذخیره شد");
+    define2("C_SESSION_INFO","مشخصات اصلی");
+    define2("C_SESSION_MEMBERS","اعضا");
+    define2("C_DOCUMENTS" , "مستندات");
+    define2("C_IMPORTANT_DATE" , "تاریخهای مهم");
+    define2("C_DOCUMENT_TYPES" , "انواع سند");
+    define2("C_ACTION_TYPES" , "انواع اقدام");
+    define2("C_TASK_TYPES" , "انواع کار");
+    define2("C_GROUP_OF_TASKS" , "گروه کارها");
+    define2("C_HISTORY" , "تاریخچه");
+    define2("C_EDIT_MEMBER" , "ایجاد/ویرایش اعضای پروژه");
+    define2("C_FULL_NAME","نام و نام خانوادگی");
+    define2("C_ACCESS_TYPE"," نوع دسترسی");
+    define2("C_MEMBER" , "عضو");
+    define2("C_VIEWER", "ناظر");
+    define2("C_MQ_MANAGERS", "مدیران");
+    define2("C_PARTICIPATION_PERCENTAGE", "درصد مشارکت");
+    define2("C_FA_SAVE", "ذخیره");
+    define2("C_FA_NEW", "جدید");
+    define2("C_PROJECTS_MEMBERS", "اعضای پروژه ها");
+    define2("C_ROW", "ردیف");
+    define2("C_EDIT", "ویرایش");
+    define2("C_PERMISSION", "مجوزها");
+    define2("C_TOTAL_TIME_PERCENTAGE", "درصد زمانی استفاده شده کل");
+    define2("C_TIME_PERCENTAGE", "درصد زمانی فرد در این پروژه");
+    define2("C_REMOVE", "حذف");
+    define2("C_ARE_YOU_SURE", "مطمئن هستید؟");
+
 }
 
 ?>
