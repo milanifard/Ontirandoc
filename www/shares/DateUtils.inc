@@ -3,7 +3,8 @@
 	$j_days_in_month = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29); 
 	function ConvertX2SDate($g_d, $g_m, $g_y) { 
    	global $g_days_in_month, $j_days_in_month; 
-	   	$div = create_function('$a, $b', 'return (int) ($a / $b);'); 
+	   	//$div = create_function('$a, $b', 'return (int) ($a / $b);');
+		$div = function($a, $b) { return (int) ($a / $b); };
 		$gy = $g_y-1600; 
 	   	$gm = $g_m-1; 
 		$gd = $g_d-1; 
