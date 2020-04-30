@@ -99,7 +99,9 @@ In addition to checking validity of ontology by applying above approaches, we de
 
 6- you can change "UI_LANGUAGE" constant in shares/definitions.php to select Persian or English user interface 
 
-7- Change short_open_tag = On in php.ini
+7- set following keys in php.ini:
+short_open_tag = On
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
 
 use login.php page for login (default username: omid, password: omid3000)
 
