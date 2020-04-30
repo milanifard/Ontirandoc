@@ -49,7 +49,7 @@ class pdodb {
  * @param unknown_type $_driver
  * @return dbclass
  */
-  public function getInstance($_host = "", $_user = "", $_pass = "", $_default_db = "",$_driver="") {
+  public static function getInstance($_host = "", $_user = "", $_pass = "", $_default_db = "",$_driver="") {
     if ("" == $_driver)      $_driver = sys_config::$db_server['driver'];
     if ("" == $_host)        $_host = sys_config::$db_server['host'];
     if ("" == $_user)        $_user = sys_config::$db_server['user'];
