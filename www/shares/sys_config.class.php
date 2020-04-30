@@ -27,7 +27,7 @@ class FormsGeneratorDB
 class EducUser
 {
   public $PersonID;
-  function EducUser()
+  function __construct()
   {
   }
 }
