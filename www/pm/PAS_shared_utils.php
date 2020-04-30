@@ -735,8 +735,8 @@
 			if($EnglishDayName=="Saturday")
 				return 1;
 		}
-		
-		function FarsiDayName($EnglishDayName)
+
+        static function FarsiDayName($EnglishDayName)
 		{
 			if($EnglishDayName=="Friday")
 				return "جمعه";
