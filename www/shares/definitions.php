@@ -20,7 +20,8 @@ if(UI_LANGUAGE=="EN") {
     define2("C_SEARCH_RESULTS", "Search result");
     define2("C_LAST_ACTION_TIME", "Last action time");
     define2("C_EXECUTORS", "executors");
-    define2("C_TIME_TO_DO", "زمان انجام");
+    define2("C_VIEWERS", "viewers");
+    define2("C_TIME_TO_DO", "ِDone time");
 
     define2("C_SAVE", "Save");
     define2("C_NEW", "New");
@@ -965,6 +966,7 @@ else
     define2("C_SEARCH_RESULTS", "نتیجه جستجو");
     define2("C_LAST_ACTION_TIME", "زمان آخرین اقدام");
     define2("C_EXECUTORS", "مجریان");
+    define2("C_VIEWERS", "ناظران");
     define2("C_TIME_TO_DO", "زمان انجام");
 
     define2("C_LIST_OF_USERS","لیست کاربران");
