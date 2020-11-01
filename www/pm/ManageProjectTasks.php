@@ -93,9 +93,9 @@ function PutHeader($Title, $OrderBy)
 		if ($OrderBy == $OrderByFieldName)
 		{
 			if ($NextOrderType == 'DESC')
-				$Output .= "<i class='fas fa-sort-amount-down' title='".C_SORT_TYPE_DESC."'></i> ";
+				$Output .= "<i class='fas fa-sort-amount-down' title='DESC'></i> ";
 			else
-				$Output .= "<i class='fas fa-sort-amount-down-alt' title='".C_SORT_TYPE_ASC."'></i> ";
+				$Output .= "<i class='fas fa-sort-amount-down-alt' title='ASC'></i> ";
 		}
 		
 		$Output .= "</a>";
@@ -107,9 +107,6 @@ function PutHeader($Title, $OrderBy)
 if(isset($_REQUEST["SearchAction"]))
 {
 	$OtherConditions = "";
-	
-	if (isset($_POST["ConsiderDateRange"]) && $ToDate != '' && $FromDate != '')
-		$OtherConditions .= " and date(CreateDate) between '$FromDate' and '$ToDate' ";
 	
 	if (isset($_POST["ConsiderActivityDateRange"]) && $ActivityToDate != '' && $ActivityFromDate != '')
 		$OtherConditions .= " and exists(SELECT ProjectTaskID FROM projectmanagement.ProjectTaskActivities where ProjectTaskID = ProjectTasks.ProjectTaskID and date(ActivityDate) between '$ActivityFromDate' and '$ActivityToDate') ";
@@ -162,37 +159,37 @@ if(isset($_REQUEST["SearchAction"]))
 							<tr>
 								<td width="1%" nowrap><? echo C_WORK_CODE ?></td>
 								<td nowrap>
-								<input type="text" name="Item_ProjectTaskID" id="Item_ProjectTaskID" required>
+								<input type="text" name="Item_ProjectTaskID" id="Item_ProjectTaskID" >
 								</td>
 							</tr>
 							<tr>
 								<td width="1%" nowrap><? echo C_TITLE ?></td>
 								<td nowrap>
-								<input type="text" name="Item_title" id="Item_title" maxlength="1000" size="40" required>
+								<input type="text" name="Item_title" id="Item_title" maxlength="1000" size="40" >
 								</td>
 							</tr>
 							<tr>
 								<td width="1%" nowrap><? echo C_DESCRIPTION ?></td>
 								<td nowrap>
-								<input type="text" name="Item_description" id="Item_description" mexlength="1000" size="40" required>
+								<input type="text" name="Item_description" id="Item_description" mexlength="1000" size="40" >
 								</td>
 							</tr>
 							<tr>
 								<td width="1%" nowrap><? echo C_NOTE ?></td>
 								<td nowrap>
-								<input type="text" name="Item_TaskComment" id="Item_TaskComment" maxlength="1000" size="40" required>
+								<input type="text" name="Item_TaskComment" id="Item_TaskComment" maxlength="1000" size="40" >
 								</td>
 							</tr>
 							<tr>
 								<td width="1%" nowrap><? echo C_DOCUMENT ?></td>
 								<td nowrap>
-								<input type="text" name="Item_DocumentDescription" id="Item_DocumentDescription" maxlength="1000" size="40" required>
+								<input type="text" name="Item_DocumentDescription" id="Item_DocumentDescription" maxlength="1000" size="40" >
 								</td>
 							</tr>
 							<tr>
 								<td width="1%" nowrap><? echo C_ACTION ?></td>
 								<td nowrap>
-								<input type="text" name="Item_ActivityDescription" id="Item_ActivityDescription" maxlength="1000" size="40" required>
+								<input type="text" name="Item_ActivityDescription" id="Item_ActivityDescription" maxlength="1000" size="40" >
 								</td>
 							</tr>
 							<tr>
@@ -238,33 +235,18 @@ if(isset($_REQUEST["SearchAction"]))
 								</td>
 							</tr>
 							<tr>
-								<td title="<? echo C_CONSIDER_WORK_CREATION_TIME_RANGE ?>">
-									<input type="checkbox" name="ConsiderDateRange" <?= (isset($_POST["ConsiderDateRange"]) || !isset($_REQUEST["SearchAction"]))?  "checked" : ""; ?>><? echo C_CREATION_TIME_RANGE ?>:
-								</td>
-								<td>
-									<span><? echo C_FROM ?></span>
-									<input type="number" name="FromDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ShamsiFromDate)[2] ?>" required> /
-									<input type="number" name="FromMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ShamsiFromDate)[1] ?>" required> /
-									<input type="number" name="FromYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ShamsiFromDate)[0] ?>" required>
-									<span><? echo C_TO ?></span>
-									<input type="number" name="ToDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ShamsiToDate)[2] ?>" required> /
-									<input type="number" name="ToMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ShamsiToDate)[1] ?>" required> /
-									<input type="number" name="ToYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ShamsiToDate)[0] ?>" required>
-								</td>
-							</tr>
-							<tr>
 								<td title="<? echo C_CONSIDER_ACTION_CREATION_TIME_RANGE ?>">
 									<input type="checkbox" name="ConsiderActivityDateRange" <?= isset($_POST["ConsiderActivityDateRange"])?  "checked" : ""; ?>><? echo C_ACTION_TIME_RANGE ?>:
 								</td>
 								<td>
-									<span><? echo C_FROM ?></span>
-									<input type="number" name="ActivityFromDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ActivityShamsiFromDate)[2] ?>" required> /
-									<input type="number" name="ActivityFromMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ActivityShamsiFromDate)[1] ?>" required> /
-									<input type="number" name="ActivityFromYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ActivityShamsiFromDate)[0] ?>" required>
-									<span><? echo C_TO ?></span>
-									<input type="number" name="ActivityToDay" min="1" max="31" style="width: 45px;" value="<?= explode("/", $ActivityShamsiToDate)[2] ?>" required> /
-									<input type="number" name="ActivityToMonth" min="1" max="12" style="width: 45px;" value="<?= explode("/", $ActivityShamsiToDate)[1] ?>" required> /
-									<input type="number" name="ActivityToYear" min="1370" max="1450" style="width: 60px;" value="<?= explode("/", $ActivityShamsiToDate)[0] ?>" required>
+									<span><? echo C_FROM_DATE ?></span>
+									<input type="number" name="ActivityFromDay" min="1" max="31" style="width: 45px;" value="" > /
+									<input type="number" name="ActivityFromMonth" min="1" max="12" style="width: 45px;" value="" > /
+									<input type="number" name="ActivityFromYear" min="1370" max="1450" style="width: 60px;" value="" >
+									<span><? echo C_TO_DATE ?></span>
+									<input type="number" name="ActivityToDay" min="1" max="31" style="width: 45px;" value="" > /
+									<input type="number" name="ActivityToMonth" min="1" max="12" style="width: 45px;" value="" > /
+									<input type="number" name="ActivityToYear" min="1370" max="1450" style="width: 60px;" value="" >
 								</td>
 							</tr>
 							<tfoot>
