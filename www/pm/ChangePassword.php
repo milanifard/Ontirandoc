@@ -12,10 +12,10 @@
 		{
 			$query = "update projectmanagement.AccountSpecs set UserPassword=sha1(md5('".$_REQUEST["NewPass"]."')) where UserID='".$_SESSION["UserID"]."'";
 			$mysql->Execute($query);
-			$message = "<font color=red>اطلاعات ذخیره شد</font>";
+			$message = "<span style=\"color: red; \">اطلاعات ذخیره شد</span>";
 		}
 		else
-		    $message = "<font color=red>کلمه عبور فعلی نادرست وارد شده است</font>";
+		    $message = "<span style=\"color: red; \">کلمه عبور فعلی نادرست وارد شده است</span>";
 	}
 ?>
 <br>
