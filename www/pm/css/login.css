@@ -87,3 +87,7 @@ body {
   #login-header {
 	  margin-top: 25px;
   }
+
+.table th {
+	background: #5FA2DD;
+}

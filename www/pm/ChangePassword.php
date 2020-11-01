@@ -52,7 +52,7 @@
                                 </td>
 							</tr>
 							<tr>
-								<td class="text-align-center" colspan="2">
+								<td class="text-center" colspan="2">
 									<input type="submit" name="submit" class="btn btn-sm btn-primary" value="اعمال" onclick='javascript: CheckValidity();'>
 								</td>
 								<?php if(!empty($message)) echo '<div class="alert alert-warning text-right"  role="alert">'.$message."</div>"; ?>
