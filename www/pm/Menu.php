@@ -1,6 +1,7 @@
 <?php
 	include "header.inc.php";
 	include "PAS_shared_utils.php";
+    HTMLBegin();
 	$now = date("Ymd"); 
 	$yy = substr($now,0,4); 
 	$mm = substr($now,4,2); 
@@ -12,24 +13,7 @@
 	$mysql = pdodb::getInstance();
 ?>
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="">
-		<style type="text/css" > INPUT, SELECT { font-family: Tahoma }'.
-</style>
-<link rel="stylesheet"  href="css/right.css" type="text/css">
-	</head>
-	<body>
-	<table cellspacing=0 cellpadding=3 >
+<table class="table table-sm col-md-11 mx-auto">
 <tr>
 <td>
 <?php
@@ -45,14 +29,15 @@ else
 </table>
 <table style='cursor:pointer' border=0 cellpadding=0 cellspacing=0 width=185>
 <tr>
-<td valign=bottom height='32' background='images/title_header_main.gif'>
-	<table width=100% border=0 cellpadding=0 cellspacing=0 class="navbar_main" height="25">	
-	<tr>
-		<td width='85%' align='center'>
-		<font color="#FFFFFF"><b><? echo C_MAIN_MENU ?></b></font>
-		</td>
-		<td  width='20%'>&nbsp;</td>
-	</tr>
+<td valign=bottom height='32' >
+	<table class="table table-sm">
+	<thead>
+        <tr>
+		<th width='85%' align='center'>
+		<b><? echo C_MAIN_MENU ?></b>
+		</th>
+        </tr>
+	</thead>
 	</table>
 </td>
 </tr>
