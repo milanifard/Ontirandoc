@@ -14,6 +14,12 @@ if(UI_LANGUAGE=="EN") {
     define2("C_MY_TITLE_PROJECT_COMMENTS", "comment");
     define2("C_COMMENTS", "comments");
     define2("C_CREATED_AT", "create time");
+    define2("C_REQUISITIE_WORK", "requisite task");
+    define2("C_MY_TITLE_PROJECT_REQUISITES", "requisite tasks");
+    define2("C_REQUIREMENTS_JOB", "requirements");
+    define2("C_MY_TITLE_PRE_REQUIREMENTS", "requirements");
+
+
 
     define2("C_WORK_CODE", "Executor");
     define2("C_READY_FOR_CONTROL", "Ready for control");
@@ -965,6 +971,10 @@ else
     define2("C_MY_TITLE_PROJECT_COMMENTS", "یادداشت");
     define2("C_COMMENTS", "یادداشتها");
     define2("C_CREATED_AT", "زمان ایجاد");
+    define2("C_REQUISITIE_WORK", "کار پیش نیاز");
+    define2("C_MY_TITLE_PROJECT_REQUISITES", "کارهای پیش نیاز");
+    define2("C_REQUIREMENTS_JOB", "پیش نیازها");
+    define2("C_MY_TITLE_PRE_REQUIREMENTS", "پیش نیازها");
 
     define2("C_WORK_CODE", "مجریان");
     define2("C_READY_FOR_CONTROL", "آماده برای کنترل");

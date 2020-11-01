@@ -207,7 +207,7 @@ if (isset($_REQUEST["UpdateID"])) {
                         <? if ($HasAddAccess || $HasUpdateAccess) { ?>
                             <input type="button" class="btn btn-info"
                                    onclick="javascript: document.location='ManageProjectTaskAssignedUsers.php?ProjectTaskID=<?php echo $_REQUEST["ProjectTaskID"]; ?>'"
-                                   value="<? echo C_SEND ?>>">
+                                   value="<? echo C_SEND ?>">
                         <?php } ?>
                     </td>
                 </tr>

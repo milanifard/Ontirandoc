@@ -148,7 +148,7 @@ class be_ProjectTasks
 			$this->CreateDate=$rec["CreateDate"];
 			$this->CreateDate_Shamsi=$rec["CreateDate_Shamsi"];
 			$this->UpdateReason = $rec["UpdateReason"];
-			$this->BugID = $rec["SentBugsID"];
+			//$this->BugID = $rec["SentBugsID"];
 			$this->study = $rec["study"];
 			//$this->ParentID_Desc=$rec["p16_title"]; // محاسبه از روی جدول وابسته
 		}
@@ -1193,7 +1193,7 @@ class manage_ProjectTasks
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskDocuments")
  			$ret .= " bgcolor=\"#cccccc\" ";
-		$ret .= "><a href='ManageProjectTaskDocuments.php?ProjectTaskID=".$RecID."'>".C_DOCUMENTS_T."</a></td>";
+		$ret .= "><a href='ManageProjectTaskDocuments.php?ProjectTaskID=".$RecID."'>".C_DOCUMENTS."</a></td>";
 		$ret .= "<td width=\"15%\" ";
 		if($CurrentPageName=="ManageProjectTaskRequisites")
  			$ret .= " bgcolor=\"#cccccc\" ";
