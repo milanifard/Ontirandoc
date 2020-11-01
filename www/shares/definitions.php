@@ -11,7 +11,11 @@ function define2($name,$value) {
 
 
 if(UI_LANGUAGE=="EN") {
-    define2("C_WORK_CODE", "Task Code");
+    define2("C_MY_TITLE_PROJECT_COMMENTS", "comment");
+    define2("C_COMMENTS", "comments");
+    define2("C_CREATED_AT", "create time");
+
+    define2("C_WORK_CODE", "Executor");
     define2("C_READY_FOR_CONTROL", "Ready for control");
     define2("C_CONSIDER_WORK_CREATION_TIME_RANGE", "Creation time range");
     define2("C_CREATION_TIME_RANGE", "Creation time range");
@@ -957,7 +961,12 @@ if(UI_LANGUAGE=="EN") {
 }
 else
 {
-    define2("C_WORK_CODE", "کد کار");
+
+    define2("C_MY_TITLE_PROJECT_COMMENTS", "یادداشت");
+    define2("C_COMMENTS", "یادداشتها");
+    define2("C_CREATED_AT", "زمان ایجاد");
+
+    define2("C_WORK_CODE", "مجریان");
     define2("C_READY_FOR_CONTROL", "آماده برای کنترل");
     define2("C_CONSIDER_WORK_CREATION_TIME_RANGE", "بازه  ایجاد");
     define2("C_CREATION_TIME_RANGE", "بازه ایجاد");
@@ -1523,7 +1532,7 @@ else
     define2("C_PREREQUISITES" , "پیشنیازها");
     define2("C_NOTES" , "یادداشت ها");
     define2("C_USERS_ASSIGNED_TO_WORK" , "کاربران منتصب به کار");
-    define2("C_DOCUMENTS" , "اسناد کارها");
+    define2("C_DOCUMENTS" , "مستندات");
 
     //ManagePayments.php by Sara Bolouri
     define2("C_CREATING_EDITING_PAYMENT_TO" , "ایجاد/ویرایش پرداخت به");
