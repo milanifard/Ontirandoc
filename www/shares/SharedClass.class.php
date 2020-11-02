@@ -1,4 +1,38 @@
 <?php
+function HTMLBegin($bgcolor = '#C8DEF0', $AddDocType=TRUE)
+{
+    if($AddDocType==TRUE)
+        echo "<!DOCTYPE html>\n<html>\n<head>\n" ;
+    else
+        echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">";
+    echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n".
+        "<link rel=\"stylesheet\"  href=\"css/login.css\" type=\"text/css\">\n";
+    if (UI_LANGUAGE == "EN") {
+        echo "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n".
+            "<script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n".
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n".
+            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>\n";
+    }
+    else if (UI_LANGUAGE == "FA")
+    {
+        echo "<link rel=\"stylesheet\"  href=\"https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css\" integrity=\"sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If\"  crossorigin=\"anonymous\">\n" .
+            "<script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n".
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n".
+            "<script  src=\"https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js\" integrity=\"sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k\" crossorigin=\"anonymous\"></script>\n";
+    }
+    echo "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">";
+    echo "\n</head>\n";
+    echo "<body ";
+    if(UI_LANGUAGE=="FA")
+        echo " dir = 'rtl' ";
+    echo ">";
+}
+
+function HTMLEnd()
+{
+    echo "</body></html>";
+}
+
 class SharedClass
 {
     static function FixNumber($var)
