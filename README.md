@@ -93,8 +93,6 @@ In addition to checking validity of ontology by applying above approaches, we de
 
 3- populate wordnet and ferdowsnet databases (using wordnet.sql and ferdowsnet.sql)
 
-4- copy web files in wwwroot
-
 5- set database username and password in shares/config.class.php and Mysql.config.php
 
 6- you can change "UI_LANGUAGE" constant in shares/definitions.php to select Persian or English user interface 
