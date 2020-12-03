@@ -476,7 +476,7 @@ CREATE TABLE `FilesTemporaryAccessListHistory` (
   `FilesTemporaryAccessListHistoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SenderID` int(11) NOT NULL COMMENT 'فرستنده',
   `ReceiverID` int(11) NOT NULL COMMENT 'گیرنده',
-  `ActionTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'زمان انجام',
+  `ActionTime` datetime NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'زمان انجام',
   `FileID` int(11) NOT NULL COMMENT 'کد پرونده',
   `ActionType` enum('SEND','REMOVE','UPDATE') COLLATE utf8_persian_ci NOT NULL DEFAULT 'SEND' COMMENT 'نوع عملیات (ارسال پرونده یا حذف ارسال)',
   PRIMARY KEY (`FilesTemporaryAccessListHistoryID`)
