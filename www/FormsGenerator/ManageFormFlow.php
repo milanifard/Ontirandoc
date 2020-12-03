@@ -202,13 +202,13 @@ if(isset($_REQUEST["UpdateID"]))
 	
 	$LoadDataJavascriptCode .= "document.f1.Item_NumberOfPermittedSend.value='".$obj->NumberOfPermittedSend."'; \r\n ";
 	
-	if($obj->SendDatePermittedStartDate!="0000-00-00 00:00:00")
+	if($obj->SendDatePermittedStartDate!="1000-01-01 00:00:00")
 	{
 		$LoadDataJavascriptCode .= "document.getElementById('StartDate_YEAR').value='".substr($obj->Shamsi_SendDatePermittedStartDate, 2, 2)."'; \r\n "; 
 		$LoadDataJavascriptCode .= "document.getElementById('StartDate_MONTH').value='".substr($obj->Shamsi_SendDatePermittedStartDate, 5, 2)."'; \r\n "; 
 		$LoadDataJavascriptCode .= "document.getElementById('StartDate_DAY').value='".substr($obj->Shamsi_SendDatePermittedStartDate, 8, 2)."'; \r\n ";
 	} 
-	if($obj->SendDatePermittedEndDate!="0000-00-00 00:00:00")
+	if($obj->SendDatePermittedEndDate!="1000-01-01 00:00:00")
 	{
 		$LoadDataJavascriptCode .= "document.getElementById('EndDate_YEAR').value='".substr($obj->Shamsi_SendDatePermittedEndDate, 2, 2)."'; \r\n "; 
 		$LoadDataJavascriptCode .= "document.getElementById('EndDate_MONTH').value='".substr($obj->Shamsi_SendDatePermittedEndDate, 5, 2)."'; \r\n "; 

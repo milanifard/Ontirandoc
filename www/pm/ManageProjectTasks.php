@@ -355,7 +355,7 @@ if(isset($_REQUEST["SearchAction"]))
 						echo "</a>  ";
 						echo "</td>";
 						*/
-						if($res[$k]->DoneDate!="0000-00-00 00:00:00")
+						if($res[$k]->DoneDate!="1000-01-01 00:00:00")
 							echo "	<td nowrap>".$res[$k]->DoneDate_Shamsi."</td>";
 						else
 							echo "	<td nowrap>-</td>";

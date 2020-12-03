@@ -387,12 +387,12 @@ class manage_UniversitySessions
 			if($cond!="") $cond .= " and ";
 				$cond .= "UniversitySessions.SessionTitle like ? ";
 		}
-		if($SessionFromDate!="0000-00-00" && $SessionFromDate!="")
+		if($SessionFromDate!="1000-01-01" && $SessionFromDate!="")
 		{
 			if($cond!="") $cond .= " and ";
 			$cond .= "UniversitySessions.SessionDate>=? ";
 		}
-		if($SessionToDate!="0000-00-00" && $SessionToDate!="")
+		if($SessionToDate!="1000-01-01" && $SessionToDate!="")
 		{
 			if($cond!="") $cond .= " and ";
 			$cond .= "UniversitySessions.SessionDate<=? ";
@@ -431,9 +431,9 @@ class manage_UniversitySessions
 			array_push($ValueListArray, "%".$SessionNumber."%"); 
 		if($SessionTitle!="") 
 			array_push($ValueListArray, "%".$SessionTitle."%"); 
-		if($SessionFromDate!="0000-00-00"  && $SessionFromDate!="")
+		if($SessionFromDate!="1000-01-01"  && $SessionFromDate!="")
 			array_push($ValueListArray, $SessionFromDate); 
-		if($SessionToDate!="0000-00-00"  && $SessionToDate!="")
+		if($SessionToDate!="1000-01-01"  && $SessionToDate!="")
 			array_push($ValueListArray, $SessionToDate); 
 		if($SessionLocation!="") 
 			array_push($ValueListArray, "%".$SessionLocation."%"); 
@@ -506,12 +506,12 @@ class manage_UniversitySessions
 			if($cond!="") $cond .= " and ";
 				$cond .= "UniversitySessions.SessionTitle like ? ";
 		}
-		if($SessionFromDate!="0000-00-00" && $SessionFromDate!="")
+		if($SessionFromDate!="1000-01-01" && $SessionFromDate!="")
 		{
 			if($cond!="") $cond .= " and ";
 			$cond .= "UniversitySessions.SessionDate>=? ";
 		}
-		if($SessionToDate!="0000-00-00" && $SessionToDate!="")
+		if($SessionToDate!="1000-01-01" && $SessionToDate!="")
 		{
 			if($cond!="") $cond .= " and ";
 			$cond .= "UniversitySessions.SessionDate<=? ";
@@ -546,9 +546,9 @@ class manage_UniversitySessions
 			array_push($ValueListArray, "%".$SessionNumber."%"); 
 		if($SessionTitle!="") 
 			array_push($ValueListArray, "%".$SessionTitle."%"); 
-		if($SessionFromDate!="0000-00-00"  && $SessionFromDate!="")
+		if($SessionFromDate!="1000-01-01"  && $SessionFromDate!="")
 			array_push($ValueListArray, $SessionFromDate); 
-		if($SessionToDate!="0000-00-00"  && $SessionToDate!="")
+		if($SessionToDate!="1000-01-01"  && $SessionToDate!="")
 			array_push($ValueListArray, $SessionToDate); 
 		if($SessionLocation!="") 
 			array_push($ValueListArray, "%".$SessionLocation."%");
@@ -821,7 +821,7 @@ class manage_UniversitySessions
 					$ConfirmStatus, 
 					"NO", 
 					"", 
-					"0000-00-00", 
+					"1000-01-01",
 					"PRESENT", 
 					0, 
 					0);
@@ -1001,7 +1001,7 @@ class manage_UniversitySessions
 	function UnSignTheDescesionFile($CurrentUser, $UniversitySessionID)
 	{
 		$mysql = pdodb::getInstance();
-		$query = "update sessionmanagement.SessionMembers set SignTime='0000-00-00 00:00', SignDescription='', SignStatus='NO' where UniversitySessionID=? and MemberPersonID=?";
+		$query = "update sessionmanagement.SessionMembers set SignTime='1000-01-01 00:00', SignDescription='', SignStatus='NO' where UniversitySessionID=? and MemberPersonID=?";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($UniversitySessionID, $CurrentUser));
 		manage_UniversitySessions::UnConfirmDescisionsFileStatus($UniversitySessionID);
@@ -1011,7 +1011,7 @@ class manage_UniversitySessions
 	function UnSignAllMembers($UniversitySessionID)
 	{
 		$mysql = pdodb::getInstance();
-		$query = "update sessionmanagement.SessionMembers set SignTime='0000-00-00 00:00', SignDescription='', SignStatus='NO' where UniversitySessionID=?";
+		$query = "update sessionmanagement.SessionMembers set SignTime='1000-01-01 00:00', SignDescription='', SignStatus='NO' where UniversitySessionID=?";
 		$mysql->Prepare($query);
 		$mysql->ExecuteStatement(array($UniversitySessionID));
 	}

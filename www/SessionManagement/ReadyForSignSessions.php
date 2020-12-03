@@ -12,7 +12,7 @@ HTMLBegin();
 
 
 /*$mysql = pdodb::getInstance();
-$query="UPDATE `sessionmanagement`.`SessionMembers` SET `SignTime`='0000-00-00 00:00:00', `PresenceType`='PRESENT' WHERE `SessionMemberID`='17324'";
+$query="UPDATE `sessionmanagement`.`SessionMembers` SET `SignTime`='1000-01-01 00:00:00', `PresenceType`='PRESENT' WHERE `SessionMemberID`='17324'";
 $mysql->Prepare($query);
 $res = $mysql->ExecuteStatement(array());*/
 

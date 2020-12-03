@@ -122,7 +122,7 @@ if(isset($_REQUEST["SearchAction"]))
 <?
 for($k=0; $k<count($res); $k++)
 {
-	if($res[$k]->HasExpireTime=="YES" && $res[$k]->ExpireTime!="0000-00-00 00:00:00" && substr($res[$k]->ExpireTime, 0, 10)<$now)
+	if($res[$k]->HasExpireTime=="YES" && $res[$k]->ExpireTime!="1000-01-01 00:00:00" && substr($res[$k]->ExpireTime, 0, 10)<$now)
 		echo "<tr bgcolor=#ffC7C7>";
 	else if($res[$k]->TaskStatus=="PROGRESSING")
 		echo "<tr bgcolor=#8BC7A1>";
@@ -148,7 +148,7 @@ for($k=0; $k<count($res); $k++)
 	echo $res[$k]->ProjectID_Desc."</td>";
 	echo "	<td nowrap>&nbsp;".$res[$k]->TaskPeriority."</td>";
 	echo "	<td>";
-	if($res[$k]->HasExpireTime=="YES" && $res[$k]->ExpireTime!="0000-00-00 00:00:00")
+	if($res[$k]->HasExpireTime=="YES" && $res[$k]->ExpireTime!="1000-01-01 00:00:00")
 		echo " <img border=0 style='vertical-align: middle;' src='images/deadline.jpg' title='مهلت انجام: ".$res[$k]->ExpireTime_Shamsi."'> ";
 	echo htmlentities($res[$k]->title, ENT_QUOTES, 'UTF-8')."</td>";
 	echo "	<td nowrap>".$res[$k]->CreatorID_FullName."</td>";

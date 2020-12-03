@@ -4309,14 +4309,14 @@ INSERT INTO `org_units` VALUES ('1', 'مدیریت');
 
 ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `UpdateReason` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL DEFAULT '-' COMMENT 'دلیل بروزرسانی';
 
-ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `DoneDate` DATETIME NOT NULL DEFAULT '0000-00-00' COMMENT 'زمان پایان کار - اقدام';
+ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `DoneDate` DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'زمان پایان کار - اقدام';
 
-ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `EstimatedStartTime` DATETIME NOT NULL DEFAULT '0000-00-00' COMMENT 'زمان تخمینی شروع',
- MODIFY COLUMN `RealStartTime` DATETIME NOT NULL DEFAULT '0000-00-00' COMMENT 'زمان واقعی شروع',
+ALTER TABLE `projectmanagement`.`projecttasks` MODIFY COLUMN `EstimatedStartTime` DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'زمان تخمینی شروع',
+ MODIFY COLUMN `RealStartTime` DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'زمان واقعی شروع',
  MODIFY COLUMN `EstimatedRequiredTimeDay` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'زمان مورد نیاز - روز',
  MODIFY COLUMN `EstimatedRequiredTimeHour` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'زمان مورد نیاز - ساعت',
  MODIFY COLUMN `EstimatedRequitedTimeMin` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'زمان مورد نیاز - دقیقه',
- MODIFY COLUMN `ExpireTime` DATETIME NOT NULL DEFAULT '0000-00-00' COMMENT 'مهلت اقدام',
+ MODIFY COLUMN `ExpireTime` DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'مهلت اقدام',
  MODIFY COLUMN `TaskPeriority` INT(5) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'اولویت',
  MODIFY COLUMN `ProgramLevelID` INT(11) NOT NULL DEFAULT 0 COMMENT 'مرحله از برنامه اصلی',
  MODIFY COLUMN `TaskGroupID` INT(11) NOT NULL DEFAULT 0 COMMENT 'گروه کار',
@@ -4345,12 +4345,12 @@ COMMENT = 'ارجاعات کارها';
 DROP TABLE IF EXISTS `mis`.`MIS_TableChangeLog`;
 CREATE TABLE  `mis`.`MIS_TableChangeLog` (
   `MIS_TableChangeLogID` int(11) NOT NULL AUTO_INCREMENT,
-  `DBName` varchar(50) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '???????',
-  `TableName` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL COMMENT '????',
-  `ChangeType` enum('ADD','REMOVE','UPDATE') COLLATE utf8_persian_ci DEFAULT NULL COMMENT '??? ?????',
-  `ChangeDate` datetime DEFAULT NULL COMMENT '????',
+  `DBName` varchar(50) COLLATE utf8_persian_ci DEFAULT NULL COMMENT 'نام دیتابیس',
+  `TableName` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL COMMENT 'جدول',
+  `ChangeType` enum('ADD','REMOVE','UPDATE') COLLATE utf8_persian_ci DEFAULT NULL COMMENT 'نوع تغییر',
+  `ChangeDate` datetime DEFAULT NULL COMMENT 'زمان تغییر',
   PRIMARY KEY (`MIS_TableChangeLogID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2327 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='????? ??????? ?????? ?????';
+) ENGINE=InnoDB AUTO_INCREMENT=2327 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci COMMENT='لاگ تغییر جداول';
 
 DROP TABLE IF EXISTS `mis`.`MIS_SuggestedFK`;
 CREATE TABLE  `mis`.`MIS_SuggestedFK` (

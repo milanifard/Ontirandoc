@@ -37,7 +37,7 @@ if(isset($_POST["title"]))
 		$ret = manage_ProjectResponsibles::GetList($ProjectID);
 		if(count($ret)>0)
 		{			
-			$ProjectTaskID = manage_ProjectTasks::Add($ProjectID, 0, 0, $_POST["title"], $_POST["description"], 'ONCE', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0, 'NO', '0000-00-00 00:00:00', 2, "NOT_START", 0, 0, $PC);
+			$ProjectTaskID = manage_ProjectTasks::Add($ProjectID, 0, 0, $_POST["title"], $_POST["description"], 'ONCE', 1, '1000-01-01 00:00:00', '1000-01-01 00:00:00', 0, 0, 0, 'NO', '1000-01-01 00:00:00', 2, "NOT_START", 0, 0, $PC);
 			for($i=0; $i<count($ret); $i++)
 			{
 				manage_ProjectTaskAssignedUsers::Add($ProjectTaskID, $ret[$i]->PersonID, "انتساب اتومات", 100, "EXECUTOR");

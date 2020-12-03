@@ -265,10 +265,10 @@ class SecurityManager
 		$query .= " ) ";
 		
 		$query .= " and (";
-		$query .= " SendDatePermittedStartDate='0000-00-00 00:00:00' or SendDatePermittedStartDate<=concat(substr(now(), 1, 10), ' ', '00:00:00')";
+		$query .= " SendDatePermittedStartDate='1000-01-01 00:00:00' or SendDatePermittedStartDate<=concat(substr(now(), 1, 10), ' ', '00:00:00')";
 		$query .= " ) ";
 		$query .= " and (";
-		$query .= " SendDatePermittedEndDate='0000-00-00 00:00:00' or SendDatePermittedEndDate>concat(substr(now(), 1, 10), ' ', '00:00:00')";
+		$query .= " SendDatePermittedEndDate='1000-01-01 00:00:00' or SendDatePermittedEndDate>concat(substr(now(), 1, 10), ' ', '00:00:00')";
 		$query .= " ) ";
 		
 		if($_SESSION["SystemCode"]=="10")

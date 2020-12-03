@@ -327,7 +327,7 @@ if(!isset($_REQUEST["UpdateID"]))
 	 	<span id="DeadLine_MONTH" name="DeadLine_MONTH"></span>/
 	 	<span id="DeadLine_YEAR" name="DeadLine_YEAR"></span>-->
  	<? /*echo 'test';*/ if ($obj->DeadLine_Shamsi!=01 && $obj->DeadLine_Shamsi!="date-error") {echo $DeadLine;}
-else{echo '0000-00-00';}
+else{echo '1000-01-01';}
 } ?>
 	</td>
 </tr>

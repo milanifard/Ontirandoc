@@ -340,7 +340,7 @@ if($TabPage=="1")
 				(
 				EstimatedStartTime between '".$StartDate."' and '".$EndDate."' 
 				or RealStartTime between '".$StartDate."' and '".$EndDate."'
-				or (EstimatedStartTime<>'0000-00-00 00:00:00' and TaskStatus<>'DONE' and TaskStatus<>'REPLAYED') 
+				or (EstimatedStartTime<>'1000-01-01 00:00:00' and TaskStatus<>'DONE' and TaskStatus<>'REPLAYED') 
 				)";
 	$mysql->Prepare($query);
 	$res = $mysql->ExecuteStatement(array($ProjectID));

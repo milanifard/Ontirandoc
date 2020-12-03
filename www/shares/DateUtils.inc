@@ -69,7 +69,7 @@
 	} 
 	function shdate($date)
 	  {
-	   if($date==0000-00-00)
+	   if($date==1000-01-01)
 	     echo '';
 	   else{
 
@@ -87,7 +87,7 @@
 	  };
 	function shdate2($date)
 	  {
-	   if($date==0000-00-00)
+	   if($date==1000-01-01)
 	     echo '';
 	   else{
 
@@ -106,7 +106,7 @@
 	function xdate($date)
 	  {
 	   if($date==NULL)
-	     return '0000-00-00';
+	     return '1000-01-01';
 	   else{
 	   $yy=substr($date,0,2);
    	   $mm=substr($date,3,2);
@@ -200,7 +200,7 @@ function shNow()
 };
 function shdate3($date)
 	  {
-	   if($date==0000-00-00)
+	   if($date==1000-01-01)
 	     echo '';
 	   else{
 

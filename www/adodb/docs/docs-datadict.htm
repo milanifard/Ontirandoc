@@ -56,7 +56,7 @@ $flds = "
   event_id I(11) NOTNULL AUTOINCREMENT PRIMARY,
   event_type I(4) NOTNULL  <b>INDEX idx_evt</b>,
   event_start_date T DEFAULT NULL <b>INDEX id_esd</b>,
-  event_end_date T DEFAULT '0000-00-00 00:00:00' <b>INDEX id_eted</b>,
+  event_end_date T DEFAULT '1000-01-01 00:00:00' <b>INDEX id_eted</b>,
   event_parent I(11) UNSIGNED NOTNULL DEFAULT 0 <b>INDEX id_evp</b>,
   event_owner I(11) DEFAULT 0 <b>INDEX idx_ev1</b>,
   event_project I(11) DEFAULT 0 <b>INDEX idx_ev1</b>,

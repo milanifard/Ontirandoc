@@ -62,7 +62,7 @@ class SharedClass
     static function xdate2($date)
     {
         if($date==NULL)
-            return '0000-00-00';
+            return '1000-01-01';
         else{
             $yy=substr($date,0,4);
             $mm=substr($date,5,2);
@@ -74,9 +74,9 @@ class SharedClass
     {
         //!ereg("^[0-9]{2}", $ShamsiMonth) || !ereg("^[0-9]{2}", $ShamsiDay))
         if(!is_numeric($ShamsiYear) || !is_numeric($ShamsiMonth) || !is_numeric($ShamsiDay))
-            return "0000-00-00";
+            return "1000-01-01";
         if($ShamsiMonth>12 || $ShamsiDay>31 || $ShamsiYear==0)
-            return "0000-00-00";
+            return "1000-01-01";
         if(strlen($ShamsiDay)==1)
             $ShamsiDay = "0".$ShamsiDay;
         if(strlen($ShamsiMonth)==1)
@@ -95,9 +95,9 @@ class SharedClass
     {
         //!ereg("^[0-9]{2}", $ShamsiMonth) || !ereg("^[0-9]{2}", $ShamsiDay))
         if(!is_numeric($ShamsiYear) || !is_numeric($ShamsiMonth) || !is_numeric($ShamsiDay))
-            return "0000-00-00";
+            return "1000-01-01";
         if($ShamsiMonth>12 || $ShamsiDay>31 || $ShamsiYear==0)
-            return "0000-00-00";
+            return "1000-01-01";
         if(strlen($ShamsiDay)==1)
             $ShamsiDay = "0".$ShamsiDay;
         if(strlen($ShamsiMonth)==1)

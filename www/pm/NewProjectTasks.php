@@ -53,7 +53,7 @@ if(isset($_REQUEST["Save"]))
 
 	$LetterNumber = '';
 	$LetterType = '';
-	$LetterDate = '0000-00-00';
+	$LetterDate = '1000-01-01';
 	if(isset($_REQUEST["LetterNumber"]))
 		$LetterNumber = $_REQUEST["LetterNumber"];
 	if(isset($_REQUEST["LetterType"]))
@@ -118,7 +118,7 @@ if(isset($_REQUEST["Save"]))
 	$Item_ParentID = 0; // فعلا فرض می کنیم همه کارها در یک سطح هستند ولی سیستم امکان ایجاد کارهای سلسله مراتبی را دارد
 	if(!isset($_REQUEST["UpdateID"])) 
 	{
-		if (trim($LetterNumber) != "" || trim($LetterDate) != "0000-00-00")
+		if (trim($LetterNumber) != "" || trim($LetterDate) != "1000-01-01")
 			$Item_ProjectID = 771; // کارهای ارسالی از سامانه‌ی مکاتبات
 		else
 			$LetterType = '';

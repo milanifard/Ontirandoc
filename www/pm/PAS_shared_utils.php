@@ -208,7 +208,7 @@
 			$FromDate = substr($SelectedDate,0,4)."-".substr($SelectedDate,4,2)."-".substr($SelectedDate,6,2)." 00:00:01";
 			$ToDate = substr($SelectedDate,0,4)."-".substr($SelectedDate,4,2)."-".substr($SelectedDate,6,2)." 23:59:0";
 			$mysql = dbclass::getInstance();
-			$query = "select * from projectmanagement.EnterExitTimes where PersonID='".$PersonID."' and EnterTime between '".$FromDate."' and '".$ToDate."' and ExitTime='0000-00-00 00:00:00'";
+			$query = "select * from projectmanagement.EnterExitTimes where PersonID='".$PersonID."' and EnterTime between '".$FromDate."' and '".$ToDate."' and ExitTime='1000-01-01 00:00:00'";
 			$res = $mysql->Execute($query);
 			if($arr_res=$res->FetchRow())
 				return $arr_res["EnterExitTimeID"];
@@ -257,7 +257,7 @@
 				 برای مواردی که شخص وارد شده ولی خروج ندارد آخر وقت را خروج در نظر می گیرد
 				*/
 				$EndTime = 1440;
-				if($arr_res["ExitTime"]!="0000-00-00 00:00:00")
+				if($arr_res["ExitTime"]!="1000-01-01 00:00:00")
 					$EndTime = PASUtils::GetMinutes($arr_res["ExitTime"]);
 				
 				for($i=PASUtils::GetMinutes($arr_res["EnterTime"]); $i<=$EndTime && $i<=1440; $i++)
@@ -338,7 +338,7 @@
 				else
 					$EndTime = 1440;
 					
-				if($arr_res["ExitTime"]!="0000-00-00 00:00:00")
+				if($arr_res["ExitTime"]!="1000-01-01 00:00:00")
 					$EndTime = PASUtils::GetMinutes($arr_res["ExitTime"]);
 				
 				for($i=PASUtils::GetMinutes($arr_res["EnterTime"]); $i<=$EndTime && $i<=1440; $i++)

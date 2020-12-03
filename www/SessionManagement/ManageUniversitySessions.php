@@ -60,8 +60,8 @@ else
     $SessionTitle='';
     $SessionDate='';
     $SessionLocation='';
-    $SessionFromDate = '0000-00-00';
-    $SessionToDate = '0000-00-00';
+    $SessionFromDate = '1000-01-01';
+    $SessionToDate = '1000-01-01';
     $PreCommandKeyWord = "";
     $DecisionKeyWord = "";
 }
