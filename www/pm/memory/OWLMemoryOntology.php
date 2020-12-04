@@ -295,7 +295,7 @@ class OWLMemoryOntology extends OWLOntology
 	 */ 
 	function getLabels($id){
 
-		if(is_array($this->owl_data['labels'][$id]))
+		if(isset($this->owl_data['labels'][$id]) && is_array($this->owl_data['labels'][$id]))
 			return $this->owl_data['labels'][$id];
 		else
 			return array();

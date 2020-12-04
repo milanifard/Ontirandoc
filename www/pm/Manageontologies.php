@@ -1443,7 +1443,7 @@ if(isset($_REQUEST["UpdateID"]))
                         <tr>
                             <td colspan=2>
                                 <label>
-                                    <textarea ><?php echo $obj->FileContent ?></textarea>
+                                    <textarea cols="100" rows="10" dir="ltr"><?php echo $obj->FileContent ?></textarea>
                                 </label>
                             </td>
                         </tr>

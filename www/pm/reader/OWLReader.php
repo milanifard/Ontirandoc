@@ -77,7 +77,7 @@ class OWLReader
 		$ontology->setNamespace($owl_file);
 
 		xml_parse($this->parser, $data, true);
-		//print_r($ontology);
+		//var_dump($ontology);
 		//die();
 	}
 

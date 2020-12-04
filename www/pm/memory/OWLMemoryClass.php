@@ -44,7 +44,8 @@ class OWLMemoryClass extends OWLClass
 		if($this->id == "http://www.w3.org/2002/07/owl#Thing")
 			return "Thing";
 
-		$labels = $this->model->getLabels($this->id); 
+		$labels = $this->model->getLabels($this->id);
+
 		
 		if(is_array($labels) && array_key_exists($language, $labels)){
 			$label = $labels[$language];

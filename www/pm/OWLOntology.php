@@ -78,7 +78,7 @@ class OWLOntology
 	/**
 	 * create new property
 	 */
-	function createProperty($id){
+	function createProperty($id, $domain, $range, $is_datatype, $is_annotation){
   }
 
 	//---------------------------------------------------------------------------

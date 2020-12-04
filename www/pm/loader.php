@@ -24,37 +24,6 @@ $NameSpace = $ontology->getNamespace();
 
 echo $NameSpace;
 $mysql = pdodb::getInstance();
-//die();
-
-$classes = $ontology->getAllClasses();
-for ($i = 0; $i < count($classes); $i++) {
-	$ClassID = $classes[$i]->getID();
-	if (strpos($ClassID, "http://purl.obolibrary.org/obo") === 0) {
-		$res = $mysql->Execute("select OntologyClassID from projectmanagement.OntologyClasses where OntologyID=" . $OntologyID . " and ClassTitle='" . $ClassID . "'");
-		if ($rec = $res->fetch()) {
-			$query = "insert into projectmanagement.OntologyClassLabels (OntologyClassID, label) values ('" . $rec["OntologyClassID"] . "', '" . $classes[$i]->getLabel("en") . "')";
-			$mysql->Execute($query);
-			echo "ClassID: " . $rec["OntologyClassID"] . " -> " . $classes[$i]->getLabel("en");
-		} else
-			echo "ClassID: " . $ClassID . " not fount";
-		echo "<br>";
-	}
-}
-
-$props = $ontology->getAllProperties();
-for ($i = 0; $i < count($props); $i++) {
-	$PropertyID = $props[$i]->getID();
-	if (strpos($PropertyID, "http://purl.obolibrary.org/obo") === 0) {
-		$res = $mysql->Execute("select OntologyPropertyID from projectmanagement.OntologyProperties where OntologyID=" . $OntologyID . " and PropertyTitle='" . $PropertyID . "'");
-		if ($rec = $res->fetch()) {
-			$query = "insert into projectmanagement.OntologyPropertyLabels (OntologyPropertyID, label) values ('" . $rec["OntologyPropertyID"] . "', '" . $props[$i]->getLabel("en") . "')";
-			$mysql->Execute($query);
-			echo "PropertyID: " . $rec["OntologyPropertyID"] . " -> " . $props[$i]->getLabel("en");
-		} else
-			echo "PropID: " . $PropID . " not fount";
-		echo "<br>";
-	}
-}
 
 $mysql->Execute("delete from projectmanagement.OntologyClassHirarchy where OntologyClassID in (select OntologyClassID from projectmanagement.OntologyClasses where OntologyID=" . $OntologyID . ")");
 $mysql->Execute("delete from projectmanagement.OntologyClasses where OntologyID=" . $OntologyID);
@@ -62,9 +31,9 @@ $mysql->Execute("delete from projectmanagement.OntologyProperties where Ontology
 
 
 
-echo "<div class'row'></div>"
-echo "<div class'col-1'></div>"
-echo "<div class'col-10'>"
+echo "<div class'row'></div>";
+echo "<div class'col-1'></div>";
+echo "<div class'col-10'>";
 echo "<table class='table table-sm table-borderless' dir=ltr>";
 echo "<tr bgcolor=#cccccc><td align=center><b>classes: </b></td></tr>";
 $classes = $ontology->getAllClasses();
@@ -152,6 +121,40 @@ for ($i = 0; $i < count($properties); $i++) {
 	echo "</td>";
 	echo "</tr>";
 }
+
+$classes = $ontology->getAllClasses();
+for ($i = 0; $i < count($classes); $i++) {
+    $ClassID = $classes[$i]->getID();
+    $ClassName = str_replace($NameSpace, "", $ClassID);
+    //echo "<tr><td>*".$ClassName."*</td></tr>";
+    if (strpos($ClassID, "http://purl.obolibrary.org/obo") === 0) {
+        $res = $mysql->Execute("select OntologyClassID from projectmanagement.OntologyClasses where OntologyID=" . $OntologyID . " and ClassTitle='" . $ClassName . "'");
+        if ($rec = $res->fetch()) {
+            $query = "insert into projectmanagement.OntologyClassLabels (OntologyClassID, label) values ('" . $rec["OntologyClassID"] . "', '" . $classes[$i]->getLabel("fa") . "')";
+            $mysql->Execute($query);
+            echo "ClassID: " . $rec["OntologyClassID"] . " -> " . $classes[$i]->getLabel("en");
+        } else
+            echo "ClassID: " . $ClassID . " not fount";
+        echo "<br>";
+    }
+}
+
+$props = $ontology->getAllProperties();
+for ($i = 0; $i < count($props); $i++) {
+    $PropertyID = $props[$i]->getID();
+    if (strpos($PropertyID, "http://purl.obolibrary.org/obo") === 0) {
+        $res = $mysql->Execute("select OntologyPropertyID from projectmanagement.OntologyProperties where OntologyID=" . $OntologyID . " and PropertyTitle='" . $PropertyID . "'");
+        if ($rec = $res->fetch()) {
+            $query = "insert into projectmanagement.OntologyPropertyLabels (OntologyPropertyID, label) values ('" . $rec["OntologyPropertyID"] . "', '" . $props[$i]->getLabel("en") . "')";
+            $mysql->Execute($query);
+            echo "PropertyID: " . $rec["OntologyPropertyID"] . " -> " . $props[$i]->getLabel("en");
+        } else
+            echo "PropID: " . $PropID . " not fount";
+        echo "<br>";
+    }
+}
+
+
 echo "<tr><td align=center><input type=button value='".C_BACK."' onclick='document.location=\"Manageontologies.php?UpdateID=" . $OntologyID . "\"'></td></tr>";
 echo "</table>";
 echo "</div>";
