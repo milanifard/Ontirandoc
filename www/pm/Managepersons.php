@@ -72,7 +72,7 @@ if (isset($_REQUEST["UpdateID"])) {
                 }
                 ?>
                 <div class="card mt-4">
-                    <h5 class="card-title my-2 text-info" style="text-align: center;"><? echo C_CREATING_EDITTING_PERSONS ?></h5>
+                    <h5 class="card-title pt-2 pb-2  text-info table-info" style="text-align: center;"><? echo C_CREATING_EDITTING_PERSONS ?></h5>
                     <div class="card-body">
                         <div class="form-group form-row ">
                             <div class="col">
@@ -129,8 +129,8 @@ if (isset($_REQUEST["UpdateID"])) {
                     </div>
                     <div class="card-footer">
                         <div class="row justify-content-between mx-2">
-                            <button class="col col-3 btn btn-success" type="submit"><?php echo C_SAVE ?></button>
-                            <a href="#" class="col col-3 btn btn-primary"
+                            <button class="col col-3 btn btn-outline-success" type="submit"><?php echo C_SAVE ?></button>
+                            <a href="#" class="col col-3 btn btn-outline-info"
                                onclick="javascript: document.location='Managepersons.php';"><? echo C_NEW?></a>
                         </div>
                     </div>
@@ -322,7 +322,7 @@ if (isset($_REQUEST["UpdateID"])) {
                         <div class="dropdown-divider"></div>
                         <div class="row justify-content-center text-center">
                             <div class="col">
-                                <buttton class="btn btn-danger col-3 btn-lg" onclick="javascript: ConfirmDelete();">حذف</buttton>
+                                <buttton class="btn btn-outline-danger col-3 btn-lg" onclick="javascript: ConfirmDelete();">حذف</buttton>
                             </div>
                         </div>
                     </div>

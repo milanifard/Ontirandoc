@@ -143,7 +143,7 @@ if (isset($_REQUEST["Search"])) {
         <div class="row border border-light shadow-sm" style="margin-top: 3% !important;">
             <div class="col-12">
                 <div class="row">
-                    <p class="col-12 bg-info text-dark text-center  ">
+                    <p class="col-12 table-info text-dark text-center  ">
                         <?php
                         echo C_SEARCH_MESSAGE;
                         ?>
@@ -246,9 +246,9 @@ if (isset($_REQUEST["Search"])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 bg-info text-dark text-center ">
+                    <div class="col-12 table-info text-dark text-center ">
                         <div class="btn">
-                            <input type="button" class="btn btn-dark" onclick="ValidateForm();"
+                            <input type="button" class="btn btn-success" onclick="ValidateForm();"
                                    value=<?php
                             echo C_SEARCH;
                             ?>>

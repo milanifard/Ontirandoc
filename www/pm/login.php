@@ -61,48 +61,36 @@
 	}
 	*/
 ?>
-<div id="login" class="container col-md-4 mx-auto">
-    <form id="login-form" class="form" action="" method="post">
+<div id="login" class="container login-container col-md-4 mx-auto">
+    <form id="login-form" class="form login-form" action="" method="post">
     <?php if(isset($_REQUEST["Referer"])) { ?>
         <input type=hidden name=Referer id=Referer value='<?php echo $_REQUEST["Referer"]; ?>'>
-        <?php } ?>
-        <table class="table table-sm table-bordered">
-            <thead><tr><th>ورود به سامانه</th></tr></thead>
-            <tr>
-                <td>
-                    <table class="table table-sm table-borderless">
-                    <tr>
-                        <td>
-                        نام کاربری
-                        </td>
-                        <td>
-                        <input type="text" name="UserID" id="UserID" class="form-control" required>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td>
-                                کلمه عبور
-                            </td>
-                            <td>
-                                <input type="password" name="UserPassword" id="UserPassword" class="form-control" required>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center"><input type="submit" name="submit" class="btn btn-primary btn-sm" value="ورود"></td>
-            </tr>
+		<?php } ?>
+		<div class="login-title">
+			ورود به سامانه
+		</div>
+		<div class="inputs-container">
+			<div class="input-wrapper">
+				<div>نام کاربری</div>
+				<input type="text" name="UserID" id="UserID" class="form-control" required>
+			</div>
+			<div class="input-wrapper">
+				<div>کلمه عبور</div>
+				<input type="password" name="UserPassword" id="UserPassword" class="form-control" required>
+			</div>
+		</div>
+		<div class="button-container">
+			<input type="submit" name="submit" class="btn btn-primary btn-sm" value="ورود">
+		</div>
+            
+                   
+                            
         <?php if(!empty($message)) echo '<div class="alert alert-warning text-right"  role="alert">'.$message."</div>"; ?>
-            <tr>
-                <td class="alert alert-info">
-                  اگر به عنوان خبره قصد ارزیابی یک هستان نگار را دارید و کد ورود در اختیار شما قرار گرفته است لطفا
-                <a href='ValidateOntology.php'><b>اینجا</b></a>
-                 را کلیک کنید.
-
-                </td>
-            </tr>
-        </table>
+        <div class="alert alert-info login-info">
+        اگر به عنوان خبره قصد ارزیابی یک هستان نگار را دارید و کد ورود در اختیار شما قرار گرفته است لطفا
+        <a href='ValidateOntology.php'><b>اینجا</b></a>
+        را کلیک کنید.
+		</div>
     </form>
 	</div>
 </body>

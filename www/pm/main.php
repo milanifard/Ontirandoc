@@ -7,7 +7,7 @@ include('../shares/header.inc.php');
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
     <? if(UI_LANGUAGE=="FA") { ?>
-   <frameset cols="85%,15%">
+   <frameset cols="90%,10%">
    <frame id=MainContent name=MainContent src="<? if($_SESSION["PersonID"]!="1" && $_SESSION["PersonID"]!="3") echo "HomePage.php"; else echo "ManagerDesktop.php"; ?>">
    <frame id=Menu name=Menu src="./Menu.php">   
    </frameset>

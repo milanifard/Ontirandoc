@@ -18,7 +18,7 @@ HTMLBegin();
 <body>
 	<br>
 		<form method=post>
-			<table class="table table-bordered bg-info" >
+			<table class="table table-bordered bg-info" style="background-color:#5fa2dd !important; color:white !important;">
 				<tr class="warning">
 					<td class="text-center">
 						<? 
@@ -33,7 +33,7 @@ HTMLBegin();
 						<br>
 						<br>
 						<? echo  C_RELOGING; ?>
-						<a class="text-center" href='login.php<?php echo $Referer; ?>'> 
+						<a class="text-center" style="color:#37495e !important;" href='login.php<?php echo $Referer; ?>'> 
 							<? echo  C_CLICK_THIS; ?> 
 						</a>
 					</td>

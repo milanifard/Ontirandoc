@@ -51,9 +51,9 @@ if(isset($_REQUEST["UpdateID"]))
         }
         ?>
 
-        <br><table class="table table-hover bg-dark">
+        <br><table class="table table-hover">
             <tr class="HeaderOfTable">
-                <td class="text-white bg-dark font-weight-bold" align="center">ا <?php echo C_CREATE_EDIT_POSBBLE?></td>
+                <td class="table-info font-weight-bold" align="center">ا <?php echo C_CREATE_EDIT_POSBBLE?></td>
             </tr>
             <tr>
                 <td>
@@ -96,10 +96,10 @@ if(isset($_REQUEST["UpdateID"]))
                     </table>
                 </td>
             </tr>
-            <tr class="FooterOfTable">
+            <tr class="FooterOfTable table-white">
                 <td align="center">
-                    <input type="button" class="btn btn-primary" onclick="javascript: ValidateForm();" value="<?php echo C_SAVE ?>">
-                    <input type="button" class="btn btn-primary" onclick="javascript: document.location='ManageAccountSpecs.php';" value="<?php echo C_NEW ?>">
+                    <input type="button" class="btn btn-outline-success" onclick="javascript: ValidateForm();" value="<?php echo C_SAVE ?>">
+                    <input type="button" class="btn btn-outline-info" onclick="javascript: document.location='ManageAccountSpecs.php';" value="<?php echo C_NEW ?>">
                 </td>
             </tr>
         </table>
@@ -128,9 +128,9 @@ if(isset($_REQUEST["UpdateID"]))
 
     <form  id="ListForm" name="ListForm" method="post">
         <div class="form-group">
-            <br><table class="table table-dark>
+            <br><table class="table">
         <tr  bgcolor="#cccccc">
-            <td class="table-primary text-primary display-5 font-weight-bold" align="center" colspan="6">
+            <td class="table-info display-5 font-weight-bold" align="center" colspan="6">
                 <?php echo C_LIST_OF_USERS?>
             </td>
             </tr>
@@ -162,7 +162,7 @@ if(isset($_REQUEST["UpdateID"]))
             ?>
             <tr class="FooterOfTable">
                 <td   class="table-danger"  colspan="6" align="center">
-                    <input type="button" class="btn btn-danger" onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE?>">
+                    <input type="button" class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE?>">
                 </td>
             </tr>
             </table>

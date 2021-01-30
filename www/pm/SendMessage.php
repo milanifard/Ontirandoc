@@ -136,7 +136,7 @@ if($rec = $res->fetch())
 
                 <div class="row">
 
-                    <p class="col-12 bg-info text-dark text-center  ">
+                    <p class="col-12 table-info text-dark text-center  ">
 
 
                         <?php
@@ -257,7 +257,7 @@ if($rec = $res->fetch())
 
                 <div class="row">
 
-                    <div class="col-12 bg-info text-dark text-center ">
+                    <div class="col-12 table-info text-dark text-center ">
 
                         <div class="btn">
                             <input type="button" class="btn btn-success" onclick="javascript: ValidateForm();" value=<?php

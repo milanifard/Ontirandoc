@@ -62,7 +62,7 @@ if(isset($_REQUEST["UpdateID"]))
                 <td align="center"><?php echo C_CREATE_EDIT_POSBBLE?></td>
             </tr>
             <tr>
-                <table class="table table-success">
+                <table class="table table-info">
                     <tr>
                         <td class="text-info" width="1%" nowrap>
                             <?php echo C_TITLE?>
@@ -102,8 +102,8 @@ if(isset($_REQUEST["UpdateID"]))
             </tr>
             <tr class="FooterOfTable">
                 <td align="center">
-                    <input class="btn btn-info" type="button" onclick="javascript: ValidateForm();" value="<?php echo C_SAVE?>">
-                    <input class="btn btn-info" type="button" onclick="javascript: document.location='ManageSystemFacilities.php';" value="<?php echo C_NEW ?>">
+                    <input class="btn btn-outline-success" type="button" onclick="javascript: ValidateForm();" value="<?php echo C_SAVE?>">
+                    <input class="btn btn-outline-info" type="button" onclick="javascript: document.location='ManageSystemFacilities.php';" value="<?php echo C_NEW ?>">
                 </td>
             </tr>
         </table>
@@ -168,7 +168,7 @@ if(isset($_REQUEST["UpdateID"]))
             ?>
             <tr class="FooterOfTable">
                 <td colspan="9" align="center">
-                    <input class="btn btn-danger" type="button" onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE?>">
+                    <input class="btn btn-outline-danger" type="button" onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE?>">
                 </td>
             </tr>
         </table>

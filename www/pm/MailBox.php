@@ -96,7 +96,7 @@ if($SomeItemsRemoved)
 
                 <div class="row">
 
-                    <p class="col-12 bg-info text-dark text-center  ">
+                    <p class="col-12 table-info text-dark text-center  ">
 
 
                         <?php
@@ -114,10 +114,10 @@ if($SomeItemsRemoved)
 
                             <table class="table table-bordered table-hover table-striped">
 
-                                <thead class="text-center thead-dark">
+                                <thead class="text-center thead-light">
                                 <tr>
-                                    <th scope="col">  </th>
-                                    <th scope="col"><?php
+                                    <!-- <th scope="col">  </th> -->
+                                    <th scope="col" class="text-info"><?php
                                         echo C_ROW;
                                         ?> </th>
 
@@ -133,10 +133,10 @@ if($SomeItemsRemoved)
                                     ?>
 
 
-                                    <th scope="col" class="text-nowrap" ><a href="javascript: Sort('FromPersonID', '<?php echo $OrderType1 ?>');"><?php echo C_SENDER_NAME; ?> </a></th>
-                                    <th scope="col" class="text-nowrap" ><a href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?> </a></th>
-                                    <th scope="col" class="text-nowrap" ><?php echo C_TITLE; ?></th>
-                                    <th scope="col" class="text-nowrap" ><?php echo C_REPLY_DES; ?></th>
+                                    <th scope="col" ><a class="text-info" href="javascript: Sort('FromPersonID', '<?php echo $OrderType1 ?>');"><?php echo C_SENDER_NAME; ?> </a></th>
+                                    <th scope="col"  ><a class="text-info" href="javascript: Sort('ReferTime', '<?php echo $OrderType2 ?>');"><?php echo C_TIME_SENT; ?> </a></th>
+                                    <th scope="col" class="text-info" ><?php echo C_TITLE; ?></th>
+                                    <th scope="col" class="text-info" ><?php echo C_REPLY_DES; ?></th>
                                 </tr>
                                 </thead>
 
@@ -194,7 +194,7 @@ if($SomeItemsRemoved)
 
                 <div class="row">
 
-                    <div class="col-12 bg-info text-dark text-center ">
+                    <div class="col-12 table-info text-dark text-center ">
 
                         <div class="btn">
 

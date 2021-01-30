@@ -2,6 +2,64 @@ a{color:#2aa2a2;text-decoration:none}
 a:hover{color:#336699;text-decoration: underline}
 td{font-size: 12px; font-family: Tahoma}
 body{background-color:#17a2b8;font-family:Tahoma}
-.navbar_sub{background-color:#c3efef;border-left:1px solid #FFFFFF; border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF}
+.navbar_sub{
+    background-color:#F1F1F1;
+}
+.navbar_sub tr td{
+    padding-right: 10px !important;
+}
 .navbar_main{font-family:Tahoma; font-size:12px}
 .navbar_title{color: #FF8A00; font-weight: bold}
+.user-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(0, 197, 26);
+    display: inline-block;
+}
+.menu-header {
+    color: white ;
+    background-color: #5fa2dd;
+    font-weight: normal;
+    border: none !important;
+    padding-right: 10px !important;
+}
+table {
+    cursor: unset !important;
+    margin: 0 !important;
+    width: 100%;
+}
+table tr{
+    cursor: pointer;
+}
+.menu-header-table {
+    margin-top: 20px !important; 
+}
+.menu-top-row {
+    background-color: #d1ecf1;
+    cursor: pointer;
+    margin: 0 !important;
+}
+.menu-top-row tr td{
+    padding-right: 10px !important;
+    color: #1661a3;
+}
+.menu-top-row tr:hover{
+    background-color: #bfe0e6;
+}
+.row-arrow {
+    position: absolute;
+    left: 10px;
+    margin-top: 7px;
+    transform: rotate(45deg);
+    width: 7px;
+    height: 7px;
+    border-left: 1px solid #1661a3;
+    border-bottom: 1px solid #1661a3;
+}
+.subMenu-table {
+    /* background-color: red !important; */
+}
+.subMenu-table tr:hover{
+    background-color: #e7e7e7 ;
+}

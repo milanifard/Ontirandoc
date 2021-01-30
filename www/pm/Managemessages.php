@@ -302,7 +302,7 @@ if(isset($_REQUEST["SearchAction"]))
         echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
             <div class="row">
                 <br><table width="90%" align="center" class="table table-bordered" cellspacing="0">
-                    <tr class="bg-primary">
+                    <tr class="table-info">
                     <td colspan="10">
                       <?php echo MESSAGES_M?>
             </td>
@@ -346,7 +346,7 @@ if(isset($_REQUEST["SearchAction"]))
                 <input  type="button"  class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="<?php echo DELETE_M?>">
             </td>
         </tr>
-        <tr  class="bg-secondary"><td colspan="10" align="right">
+        <tr  class="table-info"><td colspan="10" align="right">
                 <?php
                 $TotalCount = manage_messages::SearchResultCount($MessageBody, $CreateDate, "");
                 for($k=0; $k<$TotalCount/$NumberOfRec; $k++)

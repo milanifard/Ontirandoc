@@ -78,8 +78,8 @@ if($SomeItemsRemoved)
             </select>
         </div>
         <div class="container text-center">
-            <input type="button" class='btn bg-danger  text-white' onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE ?>">
-            <input type="button" class='btn bg-success text-white' onclick='javascript: NewRecordForm.submit();' value="<?php echo C_CREATE ?>">
+            <input type="button" class='btn btn-outline-success ' onclick='javascript: NewRecordForm.submit();' value="<?php echo C_CREATE ?>">
+            <input type="button" class='btn btn-outline-danger  ' onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE ?>">
         </div>
         <br>
     </div>
@@ -98,17 +98,17 @@ if($SomeItemsRemoved)
         <br >
         <table class="table">
 
-            <thead class="bg-dark text-white font-weight-bolder text-center">
+            <thead class=" font-weight-bolder text-center">
             <tr>
-                <td ><?php echo C_ROW ?></td>
-                <td ><?php echo C_EDIT ?></td>
-                <td ><a href="javascript: Sort('ProjectID', 'ASC');"><?php echo C_RELATED_PROJECT ?></a></td>
-                <td ><a href="javascript: Sort('TaskPeriority', 'ASC');"><?php echo C_PRIORITY ?></a></td>
-                <td><a href="javascript: Sort('title', 'ASC');"><?php echo C_TITLE ?></a></td>
-                <td ><a href="javascript: Sort('CreatorID', 'ASC');"><?php echo CREATOR_M ?></a></td>
-                <td ><a href="javascript: Sort('LastActivityDate', 'ASC');"><?php echo C_DATE_OF_LAST_ACTION ?></a></td>
-                <td ><a href="javascript: Sort('DoneDate', 'ASC');"><?php echo C_TIME_TO_DO ?></a></td>
-                <td >
+                <td class="table-info" ><?php echo C_ROW ?></td>
+                <td class="table-info" ><?php echo C_EDIT ?></td>
+                <td class="table-info" ><a href="javascript: Sort('ProjectID', 'ASC');"><?php echo C_RELATED_PROJECT ?></a></td>
+                <td class="table-info" ><a href="javascript: Sort('TaskPeriority', 'ASC');"><?php echo C_PRIORITY ?></a></td>
+                <td class="table-info"><a href="javascript: Sort('title', 'ASC');"><?php echo C_TITLE ?></a></td>
+                <td class="table-info"><a href="javascript: Sort('CreatorID', 'ASC');"><?php echo CREATOR_M ?></a></td>
+                <td class="table-info"><a href="javascript: Sort('LastActivityDate', 'ASC');"><?php echo C_DATE_OF_LAST_ACTION ?></a></td>
+                <td class="table-info"><a href="javascript: Sort('DoneDate', 'ASC');"><?php echo C_TIME_TO_DO ?></a></td>
+                <td class="table-info">
                     <?php echo C_OTHER_SPECIFICATIONS ?>
                 </td>
             </tr>
@@ -165,8 +165,8 @@ if($SomeItemsRemoved)
             ?>
             <tr>
                 <td colspan="10" align="center">
-                    <input type="button" class='btn bg-danger  text-white' onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE ?>">
-                    <input type="button" class='btn bg-success text-white' onclick='javascript: NewRecordForm.submit();' value="<?php echo C_CREATE ?>">
+                    <input type="button" class='btn btn-outline-success ' onclick='javascript: NewRecordForm.submit();' value="<?php echo C_CREATE ?>">
+                    <input type="button" class='btn btn-outline-danger  ' onclick="javascript: ConfirmDelete();" value="<?php echo C_REMOVE ?>">
                 </td>
             </tr>
             <tr >

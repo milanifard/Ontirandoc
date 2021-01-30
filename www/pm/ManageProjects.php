@@ -95,7 +95,7 @@ if($SomeItemsRemoved)
     <input class="form-control" type="hidden" name="OrderType" id="OrderType" value="<? echo $OrderType; ?>">
     <input class="form-control" type="hidden" name="SearchAction" id="SearchAction" value="1">
     <br><table class="table table-striped mw-100 align-content-center border-1 bg-secondary"  cellspacing="0">
-        <tr class="HeaderOfTable">
+        <tr class="HeaderOfTable bg-info">
             <td><i class="fa fa-search"></i><b><a class="form-control table-hover " href="#" onclick='javascript: if(document.getElementById("SearchTr").style.display=="none") document.getElementById("SearchTr").style.display=""; else document.getElementById("SearchTr").style.display="none";'><? echo C_SEARCH; ?></a></td>
         </tr>
         <tr class="form-control " id='SearchTr' style='display: none'>
@@ -158,7 +158,7 @@ if($SomeItemsRemoved)
                         </td>
                     </tr>
                     <tr class="HeaderOfTable">
-                        <td colspan="2" align="center"><input class="form-control" type="submit" value="<? echo C_SEARCH; ?>"></td>
+                        <td colspan="2" align="center"><input class="form-control bg-info text-light" type="submit" value="<? echo C_SEARCH; ?>"></td>
                     </tr>
                 </table>
             </td>
@@ -200,22 +200,22 @@ if(isset($_REQUEST["SearchAction"]))
     <? if(isset($_REQUEST["PageNumber"]))
         echo "<input type=\"hidden\" name=\"PageNumber\" value=".$_REQUEST["PageNumber"].">"; ?>
     <br>
-    <table class="col-12 w-100 table-bordered table-secondary fa-table-tennis table-hover align-content-center"   cellspacing="0">
+    <table class="col-12 w-100 table-bordered table-secondary fa-table-tennis align-content-center"   cellspacing="0">
 
-        <tr class='col-12 bg-dark text-light text-center' >
-            <td colspan="9">
+        <tr class='col-12 table-info text-center' >
+            <td colspan="9" class="pt-2 pb-2">
                 <? echo C_PROJECT; ?>
             </td>
         </tr>
         <tr class="  HeaderOfTable">
 
-            <td class='col-1 border-dark bg-info text-white text-center' width="1%"><? echo C_ROW; ?></td>
-            <td class='col-1 border-dark bg-success text-dark text-center' width="2%"><? echo C_EDIT; ?></td>
-            <td class='col-1 border-dark bg-info text-white text-center'><a class="text-white" href="javascript: Sort('title', 'ASC');"><? echo C_TITLE; ?></a></td>
-            <td class='col-1 border-dark bg-success text-dark text-center' width=1% nowrap><a class="text-dark" href="javascript: Sort('ProjectGroupID', 'ASC');"> <? echo C_PROJECT_GROUP; ?></a></td>
-            <td class='col-1 border-dark bg-info text-white white-center' width=1% nowrap><a class="text-white" href="javascript: Sort('ProjectPriority', 'ASC');"><? echo C_PRIORITY; ?></a></td>
-            <td class='col-1 border-dark bg-success  text-dark text-center' width=1% nowrap><a class="text-dark" href="javascript: Sort('ProjectStatus', 'ASC');"> <? echo C_CONDITION; ?></a></td>
-            <td class='col-1 border-dark bg-info text-white text-center' width=1% nowrap>
+            <td class='col-1 border-dark table-active  text-center' width="1%"><? echo C_ROW; ?></td>
+            <td class='col-1 border-dark  text-dark text-center' width="2%"><? echo C_EDIT; ?></td>
+            <td class='col-1 border-dark table-active  text-center'><a class="text-dark" href="javascript: Sort('title', 'ASC');"><? echo C_TITLE; ?></a></td>
+            <td class='col-1 border-dark  text-dark text-center' width=1% nowrap><a class="text-dark" href="javascript: Sort('ProjectGroupID', 'ASC');"> <? echo C_PROJECT_GROUP; ?></a></td>
+            <td class='col-1 border-dark table-active white-center' width=1% nowrap><a class="text-dark" href="javascript: Sort('ProjectPriority', 'ASC');"><? echo C_PRIORITY; ?></a></td>
+            <td class='col-1 border-dark   text-dark text-center' width=1% nowrap><a class="text-dark" href="javascript: Sort('ProjectStatus', 'ASC');"> <? echo C_CONDITION; ?></a></td>
+            <td class='col-1 border-dark table-active  text-center' width=1% nowrap>
                 <? echo C_PARTS; ?>
 
             </td>
@@ -293,8 +293,8 @@ if(isset($_REQUEST["SearchAction"]))
         <tr class="FooterOfTable">
             <td colspan="9" align="center">
 
-                <button type="button" class="btn btn-danger" onclick="javascript : ConfirmDelete();" ><? echo C_REMOVE; ?></button>
-                <button type="button" class="btn btn-primary" onclick='javascript: NewRecordForm.submit();' ><? echo C_CREAT; ?></button>
+                <button type="button" class="btn btn-outline-primary" onclick='javascript: NewRecordForm.submit();' ><? echo C_CREAT; ?></button>
+                <button type="button" class="btn btn-outline-danger" onclick="javascript : ConfirmDelete();" ><? echo C_REMOVE; ?></button>
 
 
             </td>

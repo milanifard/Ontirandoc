@@ -95,10 +95,10 @@ if(isset($_REQUEST["UpdateID"]))
         </table>
         </td>
         </tr>
-        <tr class="table-info">
-        <td align="center">
-        <input type="submit" class="btn btn-success"  value="<? echo C_SAVE; ?>">
-         <input type="button" class="btn btn-info" onclick="document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
+        <tr class="border-bottom border-info">
+        <td class=" pb-3" align="center">
+        <input type="submit" class="btn btn-outline-success"  value="<? echo C_SAVE; ?>">
+         <input type="button" class="btn btn-outline-info" onclick="document.location='ManageSystemFacilityGroups.php';" value="<? echo C_NEW; ?>">
         </td>
         </tr>
         </table>
@@ -155,9 +155,9 @@ for($k=0; $k<count($res); $k++)
 	echo "</tr>";
 }
 ?>
-<tr class="table-info">
-<td colspan="6" align="center">
-	<input type="button" class="btn btn-danger" onclick="ConfirmDelete();" value="<? echo C_REMOVE; ?>">
+<tr>
+<td class="pt-3 pb-3" colspan="6" align="center">
+	<input type="button" class="btn btn-outline-danger" onclick="ConfirmDelete();" value="<? echo C_REMOVE; ?>">
 </td>
 </tr>
 </table>

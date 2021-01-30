@@ -99,21 +99,21 @@ if(isset($_REQUEST["SearchAction"]))
 <table width="98%" align="center" border="1" cellspacing="0">
 <tr class="FooterOfTable">
 <td colspan="10" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	 <input type="button" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	 <input type="button" class="btn btn-outline-success" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	<input type="button" class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="حذف">
 </td>
 </tr> 
 <tr class="HeaderOfTable">
-	<td width="1%">&nbsp;</td>
-	<td width="1%">ردیف</td>
-	<td width="2%">ویرایش</td>
-	<td width=1%><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
-	<td width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');">اولویت</a></td>
-	<td><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
-	<td nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
-	<td nowrap width=1%><a href="javascript: Sort('TaskStatus', 'ASC');">وضعیت</a></td>
-	<td nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');">زمان ایجاد</a></td>
-	<td nowrap width=1%>
+	<td class="table-info" width="1%">&nbsp;</td>
+	<td class="table-info" width="1%">ردیف</td>
+	<td class="table-info" width="2%">ویرایش</td>
+	<td class="table-info" width=1%><a href="javascript: Sort('ProjectID', 'ASC');">پروژه مربوطه</a></td>
+	<td class="table-info" width=1% nowrap><a href="javascript: Sort('TaskPeriority', 'ASC');">اولویت</a></td>
+	<td class="table-info" ><a href="javascript: Sort('title', 'ASC');">عنوان</a></td>
+	<td class="table-info" nowrap width=1%><a href="javascript: Sort('CreatorID', 'ASC');">ایجاد کننده</a></td>
+	<td class="table-info" nowrap width=1%><a href="javascript: Sort('TaskStatus', 'ASC');">وضعیت</a></td>
+	<td class="table-info" nowrap width=1%><a href="javascript: Sort('CreateDate', 'ASC');">زمان ایجاد</a></td>
+	<td class="table-info" nowrap width=1%>
 	مجری
 	</td>
 </tr>
@@ -184,8 +184,8 @@ for($k=0; $k<count($res); $k++)
 ?>
 <tr class="FooterOfTable">
 <td colspan="10" align="center">
-	<input type="button" onclick="javascript: ConfirmDelete();" value="حذف">
-	 <input type="button" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	 <input type="button" class="btn btn-outline-success" onclick='javascript: NewRecordForm.submit();' value='ایجاد'>
+	<input type="button" class="btn btn-outline-danger" onclick="javascript: ConfirmDelete();" value="حذف">
 </td>
 </tr>
 <tr bgcolor="#cccccc"><td colspan="10" align="right">
