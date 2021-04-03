@@ -1,5 +1,5 @@
 php_value upload_max_filesize  "20M"
 php_value post_max_size      "20M"
 php_value max_execution_time "1200"
-php_value include_path ".;..\adodb;..\shares;..\sharedClasses"
-php_value short_open_tag 1
+php_value error_reporting "3"
+php_value include_path ".;c:\wamp64\www\Ontirandoc\www\adodb;c:\wamp64\www\Ontirandoc\www\shares;c:\wamp64\www\Ontirandoc\www\sharedClasses"
