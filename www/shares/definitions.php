@@ -11,6 +11,13 @@ function define2($name,$value) {
 
 
 if(UI_LANGUAGE=="EN") {
+    define2("C_EDIT_REF_CONTENT", "New/Update content");
+    define2("C_FA_PAGE", "page num");
+    define2("C_FA_CONTENT", "content");
+    define2("C_REFINE", "fix");
+    define2("C_REF_CONTENT", "refrence content");
+    define2("C_VOCAB", "terms");
+
     define2("C_BACK", "back");
     define2("C_MY_TITLE_PROJECT_COMMENTS", "comment");
     define2("C_COMMENTS", "comments");
@@ -968,6 +975,14 @@ if(UI_LANGUAGE=="EN") {
 }
 else
 {
+    define2("C_EDIT_REF_CONTENT", "ثبت محتوا");
+    define2("C_FA_PAGE", "شماره صفحه");
+    define2("C_FA_CONTENT", "محتوای صفحه");
+    define2("C_REFINE", "اصلاح");
+    define2("C_REF_CONTENT", "محتوای منبع");
+    define2("C_VOCAB", "واژگان");
+
+
     define2("C_BACK", "بازگشت");
     define2("C_MY_TITLE_PROJECT_COMMENTS", "یادداشت");
     define2("C_COMMENTS", "یادداشتها");
