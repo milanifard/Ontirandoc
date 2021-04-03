@@ -613,6 +613,8 @@ if(isset($_REQUEST["SetEntity"]))
     $EntityID = $_REQUEST["RelatedDataPropID"];
   else
     $EntityID = 0;
+  if($OntologyPropertyPermittedValueID=="")
+      $OntologyPropertyPermittedValueID = 0;
   $mysql->ExecuteStatement(array($_REQUEST["TermID"], $EntityID, $EntityType, $OntologyPropertyPermittedValueID));
 }
 
