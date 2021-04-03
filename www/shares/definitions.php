@@ -11,6 +11,17 @@ function define2($name,$value) {
 
 
 if(UI_LANGUAGE=="EN") {
+    define2("C_UNKNOWN", "unknown");
+    define2("C_SPECIFY_VALID_RELATIONSHIPS", "specify valid relations");
+    define2("C_VALUES", "values");
+    define2("C_ARE_YOU_SURE_TO_REMOVE", "are you sure");
+    define2("C_CRAETE_EDIT_FEATURE_POSSIBLE_VALUES", "new/update permitted value");
+    define2("C_POSSIBLE_VALUE", "permitted values");
+    define2("C_FEATURE_POSSIABLE_VALUES", "property permitted values");
+    define2("C_VALUE", "value");
+    define2("C_REPEATED_CLASSES", "duplicate classes");
+    define2("C_REPEATED_CLASSES_RELATION", "duplicate relations");
+
     define2("C_ADD_FEATURE_TO_ONTOLOGY", "Add property");
     define2("C_FEATURE_TYPE", "property type");
     define2("C_DATATYPE_FEATURE", "data type");
@@ -1000,8 +1011,6 @@ else
     define2("C_VALUE", "مقدار");
     define2("C_REPEATED_CLASSES", "كلاسهاي تكراري");
     define2("C_REPEATED_CLASSES_RELATION", "روابط تكراري");
-
-
 
     define2("C_ADD_FEATURE_TO_ONTOLOGY", "افزودن خصوصیت به هستان نگار");
     define2("C_FEATURE_TYPE", "نوع خصوصیت");
