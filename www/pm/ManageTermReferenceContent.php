@@ -120,8 +120,8 @@ if(!isset($_REQUEST["UpdateID"]))
 <tr class="FooterOfTable">
 <td align="center" >
 
-<input type="button" class="btn btn-outline-success btn-lg" style="width: 10%" onclick="javascript: ValidateForm();" value="<?echo C_FA_SAVE?>">
- <input type="button" class="btn btn-outline-warning btn-lg" style="width: 10%" onclick="javascript: document.location='ManageTermReferenceContent.php?TermReferenceID=<?php echo $_REQUEST["TermReferenceID"]; ?>'" value="<?echo C_FA_NEW?>">
+<input type="button" class="btn btn-outline-success btn-lg" style="width: 10%" onclick="javascript: ValidateForm();" value="<?echo C_SAVE?>">
+ <input type="button" class="btn btn-outline-warning btn-lg" style="width: 10%" onclick="javascript: document.location='ManageTermReferenceContent.php?TermReferenceID=<?php echo $_REQUEST["TermReferenceID"]; ?>'" value="<?echo C_NEW?>">
     </td>
 </tr>
 </table>
