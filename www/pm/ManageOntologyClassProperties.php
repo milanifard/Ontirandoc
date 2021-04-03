@@ -67,7 +67,7 @@ $range = $domain = '';
 								<label for="Item_PropertyType"><?php echo C_FEATURE_TYPE?></label>
 							<select class="form-control" name="Item_PropertyType" id="Item_PropertyType" onchange='javascript: document.location="ManageOntologyClassProperties.php?OntologyID=<? echo $_REQUEST["OntologyID"] ?>&OntologyClassID=<? echo $_REQUEST["OntologyClassID"] ?>&Item_PropertyType="+this.value'>
 								<option value='DATATYPE'><?php echo C_DATATYPE_FEATURE?></option>
-								<option value='OBJECT' <? if ($SelectedPropType == "OBJECT") echo "selected"; ?>><? echo C_OBJECT_RELATION;?>)</option>
+								<option value='OBJECT' <? if ($SelectedPropType == "OBJECT") echo "selected"; ?>><? echo C_OBJECT_RELATION;?></option>
 							</select>
 							</div>
 							<br>
@@ -206,13 +206,13 @@ $range = $domain = '';
 		?>
 		<tr class=FooterOfTable>
 			<td colspan=2 align=center>
-				<input class="btn btn-danger" type=button value='حذف' onclick='javascript: ConfirmDelete();'>
+				<input class="btn btn-danger" type=button value='<? echo C_DELETE;?>' onclick='javascript: ConfirmDelete();'>
 			</td>
 		</tr>
 </form>
 <script>
 	function ConfirmDelete() {
-		if (confirm(C_ARE_U_SURE)) document.ListForm.submit();
+		if (confirm(<? echo C_ARE_U_SURE ?>)) document.ListForm.submit();
 	}
 </script>
 

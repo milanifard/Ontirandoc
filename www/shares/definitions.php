@@ -11,6 +11,21 @@ function define2($name,$value) {
 
 
 if(UI_LANGUAGE=="EN") {
+    define2("C_ADD_FEATURE_TO_ONTOLOGY", "Add property");
+    define2("C_FEATURE_TYPE", "property type");
+    define2("C_DATATYPE_FEATURE", "data type");
+    define2("C_OBJECT_RELATION", "relation (object property)");
+    define2("C_FIRST_PART_RELATION", "first part");
+    define2("C_SECOND_PART_RELATION", "second part");
+    define2("C_RELATION", "relation");
+    define2("C_FEATURE", "property");
+    define2("C_TYPE", "type");
+    define2("C_REVERSE", "reverse");
+    define2("C_DOMAIN_AND_RANGE", "domain and range");
+    define2("C_SIMILAR_RELATIONSHIPS", "similar relations");
+    define2("C_DUPLICATE_PROPERTIES", "duplicate properties");
+
+
     define2("C_EDIT_REF_CONTENT", "New/Update content");
     define2("C_FA_PAGE", "page num");
     define2("C_FA_CONTENT", "content");
@@ -975,6 +990,34 @@ if(UI_LANGUAGE=="EN") {
 }
 else
 {
+    define2("C_UNKNOWN", "نامشخص");
+    define2("C_SPECIFY_VALID_RELATIONSHIPS", "تعیین ارتباطات معتبر بین مفاهیم حوزه و برد این خصوصیت");
+    define2("C_VALUES", "مقادير");
+    define2("C_ARE_YOU_SURE_TO_REMOVE", "براي حذف اطمينان داريد");
+    define2("C_CRAETE_EDIT_FEATURE_POSSIBLE_VALUES", "ایجاد/ویرایش مقادیر مجاز خصوصیت");
+    define2("C_POSSIBLE_VALUE", "مقدار مجاز");
+    define2("C_FEATURE_POSSIABLE_VALUES", "مقادير مجاز خصوصيت");
+    define2("C_VALUE", "مقدار");
+    define2("C_REPEATED_CLASSES", "كلاسهاي تكراري");
+    define2("C_REPEATED_CLASSES_RELATION", "روابط تكراري");
+
+
+
+    define2("C_ADD_FEATURE_TO_ONTOLOGY", "افزودن خصوصیت به هستان نگار");
+    define2("C_FEATURE_TYPE", "نوع خصوصیت");
+    define2("C_DATATYPE_FEATURE", "خصوصيت داده");
+    define2("C_OBJECT_RELATION", "رابطه (خصوصيت شيء)");
+    define2("C_FIRST_PART_RELATION", "طرف اول رابطه");
+    define2("C_SECOND_PART_RELATION", "طرف دوم رابطه");
+    define2("C_RELATION", "رابطه");
+    define2("C_FEATURE", "خصوصيت");
+    define2("C_TYPE", "نوع");
+    define2("C_REVERSE", "معكوس");
+    define2("C_DOMAIN_AND_RANGE", "حوزه و بازه");
+    define2("C_SIMILAR_RELATIONSHIPS", "روابط مشابه");
+    define2("C_DUPLICATE_PROPERTIES", "خصوصيات تكراري");
+
+
     define2("C_EDIT_REF_CONTENT", "ثبت محتوا");
     define2("C_FA_PAGE", "شماره صفحه");
     define2("C_FA_CONTENT", "محتوای صفحه");

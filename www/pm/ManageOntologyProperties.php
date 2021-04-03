@@ -367,7 +367,7 @@ else if(isset($_REQUEST["DataProp"]))
 						<tr style='display: ' id="DomainTR" name="DomainTR">
 							<td width="1%" nowrap></td>
 							<td nowrap>
-							<textarea name="Item_domain" id="Item_domain" rows="8" cols="100" dir="ltr" required><? echo $domain; ?></textarea>
+							<textarea name="Item_domain" id="Item_domain" rows="8" cols="100" dir="ltr" ><? echo $domain; ?></textarea>
 							<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_domain&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
 							</td>
 						</tr>
@@ -391,14 +391,14 @@ else if(isset($_REQUEST["DataProp"]))
 						<tr style='display: ' id="RangeTR" name="RangeTR">
 							<td width="1%" nowrap></td>
 							<td nowrap>
-								<textarea name="Item_range" id="Item_range" rows="8" cols="100" dir=ltr required><? echo $range; ?></textarea>
+								<textarea name="Item_range" id="Item_range" rows="8" cols="100" dir=ltr ><? echo $range; ?></textarea>
 								<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_range&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
 							</td>
 						</tr>
 						<tr>
 							<td width="1%" nowrap><? echo C_REVERSE ?></td>
 							<td nowrap>
-								<input type="text" dir=ltr name="Item_inverseOf" id="Item_inverseOf" maxlength="245" size="40" required>
+								<input type="text" dir=ltr name="Item_inverseOf" id="Item_inverseOf" maxlength="245" size="40" >
 								<a target="_blank" href='ShowOntologyClassTree.php?InputName=Item_inverseOf&OntologyID=<? echo $_REQUEST["OntologyID"] ?>'><? echo C_SELECT ?></a>
 							</td>
 						</tr>
